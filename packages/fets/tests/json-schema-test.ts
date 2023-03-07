@@ -1,7 +1,6 @@
 import { createRouter, Response } from '../src/index.js';
 
 async function main() {
-
   const successfulResponseSchema = {
     type: 'object',
     properties: {
