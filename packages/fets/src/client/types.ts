@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { FromSchema, JSONSchema7 } from 'json-schema-to-ts';
 import { OpenAPIV3_1 } from 'openapi-types';
-import { TypedResponse } from '../typed-fetch';
+import { TypedResponse } from '../typed-fetch.js';
 
 export type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;

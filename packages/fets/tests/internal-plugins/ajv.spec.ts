@@ -1,5 +1,5 @@
 import { File, FormData } from '@whatwg-node/fetch';
-import { createRouter, Response } from '../../src';
+import { createRouter, Response } from '../../src/index.js';
 
 describe('AJV', () => {
   const router = createRouter().route({

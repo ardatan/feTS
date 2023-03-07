@@ -1,20 +1,19 @@
 {
   "name": "fets-monorepo",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "./packages/*",
-      "./examples/todolist"
-    ]
-  },
+  "workspaces": [
+    "packages/*",
+    "e2e/*",
+    "examples/*"
+  ],
   "scripts": {
-    "build": "yarn ts:transpile && bob build",
+    "build": "bob build",
     "ci:lint": "eslint --ext .ts . --output-file eslint_report.json --format json",
-    "clean-dist": "rimraf \"dist\" && rimraf \".bob\"",
-    "generate-swagger-ui": "node ./packages/router/scripts/generate-swagger-ui.js",
+    "esm:check": "bob check",
+    "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
     "lint": "eslint --ext .ts .",
     "postinstall": "patch-package && husky install",
-    "prebuild": "yarn generate-swagger-ui && yarn clean-dist",
+    "prebuild": "yarn generate-swagger-ui",
     "prerelease": "yarn build",
     "prerelease-canary": "yarn build",
     "pretest": "yarn generate-swagger-ui",
@@ -23,8 +22,7 @@
     "prettier:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
     "test": "jest --detectOpenHandles --detectLeaks",
-    "ts:check": "tsc --noEmit",
-    "ts:transpile": "tsc --project tsconfig.build.json"
+    "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/core": "7.21.0",
@@ -40,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "5.53.0",
     "@typescript-eslint/parser": "5.53.0",
     "babel-jest": "29.4.3",
-    "bob-the-bundler": "1.7.3",
+    "bob-the-bundler": "5.0.1",
     "eslint": "8.34.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-config-standard": "17.0.0",

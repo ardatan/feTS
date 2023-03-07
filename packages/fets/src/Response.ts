@@ -1,6 +1,6 @@
 import { Response as OriginalResponse } from '@whatwg-node/fetch';
-import { TypedResponseCtor } from './typed-fetch';
-import { JSONSerializer } from './types';
+import { TypedResponseCtor } from './typed-fetch.js';
+import { JSONSerializer } from './types.js';
 
 export const LAZY_SERIALIZED_RESPONSE = Symbol('LAZY_SERIALIZED_RESPONSE');
 

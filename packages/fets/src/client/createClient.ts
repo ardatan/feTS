@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
 import { fetch } from '@whatwg-node/fetch';
-import { HTTPMethod } from '../typed-fetch';
-import { Router } from '../types';
-import { ClientMethod, ClientOptions, ClientRequestParams, OASClient } from './types';
+import { HTTPMethod } from '../typed-fetch.js';
+import { Router } from '../types.js';
+import { ClientMethod, ClientOptions, ClientRequestParams, OASClient } from './types.js';
 
 export class ClientValidationError extends Error implements AggregateError {
   constructor(

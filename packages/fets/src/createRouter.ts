@@ -1,9 +1,9 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
-import { useAjv } from './internal-plugins/ajv';
-import { useOpenAPI } from './internal-plugins/openapi';
-import { isLazySerializedResponse } from './Response';
-import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch';
+import { useAjv } from './internal-plugins/ajv.js';
+import { useOpenAPI } from './internal-plugins/openapi.js';
+import { isLazySerializedResponse } from './Response.js';
+import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
   AddRouteWithSchemasOpts,
   OnRouteHook,
@@ -15,7 +15,7 @@ import type {
   RouterOptions,
   RouterSDK,
   RouteSchemas,
-} from './types';
+} from './types.js';
 
 const HTTP_METHODS: HTTPMethod[] = [
   'GET',

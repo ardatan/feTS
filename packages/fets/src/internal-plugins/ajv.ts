@@ -3,8 +3,8 @@ import type { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
 import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { getHeadersObj } from '@whatwg-node/server';
-import { Response } from '../Response';
-import { JSONSerializer, PromiseOrValue, RouterPlugin, RouterRequest } from '../types';
+import { Response } from '../Response.js';
+import { JSONSerializer, PromiseOrValue, RouterPlugin, RouterRequest } from '../types.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 

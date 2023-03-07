@@ -8,13 +8,13 @@ import {
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
-import { LazySerializedResponse } from './Response';
+import { LazySerializedResponse } from './Response.js';
 import type {
   HTTPMethod,
   TypedRequest,
   TypedResponse,
   TypedResponseWithJSONStatusMap,
-} from './typed-fetch';
+} from './typed-fetch.js';
 
 export { TypedRequest as RouterRequest };
 

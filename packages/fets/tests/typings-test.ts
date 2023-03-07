@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServerAdapter } from '@whatwg-node/server';
-import { createRouter, Response, TypedRequestFromTypeConfig } from '../src';
-import { TypedResponseWithJSONStatusMap } from '../src/typed-fetch';
+import { createRouter, Response, TypedRequestFromTypeConfig } from '../src/index.js';
+import { TypedResponseWithJSONStatusMap } from '../src/typed-fetch.js';
 
 const router = createRouter();
 const adapter = createServerAdapter(() => new Response('Hello World'));

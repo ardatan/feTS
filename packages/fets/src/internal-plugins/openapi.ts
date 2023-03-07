@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
-import { Response } from '../Response';
-import swaggerUiHtml from '../swagger-ui-html';
-import { RouterPlugin } from '../types';
+import { Response } from '../Response.js';
+import swaggerUiHtml from '../swagger-ui-html.js';
+import { RouterPlugin } from '../types.js';
 
 export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;

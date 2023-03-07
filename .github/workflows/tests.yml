@@ -1,0 +1,88 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+
+jobs:
+  prettier-check:
+    name: 🧹 Prettier Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v3
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: 18
+      - name: Prettier Check
+        run: yarn prettier:check
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v3
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: 18
+      - name: ESLint
+        run: yarn lint
+
+  build:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v3
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: 18
+      - name: Type Check
+        run: yarn ts:check
+  test:
+    name: Unit Test on Node ${{matrix.node-version}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+      fail-fast: false
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v3
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: ${{ matrix.node-version }}
+      - name: Cache Jest
+        uses: actions/cache@v3
+        with:
+          path: .cache/jest
+          key: ${{ runner.os }}-${{matrix.node-version}}-jest-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{matrix.node-version}}-jest-
+      - name: Test
+        run: yarn test --ci
+        env:
+          CI: true
+  test_esm:
+    name: ESM Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v3
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: 18
+      - name: Build Packages
+        run: yarn build
+      - name: Test ESM
+        run: yarn esm:check

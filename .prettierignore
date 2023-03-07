@@ -6,4 +6,4 @@ CHANGELOG.md
 .husky
 .bob
 examples/todolist/src/saved_openapi.ts
-packages/router/src/swagger-ui-html.ts
+packages/fets/src/swagger-ui-html.ts

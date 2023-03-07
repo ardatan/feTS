@@ -1,4 +1,4 @@
-import { createRouter, Response } from '../src';
+import { createRouter, Response } from '../src/index.js';
 
 describe('Router', () => {
   it('should have parsedUrl in Request object', async () => {

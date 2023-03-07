@@ -18,7 +18,7 @@
 
     "suppressImplicitAnyIndexErrors": true,
 
-    "skipLibCheck": false,
+    "skipLibCheck": true,
 
     "strict": true,
     "noUnusedLocals": true,
@@ -26,9 +26,10 @@
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "*": ["packages/*/src/index.ts"]
+      "@e2e/*": ["e2e/*/src/index.ts"],
+      "fets": ["packages/fets/src/index.ts"]
     }
   },
-  "include": ["packages", "examples"],
-  "exclude": ["**/node_modules", "**/test-files", "**/dist"]
+  "include": ["packages", "e2e", "examples"],
+  "exclude": ["**/node_modules", "**/test-files", "**/dist", "e2e/bun", "e2e/deno"]
 }
