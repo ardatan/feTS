@@ -1,5 +1,13 @@
 # fets
 
+## 0.0.7
+
+### Patch Changes
+
+- [`504707c`](https://github.com/ardatan/fets/commit/504707cc4154164b9b02d58a50ff859296c68482)
+  Thanks [@ardatan](https://github.com/ardatan)! - Keep `formData` object after validation, and
+  avoid extra url parsing
+
 ## 0.0.6
 
 ### Patch Changes
