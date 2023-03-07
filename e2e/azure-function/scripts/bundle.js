@@ -7,7 +7,7 @@ const projectRoot = join(__dirname, '..');
 async function main() {
   await build({
     entryPoints: [join(projectRoot, './src/index.ts')],
-    outfile: join(projectRoot, 'dist/WhatWGNode/index.js'),
+    outfile: join(projectRoot, 'dist/fets/index.js'),
     format: 'cjs',
     minify: false,
     bundle: true,
@@ -18,7 +18,7 @@ async function main() {
   writeFileSync(
     join(projectRoot, './dist/package.json'),
     JSON.stringify({
-      name: 'whatwg-node-test-function',
+      name: 'fets-test-function',
       version: '0.0.1',
     }),
   );
@@ -43,7 +43,7 @@ async function main() {
   );
 
   writeFileSync(
-    join(projectRoot, './dist/WhatWGNode/function.json'),
+    join(projectRoot, './dist/fets/function.json'),
     JSON.stringify({
       bindings: [
         {

@@ -7,4 +7,4 @@ export const config = {
   },
 };
 
-export default createTestServerAdapter('/api/whatwgnode');
+export default createTestServerAdapter('/api/fets');

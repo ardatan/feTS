@@ -134,16 +134,16 @@ export function createVercelDeployment(): DeploymentConfiguration<{
       const deployment = new VercelDeployment('vercel-function', {
         files: [
           {
-            file: '/api/whatwgnode.js',
+            file: '/api/fets.js',
             data: await fsPromises.readFile(
-              join(__dirname, '..', 'pages', 'api', 'whatwgnode.js'),
+              join(__dirname, '..', 'pages', 'api', 'fets.js'),
               'utf-8',
             ),
           },
         ],
-        name: `whatwg-node-e2e-testing`,
+        name: `fets-e2e-testing`,
         functions: {
-          'api/whatwgnode.js': {
+          'api/fets.js': {
             memory: 256,
             maxDuration: 5,
           },
@@ -154,7 +154,7 @@ export function createVercelDeployment(): DeploymentConfiguration<{
       });
 
       return {
-        functionUrl: pulumi.interpolate`https://${deployment.url}/api/whatwgnode`,
+        functionUrl: pulumi.interpolate`https://${deployment.url}/api/fets`,
       };
     },
     test: async ({ functionUrl }) => {

@@ -5,10 +5,10 @@ import { getCommitId } from './utils';
 export async function runTests(testPlan: DeploymentConfiguration) {
   const commitId = await getCommitId();
   const testPlaneName = testPlan.name;
-  const identifier = `whatwg-node-${testPlaneName}-e2e-${commitId}`;
+  const identifier = `fets-${testPlaneName}-e2e-${commitId}`;
 
   const stack = await LocalWorkspace.createOrSelectStack({
-    projectName: 'whatwg-node-e2e',
+    projectName: 'fets-e2e',
     stackName: identifier,
     program: testPlan.program,
   });

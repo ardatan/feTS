@@ -90,7 +90,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
       const stackName = pulumi.getStack();
       const resourceGroup = new resources.ResourceGroup(stackName);
 
-      const storageAccount = new storage.StorageAccount('whatwgnodesa', {
+      const storageAccount = new storage.StorageAccount('fetssa', {
         resourceGroupName: resourceGroup.name,
         sku: {
           name: storage.SkuName.Standard_LRS,
@@ -99,7 +99,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
       });
 
       const codeContainer = new storage.BlobContainer(
-        'whatwgnodezips',
+        'fetszips',
         {
           resourceGroupName: resourceGroup.name,
           accountName: storageAccount.name,
@@ -165,7 +165,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
       );
 
       return {
-        functionUrl: pulumi.interpolate`https://${app.defaultHostName}/api/whatwgnode`,
+        functionUrl: pulumi.interpolate`https://${app.defaultHostName}/api/fets`,
       };
     },
     test: async ({ functionUrl }) => {

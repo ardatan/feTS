@@ -1,5 +1,5 @@
 compatibility_date = "2022-02-21"
-name = "whatwg-node"
+name = "fets"
 account_id = ""
 workers_dev = true
 main = "src/index.ts"

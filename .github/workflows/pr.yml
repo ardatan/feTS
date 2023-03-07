@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_OPTIONS: --max-old-space-size=4096
-  
+
 jobs:
   dependencies:
     uses: the-guild-org/shared-config/.github/workflows/changesets-dependencies.yaml@main
