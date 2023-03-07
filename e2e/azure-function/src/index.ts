@@ -13,14 +13,14 @@ export default async function (context: Context, req: HttpRequest): Promise<void
       headers: req.headers,
     });
     const responseText = await response.text();
-    context.log('WhatWG Node response text:', responseText);
+    context.log('FETS response text:', responseText);
 
     const headersObj = {};
     response.headers.forEach((value, key) => {
       headersObj[key] = value;
     });
 
-    context.log('WhatWG Node response headers:', headersObj);
+    context.log('FETS response headers:', headersObj);
     context.res = {
       status: response.status,
       body: responseText,
