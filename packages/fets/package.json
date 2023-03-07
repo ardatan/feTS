@@ -1,0 +1,51 @@
+{
+  "name": "fets",
+  "version": "0.0.6",
+  "description": "TypeScript HTTP Framework focusing on e2e type-safety, easy setup, performance & great developer experience",
+  "repository": {
+    "type": "git",
+    "url": "ardatan/whatwg-node",
+    "directory": "packages/fets"
+  },
+  "author": "Arda TANRIKULU <ardatanrikulu@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": {
+      "require": "./dist/*.js",
+      "import": "./dist/*.mjs"
+    }
+  },
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "@ardatan/fast-json-stringify": "^0.0.3",
+    "@whatwg-node/fetch": "^0.8.2",
+    "@whatwg-node/server": "^0.7.4",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "json-schema-to-ts": "^2.7.2",
+    "openapi-types": "^12.1.0",
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "express": "^4.18.2",
+    "html-minifier-terser": "7.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "sideEffects": false,
+  "buildOptions": {
+    "input": "./src/index.ts"
+  },
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  }
+}
