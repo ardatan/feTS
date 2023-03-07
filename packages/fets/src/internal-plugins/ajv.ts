@@ -96,7 +96,8 @@ export function useAjv(): RouterPlugin<any> {
             });
             await Promise.all(jobs);
             Object.defineProperty(request, 'formData', {
-              value: async () => formDataObj,
+              value: async () => formData,
+              configurable: true,
             });
             const isValid = validateFn(formDataObj);
             if (!isValid) {

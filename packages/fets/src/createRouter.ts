@@ -13,6 +13,7 @@ import type {
   Router,
   RouterBaseObject,
   RouterOptions,
+  RouterPlugin,
   RouterSDK,
   RouteSchemas,
 } from './types.js';
@@ -28,6 +29,8 @@ const HTTP_METHODS: HTTPMethod[] = [
   'TRACE',
   'PATCH',
 ];
+
+const urlByRequest = new WeakMap<Request, URL>();
 
 export function createRouterBase({
   fetchAPI: givenFetchAPI,
@@ -96,12 +99,9 @@ export function createRouterBase({
   }
   return {
     async handle(request: Request, context: any) {
-      let _parsedUrl: URL;
-      function getParsedUrl() {
-        if (!_parsedUrl) {
-          _parsedUrl = new fetchAPI.URL(request.url, 'http://localhost');
-        }
-        return _parsedUrl;
+      const url = urlByRequest.get(request);
+      if (!url) {
+        throw new Error('Request not from this router');
       }
       const methodPatternMaps = routesByMethod.get(request.method as HTTPMethod);
       if (methodPatternMaps) {
@@ -109,31 +109,30 @@ export function createRouterBase({
           {},
           {
             get(_, prop) {
-              const parsedUrl = getParsedUrl();
-              const allQueries = parsedUrl.searchParams.getAll(prop.toString());
+              const allQueries = url.searchParams.getAll(prop.toString());
               return allQueries.length === 1 ? allQueries[0] : allQueries;
             },
             has(_, prop) {
-              const parsedUrl = getParsedUrl();
-              return parsedUrl.searchParams.has(prop.toString());
+              return url.searchParams.has(prop.toString());
             },
           },
         );
         for (const [pattern, handlers] of methodPatternMaps) {
           // Do not parse URL if not needed
-          const match = request.url.endsWith(pattern.pathname)
-            ? { pathname: { groups: {} } }
-            : pattern.exec(getParsedUrl());
+          const match =
+            request.url.endsWith(pattern.pathname) || url.pathname === pattern.pathname
+              ? { pathname: { groups: {} } }
+              : pattern.exec(url);
           if (match) {
             const routerRequest = new Proxy(request as any, {
               get(target, prop: keyof TypedRequest) {
                 if (prop === 'parsedUrl') {
-                  return getParsedUrl();
+                  return url;
                 }
                 if (prop === 'params') {
                   return new Proxy(match.pathname.groups, {
                     get(_, prop) {
-                      const value = match.pathname.groups[prop.toString()] as any;
+                      const value = match.pathname.groups[prop.toString()];
                       if (value != null) {
                         return decodeURIComponent(value);
                       }
@@ -144,7 +143,7 @@ export function createRouterBase({
                 if (prop === 'query') {
                   return queryProxy;
                 }
-                const targetProp = target[prop] as any;
+                const targetProp = target[prop];
                 if (typeof targetProp === 'function') {
                   return targetProp.bind(target);
                 }
@@ -233,7 +232,12 @@ export function createRouter<
   plugins: userPlugins = [],
   ...options
 }: RouterOptions<TServerContext> = {}): Router<TServerContext, TRouterSDK> {
-  const plugins = [
+  const plugins: RouterPlugin<TServerContext>[] = [
+    {
+      onRequest({ request, url }) {
+        urlByRequest.set(request, url);
+      },
+    },
     ...(oasEndpoint || swaggerUIEndpoint
       ? [
           useOpenAPI({
