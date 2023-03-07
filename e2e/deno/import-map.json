@@ -2,7 +2,7 @@
   "imports": {
     "@e2e/shared-server": "../../e2e/shared-server/src/index.ts",
     "@e2e/shared-scripts": "../../e2e/shared-scripts/src/utils.ts",
-    "fets": "../../packages/fets/dist/index.mjs",
+    "fets": "../../packages/fets/dist/esm/index.js",
     "@whatwg-node/fetch": "npm:@whatwg-node/fetch",
     "@whatwg-node/events": "npm:@whatwg-node/events",
     "@whatwg-node/server": "npm:@whatwg-node/server",
