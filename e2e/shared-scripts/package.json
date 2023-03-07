@@ -1,0 +1,9 @@
+{
+  "name": "@e2e/shared-scripts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@pulumi/pulumi": "3.56.0",
+    "@types/node": "18.14.6"
+  }
+}

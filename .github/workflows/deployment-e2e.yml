@@ -1,0 +1,83 @@
+name: e2e
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+
+jobs:
+  e2e:
+    strategy:
+      fail-fast: false
+      matrix:
+        plan: ['aws-lambda', 'azure-function', 'cloudflare-workers', 'cloudflare-modules', 'deno']
+        # TODO: Add vercel
+    name: e2e / ${{ matrix.plan }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Use Node 18
+        uses: actions/setup-node@master
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        id: node-modules-cache-deployment-e2e
+        with:
+          path: '**/node_modules'
+          key: ${{runner.os}}-18-node-modules-${{hashFiles('yarn.lock')}}-${{hashFiles('patches/**/*')}}
+          restore-keys: |
+            ${{runner.os}}-18-node-modules-${{hashFiles('yarn.lock')}}-${{hashFiles('patches/**/*')}}
+      - name: Install Dependencies using Yarn
+        run: yarn install --ignore-engines --frozen-lockfile --immutable
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Install pulumi
+        uses: pulumi/setup-pulumi@v2
+
+      - name: Set outputs
+        id: vars
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          echo "::set-output name=docker_host::$(docker context inspect --format '{{.Endpoints.docker.Host}}')"
+
+      - name: Provision & Test
+        run: yarn e2e
+        working-directory: e2e/${{ matrix.plan }}
+        env:
+          # General
+          COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
+          # Pulumi
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          # AWS
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          # Azure
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          # CloudFlare
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          # Vercel
+          VERCEL_AUTH_TOKEN: ${{ secrets.VERCEL_AUTH_TOKEN }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}

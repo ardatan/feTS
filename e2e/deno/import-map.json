@@ -1,0 +1,17 @@
+{
+  "imports": {
+    "@e2e/shared-server": "../../e2e/shared-server/src/index.ts",
+    "@e2e/shared-scripts": "../../e2e/shared-scripts/src/utils.ts",
+    "fets": "../../packages/fets/dist/esm/index.js",
+    "@whatwg-node/fetch": "../../node_modules/@whatwg-node/fetch/dist/deno-ponyfill.ts",
+    "@whatwg-node/events": "../../node_modules/@whatwg-node/events/index.mjs",
+    "@whatwg-node/server": "../../node_modules/@whatwg-node/server/index.mjs",
+    "@pulumi/pulumi": "npm:@pulumi/pulumi",
+    "@ardatan/fast-json-stringify": "npm:@ardatan/fast-json-stringify",
+    "ajv": "npm:ajv",
+    "ajv-formats": "npm:ajv-formats",
+    "child_process": "https://deno.land/std@0.165.0/node/child_process.ts",
+    "fs": "https://deno.land/std@0.165.0/node/fs.ts",
+    "util": "https://deno.land/std@0.165.0/node/util.ts"
+  }
+}

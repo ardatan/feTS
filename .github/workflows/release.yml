@@ -1,0 +1,19 @@
+name: Release
+
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  stable:
+    uses: the-guild-org/shared-config/.github/workflows/release-stable.yml@main
+    with:
+      releaseScript: release
+      nodeVersion: 18
+    secrets:
+      githubToken: ${{ secrets.GH_API_TOKEN }}
+      npmToken: ${{ secrets.NODE_AUTH_TOKEN }}
