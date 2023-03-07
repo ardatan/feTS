@@ -16,7 +16,6 @@ jobs:
     name: e2e / ${{ matrix.plan }}
 
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
