@@ -6,6 +6,9 @@ on:
       - master
   pull_request: {}
 
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+  
 jobs:
   e2e:
     strategy:

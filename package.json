@@ -7,7 +7,7 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "bob build",
+    "build": "bob build --incremental",
     "ci:lint": "eslint --ext .ts . --output-file eslint_report.json --format json",
     "esm:check": "bob check",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
