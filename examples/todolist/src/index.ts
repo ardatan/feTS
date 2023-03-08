@@ -21,6 +21,11 @@ export const router = createRouter({
   title: 'Todo List Example',
   description: 'A simple todo list example with FETS',
   version: '1.0.0',
+  components: {
+    schemas: {
+      Todo: TodoSchema,
+    },
+  } as const,
 })
   .route({
     description: 'Get all todos',
@@ -30,7 +35,9 @@ export const router = createRouter({
       responses: {
         200: {
           type: 'array',
-          items: TodoSchema,
+          items: {
+            $ref: '#/components/schemas/Todo',
+          },
         },
       },
     } as const,
@@ -55,7 +62,9 @@ export const router = createRouter({
         },
       },
       responses: {
-        200: TodoSchema,
+        200: {
+          $ref: '#/components/schemas/Todo',
+        },
         404: {
           type: 'object',
           properties: {
@@ -99,7 +108,9 @@ export const router = createRouter({
         },
       },
       responses: {
-        200: TodoSchema,
+        200: {
+          $ref: '#/components/schemas/Todo',
+        },
       },
     } as const,
     handler: async request => {

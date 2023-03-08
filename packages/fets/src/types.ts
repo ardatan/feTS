@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   FromSchema as FromSchemaOriginal,
   JSONSchema as JSONSchemaOrBoolean,
@@ -22,7 +23,8 @@ export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
-export interface RouterOptions<TServerContext = {}> extends ServerAdapterOptions<TServerContext> {
+export interface RouterOptions<TServerContext, TComponents extends RouterComponents>
+  extends ServerAdapterOptions<TServerContext> {
   base?: string;
   plugins?: RouterPlugin<TServerContext>[];
 
@@ -32,7 +34,12 @@ export interface RouterOptions<TServerContext = {}> extends ServerAdapterOptions
   version?: string;
   oasEndpoint?: string | false;
   swaggerUIEndpoint?: string | false;
+  components?: TComponents;
 }
+
+export type RouterComponents = {
+  schemas?: Record<string, JSONSchema>;
+};
 
 export type FromSchema<T> = T extends JSONSchema
   ? FromSchemaOriginal<
@@ -56,6 +63,15 @@ export type FromSchema<T> = T extends JSONSchema
         ];
       }
     >
+  : never;
+
+export type FromRouterComponentSchema<
+  TRouter extends Router<any, any, any>,
+  TName extends string,
+> = TRouter extends Router<any, infer TComponents, any>
+  ? TComponents extends Required<RouterComponents>
+    ? FromSchema<TComponents['schemas'][TName]>
+    : never
   : never;
 
 export type PromiseOrValue<T> = T | Promise<T>;
@@ -111,6 +127,7 @@ export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTy
 
 export interface RouterBaseObject<
   TServerContext,
+  TComponents extends RouterComponents,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
 > {
   handle: ServerAdapterRequestHandler<TServerContext>;
@@ -118,18 +135,23 @@ export interface RouterBaseObject<
     TRouteSchemas extends RouteSchemas,
     TMethod extends HTTPMethod,
     TPath extends string,
-    TTypedRequest extends TypedRequestFromRouteSchemas<TRouteSchemas, TMethod>,
-    TTypedResponse extends TypedResponseFromRouteSchemas<TRouteSchemas>,
+    TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+    TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
   >(
     opts: AddRouteWithSchemasOpts<
       TServerContext,
+      TComponents,
       TRouteSchemas,
       TMethod,
       TPath,
       TTypedRequest,
       TTypedResponse
     >,
-  ): Router<TServerContext, TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>>;
+  ): Router<
+    TServerContext,
+    TComponents,
+    TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
+  >;
   route<
     TTypeConfig extends TypedRouterHandlerTypeConfig,
     TMethod extends HTTPMethod = HTTPMethod,
@@ -141,15 +163,20 @@ export interface RouterBaseObject<
     TPath extends string = string,
   >(
     opts: AddRouteWithTypesOpts<TServerContext, TTypedRequest, TTypedResponse, TMethod, TPath>,
-  ): Router<TServerContext, TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>>;
+  ): Router<
+    TServerContext,
+    TComponents,
+    TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
+  >;
   __client: TRouterSDK;
   __onRouterInitHooks: OnRouterInitHook<TServerContext>[];
 }
 
 export type Router<
   TServerContext,
+  TComponents extends RouterComponents,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
-> = ServerAdapter<TServerContext, RouterBaseObject<TServerContext, TRouterSDK>>;
+> = ServerAdapter<TServerContext, RouterBaseObject<TServerContext, TComponents, TRouterSDK>>;
 
 export type OnRouteHook<TServerContext> = (payload: OnRouteHookPayload<TServerContext>) => void;
 
@@ -168,7 +195,7 @@ export type OnRouteHookPayload<TServerContext> = {
   handlers: RouteHandler<TServerContext>[];
 };
 
-export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any>) => void;
+export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any, any>) => void;
 
 export type OnSerializeResponsePayload<TServerContext> = {
   request: TypedRequest;
@@ -230,57 +257,83 @@ export type RouterSDK<
   };
 };
 
+export type FromSchemaWithComponents<
+  TComponents,
+  TSchema extends JSONSchema,
+> = TComponents extends {
+  schemas: Record<string, JSONSchema>;
+}
+  ? FromSchema<
+      {
+        components: TComponents;
+      } & TSchema
+    >
+  : FromSchema<TSchema>;
+
 export type TypedRequestFromRouteSchemas<
+  TComponents extends RouterComponents,
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
 > = TRouteSchemas extends { request: Required<RouteSchemas>['request'] }
   ? TypedRequest<
       TRouteSchemas['request'] extends { json: JSONSchema }
-        ? FromSchema<TRouteSchemas['request']['json']>
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['json']>
         : unknown,
       TRouteSchemas['request'] extends { formData: JSONSchema }
-        ? FromSchema<TRouteSchemas['request']['formData']> extends Record<
-            string,
-            FormDataEntryValue
-          >
-          ? FromSchema<TRouteSchemas['request']['formData']>
+        ? FromSchemaWithComponents<
+            TComponents,
+            TRouteSchemas['request']['formData']
+          > extends Record<string, FormDataEntryValue>
+          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
           : Record<string, never>
         : Record<string, FormDataEntryValue>,
       TRouteSchemas['request'] extends { headers: JSONSchema }
-        ? FromSchema<TRouteSchemas['request']['headers']> extends Record<string, string>
-          ? FromSchema<TRouteSchemas['request']['headers']>
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']> extends Record<
+            string,
+            string
+          >
+          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']>
           : Record<string, never>
         : Record<string, string>,
       TMethod,
       TRouteSchemas['request'] extends { query: JSONSchema }
-        ? FromSchema<TRouteSchemas['request']['query']> extends Record<string, string>
-          ? FromSchema<TRouteSchemas['request']['query']>
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']> extends Record<
+            string,
+            string
+          >
+          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
           : Record<string, never>
         : Record<string, string | string[]>,
       TRouteSchemas['request'] extends { params: JSONSchema }
-        ? FromSchema<TRouteSchemas['request']['params']> extends Record<string, string>
-          ? FromSchema<TRouteSchemas['request']['params']>
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
+            string,
+            string
+          >
+          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
           : Record<string, never>
         : Record<string, any>
     >
   : TypedRequest;
 
-export type TypedResponseFromRouteSchemas<TRouteSchemas extends RouteSchemas> =
-  TRouteSchemas extends { responses: Record<number, JSONSchema> }
-    ? TypedResponseWithJSONStatusMap<{
-        [TStatusCode in keyof TRouteSchemas['responses']]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
-          ? FromSchema<TRouteSchemas['responses'][TStatusCode]>
-          : never;
-      }>
-    : TypedResponse;
+export type TypedResponseFromRouteSchemas<
+  TComponents extends RouterComponents,
+  TRouteSchemas extends RouteSchemas,
+> = TRouteSchemas extends { responses: Record<number, JSONSchema> }
+  ? TypedResponseWithJSONStatusMap<{
+      [TStatusCode in keyof TRouteSchemas['responses']]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['responses'][TStatusCode]>
+        : never;
+    }>
+  : TypedResponse;
 
 export type AddRouteWithSchemasOpts<
   TServerContext,
+  TComponents extends RouterComponents,
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
   TPath extends string,
-  TTypedRequest extends TypedRequestFromRouteSchemas<TRouteSchemas, TMethod>,
-  TTypedResponse extends TypedResponseFromRouteSchemas<TRouteSchemas>,
+  TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+  TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
   operationId?: string;
   description?: string;
@@ -301,10 +354,8 @@ export type AddRouteWithTypesOpts<
     | RouteHandler<TServerContext, TTypedRequest, TTypedResponse>[];
 };
 
-type ResolvedPromise<T> = T extends Promise<infer U> ? U : T;
-
 export type RouterInput<
-  TRouter extends Router<any, {}>,
+  TRouter extends Router<any, any, {}>,
   TRouterSDK extends RouterSDK = TRouter['__client'],
 > = {
   [TPathKey in keyof TRouterSDK]: {
@@ -318,12 +369,10 @@ type ResponseByPathAndMethod<
   TRouterSDK extends RouterSDK,
   TPath extends keyof TRouterSDK,
   TMethod extends keyof TRouterSDK[TPath],
-> = TMethod extends Lowercase<HTTPMethod>
-  ? ResolvedPromise<ReturnType<TRouterSDK[TPath][TMethod]>>
-  : never;
+> = TMethod extends Lowercase<HTTPMethod> ? Awaited<ReturnType<TRouterSDK[TPath][TMethod]>> : never;
 
 export type RouterOutput<
-  TRouter extends Router<any, {}>,
+  TRouter extends Router<any, any, {}>,
   TRouterSDK extends RouterSDK = TRouter['__client'],
 > = {
   [TPathKey in keyof TRouterSDK]: {
@@ -340,4 +389,4 @@ export type RouterOutput<
   };
 };
 
-export type RouterClient<TRouter extends Router<any, any>> = TRouter['__client'];
+export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__client'];

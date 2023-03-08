@@ -4,12 +4,24 @@ import addFormats from 'ajv-formats';
 import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
-import { JSONSerializer, PromiseOrValue, RouterPlugin, RouterRequest } from '../types.js';
+import {
+  JSONSerializer,
+  PromiseOrValue,
+  RouterComponents,
+  RouterPlugin,
+  RouterRequest,
+} from '../types.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
-export function useAjv(): RouterPlugin<any> {
-  const ajv = new Ajv();
+export function useAjv({
+  components = {},
+}: {
+  components?: RouterComponents;
+} = {}): RouterPlugin<any> {
+  const ajv = new Ajv({
+    strict: false,
+  });
   addFormats(ajv);
 
   const serializersByCtx = new WeakMap<any, Map<number, JSONSerializer>>();
@@ -17,7 +29,10 @@ export function useAjv(): RouterPlugin<any> {
     onRoute({ schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
       if (schemas?.request?.headers) {
-        const validateFn = ajv.compile(schemas.request.headers);
+        const validateFn = ajv.compile({
+          ...schemas.request.headers,
+          components,
+        });
         validationMiddlewares.set('headers', request => {
           const headersObj = getHeadersObj(request.headers);
           const isValid = validateFn(headersObj);
@@ -28,7 +43,10 @@ export function useAjv(): RouterPlugin<any> {
         });
       }
       if (schemas?.request?.params) {
-        const validateFn = ajv.compile(schemas.request.params);
+        const validateFn = ajv.compile({
+          ...schemas.request.params,
+          components,
+        });
         validationMiddlewares.set('params', request => {
           const isValid = validateFn(request.params);
           if (!isValid) {
@@ -40,7 +58,7 @@ export function useAjv(): RouterPlugin<any> {
       if (schemas?.request?.query) {
         const validateFn = ajv.compile({
           ...schemas.request.query,
-          $async: true,
+          components,
         });
         validationMiddlewares.set('query', request => {
           const isValid = validateFn(request.query);
@@ -51,7 +69,10 @@ export function useAjv(): RouterPlugin<any> {
         });
       }
       if (schemas?.request?.json) {
-        const validateFn = ajv.compile(schemas.request.json);
+        const validateFn = ajv.compile({
+          ...schemas.request.json,
+          components,
+        });
         validationMiddlewares.set('json', async request => {
           if (request.headers.get('content-type').includes('json')) {
             const jsonObj = await request.json();
@@ -68,7 +89,10 @@ export function useAjv(): RouterPlugin<any> {
         });
       }
       if (schemas?.request?.formData) {
-        const validateFn = ajv.compile(schemas.request.formData);
+        const validateFn = ajv.compile({
+          ...schemas.request.formData,
+          components,
+        });
         validationMiddlewares.set('formData', async request => {
           const contentType = request.headers.get('content-type');
           if (
@@ -111,7 +135,13 @@ export function useAjv(): RouterPlugin<any> {
         const serializerByStatusCode = new Map<number, JSONSerializer>();
         for (const statusCode in schemas.responses) {
           const schema = schemas.responses[statusCode];
-          serializerByStatusCode.set(Number(statusCode), jsonSerializerFactory(schema as any));
+          serializerByStatusCode.set(
+            Number(statusCode),
+            jsonSerializerFactory({
+              ...schema,
+              components,
+            } as any),
+          );
         }
         handlers.unshift((_request, ctx) => {
           serializersByCtx.set(ctx, serializerByStatusCode);

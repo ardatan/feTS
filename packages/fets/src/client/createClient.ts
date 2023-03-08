@@ -20,7 +20,7 @@ export class ClientValidationError extends Error implements AggregateError {
   }
 }
 
-export function createClient<TRouter extends Router<any, any>>(
+export function createClient<TRouter extends Router<any, any, any>>(
   options?: ClientOptions,
 ): TRouter['__client'];
 export function createClient<TOAS extends OpenAPIV3_1.Document>(

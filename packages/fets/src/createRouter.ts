@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useAjv } from './internal-plugins/ajv.js';
@@ -12,6 +13,7 @@ import type {
   RouteHandler,
   Router,
   RouterBaseObject,
+  RouterComponents,
   RouterOptions,
   RouterPlugin,
   RouterSDK,
@@ -36,7 +38,7 @@ export function createRouterBase({
   fetchAPI: givenFetchAPI,
   base: basePath = '/',
   plugins = [],
-}: RouterOptions<any> = {}): RouterBaseObject<any, any> {
+}: RouterOptions<any, any> = {}): RouterBaseObject<any, any, any> {
   const fetchAPI = {
     ...DefaultFetchAPI,
     ...givenFetchAPI,
@@ -181,6 +183,7 @@ export function createRouterBase({
     route(
       opts: AddRouteWithSchemasOpts<
         any,
+        any,
         RouteSchemas,
         HTTPMethod,
         string,
@@ -220,6 +223,7 @@ export function createRouterBase({
 
 export function createRouter<
   TServerContext,
+  TComponents extends RouterComponents = {},
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
     [TKey: string]: never;
   },
@@ -228,10 +232,15 @@ export function createRouter<
   description = 'An API written with FETS',
   version = '1.0.0',
   oasEndpoint = '/openapi.json',
+  components,
   swaggerUIEndpoint = '/docs',
   plugins: userPlugins = [],
   ...options
-}: RouterOptions<TServerContext> = {}): Router<TServerContext, TRouterSDK> {
+}: RouterOptions<TServerContext, TComponents> = {}): Router<
+  TServerContext,
+  TComponents,
+  TRouterSDK
+> {
   const plugins: RouterPlugin<TServerContext>[] = [
     {
       onRequest({ request, url }) {
@@ -250,12 +259,14 @@ export function createRouter<
                 description,
                 version,
               },
-              components: {},
+              components: (components as any) || {},
             },
           }),
         ]
       : []),
-    useAjv(),
+    useAjv({
+      components,
+    }),
     ...userPlugins,
   ];
   const finalOpts = {

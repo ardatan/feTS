@@ -254,6 +254,59 @@ async function main() {
       );
     },
   });
+
+  createRouter({
+    title: 'Todo API',
+    version: '1.0.0',
+    components: {
+      schemas: {
+        Todo: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+            },
+            title: {
+              type: 'string',
+            },
+            completed: {
+              type: 'boolean',
+            },
+          },
+          required: ['id', 'title', 'completed'],
+          additionalProperties: false,
+        },
+      },
+    } as const,
+  }).route({
+    operationId: 'getTodos',
+    method: 'GET',
+    path: '/todos',
+    schemas: {
+      responses: {
+        200: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/Todo',
+          },
+        },
+      },
+    } as const,
+    async handler() {
+      return Response.json(
+        [
+          {
+            id: '1',
+            title: 'Todo 1',
+            completed: false,
+          },
+        ],
+        {
+          status: 200,
+        },
+      );
+    },
+  });
 }
 
 main();
