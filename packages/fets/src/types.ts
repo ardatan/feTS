@@ -60,6 +60,13 @@ export type FromSchema<T> = T extends JSONSchema
             };
             output: bigint;
           },
+          {
+            pattern: {
+              type: 'integer';
+              format: 'int64';
+            };
+            output: bigint;
+          },
         ];
       }
     >
