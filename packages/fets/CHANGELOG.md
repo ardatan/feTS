@@ -1,5 +1,15 @@
 # fets
 
+## 0.0.8
+
+### Patch Changes
+
+- [`3c3c7ac`](https://github.com/ardatan/fets/commit/3c3c7ac893ec30959555d12660a5289f105bc51a)
+  Thanks [@ardatan](https://github.com/ardatan)! - Ability to provide schemas as models
+
+- [`2ae7d99`](https://github.com/ardatan/fets/commit/2ae7d99d64fee65b143f1af22f0830aad6635055)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support integer with int64 format
+
 ## 0.0.7
 
 ### Patch Changes
