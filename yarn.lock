@@ -8444,10 +8444,10 @@ word-wrap@^1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
 
-wrangler@2.12.1:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-2.12.1.tgz#29efcb53d6d8802628c21e917987368891a2fdc3"
-  integrity sha512-u0GNyPRc6oabd7dQf8BSj1ztJtDlvvHJMVTuCuFDUFbQQKCDXmCnlLk/ZzPE0sfBsMH9LdyMqx4inRiJt6LbjQ==
+wrangler@2.12.2:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-2.12.2.tgz#2b3dbe0af012510aa81e1cab167a838e20da4a38"
+  integrity sha512-pjdZvcjiFD6mI3Nncsw3hBv3rxjMx0n4Mtp+Tsql/hvr0LpOmHKlW/aMeYx/fVUmjEKfWBSULc1vgM02O2UTWQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.2.0"
     "@esbuild-plugins/node-globals-polyfill" "^0.1.1"
