@@ -233,6 +233,8 @@ async function main() {
               type: 'string',
             },
           },
+          required: ['message'],
+          additionalProperties: false,
         },
       },
     } as const,

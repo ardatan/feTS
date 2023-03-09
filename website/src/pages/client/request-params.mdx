@@ -1,0 +1,86 @@
+# Request Parameters
+
+There are different types of parameters that can be passed to the API. You can learn how to define
+them in an OpenAPI specification in the
+[OpenAPI Specification documentation](https://swagger.io/docs/specification/describing-parameters/).
+
+## Path Parameters
+
+Path parameters are the variables that are passed in the URL. If the endpoint is `/pet/{id}`, then
+the `id` is a path parameter. To pass those in FETS Client, we use `params` in the request
+parameters object;
+
+```ts filename="path-params.ts"
+client['/pet/{id}'].get({
+  params: {
+    id: 1
+  }
+})
+```
+
+## Query Parameters
+
+Query parameters are the variables that are passed in the query string starting with `?`. If the
+endpoint is expected to get a URL like `/pet?name=Van%20Cat`, then the `name` is a query parameter.
+
+To pass those in FETS Client, we use `query` in the request parameters object;
+
+```ts filename="query-params.ts"
+client['/pet'].get({
+  query: {
+    name: 'Van Cat'
+  }
+})
+```
+
+## Headers
+
+If the endpoint expects some headers to be passed, then we can pass them in the `headers` property
+of the request parameters object.
+
+```ts filename="headers.ts"
+client['/my-pets'].get({
+  headers: {
+    Authorization: 'Bearer 1234567890'
+  }
+})
+```
+
+## JSON Body
+
+If the expected HTTP body is a JSON object (with `application/json` content type), then we can pass
+it in the `json` property of the request parameters object.
+
+```ts filename="json-body.ts"
+client['/add-pet'].post({
+  json: {
+    name: 'Van Cat',
+    description: 'A cat found around Lake Van'
+  }
+})
+```
+
+## Form Data / File Uploads
+
+If the expected HTTP body is a form data (with `multipart/form-data` content type), then we can pass
+it in the `formData` property of the request parameters object.
+
+```ts filename="form-data.ts"
+import { readFileSync } from 'fs'
+import { File, FormData } from 'fets'
+
+// Read a file from the disk
+// And create a File object
+const imageFile = new File([readFileSync('cat.jpg')], 'cat.jpg', {
+  type: 'image/jpeg'
+})
+
+// Pass the form data to the request
+client['/add-pet'].post({
+  formData: {
+    image: imageFile,
+    name: 'Van Cat',
+    description: 'A cat found around Lake Van'
+  }
+})
+```

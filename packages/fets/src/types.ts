@@ -23,7 +23,7 @@ export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
-export interface RouterOptions<TServerContext, TComponents extends RouterComponents>
+export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
   base?: string;
   plugins?: RouterPlugin<TServerContext>[];
@@ -37,7 +37,7 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
   components?: TComponents;
 }
 
-export type RouterComponents = {
+export type RouterComponentsBase = {
   schemas?: Record<string, JSONSchema>;
 };
 
@@ -76,7 +76,7 @@ export type FromRouterComponentSchema<
   TRouter extends Router<any, any, any>,
   TName extends string,
 > = TRouter extends Router<any, infer TComponents, any>
-  ? TComponents extends Required<RouterComponents>
+  ? TComponents extends Required<RouterComponentsBase>
     ? FromSchema<TComponents['schemas'][TName]>
     : never
   : never;
@@ -134,7 +134,7 @@ export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTy
 
 export interface RouterBaseObject<
   TServerContext,
-  TComponents extends RouterComponents,
+  TComponents extends RouterComponentsBase,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
 > {
   handle: ServerAdapterRequestHandler<TServerContext>;
@@ -181,7 +181,7 @@ export interface RouterBaseObject<
 
 export type Router<
   TServerContext,
-  TComponents extends RouterComponents,
+  TComponents extends RouterComponentsBase,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
 > = ServerAdapter<TServerContext, RouterBaseObject<TServerContext, TComponents, TRouterSDK>>;
 
@@ -260,7 +260,7 @@ export type RouterSDK<
   [TPathKey in TPath]: {
     [TMethod in Lowercase<TTypedRequest['method']>]: (
       opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
-    ) => PromiseOrValue<TTypedResponse>;
+    ) => Promise<TTypedResponse>;
   };
 };
 
@@ -278,7 +278,7 @@ export type FromSchemaWithComponents<
   : FromSchema<TSchema>;
 
 export type TypedRequestFromRouteSchemas<
-  TComponents extends RouterComponents,
+  TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
 > = TRouteSchemas extends { request: Required<RouteSchemas>['request'] }
@@ -323,7 +323,7 @@ export type TypedRequestFromRouteSchemas<
   : TypedRequest;
 
 export type TypedResponseFromRouteSchemas<
-  TComponents extends RouterComponents,
+  TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
 > = TRouteSchemas extends { responses: Record<number, JSONSchema> }
   ? TypedResponseWithJSONStatusMap<{
@@ -335,7 +335,7 @@ export type TypedResponseFromRouteSchemas<
 
 export type AddRouteWithSchemasOpts<
   TServerContext,
-  TComponents extends RouterComponents,
+  TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
   TPath extends string,
@@ -397,3 +397,11 @@ export type RouterOutput<
 };
 
 export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__client'];
+
+export type RouterComponents<TRouter extends Router<any, any, any>> = TRouter extends Router<
+  any,
+  any,
+  infer TComponents
+>
+  ? TComponents
+  : never;

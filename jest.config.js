@@ -15,6 +15,9 @@ const jestResolverContent = fs.readFileSync(jestResolverPath, 'utf-8');
 
 fs.writeFileSync(join(bobPath, 'jest-resolver.cjs'), jestResolverContent);
 
+const testMatch = ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'];
+testMatch.push(process.env.INTEGRATION_TEST ? '!**/packages/**' : '!**/examples/**');
+
 module.exports = {
   testEnvironment: 'node',
   rootDir: ROOT_DIR,
@@ -33,4 +36,5 @@ module.exports = {
   collectCoverage: false,
   cacheDirectory: resolve(ROOT_DIR, `${CI ? '' : 'node_modules/'}.cache/jest`),
   resolver: 'bob-the-bundler/jest-resolver.cjs',
+  testMatch,
 };

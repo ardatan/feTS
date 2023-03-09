@@ -1,0 +1,17 @@
+{
+  "index": {
+    "title": "Home",
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "client": {
+    "title": "Client",
+    "type": "page"
+  },
+  "server": {
+    "title": "Server",
+    "type": "page"
+  }
+}

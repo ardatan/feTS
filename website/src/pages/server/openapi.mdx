@@ -1,0 +1,132 @@
+# OpenAPI
+
+OpenAPI is a specification for machine-readable interface files for describing, producing,
+consuming, and visualizing REST APIs. OpenAPI files allow you to describe your entire API in the
+JSON or YAML format. It has routes including all possible response types in all possible status
+codes together with all possible request types. So a well-written OpenAPI file can be used as a
+reference by the client to understand the API easier.
+
+FETS uses this specification to generate the API documentation and the client SDKs. Even on the
+server side, it allows you to play with your API with a playground. Or you can even use any other
+OpenAPI-compliant tool like Postman to test your API.
+
+FETS creates two endpoints based on the defined routes by default;
+
+- `/openapi.json` - Returns the OpenAPI specification in JSON format
+- `/docs` - [Swagger UI](https://swagger.io/tools/swagger-ui/) as a playground for the API
+
+## Customizing OpenAPI
+
+You can give a title and a description to your API;
+
+```ts
+createRouter({
+  title: 'My API',
+  description: 'My API description',
+  version: '1.0.0' // You can even give a version to your API
+})
+```
+
+## More Information on Routes
+
+You can add more information to your routes such as `operationId`, `description`, `tags` and
+`deprecated` to make the OpenAPI specification more detailed.
+
+[Learn more about operations in OpenAPI](https://swagger.io/docs/specification/paths-and-operations/)
+
+```ts
+createRouter().route({
+  /* OpenAPI specific information */
+  operationId: 'getUsers',
+  description: 'Get all users',
+  tags: ['users'],
+
+  /* Regular configuration */
+  method: 'GET',
+  path: '/users'
+  /* .. */
+})
+```
+
+## Models / Subschemas
+
+You can define models as subschemas and use them in your routes. This is useful when you have
+repeating structures in your API. FETS respects json schema's `$ref` keyword in this case.
+
+These models will be shown as models in the OpenAPI specification.
+
+```ts
+const router = createRouter({
+  components: {
+    schemas: {
+      // Define a model named User
+      User: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          name: { type: 'string' },
+          email: { type: 'string' }
+        }
+      }
+    }
+  } as const
+})
+  // Use the User model in different routes
+  .route({
+    method: 'GET',
+    path: '/users',
+    schemas: {
+      responses: {
+        200: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/User'
+          }
+        }
+      }
+    } as const,
+    handler() {
+      return Response.json(users, {
+        status: 200
+      })
+    }
+  })
+  .route({
+    method: 'GET',
+    path: '/users/:id',
+    schemas: {
+      responses: {
+        200: {
+          $ref: '#/components/schemas/User'
+        },
+        404: {
+          type: 'object',
+          properties: {
+            message: { type: 'string' }
+          },
+          required: ['message'],
+          additionalProperties: false
+        }
+      }
+    } as const,
+    handler() {
+      const user = users.find(user => user.id === params.id)
+      if (!user) {
+        return Response.json({ message: 'User not found' }, { status: 404 })
+      }
+      return Response.json(user, { status: 200 })
+    }
+  })
+```
+
+## Disabling OpenAPI
+
+For production, you probably don't want to expose the schema to the public. In this case, you can
+pass `false` to `swaggerUiEndpoint` and `oasEndpoint` options to disable them.
+
+```ts
+const router = createRouter({
+  swaggerUiEndpoint: false, // or process.env.NODE_ENV === 'production'
+  oasEndpoint: false
+})
+```

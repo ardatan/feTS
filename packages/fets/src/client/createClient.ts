@@ -1,9 +1,17 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
-import { fetch } from '@whatwg-node/fetch';
+import { fetch, URLSearchParams } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { Router } from '../types.js';
-import { ClientMethod, ClientOptions, ClientRequestParams, OASClient } from './types.js';
+import {
+  ClientMethod,
+  ClientOptions,
+  ClientPlugin,
+  ClientRequestParams,
+  OASClient,
+  OnRequestInitHook,
+  OnResponseHook,
+} from './types.js';
 
 export class ClientValidationError extends Error implements AggregateError {
   constructor(
@@ -20,32 +28,61 @@ export class ClientValidationError extends Error implements AggregateError {
   }
 }
 
+function useValidationErrors(): ClientPlugin {
+  return {
+    async onResponse({ path, method, response }) {
+      if (response.status === 400 && response.headers.get('x-error-type') === 'validation') {
+        const resJson = await response.json();
+        if (resJson.errors) {
+          throw new ClientValidationError(path, method, resJson.errors, response);
+        }
+      }
+    },
+  };
+}
+
 export function createClient<TRouter extends Router<any, any, any>>(
   options?: ClientOptions,
 ): TRouter['__client'];
 export function createClient<TOAS extends OpenAPIV3_1.Document>(
   options?: ClientOptions,
 ): OASClient<TOAS>;
-export function createClient({ endpoint, fetchFn = fetch }: ClientOptions = {}) {
+export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {
+  plugins.unshift(useValidationErrors());
+  const onRequestInitHooks: OnRequestInitHook[] = [];
+  const onResponseHooks: OnResponseHook[] = [];
+  for (const plugin of plugins) {
+    if (plugin.onRequestInit) {
+      onRequestInitHooks.push(plugin.onRequestInit);
+    }
+    if (plugin.onResponse) {
+      onResponseHooks.push(plugin.onResponse);
+    }
+  }
   return new Proxy({} as any, {
     get(_target, path: string) {
       return new Proxy({} as any, {
         get(_target, method: HTTPMethod): ClientMethod {
-          return function (requestParams?: ClientRequestParams) {
-            const url = new URL(path, endpoint);
+          return async function (requestParams: ClientRequestParams = {}) {
             for (const pathParamKey in requestParams?.params || {}) {
               const value = requestParams?.params?.[pathParamKey];
               if (value) {
-                url.pathname = url.pathname.replace(`{${pathParamKey}}`, value);
+                path = path.replace(`{${pathParamKey}}`, value).replace(`:${pathParamKey}`, value);
               }
             }
-            for (const queryParamKey in requestParams?.query || {}) {
-              const value = requestParams?.query?.[queryParamKey];
-              if (value) {
-                if (Array.isArray(value)) {
-                  value.forEach(v => url.searchParams.append(queryParamKey, v));
-                } else {
-                  url.searchParams.append(queryParamKey, value);
+            let searchParams: URLSearchParams | undefined;
+            if (requestParams?.query) {
+              searchParams = new URLSearchParams();
+              for (const queryParamKey in requestParams?.query || {}) {
+                const value = requestParams?.query?.[queryParamKey];
+                if (value) {
+                  if (Array.isArray(value)) {
+                    for (const v of value) {
+                      searchParams.append(queryParamKey, v);
+                    }
+                  } else {
+                    searchParams.append(queryParamKey, value);
+                  }
                 }
               }
             }
@@ -63,15 +100,44 @@ export function createClient({ endpoint, fetchFn = fetch }: ClientOptions = {}) 
               requestInit.body = requestParams.formData;
             }
 
-            return fetchFn(url, requestInit).then(async res => {
-              if (res.status === 400 && res.headers.get('x-error-type') === 'validation') {
-                const resJson = await res.json();
-                if (resJson.errors) {
-                  throw new ClientValidationError(path, method, resJson.errors, res);
-                }
+            let response: Response;
+            for (const onRequestParamsHook of onRequestInitHooks) {
+              await onRequestParamsHook({
+                path,
+                method,
+                requestParams,
+                requestInit,
+                endResponse(res) {
+                  response = res;
+                },
+              });
+            }
+
+            let finalUrl = path;
+            if (endpoint) {
+              finalUrl = `${endpoint}${path}`;
+            }
+            if (searchParams) {
+              if (finalUrl.includes('?')) {
+                finalUrl += '&' + searchParams.toString();
+              } else {
+                finalUrl += '?' + searchParams.toString();
               }
-              return res;
-            });
+            }
+
+            response ||= await fetchFn(finalUrl, requestInit);
+
+            for (const onResponseHook of onResponseHooks) {
+              await onResponseHook({
+                path,
+                method,
+                requestParams,
+                requestInit,
+                response,
+              });
+            }
+
+            return response;
           };
         },
       });

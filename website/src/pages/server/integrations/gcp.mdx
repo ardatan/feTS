@@ -1,0 +1,37 @@
+import { PackageCmd } from '@theguild/components'
+
+# Google Cloud Functions
+
+[Google Cloud Functions](https://cloud.google.com/functions/) is a hosted serverless platform
+solution provided by Google. It integrates with FETS very well thanks to FETS's platform independent
+API.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Usage
+
+```ts
+import { createRouter, Response } from 'fets'
+
+export const api = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+```

@@ -13,7 +13,7 @@ import type {
   RouteHandler,
   Router,
   RouterBaseObject,
-  RouterComponents,
+  RouterComponentsBase,
   RouterOptions,
   RouterPlugin,
   RouterSDK,
@@ -223,7 +223,7 @@ export function createRouterBase({
 
 export function createRouter<
   TServerContext,
-  TComponents extends RouterComponents = {},
+  TComponents extends RouterComponentsBase = {},
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
     [TKey: string]: never;
   },

@@ -1,0 +1,13 @@
+{
+  "quick-start": "Quick Start",
+  "type-safety-and-validation": "Type-Safety & Validation",
+  "middlewares": "Middlewares",
+  "error-handling": "Error Handling",
+  "testing": "Testing",
+  "cors": "CORS",
+  "cookies": "Cookies",
+  "plugins": "Plugins",
+  "openapi": "OpenAPI (Swagger)",
+  "comparison": "Comparison",
+  "integrations": "Integration & Deployment"
+}

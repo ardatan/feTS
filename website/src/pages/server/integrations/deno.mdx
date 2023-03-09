@@ -1,0 +1,51 @@
+# Integration with Deno
+
+[Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust](https://deno.land/).
+We will use `fets` which has an agnostic HTTP handler using
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)'s
+[`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) and
+[`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects.
+
+## Example
+
+Create a `deno-fets.ts` file:
+
+```ts filename="deno-fets.ts"
+import { createRouter, Response } from 'https://cdn.skypack.dev/fets?dts'
+import { serve } from 'https://deno.land/std@0.157.0/http/server.ts'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+
+serve(router, {
+  onListen({ hostname, port }) {
+    console.log(`SwaggerUI -> http://${hostname}:${port}/docs`)
+  }
+})
+```
+
+And run it:
+
+```bash
+deno run --allow-net index.ts
+```
+
+> You can also check a full example on our GitHub repository
+> [here](https://github.com/ardatan/fets/tree/master/examples/deno)

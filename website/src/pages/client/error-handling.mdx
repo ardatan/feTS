@@ -1,0 +1,58 @@
+# Error Handling
+
+FETS Client returns a WHATWG [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+object for all requests. You can either use `status` attribute to handle specific status code or
+basically use `ok` attribute to check if the response is successful or not.
+
+Let's say you have a `/pet/{id}` endpoint that returns a pet object. If the pet is not found, the
+server will return a 404 status code. You can handle this case like this:
+
+```ts
+const response = await client['/pet/{id}']({
+    params: {
+        id: 1
+    }
+ });
+
+if (response.status === 404) {
+    console.error('Pet not found');
+    return;
+}
+// or handle any errors
+if (!response.ok) {
+    console.error('Something went wrong');
+    const errorResponse = await response.text();
+    console.log(errorResponse);
+    return;
+}
+
+const pet = await response.json();
+console.log(`Pet name is ${pet.name}`);
+```
+
+## Validation errors with FETS Server
+
+If you are using [FETS Server](/server), any request validation errors will be thrown as
+`ClientValidationError` and you can handle them like this:
+
+```ts
+import { ClientValidationError } from 'fets';
+
+try {
+    const response = await client['/pet/:id']({
+        params: {
+            id: 1
+        }
+    });
+    if (response.status === 404) {
+        console.error('Pet not found');
+        return;
+    }
+    const pet = await response.json();
+    console.log(`Pet name is ${pet.name}`);
+} catch (error) {
+    if (error instanceof ClientValidationError) {
+        console.error('Validation error', error.errors);
+    }
+}
+```

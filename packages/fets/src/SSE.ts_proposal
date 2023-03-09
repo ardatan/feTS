@@ -1,0 +1,103 @@
+import { TransformStream } from "@whatwg-node/fetch";
+import { defaultSerializer, Response } from "./Response";
+import { SSEBody, TypedResponse, TypedResponseInit } from "./typed-fetch";
+import { JSONSerializer } from "./types"
+
+export type SSEMessage<TEventDataMap extends Record<string, any>> = {
+    [TEventName in keyof TEventDataMap]: {
+        event: TEventName;
+        data: TEventDataMap[TEventName];
+    }
+}[keyof TEventDataMap];
+
+export class SSEMessageToByteStream<TEventDataMap extends Record<string, any>> extends TransformStream<SSEMessage<TEventDataMap>, Uint8Array> {
+    public serializer: JSONSerializer = defaultSerializer;
+    private textEncoder = new TextEncoder();
+    constructor() {
+        super({
+            transform: (chunk, controller) => {
+                const {
+                    event,
+                    data,
+                } = chunk;
+                const serializedData = this.serializer(data);
+                const sseEncodedMessage = this.textEncoder.encode(`event: ${event.toString()}\ndata: ${serializedData}\n\n`);
+                controller.enqueue(sseEncodedMessage);
+            }
+        })
+    }
+}
+
+export class ByteToSSEMessageStream<TEventDataMap extends Record<string, any>> extends TransformStream<Uint8Array, SSEMessage<TEventDataMap>> {
+    public serializer: JSONSerializer = defaultSerializer;
+    private textDecoder = new TextDecoder();
+    constructor() {
+        super({
+            transform: (chunk, controller) => {
+                const decodedMessage = this.textDecoder.decode(chunk);
+                const [event, dataStr] = decodedMessage.split("data: ");
+                const parsedData = JSON.parse(dataStr);
+                controller.enqueue({
+                    event,
+                    data: parsedData,
+                });
+            }
+        })
+    }
+}
+
+export function readableStreamToAsyncIterable<T>(readableStream: ReadableStream<T>): AsyncIterable<T> {
+    if (Symbol.asyncIterator in readableStream) {
+        return readableStream as AsyncIterable<T>;
+    }
+    return {
+        [Symbol.asyncIterator]() {
+            const reader = readableStream.getReader();
+            return {
+                next() {
+                    return reader.read();
+                },
+                return() {
+                    reader.releaseLock();
+                    return {};
+                },
+                async throw(error) {
+                    await reader.cancel(error);
+                    return {
+                        done: true,
+                    }
+                }
+            } as AsyncIterator<T>;
+        }
+    }
+}
+
+export function getSSEAsyncIterableFromBody<TEventDataMap extends Record<string, any>>(body: SSEBody<TEventDataMap>): AsyncIterable<SSEMessage<TEventDataMap>> {
+    const byteToSSEMessageStream = new ByteToSSEMessageStream<TEventDataMap>();
+    const readableStream = body.pipeThrough(byteToSSEMessageStream);
+    return readableStreamToAsyncIterable(readableStream);
+}
+
+export function createSSEResponse<TEventDataMap extends Record<string, any>, TStatusCode extends number>(init?: TypedResponseInit<TStatusCode>): {
+   writer: WritableStreamDefaultWriter<SSEMessage<TEventDataMap>>;
+   response: TypedResponse<any, TEventDataMap>;
+} {
+    const transformStream = new SSEMessageToByteStream<TEventDataMap>();
+    const response = new Response(transformStream.readable, {
+        ...init,
+        headers: {
+            'Content-Type': 'text/event-stream',
+            ...init?.headers,
+        },
+        status: init?.status || 200,
+    }) as TypedResponse<any, TEventDataMap>;
+    return {
+        writer: transformStream.writable.getWriter(),
+        response,
+    };
+}
+
+
+export type SSEBody<TEventDataMap extends Record<string, any>> = ReadableStream<Uint8Array> & {
+    __eventDataMap?: TEventDataMap;
+}

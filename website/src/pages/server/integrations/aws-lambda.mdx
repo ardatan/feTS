@@ -1,0 +1,77 @@
+import { PackageCmd } from '@theguild/components'
+
+# Integration with AWS Lambda
+
+AWS Lambda is a serverless computing platform that makes it easy to build applications that run on
+the AWS cloud. FETS is platform agnostic so they can fit together easily.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Example
+
+`fets.ts`
+
+```ts
+import { createRouter, Response } from 'fets'
+import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda'
+
+const router = createRouter<{
+  event: APIGatewayEvent
+  lambdaContext: Context
+}>()
+    .route({
+        method: 'GET',
+        path: '/greetings',
+        schemas: {
+            responses: {
+                200: {
+                    type: 'object',
+                    properties: {
+                        message: {
+                            type: 'string'
+                        }
+                    },
+          required: ['message'],
+          additionalProperties: false
+                }
+            }
+        } as const,
+        handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+    })
+
+export async function handler(
+  event: APIGatewayEvent,
+  lambdaContext: Context
+): Promise<APIGatewayProxyResult> {
+  const response = await router.fetch(
+    event.path + '?' + new URLSearchParams(event.queryStringParameters as Record<string, string> || {}).toString(),
+    {
+    {
+      method: event.httpMethod,
+      headers: event.headers as HeadersInit,
+      body: event.body
+        ? Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8')
+        : undefined
+    },
+    {
+      event,
+      lambdaContext
+    }
+  )
+
+  const responseHeaders: Record<string, string> = {}
+
+  response.headers.forEach((value, name) => {
+    responseHeaders[name] = value
+  })
+
+  return {
+    statusCode: response.status,
+    headers: responseHeaders,
+    body: await response.text(),
+    isBase64Encoded: false
+  }
+}
+```

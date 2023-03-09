@@ -1,0 +1,35 @@
+# Node
+
+Node.js is the most popular JavaScript runtime environment, and FETS supports it fully as well with
+a few lines of code.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Example
+
+```ts
+import { createServer } from 'node:http'
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          hello: { type: 'string' }
+        }
+      }
+    }
+  } as const,
+  handler: () => Response.json({ hello: 'world' })
+})
+
+createServer(router).listen(3000, () => {
+  console.log('Swagger UI is available at http://localhost:3000/docs')
+})
+```

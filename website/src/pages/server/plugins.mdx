@@ -1,0 +1,47 @@
+import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+
+# Plugins
+
+FETS Server provides a plugin system that allows you hook into the request/response lifecycle.
+
+- `onRequest` - Called before the request is handled by the router
+- - It has `endResponse` method that accepts a `Response` object to short-circuit the request
+- `onResponse` - Called after the request is handled by the router
+- - It allows you to modify the response before it is sent to the client
+
+<Callout>
+*What is the difference between middlewares and plugins?*
+
+Middlewares can handle the request before the response.
+
+In order to handle specific cases like logging the responses, adding some extra headers to the
+response for CORS, cookies etc, we need plugins that catches the final response before it reaches to
+the client.
+
+You can also use it for tracing and monitoring.
+
+</Callout>
+
+## Logging the response latency
+
+Let's create a plugin that calculates the response latency and logs it to the console.
+
+```ts
+import { RouterPlugin } from 'fets'
+
+export function useLogLatency(): RouterPlugin {
+  const startTimeByRequest = new WeakMap<Request, number>()
+  return {
+    onRequest({ request }) {
+      startTimeByRequest.set(request, Date.now())
+    },
+    onResponse({ request, response }) {
+      const startTime = startTimeByRequest.get(request)
+      if (startTime) {
+        const latency = Date.now() - startTime
+        console.log(`Response latency: ${latency}ms`)
+      }
+    }
+  }
+}
+```
