@@ -56,6 +56,15 @@ export function useAjv({
     },
   });
   addFormats(ajv);
+  // Required for fast-json-stringify
+  ajv.addKeyword({
+    keyword: 'fjs_type',
+    type: 'object',
+    errors: false,
+    validate: (type, date) => {
+      return date instanceof Date;
+    },
+  });
 
   const serializersByCtx = new WeakMap<any, Map<number, JSONSerializer>>();
   return {
