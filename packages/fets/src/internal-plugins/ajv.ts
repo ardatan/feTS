@@ -61,7 +61,7 @@ export function useAjv({
     keyword: 'fjs_type',
     type: 'object',
     errors: false,
-    validate: (type, date) => {
+    validate: (_type: unknown, date: unknown) => {
       return date instanceof Date;
     },
   });
@@ -116,7 +116,8 @@ export function useAjv({
           components,
         });
         validationMiddlewares.set('json', async request => {
-          if (request.headers.get('content-type').includes('json')) {
+          const contentType = request.headers.get('content-type');
+          if (contentType?.includes('json')) {
             const jsonObj = await request.json();
             Object.defineProperty(request, 'json', {
               value: async () => jsonObj,
@@ -138,8 +139,8 @@ export function useAjv({
         validationMiddlewares.set('formData', async request => {
           const contentType = request.headers.get('content-type');
           if (
-            contentType.includes('multipart/form-data') ||
-            contentType.includes('application/x-www-form-urlencoded')
+            contentType?.includes('multipart/form-data') ||
+            contentType?.includes('application/x-www-form-urlencoded')
           ) {
             const formData = await request.formData();
             const formDataObj: Record<string, FormDataEntryValue> = {};

@@ -276,10 +276,10 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@ardatan/fast-json-stringify@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@ardatan/fast-json-stringify/-/fast-json-stringify-0.0.5.tgz#44f409211a33f6688b3f567228621cba84c9b933"
-  integrity sha512-g2NUoQ+GVRumkmI1GPnttCb0mc8/akAoly7LeTL7FGra+AmCXMCjx8kcodQXNNFPYqICvkMp6XqRafq/e0ztdQ==
+"@ardatan/fast-json-stringify@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@ardatan/fast-json-stringify/-/fast-json-stringify-0.0.6.tgz#bf26082c878408eaa6328a9212d073aed606e62c"
+  integrity sha512-//BefMIP6U1ptNeBf44Le4vqThejTwZndtYLtAuFBwA/DmbVbbYTCLNIMhZ96WZnhI92EvTXneT5tKJrgINE9A==
   dependencies:
     "@fastify/deepmerge" "^1.0.0"
     fast-deep-equal "^3.1.3"

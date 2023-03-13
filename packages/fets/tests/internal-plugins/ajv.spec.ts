@@ -169,4 +169,27 @@ describe('AJV', () => {
       baz: '123',
     });
   });
+  it('should handle empty responses', async () => {
+    const response = await router.fetch('http://localhost:3000/test', {
+      method: 'POST',
+    });
+    expect(response.status).toBe(400);
+    const resultJson = await response.json();
+    expect(resultJson).toMatchInlineSnapshot(`
+      {
+        "errors": [
+          {
+            "instancePath": "",
+            "keyword": "required",
+            "message": "must have required property 'authorization'",
+            "name": "headers",
+            "params": {
+              "missingProperty": "authorization",
+            },
+            "schemaPath": "#/required",
+          },
+        ],
+      }
+    `);
+  });
 });
