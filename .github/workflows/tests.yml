@@ -93,6 +93,8 @@ jobs:
           key: ${{ runner.os }}-${{matrix.node-version}}-jest-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
+      - name: Build Packages
+        run: yarn build
       - name: Test
         run: yarn test:integration --ci
         env:
