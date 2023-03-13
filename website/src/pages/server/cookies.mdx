@@ -1,0 +1,45 @@
+# Cookies
+
+An HTTP cookie is a small piece of data that holds an information to let the server recognize the
+client. You can learn more about the cookies
+[here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
+
+FETS has a plugin to handle cookies using the web standard
+[CookieStore](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore). So it allows you to get
+cookies from the client's request and set cookies back to the client in the response
+
+You can learn more about the
+[CookieStore API here in the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore#examples).
+
+## Usage
+
+```ts filename="cookies.ts"
+import { createRouter, Response, useCookies } from 'fets'
+
+const router = createRouter({
+  plugins: [useCookies()]
+})
+.route({
+  path: '/me',
+  method: 'GET',
+  schemas: {/* ... */},
+  handler: request => {
+    const sessionId = await request.cookieStore.get('session_id')
+    if (!sessionId) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+    const user = await getUserBySessionId(sessionId)
+    return Response.json(user)
+  }
+})
+.route({
+  path: '/login',
+  method: 'POST',
+  handler: async request => {
+    const { username, password } = await request.json()
+    const sessionId = await createSessionForUser({ username, password })
+    await request.cookieStore.set('session_id', sessionId)
+    return Response.json({ message: 'ok' })
+  }
+})
+```

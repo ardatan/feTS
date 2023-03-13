@@ -1,0 +1,104 @@
+import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+
+# Quick Start
+
+FETS Server is a library that allows you create a fully type-safe REST API.
+
+- Comes with a super fast HTTP server
+- Schemas are based on [JSON Schema](https://json-schema.org/) so you can use any tool from that
+  ecosystem
+- Exports [OpenAPI](https://swagger.io/specification/) documentation so you can consume the API with
+  any tool that supports OpenAPI
+- Platform agnostic so can be deployed to anywhere that supports JavaScript
+- Provides a simple way to test your API with [Swagger UI](https://swagger.io/tools/swagger-ui/)
+
+> If the consumer is a JavaScript environment, we highly recommend using [FETS Client](/client)
+> which is fully type-safe HTTP client that uses OpenAPI to generate the client.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Write your first route
+
+Let's write a simple route that returns a greeting message.
+
+```ts filename="greetings-router.ts"
+// We recommend you to use `Response` from `fets`, because the native one isn't type-safe
+// Let's assume that we are using Node.js
+import { createServer } from 'node:http'
+import { createRouter, Response } from 'fets'
+
+// Create a router
+const router = createRouter()
+  // `.route` method should be in chain after `createRouter`
+  .route({
+    path: '/greetings',
+    method: 'GET',
+    // Define the response schema
+    schemas: {
+      responses: {
+        // The status code
+        200: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string'
+            }
+          },
+          required: ['message'],
+          additionalProperties: false
+        }
+      }
+      // Schemas should always have `as const` modifier
+    } as const,
+    handler() {
+      return Response.json(
+        {
+          message: 'Hello from FETS!'
+        },
+        {
+          // We recommend to provide the status code explicitly
+          status: 200
+        }
+      )
+    }
+  })
+
+// Create a Node.js server
+const server = createServer(router)
+server.listen(3000, () => {
+  console.info(`Swagger UI is available at http://localhost:3000/docs`)
+})
+```
+
+<Callout>
+  You can play with your API with [Swagger UI](https://swagger.io/tools/swagger-ui/) that is
+  available at <code>http://localhost:3000/docs</code>
+</Callout>
+
+## `.route` API
+
+It uses `.route()` method to add routes to the router with the following parameters;
+
+- `method`: The HTTP method of the request. This is optional and it handles all methods if it's not
+  given.
+- `path`: The URL pattern that the request should match. The url pattern is a string that follows
+  the [URLPattern](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern) standard. You can
+  learn more about URL patterns
+  [here](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/URLPattern#matching_a_pathname).
+- `schemas`: An object that contains the schemas for the request and response. This brings a
+  type-safety and validation to your requests and responses. You can learn more about schemas
+  [here](#end-to-end-type-safety-and-validation-with-json-schema).
+- `handler`: The function that will be called when the request matches the given method and path.
+  This function can be either synchronous or asynchronous. If it's asynchronous, it should return a
+  `Promise` that resolves to a `Response` object.
+
+`Router` gives you an extended version of the regular `Request` object that has the following
+properties:
+
+- `request.params`: An object that contains the parameters that are given in the url pattern.
+- `request.query`: An object that contains the query parameters that are given in the url.
+
+You can learn more about the original `Request` object
+[here](https://developer.mozilla.org/en-US/docs/Web/API/Request).

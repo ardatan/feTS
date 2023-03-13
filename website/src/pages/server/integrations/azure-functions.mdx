@@ -1,0 +1,61 @@
+import { PackageCmd } from '@theguild/components'
+
+# Integration with Azure Functions
+
+Azure Functions is a serverless environment that supports JavaScript. FETS is platform agnostic and
+can be deployed to Azure Functions as well.
+
+## Installation
+
+<PackageCmd packages={['fets', '@azure/functions']} />
+
+## Usage
+
+```ts
+import { createRouter, Response } from 'fets'
+import { AzureFunction, Context, HttpRequest } from '@azure/functions'
+
+const router = createRouter<Context>().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+
+const httpTrigger: AzureFunction = async function (
+  context: Context,
+  req: HttpRequest
+): Promise<void> {
+  const response = await router.fetch(req.url, {
+    method: req.method?.toString(),
+    body: req.rawBody,
+    headers: req.headers
+  })
+
+  const headersObj = {}
+  response.headers.forEach((value, key) => {
+    headersObj[key] = value
+  })
+
+  const responseText = await response.text()
+
+  context.res = {
+    status: response.status,
+    body: responseText,
+    headers: headersObj
+  }
+}
+```

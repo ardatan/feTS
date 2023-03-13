@@ -1,0 +1,79 @@
+import { PackageCmd } from '@theguild/components'
+
+# Cloudflare Workers
+
+[Cloudflare Workers](https://developers.cloudflare.com/workers) provides a serverless execution
+environment that allows you to create entirely new applications or augment existing ones without
+configuring or maintaining infrastructure.
+
+FETS provides you a cross-platform HTTP Server, so it is really easy to integrate FETS into
+CloudFlare Workers as well.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Example with Service Worker API
+
+You can use FETS as an event listener for the
+[Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) in
+Cloudflare Workers.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter<FetchEvent>().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+
+self.addEventListener('fetch', router)
+```
+
+## Example with Module Workers API
+
+You can use FETS with Module Workers. See the difference
+[here](https://developers.cloudflare.com/workers/learning/migrating-to-module-workers/).
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+
+export default {
+  fetch: router.fetch
+}
+```

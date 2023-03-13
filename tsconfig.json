@@ -16,6 +16,8 @@
     "downlevelIteration": true,
     "incremental": true,
 
+    "jsx": "preserve",
+
     "suppressImplicitAnyIndexErrors": true,
 
     "skipLibCheck": true,

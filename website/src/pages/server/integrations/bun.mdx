@@ -1,0 +1,43 @@
+import { PackageCmd } from '@theguild/components'
+
+# Integration with Bun
+
+FETS provides you a cross-platform HTTP Server. So you can easily integrate it into any platform
+besides Node.js. [Bun](https://bun.sh/) is a modern JavaScript runtime like Node or Deno, and it
+supports Fetch API as a first class citizen. So the configuration is really simple like any other JS
+runtime with FETS;
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Usage
+
+The following code is a simple example of how to use FETS with Bun.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+
+const server = Bun.serve(router)
+console.info(`Swagger UI is available at http://localhost:${server.port}/docs`)
+```

@@ -1,0 +1,266 @@
+import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+
+# Type-Safety & Validation
+
+FETS uses [JSON Schema](https://json-schema.org/) to describe the request parameters and the
+response body.
+
+This allows us to have;
+
+- **Type-safety:** In the `handler`, you have full type-safety for the request parameters and the
+  response body. Also you can use a client like
+  [FETS Client](/client/quick-start#infer-types-from-fets-server) that can infer these types from
+  the router instance itself.
+- **Request Validation:** FETS validates the request parameters and returns `400 Bad Request` if the
+  request is invalid. It uses [AJV](https://ajv.js.org/) under the hood.
+- **Safe and Fast Serialization:** FETS uses the response schema to serialize the response body. It
+  uses [fast-json-stringify](https://github.com/fastify/fast-json-stringify) under the hood instead
+  of `JSON.stringify`, and this is 2x faster according to the benchmarks can be found
+  [here](https://github.com/fastify/fast-json-stringify#how-it-works).
+
+## Request
+
+You can type individual parts of the `Request` object including JSON body, form data, headers, query
+parameters, and URL parameters.
+
+### Headers
+
+You can describe the shape of the headers using `schemas.request.headers` property. This is useful
+for validating the API key or the authorization header.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'post',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      headers: {
+        type: 'object',
+        properties: {
+          'x-api-key': { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['x-api-key']
+      }
+    }
+  } as const,
+  handler: async request => {
+    // This part is fully typed
+    const apiKey = request.headers.get('x-api-key')
+    // Would fail on TypeScript compilation
+    const wrongHeaderName = request.headers.get('x-api-key-wrong')
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+
+### Path Parameters
+
+`schemas.request.params` can be used to validate the URL parameters like `id` inside `/todos/:id`.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'get',
+  path: '/todos/:id',
+  // Define the request body schema
+  schemas: {
+    request: {
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['id']
+      }
+    }
+  } as const,
+  handler: async request => {
+    // This part is fully typed
+    const { id } = request.params
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+
+### Query Parameters
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().addRoute({
+  method: 'get',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      query: {
+        type: 'object',
+        properties: {
+          limit: { type: 'number' },
+          offset: { type: 'number' }
+        },
+        additionalProperties: false,
+        required: ['limit']
+      },
+    }
+  } as const,
+  handler: async request => {
+    // This part is fully typed
+    const { limit, offset } = request.query
+    // You can also use `URLSearchParams` API
+    const limit = request.parsedURL.searchParams.get('limit')
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+
+### JSON Body
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'post',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      json: {
+        type: 'object',
+        properties: {
+          title: { type: 'string' },
+          completed: { type: 'boolean' }
+        },
+        additionalProperties: false,
+        required: ['title']
+      }
+    }
+  } as const,
+  handler: async request => {
+    // This part is fully typed
+    const { title, completed } = await request.json()
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+
+### Form Data / File Uploads
+
+You can also type the request body as `multipart/form-data` or `application/x-www-form-urlencoded`
+usually used for file uploads.
+
+We use `type: string` and `format: binary` to define a `File` object. We can also use `maxLength`
+and `minLength` of JSON Schema to limit the file size.
+[Learn more from the OpenAPI docs](https://swagger.io/docs/specification/describing-request-body/file-upload/)
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  method: 'post',
+  path: '/upload-image',
+  // Define the request body schema
+  schemas: {
+    request: {
+      formData: {
+        type: 'object',
+        properties: {
+          title: { type: 'string' },
+          completed: { type: 'boolean' },
+          image: {
+            type: 'string',
+            format: 'binary',
+            maxLength: 1024 * 1024 * 5 // 5MB
+          }
+        },
+        additionalProperties: false,
+        required: ['title']
+      }
+    }
+  } as const,
+  handler: async request => {
+    // This part is fully typed
+    const { title, completed, file } = await request.formData()
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+
+## Response
+
+You can also type the response body by the status code. We strongly recommend to explicitly define
+the status codes.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().addRoute({
+  method: 'get',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      headers: {
+        type: 'object',
+        properties: {
+          'x-api-key': { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['x-api-key']
+      }
+    },
+    responses: {
+      200: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            title: { type: 'string' },
+            completed: { type: 'boolean' }
+          },
+          additionalProperties: false,
+          required: ['id', 'title', 'completed']
+        }
+      },
+      401: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['message']
+      }
+    }
+  } as const,
+  handler: async request => {
+    const apiKey = request.headers.get('x-api-key')
+    if (!apiKey) {
+      return Response.json(
+        { message: 'API key is required' },
+        {
+          status: 401
+        }
+      )
+    }
+    const todos = await getTodos({
+      apiKey
+    })
+    // This part is fully typed
+    return Response.json(todos, {
+      status: 200
+    })
+  }
+})
+```

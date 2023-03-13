@@ -1,0 +1,173 @@
+# Error Handling
+
+There are different ways to handle errors in FETS.
+
+## HTTP Status Codes (Recommended)
+
+We recommend using the status codes per HTTP specification instead of throwing errors.
+
+If an error is expected in somewhere, it'd better to catch them with `try/catch` blocks and return a
+response with a specific status code.
+
+In this case, you can also benefit from the response schemas.
+
+If multiple status codes are defined in the response schema for a specific endpoint, FETS doesn't
+allow you to return a different status code inside the handler. And it also provides type-checking
+for the response body of that specific status code.
+
+```ts
+import { createServer } from 'node:http';
+import { createRouter, FromSchema } from 'fets';
+
+const users = [
+    { id: "1", name: 'John Doe' },
+    { id: "2", name: 'Jane Doe' },
+];
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/user/:id',
+  schemas: {
+    request: {
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' }
+        },
+        required: ['id']
+        additionalProperties: false
+      }
+    },
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          name: { type: 'string' }
+        },
+        required: ['id', 'name'],
+        additionalProperties: false,
+      },
+      404: {
+        type: 'object',
+        properties: {
+          message: { type: 'string' }
+        },
+        required: ['message'],
+        additionalProperties: false,
+      }
+    }
+  } as const /* schemas should always be const */,
+  handler: ({ params }) => {
+    const user = users.find(user => user.id === params.id);
+    if (!user) {
+      return Response.json({ message: 'User not found' }, { status: 404 });
+    }
+    if (user.name === 'Jane Doe') {
+      // @ts-expect-error - 401 is not defined in the response schema
+      return Response.json({ message: 'Jane is not allowed'}, { status: 401 });
+    }
+    if (user.name === 'John Doe') {
+        // @ts-expect-error - 200 response schema doesn't have a `surname` property
+        return Response.json({ id: user.id, name: user.name, surname: 'Doe' }, { status: 200 });
+    }
+    return Response.json(user, { status: 200 });
+  }
+});
+
+createServer(router).listen(3000, () => {
+    console.log(`Swagger UI is available at http://localhost:3000/docs`)
+});
+```
+
+## Error Throwing
+
+If an unexpected error is thrown, the response will have a `500` status code. We highly recommend to
+handle errors inside the handlers with `try/catch` blocks, but you can also catch the errors with
+the error handling plugin.
+
+### Error Handling Plugin
+
+You can handle all errors thrown in the handlers. So you can prevent exposing internal errors to the
+consumer such as DB errors that might contain some sensitive information.
+
+```ts
+import { createRouter, useErrorHandling } from 'fets'
+
+const router = createRouter({
+  plugins: [
+    useErrorHandling((error, request, context) => {
+      if (error.name === 'MyError') {
+        return Response.json(
+          {
+            message: error.message
+          },
+          {
+            status: 400
+          }
+        )
+      }
+      console.error(`Unexpected error in ${request.method} ${request.url}:\n${error.stack}`)
+      return Response.json(
+        {
+          message: 'Something went wrong'
+        },
+        {
+          status: 500
+        }
+      )
+    })
+  ]
+}).route({
+  path: '/users',
+  method: 'GET',
+  handler: async () => {
+    throw new Error('Something went wrong')
+  }
+})
+```
+
+### `HTTPError`
+
+You can throw an `HTTPError` by determining the status code, message and the headers instead of a
+`Response`. This might be helpful if you are not able to return a `Response` in some places;
+
+```ts
+import { createRouter, HTTPError } from 'fets'
+
+import { HTTPError, useErrorHandling } from 'fets'
+
+const router = createRouter({
+  plugins: [useErrorHandling()]
+}).route({
+  path: '/me',
+  method: 'GET',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          name: { type: 'string' }
+        }
+      }
+    }
+  },
+  handler: request => {
+    if (!request.headers.get('Authorization')) {
+      // You can use `HTTPError` to return a custom error response.
+      // It accepts a status code, a message, headers and a body.
+      // If you pass a json object as the body, the response will be a json response.
+      throw new HTTPError(
+        401,
+        'Unauthorized',
+        {
+          'WWW-Authenticate': 'Basic'
+        },
+        {
+          message: 'You need to be authenticated to access this resource.'
+        }
+      )
+    }
+  }
+})
+```

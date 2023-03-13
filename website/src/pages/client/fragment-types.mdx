@@ -1,0 +1,55 @@
+# Fragment Types
+
+You can infer specific fragments of an OpenAPI document by using some helpers from FETS.
+
+## Models
+
+You can infer models from an OpenAPI document by using the `OASModel` type.
+
+```ts
+type OASModel<TOASDocument extends OpenAPI.Document, TModelName extends string>
+```
+
+### Example
+
+```ts
+import { Mutable, OASModel } from 'fets'
+import type oas from './openapi'
+
+// This will infer `User` from `components.schemas.User`
+type User = OASModel<Mutable<typeof oas>, 'User'>
+```
+
+## Request Parameters
+
+You can infer request body from an OpenAPI document by using the `OASRequestBody` type.
+
+```ts
+type OASRequestBody<TOASDocument extends OpenAPI.Document, TPath extends string, TMethod extends HTTPMethod>
+```
+
+### Example
+
+```ts
+import { Mutable, OASRequestParameters } from 'fets'
+import type oas from './openapi'
+
+type AddUserInput = OASRequestParams<Mutable<typeof oas>, '/user', 'POST'>
+```
+
+## Response body
+
+You can infer response body from an OpenAPI document by using the `OASResponseBody` type.
+
+```ts
+type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string, TMethod extends HTTPMethod, TStatusCode extends number>
+```
+
+### Example
+
+```ts filename="user-response-body"
+import { Mutable, OASResponseBody } from 'fets'
+import type oas from './openapi'
+
+type UserByIdResponse = OASResponseBody<Mutable<typeof oas>, '/user/:id', 'POST', 200>
+```

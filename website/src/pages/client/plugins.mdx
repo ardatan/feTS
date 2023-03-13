@@ -1,0 +1,48 @@
+# Plugins
+
+FETS Client provides a plugin system that allows you hook into the request/response lifecycle.
+
+- `onRequestInit` - Called before the request is sent by the client
+- - It has `endResponse` method that accepts a `Response` object to short-circuit the request
+- `onResponse` - Called after the request is handled by the router
+- - It allows you to modify the response or throw an error to prevent the response from being
+    returned
+
+## Add `Authorization` header
+
+```ts
+import { ClientPlugin } from 'fets'
+
+export function useAuth(token: string): ClientPlugin {
+  return {
+    onRequestInit({ requestInit }) {
+      requestInit.headers = {
+        ...requestInit.headers,
+        Authorization: `Bearer ${token}`
+      }
+    }
+  }
+}
+```
+
+## Calculate request duration
+
+```ts
+import { ClientPlugin } from 'fets'
+
+export function useDuration(): ClientPlugin {
+  const startTimeByRequestInit = new WeakMap<RequestInit, number>()
+  return {
+    onRequestInit({ requestInit }) {
+      startTimeByRequestInit.set(requestInit, Date.now())
+    },
+    onResponse({ response }) {
+      const start = startTimeByRequestInit.get(response.requestInit)
+      if (start) {
+        const duration = Date.now() - Number(start)
+        console.log(`Request took ${duration}ms`)
+      }
+    }
+  }
+}
+```

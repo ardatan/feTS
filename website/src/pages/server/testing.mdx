@@ -1,0 +1,65 @@
+import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+
+# Testing
+
+FETS has built-in support for HTTP injection. You can use any testing framework of your choice.
+
+You can use the fetch method on your router instance for calling the router instance as if you were
+doing an HTTP request.
+
+<Callout>
+  Calling the router.fetch method does not send an actual HTTP request. It basically simulates the
+  HTTP request which is 100% conform with how Request/Response work.
+</Callout>
+
+### Using `fetch` method
+
+You can use `fetch` method from the router instance directly or you can pass it to any client that
+accepts a `fetch` function.
+
+`router.fetch` is compliant with
+[WHATWG `fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API.
+
+```ts
+import { router } from './router'
+
+const response = await router.fetch('/todo', {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Buy milk',
+    completed: false
+  })
+})
+
+const responseJson = await response.json()
+console.assert(responseJson.title === 'Buy milk', 'Title should be "Buy milk"')
+```
+
+### Creating a FETS Client for Testing
+
+You can use [FETS Client](/client/quick-start) to test your API in a type-safe way. It doesn't need
+you to start any real HTTP server.
+
+```ts
+import { createClient } from 'fets'
+import { router } from './router'
+
+const client = createClient<typeof router>({
+  fetchFn: router.fetch,
+  endpoint: 'http://localhost:3000'
+})
+
+// Everything below is fully typed
+const response = await client['/todo'].put({
+  json: {
+    title: 'Buy milk',
+    completed: false
+  }
+})
+
+const responseJson = await response.json()
+console.assert(responseJson.title === 'Buy milk', 'Title should be "Buy milk"')
+```

@@ -1,0 +1,106 @@
+import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+
+# Middlewares
+
+You can also use middlewares to handle requests. Middlewares are functions that are called before
+the request is handled by the router. You can use them to handle authentication, logging, etc.
+
+If a handler function doesn't return a `Response` object, the request will be passed to the next
+handler.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter()
+  // Logging some headers before the response
+  .route({
+    path: '*',
+    handler: request => {
+      // Log some headers
+      console.log(`User Agent: ${request.headers.get('user-agent')}`)
+    }
+  })
+  // or stop the request earlier
+  .route({
+    path: '*',
+    handler: request => {
+      if (!request.headers.get('authorization')) {
+        return new Response(null, {
+          status: 401
+        })
+      }
+    }
+  })
+  .route({
+    path: '/users',
+    method: 'GET',
+    schemas: {
+      /** .. */
+    },
+    handler: request => {
+      // It doesn't reach here if the request doesn't have an `Authorization` header.
+    }
+  })
+```
+
+## Chaining handlers
+
+You can also chain multiple handlers to a single route. In the following example, we are checking if
+the request has an `Authorization` header and if the user is an admin.
+
+```ts
+import { createRouter, Response, RouteHandler } from 'fets'
+
+const withAuth: RouteHandler = request => {
+  if (!request.headers.get('Authorization')) {
+    return new Response(null, {
+      status: 401
+    })
+  }
+}
+
+const router = createRouter().route({
+  path: '/users',
+  method: 'GET',
+  schemas: {
+    /** .. */
+  },
+  handler: [
+    withAuth,
+    request => {
+      // It doesn't reach here if the request doesn't have an `Authorization` header.
+    }
+  ]
+})
+```
+
+## Using `schemas` instead of middlewares
+
+Instead of middlewares, you can use the schemas directly to validate `Authorization` header.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  path: '/me',
+  method: 'GET',
+  schemas: {
+    request: {
+      headers: {
+        authorization: {
+          type: 'string',
+          // We can use a regex to validate the `Authorization` header.
+          pattern: /^Bearer .+$/
+        },
+        required: ['authorization']
+      }
+    },
+    response: {
+      /** .. */
+    },
+    handler: request => {
+      // It doesn't reach here if the request doesn't have a valid Bearer token in the `Authorization` header.
+    }
+  } as const
+})
+```

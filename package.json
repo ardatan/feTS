@@ -2,6 +2,7 @@
   "name": "fets-monorepo",
   "private": true,
   "workspaces": [
+    "website",
     "packages/*",
     "e2e/*",
     "examples/*"
@@ -22,6 +23,7 @@
     "prettier:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
     "test": "jest --detectOpenHandles --detectLeaks",
+    "test:integration": "cross-env \"INTEGRATION_TEST=true\" jest --forceExit --no-watchman",
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "@typescript-eslint/parser": "5.54.1",
     "babel-jest": "29.5.0",
     "bob-the-bundler": "5.0.1",
+    "cross-env": "7.0.3",
     "eslint": "8.36.0",
     "eslint-config-prettier": "8.7.0",
     "eslint-config-standard": "17.0.0",
@@ -54,6 +57,10 @@
     "prettier": "2.8.4",
     "ts-jest": "29.0.5",
     "typescript": "4.9.5"
+  },
+  "resolutions": {
+    "@pulumi/pulumi": "3.57.1",
+    "next": "13.1.6"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [

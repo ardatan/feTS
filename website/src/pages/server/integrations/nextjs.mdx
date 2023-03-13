@@ -1,0 +1,76 @@
+import { PackageCmd } from '@theguild/components'
+
+# Integration with Next.js
+
+[Next.js](https://nextjs.org) is a web framework that allows you to build websites very quickly and
+FETS can be integrated with Next.js easily as
+[an API middleware](https://nextjs.org/docs/api-routes/api-middlewares).
+
+You can also consume the router in type-safe way by inferring router types from the server side.
+
+## Installation
+
+<PackageCmd packages={['fets']} />
+
+## Usage
+
+We recommend to use FETS as a main middleware for your API routes. In this case, you should create a
+`[..slug].ts` file under `pages/api` directory. Since your base route is `/api`, you should also
+configure `swaggerUiEndpoint` and `oasEndpoint` options as well.
+
+```ts filename=pages/api/[...slug].ts
+import { createRouter, Response } from 'fets'
+
+export default createRouter({
+  swaggerUiEndpoint: '/api/docs',
+  oasEndpoint: '/api/openapi.json'
+}).route({
+  method: 'GET',
+  path: '/api/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+})
+```
+
+## Type-safe client usage
+
+Then on the client side, you can use the type-safe client.
+
+```ts filename = pages/index.tsx
+import { createClient } from 'fets'
+import type router from './api/[...slug]'
+
+const client = createClient<typeof router>()
+
+export default function Home({ greetingsResponse }: Props) {
+  const [message, setMessage] = useState('')
+  useEffect(() => {
+    client['/api/greetings']
+      .get()
+      .then(res => res.json())
+      .then(res => setMessage(res.message))
+      .catch(err => setMessage(`Error: ${err.message}`))
+  }, [])
+  return (
+    <div>
+      <h1>Greetings Message from API: {greetingsResponse.message}</h1>
+    </div>
+  )
+}
+```
+
+> You can see the full example
+> [here](https://github.com/ardatan/fets/tree/master/examples/nextjs-example).
