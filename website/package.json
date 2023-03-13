@@ -14,12 +14,12 @@
     "next-sitemap": "3.1.52",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "4.7.1"
+    "react-icons": "4.8.0"
   },
   "devDependencies": {
     "@theguild/algolia": "1.1.2",
     "@theguild/tailwind-config": "0.2.1",
-    "@types/node": "18.14.4",
+    "@types/node": "18.15.1",
     "@types/react": "18.0.28",
     "typescript": "4.9.5"
   }
