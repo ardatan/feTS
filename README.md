@@ -9,10 +9,6 @@
 <div align="center">
 
 ![npm](https://badgen.net/npm/v/fets)
-![bundlephobia minified size](https://badgen.net/bundlephobia/min/fets)
-![bundlephobia minified+zipped size](https://badgen.net/bundlephobia/minzip/fets)
-![bundlephobia treeshaking](https://badgen.net/bundlephobia/tree-shaking/fets)
-![license](https://badgen.net/github/license/dotansimha/fets)
 
 </div>
 
