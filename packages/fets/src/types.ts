@@ -272,7 +272,7 @@ export type RouterSDK<
   [TPathKey in TPath]: {
     [TMethod in Lowercase<TTypedRequest['method']>]: (
       opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
-    ) => Promise<TTypedResponse>;
+    ) => Promise<Exclude<TTypedResponse, undefined>>;
   };
 };
 
@@ -381,19 +381,17 @@ export type AddRouteWithTypesOpts<
 export type RouteInput<
   TRouter extends Router<any, any, {}>,
   TPath extends string,
-  TMethod extends string,
+  TMethod extends Lowercase<HTTPMethod>,
   TParamType extends keyof RouterSDKOpts,
 > = TRouter extends Router<any, any, infer TRouterSDK>
-  ? TRouterSDK extends { [TPathKey in TPath]: { [TMethodKey in TMethod]: (...args: any[]) => any } }
-    ? Parameters<TRouterSDK[TPath][TMethod]>[0][TParamType]
+  ? TRouterSDK[TPath][TMethod] extends (requestParams?: infer TRequestParams) => any
+    ? TRequestParams extends {
+        [TParamTypeKey in TParamType]: infer TParamTypeValue;
+      }
+      ? TParamTypeValue
+      : never
     : never
   : never;
-
-type ResponseByPathAndMethod<
-  TRouterSDK extends RouterSDK,
-  TPath extends keyof TRouterSDK,
-  TMethod extends keyof TRouterSDK[TPath],
-> = TMethod extends Lowercase<HTTPMethod> ? Awaited<ReturnType<TRouterSDK[TPath][TMethod]>> : never;
 
 export type RouteOutput<
   TRouter extends Router<any, any, {}>,
@@ -402,10 +400,10 @@ export type RouteOutput<
   TStatusCode extends number = 200,
 > = TRouter extends Router<any, any, infer TRouterSDK>
   ? TRouterSDK extends RouterSDK
-    ? ResponseByPathAndMethod<TRouterSDK, TPath, TMethod> extends TypedResponseWithJSONStatusMap<
-        infer TStatusMap
-      >
-      ? TStatusMap[TStatusCode]
+    ? TRouterSDK[TPath][TMethod] extends (...args: any[]) => Promise<infer TTypedResponse>
+      ? TTypedResponse extends TypedResponse<infer TJSONBody, any, TStatusCode>
+        ? TJSONBody
+        : never
       : never
     : never
   : never;

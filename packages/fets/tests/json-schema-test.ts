@@ -1,5 +1,5 @@
 import { createClient } from '../src/client/createClient.js';
-import { createRouter, Response } from '../src/index.js';
+import { createRouter, Response, RouteInput, RouteOutput } from '../src/index.js';
 import { jSc } from '../src/jSc.js';
 
 async function main() {
@@ -293,7 +293,7 @@ async function main() {
 main();
 
 const router = createRouter().route({
-  path: 'userById',
+  path: 'me',
   method: 'GET',
   schemas: {
     request: {
@@ -308,35 +308,53 @@ const router = createRouter().route({
         age: jSc.$number().$optional(),
         role: jSc.$string().$enum('admin', 'user'),
       }),
-      404: jSc.$object({
-        message: jSc.$string(),
-      }),
+      404: {
+        type: 'object',
+        properties: {
+          code: {
+            type: 'string',
+          },
+        },
+      },
     },
   } as const,
-  handler: async ({ query }) => {
-    if (query.id === '1') {
-      return Response.json({
-        id: '1',
-        name: 'John',
-        role: 'admin',
-      });
+  handler: () => {
+    if (Math.random() > 0.5) {
+      return Response.json(
+        {
+          code: 'NOT_FOUND',
+        },
+        {
+          status: 404,
+        },
+      );
     }
     return Response.json(
       {
-        message: 'Not found',
+        id: '1',
+        name: 'John',
+        role: 'admin',
       },
       {
-        status: 404,
+        status: 200,
       },
     );
   },
 });
 
 const client = createClient<typeof router>();
-const response = await client.userById.get({ query: { id: '1' } });
+const input: Input = {
+  id: '1',
+};
+const response = await client.me.get({ query: input });
 
-if (response?.ok) {
+type Input = RouteInput<typeof router, 'me', 'get', 'query'>;
+type User = RouteOutput<typeof router, 'me', 'get'>;
+
+let data1: User | undefined;
+if (response.ok) {
   const data = await response.json();
+  data1 = data;
   const id = data.id;
   const name = data.name;
   const age = data.age;
@@ -348,3 +366,4 @@ if (response?.ok) {
     role,
   });
 }
+console.log(data1);

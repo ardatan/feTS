@@ -1,4 +1,4 @@
-import { createClient, RouteInput, RouteOutput } from 'fets';
+import { createClient, RouteOutput } from 'fets';
 import type { router } from '.';
 
 const sdk = createClient<typeof router>();
