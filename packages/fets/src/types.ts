@@ -417,6 +417,6 @@ export type RouterComponentSchema<
   TName extends string,
 > = TRouter extends Router<any, infer TComponents, any>
   ? TComponents extends { schemas: Record<string, JSONSchema> }
-    ? TComponents['schemas'][TName]
+    ? FromSchema<TComponents['schemas'][TName]>
     : never
   : never;
