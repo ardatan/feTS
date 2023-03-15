@@ -378,16 +378,16 @@ export type AddRouteWithTypesOpts<
     | RouteHandler<TServerContext, TTypedRequest, TTypedResponse>[];
 };
 
-export type RouterInput<
+export type RouteInput<
   TRouter extends Router<any, any, {}>,
-  TRouterSDK extends RouterSDK = TRouter['__client'],
-> = {
-  [TPathKey in keyof TRouterSDK]: {
-    [TMethodKey in keyof TRouterSDK[TPathKey]]: TMethodKey extends Lowercase<HTTPMethod>
-      ? Required<Exclude<Parameters<TRouterSDK[TPathKey][TMethodKey]>[0], undefined>>
-      : never;
-  };
-};
+  TPath extends string,
+  TMethod extends string,
+  TParamType extends keyof RouterSDKOpts,
+> = TRouter extends Router<any, any, infer TRouterSDK>
+  ? TRouterSDK extends { [TPathKey in TPath]: { [TMethodKey in TMethod]: (...args: any[]) => any } }
+    ? Parameters<TRouterSDK[TPath][TMethod]>[0][TParamType]
+    : never
+  : never;
 
 type ResponseByPathAndMethod<
   TRouterSDK extends RouterSDK,
@@ -395,30 +395,28 @@ type ResponseByPathAndMethod<
   TMethod extends keyof TRouterSDK[TPath],
 > = TMethod extends Lowercase<HTTPMethod> ? Awaited<ReturnType<TRouterSDK[TPath][TMethod]>> : never;
 
-export type RouterOutput<
+export type RouteOutput<
   TRouter extends Router<any, any, {}>,
-  TRouterSDK extends RouterSDK = TRouter['__client'],
-> = {
-  [TPathKey in keyof TRouterSDK]: {
-    [TMethodKey in keyof TRouterSDK[TPathKey]]: TMethodKey extends Lowercase<HTTPMethod>
-      ? ResponseByPathAndMethod<TRouterSDK, TPathKey, TMethodKey> extends {
-          status: infer TStatusCode;
-          json(): Promise<infer TJSON>;
-        }
-        ? {
-            [TStatusCodeKey in TStatusCode extends number ? TStatusCode : never]: TJSON;
-          }
-        : never
-      : never;
-  };
-};
+  TPath extends string,
+  TMethod extends Lowercase<HTTPMethod>,
+  TStatusCode extends number = 200,
+> = TRouter extends Router<any, any, infer TRouterSDK>
+  ? TRouterSDK extends RouterSDK
+    ? ResponseByPathAndMethod<TRouterSDK, TPath, TMethod> extends TypedResponseWithJSONStatusMap<
+        infer TStatusMap
+      >
+      ? TStatusMap[TStatusCode]
+      : never
+    : never
+  : never;
 
 export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__client'];
 
-export type RouterComponents<TRouter extends Router<any, any, any>> = TRouter extends Router<
-  any,
-  any,
-  infer TComponents
->
-  ? TComponents
+export type RouterComponentSchema<
+  TRouter extends Router<any, any, any>,
+  TName extends string,
+> = TRouter extends Router<any, infer TComponents, any>
+  ? TComponents extends { schemas: Record<string, JSONSchema> }
+    ? TComponents['schemas'][TName]
+    : never
   : never;

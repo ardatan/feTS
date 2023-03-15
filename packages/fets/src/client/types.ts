@@ -116,6 +116,20 @@ export type OASRequestParams<
     : never;
 };
 
+export type OASInput<
+  TOAS extends OpenAPIV3_1.Document,
+  TPath extends keyof OASPathMap<TOAS>,
+  TMethod extends keyof OASMethodMap<TOAS, TPath>,
+  TRequestType extends keyof OASRequestParams<TOAS, TPath, TMethod>,
+> = OASRequestParams<TOAS, TPath, TMethod>[TRequestType];
+
+export type OASOutput<
+  TOAS extends OpenAPIV3_1.Document,
+  TPath extends keyof OASPathMap<TOAS>,
+  TMethod extends keyof OASMethodMap<TOAS, TPath>,
+  TStatusCode extends keyof OASStatusMap<TOAS, TPath, TMethod> = 200,
+> = FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatusCode> & TOAS>;
+
 export interface ClientOptions {
   endpoint?: string;
   fetchFn?: typeof fetch;

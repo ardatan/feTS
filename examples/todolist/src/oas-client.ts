@@ -1,4 +1,4 @@
-import { createClient, Mutable } from 'fets';
+import { createClient, Mutable, OASOutput } from 'fets';
 import type oas from './saved_openapi';
 
 const client = createClient<Mutable<typeof oas>>({
@@ -7,7 +7,14 @@ const client = createClient<Mutable<typeof oas>>({
 
 const someTodosToAdd = ['Drink coffee', 'Write some code', 'Drink more coffee', 'Write more code'];
 
+type Todo = OASOutput<Mutable<typeof oas>, '/todo/{id}', 'get'>;
+
 (async () => {
+  const todo: Todo = {
+    id: '1',
+    content: 'Drink coffee',
+  };
+  console.log('Inferred type of todo:', todo);
   // Adding some todos
   for (const todo of someTodosToAdd) {
     const addTodoRes = await client['/todo'].put({
