@@ -1,5 +1,13 @@
 # fets
 
+## 0.0.10
+
+### Patch Changes
+
+- [#35](https://github.com/ardatan/fets/pull/35)
+  [`f0c1bf9`](https://github.com/ardatan/fets/commit/f0c1bf9345cfd1f4cc2021f5eac7c7fd478db7f6)
+  Thanks [@ardatan](https://github.com/ardatan)! - New helpers and DX improvements
+
 ## 0.0.9
 
 ### Patch Changes
