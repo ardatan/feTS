@@ -77,12 +77,10 @@ async function main() {
         const unexpectedParam = req.params.a;
         console.log(unexpectedParam);
         if (userId === 'only_available_id') {
-          return Response.json(
-            {
-              id: userId,
-              name: 'The only one',
-            },
-          );
+          return Response.json({
+            id: userId,
+            name: 'The only one',
+          });
         }
         return Response.json(
           {
@@ -121,14 +119,12 @@ async function main() {
             },
           );
         }
-        return Response.json(
-          [
-            {
-              id: 'only_available_id',
-              name: 'The only one',
-            },
-          ],
-        );
+        return Response.json([
+          {
+            id: 'only_available_id',
+            name: 'The only one',
+          },
+        ]);
       },
     })
     .route({
@@ -145,11 +141,9 @@ async function main() {
             },
           );
         }
-        return Response.json(
-          {
-            message: 'OK',
-          },
-        );
+        return Response.json({
+          message: 'OK',
+        });
       },
     });
 
@@ -241,11 +235,9 @@ async function main() {
       // @ts-expect-error - description is not a File
       console.log(await description.text());
       console.log(description);
-      return Response.json(
-        {
-          message: 'OK',
-        },
-      );
+      return Response.json({
+        message: 'OK',
+      });
     },
   });
 
@@ -287,64 +279,58 @@ async function main() {
       },
     } as const,
     async handler() {
-      return Response.json(
-        [
-          {
-            id: '1',
-            title: 'Todo 1',
-            completed: false,
-          },
-        ],
-      );
+      return Response.json([
+        {
+          id: '1',
+          title: 'Todo 1',
+          completed: false,
+        },
+      ]);
     },
   });
 }
 
 main();
 
-
-const router = createRouter()
-  .route({
-    path: 'userById',
-    method: 'GET',
-    schemas: {
-      request: {
-        query: jSc.$object({
-          id: jSc.$string(),
-        })
-      },
-      responses: {
-        200: jSc.$object({
-          id: jSc.$string(),
-          name: jSc.$string(),
-          age: jSc.$number().$optional(),
-          role: jSc.$string().$enum('admin', 'user'),
-        }),
-        404: jSc.$object({
-          message: jSc.$string(),
-        }),
-      },
-    } as const,
-    handler: async ({ query }) => {
-      if (query.id === '1') {
-        return Response.json( 
-          {
-            id: '1',
-            name: 'John',
-            role: 'admin',
-          },
-        );
-      }
-      return Response.json(
-        {
-          message: 'Not found',
-        },
-        {
-          status: 404,
-        },
-      );
+const router = createRouter().route({
+  path: 'userById',
+  method: 'GET',
+  schemas: {
+    request: {
+      query: jSc.$object({
+        id: jSc.$string(),
+      }),
+    },
+    responses: {
+      200: jSc.$object({
+        id: jSc.$string(),
+        name: jSc.$string(),
+        age: jSc.$number().$optional(),
+        role: jSc.$string().$enum('admin', 'user'),
+      }),
+      404: jSc.$object({
+        message: jSc.$string(),
+      }),
+    },
+  } as const,
+  handler: async ({ query }) => {
+    if (query.id === '1') {
+      return Response.json({
+        id: '1',
+        name: 'John',
+        role: 'admin',
+      });
     }
-  });
+    return Response.json(
+      {
+        message: 'Not found',
+      },
+      {
+        status: 404,
+      },
+    );
+  },
+});
 
 const client = createClient<typeof router>();
 const response = await client.userById.get({ query: { id: '1' } });
@@ -360,5 +346,5 @@ if (response?.ok) {
     name,
     age,
     role,
-  })
+  });
 }

@@ -8,8 +8,7 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
     .route({
       method: 'GET',
       path: '/greetings/:name',
-      handler: req =>
-        Response.json({ message: `Hello ${req.params?.name}!` }),
+      handler: req => Response.json({ message: `Hello ${req.params?.name}!` }),
     })
     .route({
       method: 'POST',

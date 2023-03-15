@@ -55,12 +55,10 @@ const handler = (
   // @ts-expect-error - name is not defined
   const name = request.parsedUrl.searchParams.get('name');
   if (id === 'only_available_id') {
-    return Response.json(
-      {
-        id,
-        name: `The only one`,
-      },
-    );
+    return Response.json({
+      id,
+      name: `The only one`,
+    });
   }
   // @ts-expect-error - message is string
   return Response.json(
@@ -112,10 +110,8 @@ router
           },
         );
       }
-      return Response.json(
-        {
-          id: 'TEST_ID',
-        },
-      );
+      return Response.json({
+        id: 'TEST_ID',
+      });
     },
   });

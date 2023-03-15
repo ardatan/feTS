@@ -41,8 +41,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: () =>
-      Response.json(todos),
+    handler: () => Response.json(todos),
   })
   .route({
     description: 'Get a todo',
@@ -167,8 +166,8 @@ export const router = createRouter({
       const todo = todos[index];
       todos.splice(index, 1);
       return Response.json({
-          id: todo.id,
-        });
+        id: todo.id,
+      });
     },
   })
   // BONUS
@@ -214,12 +213,12 @@ export const router = createRouter({
       const file = body.get('file');
       const description = body.get('description');
       return Response.json({
-          name: file.name,
-          description,
-          type: file.type,
-          size: file.size,
-          lastModified: file.lastModified,
-        });
+        name: file.name,
+        description,
+        type: file.type,
+        size: file.size,
+        lastModified: file.lastModified,
+      });
     },
   });
 

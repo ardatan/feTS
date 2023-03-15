@@ -180,16 +180,7 @@ export function createRouterBase({
       }
       return new fetchAPI.Response(null, { status: 404 });
     },
-    route(
-      opts: AddRouteWithSchemasOpts<
-        any,
-        any,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest
-      >,
-    ) {
+    route(opts: AddRouteWithSchemasOpts<any, any, RouteSchemas, HTTPMethod, string, TypedRequest>) {
       const { operationId, description, method, path, schemas, handler } = opts;
       const handlers = Array.isArray(handler) ? handler : [handler];
       if (!method) {

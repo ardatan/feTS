@@ -46,8 +46,7 @@ export default createRouter({
         },
       },
     } as const,
-    handler: () =>
-      Response.json(todos),
+    handler: () => Response.json(todos),
   })
   .route({
     method: 'POST',
