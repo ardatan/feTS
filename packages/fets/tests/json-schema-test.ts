@@ -1,4 +1,6 @@
-import { createRouter, Response } from '../src/index.js';
+import { createClient } from '../src/client/createClient.js';
+import { createRouter, Response, RouteInput, RouteOutput } from '../src/index.js';
+import { jSc } from '../src/jSc.js';
 
 async function main() {
   const successfulResponseSchema = {
@@ -75,15 +77,10 @@ async function main() {
         const unexpectedParam = req.params.a;
         console.log(unexpectedParam);
         if (userId === 'only_available_id') {
-          return Response.json(
-            {
-              id: userId,
-              name: 'The only one',
-            },
-            {
-              status: 200,
-            },
-          );
+          return Response.json({
+            id: userId,
+            name: 'The only one',
+          });
         }
         return Response.json(
           {
@@ -109,7 +106,7 @@ async function main() {
           },
           401: unauthorizedResponseSchema,
         },
-      },
+      } as const,
       handler: async req => {
         const token = req.headers.get('x-token');
         if (!token) {
@@ -122,15 +119,12 @@ async function main() {
             },
           );
         }
-        return Response.json(
-          [
-            {
-              id: 'only_available_id',
-              name: 'The only one',
-            },
-          ],
-          { status: 200 },
-        );
+        return Response.json([
+          {
+            id: 'only_available_id',
+            name: 'The only one',
+          },
+        ]);
       },
     })
     .route({
@@ -147,14 +141,9 @@ async function main() {
             },
           );
         }
-        return Response.json(
-          {
-            message: 'OK',
-          },
-          {
-            status: 200,
-          },
-        );
+        return Response.json({
+          message: 'OK',
+        });
       },
     });
 
@@ -246,14 +235,9 @@ async function main() {
       // @ts-expect-error - description is not a File
       console.log(await description.text());
       console.log(description);
-      return Response.json(
-        {
-          message: 'OK',
-        },
-        {
-          status: 200,
-        },
-      );
+      return Response.json({
+        message: 'OK',
+      });
     },
   });
 
@@ -295,20 +279,91 @@ async function main() {
       },
     } as const,
     async handler() {
-      return Response.json(
-        [
-          {
-            id: '1',
-            title: 'Todo 1',
-            completed: false,
-          },
-        ],
+      return Response.json([
         {
-          status: 200,
+          id: '1',
+          title: 'Todo 1',
+          completed: false,
         },
-      );
+      ]);
     },
   });
 }
 
 main();
+
+const router = createRouter().route({
+  path: 'me',
+  method: 'GET',
+  schemas: {
+    request: {
+      query: jSc.$object({
+        id: jSc.$string(),
+      }),
+    },
+    responses: {
+      200: jSc.$object({
+        id: jSc.$string(),
+        name: jSc.$string(),
+        age: jSc.$number().$optional(),
+        role: jSc.$string().$enum('admin', 'user'),
+      }),
+      404: {
+        type: 'object',
+        properties: {
+          code: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  } as const,
+  handler: () => {
+    if (Math.random() > 0.5) {
+      return Response.json(
+        {
+          code: 'NOT_FOUND',
+        },
+        {
+          status: 404,
+        },
+      );
+    }
+    return Response.json(
+      {
+        id: '1',
+        name: 'John',
+        role: 'admin',
+      },
+      {
+        status: 200,
+      },
+    );
+  },
+});
+
+const client = createClient<typeof router>();
+const input: Input = {
+  id: '1',
+};
+const response = await client.me.get({ query: input });
+
+type Input = RouteInput<typeof router, 'me', 'get', 'query'>;
+type User = RouteOutput<typeof router, 'me', 'get'>;
+
+let data1: User | undefined;
+if (response.ok) {
+  const data = await response.json();
+  data1 = data;
+  const id = data.id;
+  const name = data.name;
+  const age = data.age;
+  const role = data.role;
+  console.log({
+    id,
+    name,
+    age,
+    role,
+  });
+}
+console.log(data1);

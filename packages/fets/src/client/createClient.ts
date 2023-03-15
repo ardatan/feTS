@@ -70,6 +70,9 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
                 path = path.replace(`{${pathParamKey}}`, value).replace(`:${pathParamKey}`, value);
               }
             }
+            if (!path.startsWith('/')) {
+              path = `/${path}`;
+            }
             let searchParams: URLSearchParams | undefined;
             if (requestParams?.query) {
               searchParams = new URLSearchParams();

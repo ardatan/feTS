@@ -61,15 +61,10 @@ describe('AJV', () => {
       },
     } as const,
     handler() {
-      return Response.json(
-        {
-          baz: '123',
-          foo: 123,
-        },
-        {
-          status: 200,
-        },
-      );
+      return Response.json({
+        baz: '123',
+        foo: 123,
+      });
     },
   });
   it('should return errors correctly for json request', async () => {

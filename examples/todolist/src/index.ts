@@ -41,10 +41,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: () =>
-      Response.json(todos, {
-        status: 200,
-      }),
+    handler: () => Response.json(todos),
   })
   .route({
     description: 'Get a todo',
@@ -87,9 +84,7 @@ export const router = createRouter({
           },
         );
       }
-      return Response.json(todo, {
-        status: 200,
-      });
+      return Response.json(todo);
     },
   })
   .route({
@@ -120,9 +115,7 @@ export const router = createRouter({
         content: input.content,
       };
       todos.push(todo);
-      return Response.json(todo, {
-        status: 200,
-      });
+      return Response.json(todo);
     },
   })
   .route({
@@ -172,14 +165,9 @@ export const router = createRouter({
       }
       const todo = todos[index];
       todos.splice(index, 1);
-      return Response.json(
-        {
-          id: todo.id,
-        },
-        {
-          status: 200,
-        },
-      );
+      return Response.json({
+        id: todo.id,
+      });
     },
   })
   // BONUS
@@ -224,18 +212,13 @@ export const router = createRouter({
       const body = await request.formData();
       const file = body.get('file');
       const description = body.get('description');
-      return Response.json(
-        {
-          name: file.name,
-          description,
-          type: file.type,
-          size: file.size,
-          lastModified: file.lastModified,
-        },
-        {
-          status: 200,
-        },
-      );
+      return Response.json({
+        name: file.name,
+        description,
+        type: file.type,
+        size: file.size,
+        lastModified: file.lastModified,
+      });
     },
   });
 

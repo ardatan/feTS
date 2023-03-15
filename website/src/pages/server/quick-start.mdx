@@ -53,15 +53,10 @@ const router = createRouter()
       // Schemas should always have `as const` modifier
     } as const,
     handler() {
-      return Response.json(
-        {
-          message: 'Hello from FETS!'
-        },
-        {
-          // We recommend to provide the status code explicitly
-          status: 200
-        }
-      )
+      // If you don't specify the status code, it will be 200
+      return Response.json({
+        message: 'Hello from FETS!'
+      })
     }
   })
 

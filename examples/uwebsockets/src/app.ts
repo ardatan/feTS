@@ -24,7 +24,7 @@ const router = createRouter<ServerContext>().route({
       },
     },
   } as const,
-  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 }),
+  handler: () => Response.json({ message: 'Hello World!' }),
 });
 
 export const app = App().any('/*', async (res, req) => {
