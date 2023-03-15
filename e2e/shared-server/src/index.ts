@@ -9,24 +9,14 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
       method: 'GET',
       path: '/greetings/:name',
       handler: req =>
-        Response.json(
-          { message: `Hello ${req.params?.name}!` },
-          {
-            status: 200,
-          },
-        ),
+        Response.json({ message: `Hello ${req.params?.name}!` }),
     })
     .route({
       method: 'POST',
       path: '/bye',
       handler: async req => {
         const { name } = await req.json();
-        return Response.json(
-          { message: `Bye ${name}!` },
-          {
-            status: 200,
-          },
-        );
+        return Response.json({ message: `Bye ${name}!` });
       },
     })
     .route({
@@ -48,7 +38,6 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
             headers: {
               'Content-Type': 'text/html',
             },
-            status: 200,
           },
         ),
     });

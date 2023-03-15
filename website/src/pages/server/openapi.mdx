@@ -86,9 +86,7 @@ const router = createRouter({
       }
     } as const,
     handler() {
-      return Response.json(users, {
-        status: 200
-      })
+      return Response.json(users)
     }
   })
   .route({
@@ -114,7 +112,7 @@ const router = createRouter({
       if (!user) {
         return Response.json({ message: 'User not found' }, { status: 404 })
       }
-      return Response.json(user, { status: 200 })
+      return Response.json(user)
     }
   })
 ```

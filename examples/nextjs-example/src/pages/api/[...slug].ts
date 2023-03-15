@@ -47,9 +47,7 @@ export default createRouter({
       },
     } as const,
     handler: () =>
-      Response.json(todos, {
-        status: 200,
-      }),
+      Response.json(todos),
   })
   .route({
     method: 'POST',

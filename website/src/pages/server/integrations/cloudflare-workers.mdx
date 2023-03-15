@@ -39,7 +39,7 @@ const router = createRouter<FetchEvent>().route({
       }
     }
   } as const,
-  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+  handler: () => Response.json({ message: 'Hello World!' })
 })
 
 self.addEventListener('fetch', router)
@@ -70,7 +70,7 @@ const router = createRouter().route({
       }
     }
   } as const,
-  handler: () => Response.json({ message: 'Hello World!' }, { status: 200 })
+  handler: () => Response.json({ message: 'Hello World!' })
 })
 
 export default {

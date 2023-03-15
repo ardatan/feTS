@@ -60,9 +60,6 @@ const handler = (
         id,
         name: `The only one`,
       },
-      {
-        status: 200,
-      },
     );
   }
   // @ts-expect-error - message is string
@@ -118,9 +115,6 @@ router
       return Response.json(
         {
           id: 'TEST_ID',
-        },
-        {
-          status: 200,
         },
       );
     },

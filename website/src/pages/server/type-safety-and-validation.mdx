@@ -258,9 +258,7 @@ const router = createRouter().addRoute({
       apiKey
     })
     // This part is fully typed
-    return Response.json(todos, {
-      status: 200
-    })
+    return Response.json(todos)
   }
 })
 ```

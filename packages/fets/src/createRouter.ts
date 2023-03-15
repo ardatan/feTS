@@ -187,8 +187,7 @@ export function createRouterBase({
         RouteSchemas,
         HTTPMethod,
         string,
-        TypedRequest,
-        TypedResponse
+        TypedRequest
       >,
     ) {
       const { operationId, description, method, path, schemas, handler } = opts;

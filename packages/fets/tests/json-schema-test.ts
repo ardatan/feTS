@@ -1,4 +1,6 @@
+import { createClient } from '../src/client/createClient.js';
 import { createRouter, Response } from '../src/index.js';
+import { jSc } from '../src/jSc.js';
 
 async function main() {
   const successfulResponseSchema = {
@@ -80,9 +82,6 @@ async function main() {
               id: userId,
               name: 'The only one',
             },
-            {
-              status: 200,
-            },
           );
         }
         return Response.json(
@@ -109,7 +108,7 @@ async function main() {
           },
           401: unauthorizedResponseSchema,
         },
-      },
+      } as const,
       handler: async req => {
         const token = req.headers.get('x-token');
         if (!token) {
@@ -129,7 +128,6 @@ async function main() {
               name: 'The only one',
             },
           ],
-          { status: 200 },
         );
       },
     })
@@ -150,9 +148,6 @@ async function main() {
         return Response.json(
           {
             message: 'OK',
-          },
-          {
-            status: 200,
           },
         );
       },
@@ -250,9 +245,6 @@ async function main() {
         {
           message: 'OK',
         },
-        {
-          status: 200,
-        },
       );
     },
   });
@@ -303,12 +295,70 @@ async function main() {
             completed: false,
           },
         ],
-        {
-          status: 200,
-        },
       );
     },
   });
 }
 
 main();
+
+
+const router = createRouter()
+  .route({
+    path: 'userById',
+    method: 'GET',
+    schemas: {
+      request: {
+        query: jSc.$object({
+          id: jSc.$string(),
+        })
+      },
+      responses: {
+        200: jSc.$object({
+          id: jSc.$string(),
+          name: jSc.$string(),
+          age: jSc.$number().$optional(),
+          role: jSc.$string().$enum('admin', 'user'),
+        }),
+        404: jSc.$object({
+          message: jSc.$string(),
+        }),
+      },
+    } as const,
+    handler: async ({ query }) => {
+      if (query.id === '1') {
+        return Response.json( 
+          {
+            id: '1',
+            name: 'John',
+            role: 'admin',
+          },
+        );
+      }
+      return Response.json(
+        {
+          message: 'Not found',
+        },
+        {
+          status: 404,
+        },
+      );
+    }
+  });
+
+const client = createClient<typeof router>();
+const response = await client.userById.get({ query: { id: '1' } });
+
+if (response?.ok) {
+  const data = await response.json();
+  const id = data.id;
+  const name = data.name;
+  const age = data.age;
+  const role = data.role;
+  console.log({
+    id,
+    name,
+    age,
+    role,
+  })
+}

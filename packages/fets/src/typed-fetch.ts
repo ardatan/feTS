@@ -88,13 +88,24 @@ export type TypedResponse<
 
 export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
   new <TStatusCode extends number = 200>(
-    body?: BodyInit | null | undefined,
-    init?: TypedResponseInit<TStatusCode> | undefined,
+    body: BodyInit | null | undefined,
+    init: TypedResponseInit<TStatusCode> & { status: TStatusCode } | undefined,
   ): TypedResponse<any, Record<string, string>, TStatusCode>;
+  new (
+    body: BodyInit | null | undefined,
+    init: ResponseInit | undefined,
+  ): TypedResponse<any, Record<string, string>, 200>;
+  new (
+    body: BodyInit | null | undefined,
+  ): TypedResponse<any, Record<string, string>, 200>;
+
   json<TJSON, TStatusCode extends number>(
     value: TJSON,
-    init?: TypedResponseInit<TStatusCode>,
+    init: TypedResponseInit<TStatusCode>,
   ): TypedResponse<TJSON, Record<string, string>, TStatusCode>;
+  json<TJSON>(
+    value: TJSON,
+  ): TypedResponse<TJSON, Record<string, string>, 200>;
 };
 
 export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends Record<number, any>> = {

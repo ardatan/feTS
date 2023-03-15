@@ -34,14 +34,16 @@ export function useOpenAPI({
               headers: {
                 'Content-Type': 'text/html',
               },
-              status: 200,
             }),
         });
       }
     },
     onRoute({ method, path, operationId, description, schemas }) {
       if (schemas) {
-        const pathForOAS = path.replace(/:([^/]+)/g, '{$1}');
+        let pathForOAS = path.replace(/:([^/]+)/g, '{$1}');
+        if (!pathForOAS.startsWith('/')) {
+          pathForOAS = `/${pathForOAS}`;
+        }
         const pathObj = (paths[pathForOAS] = paths[pathForOAS] || {});
         const lowerCasedMethod = method.toLowerCase();
         pathObj[lowerCasedMethod] = (pathObj[lowerCasedMethod] || {}) as any;
