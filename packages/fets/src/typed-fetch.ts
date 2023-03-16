@@ -51,6 +51,10 @@ export interface TypedHeaders<TMap extends Record<string, string>> {
     ) => void,
     thisArg?: any,
   ): void;
+  entries(): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
+  keys(): IterableIterator<keyof TMap>;
+  values(): IterableIterator<TMap[keyof TMap]>;
+  [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
 }
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
@@ -70,7 +74,7 @@ export type TypedResponse<
   THeaders extends Record<string, string> = Record<string, string>,
   TStatusCode extends number = 200,
 > = Omit<Response, 'json' | 'status' | 'ok'> &
-  TypedBody<TJSON, Record<string, FormDataEntryValue>, THeaders> & {
+  Omit<TypedBody<TJSON, any, THeaders>, 'formData'> & {
     status: TStatusCode;
   } & {
     ok: StartsWithNumber<TStatusCode, 1> extends true
@@ -219,8 +223,17 @@ export interface TypedFormData<
   has<TName extends string>(
     name: TName,
   ): TName extends keyof TMap ? (TMap[TName] extends Maybe ? boolean : true) : false;
+  set<TName extends keyof TMap>(
+    name: TName,
+    value: TMap[TName] extends any[] ? TMap[TName][0] : TMap[TName],
+    fileName?: string,
+  ): void;
   forEach(
     callbackfn: <TName extends keyof TMap>(value: TMap[TName], key: TName, parent: this) => void,
     thisArg?: any,
   ): void;
+  entries(): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
+  keys(): IterableIterator<keyof TMap>;
+  values(): IterableIterator<TMap[keyof TMap]>;
+  [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
 }
