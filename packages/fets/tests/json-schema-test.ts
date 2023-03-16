@@ -334,6 +334,7 @@ const router = createRouter().route({
         id: '1',
         name: 'John',
         role: 'admin',
+        age: 30,
       },
       {
         status: 200,

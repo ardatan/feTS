@@ -3,6 +3,7 @@ import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useAjv } from './internal-plugins/ajv.js';
 import { useOpenAPI } from './internal-plugins/openapi.js';
+import { useZod } from './internal-plugins/zod.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
@@ -57,7 +58,10 @@ export function createRouterBase({
       onSerializeResponseHooks.push(plugin.onSerializeResponse);
     }
   }
-  const routesByMethod = new Map<HTTPMethod, Map<URLPattern, RouteHandler<any>[]>>();
+  const routesByMethod = new Map<
+    HTTPMethod,
+    Map<URLPattern, RouteHandler<any, TypedRequest, TypedResponse>[]>
+  >();
   function addHandlersToMethod({
     operationId,
     description,
@@ -71,7 +75,7 @@ export function createRouterBase({
     method: HTTPMethod;
     path: string;
     schemas?: RouteSchemas;
-    handlers: RouteHandler<any>[];
+    handlers: RouteHandler<any, TypedRequest, TypedResponse>[];
   }) {
     for (const onRouteHook of onRouteHooks) {
       onRouteHook({
@@ -267,6 +271,7 @@ export function createRouter<
     useAjv({
       components,
     }),
+    useZod(),
     ...userPlugins,
   ];
   const finalOpts = {

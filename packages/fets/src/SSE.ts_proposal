@@ -78,7 +78,7 @@ export function getSSEAsyncIterableFromBody<TEventDataMap extends Record<string,
     return readableStreamToAsyncIterable(readableStream);
 }
 
-export function createSSEResponse<TEventDataMap extends Record<string, any>, TStatusCode extends number>(init?: TypedResponseInit<TStatusCode>): {
+export function createSSEResponse<TEventDataMap extends Record<string, any>, TStatusCode extends StatusCode>(init?: TypedResponseInit<TStatusCode>): {
    writer: WritableStreamDefaultWriter<SSEMessage<TEventDataMap>>;
    response: TypedResponse<any, TEventDataMap>;
 } {

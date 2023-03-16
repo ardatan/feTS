@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
-import { HTTPMethod, TypedResponse } from '../typed-fetch.js';
+import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema } from '../types.js';
 
 export type Mutable<Type> = {
@@ -38,13 +38,15 @@ export type OASResponse<
   [TStatus in keyof OASStatusMap<TOAS, TPath, TMethod>]: TypedResponse<
     FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus> & TOAS>,
     Record<string, string>,
-    TStatus extends number
+    TStatus extends StatusCode
       ? TStatus
       : TStatus extends 'default'
-      ? number
+      ? NotOkStatusCode
       : TStatus extends `${number}${number}${number}`
-      ? ToNumber<TStatus>
-      : never
+      ? ToNumber<TStatus> extends StatusCode
+        ? ToNumber<TStatus>
+        : 200
+      : 200
   >;
 }[keyof OASStatusMap<TOAS, TPath, TMethod>];
 
