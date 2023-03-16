@@ -143,6 +143,7 @@ export interface RouterBaseObject<
     TMethod extends HTTPMethod,
     TPath extends string,
     TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+    TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
   >(
     opts: AddRouteWithSchemasOpts<
       TServerContext,
@@ -150,13 +151,14 @@ export interface RouterBaseObject<
       TRouteSchemas,
       TMethod,
       TPath,
-      TTypedRequest
+      TTypedRequest,
+      TTypedResponse
     >,
   ): Router<
     TServerContext,
     TComponents,
     TRouterSDK &
-      RouterSDK<TPath, TTypedRequest, TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>>
+    RouterSDK<TPath, TTypedRequest, TTypedResponse>
   >;
   route<
     TTypeConfig extends TypedRouterHandlerTypeConfig,
@@ -230,22 +232,10 @@ export type RouteSchemas = {
   responses?: Record<number, JSONSchema>;
 };
 
-type FilteredKeys<T> = {
-  // this does not work
-  // [K in keyof T]: K
-
-  // this do
-  [K in keyof T]: T[K] extends never ? never : K;
-}[keyof T];
-
-type RemoveNever<T> = {
-  [K in FilteredKeys<T>]: T[K];
-};
-
 export type RouterSDKOpts<
   TTypedRequest extends TypedRequest = TypedRequest,
   TMethod extends HTTPMethod = HTTPMethod,
-> = RemoveNever<
+> = 
   TTypedRequest extends TypedRequest<
     infer TJSONBody,
     infer TFormData,
@@ -255,14 +245,13 @@ export type RouterSDKOpts<
     infer TPathParam
   >
     ? {
-        json: TJSONBody;
-        formData: TFormData extends Record<string, never> ? never : TFormData;
-        headers: THeaders extends Record<string, never> ? never : THeaders;
-        query: TQueryParams extends Record<string, never> ? never : TQueryParams;
-        params: TPathParam extends Record<string, never> ? never : TPathParam;
+        json?: TJSONBody;
+        formData: TFormData;
+        headers: THeaders;
+        query?: TQueryParams;
+        params?: TPathParam;
       }
     : never
->;
 
 export type RouterSDK<
   TPath extends string = string,
@@ -297,23 +286,23 @@ export type TypedRequestFromRouteSchemas<
   ? TypedRequest<
       TRouteSchemas['request'] extends { json: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['json']>
-        : never,
+        : any,
       TRouteSchemas['request'] extends { formData: JSONSchema }
         ? FromSchemaWithComponents<
             TComponents,
             TRouteSchemas['request']['formData']
           > extends Record<string, FormDataEntryValue>
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
-          : Record<string, never>
-        : Record<string, never>,
+      : Record<string, FormDataEntryValue>
+      : Record<string, FormDataEntryValue>,
       TRouteSchemas['request'] extends { headers: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']> extends Record<
             string,
             string
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']>
-          : Record<string, never>
-        : Record<string, never>,
+          : Record<string, string>
+      : Record<string, string>,
       TMethod,
       TRouteSchemas['request'] extends { query: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']> extends Record<
@@ -321,18 +310,18 @@ export type TypedRequestFromRouteSchemas<
             string
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
-          : Record<string, never>
-        : Record<string, never>,
+      : Record<string, string | string[]>
+      : Record<string, string | string[]>,
       TRouteSchemas['request'] extends { params: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
             string,
             string
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
-          : Record<string, never>
-        : Record<string, never>
+          : Record<string, any>
+        : Record<string, any>
     >
-  : TypedRequest;
+  : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
 
 export type TypedResponseFromRouteSchemas<
   TComponents extends RouterComponentsBase,
@@ -352,6 +341,7 @@ export type AddRouteWithSchemasOpts<
   TMethod extends HTTPMethod,
   TPath extends string,
   TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+  TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
   operationId?: string;
   description?: string;
@@ -359,7 +349,7 @@ export type AddRouteWithSchemasOpts<
 } & AddRouteWithTypesOpts<
   TServerContext,
   TTypedRequest,
-  TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
+  TTypedResponse,
   TMethod,
   TPath
 >;
