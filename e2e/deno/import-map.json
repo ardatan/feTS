@@ -12,6 +12,8 @@
     "ajv-formats": "npm:ajv-formats",
     "child_process": "https://deno.land/std@0.165.0/node/child_process.ts",
     "fs": "https://deno.land/std@0.165.0/node/fs.ts",
-    "util": "https://deno.land/std@0.165.0/node/util.ts"
+    "util": "https://deno.land/std@0.165.0/node/util.ts",
+    "zod-to-json-schema": "npm:zod-to-json-schema",
+    "zod": "npm:zod"
   }
 }

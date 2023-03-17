@@ -12,6 +12,7 @@ import {
   RouterPlugin,
   RouterRequest,
 } from '../types.js';
+import { isZodSchema } from '../zod/types.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
@@ -70,7 +71,7 @@ export function useAjv({
   return {
     onRoute({ schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
-      if (schemas?.request?.headers) {
+      if (schemas?.request?.headers && !isZodSchema(schemas.request.headers)) {
         const validateFn = ajv.compile({
           ...schemas.request.headers,
           components,
@@ -84,7 +85,7 @@ export function useAjv({
           return [];
         });
       }
-      if (schemas?.request?.params) {
+      if (schemas?.request?.params && !isZodSchema(schemas.request.params)) {
         const validateFn = ajv.compile({
           ...schemas.request.params,
           components,
@@ -97,7 +98,7 @@ export function useAjv({
           return [];
         });
       }
-      if (schemas?.request?.query) {
+      if (schemas?.request?.query && !isZodSchema(schemas.request.query)) {
         const validateFn = ajv.compile({
           ...schemas.request.query,
           components,
@@ -110,7 +111,7 @@ export function useAjv({
           return [];
         });
       }
-      if (schemas?.request?.json) {
+      if (schemas?.request?.json && !isZodSchema(schemas.request.json)) {
         const validateFn = ajv.compile({
           ...schemas.request.json,
           components,
@@ -131,7 +132,7 @@ export function useAjv({
           return [];
         });
       }
-      if (schemas?.request?.formData) {
+      if (schemas?.request?.formData && !isZodSchema(schemas.request.formData)) {
         const validateFn = ajv.compile({
           ...schemas.request.formData,
           components,
@@ -178,16 +179,18 @@ export function useAjv({
         const serializerByStatusCode = new Map<number, JSONSerializer>();
         for (const statusCode in schemas.responses) {
           const schema = schemas.responses[statusCode];
-          const serializer = jsonSerializerFactory(
-            {
-              ...schema,
-              components,
-            } as any,
-            {
-              ajv,
-            },
-          );
-          serializerByStatusCode.set(Number(statusCode), serializer);
+          if (!isZodSchema(schema)) {
+            const serializer = jsonSerializerFactory(
+              {
+                ...schema,
+                components,
+              } as any,
+              {
+                ajv,
+              },
+            );
+            serializerByStatusCode.set(Number(statusCode), serializer);
+          }
         }
         handlers.unshift((_request, ctx) => {
           serializersByCtx.set(ctx, serializerByStatusCode);

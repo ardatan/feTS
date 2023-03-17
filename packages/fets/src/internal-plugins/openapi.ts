@@ -1,8 +1,10 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
 import { RouterPlugin } from '../types.js';
+import { isZodSchema } from '../zod/types.js';
 
 export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;
@@ -52,71 +54,84 @@ export function useOpenAPI({
         operation.description = description;
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
-            const response = schemas.responses[statusCode as any as number];
+            let responseSchema = schemas.responses[statusCode as any as number];
+            if (isZodSchema(responseSchema)) {
+              responseSchema = zodToJsonSchema(responseSchema);
+            }
             operation.responses = operation.responses || {};
             operation.responses[statusCode] = {
               description: '',
               content: {
                 'application/json': {
-                  schema: response as any,
+                  schema: responseSchema as any,
                 },
               },
             };
           }
+        } else {
+          operation.responses = {
+            default: {
+              description: '',
+            },
+          };
         }
-        if (
-          schemas.request?.headers &&
-          typeof schemas.request.headers === 'object' &&
-          'properties' in schemas.request.headers
-        ) {
-          for (const headerName in schemas.request.headers.properties) {
-            const headersSchema = schemas.request.headers.properties[headerName];
+        if (schemas.request?.headers) {
+          let headersSchema: any = schemas.request.headers;
+          if (isZodSchema(headersSchema)) {
+            headersSchema = zodToJsonSchema(headersSchema);
+          }
+          for (const headerName in headersSchema.properties) {
+            const headerSchema = headersSchema.properties[headerName];
             operation.parameters = operation.parameters || [];
             operation.parameters.push({
               name: headerName,
               in: 'header',
-              required: schemas.request.headers.required?.includes(headerName),
-              schema: headersSchema as any,
+              required: headersSchema.required?.includes(headerName),
+              schema: headerSchema,
             });
           }
         }
-        if (
-          schemas.request?.params &&
-          typeof schemas.request.params === 'object' &&
-          'properties' in schemas.request.params
-        ) {
-          for (const paramName in schemas.request.params.properties) {
-            const paramSchema = schemas.request.params.properties[paramName];
+        if (schemas.request?.params) {
+          let paramsSchema: any = schemas.request.params;
+          if (isZodSchema(paramsSchema)) {
+            paramsSchema = zodToJsonSchema(paramsSchema);
+          }
+          for (const paramName in paramsSchema.properties) {
+            const paramSchema: any = paramsSchema.properties[paramName];
             operation.parameters = operation.parameters || [];
             operation.parameters.push({
               name: paramName,
               in: 'path',
-              required: schemas.request.params.required?.includes(paramName),
-              schema: paramSchema as any,
+              required: paramsSchema.required?.includes(paramName),
+              schema: paramSchema,
             });
           }
         }
-        if (
-          schemas.request?.query &&
-          typeof schemas.request.query === 'object' &&
-          'properties' in schemas.request.query
-        ) {
-          for (const paramName in schemas.request.query.properties) {
-            const paramSchema = schemas.request.query.properties[paramName];
+        if (schemas.request?.query) {
+          let queriesSchema: any = schemas.request.query;
+          if (isZodSchema(queriesSchema)) {
+            queriesSchema = zodToJsonSchema(queriesSchema);
+          }
+          for (const queryName in queriesSchema.properties) {
+            const querySchema = queriesSchema.properties[queryName];
             operation.parameters = operation.parameters || [];
             operation.parameters.push({
-              name: paramName,
+              name: queryName,
               in: 'query',
-              required: schemas.request.query.required?.includes(paramName),
-              schema: paramSchema as any,
+              required: queriesSchema.required?.includes(queryName),
+              schema: querySchema as any,
             });
           }
         }
         if (schemas.request?.json) {
+          let requestJsonSchema: any = schemas.request.json;
+          if (isZodSchema(requestJsonSchema)) {
+            requestJsonSchema = zodToJsonSchema(requestJsonSchema);
+          }
           operation.requestBody = {
             content: {
               'application/json': {
-                schema: schemas.request.json as any,
+                schema: requestJsonSchema,
               },
             },
           };

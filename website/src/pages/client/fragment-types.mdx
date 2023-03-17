@@ -42,7 +42,7 @@ type AddUserInput = OASRequestParams<Mutable<typeof oas>, '/user', 'POST'>
 You can infer response body from an OpenAPI document by using the `OASResponseBody` type.
 
 ```ts
-type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string, TMethod extends HTTPMethod, TStatusCode extends number>
+type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string, TMethod extends HTTPMethod, TStatusCode extends StatusCode>
 ```
 
 ### Example

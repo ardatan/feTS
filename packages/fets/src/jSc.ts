@@ -17,7 +17,7 @@ const sharedHelpers = {
   $enum<TThis extends JSONSchema, TEnums extends string[]>(
     this: TThis,
     ..._enum: TEnums
-  ): Omit<TThis, 'enum'> & { ['enum']: TEnums } {
+  ): Omit<TThis, 'enum'> & { enum: TEnums } {
     return {
       ...this,
       enum: _enum,

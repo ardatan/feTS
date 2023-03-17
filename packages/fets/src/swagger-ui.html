@@ -10,6 +10,12 @@
         (prefers-color-scheme: dark);
 
       @import 'https://unpkg.com/swagger-ui-dist/swagger-ui.css' (prefers-color-scheme: light);
+
+      @media (prefers-color-scheme: dark) {
+        .swagger-ui textarea {
+          background: hsl(358.8deg 1.05% 1.91% / 80%) !important;
+        }
+      }
     </style>
   </head>
 
