@@ -134,6 +134,11 @@ describe('zod', () => {
                   },
                 },
               },
+              "responses": {
+                "default": {
+                  "description": "",
+                },
+              },
             },
           },
         },
