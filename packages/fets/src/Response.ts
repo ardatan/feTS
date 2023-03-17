@@ -1,5 +1,5 @@
 import { Response as OriginalResponse } from '@whatwg-node/fetch';
-import { TypedResponse, TypedResponseCtor } from './typed-fetch.js';
+import { StatusCode, TypedResponse, TypedResponseCtor } from './typed-fetch.js';
 import { JSONSerializer } from './types.js';
 
 export const LAZY_SERIALIZED_RESPONSE = Symbol('LAZY_SERIALIZED_RESPONSE');
@@ -66,5 +66,5 @@ export const Response = new Proxy(OriginalResponse, {
 export type Response<
   TJSON = any,
   THeaders extends Record<string, string> = Record<string, string>,
-  TStatusCode extends number = 200,
-> = TypedResponse<TJSON, THeaders, TStatusCode>;
+  TStatusCode extends StatusCode = StatusCode,
+  > = TypedResponse<TJSON, THeaders, TStatusCode>;
