@@ -1,3 +1,5 @@
+import { StatusCodeMap } from './types';
+
 type OkStatusCode = 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 226;
 
 type RedirectStatusCode = 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308;
@@ -143,12 +145,11 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
   json<TJSON>(value: TJSON): TypedResponse<TJSON, Record<string, string>, 200>;
 };
 
-export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends Record<StatusCode, any>> =
-  {
-    [TStatusCode in keyof TResponseJSONStatusMap]?: TStatusCode extends StatusCode
-      ? TypedResponse<TResponseJSONStatusMap[TStatusCode], Record<string, string>, TStatusCode>
-      : never;
-  }[keyof TResponseJSONStatusMap];
+export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends StatusCodeMap<any>> = {
+  [TStatusCode in keyof TResponseJSONStatusMap]?: TStatusCode extends StatusCode
+    ? TypedResponse<TResponseJSONStatusMap[TStatusCode], Record<string, string>, TStatusCode>
+    : never;
+}[keyof TResponseJSONStatusMap];
 
 export type HTTPMethod =
   | 'GET'

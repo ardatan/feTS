@@ -1,12 +1,11 @@
 import { z } from 'zod';
 import {
   HTTPMethod,
-  StatusCode,
   TypedRequest,
   TypedResponse,
   TypedResponseWithJSONStatusMap,
 } from '../typed-fetch';
-import { AddRouteWithTypesOpts } from '../types';
+import { AddRouteWithTypesOpts, StatusCodeMap } from '../types';
 
 export type RouteZodSchemas = {
   request?: {
@@ -16,7 +15,7 @@ export type RouteZodSchemas = {
     params?: z.ZodType;
     query?: z.ZodType;
   };
-  responses?: Record<StatusCode, z.ZodType>;
+  responses?: StatusCodeMap<z.ZodType>;
 };
 
 export type TypedRequestFromRouteZodSchemas<
@@ -44,7 +43,7 @@ export type TypedRequestFromRouteZodSchemas<
   : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
 
 export type TypedResponseFromRouteZodSchemas<TRouteZodSchemas extends RouteZodSchemas> =
-  TRouteZodSchemas extends { responses: Record<StatusCode, z.ZodType> }
+  TRouteZodSchemas extends { responses: StatusCodeMap<z.ZodType> }
     ? TypedResponseWithJSONStatusMap<{
         [TStatusCode in keyof TRouteZodSchemas['responses']]: TRouteZodSchemas['responses'][TStatusCode] extends z.ZodType
           ? z.infer<TRouteZodSchemas['responses'][TStatusCode]>

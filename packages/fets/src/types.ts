@@ -90,13 +90,17 @@ export type FromRouterComponentSchema<
 
 export type PromiseOrValue<T> = T | Promise<T>;
 
+export type StatusCodeMap<T> = {
+  [TKey in StatusCode]?: T;
+};
+
 export type TypedRouterHandlerTypeConfig<
   TRequestJSON = any,
   TRequestFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
   TRequestHeaders extends Record<string, string> = Record<string, string>,
   TRequestQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
   TRequestPathParams extends Record<string, any> = Record<string, any>,
-  TResponseJSONStatusMap extends Record<StatusCode, any> = Record<StatusCode, any>,
+  TResponseJSONStatusMap extends StatusCodeMap<any> = StatusCodeMap<any>,
 > = {
   request: {
     json?: TRequestJSON;
@@ -134,7 +138,7 @@ export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTy
   TTypeConfig extends {
     responses: infer TResponses;
   }
-    ? TResponses extends Record<StatusCode, any>
+    ? TResponses extends StatusCodeMap<any>
       ? TypedResponseWithJSONStatusMap<TResponses>
       : never
     : TypedResponse;
@@ -255,9 +259,7 @@ export type RouteSchemas = {
     json?: JSONSchema;
     formData?: JSONSchema;
   };
-  responses?: {
-    [TStatusCode in StatusCode]?: JSONSchema;
-  };
+  responses?: StatusCodeMap<JSONSchema>;
 };
 
 export type RouterSDKOpts<
@@ -353,7 +355,7 @@ export type TypedRequestFromRouteSchemas<
 export type TypedResponseFromRouteSchemas<
   TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
-> = TRouteSchemas extends { responses: Record<StatusCode, JSONSchema> }
+> = TRouteSchemas extends { responses: StatusCodeMap<JSONSchema> }
   ? TypedResponseWithJSONStatusMap<{
       [TStatusCode in keyof TRouteSchemas['responses']]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['responses'][TStatusCode]>
