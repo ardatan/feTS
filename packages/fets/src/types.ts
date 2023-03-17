@@ -109,7 +109,7 @@ export type TypedRouterHandlerTypeConfig<
     query?: TRequestQueryParams;
     params?: TRequestPathParams;
   };
-  responses: TResponseJSONStatusMap;
+  responses?: TResponseJSONStatusMap;
 };
 
 export type TypedRequestFromTypeConfig<
