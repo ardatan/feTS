@@ -1,5 +1,27 @@
 # fets
 
+## 0.0.11
+
+### Patch Changes
+
+- [#41](https://github.com/ardatan/fets/pull/41)
+  [`9b19754`](https://github.com/ardatan/fets/commit/9b19754f491a052a5fe5c0b6c5768e5f94988611)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+
+  - Added dependency [`zod@^3.21.4` ↗︎](https://www.npmjs.com/package/zod/v/3.21.4) (to
+    `dependencies`)
+  - Added dependency
+    [`zod-to-json-schema@3.20.4` ↗︎](https://www.npmjs.com/package/zod-to-json-schema/v/3.20.4) (to
+    `dependencies`)
+
+- [#41](https://github.com/ardatan/fets/pull/41)
+  [`9b19754`](https://github.com/ardatan/fets/commit/9b19754f491a052a5fe5c0b6c5768e5f94988611)
+  Thanks [@ardatan](https://github.com/ardatan)! - Relax types
+
+- [#41](https://github.com/ardatan/fets/pull/41)
+  [`9b19754`](https://github.com/ardatan/fets/commit/9b19754f491a052a5fe5c0b6c5768e5f94988611)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support Zod Schema
+
 ## 0.0.10
 
 ### Patch Changes
