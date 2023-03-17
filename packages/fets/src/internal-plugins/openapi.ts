@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
-import zodToJsonSchema from 'zod-to-json-schema';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
 import { RouterPlugin } from '../types.js';
@@ -68,6 +68,12 @@ export function useOpenAPI({
               },
             };
           }
+        } else {
+          operation.responses = {
+            default: {
+              description: '',
+            },
+          };
         }
         if (schemas.request?.headers) {
           let headersSchema: any = schemas.request.headers;
