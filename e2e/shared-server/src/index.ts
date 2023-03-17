@@ -1,4 +1,5 @@
 import { createRouter, Response, useErrorHandling } from 'fets';
+import { z } from 'zod';
 
 export function createTestServerAdapter<TServerContext = {}>(base?: string) {
   return createRouter<TServerContext, {}>({
@@ -8,11 +9,25 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
     .route({
       method: 'GET',
       path: '/greetings/:name',
+      schemas: {
+        request: {
+          params: z.object({
+            name: z.string(),
+          }),
+        },
+      },
       handler: req => Response.json({ message: `Hello ${req.params?.name}!` }),
     })
     .route({
       method: 'POST',
       path: '/bye',
+      schemas: {
+        request: {
+          json: z.object({
+            name: z.string(),
+          }),
+        },
+      },
       handler: async req => {
         const { name } = await req.json();
         return Response.json({ message: `Bye ${name}!` });

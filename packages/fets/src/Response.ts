@@ -67,4 +67,4 @@ export type Response<
   TJSON = any,
   THeaders extends Record<string, string> = Record<string, string>,
   TStatusCode extends StatusCode = StatusCode,
-  > = TypedResponse<TJSON, THeaders, TStatusCode>;
+> = TypedResponse<TJSON, THeaders, TStatusCode>;
