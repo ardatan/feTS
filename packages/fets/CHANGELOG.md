@@ -1,5 +1,12 @@
 # fets
 
+## 0.0.14
+
+### Patch Changes
+
+- [`dffa521`](https://github.com/ardatan/fets/commit/dffa521aec9b852d446c495aa36adfcbc7c037ec)
+  Thanks [@ardatan](https://github.com/ardatan)! - Prebuild Headers
+
 ## 0.0.13
 
 ### Patch Changes
