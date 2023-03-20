@@ -398,7 +398,7 @@ export type AddRouteWithTypesOpts<
 export type RouteInput<
   TRouter extends Router<any, any, {}>,
   TPath extends string,
-  TMethod extends Lowercase<HTTPMethod>,
+  TMethod extends Lowercase<HTTPMethod> = 'post',
   TParamType extends keyof RouterSDKOpts = 'json',
 > = TRouter extends Router<any, any, infer TRouterSDK>
   ? TRouterSDK[TPath][TMethod] extends (requestParams?: infer TRequestParams) => any
@@ -413,7 +413,7 @@ export type RouteInput<
 export type RouteOutput<
   TRouter extends Router<any, any, {}>,
   TPath extends string,
-  TMethod extends Lowercase<HTTPMethod>,
+  TMethod extends Lowercase<HTTPMethod> = 'post',
   TStatusCode extends StatusCode = 200,
 > = TRouter extends Router<any, any, infer TRouterSDK>
   ? TRouterSDK extends RouterSDK
@@ -435,6 +435,22 @@ export type RouterInput<TRouter extends Router<any, any, any>> = {
       ? Required<TRequestParams>
       : never;
   };
+};
+
+export type RouterJsonPostInput<TRouter extends Router<any, any, any>> = {
+  [TPath in keyof RouterClient<TRouter>]: {
+    [TMethod in keyof RouterClient<TRouter>[TPath]]: RouterInput<TRouter>[TPath][TMethod] extends {
+      json: infer TJSON;
+    }
+      ? TJSON
+      : never;
+  }['post'];
+};
+
+export type RouterJsonPostSuccessOutput<TRouter extends Router<any, any, any>> = {
+  [TPath in keyof RouterClient<TRouter>]: {
+    [TMethod in keyof RouterClient<TRouter>[TPath]]: RouterOutput<TRouter>[TPath][TMethod][200];
+  }['post'];
 };
 
 export type RouterOutput<TRouter extends Router<any, any, any>> = {

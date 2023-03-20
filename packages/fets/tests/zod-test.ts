@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createRouter, Response, RouterInput, RouterOutput } from '../src';
+import { createRouter, Response, RouterJsonPostInput, RouterJsonPostSuccessOutput } from '../src';
 import { createClient } from '../src/client';
 
 const router = createRouter().route({
@@ -52,7 +52,7 @@ if (res.ok) {
   console.log(body.message);
 }
 
-type Todo = RouterOutput<typeof router>['todoById']['post'][200];
+type Todo = RouterJsonPostSuccessOutput<typeof router>['todoById'];
 
 const testTodo: Todo = {
   id: 1,
@@ -61,7 +61,7 @@ const testTodo: Todo = {
 
 console.log(testTodo);
 
-type TodoInput = RouterInput<typeof router>['todoById']['post']['json'];
+type TodoInput = RouterJsonPostInput<typeof router>['todoById'];
 
 let testTodoInput: TodoInput = {
   id: 1,
