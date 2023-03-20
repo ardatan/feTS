@@ -103,6 +103,7 @@ export type TypedHeaders<TMap extends Record<string, string>> = {
   entries(): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
   keys(): IterableIterator<keyof TMap>;
   values(): IterableIterator<TMap[keyof TMap]>;
+  [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
 };
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
