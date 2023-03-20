@@ -1,5 +1,13 @@
 # uwebsockets-example
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies
+  [[`bd791cc`](https://github.com/ardatan/fets/commit/bd791cc76194d307bbaecd045969c11e0cefce32)]:
+  - fets@0.0.15
+
 ## 0.0.6
 
 ### Patch Changes
