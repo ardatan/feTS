@@ -1,4 +1,4 @@
-import { Response as OriginalResponse } from '@whatwg-node/fetch';
+import { Headers, Response as OriginalResponse } from '@whatwg-node/fetch';
 import { StatusCode, TypedResponse, TypedResponseCtor } from './typed-fetch.js';
 import { JSONSerializer } from './types.js';
 
@@ -15,6 +15,7 @@ export interface LazySerializedResponse {
   jsonObj: any;
   json: () => Promise<any>;
   status: StatusCode;
+  headers: Headers;
 }
 
 export function isLazySerializedResponse(response: any): response is LazySerializedResponse {
@@ -30,6 +31,10 @@ export function createLazySerializedResponse(
     resolve = _resolve;
   });
   let _serializerSet = false;
+  const headers = new Headers({
+    ...init?.headers,
+    'Content-Type': 'application/json',
+  });
   return {
     jsonObj,
     responsePromise: promise,
@@ -45,10 +50,7 @@ export function createLazySerializedResponse(
         new OriginalResponse(serialized, {
           ...init,
           status: init?.status || 200,
-          headers: {
-            ...init?.headers,
-            'Content-Type': 'application/json',
-          },
+          headers,
         }) as Response,
       );
     },
@@ -58,6 +60,7 @@ export function createLazySerializedResponse(
     get status() {
       return (init?.status || 200) as StatusCode;
     },
+    headers,
   };
 }
 
