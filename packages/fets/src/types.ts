@@ -427,6 +427,33 @@ export type RouteOutput<
 
 export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__client'];
 
+export type RouterInput<
+  TRouter extends Router<any, any, any>,
+  TPath extends string,
+  TMethod extends Lowercase<HTTPMethod>,
+> = RouterClient<TRouter> extends {
+  [TPathKey in TPath]: {
+    [TMethodKey in TMethod]: (requestParams?: infer TRequestParams) => any;
+  };
+}
+  ? TRequestParams
+  : never;
+
+export type RouterOutput<
+  TRouter extends Router<any, any, any>,
+  TPath extends string,
+  TMethod extends Lowercase<HTTPMethod>,
+  TStatusCode extends StatusCode = 200,
+> = RouterClient<TRouter> extends {
+  [TPathKey in TPath]: {
+    [TMethodKey in TMethod]: (...args: any[]) => Promise<infer TTypedResponse>;
+  };
+}
+  ? TTypedResponse extends TypedResponse<infer TJSONBody, any, TStatusCode>
+    ? TJSONBody
+    : never
+  : never;
+
 export type RouterComponentSchema<
   TRouter extends Router<any, any, any>,
   TName extends string,

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createRouter, Response } from '../src';
+import { createRouter, Response, RouterInput, RouterOutput } from '../src';
 import { createClient } from '../src/client';
 
 const router = createRouter().route({
@@ -51,3 +51,27 @@ if (res.ok) {
   const body = await res.json();
   console.log(body.message);
 }
+
+type Todo = RouterOutput<typeof router, 'todoById', 'post'>;
+
+const testTodo: Todo = {
+  id: 1,
+  title: 'Todo 1',
+};
+
+console.log(testTodo);
+
+type TodoInput = RouterInput<typeof router, 'todoById', 'post'>;
+
+const testTodoInput: TodoInput = {
+  json: {
+    id: 1,
+  },
+};
+
+testTodoInput.json = {
+  // @ts-expect-error - id is not a string
+  id: '1',
+};
+
+console.log(testTodoInput);
