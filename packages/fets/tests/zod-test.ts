@@ -52,7 +52,7 @@ if (res.ok) {
   console.log(body.message);
 }
 
-type Todo = RouterOutput<typeof router, 'todoById', 'post'>;
+type Todo = RouterOutput<typeof router>['todoById']['post'][200];
 
 const testTodo: Todo = {
   id: 1,
@@ -61,7 +61,7 @@ const testTodo: Todo = {
 
 console.log(testTodo);
 
-type TodoInput = RouterInput<typeof router, 'todoById', 'post'>;
+type TodoInput = RouterInput<typeof router>['todoById']['post'];
 
 const testTodoInput: TodoInput = {
   json: {
