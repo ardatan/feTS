@@ -1,5 +1,12 @@
 # fets
 
+## 0.0.16
+
+### Patch Changes
+
+- [`900b05c`](https://github.com/ardatan/fets/commit/900b05c580a1a30c67cf2ac4ba39ad614fd4fe86)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix helper types
+
 ## 0.0.15
 
 ### Patch Changes
