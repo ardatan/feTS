@@ -61,15 +61,13 @@ const testTodo: Todo = {
 
 console.log(testTodo);
 
-type TodoInput = RouterInput<typeof router>['todoById']['post'];
+type TodoInput = RouterInput<typeof router>['todoById']['post']['json'];
 
-const testTodoInput: TodoInput = {
-  json: {
-    id: 1,
-  },
+let testTodoInput: TodoInput = {
+  id: 1,
 };
 
-testTodoInput.json = {
+testTodoInput = {
   // @ts-expect-error - id is not a string
   id: '1',
 };

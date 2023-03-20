@@ -399,7 +399,7 @@ export type RouteInput<
   TRouter extends Router<any, any, {}>,
   TPath extends string,
   TMethod extends Lowercase<HTTPMethod>,
-  TParamType extends keyof RouterSDKOpts,
+  TParamType extends keyof RouterSDKOpts = 'json',
 > = TRouter extends Router<any, any, infer TRouterSDK>
   ? TRouterSDK[TPath][TMethod] extends (requestParams?: infer TRequestParams) => any
     ? TRequestParams extends {
@@ -432,7 +432,7 @@ export type RouterInput<TRouter extends Router<any, any, any>> = {
     [TMethod in keyof RouterClient<TRouter>[TPath]]: RouterClient<TRouter>[TPath][TMethod] extends (
       requestParams?: infer TRequestParams,
     ) => any
-      ? TRequestParams
+      ? Required<TRequestParams>
       : never;
   };
 };
