@@ -1,5 +1,12 @@
 # fets
 
+## 0.0.17
+
+### Patch Changes
+
+- [`f99b7fb`](https://github.com/ardatan/fets/commit/f99b7fbdafd416b8e09e40d6fc4bbc04d96a8718)
+  Thanks [@ardatan](https://github.com/ardatan)! - Make inferred `RouterInput` params required
+
 ## 0.0.16
 
 ### Patch Changes
