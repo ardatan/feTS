@@ -1,5 +1,13 @@
 # fets
 
+## 0.0.13
+
+### Patch Changes
+
+- [`12a19fd`](https://github.com/ardatan/fets/commit/12a19fd3906527fa903ebfb26bdf60e4a8f5c95d)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix regression for missing iterator signature in
+  TypedHeaders
+
 ## 0.0.12
 
 ### Patch Changes
