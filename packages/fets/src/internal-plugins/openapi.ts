@@ -3,6 +3,7 @@ import { OpenAPIV3_1 } from 'openapi-types';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
+import { StatusCode } from '../typed-fetch.js';
 import { RouterPlugin } from '../types.js';
 import { isZodSchema } from '../zod/types.js';
 
@@ -46,15 +47,15 @@ export function useOpenAPI({
         if (!pathForOAS.startsWith('/')) {
           pathForOAS = `/${pathForOAS}`;
         }
-        const pathObj = (paths[pathForOAS] = paths[pathForOAS] || {});
+        const pathObj: any = (paths[pathForOAS] = paths[pathForOAS] || {});
         const lowerCasedMethod = method.toLowerCase();
-        pathObj[lowerCasedMethod] = (pathObj[lowerCasedMethod] || {}) as any;
+        pathObj[lowerCasedMethod] = pathObj[lowerCasedMethod] || {};
         const operation = pathObj[lowerCasedMethod] as OpenAPIV3_1.OperationObject;
         operation.operationId = operationId;
         operation.description = description;
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
-            let responseSchema = schemas.responses[statusCode as any as number];
+            let responseSchema: any = schemas.responses[statusCode as any as StatusCode];
             if (isZodSchema(responseSchema)) {
               responseSchema = zodToJsonSchema(responseSchema);
             }

@@ -45,7 +45,7 @@ export const app = App().any('/*', async (res, req) => {
         body.push(null);
       });
   }
-  const headers = {};
+  const headers: Record<string, string> = {};
   req.forEach((key, value) => {
     headers[key] = value;
   });

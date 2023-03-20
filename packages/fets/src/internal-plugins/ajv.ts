@@ -5,6 +5,7 @@ import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { URL } from '@whatwg-node/fetch';
 import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
+import { StatusCode } from '../typed-fetch.js';
 import {
   JSONSerializer,
   PromiseOrValue,
@@ -178,7 +179,7 @@ export function useAjv({
       if (jsonSerializerFactory && schemas?.responses) {
         const serializerByStatusCode = new Map<number, JSONSerializer>();
         for (const statusCode in schemas.responses) {
-          const schema = schemas.responses[statusCode];
+          const schema = schemas.responses[statusCode as unknown as StatusCode];
           if (!isZodSchema(schema)) {
             const serializer = jsonSerializerFactory(
               {

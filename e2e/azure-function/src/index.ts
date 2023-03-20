@@ -15,7 +15,7 @@ export default async function (context: Context, req: HttpRequest): Promise<void
     const responseText = await response.text();
     context.log('FETS response text:', responseText);
 
-    const headersObj = {};
+    const headersObj: Record<string, string> = {};
     response.headers.forEach((value, key) => {
       headersObj[key] = value;
     });

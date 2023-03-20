@@ -18,8 +18,6 @@
 
     "jsx": "preserve",
 
-    "suppressImplicitAnyIndexErrors": true,
-
     "skipLibCheck": true,
 
     "strict": true,

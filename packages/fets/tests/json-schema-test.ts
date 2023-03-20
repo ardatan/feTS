@@ -131,7 +131,7 @@ async function main() {
       method: 'GET',
       path: '/health',
       handler: async () => {
-        if (!globalThis['db']) {
+        if (Math.random() > 0.5) {
           return Response.json(
             {
               error: 'DB is not available',

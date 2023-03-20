@@ -138,7 +138,9 @@ export function createRouterBase({
                 if (prop === 'params') {
                   return new Proxy(match.pathname.groups, {
                     get(_, prop) {
-                      const value = match.pathname.groups[prop.toString()];
+                      const value = (match.pathname.groups as Record<string, string>)[
+                        prop.toString()
+                      ];
                       if (value != null) {
                         return decodeURIComponent(value);
                       }
