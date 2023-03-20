@@ -64,7 +64,9 @@ type DefaultHTTPHeaders =
 
 type Maybe = undefined | null;
 
-export interface TypedHeaders<TMap extends Record<string, string>> {
+type UndefinedToNull<T> = T extends undefined ? Exclude<T, undefined> | null : T;
+
+export type TypedHeaders<TMap extends Record<string, string>> = {
   append<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
     value: TName extends keyof TMap ? TMap[TName] : string,
@@ -73,7 +75,7 @@ export interface TypedHeaders<TMap extends Record<string, string>> {
   get<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
   ): TName extends keyof TMap
-    ? TMap[TName]
+    ? UndefinedToNull<TMap[TName]>
     : TName extends DefaultHTTPHeaders
     ? string | null
     : never;
@@ -101,8 +103,7 @@ export interface TypedHeaders<TMap extends Record<string, string>> {
   entries(): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
   keys(): IterableIterator<keyof TMap>;
   values(): IterableIterator<TMap[keyof TMap]>;
-  [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
-}
+};
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
   init?: TMap,
@@ -136,13 +137,20 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
     Record<string, string>,
     200
   >;
-  new (body: BodyInit | null | undefined): TypedResponse<any, Record<string, string>, 200>;
+  new (body?: BodyInit | null | undefined): TypedResponse<any, Record<string, string>, 200>;
 
   json<TJSON, TStatusCode extends StatusCode>(
     value: TJSON,
     init: TypedResponseInit<TStatusCode>,
   ): TypedResponse<TJSON, Record<string, string>, TStatusCode>;
   json<TJSON>(value: TJSON): TypedResponse<TJSON, Record<string, string>, 200>;
+
+  redirect<TStatusCode extends StatusCode>(
+    url: string | URL,
+    status: TStatusCode,
+  ): TypedResponse<any, Record<string, string>, TStatusCode>;
+
+  redirect(url: string | URL): TypedResponse<any, Record<string, string>, 302>;
 };
 
 export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends StatusCodeMap<any>> = {

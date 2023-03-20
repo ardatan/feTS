@@ -13,6 +13,8 @@ export interface LazySerializedResponse {
   serializerSet: boolean;
   responsePromise: Promise<Response>;
   jsonObj: any;
+  json: () => Promise<any>;
+  status: StatusCode;
 }
 
 export function isLazySerializedResponse(response: any): response is LazySerializedResponse {
@@ -49,6 +51,12 @@ export function createLazySerializedResponse(
           },
         }) as Response,
       );
+    },
+    async json() {
+      return jsonObj;
+    },
+    get status() {
+      return (init?.status || 200) as StatusCode;
     },
   };
 }

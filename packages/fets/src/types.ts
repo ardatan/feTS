@@ -222,7 +222,11 @@ export type RouteHandler<
   TServerContext,
   TTypedRequest extends TypedRequest,
   TTypedResponse extends TypedResponse,
-> = (request: TTypedRequest, context: TServerContext) => PromiseOrValue<TTypedResponse | void>;
+> = (
+  request: TTypedRequest,
+  context: TServerContext,
+) => PromiseOrValue<TTypedResponse | Response | void>;
+// TODO: Remove Response from here
 
 export type OnRouteHookPayload<TServerContext> = {
   operationId?: string;
