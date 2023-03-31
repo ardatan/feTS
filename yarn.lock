@@ -2650,10 +2650,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@1.98.1":
-  version "1.98.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-1.98.1.tgz#74e060057c4c668faa1f4b82bc51ba44bafc8332"
-  integrity sha512-5e1JNLnzrPP5lCqHuZLg31GlMbnNFW5ac9QEqirvs3BH3i1vk5s/7Bs4naRAP/1QqLMxYZMH++BGSomoowR7mg==
+"@pulumi/azure-native@1.99.1":
+  version "1.99.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-1.99.1.tgz#f398cb133915209424b38374a623c792d31ec6fe"
+  integrity sha512-GH3eDZh4evKgc6/0D4s8EekkWhJCUJTwrLiv+A8uYNMqhEu32GFC+3pgkdvdEvTh8Eddu2815Wk0Usyw20g/uA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
