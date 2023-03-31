@@ -26,6 +26,6 @@
     "eslint-config-next": "13.2.4",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.0.2"
+    "typescript": "5.0.3"
   }
 }
