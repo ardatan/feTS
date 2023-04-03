@@ -12,10 +12,10 @@
   },
   "devDependencies": {
     "@pulumi/cloudflare": "4.16.0",
-    "@pulumi/pulumi": "3.60.1",
+    "@pulumi/pulumi": "3.61.0",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.0.3",
-    "wrangler": "2.13.0"
+    "wrangler": "2.14.0"
   }
 }
