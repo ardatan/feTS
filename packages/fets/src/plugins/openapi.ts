@@ -7,16 +7,45 @@ import { StatusCode } from '../typed-fetch.js';
 import { RouterPlugin } from '../types.js';
 import { isZodSchema } from '../zod/types.js';
 
+export interface SwaggerUIOpts {
+  spec?: OpenAPIV3_1.Document;
+  dom_id?: string;
+  displayOperationId?: boolean;
+  tryItOutEnabled?: boolean;
+  requestSnippetsEnabled?: boolean;
+  displayRequestDuration?: boolean;
+  defaultModelRendering?: 'model' | 'example' | 'schema';
+  defaultModelExpandDepth?: number;
+  defaultModelsExpandDepth?: number;
+  docExpansion?: 'none' | 'list' | 'full';
+  filter?: boolean;
+  maxDisplayedTags?: number;
+  showExtensions?: boolean;
+  showCommonExtensions?: boolean;
+  tagsSorter?: 'alpha';
+  operationsSorter?: 'alpha';
+  showTags?: boolean;
+  showMutatedRequest?: boolean;
+  oauth2RedirectUrl?: string;
+  validatorUrl?: string;
+  deepLinking?: boolean;
+  presets?: any[];
+  plugins?: any[];
+  layout?: string;
+}
+
 export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;
   swaggerUIEndpoint: string | false;
   baseOas: OpenAPIV3_1.Document;
+  swaggerUIOpts: SwaggerUIOpts;
 };
 
 export function useOpenAPI({
   oasEndpoint,
   swaggerUIEndpoint,
   baseOas: oas,
+  swaggerUIOpts,
 }: OpenAPIPluginOptions): RouterPlugin<any> {
   const paths: OpenAPIV3_1.PathsObject = (oas.paths ||= {});
   return {
@@ -33,11 +62,28 @@ export function useOpenAPI({
           method: 'GET',
           path: swaggerUIEndpoint,
           handler: () =>
-            new Response(swaggerUiHtml.replace('__OAS__', JSON.stringify(oas)), {
-              headers: {
-                'Content-Type': 'text/html',
+            new Response(
+              swaggerUiHtml.replace(
+                '__OAS__',
+                JSON.stringify({
+                  spec: oas,
+                  dom_id: '#swagger-ui',
+                  displayOperationId: true,
+                  tryItOutEnabled: true,
+                  requestSnippetsEnabled: true,
+                  displayRequestDuration: true,
+                  defaultModelRendering: 'model',
+                  defaultModelExpandDepth: 3,
+                  defaultModelsExpandDepth: 3,
+                  ...swaggerUIOpts,
+                }),
+              ),
+              {
+                headers: {
+                  'Content-Type': 'text/html',
+                },
               },
-            }),
+            ),
         });
       }
     },

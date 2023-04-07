@@ -58,7 +58,7 @@ export type AddRouteWithZodSchemasOpts<
   TPath extends string,
   TTypedRequest extends TypedRequestFromRouteZodSchemas<TRouteZodSchemas, TMethod>,
   TTypedResponse extends TypedResponseFromRouteZodSchemas<TRouteZodSchemas>,
-  > = {
+> = {
   schemas: TRouteZodSchemas;
 } & AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 

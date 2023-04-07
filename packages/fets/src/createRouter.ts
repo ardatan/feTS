@@ -2,7 +2,6 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
-import { useZod } from './zod/zod.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
@@ -19,6 +18,7 @@ import type {
   RouterSDK,
   RouteSchemas,
 } from './types.js';
+import { useZod } from './zod/zod.js';
 
 const HTTP_METHODS: HTTPMethod[] = [
   'GET',
@@ -239,6 +239,7 @@ export function createRouter<
   oasEndpoint = '/openapi.json',
   components,
   swaggerUIEndpoint = '/docs',
+  swaggerUIOpts = {},
   plugins: userPlugins = [],
   ...options
 }: RouterOptions<TServerContext, TComponents> = {}): Router<
@@ -257,6 +258,7 @@ export function createRouter<
           useOpenAPI({
             oasEndpoint,
             swaggerUIEndpoint,
+            swaggerUIOpts,
             baseOas: {
               openapi: '3.0.1',
               info: {

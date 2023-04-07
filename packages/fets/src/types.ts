@@ -9,6 +9,7 @@ import {
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
+import { SwaggerUIOpts } from './plugins/openapi.js';
 import { LazySerializedResponse } from './Response.js';
 import type {
   HTTPMethod,
@@ -41,6 +42,7 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
   version?: string;
   oasEndpoint?: string | false;
   swaggerUIEndpoint?: string | false;
+  swaggerUIOpts?: SwaggerUIOpts;
   components?: TComponents;
 }
 
@@ -385,7 +387,7 @@ export type AddRouteWithTypesOpts<
   TPath extends string,
   TTypedRequest extends TypedRequest,
   TTypedResponse extends TypedResponse,
-  > = {
+> = {
   operationId?: string;
   description?: string;
   method?: TMethod | Uppercase<TMethod>;
