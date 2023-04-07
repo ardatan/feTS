@@ -16,10 +16,10 @@
 
 Our [documentation website](https://www.the-guild.dev/fets) will help you get started.
 
-## [Examples](https://github.com/ardatan/fets/tree/main/examples)
+## [Examples](https://github.com/ardatan/fets/tree/master/examples)
 
 We've made sure developers can quickly start with FETS by providing a comprehensive set of examples.
-[See all of them in the `examples/` folder.](https://github.com/ardatan/fets/tree/main/examples)
+[See all of them in the `examples/` folder.](https://github.com/ardatan/fets/tree/master/examples)
 
 ## Contributing
 
