@@ -1,0 +1,16 @@
+{
+  "name": "example-zod",
+  "version": "0.0.17",
+  "description": "A simple app with zod",
+  "private": true,
+  "scripts": {
+    "start": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "18.15.11",
+    "fets": "0.0.17",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "^5.0.0"
+  }
+}

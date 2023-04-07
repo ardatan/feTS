@@ -24,17 +24,7 @@
     <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" crossorigin></script>
     <script>
       window.onload = () => {
-        window.ui = SwaggerUIBundle({
-          spec: __OAS__,
-          dom_id: '#swagger-ui',
-          displayOperationId: true,
-          tryItOutEnabled: true,
-          requestSnippetsEnabled: true,
-          displayRequestDuration: true,
-          defaultModelRendering: 'model',
-          defaultModelExpandDepth: 3,
-          defaultModelsExpandDepth: 3,
-        });
+        window.ui = SwaggerUIBundle(__SWAGGER_UI_OPTIONS__);
       };
     </script>
   </body>

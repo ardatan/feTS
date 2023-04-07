@@ -1,8 +1,8 @@
 import { ZodIssue } from 'zod';
 import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
-import { PromiseOrValue, RouterPlugin, RouterRequest } from '../types';
-import { isZodSchema } from '../zod/types.js';
+import { PromiseOrValue, RouterPlugin, RouterRequest } from '../types.js';
+import { isZodSchema } from './types.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ZodIssue[]>;
 

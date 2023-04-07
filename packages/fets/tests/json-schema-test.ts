@@ -1,6 +1,9 @@
-import { createClient } from '../src/client/createClient.js';
-import { createRouter, Response, RouteInput, RouteOutput } from '../src/index.js';
-import { jSc } from '../src/jSc.js';
+// import { createClient } from '../src/client/createClient.js';
+import {
+  createRouter,
+  Response,
+  /* RouteInput, RouteOutput */
+} from '../src/index.js';
 
 async function main() {
   const successfulResponseSchema = {
@@ -291,7 +294,7 @@ async function main() {
 }
 
 main();
-
+/*
 const router = createRouter().route({
   path: 'me',
   method: 'GET',
@@ -368,3 +371,4 @@ if (response.ok) {
   });
 }
 console.log(data1);
+*/
