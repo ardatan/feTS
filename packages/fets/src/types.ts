@@ -376,8 +376,6 @@ export type AddRouteWithSchemasOpts<
   TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
   TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
-  operationId?: string;
-  description?: string;
   schemas: TRouteSchemas;
 } & AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 
@@ -387,7 +385,9 @@ export type AddRouteWithTypesOpts<
   TPath extends string,
   TTypedRequest extends TypedRequest,
   TTypedResponse extends TypedResponse,
-> = {
+  > = {
+  operationId?: string;
+  description?: string;
   method?: TMethod | Uppercase<TMethod>;
   path: TPath;
   handler:

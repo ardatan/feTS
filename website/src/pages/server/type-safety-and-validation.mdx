@@ -18,6 +18,19 @@ This allows us to have;
   of `JSON.stringify`, and this is 2x faster according to the benchmarks can be found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
 
+## Setting up runtime validations with AJV
+
+If you don't use [Zod](../zod) schemas and want to have a strict runtime validation with JSON schemas.
+You need to configure AJV plugin for FETS. AJV is opt-in because some environments like Cloudflare Workers do not play well with AJV.
+
+```ts
+import { createRouter, useAjv } from 'fets'
+
+const router = createRouter({
+  plugins: [useAjv()]
+})
+```
+
 ## Request
 
 You can type individual parts of the `Request` object including JSON body, form data, headers, query
@@ -197,10 +210,17 @@ const router = createRouter().route({
 })
 ```
 
-## Response
+## Response (optional)
 
 You can also type the response body by the status code. We strongly recommend to explicitly define
 the status codes.
+
+<Callout>
+  If you don't define the response schema, FETS will still infer types from the handler's return value.
+  But in this case, you won't have response types in OpenAPI schema and runtime validation.
+  Let's say if you use OpenAPI schema with [FETS Client](/client), you won't have response typings.
+  You have to infer types directly from router instead [as shown here](/client#infer-types-from-router).
+</Callout>
 
 ```ts
 import { createRouter, Response } from 'fets'

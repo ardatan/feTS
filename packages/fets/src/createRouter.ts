@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
-import { useAjv } from './internal-plugins/ajv.js';
-import { useOpenAPI } from './internal-plugins/openapi.js';
-import { useZod } from './internal-plugins/zod.js';
+import { useOpenAPI } from './plugins/openapi.js';
+import { useZod } from './zod/zod.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
@@ -270,9 +269,6 @@ export function createRouter<
           }),
         ]
       : []),
-    useAjv({
-      components,
-    }),
     useZod(),
     ...userPlugins,
   ];
