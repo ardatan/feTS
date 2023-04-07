@@ -11,6 +11,6 @@
     "bun-types": "^0.5.0"
   },
   "devDependencies": {
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   }
 }
