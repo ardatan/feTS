@@ -1,5 +1,13 @@
 # fets
 
+## 0.1.0
+
+### Minor Changes
+
+- [#94](https://github.com/ardatan/fets/pull/94)
+  [`4d9d110`](https://github.com/ardatan/fets/commit/4d9d110907bb8d044049445b016eca88e5a6413c)
+  Thanks [@ardatan](https://github.com/ardatan)! - Make AJV opt-in
+
 ## 0.0.17
 
 ### Patch Changes
