@@ -1,5 +1,6 @@
 <div align="center">
-  <h3>FETS</h3>
+  <h3>feTS</h3>
+  <h5>Fetch API ❤️ TypeScript</h5>
   <h6>Fully-featured HTTP framework to build REST APIs with focus on easy setup, performance & great developer experience</h6>
   <a href="https://www.the-guild.dev/fets"><b>Go to documenation</b></a>
 </div>
@@ -18,7 +19,7 @@ Our [documentation website](https://www.the-guild.dev/fets) will help you get st
 
 ## [Examples](https://github.com/ardatan/fets/tree/master/examples)
 
-We've made sure developers can quickly start with FETS by providing a comprehensive set of examples.
+We've made sure developers can quickly start with feTS by providing a comprehensive set of examples.
 [See all of them in the `examples/` folder.](https://github.com/ardatan/fets/tree/master/examples)
 
 ## Contributing
@@ -31,7 +32,7 @@ Feel free to open issues and pull requests. We're always welcome support from th
 
 ## Code of Conduct
 
-Help us keep FETS open and inclusive. Please read and follow our
+Help us keep feTS open and inclusive. Please read and follow our
 [Code of Conduct](https://github.com/the-guild-org/Stack/blob/master/CODE_OF_CONDUCT.md) as adopted
 from [Contributor Covenant](https://www.contributor-covenant.org/).
 

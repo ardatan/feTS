@@ -2,7 +2,7 @@ import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
 
 # Quick Start
 
-FETS Server is a library that allows you create a fully type-safe REST API.
+feTS Server is a library that allows you create a fully type-safe REST API.
 
 - Comes with a super fast HTTP server
 - Schemas are based on [JSON Schema](https://json-schema.org/) so you can use any tool from that
@@ -12,7 +12,7 @@ FETS Server is a library that allows you create a fully type-safe REST API.
 - Platform agnostic so can be deployed to anywhere that supports JavaScript
 - Provides a simple way to test your API with [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
-> If the consumer is a JavaScript environment, we highly recommend using [FETS Client](/client)
+> If the consumer is a JavaScript environment, we highly recommend using [feTS Client](/client)
 > which is fully type-safe HTTP client that uses OpenAPI to generate the client.
 
 ## Installation
@@ -55,7 +55,7 @@ const router = createRouter()
     handler() {
       // If you don't specify the status code, it will be 200
       return Response.json({
-        message: 'Hello from FETS!'
+        message: 'Hello from feTS!'
       })
     }
   })

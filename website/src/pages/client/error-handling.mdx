@@ -1,6 +1,6 @@
 # Error Handling
 
-FETS Client returns a WHATWG [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+feTS Client returns a WHATWG [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 object for all requests. You can either use `status` attribute to handle specific status code or
 basically use `ok` attribute to check if the response is successful or not.
 
@@ -30,9 +30,9 @@ const pet = await response.json();
 console.log(`Pet name is ${pet.name}`);
 ```
 
-## Validation errors with FETS Server
+## Validation errors with feTS Server
 
-If you are using [FETS Server](/server), any request validation errors will be thrown as
+If you are using [feTS Server](/server), any request validation errors will be thrown as
 `ClientValidationError` and you can handle them like this:
 
 ```ts

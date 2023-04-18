@@ -7,7 +7,7 @@ them in an OpenAPI specification in the
 ## Path Parameters
 
 Path parameters are the variables that are passed in the URL. If the endpoint is `/pet/{id}`, then
-the `id` is a path parameter. To pass those in FETS Client, we use `params` in the request
+the `id` is a path parameter. To pass those in feTS Client, we use `params` in the request
 parameters object;
 
 ```ts filename="path-params.ts"
@@ -23,7 +23,7 @@ client['/pet/{id}'].get({
 Query parameters are the variables that are passed in the query string starting with `?`. If the
 endpoint is expected to get a URL like `/pet?name=Van%20Cat`, then the `name` is a query parameter.
 
-To pass those in FETS Client, we use `query` in the request parameters object;
+To pass those in feTS Client, we use `query` in the request parameters object;
 
 ```ts filename="query-params.ts"
 client['/pet'].get({

@@ -33,9 +33,10 @@ export function IndexPage(): ReactElement {
       <FeatureWrapper>
         <div className="container py-20 sm:py-24 lg:py-32">
           <h1 className="max-w-screen-md mx-auto font-extrabold text-5xl sm:text-5xl lg:text-6xl text-center bg-gradient-to-r from-orange-700 to-blue-400 dark:from-orange-700 dark:to-blue-400 bg-clip-text text-transparent !leading-tight">
-            FETS
+            feTS
           </h1>
-          <p className="max-w-screen-sm mx-auto mt-6 text-2xl text-gray-600 text-center dark:text-gray-400">
+          <p className="max-w-screen-sm mx-auto mt-1 text-xl text-gray-600 text-center dark:text-gray-400">Fetch API ❤️ TypeScript</p>
+          <p className="max-w-screen-sm mx-auto mt-3 text-2xl text-gray-600 text-center dark:text-gray-400">
             A new way of building and consuming <b>REST APIs</b> with the end-to-end type safety
             using <b>TypeScript</b> and <b>OpenAPI</b>
           </p>
@@ -62,7 +63,7 @@ export function IndexPage(): ReactElement {
         title="Consume Anywhere"
         description={
           <div className="flex flex-col gap-y-12">
-            FETS Client is an HTTP Client accepts any valid OpenAPI document and creates a type-safe
+            feTS Client is an HTTP Client accepts any valid OpenAPI document and creates a type-safe
             client for it.
             <div className="flex flex-col gap-y-12">
               <FeatureHighlights
@@ -93,7 +94,7 @@ export function IndexPage(): ReactElement {
                     title: 'No Code Generation needed for type-safety',
                     description: (
                       <>
-                        FETS Client is fully type-safe. Types are inferred from the OpenAPI spec and
+                        feTS Client is fully type-safe. Types are inferred from the OpenAPI spec and
                         JSON Schema without any <b>code generation</b> with the type inference.
                       </>
                     ),
@@ -109,7 +110,7 @@ export function IndexPage(): ReactElement {
         title="Deploy Anywhere"
         description={
           <p>
-            FETS Server provides a super fast HTTP server that can run anywhere with the power of{' '}
+            feTS Server provides a super fast HTTP server that can run anywhere with the power of{' '}
             <Anchor href="https://github.com/ardatan/whatwg-node/tree/master/packages/server#whatwg-node-generic-server-adapter">
               <b>@whatwg-node/server</b>
             </Anchor>

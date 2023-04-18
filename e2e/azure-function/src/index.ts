@@ -13,14 +13,14 @@ export default async function (context: Context, req: HttpRequest): Promise<void
       headers: req.headers,
     });
     const responseText = await response.text();
-    context.log('FETS response text:', responseText);
+    context.log('feTS response text:', responseText);
 
     const headersObj: Record<string, string> = {};
     response.headers.forEach((value, key) => {
       headersObj[key] = value;
     });
 
-    context.log('FETS response headers:', headersObj);
+    context.log('feTS response headers:', headersObj);
     context.res = {
       status: response.status,
       body: responseText,

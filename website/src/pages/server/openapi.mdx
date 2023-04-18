@@ -6,11 +6,11 @@ JSON or YAML format. It has routes including all possible response types in all 
 codes together with all possible request types. So a well-written OpenAPI file can be used as a
 reference by the client to understand the API easier.
 
-FETS uses this specification to generate the API documentation and the client SDKs. Even on the
+feTS uses this specification to generate the API documentation and the client SDKs. Even on the
 server side, it allows you to play with your API with a playground. Or you can even use any other
 OpenAPI-compliant tool like Postman to test your API.
 
-FETS creates two endpoints based on the defined routes by default;
+feTS creates two endpoints based on the defined routes by default;
 
 - `/openapi.json` - Returns the OpenAPI specification in JSON format
 - `/docs` - [Swagger UI](https://swagger.io/tools/swagger-ui/) as a playground for the API
@@ -51,7 +51,7 @@ createRouter().route({
 ## Models / Subschemas
 
 You can define models as subschemas and use them in your routes. This is useful when you have
-repeating structures in your API. FETS respects json schema's `$ref` keyword in this case.
+repeating structures in your API. feTS respects json schema's `$ref` keyword in this case.
 
 These models will be shown as models in the OpenAPI specification.
 

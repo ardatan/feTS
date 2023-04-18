@@ -4,7 +4,7 @@ CORS stands for Cross Origin Resource Sharing. In a nutshell, as a security meas
 allowed to access resources outside their own domain.
 
 If your api and web apps are deployed to different domains (or subdomains), you'll have to worry
-about CORS. For example, if your web client is deployed to example.com but your FETS Server is
+about CORS. For example, if your web client is deployed to example.com but your feTS Server is
 api.example.com. For security reasons your browser will not allow XHR requests (like the kind that
 the HTTP client makes) to a domain other than the one currently in the browser's address bar.
 
@@ -13,7 +13,7 @@ To deal with this you have two options:
 _1. Avoid CORS by proxying your requests_ e.g. If you setup a proxy or redirect to forward requests
 from `example.com/api/*` to `api.example.com`, you avoid CORS issues all together.
 
-_2. Configure FETS to send back CORS headers_ FETS comes with a CORS plugin - CORS can be configured
+_2. Configure feTS to send back CORS headers_ feTS comes with a CORS plugin - CORS can be configured
 when creating the server either by passing a CORSOptions object, or a builder function that returns
 the CORSOptions object.
 
@@ -84,7 +84,7 @@ return it in the `Access-Control-Allow-Origin` header.
 
 ## Default CORS setting with the plugin
 
-By default, FETS will return `Access-Control-Allow-Origin: *` when preflight requests are made.
+By default, feTS will return `Access-Control-Allow-Origin: *` when preflight requests are made.
 
 This means cross origin requests from browsers work out of the box - however it may be appropriate
 to lock to a specific domain before deploying to production.

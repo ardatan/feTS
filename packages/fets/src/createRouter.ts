@@ -233,8 +233,8 @@ export function createRouter<
     [TKey: string]: never;
   },
 >({
-  title = 'FETS API',
-  description = 'An API written with FETS',
+  title = 'feTS API',
+  description = 'An API written with feTS',
   version = '1.0.0',
   oasEndpoint = '/openapi.json',
   components,

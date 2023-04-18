@@ -19,7 +19,7 @@ const todos: Todo[] = [];
 
 export const router = createRouter({
   title: 'Todo List Example',
-  description: 'A simple todo list example with FETS',
+  description: 'A simple todo list example with feTS',
   version: '1.0.0',
   components: {
     schemas: {

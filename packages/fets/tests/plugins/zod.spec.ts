@@ -92,8 +92,8 @@ describe('zod', () => {
       {
         "components": {},
         "info": {
-          "description": "An API written with FETS",
-          "title": "FETS API",
+          "description": "An API written with feTS",
+          "title": "feTS API",
           "version": "1.0.0",
         },
         "openapi": "3.0.1",
