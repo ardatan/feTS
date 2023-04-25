@@ -9,6 +9,7 @@ import {
   ClientPlugin,
   ClientRequestParams,
   OASClient,
+  OnFetchHook,
   OnRequestInitHook,
   OnResponseHook,
 } from './types.js';
@@ -50,10 +51,14 @@ export function createClient<TOAS extends OpenAPIV3_1.Document>(
 export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {
   plugins.unshift(useValidationErrors());
   const onRequestInitHooks: OnRequestInitHook[] = [];
+  const onFetchHooks: OnFetchHook[] = [];
   const onResponseHooks: OnResponseHook[] = [];
   for (const plugin of plugins) {
     if (plugin.onRequestInit) {
       onRequestInitHooks.push(plugin.onRequestInit);
+    }
+    if (plugin.onFetch) {
+      onFetchHooks.push(plugin.onFetch);
     }
     if (plugin.onResponse) {
       onResponseHooks.push(plugin.onResponse);
@@ -128,7 +133,20 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               }
             }
 
-            response ||= await fetchFn(finalUrl, requestInit);
+            let currentFetchFn = fetchFn;
+
+            for (const onFetchHook of onFetchHooks) {
+              await onFetchHook({
+                url: finalUrl,
+                init: requestInit as RequestInit,
+                fetchFn: currentFetchFn,
+                setFetchFn(newFetchFn) {
+                  currentFetchFn = newFetchFn;
+                },
+              });
+            }
+
+            response ||= await currentFetchFn(finalUrl, requestInit);
 
             for (const onResponseHook of onResponseHooks) {
               await onResponseHook({

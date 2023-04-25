@@ -65,6 +65,7 @@ export type OASClient<TOAS extends OpenAPIV3_1.Document> = {
   [TPath in keyof OASPathMap<TOAS>]: {
     [TMethod in keyof OASMethodMap<TOAS, TPath>]: (
       requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
+      init?: RequestInit,
     ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
 };
@@ -163,11 +164,13 @@ export type ClientMethod = (requestParams?: ClientRequestParams) => Promise<Resp
 
 export interface ClientPlugin {
   onRequestInit?: OnRequestInitHook;
+  onFetch?: OnFetchHook;
   onResponse?: OnResponseHook;
 }
 
-export type OnRequestInitHook = (payload: ClientOnRequestInitPayload) => Promise<void>;
-export type OnResponseHook = (payload: ClientOnResponseHookPayload) => Promise<void>;
+export type OnRequestInitHook = (payload: ClientOnRequestInitPayload) => Promise<void> | void;
+export type OnFetchHook = (payload: ClientOnFetchHookPayload) => Promise<void> | void;
+export type OnResponseHook = (payload: ClientOnResponseHookPayload) => Promise<void> | void;
 
 export interface ClientOnRequestInitPayload {
   path: string;
@@ -175,6 +178,13 @@ export interface ClientOnRequestInitPayload {
   requestParams: ClientRequestParams;
   requestInit: RequestInit;
   endResponse(response: Response): void;
+}
+
+export interface ClientOnFetchHookPayload {
+  url: string;
+  init: RequestInit;
+  fetchFn: typeof fetch;
+  setFetchFn(fetchFn: typeof fetch): void;
 }
 
 export interface ClientOnResponseHookPayload {

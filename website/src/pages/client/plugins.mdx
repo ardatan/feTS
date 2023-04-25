@@ -4,9 +4,90 @@ feTS Client provides a plugin system that allows you hook into the request/respo
 
 - `onRequestInit` - Called before the request is sent by the client
 - - It has `endResponse` method that accepts a `Response` object to short-circuit the request
+- `onFetch` - Called when `fetch` is called by the client
+- - You can change `fetch` options or change the `fetch` function
 - `onResponse` - Called after the request is handled by the router
 - - It allows you to modify the response or throw an error to prevent the response from being
     returned
+
+## Cookies
+
+In order to handle cookies seperately from the environment, you can use the `useCookieStore` plugin.
+
+> Note: This plugin is not needed for browsers
+
+```ts
+import { CookieStore, useClientCookieStore } from 'fets'
+
+// Create a cookie store with a cookie string
+const cookieStore = new CookieStore('')
+
+const client = createClient<typeof someoas>({
+  plugins: [useClientCookieStore(cookieStore)]
+})
+```
+
+You can store cookies in a custom storage by using the events of `CookieStore`. It implements WHATWG
+Cookie Store which is documented on MDN;
+[CookieStore documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore)
+
+## Retry on fail
+
+You can install `fetch-retry` from npm and use it as a plugin.
+
+```ts
+import fetchRetry from 'fetch-retry'
+
+export function useRetry(): ClientPlugin {
+  return {
+    onFetch({ fetchFn, setFetchFn }) {
+      setFetchFn(fetchRetry(fetchFn))
+    }
+  }
+}
+```
+
+## HTTP Caching on non-browser environments
+
+Usually server environments don't have browser's HTTP caching logic. So with `fetchache`, you can
+bring this behavior to the server-side environments.
+
+`fetchache` needs a key value cache implementation to work. It can be Redis or a simple in-memory
+cache. The following example shows an example with in-memory cache.
+
+```ts
+import { fetchFactory, KeyValueCache } from 'fetchache'
+import { ClientPlugin } from 'fets'
+
+const mapForCache = new Map<string, any>()
+
+const cache: KeyValueCache = {
+  async get(key) {
+    return _map.get(key)
+  },
+  async set(key, value) {
+    _map.set(key, value)
+  },
+  async delete(key) {
+    _map.delete(key)
+  }
+}
+
+const useCache: ClientPlugin = {
+  onFetch({ fetchFn, setFetchFn }) {
+    setFetchFn(
+      fetchFactory({
+        fetch: fetchFn,
+        cache,
+        Response
+      })
+    )
+  }
+}
+```
+
+````
+
 
 ## Add `Authorization` header
 
@@ -23,7 +104,7 @@ export function useAuth(token: string): ClientPlugin {
     }
   }
 }
-```
+````
 
 ## Calculate request duration
 

@@ -84,3 +84,50 @@ client['/add-pet'].post({
   }
 })
 ```
+
+## Request Cancellation
+
+You can use [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to
+cancel a request.
+
+```ts
+const abortCtrl = new AbortController()
+
+// You can pass `signal` as the second argument to the request
+client['/add-post'].post(
+  {
+    json: {
+      title: 'Hello World',
+      content: 'This is my first post'
+    }
+  },
+  {
+    signal: abortCtrl.signal
+  }
+)
+
+// Cancel the request
+abortCtrl.abort()
+```
+
+## Request Timeout
+
+You can use
+[AbortSignal.timeout](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) to
+cancel a request.
+
+```ts filename="request-timeout.ts"
+client['/add-post'].post(
+  {
+    json: {
+      title: 'Hello World',
+      content: 'This is my first post'
+    }
+  },
+  {
+    signal: AbortSignal.timeout(5000) // 5 seconds in milliseconds
+  }
+)
+```
+
+##
