@@ -127,3 +127,17 @@ export function useDuration(): ClientPlugin {
   }
 }
 ```
+
+## HTTP/2 on Node.js
+
+HTTP/2 is automatically handled by the most of environments but Node.js needs a special treatment.
+
+You can use `fetch-h2` to enable HTTP/2 on Node.js.
+
+```ts
+import fetchH2 from 'fetch-h2'
+
+const client = createClient<typeof someoas>({
+  fetch: fetchH2 as typeof fetch
+})
+```
