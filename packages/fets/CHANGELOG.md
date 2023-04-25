@@ -1,5 +1,12 @@
 # fets
 
+## 0.1.1
+
+### Patch Changes
+
+- [`5768dd3`](https://github.com/ardatan/fets/commit/5768dd32abc195c354d9a8a1ca8b5c146ae8a47d)
+  Thanks [@ardatan](https://github.com/ardatan)! - Cookies plugin and onFetch hook
+
 ## 0.1.0
 
 ### Minor Changes
