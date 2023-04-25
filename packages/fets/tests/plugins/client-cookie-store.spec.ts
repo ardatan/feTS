@@ -1,4 +1,5 @@
 import { CookieStore } from '@whatwg-node/cookie-store';
+import { Response } from '@whatwg-node/fetch';
 import { createClient } from '../../src/client/createClient';
 import { useClientCookieStore } from '../../src/client/plugins/useClientCookieStore';
 
