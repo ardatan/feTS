@@ -1,5 +1,4 @@
-import { type Mutable, createClient } from 'fets';
-
+import { createClient, type Mutable } from 'fets';
 import { oas } from '../server/oas';
 
 export const client = createClient<Mutable<typeof oas>>({

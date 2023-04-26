@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import { openApiDocument } from '../../server/openapi';
 
 // Respond with our OpenAPI schema

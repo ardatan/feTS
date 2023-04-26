@@ -1,7 +1,6 @@
-import type { Mutable, OASOutput } from 'fets';
-import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-
+import type { NextPage } from 'next';
+import type { Mutable, OASOutput } from 'fets';
 import { client } from '../fets/client';
 import { oas } from '../server/oas';
 
@@ -16,7 +15,7 @@ const Home: NextPage = () => {
       return response.json();
     };
     fetchPosts()
-      .then((res) => {
+      .then(res => {
         setPosts(res.posts);
         return res;
       })
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
     <div>
       <h1>Posts</h1>
       <ul>
-        {posts.map((post) => (
+        {posts.map(post => (
           <li key={post.id}>{post.content}</li>
         ))}
       </ul>

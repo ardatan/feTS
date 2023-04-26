@@ -1,11 +1,10 @@
-import { TRPCError, initTRPC } from '@trpc/server';
-import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 import jwt from 'jsonwebtoken';
 import { OpenApiMeta } from 'trpc-openapi';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
-
-import { Post, User, database } from './database';
+import { initTRPC, TRPCError } from '@trpc/server';
+import { CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { database, Post, User } from './database';
 
 const jwtSecret = uuid();
 
@@ -38,7 +37,7 @@ export const createContext = async ({ req, res }: CreateNextContextOptions): Pro
       const token = req.headers.authorization.split(' ')[1];
       const userId = jwt.verify(token, jwtSecret) as string;
       if (userId) {
-        user = database.users.find((_user) => _user.id === userId) ?? null;
+        user = database.users.find(_user => _user.id === userId) ?? null;
       }
     }
   } catch (cause) {
@@ -73,7 +72,7 @@ const authRouter = t.router({
       z.object({
         email: z.string().email(),
         passcode: z.preprocess(
-          (arg) => (typeof arg === 'string' ? parseInt(arg) : arg),
+          arg => (typeof arg === 'string' ? parseInt(arg) : arg),
           z.number().min(1000).max(9999),
         ),
         name: z.string().min(3),
@@ -89,7 +88,7 @@ const authRouter = t.router({
       }),
     )
     .mutation(({ input }) => {
-      let user = database.users.find((_user) => _user.email === input.email);
+      let user = database.users.find(_user => _user.email === input.email);
 
       if (user) {
         throw new TRPCError({
@@ -122,7 +121,7 @@ const authRouter = t.router({
       z.object({
         email: z.string().email(),
         passcode: z.preprocess(
-          (arg) => (typeof arg === 'string' ? parseInt(arg) : arg),
+          arg => (typeof arg === 'string' ? parseInt(arg) : arg),
           z.number().min(1000).max(9999),
         ),
       }),
@@ -133,7 +132,7 @@ const authRouter = t.router({
       }),
     )
     .mutation(({ input }) => {
-      const user = database.users.find((_user) => _user.email === input.email);
+      const user = database.users.find(_user => _user.email === input.email);
 
       if (!user) {
         throw new TRPCError({
@@ -177,7 +176,7 @@ const usersRouter = t.router({
       }),
     )
     .query(() => {
-      const users = database.users.map((user) => ({
+      const users = database.users.map(user => ({
         id: user.id,
         email: user.email,
         name: user.name,
@@ -209,7 +208,7 @@ const usersRouter = t.router({
       }),
     )
     .query(({ input }) => {
-      const user = database.users.find((_user) => _user.id === input.id);
+      const user = database.users.find(_user => _user.id === input.id);
 
       if (!user) {
         throw new TRPCError({
@@ -252,7 +251,7 @@ const postsRouter = t.router({
       let posts: Post[] = database.posts;
 
       if (input.userId) {
-        posts = posts.filter((post) => {
+        posts = posts.filter(post => {
           return post.userId === input.userId;
         });
       }
@@ -283,7 +282,7 @@ const postsRouter = t.router({
       }),
     )
     .query(({ input }) => {
-      const post = database.posts.find((_post) => _post.id === input.id);
+      const post = database.posts.find(_post => _post.id === input.id);
 
       if (!post) {
         throw new TRPCError({
@@ -355,7 +354,7 @@ const postsRouter = t.router({
       }),
     )
     .mutation(({ input, ctx }) => {
-      const post = database.posts.find((_post) => _post.id === input.id);
+      const post = database.posts.find(_post => _post.id === input.id);
 
       if (!post) {
         throw new TRPCError({
@@ -391,7 +390,7 @@ const postsRouter = t.router({
     )
     .output(z.null())
     .mutation(({ input, ctx }) => {
-      const post = database.posts.find((_post) => _post.id === input.id);
+      const post = database.posts.find(_post => _post.id === input.id);
 
       if (!post) {
         throw new TRPCError({
@@ -406,7 +405,7 @@ const postsRouter = t.router({
         });
       }
 
-      database.posts = database.posts.filter((_post) => _post !== post);
+      database.posts = database.posts.filter(_post => _post !== post);
 
       return null;
     }),

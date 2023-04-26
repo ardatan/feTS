@@ -1,5 +1,4 @@
 import { generateOpenApiDocument } from 'trpc-openapi';
-
 import { appRouter } from './router';
 
 // Generate OpenAPI schema document
