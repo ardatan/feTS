@@ -103,7 +103,7 @@ export function useOpenAPI({
           for (const statusCode in schemas.responses) {
             let responseSchema: any = schemas.responses[statusCode as any as StatusCode];
             if (isZodSchema(responseSchema)) {
-              responseSchema = zodToJsonSchema(responseSchema);
+              responseSchema = zodToJsonSchema(responseSchema as any);
             }
             operation.responses = operation.responses || {};
             operation.responses[statusCode] = {
@@ -125,7 +125,7 @@ export function useOpenAPI({
         if (schemas.request?.headers) {
           let headersSchema: any = schemas.request.headers;
           if (isZodSchema(headersSchema)) {
-            headersSchema = zodToJsonSchema(headersSchema);
+            headersSchema = zodToJsonSchema(headersSchema as any);
           }
           for (const headerName in headersSchema.properties) {
             const headerSchema = headersSchema.properties[headerName];
@@ -141,7 +141,7 @@ export function useOpenAPI({
         if (schemas.request?.params) {
           let paramsSchema: any = schemas.request.params;
           if (isZodSchema(paramsSchema)) {
-            paramsSchema = zodToJsonSchema(paramsSchema);
+            paramsSchema = zodToJsonSchema(paramsSchema as any);
           }
           for (const paramName in paramsSchema.properties) {
             const paramSchema: any = paramsSchema.properties[paramName];
@@ -157,7 +157,7 @@ export function useOpenAPI({
         if (schemas.request?.query) {
           let queriesSchema: any = schemas.request.query;
           if (isZodSchema(queriesSchema)) {
-            queriesSchema = zodToJsonSchema(queriesSchema);
+            queriesSchema = zodToJsonSchema(queriesSchema as any);
           }
           for (const queryName in queriesSchema.properties) {
             const querySchema = queriesSchema.properties[queryName];
@@ -173,7 +173,7 @@ export function useOpenAPI({
         if (schemas.request?.json) {
           let requestJsonSchema: any = schemas.request.json;
           if (isZodSchema(requestJsonSchema)) {
-            requestJsonSchema = zodToJsonSchema(requestJsonSchema);
+            requestJsonSchema = zodToJsonSchema(requestJsonSchema as any);
           }
           operation.requestBody = {
             content: {

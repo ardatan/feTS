@@ -1,10 +1,13 @@
-import { ZodIssue } from 'zod';
 import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
 import { PromiseOrValue, RouterPlugin, RouterRequest } from '../types.js';
 import { isZodSchema } from './types.js';
 
-type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ZodIssue[]>;
+type ZodError = {
+  message: string;
+}
+
+type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ZodError[]>;
 
 export function useZod(): RouterPlugin<any> {
   return {

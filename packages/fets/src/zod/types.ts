@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import {
   HTTPMethod,
   TypedRequest,
@@ -7,15 +6,18 @@ import {
 } from '../typed-fetch';
 import { AddRouteWithTypesOpts, StatusCodeMap } from '../types';
 
+export type ZodType = { _output: any; safeParse(input: any): any; };
+export type InferZodType<T extends ZodType> = T['_output'];
+
 export type RouteZodSchemas = {
   request?: {
-    json?: z.ZodType;
-    formData?: z.ZodType;
-    headers?: z.ZodType;
-    params?: z.ZodType;
-    query?: z.ZodType;
+    json?: ZodType;
+    formData?: ZodType;
+    headers?: ZodType;
+    params?: ZodType;
+    query?: ZodType;
   };
-  responses?: StatusCodeMap<z.ZodType>;
+  responses?: StatusCodeMap<ZodType>;
 };
 
 export type TypedRequestFromRouteZodSchemas<
@@ -23,30 +25,30 @@ export type TypedRequestFromRouteZodSchemas<
   TMethod extends HTTPMethod,
 > = TRouteZodSchemas extends { request: Required<RouteZodSchemas>['request'] }
   ? TypedRequest<
-      TRouteZodSchemas['request'] extends { json: z.ZodType }
-        ? z.infer<TRouteZodSchemas['request']['json']>
+      TRouteZodSchemas['request'] extends { json: ZodType }
+        ? InferZodType<TRouteZodSchemas['request']['json']>
         : any,
-      TRouteZodSchemas['request'] extends { formData: z.ZodType }
-        ? z.infer<TRouteZodSchemas['request']['formData']>
+      TRouteZodSchemas['request'] extends { formData: ZodType }
+        ? InferZodType<TRouteZodSchemas['request']['formData']>
         : Record<string, FormDataEntryValue>,
-      TRouteZodSchemas['request'] extends { headers: z.ZodType }
-        ? z.infer<TRouteZodSchemas['request']['headers']>
+      TRouteZodSchemas['request'] extends { headers: ZodType }
+        ? InferZodType<TRouteZodSchemas['request']['headers']>
         : Record<string, string>,
       TMethod,
-      TRouteZodSchemas['request'] extends { query: z.ZodType }
-        ? z.infer<TRouteZodSchemas['request']['query']>
+      TRouteZodSchemas['request'] extends { query: ZodType }
+        ? InferZodType<TRouteZodSchemas['request']['query']>
         : Record<string, string | string[]>,
-      TRouteZodSchemas['request'] extends { params: z.ZodType }
-        ? z.infer<TRouteZodSchemas['request']['params']>
+      TRouteZodSchemas['request'] extends { params: ZodType }
+        ? InferZodType<TRouteZodSchemas['request']['params']>
         : Record<string, any>
     >
   : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
 
 export type TypedResponseFromRouteZodSchemas<TRouteZodSchemas extends RouteZodSchemas> =
-  TRouteZodSchemas extends { responses: StatusCodeMap<z.ZodType> }
+  TRouteZodSchemas extends { responses: StatusCodeMap<ZodType> }
     ? TypedResponseWithJSONStatusMap<{
-        [TStatusCode in keyof TRouteZodSchemas['responses']]: TRouteZodSchemas['responses'][TStatusCode] extends z.ZodType
-          ? z.infer<TRouteZodSchemas['responses'][TStatusCode]>
+        [TStatusCode in keyof TRouteZodSchemas['responses']]: TRouteZodSchemas['responses'][TStatusCode] extends ZodType
+          ? InferZodType<TRouteZodSchemas['responses'][TStatusCode]>
           : never;
       }>
     : TypedResponse;
@@ -62,6 +64,6 @@ export type AddRouteWithZodSchemasOpts<
   schemas: TRouteZodSchemas;
 } & AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 
-export function isZodSchema(value: any): value is z.ZodType {
-  return value && typeof value === 'object' && typeof value.parse === 'function';
+export function isZodSchema(value: any): value is ZodType {
+  return value && typeof value === 'object' && typeof value.safeParse === 'function';
 }
