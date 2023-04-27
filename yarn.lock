@@ -2630,10 +2630,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@1.100.1":
-  version "1.100.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-1.100.1.tgz#36ca4c74681c070384500864ff4033d1b59a266a"
-  integrity sha512-iBmjLhjWdVNhsxx1ycH5NKYwj4+WTD9eZU1YLUsThUN1PjG9DYGdNCxu0621iGa800ZpOr00SyLjb/tjV1k04g==
+"@pulumi/azure-native@1.101.0":
+  version "1.101.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-1.101.0.tgz#14ca60a84109a265f31edccf97076883ebcfcded"
+  integrity sha512-SMtiOLfiDS0QW98op1lxo4YRQ2q8DHTFhV56FPwCXVatMjLaJlMmGIKtzjiSnh50ztIr6zUMCG++lokdPaAtUQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2652,10 +2652,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.64.0", "@pulumi/pulumi@^3.0.0":
-  version "3.64.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.64.0.tgz#8b599b6bb53dcee935192e154e3cf56ae3b30178"
-  integrity sha512-yKEABPiNqOXAlZcGiBSbYElwDrx82IjDUS07R+K3g05EzEttMN5YKv/NjTZsiSWtOGuGscStJnwEWWCjj4GhGQ==
+"@pulumi/pulumi@3.65.1", "@pulumi/pulumi@^3.0.0":
+  version "3.65.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.65.1.tgz#2e8e1a30ac8f543db9250a5ae771751bcbb50254"
+  integrity sha512-XhyBtrA8dvgpiMt7jTnhIuRKIVQ0e/P89WRcsPdkYpnJVM3dc7YdMrFPZ4ceWrDdbNuNgq/fNOCsnxjo5BM/WA==
   dependencies:
     "@grpc/grpc-js" "^1.3.8"
     "@logdna/tail-file" "^2.0.6"
@@ -3446,9 +3446,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/jsonwebtoken@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-9.0.1.tgz#29b1369c4774200d6d6f63135bf3d1ba3ef997a4"
-  integrity sha512-c5ltxazpWabia/4UzhIoaDcIza4KViOQhdbjRlfcIGVnsE3c3brkz9Z+F/EeJIECOQP7W7US2hNE930cWWkPiw==
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-9.0.2.tgz#9eeb56c76dd555039be2a3972218de5bd3b8d83e"
+  integrity sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==
   dependencies:
     "@types/node" "*"
 
@@ -11413,12 +11413,12 @@ safe-array-concat@^1.0.0:
     has-symbols "^1.0.3"
     isarray "^2.0.5"
 
-safe-buffer@5.2.1, safe-buffer@^5.0.1, safe-buffer@^5.1.0:
+safe-buffer@5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
-safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
