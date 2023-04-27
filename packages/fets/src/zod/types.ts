@@ -6,7 +6,7 @@ import {
 } from '../typed-fetch';
 import { AddRouteWithTypesOpts, StatusCodeMap } from '../types';
 
-export type ZodType = { _output: any; safeParse(input: any): any; };
+export type ZodType = { _output: any; safeParse(input: any): any };
 export type InferZodType<T extends ZodType> = T['_output'];
 
 export type RouteZodSchemas = {

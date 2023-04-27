@@ -5,7 +5,7 @@ import { isZodSchema } from './types.js';
 
 type ZodError = {
   message: string;
-}
+};
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ZodError[]>;
 

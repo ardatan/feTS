@@ -12,7 +12,6 @@ const client = createClient<typeof router>({
 });
 
 async function main() {
-
   // Add todo
 
   const addTodoRes = await client['/todo'].put({
@@ -46,7 +45,6 @@ async function main() {
   });
 
   assertExp(deleteTodoRes.ok, 'Failed to delete todo');
-
 }
 
 main().catch(console.error);
