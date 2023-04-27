@@ -3235,9 +3235,9 @@
     lodash "^4.17.21"
 
 "@trpc/server@^10.9.0":
-  version "10.21.1"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.21.1.tgz#42a321d8199b4ad800b9e786b4249a9b6df45d6c"
-  integrity sha512-4E4upTD2/Aq0Dm9HW4nbKSoIlqbV/ajRqNl1MCFBd9FjTv47qq2ncmAWMbb0AIVh2UV87PJlTjpPNNecRm6g9Q==
+  version "10.21.2"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.21.2.tgz#33f4ae2e1330dbc37e0c9e2337bdc8f97be72892"
+  integrity sha512-4v9FIOQw1J06OLICLj0M5jmrVF1XCEyu1FXvZA4wB/om1q18NWENXaLjcisgvV/h2gBxx8iN00t9/bE9jn2+fw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
