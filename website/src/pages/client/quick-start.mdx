@@ -25,10 +25,10 @@ Then, you can create a client instance by passing the OpenAPI document to the `c
 function.
 
 ```ts filename="client.ts"
-import { createClient, Mutable } from 'fets'
+import { createClient, ResolveRefsInObj } from 'fets'
 import openapi from './openapi'
 
-const client = createClient<Mutable<typeof openapi>>()
+const client = createClient<ResolveRefsInObj<typeof openapi>>()
 
 const response = await client['/pets'].get()
 
