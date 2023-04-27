@@ -1,24 +1,24 @@
 /* eslint-disable camelcase */
+import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 import { OpenAPIV3_1 } from 'openapi-types';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema } from '../types.js';
-import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 
 export type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
 
-type RefToPath<T extends string> = T extends `#/${infer Ref}` ? Pipe<
-  Ref,
-  [
-    Strings.Split<'/'>,
-    Tuples.Join<'.'>,
-  ]
-> : never;
+type RefToPath<T extends string> = T extends `#/${infer Ref}`
+  ? Pipe<Ref, [Strings.Split<'/'>, Tuples.Join<'.'>]>
+  : never;
 
-type ResolveRef<TObj, TRef extends string> = Call<Objects.Get<RefToPath<TRef>>, TObj>
+type ResolveRef<TObj, TRef extends string> = Call<Objects.Get<RefToPath<TRef>>, TObj>;
 
-type ResolveRefInObj<T, TBase> = T extends { $ref: infer Ref } ? Ref extends string ? ResolveRef<TBase, Ref> : T : T;
+type ResolveRefInObj<T, TBase> = T extends { $ref: infer Ref }
+  ? Ref extends string
+    ? ResolveRef<TBase, Ref>
+    : T
+  : T;
 
 export type ResolveRefsInObj<T, TBase = T> = Mutable<{
   [K in keyof T]: ResolveRefsInObj<ResolveRefInObj<T[K], TBase>, TBase>;
@@ -41,7 +41,7 @@ export type OASJSONResponseSchema<
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
-  > = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content']['application/json']['schema'];
+> = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content']['application/json']['schema'];
 
 type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']}`
   ? R['length']
@@ -148,7 +148,7 @@ export type OASOutput<
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatusCode extends keyof OASStatusMap<TOAS, TPath, TMethod> = 200,
-> = FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatusCode> >;
+> = FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatusCode>>;
 
 export type OASComponentSchema<
   TOAS extends OpenAPIV3_1.Document,

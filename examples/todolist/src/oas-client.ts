@@ -1,4 +1,4 @@
-import { createClient, ResolveRefsInObj, OASOutput } from 'fets';
+import { createClient, OASOutput, ResolveRefsInObj } from 'fets';
 import type oas from './saved_openapi';
 
 const client = createClient<ResolveRefsInObj<typeof oas>>({

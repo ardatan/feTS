@@ -13,7 +13,7 @@ type OASModel<TOASDocument extends OpenAPI.Document, TModelName extends string>
 ### Example
 
 ```ts
-import { ResolveRefsInObj, OASModel } from 'fets'
+import { OASModel, ResolveRefsInObj } from 'fets'
 import type oas from './openapi'
 
 // This will infer `User` from `components.schemas.User`
@@ -31,7 +31,7 @@ type OASRequestBody<TOASDocument extends OpenAPI.Document, TPath extends string,
 ### Example
 
 ```ts
-import { ResolveRefsInObj, OASRequestParameters } from 'fets'
+import { OASRequestParameters, ResolveRefsInObj } from 'fets'
 import type oas from './openapi'
 
 type AddUserInput = OASRequestParams<ResolveRefsInObj<typeof oas>, '/user', 'POST'>
@@ -48,7 +48,7 @@ type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string
 ### Example
 
 ```ts filename="user-response-body"
-import { ResolveRefsInObj, OASResponseBody } from 'fets'
+import { OASResponseBody, ResolveRefsInObj } from 'fets'
 import type oas from './openapi'
 
 type UserByIdResponse = OASResponseBody<ResolveRefsInObj<typeof oas>, '/user/:id', 'POST', 200>
