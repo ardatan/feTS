@@ -29,6 +29,18 @@ export default {
               },
             },
           },
+          default: {
+            description: '',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: { message: { type: 'string' } },
+                  additionalProperties: false,
+                },
+              },
+            },
+          },
         },
       },
     },

@@ -12,12 +12,14 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await client['/posts'].get();
+      if (!response.ok) throw new Error('Failed to fetch posts');
       return response.json();
     };
     fetchPosts()
       .then(res => {
-        setPosts(res.posts);
-        return res;
+        if (res.posts) {
+          setPosts(res.posts);
+        }
       })
       .catch(console.error);
   }, []);

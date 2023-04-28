@@ -11,36 +11,40 @@ const client = createClient<typeof router>({
   endpoint: 'http://localhost:3000',
 });
 
-// Add todo
+async function main() {
+  // Add todo
 
-const addTodoRes = await client['/todo'].put({
-  json: {
-    content: 'Drink coffee',
-  },
-});
+  const addTodoRes = await client['/todo'].put({
+    json: {
+      content: 'Drink coffee',
+    },
+  });
 
-const addedTodo = await addTodoRes.json();
+  const addedTodo = await addTodoRes.json();
 
-// Ensure todo is there
+  // Ensure todo is there
 
-const getTodosRes = await client['/todo/:id'].get({
-  params: {
-    id: addedTodo.id,
-  },
-});
+  const getTodosRes = await client['/todo/:id'].get({
+    params: {
+      id: addedTodo.id,
+    },
+  });
 
-assertExp(getTodosRes.ok, 'Todo not found');
+  assertExp(getTodosRes.ok, 'Todo not found');
 
-const todo = await getTodosRes.json();
+  const todo = await getTodosRes.json();
 
-assertExp(todo.content === 'Drink coffee', 'Todo content is not correct');
+  assertExp(todo.content === 'Drink coffee', 'Todo content is not correct');
 
-// Delete todo
+  // Delete todo
 
-const deleteTodoRes = await client['/todo/:id'].delete({
-  params: {
-    id: addedTodo.id,
-  },
-});
+  const deleteTodoRes = await client['/todo/:id'].delete({
+    params: {
+      id: addedTodo.id,
+    },
+  });
 
-assertExp(deleteTodoRes.ok, 'Failed to delete todo');
+  assertExp(deleteTodoRes.ok, 'Failed to delete todo');
+}
+
+main().catch(console.error);

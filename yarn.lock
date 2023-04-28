@@ -7230,6 +7230,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
+hotscript@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/hotscript/-/hotscript-1.0.11.tgz#eb3040bff6168ca5b627f18bb5ed2b6f73ae59f5"
+  integrity sha512-p7tUz9Lb0M1a/tUJxrXp/8NJ0QbD2UyfFIa89tCkeXB+K8jdIIVSHm7njNDbxw8uorjxRk3iGc2y2KJB5UMKIg==
+
 htm@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/htm/-/htm-3.1.1.tgz#49266582be0dc66ed2235d5ea892307cc0c24b78"

@@ -115,7 +115,6 @@ describe('zod', () => {
                 "content": {
                   "application/json": {
                     "schema": {
-                      "$schema": "http://json-schema.org/draft-07/schema#",
                       "additionalProperties": false,
                       "properties": {
                         "bar": {

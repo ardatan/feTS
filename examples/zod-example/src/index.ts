@@ -1,12 +1,13 @@
 import { createServer } from 'http';
-import { createRouter, Response, zod } from 'fets';
+import { createRouter, Response } from 'fets';
+import { z } from 'zod';
 
-const TodoSchema = zod.object({
-  id: zod.string(),
-  content: zod.string(),
+const TodoSchema = z.object({
+  id: z.string(),
+  content: z.string(),
 });
 
-type Todo = zod.infer<typeof TodoSchema>;
+type Todo = z.infer<typeof TodoSchema>;
 
 const todos: Todo[] = [];
 
@@ -23,8 +24,8 @@ export const router = createRouter()
     path: '/todo/:id',
     schemas: {
       request: {
-        params: zod.object({
-          id: zod.string(),
+        params: z.object({
+          id: z.string(),
         }),
       },
     },
@@ -50,8 +51,8 @@ export const router = createRouter()
     path: '/todo',
     schemas: {
       request: {
-        json: zod.object({
-          content: zod.string(),
+        json: z.object({
+          content: z.string(),
         }),
       },
     },
@@ -71,8 +72,8 @@ export const router = createRouter()
     path: '/todo/:id',
     schemas: {
       request: {
-        params: zod.object({
-          id: zod.string(),
+        params: z.object({
+          id: z.string(),
         }),
       },
     },

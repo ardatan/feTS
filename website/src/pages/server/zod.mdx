@@ -1,23 +1,24 @@
 # Programmatic Schemas with Zod
 
-You can also define your schemas with [zod](https://zod.dev/) instead of JSON Schemas. feTS
+You can also define your schemas with [zod](https://z.dev/) instead of JSON Schemas. feTS
 automatically converts them into JSON Schemas under the hood and uses them to validate your data.
 
 ## Example
 
 ```typescript
-import { createRouter, Response, zod } from 'fets'
+import { createRouter, Response } from 'fets'
+import { z } from 'zod'
 
 const router = createRouter().route({
   path: '/user/:id',
   method: 'POST',
   schemas: {
     request: {
-      headers: zod.object({
-        authorization: zod.string().regex(/Bearer .+/)
+      headers: z.object({
+        authorization: z.string().regex(/Bearer .+/)
       }),
-      params: zod.object({
-        id: zod.string().uuid()
+      params: z.object({
+        id: z.string().uuid()
       })
     }
   },

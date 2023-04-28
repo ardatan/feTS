@@ -101,9 +101,11 @@ export function useOpenAPI({
         operation.description = description;
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
-            let responseSchema: any = schemas.responses[statusCode as any as StatusCode];
+            let responseSchema = schemas.responses[statusCode as any as StatusCode];
             if (isZodSchema(responseSchema)) {
-              responseSchema = zodToJsonSchema(responseSchema);
+              responseSchema = zodToJsonSchema(responseSchema as any, {
+                target: 'openApi3',
+              });
             }
             operation.responses = operation.responses || {};
             operation.responses[statusCode] = {
@@ -125,7 +127,9 @@ export function useOpenAPI({
         if (schemas.request?.headers) {
           let headersSchema: any = schemas.request.headers;
           if (isZodSchema(headersSchema)) {
-            headersSchema = zodToJsonSchema(headersSchema);
+            headersSchema = zodToJsonSchema(headersSchema as any, {
+              target: 'openApi3',
+            });
           }
           for (const headerName in headersSchema.properties) {
             const headerSchema = headersSchema.properties[headerName];
@@ -141,7 +145,9 @@ export function useOpenAPI({
         if (schemas.request?.params) {
           let paramsSchema: any = schemas.request.params;
           if (isZodSchema(paramsSchema)) {
-            paramsSchema = zodToJsonSchema(paramsSchema);
+            paramsSchema = zodToJsonSchema(paramsSchema as any, {
+              target: 'openApi3',
+            });
           }
           for (const paramName in paramsSchema.properties) {
             const paramSchema: any = paramsSchema.properties[paramName];
@@ -157,7 +163,9 @@ export function useOpenAPI({
         if (schemas.request?.query) {
           let queriesSchema: any = schemas.request.query;
           if (isZodSchema(queriesSchema)) {
-            queriesSchema = zodToJsonSchema(queriesSchema);
+            queriesSchema = zodToJsonSchema(queriesSchema as any, {
+              target: 'openApi3',
+            });
           }
           for (const queryName in queriesSchema.properties) {
             const querySchema = queriesSchema.properties[queryName];
@@ -173,23 +181,27 @@ export function useOpenAPI({
         if (schemas.request?.json) {
           let requestJsonSchema: any = schemas.request.json;
           if (isZodSchema(requestJsonSchema)) {
-            requestJsonSchema = zodToJsonSchema(requestJsonSchema);
+            requestJsonSchema = zodToJsonSchema(requestJsonSchema as any, {
+              target: 'openApi3',
+            });
           }
-          operation.requestBody = {
-            content: {
-              'application/json': {
-                schema: requestJsonSchema,
-              },
-            },
+          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
+          requestBodyContent['application/json'] = {
+            schema: requestJsonSchema,
           };
         }
         if (schemas.request?.formData) {
-          operation.requestBody = {
-            content: {
-              'multipart/form-data': {
-                schema: schemas.request.formData as any,
-              },
-            },
+          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
+          let requestFormDataSchema: any = schemas.request.formData;
+          if (isZodSchema(requestFormDataSchema)) {
+            requestFormDataSchema = zodToJsonSchema(requestFormDataSchema as any, {
+              target: 'openApi3',
+            });
+          }
+          requestBodyContent['multipart/form-data'] = {
+            schema: requestFormDataSchema,
           };
         }
       }

@@ -5,6 +5,10 @@ const client = createClient<Mutable<typeof oas>>();
 
 const getAllTodosRes = await client['/todos'].get();
 
+if (!getAllTodosRes.ok) {
+  throw new Error('Failed to get todos');
+}
+
 const todos = await getAllTodosRes.json();
 
 const firstTodo = todos[0];
