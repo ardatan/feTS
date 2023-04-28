@@ -13,11 +13,11 @@ type OASModel<TOASDocument extends OpenAPI.Document, TModelName extends string>
 ### Example
 
 ```ts
-import { OASModel, ResolveRefsInObj } from 'fets'
+import { OASModel, Mutable } from 'fets'
 import type oas from './openapi'
 
 // This will infer `User` from `components.schemas.User`
-type User = OASModel<ResolveRefsInObj<typeof oas>, 'User'>
+type User = OASModel<Mutable<typeof oas>, 'User'>
 ```
 
 ## Request Parameters
@@ -31,10 +31,10 @@ type OASRequestBody<TOASDocument extends OpenAPI.Document, TPath extends string,
 ### Example
 
 ```ts
-import { OASRequestParameters, ResolveRefsInObj } from 'fets'
+import { OASRequestParameters, Mutable } from 'fets'
 import type oas from './openapi'
 
-type AddUserInput = OASRequestParams<ResolveRefsInObj<typeof oas>, '/user', 'POST'>
+type AddUserInput = OASRequestParams<Mutable<typeof oas>, '/user', 'POST'>
 ```
 
 ## Response body
@@ -48,8 +48,8 @@ type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string
 ### Example
 
 ```ts filename="user-response-body"
-import { OASResponseBody, ResolveRefsInObj } from 'fets'
+import { OASResponseBody, Mutable } from 'fets'
 import type oas from './openapi'
 
-type UserByIdResponse = OASResponseBody<ResolveRefsInObj<typeof oas>, '/user/:id', 'POST', 200>
+type UserByIdResponse = OASResponseBody<Mutable<typeof oas>, '/user/:id', 'POST', 200>
 ```

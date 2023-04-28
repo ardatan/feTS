@@ -1,7 +1,7 @@
-import { createClient, ResolveRefsInObj } from '../src/client';
+import { createClient, Mutable } from '../src/client';
 import type oas from './fixtures/example-oas';
 
-const client = createClient<ResolveRefsInObj<typeof oas>>();
+const client = createClient<Mutable<typeof oas>>();
 
 const getAllTodosRes = await client['/todos'].get();
 

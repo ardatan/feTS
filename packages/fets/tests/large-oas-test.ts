@@ -1,7 +1,7 @@
-import { createClient, type ResolveRefsInObj } from '../src';
+import { createClient, type Mutable } from '../src';
 import oas from './fixtures/large-oas';
 
-export const client = createClient<ResolveRefsInObj<typeof oas>>({
+export const client = createClient<Mutable<typeof oas>>({
   endpoint: 'http://localhost:3000/api',
 });
 

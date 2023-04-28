@@ -4,7 +4,7 @@ import { OpenAPIV3_1 } from 'openapi-types';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema } from '../types.js';
 
-export type Mutable<Type> = {
+type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
 
@@ -20,9 +20,15 @@ type ResolveRefInObj<T, TBase> = T extends { $ref: infer Ref }
     : T
   : T;
 
-export type ResolveRefsInObj<T, TBase = T> = Mutable<{
+type ResolveRefsInObj<T, TBase = T> = {
   [K in keyof T]: ResolveRefsInObj<ResolveRefInObj<T[K], TBase>, TBase>;
-}>;
+};
+
+type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
+
+export {
+  MutableResolvedObj as Mutable,
+}
 
 export type OASPathMap<TOAS extends OpenAPIV3_1.Document> = TOAS['paths'];
 export type OASMethodMap<
