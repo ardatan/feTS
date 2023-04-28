@@ -26,9 +26,7 @@ type ResolveRefsInObj<T, TBase = T> = {
 
 type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
 
-export {
-  MutableResolvedObj as Mutable,
-}
+export { MutableResolvedObj as Mutable };
 
 export type OASPathMap<TOAS extends OpenAPIV3_1.Document> = TOAS['paths'];
 export type OASMethodMap<

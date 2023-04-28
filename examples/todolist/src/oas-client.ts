@@ -1,4 +1,4 @@
-import { createClient, OASOutput, Mutable } from 'fets';
+import { createClient, Mutable, OASOutput } from 'fets';
 import type oas from './saved_openapi';
 
 const client = createClient<Mutable<typeof oas>>({

@@ -13,7 +13,7 @@ type OASModel<TOASDocument extends OpenAPI.Document, TModelName extends string>
 ### Example
 
 ```ts
-import { OASModel, Mutable } from 'fets'
+import { Mutable, OASModel } from 'fets'
 import type oas from './openapi'
 
 // This will infer `User` from `components.schemas.User`
@@ -31,7 +31,7 @@ type OASRequestBody<TOASDocument extends OpenAPI.Document, TPath extends string,
 ### Example
 
 ```ts
-import { OASRequestParameters, Mutable } from 'fets'
+import { Mutable, OASRequestParameters } from 'fets'
 import type oas from './openapi'
 
 type AddUserInput = OASRequestParams<Mutable<typeof oas>, '/user', 'POST'>
@@ -48,7 +48,7 @@ type OASResponseBody<TOASDocument extends OpenAPI.Document, TPath extends string
 ### Example
 
 ```ts filename="user-response-body"
-import { OASResponseBody, Mutable } from 'fets'
+import { Mutable, OASResponseBody } from 'fets'
 import type oas from './openapi'
 
 type UserByIdResponse = OASResponseBody<Mutable<typeof oas>, '/user/:id', 'POST', 200>
