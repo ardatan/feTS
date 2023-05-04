@@ -1,5 +1,28 @@
 # fets
 
+## 0.1.2
+
+### Patch Changes
+
+- [`804c0b9`](https://github.com/ardatan/feTS/commit/804c0b9b07f3565b1d8ed8b2eb488e912dfcf6fd)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+
+  - Added dependency [`hotscript@^1.0.11` ↗︎](https://www.npmjs.com/package/hotscript/v/1.0.11) (to
+    `dependencies`)
+  - Removed dependency [`zod@^3.21.4` ↗︎](https://www.npmjs.com/package/zod/v/3.21.4) (from
+    `dependencies`)
+
+- [#133](https://github.com/ardatan/feTS/pull/133)
+  [`9bf4ee2`](https://github.com/ardatan/feTS/commit/9bf4ee2cd27bae9565eb124de1a2b8a7d5903c27)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+
+  - Updated dependency
+    [`zod-to-json-schema@3.20.5` ↗︎](https://www.npmjs.com/package/zod-to-json-schema/v/3.20.5)
+    (from `3.20.4`, in `dependencies`)
+
+- [`804c0b9`](https://github.com/ardatan/feTS/commit/804c0b9b07f3565b1d8ed8b2eb488e912dfcf6fd)
+  Thanks [@ardatan](https://github.com/ardatan)! - Handle $refs in all of the object types
+
 ## 0.1.1
 
 ### Patch Changes
