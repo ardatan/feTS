@@ -30,7 +30,8 @@ jobs:
         name: build and deploy website
         env:
           NEXT_BASE_PATH: ${{ github.ref == 'refs/heads/master' && '/openapi/fets' || '' }}
-          SITE_URL: ${{ github.ref == 'refs/heads/master' && 'https://the-guild.dev/openapi/fets' || '' }}
+          SITE_URL:
+            ${{ github.ref == 'refs/heads/master' && 'https://the-guild.dev/openapi/fets' || '' }}
           NEXT_PUBLIC_ALGOLIA_INDEX_NAME: ${{ secrets.NEXT_PUBLIC_ALGOLIA_INDEX_NAME }}
           NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: ${{ secrets.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY }}
           NEXT_PUBLIC_ALGOLIA_APP_ID: ${{ secrets.NEXT_PUBLIC_ALGOLIA_APP_ID }}
