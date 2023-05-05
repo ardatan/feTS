@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
-import type { ErrorObject, Options } from 'ajv';
+import type { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
-import jsonSerializerFactory from 'fast-json-stringify';
+import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { URL } from '@whatwg-node/fetch';
 import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
@@ -22,7 +22,7 @@ export function useAjv({
 }: {
   components?: RouterComponentsBase;
 } = {}): RouterPlugin<any> {
-  const ajvOptions: Options = {
+  const ajv = new Ajv({
     strict: false,
     strictSchema: false,
     validateSchema: false,
@@ -56,9 +56,17 @@ export function useAjv({
         );
       },
     },
-  };
-  const ajv = new Ajv(ajvOptions);
+  });
   addFormats(ajv);
+  // Required for fast-json-stringify
+  ajv.addKeyword({
+    keyword: 'fjs_type',
+    type: 'object',
+    errors: false,
+    validate: (_type: unknown, date: unknown) => {
+      return date instanceof Date;
+    },
+  });
 
   const serializersByCtx = new WeakMap<any, Map<number, JSONSerializer>>();
   return {
@@ -179,7 +187,7 @@ export function useAjv({
                 components,
               } as any,
               {
-                ajv: ajvOptions,
+                ajv,
               },
             );
             serializerByStatusCode.set(Number(statusCode), serializer);
