@@ -41,6 +41,7 @@
     "json-schema-to-ts": "^2.7.2",
     "openapi-types": "^12.1.0",
     "tslib": "^2.3.1",
+    "zod": "^3.21.4",
     "zod-to-json-schema": "^3.20.5"
   },
   "devDependencies": {
