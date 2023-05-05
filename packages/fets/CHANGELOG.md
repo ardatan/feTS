@@ -1,5 +1,15 @@
 # fets
 
+## 0.1.3
+
+### Patch Changes
+
+- [#149](https://github.com/ardatan/feTS/pull/149)
+  [`9a6a6f9`](https://github.com/ardatan/feTS/commit/9a6a6f9d26e26ecac925a662a1bf08cf69e99a0a)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+  - Added dependency [`zod@^3.21.4` ↗︎](https://www.npmjs.com/package/zod/v/3.21.4) (to
+    `dependencies`)
+
 ## 0.1.2
 
 ### Patch Changes
