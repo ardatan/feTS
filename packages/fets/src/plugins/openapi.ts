@@ -64,7 +64,7 @@ export function useOpenAPI({
           handler: () =>
             new Response(
               swaggerUiHtml.replace(
-                '__OAS__',
+                '__SWAGGER_UI_OPTIONS__',
                 JSON.stringify({
                   spec: oas,
                   dom_id: '#swagger-ui',
