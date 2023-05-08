@@ -160,7 +160,7 @@ export function IndexPage(): ReactElement {
               },
               {
                 name: 'Node.js',
-                href: '/server/integrations/nodejs',
+                href: '/server/integrations/node',
               },
             ].map(env => (
               <div className="p-2 sm:w-1/2 md:w-1/3 w-full" key={env.name}>
