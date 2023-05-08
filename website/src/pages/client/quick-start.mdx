@@ -14,7 +14,7 @@ interact with your API.
 
 First, you need to create a TypeScript file that exports your OpenAPI document. Due to the
 limitations in TypeScript, we cannot import types from JSON files directly.
-[See this issue](https://github.com/microsoft/TypeScript/issues/32063).] Just copy and paste the
+[See this issue](https://github.com/microsoft/TypeScript/issues/32063). Just copy and paste the
 content of the OpenAPI file inside the TypeScript file, and export it with `as const` modifier.
 
 ```ts filename="openapi.ts"
