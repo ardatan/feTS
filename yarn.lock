@@ -3230,9 +3230,9 @@
     lodash "^4.17.21"
 
 "@trpc/server@^10.9.0":
-  version "10.25.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.25.0.tgz#2e578b0ef20ed1fe66dd770cf1e6ea8652f29a2b"
-  integrity sha512-OKcGw2iZMUV8zCHoS+uLYGVq2tbZhhK0TPbb0pGhT+KTN8oWYPG+oYpTe9He9J1A2y8qcRAoy5u1zdiUUOiFEg==
+  version "10.25.1"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.25.1.tgz#76182184dd192b73b074ff8d1764b6412aab5047"
+  integrity sha512-zi08QKVvWPK0EEGpEy7i5PlOK9CBlQb3LqiIdmaIpe27DzFNz6+yZ4qXwsLXTwDcDphELl/BNw+RzzQ2+Ou2vw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
