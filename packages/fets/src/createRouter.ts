@@ -71,8 +71,8 @@ export function createRouterBase({
     handlers,
   }: {
     operationId?: string;
-      description?: string;
-      tags?: string[];
+    description?: string;
+    tags?: string[];
     method: HTTPMethod;
     path: string;
     schemas?: RouteSchemas;
@@ -275,7 +275,7 @@ export function createRouter<
               servers: [
                 {
                   url: base,
-                }
+                },
               ],
               components: (components as any) || {},
             },
