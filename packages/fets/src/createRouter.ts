@@ -272,11 +272,7 @@ export function createRouter<
                 description,
                 version,
               },
-              servers: [
-                {
-                  url: base,
-                },
-              ],
+              ...(base !== '/' ? { servers: [{ url: base }] } : {}),
               components: (components as any) || {},
             },
           }),
