@@ -233,6 +233,7 @@ export type RouteHandler<
 export type OnRouteHookPayload<TServerContext> = {
   operationId?: string;
   description?: string;
+  tags?: string[];
   method: HTTPMethod;
   path: string;
   schemas?: RouteSchemas | RouteZodSchemas;
@@ -391,6 +392,7 @@ export type AddRouteWithTypesOpts<
   operationId?: string;
   description?: string;
   method?: TMethod | Uppercase<TMethod>;
+  tags?: string[];
   path: TPath;
   handler:
     | RouteHandler<TServerContext, TTypedRequest, TTypedResponse>

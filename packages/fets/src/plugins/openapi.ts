@@ -87,7 +87,7 @@ export function useOpenAPI({
         });
       }
     },
-    onRoute({ method, path, operationId, description, schemas }) {
+    onRoute({ method, path, operationId, description, tags, schemas }) {
       if (schemas) {
         let pathForOAS = path.replace(/:([^/]+)/g, '{$1}');
         if (!pathForOAS.startsWith('/')) {
@@ -99,6 +99,7 @@ export function useOpenAPI({
         const operation = pathObj[lowerCasedMethod] as OpenAPIV3_1.OperationObject;
         operation.operationId = operationId;
         operation.description = description;
+        operation.tags = tags;
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
             let responseSchema = schemas.responses[statusCode as any as StatusCode];
