@@ -64,6 +64,7 @@ export function createRouterBase({
   function addHandlersToMethod({
     operationId,
     description,
+    tags,
     method,
     path,
     schemas,
@@ -71,6 +72,7 @@ export function createRouterBase({
   }: {
     operationId?: string;
     description?: string;
+    tags?: string[];
     method: HTTPMethod;
     path: string;
     schemas?: RouteSchemas;
@@ -80,6 +82,7 @@ export function createRouterBase({
       onRouteHook({
         operationId,
         description,
+        tags,
         method,
         path,
         schemas,
@@ -196,7 +199,7 @@ export function createRouterBase({
         TypedResponse
       >,
     ) {
-      const { operationId, description, method, path, schemas, handler } = opts;
+      const { operationId, description, method, path, schemas, tags, handler } = opts;
       const handlers = Array.isArray(handler) ? handler : [handler];
       if (!method) {
         for (const method of HTTP_METHODS) {
@@ -207,6 +210,7 @@ export function createRouterBase({
             path,
             schemas,
             handlers,
+            tags,
           });
         }
       } else {
@@ -217,6 +221,7 @@ export function createRouterBase({
           path,
           schemas,
           handlers,
+          tags,
         });
       }
       return this as any;
@@ -241,6 +246,7 @@ export function createRouter<
   swaggerUIEndpoint = '/docs',
   swaggerUIOpts = {},
   plugins: userPlugins = [],
+  base = '/',
   ...options
 }: RouterOptions<TServerContext, TComponents> = {}): Router<
   TServerContext,
@@ -266,6 +272,11 @@ export function createRouter<
                 description,
                 version,
               },
+              servers: [
+                {
+                  url: base,
+                },
+              ],
               components: (components as any) || {},
             },
           }),
@@ -276,6 +287,7 @@ export function createRouter<
   ];
   const finalOpts = {
     ...options,
+    base,
     plugins,
   };
   const routerBaseObject = createRouterBase(finalOpts);
