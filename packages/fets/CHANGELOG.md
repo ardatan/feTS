@@ -1,5 +1,14 @@
 # fets
 
+## 0.1.5
+
+### Patch Changes
+
+- [#168](https://github.com/ardatan/feTS/pull/168)
+  [`3e25f6d`](https://github.com/ardatan/feTS/commit/3e25f6d40095962cb9904d4d188d2950be20e65d)
+  Thanks [@ardatan](https://github.com/ardatan)! - Respect base path in the generated OpenAPI
+  document
+
 ## 0.1.4
 
 ### Patch Changes
