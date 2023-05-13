@@ -3,6 +3,7 @@ import {
   FromSchema as FromSchemaOriginal,
   JSONSchema as JSONSchemaOrBoolean,
 } from 'json-schema-to-ts';
+import { OpenAPIV3_1 } from 'openapi-types';
 import {
   ServerAdapter,
   ServerAdapterOptions,
@@ -36,14 +37,18 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
   base?: string;
   plugins?: RouterPlugin<TServerContext>[];
 
+  // SwaggerUI Related
+  oasEndpoint?: string | false;
+  swaggerUIEndpoint?: string | false;
+  swaggerUIOpts?: SwaggerUIOpts;
+
   // OAS Related
   title?: string;
   description?: string;
   version?: string;
-  oasEndpoint?: string | false;
-  swaggerUIEndpoint?: string | false;
-  swaggerUIOpts?: SwaggerUIOpts;
   components?: TComponents;
+  security?: OpenAPIV3_1.SecurityRequirementObject[];
+  servers?: OpenAPIV3_1.ServerObject[];
 }
 
 export type RouterComponentsBase = {
