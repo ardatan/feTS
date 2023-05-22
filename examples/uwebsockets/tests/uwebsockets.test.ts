@@ -54,7 +54,6 @@ describe('uWebSockets', () => {
     const json = await response.json();
     expect(json).toMatchInlineSnapshot(`
       {
-        "components": {},
         "info": {
           "description": "An API written with feTS",
           "title": "feTS API",

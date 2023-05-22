@@ -32,8 +32,12 @@ const todos: Todo[] = [
 ];
 
 export default createRouter({
-  swaggerUIEndpoint: '/api/docs',
-  oasEndpoint: '/api/openapi.json',
+  swaggerUI: {
+    endpoint: '/api/docs',
+  },
+  openAPI: {
+    endpoint: '/api/openapi.json',
+  },
 })
   .route({
     method: 'GET',

@@ -245,28 +245,32 @@ async function main() {
   });
 
   createRouter({
-    title: 'Todo API',
-    version: '1.0.0',
-    components: {
-      schemas: {
-        Todo: {
-          type: 'object',
-          properties: {
-            id: {
-              type: 'string',
-            },
-            title: {
-              type: 'string',
-            },
-            completed: {
-              type: 'boolean',
-            },
-          },
-          required: ['id', 'title', 'completed'],
-          additionalProperties: false,
-        },
+    openAPI: {
+      info: {
+        title: 'Todo API',
+        version: '1.0.0',
       },
-    } as const,
+      components: {
+        schemas: {
+          Todo: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+              },
+              title: {
+                type: 'string',
+              },
+              completed: {
+                type: 'boolean',
+              },
+            },
+            required: ['id', 'title', 'completed'],
+            additionalProperties: false,
+          },
+        },
+      } as const,
+    },
   }).route({
     operationId: 'getTodos',
     method: 'GET',
