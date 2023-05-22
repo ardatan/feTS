@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { OpenAPIV3_1 } from 'openapi-types';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
@@ -34,11 +35,10 @@ const HTTP_METHODS: HTTPMethod[] = [
 
 const urlByRequest = new WeakMap<Request, URL>();
 
-export function createRouterBase({
-  fetchAPI: givenFetchAPI,
-  base: basePath = '/',
-  plugins = [],
-}: RouterOptions<any, any> = {}): RouterBaseObject<any, any, any> {
+export function createRouterBase(
+  { fetchAPI: givenFetchAPI, base: basePath = '/', plugins = [] }: RouterOptions<any, any> = {},
+  openAPIDocument: OpenAPIV3_1.Document,
+): RouterBaseObject<any, any, any> {
   const fetchAPI = {
     ...DefaultFetchAPI,
     ...givenFetchAPI,
@@ -83,6 +83,7 @@ export function createRouterBase({
         operationId,
         description,
         tags,
+        openAPIDocument,
         method,
         path,
         schemas,
@@ -106,6 +107,7 @@ export function createRouterBase({
     methodPatternMaps.set(pattern, handlers);
   }
   return {
+    openAPIDocument,
     async handle(request: Request, context: any) {
       const url = urlByRequest.get(request);
       if (!url) {
@@ -238,15 +240,8 @@ export function createRouter<
     [TKey: string]: never;
   },
 >({
-  title = 'feTS API',
-  description = 'An API written with feTS',
-  version = '1.0.0',
-  components,
-  security,
-  servers,
-  oasEndpoint = '/openapi.json',
-  swaggerUIEndpoint = '/docs',
-  swaggerUIOpts = {},
+  openAPI: { endpoint: oasEndpoint = '/openapi.json', ...openAPIDocument } = {},
+  swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
   plugins: userPlugins = [],
   base = '/',
   ...options
@@ -255,6 +250,18 @@ export function createRouter<
   TComponents,
   TRouterSDK
 > {
+  openAPIDocument.openapi = openAPIDocument.openapi || '3.0.1';
+  const oasInfo = (openAPIDocument.info ||= {} as OpenAPIV3_1.InfoObject);
+  oasInfo.title ||= 'feTS API';
+  oasInfo.description ||= 'An API written with feTS';
+  oasInfo.version ||= '1.0.0';
+  if (base !== '/') {
+    openAPIDocument.servers = openAPIDocument.servers || [
+      {
+        url: base,
+      },
+    ];
+  }
   const plugins: RouterPlugin<TServerContext>[] = [
     {
       onRequest({ request, url }) {
@@ -267,18 +274,6 @@ export function createRouter<
             oasEndpoint,
             swaggerUIEndpoint,
             swaggerUIOpts,
-            baseOas: {
-              openapi: '3.0.1',
-              info: {
-                title,
-                description,
-                version,
-              },
-              ...(base !== '/' ? { servers: [{ url: base }] } : {}),
-              servers,
-              components: (components as any) || {},
-              security,
-            },
           }),
         ]
       : []),
@@ -290,7 +285,7 @@ export function createRouter<
     base,
     plugins,
   };
-  const routerBaseObject = createRouterBase(finalOpts);
+  const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIV3_1.Document);
   const router = createServerAdapter(routerBaseObject, finalOpts);
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
     onRouterInitHook(router);

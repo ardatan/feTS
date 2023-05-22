@@ -37,24 +37,23 @@ export interface SwaggerUIOpts {
 export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;
   swaggerUIEndpoint: string | false;
-  baseOas: OpenAPIV3_1.Document;
   swaggerUIOpts: SwaggerUIOpts;
 };
 
 export function useOpenAPI({
   oasEndpoint,
   swaggerUIEndpoint,
-  baseOas: oas,
   swaggerUIOpts,
 }: OpenAPIPluginOptions): RouterPlugin<any> {
-  const paths: OpenAPIV3_1.PathsObject = (oas.paths ||= {});
+  let paths: OpenAPIV3_1.PathsObject;
   return {
     onRouterInit(router) {
+      paths = router.openAPIDocument.paths = router.openAPIDocument.paths || {};
       if (oasEndpoint) {
         router.route({
           method: 'GET',
           path: oasEndpoint,
-          handler: () => Response.json(oas),
+          handler: () => Response.json(router.openAPIDocument),
         });
       }
       if (swaggerUIEndpoint) {
@@ -66,7 +65,7 @@ export function useOpenAPI({
               swaggerUiHtml.replace(
                 '__SWAGGER_UI_OPTIONS__',
                 JSON.stringify({
-                  spec: oas,
+                  spec: router.openAPIDocument,
                   dom_id: '#swagger-ui',
                   displayOperationId: true,
                   tryItOutEnabled: true,

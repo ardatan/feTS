@@ -21,9 +21,13 @@ You can give a title and a description to your API;
 
 ```ts
 createRouter({
-  title: 'My API',
-  description: 'My API description',
-  version: '1.0.0' // You can even give a version to your API
+  openAPI: {
+    info: {
+      title: 'My API',
+      description: 'My API description',
+      version: '1.0.0' // You can even give a version to your API
+    }
+  }
 })
 ```
 

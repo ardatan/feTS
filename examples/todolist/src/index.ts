@@ -18,14 +18,18 @@ type Todo = FromSchema<typeof TodoSchema>;
 const todos: Todo[] = [];
 
 export const router = createRouter({
-  title: 'Todo List Example',
-  description: 'A simple todo list example with feTS',
-  version: '1.0.0',
-  components: {
-    schemas: {
-      Todo: TodoSchema,
+  openAPI: {
+    info: {
+      title: 'Todo List Example',
+      description: 'A simple todo list example with feTS',
+      version: '1.0.0',
     },
-  } as const,
+    components: {
+      schemas: {
+        Todo: TodoSchema,
+      },
+    } as const,
+  },
 })
   .route({
     description: 'Get all todos',

@@ -32,23 +32,23 @@ export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
+export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>
+  extends Omit<Partial<OpenAPIV3_1.Document>, 'components'> {
+  endpoint?: string | false;
+  components?: TComponents;
+}
+
+export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
+  endpoint?: string | false;
+}
+
 export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
   base?: string;
   plugins?: RouterPlugin<TServerContext>[];
 
-  // SwaggerUI Related
-  oasEndpoint?: string | false;
-  swaggerUIEndpoint?: string | false;
-  swaggerUIOpts?: SwaggerUIOpts;
-
-  // OAS Related
-  title?: string;
-  description?: string;
-  version?: string;
-  components?: TComponents;
-  security?: OpenAPIV3_1.SecurityRequirementObject[];
-  servers?: OpenAPIV3_1.ServerObject[];
+  openAPI?: RouterOpenAPIOptions<TComponents>;
+  swaggerUI?: RouterSwaggerUIOptions;
 }
 
 export type RouterComponentsBase = {
@@ -155,6 +155,7 @@ export interface RouterBaseObject<
   TComponents extends RouterComponentsBase,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
 > {
+  openAPIDocument: OpenAPIV3_1.Document;
   handle: ServerAdapterRequestHandler<TServerContext>;
   route<
     TRouteSchemas extends RouteSchemas,
@@ -242,6 +243,7 @@ export type OnRouteHookPayload<TServerContext> = {
   method: HTTPMethod;
   path: string;
   schemas?: RouteSchemas | RouteZodSchemas;
+  openAPIDocument: OpenAPIV3_1.Document;
   handlers: RouteHandler<TServerContext, TypedRequest, TypedResponse>[];
 };
 

@@ -260,6 +260,9 @@ describe('Router', () => {
       method: 'GET',
       path: '/greetings',
       handlers: [handler],
+      openAPIDocument: {
+        ...router.openAPIDocument,
+      },
     });
   });
 });
