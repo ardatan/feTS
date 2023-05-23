@@ -150,7 +150,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
           siteConfig: {
             appSettings: [
               { name: 'AzureWebJobsStorage', value: storageConnectionString },
-              { name: 'FUNCTIONS_EXTENSION_VERSION', value: '~3' },
+              { name: 'FUNCTIONS_EXTENSION_VERSION', value: '~4' },
               { name: 'FUNCTIONS_WORKER_RUNTIME', value: 'node' },
               { name: 'WEBSITE_RUN_FROM_PACKAGE', value: codeBlobUrl },
             ],
