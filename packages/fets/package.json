@@ -35,9 +35,9 @@
   "typings": "dist/typings/index.d.ts",
   "dependencies": {
     "@ardatan/fast-json-stringify": "^0.0.6",
-    "@whatwg-node/cookie-store": "^0.0.1",
-    "@whatwg-node/fetch": "^0.8.2",
-    "@whatwg-node/server": "^0.7.4",
+    "@whatwg-node/cookie-store": "^0.1.0",
+    "@whatwg-node/fetch": "^0.9.0",
+    "@whatwg-node/server": "^0.8.0",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",
     "hotscript": "^1.0.11",
