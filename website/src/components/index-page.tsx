@@ -135,7 +135,7 @@ export function IndexPage(): ReactElement {
               },
               {
                 name: 'Azure Functions',
-                href: '/server/integrations/azure',
+                href: '/server/integrations/azure-functions',
               },
               { name: 'Bun', href: '/server/integrations/bun' },
               {
