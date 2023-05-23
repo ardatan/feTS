@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@e2e/shared-scripts": "0.0.0",
-    "@whatwg-node/fetch": "^0.8.2",
+    "@whatwg-node/fetch": "^0.9.0",
     "aws-lambda": "1.0.7"
   },
   "devDependencies": {
-    "@pulumi/aws": "5.40.0",
+    "@pulumi/aws": "5.41.0",
     "@pulumi/awsx": "0.40.1",
-    "@pulumi/pulumi": "3.67.0",
+    "@pulumi/pulumi": "3.68.0",
     "@types/aws-lambda": "8.10.115",
     "esbuild": "0.17.19",
     "ts-node": "10.9.1",
