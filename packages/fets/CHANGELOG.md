@@ -1,5 +1,32 @@
 # fets
 
+## 0.2.0
+
+### Minor Changes
+
+- [`80c743c`](https://github.com/ardatan/feTS/commit/80c743c9b33a231e86c110452571d1f4c3cd41d2)
+  Thanks [@ardatan](https://github.com/ardatan)! - BREAKING: OpenAPI customization is now done under
+  \`openAPI\` property instead of the root option
+
+### Patch Changes
+
+- [#177](https://github.com/ardatan/feTS/pull/177)
+  [`4de0ce6`](https://github.com/ardatan/feTS/commit/4de0ce65bac8fc1b8a2619173dcf962f21cef06a)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+
+  - Updated dependency
+    [`@whatwg-node/cookie-store@^0.1.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/cookie-store/v/0.1.0)
+    (from `^0.0.1`, in `dependencies`)
+  - Updated dependency
+    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0) (from
+    `^0.8.2`, in `dependencies`)
+  - Updated dependency
+    [`@whatwg-node/server@^0.8.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.0)
+    (from `^0.7.4`, in `dependencies`)
+
+- [`835b103`](https://github.com/ardatan/feTS/commit/835b103c47f9f1581f19801dfea7b75341860089)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support `servers` and `security`
+
 ## 0.1.5
 
 ### Patch Changes
