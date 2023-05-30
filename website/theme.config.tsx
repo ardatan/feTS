@@ -27,5 +27,5 @@ export default defineConfig({
       </>
     );
   },
-  siteName: 'feTS',
+  siteName: 'FETS',
 });
