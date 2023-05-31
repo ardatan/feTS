@@ -241,4 +241,3 @@ export default ${openapiText} as const;`,
     console.error(`Could not write OpenAPI schema to file: ${err.message}`);
     process.exit(1);
   });
-

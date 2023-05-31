@@ -28,8 +28,8 @@ Let's write a simple route that returns a greeting message.
 // We recommend you to use `Response` from `fets`, because the native one isn't type-safe
 // Let's assume that we are using Node.js
 // We recommend µWebSockets.js instead of node:http for a better performance
-import { App } from 'uWebSockets.js'
 import { createRouter, Response } from 'fets'
+import { App } from 'uWebSockets.js'
 
 // Create a router
 const router = createRouter()
@@ -62,9 +62,11 @@ const router = createRouter()
     }
   })
 
-App().any('/*', router).listen(3000, () => {
-  console.info(`Server is listening on http://localhost:3000`)
-})
+App()
+  .any('/*', router)
+  .listen(3000, () => {
+    console.info(`Server is listening on http://localhost:3000`)
+  })
 ```
 
 <Callout>

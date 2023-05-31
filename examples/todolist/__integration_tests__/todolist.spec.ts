@@ -34,7 +34,7 @@ describe('uWebSockets', () => {
     globalAgent.destroy();
   });
   it('should work', async () => {
-      const response = await fetch(`http://localhost:${port}/todos`);
+    const response = await fetch(`http://localhost:${port}/todos`);
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual([]);
   });
@@ -299,4 +299,3 @@ describe('uWebSockets', () => {
     `);
   });
 });
-
