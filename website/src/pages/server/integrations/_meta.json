@@ -1,5 +1,5 @@
 {
-  "node": "Node.js",
+  "uwebsockets": "µWebSockets",
   "aws-lambda": "AWS Lambda",
   "azure-functions": "Azure Functions",
   "cloudflare-workers": "Cloudflare Workers",
@@ -7,5 +7,5 @@
   "nextjs": "Next.js",
   "bun": "Bun",
   "deno": "Deno",
-  "uwebsockets": "µWebSockets"
+  "node-http": "Node:HTTP"
 }
