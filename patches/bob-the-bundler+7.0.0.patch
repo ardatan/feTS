@@ -1,8 +1,8 @@
 diff --git a/node_modules/bob-the-bundler/dist/commands/build.js b/node_modules/bob-the-bundler/dist/commands/build.js
-index 0bedb16..9f7da79 100644
+index 1fad9e3..75071cf 100644
 --- a/node_modules/bob-the-bundler/dist/commands/build.js
 +++ b/node_modules/bob-the-bundler/dist/commands/build.js
-@@ -129,7 +129,7 @@ export const buildCommand = createCommand(api => {
+@@ -128,7 +128,7 @@ export const buildCommand = createCommand(api => {
              }
              await buildTypeScript(bobBuildPath, { cwd, tsconfig, incremental });
              await Promise.all(packageInfoList.map(({ cwd, pkg, fullName }) => limit(async () => {

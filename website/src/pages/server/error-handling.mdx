@@ -16,7 +16,7 @@ allow you to return a different status code inside the handler. And it also prov
 for the response body of that specific status code.
 
 ```ts
-import { createServer } from 'node:http';
+import { App } from 'uWebSockets.js';
 import { createRouter, FromSchema } from 'fets';
 
 const users = [
@@ -75,7 +75,7 @@ const router = createRouter().route({
   }
 });
 
-createServer(router).listen(3000, () => {
+App().any('/*', router).listen(3000, () => {
     console.log(`Swagger UI is available at http://localhost:3000/docs`)
 });
 ```
