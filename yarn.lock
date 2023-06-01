@@ -2535,10 +2535,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.68.0", "@pulumi/pulumi@^3.0.0":
-  version "3.68.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.68.0.tgz#92ff26b45c35b32847a664570cbd56e99ea1b608"
-  integrity sha512-wuQ9PmEIYe7YMfx5JBEt2bLq2VUhKdwGVmBfvKo1TFv66LIQyc98tRMY+7YLFL+GSkYB98HGMYdsNNLpvUUcSg==
+"@pulumi/pulumi@3.69.0", "@pulumi/pulumi@^3.0.0":
+  version "3.69.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.69.0.tgz#c791b2681cdadf1094030445670f1a7d72cc89a3"
+  integrity sha512-C6OTchbWnvLUkkhLezvhU4GlYeaG5F3WrPQ2r+NfCTHOuMlTFVMpM4zJ3knch0yLtAdVeQ+fb9OLquVNoB3Fjw==
   dependencies:
     "@grpc/grpc-js" "^1.3.8"
     "@logdna/tail-file" "^2.0.6"
@@ -3420,10 +3420,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.7", "@types/react@>=16", "@types/react@>=16.0.0", "@types/react@^18.0.27":
-  version "18.2.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.7.tgz#dfb4518042a3117a045b8c222316f83414a783b3"
-  integrity sha512-ojrXpSH2XFCmHm7Jy3q44nXDyN54+EYKP2lBhJ2bqfyPj6cIUW/FZW/Csdia34NQgq7KYcAlHi5184m4X88+yw==
+"@types/react@*", "@types/react@18.2.8", "@types/react@>=16", "@types/react@>=16.0.0", "@types/react@^18.0.27":
+  version "18.2.8"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.8.tgz#a77dcffe4e9af148ca4aa8000c51a1e8ed99e2c8"
+  integrity sha512-lTyWUNrd8ntVkqycEEplasWy2OxNlShj3zqS0LuB1ENUGis5HodmhM7DtCoUGbxj3VW/WsGA0DUhpG6XrM7gPA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
