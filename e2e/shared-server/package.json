@@ -1,9 +1,9 @@
 {
   "name": "@e2e/shared-server",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "private": true,
   "dependencies": {
-    "fets": "0.2.0",
+    "fets": "0.2.1",
     "zod": "3.21.4"
   }
 }

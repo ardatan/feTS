@@ -1,5 +1,19 @@
 # fets
 
+## 0.2.1
+
+### Patch Changes
+
+- [#199](https://github.com/ardatan/feTS/pull/199)
+  [`c71c072`](https://github.com/ardatan/feTS/commit/c71c0723c6def6cad95969d66a31ae9d2063cfb3)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+  - Updated dependency
+    [`@whatwg-node/server@^0.8.1` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.1)
+    (from `^0.8.0`, in `dependencies`)
+  - Updated dependency
+    [`json-schema-to-ts@^2.9.1` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/2.9.1) (from
+    `^2.7.2`, in `dependencies`)
+
 ## 0.2.0
 
 ### Minor Changes

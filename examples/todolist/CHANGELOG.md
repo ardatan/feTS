@@ -1,5 +1,13 @@
 # todolist
 
+## 0.0.25
+
+### Patch Changes
+
+- Updated dependencies
+  [[`c71c072`](https://github.com/ardatan/feTS/commit/c71c0723c6def6cad95969d66a31ae9d2063cfb3)]:
+  - fets@0.2.1
+
 ## 0.0.24
 
 ### Patch Changes
