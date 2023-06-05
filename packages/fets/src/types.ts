@@ -5,10 +5,13 @@ import {
 } from 'json-schema-to-ts';
 import { OpenAPIV3_1 } from 'openapi-types';
 import {
+  FetchAPI,
   ServerAdapter,
   ServerAdapterOptions,
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
+  UWSRequest,
+  UWSResponse,
 } from '@whatwg-node/server';
 import { SwaggerUIOpts } from './plugins/openapi.js';
 import { LazySerializedResponse } from './Response.js';
@@ -42,6 +45,13 @@ export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
   endpoint?: string | false;
 }
 
+type UWSRequestHandler = (res: UWSResponse, req: UWSRequest) => void | Promise<void>;
+
+export type UWSApp = Record<
+  'get' | 'post' | 'put' | 'patch' | 'any',
+  (path: string, handler: UWSRequestHandler) => UWSApp
+>;
+
 export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
   base?: string;
@@ -49,6 +59,8 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
 
   openAPI?: RouterOpenAPIOptions<TComponents>;
   swaggerUI?: RouterSwaggerUIOptions;
+
+  app?: UWSApp;
 }
 
 export type RouterComponentsBase = {
@@ -157,6 +169,8 @@ export interface RouterBaseObject<
 > {
   openAPIDocument: OpenAPIV3_1.Document;
   handle: ServerAdapterRequestHandler<TServerContext>;
+  plugins: RouterPlugin<TServerContext>[];
+  fetchAPI: FetchAPI;
   route<
     TRouteSchemas extends RouteSchemas,
     TMethod extends HTTPMethod,
@@ -216,6 +230,7 @@ export interface RouterBaseObject<
   >;
   __client: TRouterSDK;
   __onRouterInitHooks: OnRouterInitHook<TServerContext>[];
+  __onSerializeResponseHooks: OnSerializeResponseHook<TServerContext>[];
 }
 
 export type Router<

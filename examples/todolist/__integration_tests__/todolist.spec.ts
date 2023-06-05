@@ -1,56 +1,79 @@
 /* eslint-disable camelcase */
-import { globalAgent } from 'http';
+import { createServer, globalAgent, Server } from 'http';
+import { AddressInfo } from 'net';
 import {
   type us_listen_socket,
   us_listen_socket_close,
   us_socket_local_port,
 } from 'uWebSockets.js';
 import { fetch } from '@whatwg-node/fetch';
-import { app } from '../src/app';
+import { app, router } from '../src/router';
 
-describe('uWebSockets', () => {
-  const nodeMajor = parseInt(process.versions.node.split('.')[0], 10);
-  if (nodeMajor < 16) {
-    it('should be skipped', () => {});
-    return;
-  }
-  let listenSocket: us_listen_socket;
+describe('TodoList', () => {
   let port: number;
-  beforeAll(done => {
-    app.listen(0, newListenSocket => {
-      listenSocket = newListenSocket;
-      if (!listenSocket) {
-        done.fail('Failed to start the server');
-        return;
-      }
-      port = us_socket_local_port(listenSocket);
-      done();
+
+  describe('Node', () => {
+    let server: Server;
+    beforeAll(done => {
+      server = createServer(router);
+      server.listen(0, () => {
+        port = (server.address() as AddressInfo).port;
+        done();
+      });
     });
+    afterAll(() => {
+      server.close();
+      globalAgent.destroy();
+    });
+    runTests();
   });
-  afterAll(() => {
-    if (listenSocket) {
-      us_listen_socket_close(listenSocket);
+
+  describe('uWebSockets', () => {
+    const nodeMajor = parseInt(process.versions.node.split('.')[0], 10);
+    if (nodeMajor < 16) {
+      it('should be skipped', () => {});
+      return;
     }
-    globalAgent.destroy();
+    let listenSocket: us_listen_socket;
+    beforeAll(done => {
+      app.listen(0, newListenSocket => {
+        listenSocket = newListenSocket;
+        if (!listenSocket) {
+          done.fail('Failed to start the server');
+          return;
+        }
+        port = us_socket_local_port(listenSocket);
+        done();
+      });
+    });
+    afterAll(() => {
+      if (listenSocket) {
+        us_listen_socket_close(listenSocket);
+      }
+      globalAgent.destroy();
+    });
+    runTests();
   });
-  it('should work', async () => {
-    const response = await fetch(`http://localhost:${port}/todos`);
-    expect(response.status).toBe(200);
-    expect(await response.json()).toEqual([]);
-  });
-  it('should show Swagger UI', async () => {
-    const response = await fetch(`http://localhost:${port}/docs`);
-    expect(response.status).toBe(200);
-    expect(response.headers.get('content-type')).toBe('text/html');
-    const html = await response.text();
-    expect(html).toContain('<title>SwaggerUI</title>');
-  });
-  it('should expose OpenAPI document', async () => {
-    const response = await fetch(`http://localhost:${port}/openapi.json`);
-    expect(response.status).toBe(200);
-    expect(response.headers.get('content-type')).toBe('application/json');
-    const json = await response.json();
-    expect(json).toMatchInlineSnapshot(`
+
+  function runTests() {
+    it('should work', async () => {
+      const response = await fetch(`http://localhost:${port}/todos`);
+      expect(response.status).toBe(200);
+      expect(await response.json()).toEqual([]);
+    });
+    it('should show Swagger UI', async () => {
+      const response = await fetch(`http://localhost:${port}/docs`);
+      expect(response.status).toBe(200);
+      expect(response.headers.get('content-type')).toBe('text/html');
+      const html = await response.text();
+      expect(html).toContain('<title>SwaggerUI</title>');
+    });
+    it('should expose OpenAPI document', async () => {
+      const response = await fetch(`http://localhost:${port}/openapi.json`);
+      expect(response.status).toBe(200);
+      expect(response.headers.get('content-type')).toBe('application/json');
+      const json = await response.json();
+      expect(json).toMatchInlineSnapshot(`
       {
         "components": {
           "schemas": {
@@ -297,5 +320,6 @@ describe('uWebSockets', () => {
         },
       }
     `);
-  });
+    });
+  }
 });

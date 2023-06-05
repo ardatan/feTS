@@ -19,7 +19,11 @@ interface ServerContext {
   res: HttpResponse
 }
 
-const router = createRouter<ServerContext>().route({
+const app = App()
+
+const router = createRouter<ServerContext>({
+  app
+}).route({
   method: 'GET',
   path: '/greetings',
   schemas: {
@@ -39,9 +43,7 @@ const router = createRouter<ServerContext>().route({
   handler: () => Response.json({ message: 'Hello World!' })
 })
 
-App()
-  .any('/*', router)
-  .listen(3000, () => {
-    console.log(`Swagger UI is running on http://localhost:3000/docs`)
-  })
+app.listen(3000, () => {
+  console.log(`Swagger UI is running on http://localhost:3000/docs`)
+})
 ```

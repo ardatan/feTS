@@ -31,8 +31,12 @@ Let's write a simple route that returns a greeting message.
 import { createRouter, Response } from 'fets'
 import { App } from 'uWebSockets.js'
 
+const app = App()
+
 // Create a router
-const router = createRouter()
+const router = createRouter({
+  app
+})
   // `.route` method should be in chain after `createRouter`
   .route({
     path: '/greetings',
@@ -62,11 +66,9 @@ const router = createRouter()
     }
   })
 
-App()
-  .any('/*', router)
-  .listen(3000, () => {
-    console.info(`Server is listening on http://localhost:3000`)
-  })
+app.listen(3000, () => {
+  console.info(`Server is listening on http://localhost:3000`)
+})
 ```
 
 <Callout>

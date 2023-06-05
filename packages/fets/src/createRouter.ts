@@ -3,6 +3,7 @@ import { OpenAPIV3_1 } from 'openapi-types';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
+import { useUWS } from './plugins/uws.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
@@ -45,7 +46,7 @@ export function createRouterBase(
   };
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
-  const onSerializeResponseHooks: OnSerializeResponseHook<any>[] = [];
+  const __onSerializeResponseHooks: OnSerializeResponseHook<any>[] = [];
   for (const plugin of plugins) {
     if (plugin.onRouterInit) {
       __onRouterInitHooks.push(plugin.onRouterInit);
@@ -54,7 +55,7 @@ export function createRouterBase(
       onRouteHooks.push(plugin.onRoute);
     }
     if (plugin.onSerializeResponse) {
-      onSerializeResponseHooks.push(plugin.onSerializeResponse);
+      __onSerializeResponseHooks.push(plugin.onSerializeResponse);
     }
   }
   const routesByMethod = new Map<
@@ -170,7 +171,7 @@ export function createRouterBase(
             for (const handler of handlers) {
               const handlerResult = await handler(routerRequest, context);
               if (isLazySerializedResponse(handlerResult)) {
-                for (const onSerializeResponseHook of onSerializeResponseHooks) {
+                for (const onSerializeResponseHook of __onSerializeResponseHooks) {
                   onSerializeResponseHook({
                     request: routerRequest,
                     lazyResponse: handlerResult,
@@ -230,6 +231,9 @@ export function createRouterBase(
     },
     __client: {},
     __onRouterInitHooks,
+    __onSerializeResponseHooks,
+    plugins,
+    fetchAPI,
   };
 }
 
@@ -244,6 +248,7 @@ export function createRouter<
   swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
   plugins: userPlugins = [],
   base = '/',
+  app,
   ...options
 }: RouterOptions<TServerContext, TComponents> = {}): Router<
   TServerContext,
@@ -277,6 +282,7 @@ export function createRouter<
           }),
         ]
       : []),
+    ...(app ? [useUWS(app)] : []),
     useZod(),
     ...userPlugins,
   ];

@@ -6,3 +6,4 @@ export { FromSchema } from 'json-schema-to-ts';
 export * from './client/index.js';
 export * from './Response.js';
 export { useAjv } from './plugins/ajv.js';
+export { useUWS } from './plugins/uws.js';

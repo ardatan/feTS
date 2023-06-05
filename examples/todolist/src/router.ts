@@ -1,6 +1,7 @@
 import { promises as fsPromises } from 'fs';
 import { join } from 'path';
-import { createRouter, FromSchema, Response } from 'fets';
+import { createRouter, FromSchema, Response, useUWS } from 'fets';
+import { App } from 'uWebSockets.js';
 
 const TodoSchema = {
   type: 'object',
@@ -16,6 +17,8 @@ type Todo = FromSchema<typeof TodoSchema>;
 
 const todos: Todo[] = [];
 
+export const app = App();
+
 export const router = createRouter({
   openAPI: {
     info: {
@@ -29,6 +32,7 @@ export const router = createRouter({
       },
     } as const,
   },
+  app,
 })
   .route({
     description: 'Get all todos',
