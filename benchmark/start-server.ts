@@ -23,7 +23,7 @@ const router = createRouter({
   plugins: [useAjv()],
 })
   .route({
-    method: 'GET',
+    method: 'HEAD',
     path: '/ping',
     handler: () =>
       new Response(null, {
@@ -86,6 +86,10 @@ const router = createRouter({
 
 App()
   .any('/*', router)
-  .listen(4000, () => {
-    console.log('server started at http://localhost:4000');
+  .listen('0.0.0.0', 4000, socket => {
+    if (!socket) {
+      console.error('failed to listen');
+      process.exit(1);
+    }
+    console.log('listening on 0.0.0.0:4000');
   });
