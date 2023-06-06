@@ -1,0 +1,42 @@
+name: test
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    paths-ignore:
+      - 'website/**'
+
+jobs:
+  benchmarks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@main
+        with:
+          nodeVersion: 18
+          packageManager: yarn
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Setup K6
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6=0.37.0
+
+      - name: Start Benchmark
+        working-directory: ./benchmark
+        run: |
+          yarn test
+        env:
+          NODE_NO_WARNINGS: true
+          NODE_ENV: production
+          GITHUB_PR: ${{ github.event.number }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
