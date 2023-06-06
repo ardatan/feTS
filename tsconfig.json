@@ -31,5 +31,5 @@
     }
   },
   "include": ["packages", "e2e", "examples"],
-  "exclude": ["**/node_modules", "**/test-files", "**/dist", "e2e/bun", "e2e/deno"]
+  "exclude": ["**/node_modules", "**/test-files", "**/dist", "e2e/bun", "e2e/deno", "**/benchmark"]
 }
