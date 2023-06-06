@@ -1,5 +1,19 @@
 # fets
 
+## 0.2.2
+
+### Patch Changes
+
+- [#216](https://github.com/ardatan/feTS/pull/216)
+  [`49a7320`](https://github.com/ardatan/feTS/commit/49a7320c7bda3de82e4a51041973dbe5e60341fe)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+  - Updated dependency
+    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3) (from
+    `^0.9.0`, in `dependencies`)
+  - Updated dependency
+    [`@whatwg-node/server@^0.8.6` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.6)
+    (from `^0.8.1`, in `dependencies`)
+
 ## 0.2.1
 
 ### Patch Changes
