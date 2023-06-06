@@ -10,8 +10,7 @@ env:
   NODE_OPTIONS: --max-old-space-size=4096
 
 jobs:
-  prettier-check:
-    name: 🧹 Prettier Check
+  prettier:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
@@ -23,7 +22,6 @@ jobs:
       - name: Prettier Check
         run: yarn prettier:check
   lint:
-    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
@@ -35,8 +33,7 @@ jobs:
       - name: ESLint
         run: yarn lint
 
-  build:
-    name: Type Check
+  type-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
@@ -99,8 +96,7 @@ jobs:
         run: yarn test:integration --ci
         env:
           CI: true
-  test_esm:
-    name: ESM Test
+  esm:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
