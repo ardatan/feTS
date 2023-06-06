@@ -39,11 +39,7 @@ function getOptionsForScenario(scenario, index) {
   };
 }
 
-const scenarioNames = [
-  'no-schema',
-  'json-schema',
-  'zod'
-];
+const scenarioNames = ['no-schema', 'json-schema', 'zod'];
 
 scenarioNames.forEach((name, index) => {
   const { scenario, thresholds } = getOptionsForScenario(name, index);
@@ -91,9 +87,12 @@ export function handleSummary(data) {
 }
 
 export function run() {
-  const res = http.post(`http://localhost:4000/${__ENV.MODE}`, JSON.stringify({
-    name: 'World'
-  }));
+  const res = http.post(
+    `http://localhost:4000/${__ENV.MODE}`,
+    JSON.stringify({
+      name: 'World',
+    }),
+  );
 
   const noErrors = `no_errors{mode:${__ENV.MODE}}`;
   const expectedResult = `expected_result{mode:${__ENV.MODE}}`;
