@@ -64,7 +64,8 @@
     "website",
     "scripts",
     "e2e/bun",
-    "e2e/deno"
+    "e2e/deno",
+    "benchmark"
   ],
   "globals": {
     "BigInt": true
