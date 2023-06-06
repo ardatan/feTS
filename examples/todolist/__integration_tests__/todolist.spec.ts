@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { globalAgent } from 'http';
 import {
-  type us_listen_socket,
   us_listen_socket_close,
   us_socket_local_port,
+  type us_listen_socket,
 } from 'uWebSockets.js';
 import { fetch } from '@whatwg-node/fetch';
 import { app } from '../src/app';

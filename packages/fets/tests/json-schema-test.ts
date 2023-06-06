@@ -1,9 +1,5 @@
 // import { createClient } from '../src/client/createClient.js';
-import {
-  createRouter,
-  Response,
-  /* RouteInput, RouteOutput */
-} from '../src/index.js';
+import { createRouter, Response } from /* RouteInput, RouteOutput */ '../src/index.js';
 
 async function main() {
   const successfulResponseSchema = {
