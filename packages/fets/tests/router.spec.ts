@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { createRouter, Response } from '../src/index.js';
 
 describe('Router', () => {
@@ -159,6 +160,31 @@ describe('Router', () => {
     const response = await router.fetch('https://foo.com/foo?cat=dog&foo=bar&foo=baz&missing=');
     const json = await response.json();
     expect(json).toMatchObject({ cat: 'dog', foo: ['bar', 'baz'], missing: undefined });
+  });
+  it('can handle missing Zod query params', async () => {
+    const router = createRouter();
+    router.route({
+      path: '/foo',
+      method: 'GET',
+      schemas: {
+        request: {
+          query: z.object({
+            foo: z.string(),
+            bar: z.string().optional(),
+            cat: z.string().nullish(),
+          }),
+        },
+      },
+      handler: request =>
+        Response.json({
+          foo: request.query.foo,
+          bar: request.query.bar,
+          cat: request.query.cat,
+        }),
+    });
+    const response = await router.fetch('https://foo.com/foo?foo=notMissing');
+    const json = await response.json();
+    expect(json).toMatchObject({ foo: 'notMissing', bar: undefined, cat: undefined });
   });
   it('supports "/" with base', async () => {
     const router = createRouter({
