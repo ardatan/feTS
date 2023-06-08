@@ -1,0 +1,5 @@
+---
+'fets': patch
+---
+
+Performance optimizations
