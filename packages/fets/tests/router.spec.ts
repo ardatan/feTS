@@ -158,7 +158,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('https://foo.com/foo?cat=dog&foo=bar&foo=baz&missing=');
     const json = await response.json();
-    expect(json).toMatchObject({ cat: 'dog', foo: ['bar', 'baz'], missing: [] });
+    expect(json).toMatchObject({ cat: 'dog', foo: ['bar', 'baz'], missing: undefined });
   });
   it('supports "/" with base', async () => {
     const router = createRouter({
