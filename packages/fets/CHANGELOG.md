@@ -1,5 +1,14 @@
 # fets
 
+## 0.2.4
+
+### Patch Changes
+
+- [#226](https://github.com/ardatan/feTS/pull/226)
+  [`96f0bb3`](https://github.com/ardatan/feTS/commit/96f0bb35d89ce60383dcb546290a0479c11b08a8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Workaround for missing type field and other
+  response types
+
 ## 0.2.3
 
 ### Patch Changes
