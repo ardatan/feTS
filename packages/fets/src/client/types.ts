@@ -40,12 +40,25 @@ export type OASStatusMap<
 > = OASMethodMap<TOAS, TPath>[TMethod] extends { responses: any }
   ? OASMethodMap<TOAS, TPath>[TMethod]['responses']
   : never;
+
+export type OASResponseSchemas<
+  TOAS extends OpenAPIV3_1.Document,
+  TPath extends keyof OASPathMap<TOAS>,
+  TMethod extends keyof OASMethodMap<TOAS, TPath>,
+  TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
+> = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content'];
+
 export type OASJSONResponseSchema<
   TOAS extends OpenAPIV3_1.Document,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
-> = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content']['application/json']['schema'];
+> = OASResponseSchemas<TOAS, TPath, TMethod, TStatus>[keyof OASResponseSchemas<
+  TOAS,
+  TPath,
+  TMethod,
+  TStatus
+>]['schema'];
 
 type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']}`
   ? R['length']
@@ -101,6 +114,16 @@ export type OASModel<TOAS extends OpenAPIV3_1.Document, TName extends string> = 
   ? FromSchema<TOAS['components']['schemas'][TName]>
   : never;
 
+// Later suggest using json-machete
+type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
+  ? T extends { type: 'object' }
+    ? T
+    : {
+        type: 'object';
+        additionalProperties: false;
+      } & T
+  : T;
+
 export type OASRequestParams<
   TOAS extends OpenAPIV3_1.Document,
   TPath extends keyof OASPathMap<TOAS>,
@@ -110,7 +133,9 @@ export type OASRequestParams<
     requestBody: { content: { 'application/json': { schema: JSONSchema } } };
   }
     ? FromSchema<
-        OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
+        FixJSONSchema<
+          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
+        >
       >
     : never;
   params?: OASMethodMap<TOAS, TPath>[TMethod] extends {
