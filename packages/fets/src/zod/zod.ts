@@ -1,4 +1,4 @@
-import { getHeadersObj } from '@whatwg-node/server';
+import { getHeadersObj } from '../plugins/utils.js';
 import { Response } from '../Response.js';
 import { PromiseOrValue, RouterPlugin, RouterRequest } from '../types.js';
 import { isZodSchema } from './types.js';

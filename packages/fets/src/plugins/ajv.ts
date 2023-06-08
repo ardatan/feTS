@@ -3,7 +3,6 @@ import type { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
 import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { URL } from '@whatwg-node/fetch';
-import { getHeadersObj } from '@whatwg-node/server';
 import { Response } from '../Response.js';
 import { StatusCode } from '../typed-fetch.js';
 import {
@@ -14,6 +13,7 @@ import {
   RouterRequest,
 } from '../types.js';
 import { isZodSchema } from '../zod/types.js';
+import { getHeadersObj } from './utils.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
