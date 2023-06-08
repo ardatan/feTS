@@ -53,6 +53,7 @@ export function useOpenAPI({
         router.route({
           method: 'GET',
           path: oasEndpoint,
+          internal: true,
           handler: () => Response.json(router.openAPIDocument),
         });
       }
@@ -60,6 +61,7 @@ export function useOpenAPI({
         router.route({
           method: 'GET',
           path: swaggerUIEndpoint,
+          internal: true,
           handler: () =>
             new Response(
               swaggerUiHtml.replace(

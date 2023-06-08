@@ -63,8 +63,8 @@
     "packages/load/tests/loaders/schema",
     "website",
     "scripts",
-    "e2e/bun",
-    "e2e/deno",
+    "e2e",
+    "e2e",
     "benchmark"
   ],
   "globals": {

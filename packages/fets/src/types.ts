@@ -389,6 +389,8 @@ export type AddRouteWithSchemasOpts<
   schemas: TRouteSchemas;
 } & AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 
+export type AddLowPriorityRoute = {};
+
 export type AddRouteWithTypesOpts<
   TServerContext,
   TMethod extends HTTPMethod,
@@ -400,6 +402,7 @@ export type AddRouteWithTypesOpts<
   description?: string;
   method?: TMethod | Uppercase<TMethod>;
   tags?: string[];
+  internal?: boolean;
   path: TPath;
   handler:
     | RouteHandler<TServerContext, TTypedRequest, TTypedResponse>

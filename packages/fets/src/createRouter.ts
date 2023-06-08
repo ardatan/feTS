@@ -34,9 +34,15 @@ const HTTP_METHODS: HTTPMethod[] = [
 ];
 
 const urlByRequest = new WeakMap<Request, URL>();
+const EMPTY_MATCH = { pathname: { groups: {} } } as URLPatternResult;
 
 export function createRouterBase(
-  { fetchAPI: givenFetchAPI, base: basePath = '/', plugins = [] }: RouterOptions<any, any> = {},
+  {
+    fetchAPI: givenFetchAPI,
+    base: basePath = '/',
+    plugins = [],
+    swaggerUI,
+  }: RouterOptions<any, any> = {},
   openAPIDocument: OpenAPIV3_1.Document,
 ): RouterBaseObject<any, any, any> {
   const fetchAPI = {
@@ -61,6 +67,7 @@ export function createRouterBase(
     HTTPMethod,
     Map<URLPattern, RouteHandler<any, TypedRequest, TypedResponse>[]>
   >();
+  const internalPatternsByMethod = new Map<HTTPMethod, Set<URLPattern>>();
   function addHandlersToMethod({
     operationId,
     description,
@@ -69,6 +76,7 @@ export function createRouterBase(
     path,
     schemas,
     handlers,
+    internal,
   }: {
     operationId?: string;
     description?: string;
@@ -77,6 +85,7 @@ export function createRouterBase(
     path: string;
     schemas?: RouteSchemas;
     handlers: RouteHandler<any, TypedRequest, TypedResponse>[];
+    internal?: boolean;
   }) {
     for (const onRouteHook of onRouteHooks) {
       onRouteHook({
@@ -105,6 +114,30 @@ export function createRouterBase(
     }
     const pattern = new fetchAPI.URLPattern({ pathname: fullPath });
     methodPatternMaps.set(pattern, handlers);
+    // TODO: Better logic to make sure internal routes are always last
+    let internalPatterns = internalPatternsByMethod.get(method);
+    if (internal) {
+      if (!internalPatterns) {
+        internalPatterns = new Set();
+        internalPatternsByMethod.set(method, internalPatterns);
+      }
+      internalPatterns.add(pattern);
+    }
+    if (internalPatterns?.size) {
+      routesByMethod.set(
+        method,
+        new Map(
+          [...methodPatternMaps.entries()].sort(([a], [b]) => {
+            if (internalPatterns!.has(a)) {
+              return 1;
+            } else if (internalPatterns!.has(b)) {
+              return -1;
+            }
+            return 0;
+          }),
+        ),
+      );
+    }
   }
   return {
     openAPIDocument,
@@ -129,20 +162,25 @@ export function createRouterBase(
         );
         for (const [pattern, handlers] of methodPatternMaps) {
           // Do not parse URL if not needed
-          const match =
-            request.url.endsWith(pattern.pathname) || url.pathname === pattern.pathname
-              ? { pathname: { groups: {} } }
-              : pattern.exec(url);
-          if (match) {
+          let match: URLPatternResult | null = null;
+          if (request.url.endsWith(pattern.pathname)) {
+            match = EMPTY_MATCH;
+          } else if (url.pathname === pattern.pathname) {
+            match = EMPTY_MATCH;
+            // Execute only if pattern is a regex
+          } else {
+            match = pattern.exec(url);
+          }
+          if (match != null) {
             const routerRequest = new Proxy(request as any, {
               get(target, prop: keyof TypedRequest) {
                 if (prop === 'parsedUrl') {
                   return url;
                 }
                 if (prop === 'params') {
-                  return new Proxy(match.pathname.groups, {
+                  return new Proxy(match!.pathname.groups, {
                     get(_, prop) {
-                      const value = (match.pathname.groups as Record<string, string>)[
+                      const value = (match!.pathname.groups as Record<string, string>)[
                         prop.toString()
                       ];
                       if (value != null) {
@@ -188,6 +226,14 @@ export function createRouterBase(
           }
         }
       }
+      if (swaggerUI?.endpoint) {
+        return new fetchAPI.Response(null, {
+          status: 302,
+          headers: {
+            location: swaggerUI.endpoint,
+          },
+        });
+      }
       return new fetchAPI.Response(null, { status: 404 });
     },
     route(
@@ -201,7 +247,7 @@ export function createRouterBase(
         TypedResponse
       >,
     ) {
-      const { operationId, description, method, path, schemas, tags, handler } = opts;
+      const { operationId, description, method, path, schemas, tags, internal, handler } = opts;
       const handlers = Array.isArray(handler) ? handler : [handler];
       if (!method) {
         for (const method of HTTP_METHODS) {
@@ -213,6 +259,7 @@ export function createRouterBase(
             schemas,
             handlers,
             tags,
+            internal,
           });
         }
       } else {
@@ -224,6 +271,7 @@ export function createRouterBase(
           schemas,
           handlers,
           tags,
+          internal,
         });
       }
       return this as any;
@@ -239,17 +287,15 @@ export function createRouter<
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
     [TKey: string]: never;
   },
->({
-  openAPI: { endpoint: oasEndpoint = '/openapi.json', ...openAPIDocument } = {},
-  swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
-  plugins: userPlugins = [],
-  base = '/',
-  ...options
-}: RouterOptions<TServerContext, TComponents> = {}): Router<
-  TServerContext,
-  TComponents,
-  TRouterSDK
-> {
+>(
+  options: RouterOptions<TServerContext, TComponents> = {},
+): Router<TServerContext, TComponents, TRouterSDK> {
+  const {
+    openAPI: { endpoint: oasEndpoint = '/openapi.json', ...openAPIDocument } = {},
+    swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
+    plugins: userPlugins = [],
+    base = '/',
+  } = options;
   openAPIDocument.openapi = openAPIDocument.openapi || '3.0.1';
   const oasInfo = (openAPIDocument.info ||= {} as OpenAPIV3_1.InfoObject);
   oasInfo.title ||= 'feTS API';
@@ -280,8 +326,12 @@ export function createRouter<
     useZod(),
     ...userPlugins,
   ];
-  const finalOpts = {
+  const finalOpts: RouterOptions<TServerContext, TComponents> = {
     ...options,
+    swaggerUI: {
+      endpoint: swaggerUIEndpoint,
+      ...swaggerUIOpts,
+    },
     base,
     plugins,
   };
