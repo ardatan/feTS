@@ -153,6 +153,9 @@ export function createRouterBase(
           {
             get(_, prop) {
               const allQueries = url.searchParams.getAll(prop.toString());
+              if (prop !== "then" && allQueries.length === 0) {
+                return undefined;
+              }
               return allQueries.length === 1 ? allQueries[0] : allQueries;
             },
             has(_, prop) {
