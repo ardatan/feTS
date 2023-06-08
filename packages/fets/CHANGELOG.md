@@ -1,5 +1,13 @@
 # fets
 
+## 0.2.3
+
+### Patch Changes
+
+- [#220](https://github.com/ardatan/feTS/pull/220)
+  [`0499f49`](https://github.com/ardatan/feTS/commit/0499f4938535205776837bcb53807defb72dd283)
+  Thanks [@ardatan](https://github.com/ardatan)! - Performance optimizations
+
 ## 0.2.2
 
 ### Patch Changes
