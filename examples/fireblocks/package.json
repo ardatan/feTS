@@ -1,11 +1,11 @@
 {
   "name": "example-fireblocks",
   "version": "0.0.0",
-  "description": "A simple app with zod",
+  "description": "An example app uses Fireblocks API",
   "private": true,
   "scripts": {
-    "prestart": "ts-node scripts/download-oas.ts",
-    "start": "ts-node-dev src/index.ts"
+    "prepare": "ts-node scripts/download-oas.ts",
+    "start": "ts-node-dev index.ts"
   },
   "dependencies": {
     "@types/node": "18.16.16",
