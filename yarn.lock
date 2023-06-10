@@ -3372,10 +3372,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@18.16.16", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^18.11.18":
-  version "18.16.16"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.16.tgz#3b64862856c7874ccf7439e6bab872d245c86d8e"
-  integrity sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==
+"@types/node@*", "@types/node@18.16.17", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^18.11.18":
+  version "18.16.17"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.17.tgz#d2512c03313db6329f7cb515fc8b508e658230c4"
+  integrity sha512-QAkjjRA1N7gPJeAP4WLXZtYv6+eMXFNviqktCDt4GLcmCugMr5BcRHfkOjCQzvCsnMp+L79a54zBkbw356xv9Q==
 
 "@types/node@^12.7.1":
   version "12.20.55"
@@ -4341,9 +4341,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^0.6.0:
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.6.7.tgz#592fe9156df9aeeb7f86c1b7637b38f51723b394"
-  integrity sha512-LZjqqhQfr+Rue3TRwF4Z8v37shty7SnovflUb9kdJfsbuLfMlS+sPMMyFz4eU8H1BxkbK4P+P+nXXDaLOpwqxg==
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.6.8.tgz#5b58e7fda67beef6aebf0eff955f8111dad7a674"
+  integrity sha512-wo9pXffnYJQyYYLnyFk0wUbEtSIIChdJoqTPN1swubhUybW92T3le8rWLCjQCFry3fKDXvhHF3aDU+qE+G9c6A==
 
 bundle-name@^3.0.0:
   version "3.0.0"
