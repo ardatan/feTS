@@ -1,5 +1,3 @@
-import { promises as fsPromises } from 'fs';
-import { join } from 'path';
 import { createRouter, FromSchema, Response } from 'fets';
 
 const TodoSchema = {
