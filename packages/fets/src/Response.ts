@@ -33,7 +33,7 @@ function getHeadersFromHeadersInit(init?: HeadersInit): Headers {
   } else {
     headers = new Headers(init);
   }
-  headers.set('content-type', 'application/json');
+  headers.set('content-type', 'application/json; charset=utf-8');
   return headers;
 }
 

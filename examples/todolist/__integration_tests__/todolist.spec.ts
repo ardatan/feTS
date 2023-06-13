@@ -48,7 +48,7 @@ describe('uWebSockets', () => {
   it('should expose OpenAPI document', async () => {
     const response = await fetch(`http://localhost:${port}/openapi.json`);
     expect(response.status).toBe(200);
-    expect(response.headers.get('content-type')).toBe('application/json');
+    expect(response.headers.get('content-type')).toContain('application/json');
     const json = await response.json();
     expect(json).toMatchInlineSnapshot(`
       {
