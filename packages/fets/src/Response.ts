@@ -24,17 +24,16 @@ export function isLazySerializedResponse(response: any): response is LazySeriali
 
 export function createLazySerializedResponse(
   jsonObj: any,
-  init?: ResponseInit,
+  init: ResponseInit = {},
 ): LazySerializedResponse {
   let resolve: (value: Response) => void;
   const promise = new Promise<Response>(_resolve => {
     resolve = _resolve;
   });
   let _serializerSet = false;
-  const headers = new Headers({
-    ...init?.headers,
-    'Content-Type': 'application/json',
-  });
+  const headers = new Headers(init.headers);
+  headers.set('Content-Type', 'application/json');
+  init.headers = headers;
   return {
     jsonObj,
     responsePromise: promise,
@@ -46,13 +45,7 @@ export function createLazySerializedResponse(
     resolveWithSerializer(serializer: JSONSerializer) {
       const serialized = serializer(jsonObj);
       _serializerSet = true;
-      resolve(
-        new OriginalResponse(serialized, {
-          ...init,
-          status: init?.status || 200,
-          headers,
-        }) as Response,
-      );
+      resolve(new OriginalResponse(serialized, init) as Response);
     },
     async json() {
       return jsonObj;

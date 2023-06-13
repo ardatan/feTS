@@ -224,20 +224,3 @@ export const router = createRouter({
       });
     },
   });
-
-const savedOpenAPIFilePath = join(__dirname, 'saved_openapi.ts');
-// Write the OpenAPI spec to a file
-Promise.resolve(router.fetch('/openapi.json'))
-  .then(openapiRes => openapiRes.text())
-  .then(openapiText =>
-    fsPromises.writeFile(
-      savedOpenAPIFilePath,
-      `/* eslint-disable */
-export default ${openapiText} as const;`,
-    ),
-  )
-  .then(() => console.log(`OpenAPI schema is written to ${savedOpenAPIFilePath}`))
-  .catch(err => {
-    console.error(`Could not write OpenAPI schema to file: ${err.message}`);
-    process.exit(1);
-  });
