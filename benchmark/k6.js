@@ -45,7 +45,7 @@ const modes = ['no-schema', 'json-schema', 'zod'];
 servers.forEach(server => {
   modes.forEach((mode, index) => {
     const { scenario, thresholds } = getOptionsForScenario(mode, server, index);
-    options.scenarios[mode] = scenario;
+    options.scenarios[`${server}_${mode}`] = scenario;
     Object.assign(options.thresholds, thresholds);
   });
 });
