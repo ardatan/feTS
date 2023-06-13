@@ -16,18 +16,18 @@ export const options = {
 const DURATION = 30;
 const VUS = 1;
 
-function getOptionsForScenario(scenario, index) {
-  const noErrors = `no_errors{mode:${scenario}}`;
-  const expectedResult = `expected_result{mode:${scenario}}`;
-  const httpReqDuration = `http_req_duration{mode:${scenario}}`;
+function getOptionsForScenario(mode, server, index) {
+  const noErrors = `no_errors{mode:${mode},server:${server}}`;
+  const expectedResult = `expected_result{mode:${mode},server:${server}}`;
+  const httpReqDuration = `http_req_duration{mode:${mode},server:${server}}`;
   const scenarioField = {
     executor: 'constant-vus',
     exec: 'run',
     startTime: DURATION * index + 's',
     vus: VUS,
     duration: DURATION + 's',
-    env: { MODE: scenario },
-    tags: { mode: scenario },
+    env: { MODE: mode, SERVER: server },
+    tags: { mode, server },
   };
   return {
     scenario: scenarioField,
@@ -39,12 +39,15 @@ function getOptionsForScenario(scenario, index) {
   };
 }
 
-const scenarioNames = ['no-schema', 'json-schema', 'zod'];
+const servers = ['node-http', 'uWebSockets'];
+const modes = ['no-schema', 'json-schema', 'zod'];
 
-scenarioNames.forEach((name, index) => {
-  const { scenario, thresholds } = getOptionsForScenario(name, index);
-  options.scenarios[name] = scenario;
-  Object.assign(options.thresholds, thresholds);
+servers.forEach(server => {
+  modes.forEach((mode, index) => {
+    const { scenario, thresholds } = getOptionsForScenario(mode, server, index);
+    options.scenarios[mode] = scenario;
+    Object.assign(options.thresholds, thresholds);
+  });
 });
 
 export function handleSummary(data) {
@@ -86,16 +89,21 @@ export function handleSummary(data) {
   };
 }
 
+const ports = {
+  'node-http': 4000,
+  uWebSockets: 4001,
+};
+
 export function run() {
   const res = http.post(
-    `http://localhost:4000/${__ENV.MODE}`,
+    `http://localhost:${ports[__ENV.SERVER]}/${__ENV.MODE}`,
     JSON.stringify({
       name: 'World',
     }),
   );
 
-  const noErrors = `no_errors{mode:${__ENV.MODE}}`;
-  const expectedResult = `expected_result{mode:${__ENV.MODE}}`;
+  const noErrors = `no_errors{mode:${__ENV.MODE},server:${__ENV.SERVER}}`;
+  const expectedResult = `expected_result{mode:${__ENV.MODE},server:${__ENV.SERVER}}`;
   check(res, {
     [noErrors]: resp => resp.status === 200,
     [expectedResult]: resp => {

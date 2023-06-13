@@ -1,3 +1,4 @@
+import { createServer } from 'http';
 import { createRouter, Response, useAjv } from 'fets';
 import { App } from 'uWebSockets.js';
 import { z } from 'zod';
@@ -19,6 +20,8 @@ async function handler(request: Request) {
   );
 }
 
+let readyCount = 0;
+
 const router = createRouter({
   plugins: [useAjv()],
 })
@@ -27,7 +30,7 @@ const router = createRouter({
     path: '/ping',
     handler: () =>
       new Response(null, {
-        status: 200,
+        status: readyCount === 2 ? 200 : 500,
       }),
   })
   .route({
@@ -84,12 +87,18 @@ const router = createRouter({
     handler,
   });
 
+createServer(router).listen(4000, () => {
+  readyCount++;
+  console.log('listening on 0.0.0.0:4000');
+});
+
 App()
   .any('/*', router)
-  .listen('0.0.0.0', 4000, socket => {
+  .listen('0.0.0.0', 4001, socket => {
     if (!socket) {
       console.error('failed to listen');
       process.exit(1);
     }
-    console.log('listening on 0.0.0.0:4000');
+    readyCount++;
+    console.log('listening on 0.0.0.0:4001');
   });
