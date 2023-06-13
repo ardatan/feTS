@@ -80,7 +80,6 @@ export function createLazySerializedResponse(
 export const Response = new Proxy(OriginalResponse, {
   get(OriginalResponse, prop, receiver) {
     if (prop === 'json') {
-      console.log('e bura?', new Error().stack);
       return createLazySerializedResponse;
     }
     return Reflect.get(OriginalResponse, prop, receiver);
