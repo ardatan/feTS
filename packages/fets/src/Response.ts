@@ -22,6 +22,21 @@ export function isLazySerializedResponse(response: any): response is LazySeriali
   return response != null && response[LAZY_SERIALIZED_RESPONSE];
 }
 
+function isHeadersLike(headers: any): headers is Headers {
+  return headers.get && headers.forEach;
+}
+
+function getHeadersFromHeadersInit(init?: HeadersInit): Headers {
+  let headers: Headers;
+  if (init != null && isHeadersLike(init)) {
+    headers = init;
+  } else {
+    headers = new Headers(init);
+  }
+  headers.set('content-type', 'application/json');
+  return headers;
+}
+
 export function createLazySerializedResponse(
   jsonObj: any,
   init: ResponseInit = {},
@@ -31,9 +46,7 @@ export function createLazySerializedResponse(
     resolve = _resolve;
   });
   let _serializerSet = false;
-  const headers = new Headers(init.headers);
-  headers.set('Content-Type', 'application/json');
-  init.headers = headers;
+  let headers: Headers;
   return {
     jsonObj,
     responsePromise: promise,
@@ -45,6 +58,7 @@ export function createLazySerializedResponse(
     resolveWithSerializer(serializer: JSONSerializer) {
       const serialized = serializer(jsonObj);
       _serializerSet = true;
+      init.headers = getHeadersFromHeadersInit(init.headers);
       resolve(new OriginalResponse(serialized, init) as Response);
     },
     async json() {
@@ -53,7 +67,12 @@ export function createLazySerializedResponse(
     get status() {
       return (init?.status || 200) as StatusCode;
     },
-    headers,
+    get headers() {
+      if (headers == null) {
+        headers = getHeadersFromHeadersInit(init.headers);
+      }
+      return headers;
+    },
   };
 }
 

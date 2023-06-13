@@ -13,7 +13,7 @@ jobs:
     uses: the-guild-org/shared-config/.github/workflows/changesets-dependencies.yaml@main
     if: ${{ github.event.pull_request.title != 'Upcoming Release Changes' }}
     secrets:
-      githubToken: ${{ secrets.GH_API_TOKEN }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   alpha:
     if:
@@ -26,7 +26,7 @@ jobs:
       buildScript: build
       nodeVersion: 18
     secrets:
-      githubToken: ${{ secrets.GH_API_TOKEN }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
       npmToken: ${{ secrets.NODE_AUTH_TOKEN }}
 
   release-candidate:
@@ -40,5 +40,5 @@ jobs:
       nodeVersion: 18
       restoreDeletedChangesets: true
     secrets:
-      githubToken: ${{ secrets.GH_API_TOKEN }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
       npmToken: ${{ secrets.NODE_AUTH_TOKEN }}
