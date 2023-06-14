@@ -3155,10 +3155,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.117":
-  version "8.10.117"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.117.tgz#7d12cd6c33ceb4f1b1f35581dacf9f610d99cdd2"
-  integrity sha512-6T1aHTSSK4l8+67ANKHha/CRVxyk/bAl6OGCOxsKVsHaSxWpqsqgupc8rPw8vQGjtIgIZ+EaHqMz8gA4d6xZhQ==
+"@types/aws-lambda@8.10.118":
+  version "8.10.118"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.118.tgz#acebfdc5e5bff479dfe0b5cb9bfb8e12e28563ac"
+  integrity sha512-KOvOKuC4OJCi6pL1SfXiTgG0UPCoBj4ce3Gv+w+x5+8b8E0ACYbxBB1ituzO1NLfeqicvt6eSSY0XRsGC1d3NA==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
