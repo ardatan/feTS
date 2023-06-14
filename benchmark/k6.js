@@ -16,10 +16,15 @@ export const options = {
 const DURATION = 30;
 const VUS = 1;
 
+/**
+ * @param {string} mode
+ * @param {string} server
+ * @param {number} index
+ */
 function getOptionsForScenario(mode, server, index) {
-  const noErrors = `no_errors{mode:${mode},server:${server}}`;
-  const expectedResult = `expected_result{mode:${mode},server:${server}}`;
-  const httpReqDuration = `http_req_duration{mode:${mode},server:${server}}`;
+  const noErrors = `no_errors{server:${server},mode:${mode}}`;
+  const expectedResult = `expected_result{server:${server},mode:${mode}}`;
+  const httpReqDuration = `http_req_duration{server:${server},mode:${mode}}`;
   const scenarioField = {
     executor: 'constant-vus',
     exec: 'run',
@@ -34,7 +39,7 @@ function getOptionsForScenario(mode, server, index) {
     thresholds: {
       [noErrors]: ['rate>0.99'],
       [expectedResult]: ['rate>0.99'],
-      [httpReqDuration]: ['avg<=1'],
+      [httpReqDuration]: ['avg<0.4'],
     },
   };
 }
@@ -42,14 +47,18 @@ function getOptionsForScenario(mode, server, index) {
 const servers = ['node-http', 'uWebSockets'];
 const modes = ['no-schema', 'json-schema', 'zod'];
 
-servers.forEach(server => {
-  modes.forEach((mode, index) => {
+servers.forEach((server, serverIndex) => {
+  modes.forEach((mode, modeIndex) => {
+    const index = serverIndex * modes.length + modeIndex;
     const { scenario, thresholds } = getOptionsForScenario(mode, server, index);
     options.scenarios[`${server}_${mode}`] = scenario;
     Object.assign(options.thresholds, thresholds);
   });
 });
 
+/**
+ * @param {any} data
+ */
 export function handleSummary(data) {
   if (__ENV.GITHUB_TOKEN) {
     githubComment(data, {
@@ -102,8 +111,8 @@ export function run() {
     }),
   );
 
-  const noErrors = `no_errors{mode:${__ENV.MODE},server:${__ENV.SERVER}}`;
-  const expectedResult = `expected_result{mode:${__ENV.MODE},server:${__ENV.SERVER}}`;
+  const noErrors = `no_errors{server:${__ENV.SERVER},mode:${__ENV.MODE}}`;
+  const expectedResult = `expected_result{server:${__ENV.SERVER},mode:${__ENV.MODE}}`;
   check(res, {
     [noErrors]: resp => resp.status === 200,
     [expectedResult]: resp => {
