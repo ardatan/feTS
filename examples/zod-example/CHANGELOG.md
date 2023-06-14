@@ -1,5 +1,13 @@
 # example-zod
 
+## 0.0.29
+
+### Patch Changes
+
+- Updated dependencies
+  [[`b1fa478`](https://github.com/ardatan/feTS/commit/b1fa47834f48dd1fdfe3943dd61b3a89f51a7be8)]:
+  - fets@0.2.5
+
 ## 0.0.28
 
 ### Patch Changes

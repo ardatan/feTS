@@ -1,5 +1,13 @@
 # fets
 
+## 0.2.5
+
+### Patch Changes
+
+- [`b1fa478`](https://github.com/ardatan/feTS/commit/b1fa47834f48dd1fdfe3943dd61b3a89f51a7be8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Small performance optimizations for lazy
+  serialization
+
 ## 0.2.4
 
 ### Patch Changes
