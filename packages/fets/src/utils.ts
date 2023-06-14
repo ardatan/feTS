@@ -59,6 +59,12 @@ function preparePatternHandlerObjByMethod<TServerContext>({
   }
 }
 
+declare global {
+  interface URLPattern {
+    isPattern?: boolean;
+  }
+}
+
 export function addHandlersToMethod<TServerContext>({
   operationId,
   description,
@@ -103,6 +109,7 @@ export function addHandlersToMethod<TServerContext>({
     fullPath = `${basePath}${path}`;
   }
   const pattern = new fetchAPI.URLPattern({ pathname: fullPath });
+  pattern.isPattern = fullPath.includes(':') || fullPath.includes('*');
   methodPatternMaps.set(pattern, handlers);
   // TODO: Better logic to make sure internal routes are always last
   let internalPatterns = internalPatternsByMethod.get(method);

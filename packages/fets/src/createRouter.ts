@@ -98,13 +98,10 @@ export function createRouterBase(
         for (const { pattern, handlers } of methodPatternMaps) {
           // Do not parse URL if not needed
           let match: URLPatternResult | null = null;
-          if (request.url.endsWith(pattern.pathname)) {
-            match = EMPTY_MATCH;
-          } else if (url.pathname === pattern.pathname) {
-            match = EMPTY_MATCH;
-            // Execute only if pattern is a regex
-          } else {
+          if (pattern.isPattern) {
             match = pattern.exec(url);
+          } else if (request.url.endsWith(pattern.pathname) || url.pathname === pattern.pathname) {
+            match = EMPTY_MATCH;
           }
           if (match != null) {
             const routerRequest = new Proxy(request as any, {
