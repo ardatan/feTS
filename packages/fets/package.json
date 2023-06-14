@@ -1,6 +1,6 @@
 {
   "name": "fets",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "description": "TypeScript HTTP Framework focusing on e2e type-safety, easy setup, performance & great developer experience",
   "repository": {
