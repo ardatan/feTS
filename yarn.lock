@@ -10141,7 +10141,7 @@ patch-package@7.0.0:
     tmp "^0.0.33"
     yaml "^2.2.2"
 
-patch-package@^6.5.0:
+patch-package@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-6.5.1.tgz#3e5d00c16997e6160291fee06a521c42ac99b621"
   integrity sha512-I/4Zsalfhc6bphmJTlrLoOcAF87jcxko4q0qsv4bGcurbr8IskEOtdnt9iCmsQVGL1B+iUhSQqweyTLJfCF9rA==
@@ -12172,10 +12172,10 @@ swagger-client@^3.19.8:
     traverse "~0.6.6"
     url "~0.11.0"
 
-swagger-ui-react@^4.15.5:
-  version "4.19.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-4.19.1.tgz#44474a608fabce6faf7846c8b5b22b054e99968e"
-  integrity sha512-km83cp5ZlmCfROOq6QD1E7bM9f0RsvNrM2C1756UqZ6rRM0J3ex3ySyWa5+mcJRltn0eUB5NahqW8c6I4qwC6A==
+swagger-ui-react@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.0.0.tgz#b5bbdf7bdb225fd5431d5c53e8700f81fd77e93c"
+  integrity sha512-vi2Wigjsuu4wr6S0PiasKb8wKb54bDIZNCyVsFqiKsqZMk+qkFmfeAvxrqwNsV3VFU8v6qZKHMsj/vfgtKL6Qw==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.5"
     "@braintree/sanitize-url" "=6.0.2"
@@ -12189,7 +12189,7 @@ swagger-ui-react@^4.15.5:
     js-file-download "^0.4.12"
     js-yaml "=4.1.0"
     lodash "^4.17.21"
-    patch-package "^6.5.0"
+    patch-package "^6.5.1"
     prop-types "^15.8.1"
     randexp "^0.5.3"
     randombytes "^2.1.0"
@@ -12207,7 +12207,7 @@ swagger-ui-react@^4.15.5:
     serialize-error "^8.1.0"
     sha.js "^2.4.11"
     swagger-client "^3.19.8"
-    url-parse "^1.5.8"
+    url-parse "^1.5.10"
     xml "=1.0.1"
     xml-but-prettier "^1.0.1"
     zenscroll "^4.0.2"
@@ -12882,7 +12882,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-parse@^1.5.8:
+url-parse@^1.5.10:
   version "1.5.10"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
   integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
