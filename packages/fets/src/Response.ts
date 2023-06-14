@@ -11,7 +11,7 @@ export interface LazySerializedResponse {
   resolveWithSerializer(serializer: JSONSerializer): void;
   init?: ResponseInit;
   serializerSet: boolean;
-  responsePromise: Promise<Response>;
+  actualResponse: Response;
   jsonObj: any;
   json: () => Promise<any>;
   status: StatusCode;
@@ -41,15 +41,20 @@ export function createLazySerializedResponse(
   jsonObj: any,
   init: ResponseInit = {},
 ): LazySerializedResponse {
-  let resolve: (value: Response) => void;
-  const promise = new Promise<Response>(_resolve => {
-    resolve = _resolve;
-  });
+  let actualResponse: Response;
   let _serializerSet = false;
   let headers: Headers;
+  function getHeaders() {
+    if (headers == null) {
+      headers = getHeadersFromHeadersInit(init.headers);
+    }
+    return headers;
+  }
   return {
     jsonObj,
-    responsePromise: promise,
+    get actualResponse() {
+      return actualResponse;
+    },
     [LAZY_SERIALIZED_RESPONSE]: true,
     init,
     get serializerSet() {
@@ -58,8 +63,8 @@ export function createLazySerializedResponse(
     resolveWithSerializer(serializer: JSONSerializer) {
       const serialized = serializer(jsonObj);
       _serializerSet = true;
-      init.headers = getHeadersFromHeadersInit(init.headers);
-      resolve(new OriginalResponse(serialized, init) as Response);
+      init.headers = getHeaders();
+      actualResponse = new OriginalResponse(serialized, init) as Response;
     },
     async json() {
       return jsonObj;
@@ -68,10 +73,7 @@ export function createLazySerializedResponse(
       return (init?.status || 200) as StatusCode;
     },
     get headers() {
-      if (headers == null) {
-        headers = getHeadersFromHeadersInit(init.headers);
-      }
-      return headers;
+      return getHeaders();
     },
   };
 }

@@ -26,6 +26,11 @@ const router = createRouter({
   plugins: [useAjv()],
 })
   .route({
+    method: 'GET',
+    path: '/greetings',
+    handler: () => Response.json({ message: 'Hello, World!' }),
+  })
+  .route({
     method: 'HEAD',
     path: '/ping',
     handler: () =>
