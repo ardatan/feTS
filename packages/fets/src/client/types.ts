@@ -128,42 +128,96 @@ export type OASRequestParams<
   TOAS extends OpenAPIV3_1.Document,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
-> = {
-  json?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'application/json': { schema: JSONSchema } } };
-  }
-    ? FromSchema<
-        FixJSONSchema<
-          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
-        >
-      >
-    : never;
-  params?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>
-    : never;
-  query?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>
-    : never;
-  headers?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>
-    : never;
-  formData?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
-  }
-    ? FromSchema<
-        OASMethodMap<
-          TOAS,
-          TPath
-        >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-      >
-    : never;
-};
+> = OASMethodMap<TOAS, TPath>[TMethod] extends {
+  requestBody: { content: { 'application/json': { schema: JSONSchema } } };
+}
+  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+    ? {
+        json: FromSchema<
+          FixJSONSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/json']['schema']
+          >
+        >;
+      }
+    : {
+        json?: FromSchema<
+          FixJSONSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/json']['schema']
+          >
+        >;
+      }
+  : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends {
+      parameters: { name: string; schema: JSONSchema; in: 'query' }[];
+    }
+      ? OASMethodMap<TOAS, TPath>[TMethod] extends {
+          parameters: [{ name: string; schema: JSONSchema; in: 'query'; required: true }, ...any[]];
+        }
+        ? {
+            query: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>;
+          }
+        : {
+            query?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>;
+          }
+      : {}) &
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        parameters: { name: string; schema: JSONSchema; in: 'path' }[];
+      }
+        ? OASMethodMap<TOAS, TPath>[TMethod] extends {
+            parameters: [
+              { name: string; schema: JSONSchema; in: 'path'; required: true },
+              ...any[],
+            ];
+          }
+          ? {
+              params: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>;
+            }
+          : {
+              params?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>;
+            }
+        : {}) &
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        parameters: { name: string; schema: JSONSchema; in: 'header' }[];
+      }
+        ? OASMethodMap<TOAS, TPath>[TMethod] extends {
+            parameters: [
+              { name: string; schema: JSONSchema; in: 'header'; required: true },
+              ...any[],
+            ];
+          }
+          ? {
+              headers: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>;
+            }
+          : {
+              headers?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>;
+            }
+        : {}) &
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+      }
+        ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+          ? {
+              formData: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+              >;
+            }
+          : {
+              formData?: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+              >;
+            }
+        : {});
 
 export type OASInput<
   TOAS extends OpenAPIV3_1.Document,

@@ -188,6 +188,7 @@ export function useOpenAPI({
             });
           }
           const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          requestBody.required = true;
           const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
           requestBodyContent['application/json'] = {
             schema: requestJsonSchema,
@@ -195,6 +196,7 @@ export function useOpenAPI({
         }
         if (schemas.request?.formData) {
           const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          requestBody.required = true;
           const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
           let requestFormDataSchema: any = schemas.request.formData;
           if (isZodSchema(requestFormDataSchema)) {
