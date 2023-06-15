@@ -44,7 +44,11 @@ export function createClient<TRouter extends Router<any, any, any>>(
   options?: ClientOptions,
 ): TRouter['__client'];
 export function createClient<TOAS extends OpenAPIDocument>(
-  options?: ClientOptions,
+  options: Omit<ClientOptions, 'endpoint'> & TOAS extends {
+    servers: { url: infer TEndpoint extends string }[];
+  }
+    ? { endpoint: TEndpoint }
+    : { endpoint?: string },
 ): OASClient<TOAS>;
 export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {
   plugins.unshift(useValidationErrors());

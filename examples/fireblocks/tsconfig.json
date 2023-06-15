@@ -8,7 +8,10 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "strict": true
+    "strict": true,
+    "paths": {
+      "fets": ["../../packages/fets/src/index.ts"]
+    }
   },
   "files": ["index.ts"],
   "exclude": ["node_modules", "dist", "test"]
