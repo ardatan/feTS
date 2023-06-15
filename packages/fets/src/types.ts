@@ -1,9 +1,7 @@
-/* eslint-disable camelcase */
 import {
   FromSchema as FromSchemaOriginal,
   JSONSchema as JSONSchemaOrBoolean,
 } from 'json-schema-to-ts';
-import { OpenAPIV3_1 } from 'openapi-types';
 import {
   ServerAdapter,
   ServerAdapterOptions,
@@ -32,8 +30,55 @@ export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
+export interface OpenAPIInfo {
+  title?: string;
+  description?: string;
+  version?: string;
+}
+
+export type OpenAPIPathObject = Record<string, OpenAPIOperationObject>;
+
+export interface OpenAPIParameterObject {
+  name: string;
+  in: 'path' | 'query' | 'header' | 'cookie';
+  required?: boolean;
+  schema?: any;
+}
+
+export interface OpenAPIRequestBodyObject {
+  content?: Record<string, OpenAPIMediaTypeObject>;
+}
+
+export interface OpenAPIOperationObject {
+  operationId?: string;
+  description?: string;
+  tags?: string[];
+  parameters?: OpenAPIParameterObject[];
+  requestBody?: OpenAPIRequestBodyObject;
+  responses?: Record<string | number, OpenAPIResponseObject>;
+}
+
+export interface OpenAPIResponseObject {
+  description?: string;
+  content?: Record<string, OpenAPIMediaTypeObject>;
+}
+
+export interface OpenAPIMediaTypeObject {
+  schema?: any;
+}
+
+export type OpenAPIDocument = {
+  openapi?: string;
+  info?: OpenAPIInfo;
+  servers?: {
+    url: string;
+  }[];
+  paths?: Record<string, OpenAPIPathObject>;
+  components?: unknown;
+};
+
 export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>
-  extends Omit<Partial<OpenAPIV3_1.Document>, 'components'> {
+  extends OpenAPIDocument {
   endpoint?: string | false;
   components?: TComponents;
 }
@@ -155,7 +200,7 @@ export interface RouterBaseObject<
   TComponents extends RouterComponentsBase,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
 > {
-  openAPIDocument: OpenAPIV3_1.Document;
+  openAPIDocument: OpenAPIDocument;
   handle: ServerAdapterRequestHandler<TServerContext>;
   route<
     TRouteSchemas extends RouteSchemas,
@@ -243,7 +288,7 @@ export type OnRouteHookPayload<TServerContext> = {
   method: HTTPMethod;
   path: string;
   schemas?: RouteSchemas | RouteZodSchemas;
-  openAPIDocument: OpenAPIV3_1.Document;
+  openAPIDocument: OpenAPIDocument;
   handlers: RouteHandler<TServerContext, TypedRequest, TypedResponse>[];
 };
 

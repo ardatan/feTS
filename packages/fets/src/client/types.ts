@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
 import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
-import { OpenAPIV3_1 } from 'openapi-types';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
-import { FromSchema, JSONSchema } from '../types.js';
+import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
@@ -28,13 +26,13 @@ type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
 
 export { MutableResolvedObj as Mutable };
 
-export type OASPathMap<TOAS extends OpenAPIV3_1.Document> = TOAS['paths'];
+export type OASPathMap<TOAS extends OpenAPIDocument> = TOAS['paths'];
 export type OASMethodMap<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
 > = OASPathMap<TOAS>[TPath];
 export type OASStatusMap<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
 > = OASMethodMap<TOAS, TPath>[TMethod] extends { responses: any }
@@ -42,14 +40,14 @@ export type OASStatusMap<
   : never;
 
 export type OASResponseSchemas<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
 > = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content'];
 
 export type OASJSONResponseSchema<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
@@ -65,12 +63,12 @@ type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']
   : ToNumber<T, [1, ...R]>;
 
 export type OASResponse<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof TOAS['paths'],
   TMethod extends keyof TOAS['paths'][TPath],
 > = {
   [TStatus in keyof OASStatusMap<TOAS, TPath, TMethod>]: TypedResponse<
-    FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>,
+    FromSchema<FixJSONSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>>,
     Record<string, string>,
     TStatus extends StatusCode
       ? TStatus
@@ -84,18 +82,49 @@ export type OASResponse<
   >;
 }[keyof OASStatusMap<TOAS, TPath, TMethod>];
 
-export type OASParamMap<
-  TParameters extends { name: string; schema: JSONSchema }[],
-  TParamType extends string,
-> = {
-  [TIndex in keyof TParameters]: {
-    [TName in TParameters[TIndex]['name']]: TParameters[TIndex] extends { in: TParamType }
-      ? FromSchema<TParameters[TIndex]['schema']>
-      : never;
-  };
-}[keyof TParameters];
+interface OASParamPropMap {
+  query: 'query';
+  path: 'params';
+  header: 'headers';
+}
 
-export type OASClient<TOAS extends OpenAPIV3_1.Document> = {
+type UnionToIntersectionHelper<U> = (U extends unknown ? (k: U) => void : never) extends (
+  k: infer I,
+) => void
+  ? I
+  : never;
+
+type UnionToIntersection<U> = boolean extends U
+  ? UnionToIntersectionHelper<Exclude<U, boolean>> & boolean
+  : UnionToIntersectionHelper<U>;
+
+export type OASParamMap<TParameters extends { name: string; in: string }[]> = UnionToIntersection<
+  {
+    [TIndex in keyof TParameters]: TParameters[TIndex] extends { in: infer TParamType }
+      ? {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]: TParameters[TIndex] extends { required: true }
+            ? {
+                [TName in TParameters[TIndex]['name']]: TParameters[TIndex] extends {
+                  schema: JSONSchema;
+                }
+                  ? FromSchema<TParameters[TIndex]['schema']>
+                  : unknown;
+              }
+            : {
+                [TName in TParameters[TIndex]['name']]?: TParameters[TIndex] extends {
+                  schema: JSONSchema;
+                }
+                  ? FromSchema<TParameters[TIndex]['schema']>
+                  : unknown;
+              };
+        }
+      : never;
+  }[number]
+>;
+
+export type OASClient<TOAS extends OpenAPIDocument> = {
   [TPath in keyof OASPathMap<TOAS>]: {
     [TMethod in keyof OASMethodMap<TOAS, TPath>]: (
       requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
@@ -104,7 +133,7 @@ export type OASClient<TOAS extends OpenAPIV3_1.Document> = {
   };
 };
 
-export type OASModel<TOAS extends OpenAPIV3_1.Document, TName extends string> = TOAS extends {
+export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
   components: {
     schemas: {
       [TModelName in TName]: JSONSchema;
@@ -117,7 +146,7 @@ export type OASModel<TOAS extends OpenAPIV3_1.Document, TName extends string> = 
 // Later suggest using json-machete
 type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
   ? T extends { type: 'object' }
-    ? T
+    ? T & { additionalProperties: false }
     : {
         type: 'object';
         additionalProperties: false;
@@ -125,64 +154,73 @@ type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
   : T;
 
 export type OASRequestParams<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
-> = {
-  json?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'application/json': { schema: JSONSchema } } };
-  }
-    ? FromSchema<
-        FixJSONSchema<
-          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
-        >
-      >
-    : never;
-  params?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>
-    : never;
-  query?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>
-    : never;
-  headers?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    parameters: { name: string; schema: JSONSchema }[];
-  }
-    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>
-    : never;
-  formData?: OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
-  }
-    ? FromSchema<
-        OASMethodMap<
-          TOAS,
-          TPath
-        >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-      >
-    : never;
-};
+> = OASMethodMap<TOAS, TPath>[TMethod] extends {
+  requestBody: { content: { 'application/json': { schema: JSONSchema } } };
+}
+  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+    ? {
+        json: FromSchema<
+          FixJSONSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/json']['schema']
+          >
+        >;
+      }
+    : {
+        json?: FromSchema<
+          FixJSONSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/json']['schema']
+          >
+        >;
+      }
+  : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
+      ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
+      : {}) &
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+      }
+        ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+          ? {
+              formData: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+              >;
+            }
+          : {
+              formData?: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+              >;
+            }
+        : {});
 
 export type OASInput<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TRequestType extends keyof OASRequestParams<TOAS, TPath, TMethod>,
 > = OASRequestParams<TOAS, TPath, TMethod>[TRequestType];
 
 export type OASOutput<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatusCode extends keyof OASStatusMap<TOAS, TPath, TMethod> = 200,
 > = FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatusCode>>;
 
-export type OASComponentSchema<
-  TOAS extends OpenAPIV3_1.Document,
-  TName extends string,
-> = TOAS extends {
+export type OASComponentSchema<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
   components: {
     schemas: {
       [TModelName in TName]: JSONSchema;

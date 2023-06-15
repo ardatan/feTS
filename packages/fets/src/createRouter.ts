@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
@@ -10,6 +8,8 @@ import type {
   OnRouteHook,
   OnRouterInitHook,
   OnSerializeResponseHook,
+  OpenAPIDocument,
+  OpenAPIInfo,
   RouteHandler,
   Router,
   RouterBaseObject,
@@ -44,7 +44,7 @@ export function createRouterBase(
     plugins = [],
     swaggerUI,
   }: RouterOptions<any, any> = {},
-  openAPIDocument: OpenAPIV3_1.Document,
+  openAPIDocument: OpenAPIDocument,
 ): RouterBaseObject<any, any, any> {
   const fetchAPI = {
     ...DefaultFetchAPI,
@@ -245,7 +245,7 @@ export function createRouter<
     base = '/',
   } = options;
   openAPIDocument.openapi = openAPIDocument.openapi || '3.0.1';
-  const oasInfo = (openAPIDocument.info ||= {} as OpenAPIV3_1.InfoObject);
+  const oasInfo = (openAPIDocument.info ||= {} as OpenAPIInfo);
   oasInfo.title ||= 'feTS API';
   oasInfo.description ||= 'An API written with feTS';
   oasInfo.version ||= '1.0.0';
@@ -278,7 +278,7 @@ export function createRouter<
     base,
     plugins,
   };
-  const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIV3_1.Document);
+  const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIDocument);
   const router = createServerAdapter(routerBaseObject, finalOpts);
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
     onRouterInitHook(router);

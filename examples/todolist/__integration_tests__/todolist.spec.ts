@@ -8,7 +8,7 @@ import {
 import { fetch } from '@whatwg-node/fetch';
 import { app } from '../src/app';
 
-describe('uWebSockets', () => {
+describe('TodoList', () => {
   const nodeMajor = parseInt(process.versions.node.split('.')[0], 10);
   if (nodeMajor < 16) {
     it('should be skipped', () => {});
@@ -99,6 +99,7 @@ describe('uWebSockets', () => {
                     },
                   },
                 },
+                "required": true,
               },
               "responses": {
                 "200": {
@@ -255,6 +256,7 @@ describe('uWebSockets', () => {
                     },
                   },
                 },
+                "required": true,
               },
               "responses": {
                 "200": {

@@ -28,7 +28,7 @@ function.
 import { createClient, Mutable } from 'fets'
 import openapi from './openapi'
 
-const client = createClient<Mutable<typeof openapi>>()
+const client = createClient<Mutable<typeof openapi>>({})
 
 const response = await client['/pets'].get()
 

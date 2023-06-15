@@ -1,7 +1,9 @@
 import { createClient, Mutable } from 'fets';
 import type fireblocksOas from './fireblocks-oas';
 
-const fireblocksClient = createClient<Mutable<typeof fireblocksOas>>();
+const fireblocksClient = createClient<Mutable<typeof fireblocksOas>>({
+  endpoint: 'https://api.fireblocks.io/v1',
+});
 
 async function main() {
   const res = await fireblocksClient['/vault/accounts'].post({

@@ -4,7 +4,7 @@ import { createClient } from 'fets';
 import type router from './api/[...slug]';
 import { Todo } from './api/[...slug]';
 
-const client = createClient<typeof router>();
+const client = createClient<typeof router>({});
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);

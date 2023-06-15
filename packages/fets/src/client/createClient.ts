@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import { fetch, URLSearchParams } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
-import { Router } from '../types.js';
+import { OpenAPIDocument, Router } from '../types.js';
 import {
   ClientMethod,
   ClientOptions,
@@ -42,13 +40,17 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
-export function createClient<TRouter extends Router<any, any, any>>(
-  options?: ClientOptions,
-): TRouter['__client'];
-export function createClient<TOAS extends OpenAPIV3_1.Document>(
-  options?: ClientOptions,
+export function createClient<TOAS extends OpenAPIDocument>(
+  options: Omit<ClientOptions, 'endpoint'> & TOAS extends {
+    servers: { url: infer TEndpoint extends string }[];
+  }
+    ? { endpoint: TEndpoint }
+    : { endpoint?: string },
 ): OASClient<TOAS>;
-export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {
+export function createClient<TRouter extends Router<any, any, any>>(
+  options: ClientOptions,
+): TRouter['__client'];
+export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions) {
   plugins.unshift(useValidationErrors());
   const onRequestInitHooks: OnRequestInitHook[] = [];
   const onFetchHooks: OnFetchHook[] = [];
