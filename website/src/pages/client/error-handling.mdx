@@ -24,7 +24,7 @@ if (response.status === 404) {
     return;
 }
 
-// Or handle any errors
+// Or handle errors
 if (!response.ok) {
     console.error('Something went wrong');
     const errorResponse = await response.text();
