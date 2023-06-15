@@ -1,5 +1,27 @@
 # fets
 
+## 0.2.6
+
+### Patch Changes
+
+- [#251](https://github.com/ardatan/feTS/pull/251)
+  [`7979639`](https://github.com/ardatan/feTS/commit/79796391c0ca6508e7b869244a30f6b63175eb1e)
+  Thanks [@ardatan](https://github.com/ardatan)! - Client;
+
+  - No more optional for each request parameter object, make them required if they are in OAS
+  - Now endpoint is required if OAS has `servers.url` in `createClient` options
+
+  Server;
+
+  - `requestBody` is now required in the generated OAS
+
+- [#251](https://github.com/ardatan/feTS/pull/251)
+  [`7979639`](https://github.com/ardatan/feTS/commit/79796391c0ca6508e7b869244a30f6b63175eb1e)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+  - Removed dependency
+    [`openapi-types@^12.1.0` ↗︎](https://www.npmjs.com/package/openapi-types/v/12.1.0) (from
+    `dependencies`)
+
 ## 0.2.5
 
 ### Patch Changes
