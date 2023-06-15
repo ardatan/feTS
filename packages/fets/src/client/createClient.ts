@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import { fetch, URLSearchParams } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { Router } from '../types.js';
@@ -12,6 +10,7 @@ import {
   OnFetchHook,
   OnRequestInitHook,
   OnResponseHook,
+  OpenAPIDocument,
 } from './types.js';
 
 export class ClientValidationError extends Error implements AggregateError {
@@ -45,7 +44,7 @@ function useValidationErrors(): ClientPlugin {
 export function createClient<TRouter extends Router<any, any, any>>(
   options?: ClientOptions,
 ): TRouter['__client'];
-export function createClient<TOAS extends OpenAPIV3_1.Document>(
+export function createClient<TOAS extends OpenAPIDocument>(
   options?: ClientOptions,
 ): OASClient<TOAS>;
 export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {

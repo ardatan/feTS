@@ -7,177 +7,95 @@
     title: 'Spotify Web API',
     termsOfService: 'https://developer.spotify.com/terms/',
   },
-  servers: [
-    {
-      url: 'https://api.spotify.com/v1',
-    },
-  ],
+  servers: [{ url: 'https://api.spotify.com/v1' }],
   paths: {
     '/albums/{id}': {
       get: {
         operationId: 'get-an-album',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Albums'],
         summary: 'Get Album\n',
         description: 'Get Spotify catalog information for a single album.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathAlbumId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathAlbumId' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneAlbum',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneAlbum' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/albums': {
       get: {
         operationId: 'get-multiple-albums',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Albums'],
         summary: 'Get Several Albums\n',
         description:
           'Get Spotify catalog information for multiple albums identified by their Spotify IDs.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryAlbumIds',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryAlbumIds' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyAlbums',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyAlbums' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/albums/{id}/tracks': {
       get: {
         operationId: 'get-an-albums-tracks',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Albums', 'Tracks'],
         summary: 'Get Album Tracks\n',
         description:
           'Get Spotify catalog information about an album’s tracks.\nOptional parameters can be used to limit the number of tracks returned.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathAlbumId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/PathAlbumId' },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSimplifiedTrackObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSimplifiedTrackObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/artists/{id}': {
       get: {
         tags: ['Artists'],
         operationId: 'get-an-artist',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Artist\n',
         description:
           'Get Spotify catalog information for a single artist identified by their unique Spotify ID.\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathArtistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathArtistId' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneArtist',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneArtist' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/artists': {
       get: {
         tags: ['Artists'],
         operationId: 'get-multiple-artists',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Several Artists\n',
         description:
           'Get Spotify catalog information for several artists based on their Spotify IDs.\n',
@@ -196,277 +114,145 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyArtists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyArtists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/artists/{id}/albums': {
       get: {
         tags: ['Artists', 'Albums'],
         operationId: 'get-an-artists-albums',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: "Get Artist's Albums\n",
         description: "Get Spotify catalog information about an artist's albums.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/PathArtistId',
-          },
-          {
-            $ref: '#/components/parameters/QueryIncludeGroups',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/PathArtistId' },
+          { $ref: '#/components/parameters/QueryIncludeGroups' },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSimplifiedAlbumObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSimplifiedAlbumObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/artists/{id}/top-tracks': {
       get: {
         tags: ['Artists', 'Tracks'],
         operationId: 'get-an-artists-top-tracks',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: "Get Artist's Top Tracks\n",
         description: "Get Spotify catalog information about an artist's top tracks by country.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/PathArtistId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathArtistId' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyTracks',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyTracks' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/artists/{id}/related-artists': {
       get: {
         tags: ['Artists'],
         operationId: 'get-an-artists-related-artists',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: "Get Artist's Related Artists\n",
         description:
           "Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community's listening history.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathArtistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathArtistId' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyArtists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyArtists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/shows/{id}': {
       get: {
         tags: ['Shows'],
         operationId: 'get-a-show',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Show\n',
         description:
           'Get Spotify catalog information for a single show identified by its\nunique Spotify ID.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/PathShowId',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/PathShowId' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneShow',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneShow' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-position'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-position'] }],
       },
     },
     '/shows': {
       get: {
         tags: ['Shows'],
         operationId: 'get-multiple-shows',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Several Shows\n',
         description:
           'Get Spotify catalog information for several shows based on their Spotify IDs.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryShowIds',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryShowIds' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManySimplifiedShows',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManySimplifiedShows' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/shows/{id}/episodes': {
       get: {
         tags: ['Shows', 'Episodes'],
         operationId: 'get-a-shows-episodes',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Show Episodes\n',
         description:
           'Get Spotify catalog information about an show’s episodes. Optional parameters can be used to limit the number of episodes returned.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathShowId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/PathShowId' },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSimplifiedEpisodeObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSimplifiedEpisodeObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-position'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-position'] }],
       },
     },
     '/episodes/{id}': {
       get: {
         tags: ['Episodes'],
         operationId: 'get-an-episode',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Episode\n',
         description:
           'Get Spotify catalog information for a single episode identified by its\nunique Spotify ID.\n',
@@ -483,38 +269,22 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneEpisode',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneEpisode' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-position'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-position'] }],
       },
     },
     '/episodes': {
       get: {
         tags: ['Episodes'],
         operationId: 'get-multiple-episodes',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         summary: 'Get Several Episodes\n',
         description:
           'Get Spotify catalog information for several episodes based on their Spotify IDs.\n',
@@ -531,158 +301,82 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyEpisodes',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyEpisodes' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-position'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-position'] }],
       },
     },
     '/audiobooks/{id}': {
       get: {
         operationId: 'get-an-audiobook',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Audiobooks'],
         summary: 'Get an Audiobook\n',
         description:
           'Get Spotify catalog information for a single audiobook.<br />\n**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathAudiobookId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathAudiobookId' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneAudiobook',
-          },
-          '400': {
-            $ref: '#/components/responses/BadRequest',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '404': {
-            $ref: '#/components/responses/NotFound',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneAudiobook' },
+          '400': { $ref: '#/components/responses/BadRequest' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '404': { $ref: '#/components/responses/NotFound' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/audiobooks': {
       get: {
         operationId: 'get-multiple-audiobooks',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Audiobooks'],
         summary: 'Get Several Audiobooks\n',
         description:
           'Get Spotify catalog information for several audiobooks identified by their Spotify IDs.<br />\n**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryAudiobookIds',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryAudiobookIds' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyAudiobooks',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyAudiobooks' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/audiobooks/{id}/chapters': {
       get: {
         operationId: 'get-audiobook-chapters',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Audiobooks', 'Chapters'],
         summary: 'Get Audiobook Chapters\n',
         description:
           "Get Spotify catalog information about an audiobook's chapters.<br />\n**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/PathAudiobookId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/PathAudiobookId' },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSimplifiedChapterObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSimplifiedChapterObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/me/audiobooks': {
@@ -693,92 +387,44 @@
         description:
           "Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSimplifiedAudiobookObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSimplifiedAudiobookObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
       put: {
         tags: ['Audiobooks', 'Library'],
         operationId: 'save-audiobooks-user',
         summary: 'Save Audiobooks for Current User\n',
         description: "Save one or more audiobooks to the current Spotify user's library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAudiobookIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAudiobookIds' }],
         responses: {
-          '200': {
-            description: 'Audiobook(s) are saved to the library',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Audiobook(s) are saved to the library' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
       delete: {
         tags: ['Audiobooks', 'Library'],
         operationId: 'remove-audiobooks-user',
         summary: "Remove User's Saved Audiobooks\n",
         description: "Remove one or more audiobooks from the Spotify user's library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAudiobookIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAudiobookIds' }],
         responses: {
-          '200': {
-            description: 'Audiobook(s) have been removed from the library',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Audiobook(s) have been removed from the library' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
     },
     '/me/audiobooks/contains': {
@@ -788,108 +434,56 @@
         summary: "Check User's Saved Audiobooks\n",
         description:
           "Check if one or more audiobooks are already saved in the current Spotify user's library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAudiobookIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAudiobookIds' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
     },
     '/chapters/{id}': {
       get: {
         operationId: 'get-a-chapter',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Chapters'],
         summary: 'Get a Chapter\n',
         description:
           'Get Spotify catalog information for a single chapter.<br />\n**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathChapterId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathChapterId' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneChapter',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneChapter' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/chapters': {
       get: {
         operationId: 'get-several-chapters',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/metadataPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/metadataPolicyList' },
         tags: ['Chapters'],
         summary: 'Get Several Chapters\n',
         description:
           'Get Spotify catalog information for several chapters identified by their Spotify IDs.<br />\n**Note: Chapters are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryChapterIds',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryChapterIds' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyChapters',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyChapters' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/tracks/{id}': {
@@ -915,29 +509,15 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneTrack',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneTrack' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/tracks': {
@@ -951,43 +531,23 @@
         description:
           'Get Spotify catalog information for multiple tracks based on their Spotify IDs.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryTrackIds',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryTrackIds' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyTracks',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyTracks' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/search': {
       get: {
         tags: ['Search'],
         operationId: 'search',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MachineLearning',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MachineLearning' }],
         summary: 'Search for Item\n',
         description:
           'Get Spotify catalog information about albums, artists, playlists, tracks, shows, episodes or audiobooks\nthat match a keyword string.<br />\n**Note: Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.**\n',
@@ -1020,9 +580,7 @@
               type: 'array',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
           {
             name: 'limit',
             required: false,
@@ -1066,24 +624,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/SearchItems',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/SearchItems' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/me': {
@@ -1094,24 +640,12 @@
         description:
           "Get detailed profile information about the current user (including the\ncurrent user's username).\n",
         responses: {
-          '200': {
-            $ref: '#/components/responses/OnePrivateUser',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OnePrivateUser' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-private', 'user-read-email'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-private', 'user-read-email'] }],
       },
     },
     '/playlists/{playlist_id}': {
@@ -1124,12 +658,8 @@
         summary: 'Get Playlist\n',
         description: 'Get a playlist owned by a Spotify user.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathPlaylistId' },
+          { $ref: '#/components/parameters/QueryMarket' },
           {
             name: 'fields',
             required: false,
@@ -1142,29 +672,15 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryAdditionalTypes',
-          },
+          { $ref: '#/components/parameters/QueryAdditionalTypes' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OnePlaylist',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OnePlaylist' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
       put: {
         tags: ['Playlists', 'Library'],
@@ -1172,11 +688,7 @@
         summary: 'Change Playlist Details\n',
         description:
           "Change a playlist's name and public/private state. (The user must, of\ncourse, own the playlist.)\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1215,24 +727,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Playlist updated',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Playlist updated' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
     },
     '/playlists/{playlist_id}/tracks': {
@@ -1245,12 +745,8 @@
         summary: 'Get Playlist Items\n',
         description: 'Get full details of the items of a playlist owned by a Spotify user.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/PathPlaylistId' },
+          { $ref: '#/components/parameters/QueryMarket' },
           {
             name: 'fields',
             required: false,
@@ -1263,35 +759,17 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
-          {
-            $ref: '#/components/parameters/QueryAdditionalTypes',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
+          { $ref: '#/components/parameters/QueryAdditionalTypes' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingPlaylistTrackObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingPlaylistTrackObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-read-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-read-private'] }],
       },
       post: {
         tags: ['Playlists', 'Tracks'],
@@ -1299,9 +777,7 @@
         summary: 'Add Items to Playlist\n',
         description: "Add one or more items to a user's playlist.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
+          { $ref: '#/components/parameters/PathPlaylistId' },
           {
             name: 'position',
             required: false,
@@ -1338,9 +814,7 @@
                     description:
                       'A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._\n',
                     type: 'array',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                   position: {
                     description:
@@ -1353,24 +827,12 @@
           },
         },
         responses: {
-          '201': {
-            $ref: '#/components/responses/PlaylistSnapshotId',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '201': { $ref: '#/components/responses/PlaylistSnapshotId' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
       put: {
         tags: ['Playlists', 'Tracks'],
@@ -1379,9 +841,7 @@
         description:
           "Either reorder or replace items in a playlist depending on the request's parameters.\nTo reorder items, include `range_start`, `insert_before`, `range_length` and `snapshot_id` in the request's body.\nTo replace items, include `uris` as either a query parameter or in the request's body.\nReplacing items in a playlist will overwrite its existing items. This operation can be used for replacing or clearing items in a playlist.\n<br/>\n**Note**: Replace and reorder are mutually exclusive operations which share the same endpoint, but have different parameters.\nThese operations can't be applied together in a single request.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
+          { $ref: '#/components/parameters/PathPlaylistId' },
           {
             name: 'uris',
             required: false,
@@ -1398,20 +858,11 @@
           content: {
             'application/json': {
               schema: {
-                example: {
-                  range_start: 1,
-                  insert_before: 3,
-                  range_length: 2,
-                },
+                example: { range_start: 1, insert_before: 3, range_length: 2 },
                 type: 'object',
                 additionalProperties: true,
                 properties: {
-                  uris: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                    },
-                  },
+                  uris: { type: 'array', items: { type: 'string' } },
                   range_start: {
                     type: 'integer',
                     description: 'The position of the first item to be reordered.\n',
@@ -1437,35 +888,19 @@
           },
         },
         responses: {
-          '200': {
-            $ref: '#/components/responses/PlaylistSnapshotId',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PlaylistSnapshotId' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
       delete: {
         tags: ['Playlists', 'Tracks'],
         operationId: 'remove-tracks-playlist',
         summary: 'Remove Playlist Items\n',
         description: "Remove one or more items from a user's playlist.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1479,12 +914,7 @@
                       'An array of objects containing [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks or episodes to remove.\nFor example: `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`. A maximum of 100 objects can be sent at once.\n',
                     items: {
                       type: 'object',
-                      properties: {
-                        uri: {
-                          type: 'string',
-                          description: 'Spotify URI',
-                        },
-                      },
+                      properties: { uri: { type: 'string', description: 'Spotify URI' } },
                     },
                   },
                   snapshot_id: {
@@ -1498,24 +928,12 @@
           },
         },
         responses: {
-          '200': {
-            $ref: '#/components/responses/PlaylistSnapshotId',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PlaylistSnapshotId' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
     },
     '/me/playlists': {
@@ -1526,9 +944,7 @@
         description:
           'Get a list of the playlists owned or followed by the current Spotify\nuser.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
           {
             name: 'offset',
             required: false,
@@ -1544,24 +960,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedPlaylists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedPlaylists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-read-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-read-private'] }],
       },
     },
     '/me/albums': {
@@ -1572,46 +976,24 @@
         description:
           "Get a list of the albums saved in the current Spotify user's 'Your Music' library.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSavedAlbumObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSavedAlbumObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
       put: {
         tags: ['Albums', 'Library'],
         operationId: 'save-albums-user',
         summary: 'Save Albums for Current User\n',
         description: "Save one or more albums to the current user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAlbumIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAlbumIds' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1623,9 +1005,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -1633,35 +1013,19 @@
           },
         },
         responses: {
-          '200': {
-            description: 'The album is saved',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'The album is saved' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
       delete: {
         tags: ['Albums', 'Library'],
         operationId: 'remove-albums-user',
         summary: "Remove Users' Saved Albums\n",
         description: "Remove one or more albums from the current user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAlbumIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAlbumIds' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1673,9 +1037,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -1683,24 +1045,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Album(s) have been removed from the library',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Album(s) have been removed from the library' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
     },
     '/me/albums/contains': {
@@ -1710,30 +1060,14 @@
         summary: "Check User's Saved Albums\n",
         description:
           "Check if one or more albums is already saved in the current Spotify user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryAlbumIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryAlbumIds' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
     },
     '/me/tracks': {
@@ -1744,46 +1078,24 @@
         description:
           "Get a list of the songs saved in the current Spotify user's 'Your Music' library.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSavedTrackObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSavedTrackObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
       put: {
         tags: ['Tracks', 'Library'],
         operationId: 'save-tracks-user',
         summary: 'Save Tracks for Current User\n',
         description: "Save one or more tracks to the current user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryTrackIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryTrackIds' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1796,9 +1108,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -1806,35 +1116,19 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Track saved',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Track saved' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
       delete: {
         tags: ['Tracks', 'Library'],
         operationId: 'remove-tracks-user',
         summary: "Remove User's Saved Tracks\n",
         description: "Remove one or more tracks from the current user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryTrackIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryTrackIds' }],
         requestBody: {
           content: {
             'application/json': {
@@ -1846,9 +1140,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -1856,24 +1148,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Track removed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Track removed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
     },
     '/me/tracks/contains': {
@@ -1883,30 +1163,14 @@
         summary: "Check User's Saved Tracks\n",
         description:
           "Check if one or more tracks is already saved in the current Spotify user's 'Your Music' library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryTrackIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryTrackIds' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
     },
     '/me/episodes': {
@@ -1917,35 +1181,17 @@
         description:
           "Get a list of the episodes saved in the current Spotify user's library.<br/>\nThis API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSavedEpisodeObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSavedEpisodeObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read', 'user-read-playback-position'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read', 'user-read-playback-position'] }],
       },
       put: {
         tags: ['Episodes', 'Library'],
@@ -1979,9 +1225,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -1989,24 +1233,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Episode saved',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Episode saved' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
       delete: {
         tags: ['Episodes', 'Library'],
@@ -2014,11 +1246,7 @@
         summary: "Remove User's Saved Episodes\n",
         description:
           "Remove one or more episodes from the current user's library.<br/>\nThis API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryTrackIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryTrackIds' }],
         requestBody: {
           content: {
             'application/json': {
@@ -2030,9 +1258,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -2040,24 +1266,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Episode removed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Episode removed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
     },
     '/me/episodes/contains': {
@@ -2082,24 +1296,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
     },
     '/me/shows': {
@@ -2110,62 +1312,30 @@
         description:
           "Get a list of shows saved in the current Spotify user's library. Optional parameters can be used to limit the number of shows returned.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingSavedShowObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingSavedShowObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
       put: {
         tags: ['Shows', 'Library'],
         operationId: 'save-shows-user',
         summary: 'Save Shows for Current User\n',
         description: "Save one or more shows to current Spotify user's library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryShowIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryShowIds' }],
         responses: {
-          '200': {
-            description: 'Show saved',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Show saved' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
       delete: {
         tags: ['Shows', 'Library'],
@@ -2173,32 +1343,16 @@
         summary: "Remove User's Saved Shows\n",
         description: "Delete one or more shows from current Spotify user's library.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryShowIds',
-          },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryShowIds' },
+          { $ref: '#/components/parameters/QueryMarket' },
         ],
         responses: {
-          '200': {
-            description: 'Show removed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Show removed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-modify'] }],
       },
     },
     '/me/shows/contains': {
@@ -2208,30 +1362,14 @@
         summary: "Check User's Saved Shows\n",
         description:
           "Check if one or more shows is already saved in the current Spotify user's library.\n",
-        parameters: [
-          {
-            $ref: '#/components/parameters/QueryShowIds',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/QueryShowIds' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-library-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-library-read'] }],
       },
     },
     '/me/top/{type}': {
@@ -2265,32 +1403,16 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagingArtistOrTrackObject',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagingArtistOrTrackObject' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-top-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-top-read'] }],
       },
     },
     '/users/{user_id}': {
@@ -2299,30 +1421,14 @@
         operationId: 'get-users-profile',
         summary: "Get User's Profile\n",
         description: 'Get public profile information about a Spotify user.\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathUserId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathUserId' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OnePublicUser',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OnePublicUser' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/users/{user_id}/playlists': {
@@ -2332,12 +1438,8 @@
         summary: "Get User's Playlists\n",
         description: 'Get a list of the playlists owned or followed by a Spotify user.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathUserId',
-          },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
+          { $ref: '#/components/parameters/PathUserId' },
+          { $ref: '#/components/parameters/QueryLimit' },
           {
             name: 'offset',
             required: false,
@@ -2353,24 +1455,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedPlaylists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedPlaylists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-read-private', 'playlist-read-collaborative'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-read-private', 'playlist-read-collaborative'] }],
       },
       post: {
         tags: ['Playlists', 'Library'],
@@ -2378,11 +1468,7 @@
         summary: 'Create Playlist\n',
         description:
           'Create a playlist for a Spotify user. (The playlist will be empty until\nyou [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathUserId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathUserId' }],
         requestBody: {
           content: {
             'application/json': {
@@ -2422,24 +1508,12 @@
           },
         },
         responses: {
-          '201': {
-            $ref: '#/components/responses/OnePlaylist',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '201': { $ref: '#/components/responses/OnePlaylist' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
     },
     '/playlists/{playlist_id}/followers': {
@@ -2448,18 +1522,12 @@
         operationId: 'follow-playlist',
         description: 'Add the current user as a follower of a playlist.\n',
         summary: 'Follow Playlist\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         requestBody: {
           content: {
             'application/json': {
               schema: {
-                example: {
-                  public: false,
-                },
+                example: { public: false },
                 type: 'object',
                 additionalProperties: true,
                 properties: {
@@ -2474,65 +1542,33 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Playlist followed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Playlist followed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
       delete: {
         tags: ['Users', 'Playlists'],
         operationId: 'unfollow-playlist',
         summary: 'Unfollow Playlist\n',
         description: 'Remove the current user as a follower of a playlist.\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         responses: {
-          '200': {
-            description: 'Playlist unfollowed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Playlist unfollowed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'],
-          },
-        ],
+        security: [{ oauth_2_0: ['playlist-modify-public', 'playlist-modify-private'] }],
       },
     },
     '/browse/featured-playlists': {
       get: {
         tags: ['Playlists'],
         operationId: 'get-featured-playlists',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MultipleIntegrations',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MultipleIntegrations' }],
         summary: 'Get Featured Playlists\n',
         description:
           "Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).\n",
@@ -2573,32 +1609,16 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedFeaturedPlaylists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedFeaturedPlaylists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/browse/categories': {
@@ -2633,32 +1653,16 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedCategories',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedCategories' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/browse/categories/{category_id}': {
@@ -2707,24 +1711,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneCategory',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneCategory' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/browse/categories/{category_id}/playlists': {
@@ -2758,32 +1750,16 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedFeaturedPlaylists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedFeaturedPlaylists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/playlists/{playlist_id}/images': {
@@ -2795,43 +1771,22 @@
         },
         summary: 'Get Playlist Cover Image\n',
         description: 'Get the current image associated with a specific playlist.\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfImages',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfImages' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
       put: {
         tags: ['Playlists'],
         operationId: 'upload-custom-playlist-cover',
         summary: 'Add Custom Playlist Cover Image\n',
         description: 'Replace the image used to represent a specific playlist.\n',
-        parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
-        ],
+        parameters: [{ $ref: '#/components/parameters/PathPlaylistId' }],
         requestBody: {
-          required: true,
           content: {
             'image/jpeg': {
               schema: {
@@ -2839,29 +1794,20 @@
                   '/9j/2wCEABoZGSccJz4lJT5CLy8vQkc9Ozs9R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHCcnMyYzPSYmPUc9Mj1HR0dEREdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//dAAQAAf/uAA5BZG9iZQBkwAAAAAH/wAARCAABAAEDACIAAREBAhEB/8QASwABAQAAAAAAAAAAAAAAAAAAAAYBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwAAARECEQA/AJgAH//Z',
                 format: 'byte',
                 type: 'string',
+                required: true,
                 description: 'Base64 encoded JPEG image data, maximum payload size is 256 KB.',
               },
             },
           },
         },
         responses: {
-          '202': {
-            description: 'Image uploaded',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '202': { description: 'Image uploaded' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
         security: [
-          {
-            oauth_2_0: ['ugc-image-upload', 'playlist-modify-public', 'playlist-modify-private'],
-          },
+          { oauth_2_0: ['ugc-image-upload', 'playlist-modify-public', 'playlist-modify-private'] },
         ],
       },
     },
@@ -2869,11 +1815,7 @@
       get: {
         tags: ['Albums'],
         operationId: 'get-new-releases',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MultipleIntegrations',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MultipleIntegrations' }],
         summary: 'Get New Releases\n',
         description:
           'Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).\n',
@@ -2890,32 +1832,16 @@
               type: 'string',
             },
           },
-          {
-            $ref: '#/components/parameters/QueryLimit',
-          },
-          {
-            $ref: '#/components/parameters/QueryOffset',
-          },
+          { $ref: '#/components/parameters/QueryLimit' },
+          { $ref: '#/components/parameters/QueryOffset' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/PagedAlbums',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/PagedAlbums' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/me/following': {
@@ -2965,24 +1891,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/CursorPagedArtists',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/CursorPagedArtists' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-follow-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-follow-read'] }],
       },
       put: {
         tags: ['Users', 'Artists', 'Library'],
@@ -3028,9 +1942,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).\nFor example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -3038,24 +1950,12 @@
           },
         },
         responses: {
-          '204': {
-            description: 'Artist or user followed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Artist or user followed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-follow-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-follow-modify'] }],
       },
       delete: {
         tags: ['Users', 'Artists', 'Library'],
@@ -3100,9 +2000,7 @@
                     type: 'array',
                     description:
                       'A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                 },
               },
@@ -3110,24 +2008,12 @@
           },
         },
         responses: {
-          '200': {
-            description: 'Artist or user unfollowed',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { description: 'Artist or user unfollowed' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-follow-modify'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-follow-modify'] }],
       },
     },
     '/me/following/contains': {
@@ -3164,24 +2050,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-follow-read'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-follow-read'] }],
       },
     },
     '/playlists/{playlist_id}/followers/contains': {
@@ -3192,9 +2066,7 @@
         description:
           'Check to see if one or more Spotify users are following a specified playlist.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/PathPlaylistId',
-          },
+          { $ref: '#/components/parameters/PathPlaylistId' },
           {
             name: 'ids',
             required: true,
@@ -3209,35 +2081,19 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ArrayOfBooleans',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ArrayOfBooleans' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/audio-features': {
       get: {
         tags: ['Tracks'],
         operationId: 'get-several-audio-features',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MachineLearning',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MachineLearning' }],
         summary: "Get Tracks' Audio Features\n",
         description: 'Get audio features for multiple tracks based on their Spotify IDs.\n',
         parameters: [
@@ -3255,35 +2111,19 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyAudioFeatures',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyAudioFeatures' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/audio-features/{id}': {
       get: {
         tags: ['Tracks'],
         operationId: 'get-audio-features',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MachineLearning',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MachineLearning' }],
         summary: "Get Track's Audio Features\n",
         description:
           'Get audio feature information for a single track identified by its unique\nSpotify ID.\n',
@@ -3302,24 +2142,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneAudioFeatures',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneAudioFeatures' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/audio-analysis/{id}': {
@@ -3344,35 +2172,19 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneAudioAnalysis',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneAudioAnalysis' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/recommendations': {
       get: {
         tags: ['Tracks'],
         operationId: 'get-recommendations',
-        'x-spotify-policy-list': [
-          {
-            $ref: '#/components/x-spotify-policy/MachineLearning',
-          },
-        ],
+        'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/MachineLearning' }],
         summary: 'Get Recommendations\n',
         description:
           'Recommendations are generated based on the available information for a given seed entity and matched against similar artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned together with pool size details.\n\nFor artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.\n',
@@ -3392,9 +2204,7 @@
               maximum: 100,
             },
           },
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
           {
             name: 'seed_artists',
             required: true,
@@ -3873,11 +2683,7 @@
             name: 'target_tempo',
             required: false,
             in: 'query',
-            schema: {
-              title: 'Target Tempo',
-              description: 'Target tempo (BPM)',
-              type: 'number',
-            },
+            schema: { title: 'Target Tempo', description: 'Target tempo (BPM)', type: 'number' },
           },
           {
             name: 'min_time_signature',
@@ -3954,24 +2760,12 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneRecommendations',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneRecommendations' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/recommendations/available-genre-seeds': {
@@ -3982,73 +2776,39 @@
         description:
           'Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).\n',
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyGenres',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyGenres' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
     '/me/player': {
       get: {
         tags: ['Player'],
         operationId: 'get-information-about-the-users-current-playback',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Get Playback State\n',
         description:
           'Get information about the user’s current playback state, including track or episode, progress, and active device.\n',
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryAdditionalTypes',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryAdditionalTypes' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneCurrentlyPlaying',
-          },
-          '204': {
-            description: 'Playback not available or active',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneCurrentlyPlaying' },
+          '204': { description: 'Playback not available or active' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-state'] }],
       },
       put: {
         tags: ['Player'],
         operationId: 'transfer-a-users-playback',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Transfer Playback\n',
         description:
           'Transfer playback to a new device and determine if it should start playing.\n',
@@ -4056,9 +2816,7 @@
           content: {
             'application/json': {
               schema: {
-                example: {
-                  device_ids: ['74ASZWbe4lXaubB36ztrGX'],
-                },
+                example: { device_ids: ['74ASZWbe4lXaubB36ztrGX'] },
                 type: 'object',
                 additionalProperties: true,
                 required: ['device_ids'],
@@ -4067,9 +2825,7 @@
                     type: 'array',
                     description:
                       'A JSON array containing the ID of the device on which playback should be started/transferred.<br/>For example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`<br/>_**Note**: Although an array is accepted, only a single device_id is currently supported. Supplying more than one will return `400 Bad Request`_\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                   play: {
                     type: 'boolean',
@@ -4083,24 +2839,12 @@
           },
         },
         responses: {
-          '204': {
-            description: 'Playback transferred',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Playback transferred' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/devices': {
@@ -4110,71 +2854,39 @@
         summary: 'Get Available Devices\n',
         description: 'Get information about a user’s available devices.\n',
         responses: {
-          '200': {
-            $ref: '#/components/responses/ManyDevices',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/ManyDevices' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-state'] }],
       },
     },
     '/me/player/currently-playing': {
       get: {
         tags: ['Player'],
         operationId: 'get-the-users-currently-playing-track',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Get Currently Playing Track\n',
         description: "Get the object currently being played on the user's Spotify account.\n",
         parameters: [
-          {
-            $ref: '#/components/parameters/QueryMarket',
-          },
-          {
-            $ref: '#/components/parameters/QueryAdditionalTypes',
-          },
+          { $ref: '#/components/parameters/QueryMarket' },
+          { $ref: '#/components/parameters/QueryAdditionalTypes' },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/OneCurrentlyPlayingTrack',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/OneCurrentlyPlayingTrack' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-currently-playing'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-currently-playing'] }],
       },
     },
     '/me/player/play': {
       put: {
         tags: ['Player'],
         operationId: 'start-a-users-playback',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Start/Resume Playback\n',
         description:
           "Start a new context or resume current playback on the user's active device.\n",
@@ -4198,9 +2910,7 @@
               schema: {
                 example: {
                   context_uri: 'spotify:album:5ht7ItJgpBH7W6vJ5BqpPr',
-                  offset: {
-                    position: 5,
-                  },
+                  offset: { position: 5 },
                   position_ms: 0,
                 },
                 type: 'object',
@@ -4216,9 +2926,7 @@
                     type: 'array',
                     description:
                       'Optional. A JSON array of the Spotify track URIs to play.\nFor example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"]}`\n',
-                    items: {
-                      type: 'string',
-                    },
+                    items: { type: 'string' },
                   },
                   offset: {
                     type: 'object',
@@ -4237,33 +2945,19 @@
           },
         },
         responses: {
-          '204': {
-            description: 'Playback started',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Playback started' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/pause': {
       put: {
         tags: ['Player'],
         operationId: 'pause-a-users-playback',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Pause Playback\n',
         description: "Pause playback on the user's account.\n",
         parameters: [
@@ -4281,33 +2975,19 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Playback paused',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Playback paused' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/next': {
       post: {
         tags: ['Player'],
         operationId: 'skip-users-playback-to-next-track',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Skip To Next\n',
         description: 'Skips to next track in the user’s queue.\n',
         parameters: [
@@ -4325,33 +3005,19 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/previous': {
       post: {
         tags: ['Player'],
         operationId: 'skip-users-playback-to-previous-track',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Skip To Previous\n',
         description: 'Skips to previous track in the user’s queue.\n',
         parameters: [
@@ -4369,33 +3035,19 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/seek': {
       put: {
         tags: ['Player'],
         operationId: 'seek-to-position-in-currently-playing-track',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Seek To Position\n',
         description: 'Seeks to the given position in the user’s currently playing track.\n',
         parameters: [
@@ -4425,24 +3077,12 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/repeat': {
@@ -4479,24 +3119,12 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/volume': {
@@ -4531,24 +3159,12 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/shuffle': {
@@ -4584,33 +3200,19 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command sent',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command sent' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/me/player/recently-played': {
       get: {
         tags: ['Player'],
         operationId: 'get-recently-played',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Get Recently Played Tracks\n',
         description:
           "Get tracks from the current user's recently played tracks.\n_**Note**: Currently doesn't support podcast episodes._\n",
@@ -4655,61 +3257,33 @@
           },
         ],
         responses: {
-          '200': {
-            $ref: '#/components/responses/CursorPagedPlayHistory',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/CursorPagedPlayHistory' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-recently-played'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-recently-played'] }],
       },
     },
     '/me/player/queue': {
       get: {
         tags: ['Player'],
         operationId: 'get-queue',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: "Get the User's Queue\n",
         description: "Get the list of objects that make up the user's queue.\n",
         responses: {
-          '200': {
-            $ref: '#/components/responses/Queue',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '200': { $ref: '#/components/responses/Queue' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-read-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-read-playback-state'] }],
       },
       post: {
         tags: ['Player'],
         operationId: 'add-to-queue',
-        'x-spotify-policy-list': {
-          $ref: '#/components/x-spotify-policy/playerPolicyList',
-        },
+        'x-spotify-policy-list': { $ref: '#/components/x-spotify-policy/playerPolicyList' },
         summary: 'Add Item to Playback Queue\n',
         description: "Add an item to the end of the user's current playback queue.\n",
         parameters: [
@@ -4739,24 +3313,12 @@
           },
         ],
         responses: {
-          '204': {
-            description: 'Command received',
-          },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '204': { description: 'Command received' },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: ['user-modify-playback-state'],
-          },
-        ],
+        security: [{ oauth_2_0: ['user-modify-playback-state'] }],
       },
     },
     '/markets': {
@@ -4775,9 +3337,7 @@
                   properties: {
                     markets: {
                       type: 'array',
-                      items: {
-                        type: 'string',
-                      },
+                      items: { type: 'string' },
                       example: ['CA', 'BR', 'IT'],
                     },
                   },
@@ -4785,21 +3345,11 @@
               },
             },
           },
-          '401': {
-            $ref: '#/components/responses/Unauthorized',
-          },
-          '403': {
-            $ref: '#/components/responses/Forbidden',
-          },
-          '429': {
-            $ref: '#/components/responses/TooManyRequests',
-          },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '403': { $ref: '#/components/responses/Forbidden' },
+          '429': { $ref: '#/components/responses/TooManyRequests' },
         },
-        security: [
-          {
-            oauth_2_0: [],
-          },
-        ],
+        security: [{ oauth_2_0: [] }],
       },
     },
   },
@@ -4842,43 +3392,21 @@
     'x-spotify-policy': {
       $ref: '../policies.yaml',
       metadataPolicyList: [
-        {
-          $ref: '#/components/x-spotify-policy/Downloading',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/VisualAlteration',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/Attribution',
-        },
+        { $ref: '#/components/x-spotify-policy/Downloading' },
+        { $ref: '#/components/x-spotify-policy/VisualAlteration' },
+        { $ref: '#/components/x-spotify-policy/Attribution' },
       ],
       metadataWithMachineLearningPolicyList: [
-        {
-          $ref: '#/components/x-spotify-policy/Downloading',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/VisualAlteration',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/Attribution',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/MachineLearning',
-        },
+        { $ref: '#/components/x-spotify-policy/Downloading' },
+        { $ref: '#/components/x-spotify-policy/VisualAlteration' },
+        { $ref: '#/components/x-spotify-policy/Attribution' },
+        { $ref: '#/components/x-spotify-policy/MachineLearning' },
       ],
       playerPolicyList: [
-        {
-          $ref: '#/components/x-spotify-policy/CommercialStreaming',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/ContentAlteration',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/Synchronization',
-        },
-        {
-          $ref: '#/components/x-spotify-policy/Broadcasting',
-        },
+        { $ref: '#/components/x-spotify-policy/CommercialStreaming' },
+        { $ref: '#/components/x-spotify-policy/ContentAlteration' },
+        { $ref: '#/components/x-spotify-policy/Synchronization' },
+        { $ref: '#/components/x-spotify-policy/Broadcasting' },
       ],
     },
     responses: {
@@ -4890,11 +3418,7 @@
             schema: {
               type: 'object',
               required: ['error'],
-              properties: {
-                error: {
-                  $ref: '#/components/schemas/ErrorObject',
-                },
-              },
+              properties: { error: { $ref: '#/components/schemas/ErrorObject' } },
             },
           },
         },
@@ -4907,11 +3431,7 @@
             schema: {
               type: 'object',
               required: ['error'],
-              properties: {
-                error: {
-                  $ref: '#/components/schemas/ErrorObject',
-                },
-              },
+              properties: { error: { $ref: '#/components/schemas/ErrorObject' } },
             },
           },
         },
@@ -4923,11 +3443,7 @@
             schema: {
               type: 'object',
               required: ['error'],
-              properties: {
-                error: {
-                  $ref: '#/components/schemas/ErrorObject',
-                },
-              },
+              properties: { error: { $ref: '#/components/schemas/ErrorObject' } },
             },
           },
         },
@@ -4939,11 +3455,7 @@
             schema: {
               type: 'object',
               required: ['error'],
-              properties: {
-                error: {
-                  $ref: '#/components/schemas/ErrorObject',
-                },
-              },
+              properties: { error: { $ref: '#/components/schemas/ErrorObject' } },
             },
           },
         },
@@ -4955,11 +3467,7 @@
             schema: {
               type: 'object',
               required: ['error'],
-              properties: {
-                error: {
-                  $ref: '#/components/schemas/ErrorObject',
-                },
-              },
+              properties: { error: { $ref: '#/components/schemas/ErrorObject' } },
             },
           },
         },
@@ -4972,12 +3480,7 @@
               type: 'object',
               required: ['albums'],
               properties: {
-                albums: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/AlbumObject',
-                  },
-                },
+                albums: { type: 'array', items: { $ref: '#/components/schemas/AlbumObject' } },
               },
             },
           },
@@ -4993,9 +3496,7 @@
               properties: {
                 audiobooks: {
                   type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/AudiobookObject',
-                  },
+                  items: { $ref: '#/components/schemas/AudiobookObject' },
                 },
               },
             },
@@ -5010,12 +3511,7 @@
               type: 'object',
               required: ['chapters'],
               properties: {
-                chapters: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/ChapterObject',
-                  },
-                },
+                chapters: { type: 'array', items: { $ref: '#/components/schemas/ChapterObject' } },
               },
             },
           },
@@ -5029,12 +3525,7 @@
               type: 'object',
               required: ['devices'],
               properties: {
-                devices: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/DeviceObject',
-                  },
-                },
+                devices: { type: 'array', items: { $ref: '#/components/schemas/DeviceObject' } },
               },
             },
           },
@@ -5047,11 +3538,7 @@
             schema: {
               type: 'object',
               required: ['albums'],
-              properties: {
-                albums: {
-                  $ref: '#/components/schemas/PagingSimplifiedAlbumObject',
-                },
-              },
+              properties: { albums: { $ref: '#/components/schemas/PagingSimplifiedAlbumObject' } },
             },
           },
         },
@@ -5059,20 +3546,14 @@
       PagedPlaylists: {
         description: 'A paged set of playlists',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingPlaylistObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PagingPlaylistObject' } },
         },
       },
       PagedFeaturedPlaylists: {
         description: 'A paged set of playlists',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingFeaturedPlaylistObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingFeaturedPlaylistObject' },
           },
         },
       },
@@ -5083,11 +3564,7 @@
             schema: {
               type: 'object',
               required: ['categories'],
-              properties: {
-                categories: {
-                  $ref: '#/components/schemas/PagingObject',
-                },
-              },
+              properties: { categories: { $ref: '#/components/schemas/PagingObject' } },
             },
           },
         },
@@ -5100,9 +3577,7 @@
               type: 'object',
               required: ['artists'],
               properties: {
-                artists: {
-                  $ref: '#/components/schemas/CursorPagingSimplifiedArtistObject',
-                },
+                artists: { $ref: '#/components/schemas/CursorPagingSimplifiedArtistObject' },
               },
             },
           },
@@ -5112,9 +3587,7 @@
         description: 'A paged set of tracks',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/CursorPagingPlayHistoryObject',
-            },
+            schema: { $ref: '#/components/schemas/CursorPagingPlayHistoryObject' },
           },
         },
       },
@@ -5126,12 +3599,7 @@
               type: 'object',
               required: ['artists'],
               properties: {
-                artists: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/ArtistObject',
-                  },
-                },
+                artists: { type: 'array', items: { $ref: '#/components/schemas/ArtistObject' } },
               },
             },
           },
@@ -5147,9 +3615,7 @@
               properties: {
                 audio_features: {
                   type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/AudioFeaturesObject',
-                  },
+                  items: { $ref: '#/components/schemas/AudioFeaturesObject' },
                 },
               },
             },
@@ -5164,12 +3630,7 @@
               type: 'object',
               required: ['episodes'],
               properties: {
-                episodes: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/EpisodeObject',
-                  },
-                },
+                episodes: { type: 'array', items: { $ref: '#/components/schemas/EpisodeObject' } },
               },
             },
           },
@@ -5186,9 +3647,7 @@
                 genres: {
                   type: 'array',
                   example: ['alternative', 'samba'],
-                  items: {
-                    type: 'string',
-                  },
+                  items: { type: 'string' },
                 },
               },
             },
@@ -5197,146 +3656,77 @@
       },
       OneEpisode: {
         description: 'An episode',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/EpisodeObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/EpisodeObject' } } },
       },
       OneChapter: {
         description: 'A Chapter',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/ChapterObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/ChapterObject' } } },
       },
       OneAudiobook: {
         description: 'An Audiobook',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/AudiobookObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/AudiobookObject' } },
         },
       },
       OneAlbum: {
         description: 'An album',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/AlbumObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/AlbumObject' } } },
       },
       ArrayOfImages: {
         description: 'A set of images',
         content: {
           'application/json': {
-            schema: {
-              type: 'array',
-              items: {
-                $ref: '#/components/schemas/ImageObject',
-              },
-            },
+            schema: { type: 'array', items: { $ref: '#/components/schemas/ImageObject' } },
           },
         },
       },
       OnePrivateUser: {
         description: 'A user',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PrivateUserObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PrivateUserObject' } },
         },
       },
       OnePublicUser: {
         description: 'A user',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PublicUserObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PublicUserObject' } },
         },
       },
       OneTrack: {
         description: 'A track',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/TrackObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/TrackObject' } } },
       },
       OneShow: {
         description: 'A show',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/ShowObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/ShowObject' } } },
       },
       OneCategory: {
         description: 'A category',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/CategoryObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/CategoryObject' } },
         },
       },
       OnePlaylist: {
         description: 'A playlist',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PlaylistObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PlaylistObject' } },
         },
       },
       OneAudioFeatures: {
         description: 'Audio features for one track',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/AudioFeaturesObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/AudioFeaturesObject' } },
         },
       },
       OneAudioAnalysis: {
         description: 'Audio analysis for one track',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/AudioAnalysisObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/AudioAnalysisObject' } },
         },
       },
       OneArtist: {
         description: 'An artist',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/ArtistObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/ArtistObject' } } },
       },
       ManyTracks: {
         description: 'A set of tracks',
@@ -5346,12 +3736,7 @@
               type: 'object',
               required: ['tracks'],
               properties: {
-                tracks: {
-                  type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/TrackObject',
-                  },
-                },
+                tracks: { type: 'array', items: { $ref: '#/components/schemas/TrackObject' } },
               },
             },
           },
@@ -5367,9 +3752,7 @@
               properties: {
                 shows: {
                   type: 'array',
-                  items: {
-                    $ref: '#/components/schemas/SimplifiedShowObject',
-                  },
+                  items: { $ref: '#/components/schemas/SimplifiedShowObject' },
                 },
               },
             },
@@ -5380,29 +3763,21 @@
         description: 'Pages of tracks',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedTrackObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedTrackObject' },
           },
         },
       },
       PagingSavedTrackObject: {
         description: 'Pages of tracks',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSavedTrackObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PagingSavedTrackObject' } },
         },
       },
       PagingPlaylistTrackObject: {
         description: 'Pages of tracks',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingPlaylistTrackObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingPlaylistTrackObject' },
           },
         },
       },
@@ -5410,29 +3785,21 @@
         description: 'Pages of albums',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedAlbumObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedAlbumObject' },
           },
         },
       },
       PagingSavedAlbumObject: {
         description: 'Pages of albums',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSavedAlbumObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PagingSavedAlbumObject' } },
         },
       },
       PagingSimplifiedArtistObject: {
         description: 'Pages of artists',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedArtistObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedArtistObject' },
           },
         },
       },
@@ -5440,49 +3807,35 @@
         description: 'Pages of shows',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedShowObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedShowObject' },
           },
         },
       },
       PagingSavedShowObject: {
         description: 'Pages of shows',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSavedShowObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PagingSavedShowObject' } },
         },
       },
       PagingSimplifiedEpisodeObject: {
         description: 'Pages of episodes',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedEpisodeObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedEpisodeObject' },
           },
         },
       },
       PagingSavedEpisodeObject: {
         description: 'Pages of episodes',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSavedEpisodeObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/PagingSavedEpisodeObject' } },
         },
       },
       PagingSimplifiedAudiobookObject: {
         description: 'Pages of audiobooks',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedAudiobookObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedAudiobookObject' },
           },
         },
       },
@@ -5490,9 +3843,7 @@
         description: 'Pages of chapters',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/PagingSimplifiedChapterObject',
-            },
+            schema: { $ref: '#/components/schemas/PagingSimplifiedChapterObject' },
           },
         },
       },
@@ -5503,9 +3854,7 @@
             schema: {
               type: 'object',
               allOf: [
-                {
-                  $ref: '#/components/schemas/PagingObject',
-                },
+                { $ref: '#/components/schemas/PagingObject' },
                 {
                   type: 'object',
                   properties: {
@@ -5514,16 +3863,10 @@
                       items: {
                         type: 'object',
                         oneOf: [
-                          {
-                            $ref: '#/components/schemas/ArtistObject',
-                          },
-                          {
-                            $ref: '#/components/schemas/TrackObject',
-                          },
+                          { $ref: '#/components/schemas/ArtistObject' },
+                          { $ref: '#/components/schemas/TrackObject' },
                         ],
-                        discriminator: {
-                          propertyName: 'type',
-                        },
+                        discriminator: { propertyName: 'type' },
                       },
                     },
                   },
@@ -5540,27 +3883,13 @@
             schema: {
               type: 'object',
               properties: {
-                tracks: {
-                  $ref: '#/components/schemas/PagingTrackObject',
-                },
-                artists: {
-                  $ref: '#/components/schemas/PagingArtistObject',
-                },
-                albums: {
-                  $ref: '#/components/schemas/PagingSimplifiedAlbumObject',
-                },
-                playlists: {
-                  $ref: '#/components/schemas/PagingPlaylistObject',
-                },
-                shows: {
-                  $ref: '#/components/schemas/PagingSimplifiedShowObject',
-                },
-                episodes: {
-                  $ref: '#/components/schemas/PagingSimplifiedEpisodeObject',
-                },
-                audiobooks: {
-                  $ref: '#/components/schemas/PagingSimplifiedAudiobookObject',
-                },
+                tracks: { $ref: '#/components/schemas/PagingTrackObject' },
+                artists: { $ref: '#/components/schemas/PagingArtistObject' },
+                albums: { $ref: '#/components/schemas/PagingSimplifiedAlbumObject' },
+                playlists: { $ref: '#/components/schemas/PagingPlaylistObject' },
+                shows: { $ref: '#/components/schemas/PagingSimplifiedShowObject' },
+                episodes: { $ref: '#/components/schemas/PagingSimplifiedEpisodeObject' },
+                audiobooks: { $ref: '#/components/schemas/PagingSimplifiedAudiobookObject' },
               },
             },
           },
@@ -5569,44 +3898,26 @@
       OneRecommendations: {
         description: 'A set of recommendations',
         content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/RecommendationsObject',
-            },
-          },
+          'application/json': { schema: { $ref: '#/components/schemas/RecommendationsObject' } },
         },
       },
       ArrayOfBooleans: {
         description: 'Array of booleans',
         content: {
           'application/json': {
-            schema: {
-              type: 'array',
-              example: [false, true],
-              items: {
-                type: 'boolean',
-              },
-            },
+            schema: { type: 'array', example: [false, true], items: { type: 'boolean' } },
           },
         },
       },
       Queue: {
         description: 'Information about the queue',
-        content: {
-          'application/json': {
-            schema: {
-              $ref: '#/components/schemas/QueueObject',
-            },
-          },
-        },
+        content: { 'application/json': { schema: { $ref: '#/components/schemas/QueueObject' } } },
       },
       OneCurrentlyPlaying: {
         description: 'Information about playback',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/CurrentlyPlayingContextObject',
-            },
+            schema: { $ref: '#/components/schemas/CurrentlyPlayingContextObject' },
           },
         },
       },
@@ -5614,9 +3925,7 @@
         description: 'Information about the currently playing track',
         content: {
           'application/json': {
-            schema: {
-              $ref: '#/components/schemas/CurrentlyPlayingContextObject',
-            },
+            schema: { $ref: '#/components/schemas/CurrentlyPlayingContextObject' },
           },
         },
       },
@@ -5626,12 +3935,7 @@
           'application/json': {
             schema: {
               type: 'object',
-              properties: {
-                snapshot_id: {
-                  type: 'string',
-                  example: 'abc',
-                },
-              },
+              properties: { snapshot_id: { type: 'string', example: 'abc' } },
             },
           },
         },
@@ -5643,11 +3947,7 @@
         'x-spotify-docs-type': 'LinkedTrackObject',
         properties: {
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this track.\n',
           },
           href: {
@@ -5659,10 +3959,7 @@
             description:
               'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.\n',
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "track".\n',
-          },
+          type: { type: 'string', description: 'The object type: "track".\n' },
           uri: {
             type: 'string',
             description:
@@ -5720,26 +4017,16 @@
         'x-spotify-docs-type': 'ArtistObject',
         properties: {
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this artist.\n',
           },
           followers: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/FollowersObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/FollowersObject' }],
             description: 'Information about the followers of the artist.\n',
           },
           genres: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             example: ['Prog rock', 'Grunge'],
             description:
               'A list of the genres the artist is associated with. If not yet classified, the array is empty.\n',
@@ -5755,25 +4042,16 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'Images of the artist in various sizes, widest first.\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the artist.\n',
-          },
+          name: { type: 'string', description: 'The name of the artist.\n' },
           popularity: {
             type: 'integer',
             description:
               "The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist's popularity is calculated from the popularity of all the artist's tracks.\n",
           },
-          type: {
-            type: 'string',
-            enum: ['artist'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['artist'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -5786,11 +4064,7 @@
         'x-spotify-docs-type': 'SimplifiedArtistObject',
         properties: {
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this artist.\n',
           },
           href: {
@@ -5802,15 +4076,8 @@
             description:
               'The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the artist.\n',
-          },
-          type: {
-            type: 'string',
-            enum: ['artist'],
-            description: 'The object type.\n',
-          },
+          name: { type: 'string', description: 'The name of the artist.\n' },
+          type: { type: 'string', enum: ['artist'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -5823,11 +4090,7 @@
         'x-spotify-docs-type': 'PlayHistoryObject',
         properties: {
           track: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/TrackObject' }],
             description: 'The track the user listened to.',
           },
           played_at: {
@@ -5837,11 +4100,7 @@
             description: 'The date and time the track was played.',
           },
           context: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ContextObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ContextObject' }],
             description: 'The context the track was played from.',
           },
         },
@@ -5858,11 +4117,7 @@
               'The date and time the track or episode was added. _**Note**: some very old playlists may return `null` in this field._\n',
           },
           added_by: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/PlaylistUserObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/PlaylistUserObject' }],
             description:
               'The Spotify user who added the track or episode. _**Note**: some very old playlists may return `null` in this field._\n',
           },
@@ -5873,18 +4128,12 @@
           },
           track: {
             oneOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-              {
-                $ref: '#/components/schemas/EpisodeObject',
-              },
+              { $ref: '#/components/schemas/TrackObject' },
+              { $ref: '#/components/schemas/EpisodeObject' },
             ],
             'x-spotify-docs-type': 'TrackObject | EpisodeObject',
             description: 'Information about the track or episode.',
-            discriminator: {
-              propertyName: 'type',
-            },
+            discriminator: { propertyName: 'type' },
           },
         },
       },
@@ -5893,11 +4142,7 @@
         'x-spotify-docs-type': 'CurrentlyPlayingObject',
         properties: {
           context: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ContextObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ContextObject' }],
             description: 'A Context Object. Can be `null`.',
           },
           timestamp: {
@@ -5914,16 +4159,10 @@
           },
           item: {
             oneOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-              {
-                $ref: '#/components/schemas/EpisodeObject',
-              },
+              { $ref: '#/components/schemas/TrackObject' },
+              { $ref: '#/components/schemas/EpisodeObject' },
             ],
-            discriminator: {
-              propertyName: 'type',
-            },
+            discriminator: { propertyName: 'type' },
             'x-spotify-docs-type': 'TrackObject | EpisodeObject',
             description: 'The currently playing track or episode. Can be `null`.',
           },
@@ -5940,16 +4179,10 @@
         properties: {
           currently_playing: {
             oneOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-              {
-                $ref: '#/components/schemas/EpisodeObject',
-              },
+              { $ref: '#/components/schemas/TrackObject' },
+              { $ref: '#/components/schemas/EpisodeObject' },
             ],
-            discriminator: {
-              propertyName: 'type',
-            },
+            discriminator: { propertyName: 'type' },
             'x-spotify-docs-type': 'TrackObject | EpisodeObject',
             description: 'The currently playing track or episode. Can be `null`.',
           },
@@ -5957,16 +4190,10 @@
             type: 'array',
             items: {
               oneOf: [
-                {
-                  $ref: '#/components/schemas/TrackObject',
-                },
-                {
-                  $ref: '#/components/schemas/EpisodeObject',
-                },
+                { $ref: '#/components/schemas/TrackObject' },
+                { $ref: '#/components/schemas/EpisodeObject' },
               ],
-              discriminator: {
-                propertyName: 'type',
-              },
+              discriminator: { propertyName: 'type' },
               'x-spotify-docs-type': 'TrackObject | EpisodeObject',
             },
             description: 'The tracks or episodes in the queue. Can be empty.',
@@ -5978,27 +4205,13 @@
         'x-spotify-docs-type': 'CurrentlyPlayingContextObject',
         properties: {
           device: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/DeviceObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/DeviceObject' }],
             description: 'The device that is currently active.\n',
           },
-          repeat_state: {
-            type: 'string',
-            description: 'off, track, context',
-          },
-          shuffle_state: {
-            type: 'boolean',
-            description: 'If shuffle is on or off.',
-          },
+          repeat_state: { type: 'string', description: 'off, track, context' },
+          shuffle_state: { type: 'boolean', description: 'If shuffle is on or off.' },
           context: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ContextObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ContextObject' }],
             description: 'A Context Object. Can be `null`.',
           },
           timestamp: {
@@ -6015,16 +4228,10 @@
           },
           item: {
             oneOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-              {
-                $ref: '#/components/schemas/EpisodeObject',
-              },
+              { $ref: '#/components/schemas/TrackObject' },
+              { $ref: '#/components/schemas/EpisodeObject' },
             ],
-            discriminator: {
-              propertyName: 'type',
-            },
+            discriminator: { propertyName: 'type' },
             'x-spotify-docs-type': 'TrackObject | EpisodeObject',
             description: 'The currently playing track or episode. Can be `null`.',
           },
@@ -6034,11 +4241,7 @@
               'The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`.\n',
           },
           actions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/DisallowsObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/DisallowsObject' }],
             description:
               'Allows to update the user interface based on which playback actions are available within the current context.\n',
           },
@@ -6052,18 +4255,9 @@
             type: 'boolean',
             description: 'Interrupting playback. Optional field.',
           },
-          pausing: {
-            type: 'boolean',
-            description: 'Pausing. Optional field.',
-          },
-          resuming: {
-            type: 'boolean',
-            description: 'Resuming. Optional field.',
-          },
-          seeking: {
-            type: 'boolean',
-            description: 'Seeking playback location. Optional field.',
-          },
+          pausing: { type: 'boolean', description: 'Pausing. Optional field.' },
+          resuming: { type: 'boolean', description: 'Resuming. Optional field.' },
+          seeking: { type: 'boolean', description: 'Seeking playback location. Optional field.' },
           skipping_next: {
             type: 'boolean',
             description: 'Skipping to the next context. Optional field.',
@@ -6121,13 +4315,7 @@
             type: 'string',
             description: 'A short description of the cause of the error.\n',
           },
-          reason: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/PlayerErrorReasons',
-              },
-            ],
-          },
+          reason: { allOf: [{ $ref: '#/components/schemas/PlayerErrorReasons' }] },
         },
       },
       PlayerErrorReasons: {
@@ -6174,34 +4362,19 @@
               "The user's email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._\n",
           },
           explicit_content: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExplicitContentSettingsObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExplicitContentSettingsObject' }],
             description:
               "The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._\n",
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this user.',
           },
           followers: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/FollowersObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/FollowersObject' }],
             description: 'Information about the followers of the user.',
           },
-          href: {
-            type: 'string',
-            description: 'A link to the Web API endpoint for this user.\n',
-          },
+          href: { type: 'string', description: 'A link to the Web API endpoint for this user.\n' },
           id: {
             type: 'string',
             description:
@@ -6209,9 +4382,7 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: "The user's profile image.",
           },
           product: {
@@ -6219,10 +4390,7 @@
             description:
               'The user\'s Spotify subscription level: "premium", "free", etc. (The subscription level "open" can be considered the same as "free".) _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._\n',
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "user"\n',
-          },
+          type: { type: 'string', description: 'The object type: "user"\n' },
           uri: {
             type: 'string',
             description:
@@ -6240,25 +4408,14 @@
             description: "The name displayed on the user's profile. `null` if not available.\n",
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known public external URLs for this user.\n',
           },
           followers: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/FollowersObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/FollowersObject' }],
             description: 'Information about the followers of this user.\n',
           },
-          href: {
-            type: 'string',
-            description: 'A link to the Web API endpoint for this user.\n',
-          },
+          href: { type: 'string', description: 'A link to the Web API endpoint for this user.\n' },
           id: {
             type: 'string',
             description:
@@ -6266,16 +4423,10 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: "The user's profile image.\n",
           },
-          type: {
-            type: 'string',
-            enum: ['user'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['user'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -6383,12 +4534,8 @@
                 description:
                   "The time, in seconds, at which the track's fade-out period starts. If the track has no fade-out, this should match the track's length.",
               },
-              loudness: {
-                $ref: '#/components/schemas/Loudness',
-              },
-              tempo: {
-                $ref: '#/components/schemas/Tempo',
-              },
+              loudness: { $ref: '#/components/schemas/Loudness' },
+              tempo: { $ref: '#/components/schemas/Tempo' },
               tempo_confidence: {
                 type: 'number',
                 example: 0.73,
@@ -6396,9 +4543,7 @@
                 maximum: 1,
                 description: 'The confidence, from 0.0 to 1.0, of the reliability of the `tempo`.',
               },
-              time_signature: {
-                $ref: '#/components/schemas/TimeSignature',
-              },
+              time_signature: { $ref: '#/components/schemas/TimeSignature' },
               time_signature_confidence: {
                 type: 'number',
                 example: 0.994,
@@ -6407,9 +4552,7 @@
                 description:
                   'The confidence, from 0.0 to 1.0, of the reliability of the `time_signature`.',
               },
-              key: {
-                $ref: '#/components/schemas/Key',
-              },
+              key: { $ref: '#/components/schemas/Key' },
               key_confidence: {
                 type: 'number',
                 example: 0.408,
@@ -6417,9 +4560,7 @@
                 maximum: 1,
                 description: 'The confidence, from 0.0 to 1.0, of the reliability of the `key`.',
               },
-              mode: {
-                $ref: '#/components/schemas/Mode',
-              },
+              mode: { $ref: '#/components/schemas/Mode' },
               mode_confidence: {
                 type: 'number',
                 example: 0.485,
@@ -6476,41 +4617,31 @@
             type: 'array',
             description:
               'The time intervals of the bars throughout the track. A bar (or measure) is a segment of time defined as a given number of beats.',
-            items: {
-              $ref: '#/components/schemas/TimeIntervalObject',
-            },
+            items: { $ref: '#/components/schemas/TimeIntervalObject' },
           },
           beats: {
             type: 'array',
             description:
               'The time intervals of beats throughout the track. A beat is the basic time unit of a piece of music; for example, each tick of a metronome. Beats are typically multiples of tatums.',
-            items: {
-              $ref: '#/components/schemas/TimeIntervalObject',
-            },
+            items: { $ref: '#/components/schemas/TimeIntervalObject' },
           },
           sections: {
             type: 'array',
             description:
               'Sections are defined by large variations in rhythm or timbre, e.g. chorus, verse, bridge, guitar solo, etc. Each section contains its own descriptions of tempo, key, mode, time_signature, and loudness.',
-            items: {
-              $ref: '#/components/schemas/SectionObject',
-            },
+            items: { $ref: '#/components/schemas/SectionObject' },
           },
           segments: {
             type: 'array',
             description:
               'Each segment contains a roughly conisistent sound throughout its duration.',
-            items: {
-              $ref: '#/components/schemas/SegmentObject',
-            },
+            items: { $ref: '#/components/schemas/SegmentObject' },
           },
           tatums: {
             type: 'array',
             description:
               'A tatum represents the lowest regular pulse train that a listener intuitively infers from the timing of perceived musical events (segments).',
-            items: {
-              $ref: '#/components/schemas/TimeIntervalObject',
-            },
+            items: { $ref: '#/components/schemas/TimeIntervalObject' },
           },
         },
       },
@@ -6604,9 +4735,7 @@
             minimum: 0,
             maximum: 1,
           },
-          time_signature: {
-            $ref: '#/components/schemas/TimeSignature',
-          },
+          time_signature: { $ref: '#/components/schemas/TimeSignature' },
           time_signature_confidence: {
             type: 'number',
             description:
@@ -6666,20 +4795,14 @@
             type: 'array',
             description:
               'Pitch content is given by a “chroma” vector, corresponding to the 12 pitch classes C, C#, D to B, with values ranging from 0 to 1 that describe the relative dominance of every pitch in the chromatic scale. For example a C Major chord would likely be represented by large values of C, E and G (i.e. classes 0, 4, and 7).\n\nVectors are normalized to 1 by their strongest dimension, therefore noisy sounds are likely represented by values that are all close to 1, while pure tones are described by one value at 1 (the pitch) and others near 0.\nAs can be seen below, the 12 vector indices are a combination of low-power spectrum values at their respective pitch frequencies.\n![pitch vector](https://developer.spotify.com/assets/audio/Pitch_vector.png)\n',
-            items: {
-              type: 'number',
-              minimum: 0,
-              maximum: 1,
-            },
+            items: { type: 'number', minimum: 0, maximum: 1 },
             example: [0.212, 0.141, 0.294],
           },
           timbre: {
             type: 'array',
             description:
               'Timbre is the quality of a musical note or sound that distinguishes different types of musical instruments, or voices. It is a complex notion also referred to as sound color, texture, or tone quality, and is derived from the shape of a segment’s spectro-temporal surface, independently of pitch and loudness. The timbre feature is a vector that includes 12 unbounded values roughly centered around 0. Those values are high level abstractions of the spectral surface, ordered by degree of importance.\n\nFor completeness however, the first dimension represents the average loudness of the segment; second emphasizes brightness; third is more closely correlated to the flatness of a sound; fourth to sounds with a stronger attack; etc. See an image below representing the 12 basis functions (i.e. template segments).\n![timbre basis functions](https://developer.spotify.com/assets/audio/Timbre_basis_functions.png)\n\nThe actual timbre of the segment is best described as a linear combination of these 12 basis functions weighted by the coefficient values: timbre = c1 x b1 + c2 x b2 + ... + c12 x b12, where c1 to c12 represent the 12 coefficients and b1 to b12 the 12 basis functions as displayed below. Timbre vectors are best used in comparison with each other.\n',
-            items: {
-              type: 'number',
-            },
+            items: { type: 'number' },
             example: [42.115, 64.373, -0.233],
           },
         },
@@ -6776,9 +4899,7 @@
             description:
               'Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.\n',
           },
-          key: {
-            $ref: '#/components/schemas/Key',
-          },
+          key: { $ref: '#/components/schemas/Key' },
           liveness: {
             type: 'number',
             example: 0.0866,
@@ -6787,12 +4908,8 @@
             description:
               'Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.\n',
           },
-          loudness: {
-            $ref: '#/components/schemas/Loudness',
-          },
-          mode: {
-            $ref: '#/components/schemas/Mode',
-          },
+          loudness: { $ref: '#/components/schemas/Loudness' },
+          mode: { $ref: '#/components/schemas/Mode' },
           speechiness: {
             type: 'number',
             example: 0.0556,
@@ -6801,22 +4918,14 @@
             description:
               'Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.\n',
           },
-          tempo: {
-            $ref: '#/components/schemas/Tempo',
-          },
-          time_signature: {
-            $ref: '#/components/schemas/TimeSignature',
-          },
+          tempo: { $ref: '#/components/schemas/Tempo' },
+          time_signature: { $ref: '#/components/schemas/TimeSignature' },
           track_href: {
             type: 'string',
             example: 'https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n',
             description: 'A link to the Web API endpoint providing full details of the track.\n',
           },
-          type: {
-            type: 'string',
-            enum: ['audio_features'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['audio_features'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             example: 'spotify:track:2takcwOaAZWiXQijPHIx7B',
@@ -6840,17 +4949,13 @@
         properties: {
           artists: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/SimplifiedArtistObject',
-            },
+            items: { $ref: '#/components/schemas/SimplifiedArtistObject' },
             description:
               'The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist.',
           },
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.\n',
           },
@@ -6859,21 +4964,14 @@
             description:
               'The disc number (usually `1` unless the album consists of more than one disc).',
           },
-          duration_ms: {
-            type: 'integer',
-            description: 'The track length in milliseconds.',
-          },
+          duration_ms: { type: 'integer', description: 'The track length in milliseconds.' },
           explicit: {
             type: 'boolean',
             description:
               'Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown).',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this track.\n',
           },
           href: {
@@ -6891,44 +4989,26 @@
               'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.\n',
           },
           linked_from: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/LinkedTrackObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/LinkedTrackObject' }],
             description:
               'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.',
           },
           restrictions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/TrackRestrictionObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/TrackRestrictionObject' }],
             description: 'Included in the response when a content restriction is applied.\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the track.',
-          },
+          name: { type: 'string', description: 'The name of the track.' },
           preview_url: {
             type: 'string',
             description: 'A URL to a 30 second preview (MP3 format) of the track.\n',
-            'x-spotify-policy-list': [
-              {
-                $ref: '#/components/x-spotify-policy/StandalonePreview',
-              },
-            ],
+            'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/StandalonePreview' }],
           },
           track_number: {
             type: 'integer',
             description:
               'The number of the track. If an album has several discs, the track number is the number on the specified disc.\n',
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "track".\n',
-          },
+          type: { type: 'string', description: 'The object type: "track".\n' },
           uri: {
             type: 'string',
             description:
@@ -6946,9 +5026,7 @@
         properties: {
           devices: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/DeviceObject',
-            },
+            items: { $ref: '#/components/schemas/DeviceObject' },
             description: 'A list of 0..n Device objects',
           },
         },
@@ -6957,11 +5035,7 @@
         type: 'object',
         'x-spotify-docs-type': 'DeviceObject',
         properties: {
-          id: {
-            type: 'string',
-            nullable: true,
-            description: 'The device ID.',
-          },
+          id: { type: 'string', nullable: true, description: 'The device ID.' },
           is_active: {
             type: 'boolean',
             description: 'If this device is the currently active device.',
@@ -7023,40 +5097,23 @@
             description:
               'The maximum number of items in the response (as set in the query or by default).',
           },
-          next: {
-            type: 'string',
-            description: 'URL to the next page of items. ( `null` if none)',
-          },
+          next: { type: 'string', description: 'URL to the next page of items. ( `null` if none)' },
           cursors: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/CursorObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/CursorObject' }],
             description: 'The cursors used to find the next set of items.',
           },
-          total: {
-            type: 'integer',
-            description: 'The total number of items available to return.',
-          },
+          total: { type: 'integer', description: 'The total number of items available to return.' },
         },
       },
       CursorPagingPlayHistoryObject: {
         type: 'object',
         'x-spotify-docs-type': 'PagingTrackObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/CursorPagingObject',
-          },
+          { $ref: '#/components/schemas/CursorPagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/PlayHistoryObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/PlayHistoryObject' } },
             },
           },
         ],
@@ -7065,18 +5122,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingArtistObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/CursorPagingObject',
-          },
+          { $ref: '#/components/schemas/CursorPagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/ArtistObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/ArtistObject' } },
             },
           },
         ],
@@ -7126,17 +5176,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingPlaylistObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedPlaylistObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedPlaylistObject' },
               },
             },
           },
@@ -7146,29 +5192,21 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingFeaturedPlaylistObject',
         properties: {
-          message: {
-            type: 'string',
-          },
-          playlists: {
-            $ref: '#/components/schemas/PagingPlaylistObject',
-          },
+          message: { type: 'string' },
+          playlists: { $ref: '#/components/schemas/PagingPlaylistObject' },
         },
       },
       PagingSimplifiedAlbumObject: {
         type: 'object',
         'x-spotify-docs-type': 'PagingAlbumObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedAlbumObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedAlbumObject' },
               },
             },
           },
@@ -7178,18 +5216,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingSavedAlbumObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SavedAlbumObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/SavedAlbumObject' } },
             },
           },
         ],
@@ -7198,17 +5229,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingTrackObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedTrackObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedTrackObject' },
               },
             },
           },
@@ -7218,18 +5245,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingTrackObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SavedTrackObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/SavedTrackObject' } },
             },
           },
         ],
@@ -7238,18 +5258,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingTrackObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/TrackObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/TrackObject' } },
             },
           },
         ],
@@ -7258,18 +5271,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingPlaylistTrackObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/PlaylistTrackObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/PlaylistTrackObject' } },
             },
           },
         ],
@@ -7278,17 +5284,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingShowObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedShowObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedShowObject' },
               },
             },
           },
@@ -7298,18 +5300,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingShowObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SavedShowObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/SavedShowObject' } },
             },
           },
         ],
@@ -7318,17 +5313,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingEpisodeObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedEpisodeObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedEpisodeObject' },
               },
             },
           },
@@ -7338,18 +5329,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingEpisodeObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SavedEpisodeObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/SavedEpisodeObject' } },
             },
           },
         ],
@@ -7358,17 +5342,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingAudiobookObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedAudiobookObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedAudiobookObject' },
               },
             },
           },
@@ -7378,17 +5358,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingArtistObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedArtistObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedArtistObject' },
               },
             },
           },
@@ -7398,18 +5374,11 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingArtistObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
-              items: {
-                type: 'array',
-                items: {
-                  $ref: '#/components/schemas/ArtistObject',
-                },
-              },
+              items: { type: 'array', items: { $ref: '#/components/schemas/ArtistObject' } },
             },
           },
         ],
@@ -7418,17 +5387,13 @@
         type: 'object',
         'x-spotify-docs-type': 'PagingSimplifiedChapterObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/PagingObject',
-          },
+          { $ref: '#/components/schemas/PagingObject' },
           {
             type: 'object',
             properties: {
               items: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedChapterObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedChapterObject' },
               },
             },
           },
@@ -7441,16 +5406,12 @@
         properties: {
           seeds: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/RecommendationSeedObject',
-            },
+            items: { $ref: '#/components/schemas/RecommendationSeedObject' },
             description: 'An array of recommendation seed objects.\n',
           },
           tracks: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/TrackObject',
-            },
+            items: { $ref: '#/components/schemas/TrackObject' },
             description:
               'An array of track object (simplified) ordered according to the parameters supplied.\n',
           },
@@ -7502,11 +5463,7 @@
               'The date and time the album was saved\nTimestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.\nIf the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.\n',
           },
           album: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/AlbumObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/AlbumObject' }],
             description: 'Information about the album.',
           },
         },
@@ -7523,11 +5480,7 @@
               'The date and time the track was saved.\nTimestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.\nIf the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.\n',
           },
           track: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/TrackObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/TrackObject' }],
             description: 'Information about the track.',
           },
         },
@@ -7544,11 +5497,7 @@
               'The date and time the episode was saved.\nTimestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.\n',
           },
           episode: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/EpisodeObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/EpisodeObject' }],
             description: 'Information about the episode.',
           },
         },
@@ -7565,11 +5514,7 @@
               'The date and time the show was saved.\nTimestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.\nIf the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.\n',
           },
           show: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/SimplifiedShowObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/SimplifiedShowObject' }],
             description: 'Information about the show.',
           },
         },
@@ -7610,9 +5555,7 @@
             description:
               'Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.\n',
           },
-          key: {
-            $ref: '#/components/schemas/Key',
-          },
+          key: { $ref: '#/components/schemas/Key' },
           liveness: {
             type: 'number',
             format: 'float',
@@ -7620,12 +5563,8 @@
             description:
               'Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.\n',
           },
-          loudness: {
-            $ref: '#/components/schemas/Loudness',
-          },
-          mode: {
-            $ref: '#/components/schemas/Mode',
-          },
+          loudness: { $ref: '#/components/schemas/Loudness' },
+          mode: { $ref: '#/components/schemas/Mode' },
           popularity: {
             type: 'number',
             format: 'float',
@@ -7640,12 +5579,8 @@
             description:
               'Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.\n',
           },
-          tempo: {
-            $ref: '#/components/schemas/Tempo',
-          },
-          time_signature: {
-            $ref: '#/components/schemas/TimeSignature',
-          },
+          tempo: { $ref: '#/components/schemas/Tempo' },
+          time_signature: { $ref: '#/components/schemas/TimeSignature' },
           valence: {
             type: 'number',
             format: 'float',
@@ -7670,19 +5605,11 @@
               'The playlist description. _Only returned for modified, verified playlists, otherwise_ `null`.\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this playlist.\n',
           },
           followers: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/FollowersObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/FollowersObject' }],
             description: 'Information about the followers of the playlist.',
           },
           href: {
@@ -7696,22 +5623,13 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description:
               'Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the playlist.\n',
-          },
+          name: { type: 'string', description: 'The name of the playlist.\n' },
           owner: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/PlaylistOwnerObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/PlaylistOwnerObject' }],
             description: 'The user who owns the playlist\n',
           },
           public: {
@@ -7726,17 +5644,10 @@
           },
           tracks: {
             type: 'object',
-            allOf: [
-              {
-                $ref: '#/components/schemas/PagingPlaylistTrackObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/PagingPlaylistTrackObject' }],
             description: 'The tracks of the playlist.\n',
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "playlist"\n',
-          },
+          type: { type: 'string', description: 'The object type: "playlist"\n' },
           uri: {
             type: 'string',
             description:
@@ -7758,11 +5669,7 @@
               'The playlist description. _Only returned for modified, verified playlists, otherwise_ `null`.\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this playlist.\n',
           },
           href: {
@@ -7776,22 +5683,13 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description:
               'Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the playlist.\n',
-          },
+          name: { type: 'string', description: 'The name of the playlist.\n' },
           owner: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/PlaylistOwnerObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/PlaylistOwnerObject' }],
             description: 'The user who owns the playlist\n',
           },
           public: {
@@ -7805,18 +5703,11 @@
               'The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version\n',
           },
           tracks: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/PlaylistTracksRefObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/PlaylistTracksRefObject' }],
             description:
               "A collection containing a link ( `href` ) to the Web API endpoint where full details of the playlist's tracks can be retrieved, along with the `total` number of tracks in the playlist. Note, a track object may be `null`. This can happen if a track is no longer available.\n",
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "playlist"\n',
-          },
+          type: { type: 'string', description: 'The object type: "playlist"\n' },
           uri: {
             type: 'string',
             description:
@@ -7833,10 +5724,7 @@
             description:
               "A link to the Web API endpoint where full details of the playlist's tracks can be retrieved.\n",
           },
-          total: {
-            type: 'integer',
-            description: 'Number of tracks in the playlist.\n',
-          },
+          total: { type: 'integer', description: 'Number of tracks in the playlist.\n' },
         },
       },
       PlaylistUserObject: {
@@ -7844,35 +5732,20 @@
         'x-spotify-docs-type': 'PlaylistUserObject',
         properties: {
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known public external URLs for this user.\n',
           },
           followers: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/FollowersObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/FollowersObject' }],
             description: 'Information about the followers of this user.\n',
           },
-          href: {
-            type: 'string',
-            description: 'A link to the Web API endpoint for this user.\n',
-          },
+          href: { type: 'string', description: 'A link to the Web API endpoint for this user.\n' },
           id: {
             type: 'string',
             description:
               'The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.\n',
           },
-          type: {
-            type: 'string',
-            enum: ['user'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['user'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -7882,9 +5755,7 @@
       },
       PlaylistOwnerObject: {
         allOf: [
-          {
-            $ref: '#/components/schemas/PlaylistUserObject',
-          },
+          { $ref: '#/components/schemas/PlaylistUserObject' },
           {
             type: 'object',
             properties: {
@@ -7908,9 +5779,7 @@
           },
           icons: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The category icon, in various sizes.\n',
           },
           id: {
@@ -7919,11 +5788,7 @@
             description:
               'The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of the category.\n',
           },
-          name: {
-            type: 'string',
-            example: 'EQUAL',
-            description: 'The name of the category.\n',
-          },
+          name: { type: 'string', example: 'EQUAL', description: 'The name of the category.\n' },
         },
       },
       TrackObject: {
@@ -7931,27 +5796,19 @@
         'x-spotify-docs-type': 'TrackObject',
         properties: {
           album: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/SimplifiedAlbumObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/SimplifiedAlbumObject' }],
             description:
               'The album on which the track appears. The album object includes a link in `href` to full information about the album.\n',
           },
           artists: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ArtistObject',
-            },
+            items: { $ref: '#/components/schemas/ArtistObject' },
             description:
               'The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist.\n',
           },
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.\n',
           },
@@ -7960,29 +5817,18 @@
             description:
               'The disc number (usually `1` unless the album consists of more than one disc).\n',
           },
-          duration_ms: {
-            type: 'integer',
-            description: 'The track length in milliseconds.\n',
-          },
+          duration_ms: { type: 'integer', description: 'The track length in milliseconds.\n' },
           explicit: {
             type: 'boolean',
             description:
               'Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown).\n',
           },
           external_ids: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalIdObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalIdObject' }],
             description: 'Known external IDs for the track.\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this track.\n',
           },
           href: {
@@ -8005,17 +5851,10 @@
               'Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the `linked_from` object contains information about the originally requested track.\n',
           },
           restrictions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/TrackRestrictionObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/TrackRestrictionObject' }],
             description: 'Included in the response when a content restriction is applied.\n',
           },
-          name: {
-            type: 'string',
-            description: 'The name of the track.\n',
-          },
+          name: { type: 'string', description: 'The name of the track.\n' },
           popularity: {
             type: 'integer',
             description:
@@ -8024,22 +5863,14 @@
           preview_url: {
             type: 'string',
             description: 'A link to a 30 second preview (MP3 format) of the track. Can be `null`\n',
-            'x-spotify-policy-list': [
-              {
-                $ref: '#/components/x-spotify-policy/StandalonePreview',
-              },
-            ],
+            'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/StandalonePreview' }],
           },
           track_number: {
             type: 'integer',
             description:
               'The number of the track. If an album has several discs, the track number is the number on the specified disc.\n',
           },
-          type: {
-            type: 'string',
-            description: 'The object type: "track".\n',
-            enum: ['track'],
-          },
+          type: { type: 'string', description: 'The object type: "track".\n', enum: ['track'] },
           uri: {
             type: 'string',
             description:
@@ -8055,9 +5886,7 @@
         'x-spotify-docs-type': 'EpisodeObject',
         type: 'object',
         allOf: [
-          {
-            $ref: '#/components/schemas/EpisodeBase',
-          },
+          { $ref: '#/components/schemas/EpisodeBase' },
           {
             type: 'object',
             required: ['show'],
@@ -8073,14 +5902,7 @@
       SimplifiedEpisodeObject: {
         'x-spotify-docs-type': 'SimplifiedEpisodeObject',
         type: 'object',
-        allOf: [
-          {
-            $ref: '#/components/schemas/EpisodeBase',
-          },
-          {
-            type: 'object',
-          },
-        ],
+        allOf: [{ $ref: '#/components/schemas/EpisodeBase' }, { type: 'object' }],
       },
       EpisodeBase: {
         type: 'object',
@@ -8110,11 +5932,7 @@
             example: 'https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17',
             description:
               'A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.\n',
-            'x-spotify-policy-list': [
-              {
-                $ref: '#/components/x-spotify-policy/StandalonePreview',
-              },
-            ],
+            'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/StandalonePreview' }],
           },
           description: {
             type: 'string',
@@ -8140,11 +5958,7 @@
               'Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this episode.\n',
           },
           href: {
@@ -8160,9 +5974,7 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The cover art for the episode in various sizes, widest first.\n',
           },
           is_externally_hosted: {
@@ -8182,9 +5994,7 @@
           },
           languages: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             example: ['fr', 'en'],
             description:
               'A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.\n',
@@ -8207,19 +6017,11 @@
             description: 'The precision with which `release_date` value is known.\n',
           },
           resume_point: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ResumePointObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ResumePointObject' }],
             description:
               "The user's most recent position in the episode. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.\n",
           },
-          type: {
-            type: 'string',
-            enum: ['episode'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['episode'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             example: 'spotify:episode:0zLhl3WsOCQHbe1BPTiHgr',
@@ -8227,11 +6029,7 @@
               'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.\n',
           },
           restrictions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/EpisodeRestrictionObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/EpisodeRestrictionObject' }],
             description: 'Included in the response when a content restriction is applied.\n',
           },
         },
@@ -8274,17 +6072,13 @@
         properties: {
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the countries in which the show can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.\n',
           },
           copyrights: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/CopyrightObject',
-            },
+            items: { $ref: '#/components/schemas/CopyrightObject' },
             description: 'The copyright statements of the show.\n',
           },
           description: {
@@ -8302,11 +6096,7 @@
               'Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this show.\n',
           },
           href: {
@@ -8320,9 +6110,7 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The cover art for the show in various sizes, widest first.\n',
           },
           is_externally_hosted: {
@@ -8332,29 +6120,14 @@
           },
           languages: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the languages used in the show, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.\n',
           },
-          media_type: {
-            type: 'string',
-            description: 'The media type of the show.\n',
-          },
-          name: {
-            type: 'string',
-            description: 'The name of the episode.\n',
-          },
-          publisher: {
-            type: 'string',
-            description: 'The publisher of the show.\n',
-          },
-          type: {
-            type: 'string',
-            enum: ['show'],
-            description: 'The object type.\n',
-          },
+          media_type: { type: 'string', description: 'The media type of the show.\n' },
+          name: { type: 'string', description: 'The name of the episode.\n' },
+          publisher: { type: 'string', description: 'The publisher of the show.\n' },
+          type: { type: 'string', enum: ['show'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -8369,20 +6142,14 @@
       ShowObject: {
         'x-spotify-docs-type': 'ShowObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/ShowBase',
-          },
+          { $ref: '#/components/schemas/ShowBase' },
           {
             type: 'object',
             required: ['episodes'],
             properties: {
               episodes: {
                 type: 'object',
-                allOf: [
-                  {
-                    $ref: '#/components/schemas/PagingSimplifiedEpisodeObject',
-                  },
-                ],
+                allOf: [{ $ref: '#/components/schemas/PagingSimplifiedEpisodeObject' }],
                 description: 'The episodes of the show.\n',
               },
             },
@@ -8391,14 +6158,7 @@
       },
       SimplifiedShowObject: {
         'x-spotify-docs-type': 'SimplifiedShowObject',
-        allOf: [
-          {
-            $ref: '#/components/schemas/ShowBase',
-          },
-          {
-            type: 'object',
-          },
-        ],
+        allOf: [{ $ref: '#/components/schemas/ShowBase' }, { type: 'object' }],
       },
       AudiobookBase: {
         type: 'object',
@@ -8425,24 +6185,18 @@
         properties: {
           authors: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/AuthorObject',
-            },
+            items: { $ref: '#/components/schemas/AuthorObject' },
             description: 'The author(s) for the audiobook.\n',
           },
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the countries in which the audiobook can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.\n',
           },
           copyrights: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/CopyrightObject',
-            },
+            items: { $ref: '#/components/schemas/CopyrightObject' },
             description: 'The copyright statements of the audiobook.\n',
           },
           description: {
@@ -8465,11 +6219,7 @@
               'Whether or not the audiobook has explicit content (true = yes it does; false = no it does not OR unknown).\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this audiobook.\n',
           },
           href: {
@@ -8484,43 +6234,24 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The cover art for the audiobook in various sizes, widest first.\n',
           },
           languages: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the languages used in the audiobook, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.\n',
           },
-          media_type: {
-            type: 'string',
-            description: 'The media type of the audiobook.\n',
-          },
-          name: {
-            type: 'string',
-            description: 'The name of the audiobook.\n',
-          },
+          media_type: { type: 'string', description: 'The media type of the audiobook.\n' },
+          name: { type: 'string', description: 'The name of the audiobook.\n' },
           narrators: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/NarratorObject',
-            },
+            items: { $ref: '#/components/schemas/NarratorObject' },
             description: 'The narrator(s) for the audiobook.\n',
           },
-          publisher: {
-            type: 'string',
-            description: 'The publisher of the audiobook.\n',
-          },
-          type: {
-            type: 'string',
-            enum: ['audiobook'],
-            description: 'The object type.\n',
-          },
+          publisher: { type: 'string', description: 'The publisher of the audiobook.\n' },
+          type: { type: 'string', enum: ['audiobook'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             description:
@@ -8535,20 +6266,14 @@
       AudiobookObject: {
         'x-spotify-docs-type': 'AudiobookObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/AudiobookBase',
-          },
+          { $ref: '#/components/schemas/AudiobookBase' },
           {
             type: 'object',
             required: ['chapters'],
             properties: {
               chapters: {
                 type: 'object',
-                allOf: [
-                  {
-                    $ref: '#/components/schemas/PagingSimplifiedChapterObject',
-                  },
-                ],
+                allOf: [{ $ref: '#/components/schemas/PagingSimplifiedChapterObject' }],
                 description: 'The chapters of the audiobook.\n',
               },
             },
@@ -8557,14 +6282,7 @@
       },
       SimplifiedAudiobookObject: {
         'x-spotify-docs-type': 'SimplifiedAudiobookObject',
-        allOf: [
-          {
-            $ref: '#/components/schemas/AudiobookBase',
-          },
-          {
-            type: 'object',
-          },
-        ],
+        allOf: [{ $ref: '#/components/schemas/AudiobookBase' }, { type: 'object' }],
       },
       AlbumBase: {
         type: 'object',
@@ -8596,19 +6314,13 @@
           },
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             example: ['CA', 'BR', 'IT'],
             description:
               'The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'Known external URLs for this album.\n',
           },
           href: {
@@ -8623,9 +6335,7 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The cover art for the album in various sizes, widest first.\n',
           },
           name: {
@@ -8645,18 +6355,10 @@
             description: 'The precision with which `release_date` value is known.\n',
           },
           restrictions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/AlbumRestrictionObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/AlbumRestrictionObject' }],
             description: 'Included in the response when a content restriction is applied.\n',
           },
-          type: {
-            type: 'string',
-            enum: ['album'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['album'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             example: 'spotify:album:2up3OPMp9Tb4dAKM2erWXQ',
@@ -8665,32 +6367,21 @@
           },
           copyrights: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/CopyrightObject',
-            },
+            items: { $ref: '#/components/schemas/CopyrightObject' },
             description: 'The copyright statements of the album.\n',
           },
           external_ids: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalIdObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalIdObject' }],
             description: 'Known external IDs for the album.\n',
           },
           genres: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             example: ['Egg punk', 'Noise rock'],
             description:
               'A list of the genres the album is associated with. If not yet classified, the array is empty.\n',
           },
-          label: {
-            type: 'string',
-            description: 'The label associated with the album.\n',
-          },
+          label: { type: 'string', description: 'The label associated with the album.\n' },
           popularity: {
             type: 'integer',
             description:
@@ -8701,9 +6392,7 @@
       SimplifiedAlbumObject: {
         'x-spotify-docs-type': 'SimplifiedAlbumObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/AlbumBase',
-          },
+          { $ref: '#/components/schemas/AlbumBase' },
           {
             type: 'object',
             required: ['artists'],
@@ -8717,9 +6406,7 @@
               },
               artists: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/SimplifiedArtistObject',
-                },
+                items: { $ref: '#/components/schemas/SimplifiedArtistObject' },
                 description:
                   'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.\n',
               },
@@ -8731,9 +6418,7 @@
         'x-spotify-docs-type': 'ChapterObject',
         type: 'object',
         allOf: [
-          {
-            $ref: '#/components/schemas/ChapterBase',
-          },
+          { $ref: '#/components/schemas/ChapterBase' },
           {
             type: 'object',
             required: ['audiobook'],
@@ -8749,14 +6434,7 @@
       SimplifiedChapterObject: {
         'x-spotify-docs-type': 'SimplifiedChapterObject',
         type: 'object',
-        allOf: [
-          {
-            $ref: '#/components/schemas/ChapterBase',
-          },
-          {
-            type: 'object',
-          },
-        ],
+        allOf: [{ $ref: '#/components/schemas/ChapterBase' }, { type: 'object' }],
       },
       ChapterBase: {
         type: 'object',
@@ -8786,17 +6464,11 @@
             example: 'https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17',
             description:
               'A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.\n',
-            'x-spotify-policy-list': [
-              {
-                $ref: '#/components/x-spotify-policy/StandalonePreview',
-              },
-            ],
+            'x-spotify-policy-list': [{ $ref: '#/components/x-spotify-policy/StandalonePreview' }],
           },
           available_markets: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             description:
               'A list of the countries in which the chapter can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.\n',
           },
@@ -8829,11 +6501,7 @@
               'Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).\n',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this episode.\n',
           },
           href: {
@@ -8849,9 +6517,7 @@
           },
           images: {
             type: 'array',
-            items: {
-              $ref: '#/components/schemas/ImageObject',
-            },
+            items: { $ref: '#/components/schemas/ImageObject' },
             description: 'The cover art for the episode in various sizes, widest first.\n',
           },
           is_playable: {
@@ -8860,9 +6526,7 @@
           },
           languages: {
             type: 'array',
-            items: {
-              type: 'string',
-            },
+            items: { type: 'string' },
             example: ['fr', 'en'],
             description:
               'A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.\n',
@@ -8885,19 +6549,11 @@
             description: 'The precision with which `release_date` value is known.\n',
           },
           resume_point: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ResumePointObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ResumePointObject' }],
             description:
               "The user's most recent position in the episode. Set if the supplied access token is a user token and has the scope 'user-read-playback-position'.\n",
           },
-          type: {
-            type: 'string',
-            enum: ['episode'],
-            description: 'The object type.\n',
-          },
+          type: { type: 'string', enum: ['episode'], description: 'The object type.\n' },
           uri: {
             type: 'string',
             example: 'spotify:episode:0zLhl3WsOCQHbe1BPTiHgr',
@@ -8905,11 +6561,7 @@
               'The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.\n',
           },
           restrictions: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ChapterRestrictionObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ChapterRestrictionObject' }],
             description: 'Included in the response when a content restriction is applied.\n',
           },
         },
@@ -8917,17 +6569,13 @@
       AlbumObject: {
         'x-spotify-docs-type': 'AlbumObject',
         allOf: [
-          {
-            $ref: '#/components/schemas/AlbumBase',
-          },
+          { $ref: '#/components/schemas/AlbumBase' },
           {
             type: 'object',
             properties: {
               artists: {
                 type: 'array',
-                items: {
-                  $ref: '#/components/schemas/ArtistObject',
-                },
+                items: { $ref: '#/components/schemas/ArtistObject' },
                 description:
                   'The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist.\n',
               },
@@ -8952,11 +6600,7 @@
             description: 'A link to the Web API endpoint providing full details of the track.',
           },
           external_urls: {
-            allOf: [
-              {
-                $ref: '#/components/schemas/ExternalUrlObject',
-              },
-            ],
+            allOf: [{ $ref: '#/components/schemas/ExternalUrlObject' }],
             description: 'External URLs for this context.',
           },
           uri: {
@@ -8970,10 +6614,7 @@
         type: 'object',
         'x-spotify-docs-type': 'CopyrightObject',
         properties: {
-          text: {
-            type: 'string',
-            description: 'The copyright text for this content.\n',
-          },
+          text: { type: 'string', description: 'The copyright text for this content.\n' },
           type: {
             type: 'string',
             description:
@@ -8984,22 +6625,12 @@
       AuthorObject: {
         type: 'object',
         'x-spotify-docs-type': 'AuthorObject',
-        properties: {
-          name: {
-            type: 'string',
-            description: 'The name of the author.\n',
-          },
-        },
+        properties: { name: { type: 'string', description: 'The name of the author.\n' } },
       },
       NarratorObject: {
         type: 'object',
         'x-spotify-docs-type': 'NarratorObject',
-        properties: {
-          name: {
-            type: 'string',
-            description: 'The name of the Narrator.\n',
-          },
-        },
+        properties: { name: { type: 'string', description: 'The name of the Narrator.\n' } },
       },
       ExternalIdObject: {
         type: 'object',
@@ -9043,10 +6674,7 @@
             description:
               'This will always be set to null, as the Web API does not support it at the moment.\n',
           },
-          total: {
-            type: 'integer',
-            description: 'The total number of followers.\n',
-          },
+          total: { type: 'integer', description: 'The total number of followers.\n' },
         },
       },
       ImageObject: {

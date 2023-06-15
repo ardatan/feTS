@@ -12,12 +12,12 @@ async function main() {
     },
   });
   if (!res.ok) {
-    const err = await res.json();
-    console.error(err);
+    const errData = await res.json();
+    console.error(errData);
     return;
   }
   const data = await res.json();
-  console.log(data);
+  console.info(data);
 }
 
 main().catch(err => {

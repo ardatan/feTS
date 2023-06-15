@@ -8,7 +8,7 @@ async function main() {
   const yamlData = await res.text();
   if (yamlData) {
     const jsonData = yamlLoad(yamlData);
-    const jsonString = JSON.stringify(jsonData, null, 2);
+    const jsonString = JSON.stringify(jsonData);
     const exportedJsonString = `/* eslint-disable */ export default ${jsonString} as const;`;
     await fsPromises.writeFile(join(__dirname, '..', 'spotify-oas.ts'), exportedJsonString);
   } else {

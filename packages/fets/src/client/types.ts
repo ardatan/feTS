@@ -1,6 +1,4 @@
-/* eslint-disable camelcase */
 import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
-import { OpenAPIV3_1 } from 'openapi-types';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema } from '../types.js';
 
@@ -26,15 +24,20 @@ type ResolveRefsInObj<T, TBase = T> = {
 
 type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
 
+export type OpenAPIDocument = {
+  openapi: string;
+  paths: {};
+};
+
 export { MutableResolvedObj as Mutable };
 
-export type OASPathMap<TOAS extends OpenAPIV3_1.Document> = TOAS['paths'];
+export type OASPathMap<TOAS extends OpenAPIDocument> = TOAS['paths'];
 export type OASMethodMap<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
 > = OASPathMap<TOAS>[TPath];
 export type OASStatusMap<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
 > = OASMethodMap<TOAS, TPath>[TMethod] extends { responses: any }
@@ -42,14 +45,14 @@ export type OASStatusMap<
   : never;
 
 export type OASResponseSchemas<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
 > = OASStatusMap<TOAS, TPath, TMethod>[TStatus]['content'];
 
 export type OASJSONResponseSchema<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
@@ -65,12 +68,12 @@ type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']
   : ToNumber<T, [1, ...R]>;
 
 export type OASResponse<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof TOAS['paths'],
   TMethod extends keyof TOAS['paths'][TPath],
 > = {
   [TStatus in keyof OASStatusMap<TOAS, TPath, TMethod>]: TypedResponse<
-    FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>,
+    FromSchema<FixJSONSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>>,
     Record<string, string>,
     TStatus extends StatusCode
       ? TStatus
@@ -95,7 +98,7 @@ export type OASParamMap<
   };
 }[keyof TParameters];
 
-export type OASClient<TOAS extends OpenAPIV3_1.Document> = {
+export type OASClient<TOAS extends OpenAPIDocument> = {
   [TPath in keyof OASPathMap<TOAS>]: {
     [TMethod in keyof OASMethodMap<TOAS, TPath>]: (
       requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
@@ -104,7 +107,7 @@ export type OASClient<TOAS extends OpenAPIV3_1.Document> = {
   };
 };
 
-export type OASModel<TOAS extends OpenAPIV3_1.Document, TName extends string> = TOAS extends {
+export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
   components: {
     schemas: {
       [TModelName in TName]: JSONSchema;
@@ -117,7 +120,7 @@ export type OASModel<TOAS extends OpenAPIV3_1.Document, TName extends string> = 
 // Later suggest using json-machete
 type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
   ? T extends { type: 'object' }
-    ? T
+    ? T & { additionalProperties: false }
     : {
         type: 'object';
         additionalProperties: false;
@@ -125,7 +128,7 @@ type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
   : T;
 
 export type OASRequestParams<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
 > = OASMethodMap<TOAS, TPath>[TMethod] extends {
@@ -220,23 +223,20 @@ export type OASRequestParams<
         : {});
 
 export type OASInput<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TRequestType extends keyof OASRequestParams<TOAS, TPath, TMethod>,
 > = OASRequestParams<TOAS, TPath, TMethod>[TRequestType];
 
 export type OASOutput<
-  TOAS extends OpenAPIV3_1.Document,
+  TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatusCode extends keyof OASStatusMap<TOAS, TPath, TMethod> = 200,
 > = FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatusCode>>;
 
-export type OASComponentSchema<
-  TOAS extends OpenAPIV3_1.Document,
-  TName extends string,
-> = TOAS extends {
+export type OASComponentSchema<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
   components: {
     schemas: {
       [TModelName in TName]: JSONSchema;
