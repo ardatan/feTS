@@ -40,9 +40,6 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
-export function createClient<TRouter extends Router<any, any, any>>(
-  options?: ClientOptions,
-): TRouter['__client'];
 export function createClient<TOAS extends OpenAPIDocument>(
   options: Omit<ClientOptions, 'endpoint'> & TOAS extends {
     servers: { url: infer TEndpoint extends string }[];
@@ -50,7 +47,10 @@ export function createClient<TOAS extends OpenAPIDocument>(
     ? { endpoint: TEndpoint }
     : { endpoint?: string },
 ): OASClient<TOAS>;
-export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions = {}) {
+export function createClient<TRouter extends Router<any, any, any>>(
+  options: ClientOptions,
+): TRouter['__client'];
+export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions) {
   plugins.unshift(useValidationErrors());
   const onRequestInitHooks: OnRequestInitHook[] = [];
   const onFetchHooks: OnFetchHook[] = [];

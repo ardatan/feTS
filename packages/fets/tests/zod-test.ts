@@ -33,7 +33,7 @@ const router = createRouter().route({
   },
 });
 
-const client = createClient<typeof router>();
+const client = createClient<typeof router>({});
 
 const res = await client.todoById.post({
   json: {

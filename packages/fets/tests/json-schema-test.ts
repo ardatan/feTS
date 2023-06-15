@@ -346,7 +346,7 @@ const router = createRouter().route({
   },
 });
 
-const client = createClient<typeof router>();
+const client = createClient<typeof router>({});
 const input: Input = {
   id: '1',
 };

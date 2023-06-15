@@ -42,7 +42,7 @@ export interface OpenAPIParameterObject {
   name: string;
   in: 'path' | 'query' | 'header' | 'cookie';
   required?: boolean;
-  schema?: JSONSchema;
+  schema?: any;
 }
 
 export interface OpenAPIRequestBodyObject {
@@ -74,7 +74,7 @@ export type OpenAPIDocument = {
     url: string;
   }[];
   paths?: Record<string, OpenAPIPathObject>;
-  components?: any;
+  components?: unknown;
 };
 
 export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>

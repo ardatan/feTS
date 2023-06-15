@@ -53,7 +53,7 @@ Then on the client side, you can use the type-safe client.
 import { createClient } from 'fets'
 import type router from './api/[...slug]'
 
-const client = createClient<typeof router>()
+const client = createClient<typeof router>({})
 
 export default function Home({ greetingsResponse }: Props) {
   const [message, setMessage] = useState('')
