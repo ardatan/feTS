@@ -1,14 +1,17 @@
 # Request Parameters
 
-There are different types of parameters that can be passed to the API. You can learn how to define
-them in an OpenAPI specification in the
-[OpenAPI Specification documentation](https://swagger.io/docs/specification/describing-parameters/).
+When interacting with APIs, you'll come across different types of parameters that can be passed. You
+can learn how to define them in an OpenAPI specification in the
+[OpenAPI docs](https://swagger.io/docs/specification/describing-parameters/).
+
+In feTS, we provide convenient ways to handle these parameters in your requests. Let's explore how
+to work with them.
 
 ## Path Parameters
 
-Path parameters are the variables that are passed in the URL. If the endpoint is `/pet/{id}`, then
-the `id` is a path parameter. To pass those in feTS Client, we use `params` in the request
-parameters object;
+Path parameters are variables passed in the URL itself. For example, if the endpoint is `/pet/{id}`,
+then `id` is a path parameter. In feTS Client, you can pass path parameters using the `params`
+property in the request parameters object.
 
 ```ts filename="path-params.ts"
 client['/pet/{id}'].get({
@@ -20,23 +23,22 @@ client['/pet/{id}'].get({
 
 ## Query Parameters
 
-Query parameters are the variables that are passed in the query string starting with `?`. If the
-endpoint is expected to get a URL like `/pet?name=Van%20Cat`, then the `name` is a query parameter.
-
-To pass those in feTS Client, we use `query` in the request parameters object;
+Query parameters are variables passed in the URL's query string, starting with a `?`. For example,
+if the URL is `/pet?name=Cheddar`, then `name` is a query parameter. In feTS Client, you can pass
+query parameters using the query property in the request parameters object:
 
 ```ts filename="query-params.ts"
 client['/pet'].get({
   query: {
-    name: 'Van Cat'
+    name: 'Cheddar'
   }
 })
 ```
 
 ## Headers
 
-If the endpoint expects some headers to be passed, then we can pass them in the `headers` property
-of the request parameters object.
+If an endpoint expects certain headers, you can include them in the `headers` property of the
+request parameters object.
 
 ```ts filename="headers.ts"
 client['/my-pets'].get({
@@ -48,39 +50,39 @@ client['/my-pets'].get({
 
 ## JSON Body
 
-If the expected HTTP body is a JSON object (with `application/json` content type), then we can pass
-it in the `json` property of the request parameters object.
+When the expected HTTP body is a JSON object with the `application/json` content type, you can pass
+it using the `json` property in the request parameters object:
 
 ```ts filename="json-body.ts"
 client['/add-pet'].post({
   json: {
-    name: 'Van Cat',
-    description: 'A cat found around Lake Van'
+    name: 'Cheddar',
+    description: 'Small cat with a big attitude'
   }
 })
 ```
 
 ## Form Data / File Uploads
 
-If the expected HTTP body is a form data (with `multipart/form-data` content type), then we can pass
-it in the `formData` property of the request parameters object.
+For expected HTTP body in form data format with `multipart/form-data` content type, you can pass it
+using the formData property in the request parameters object. To include a file in form data, create
+a `File` object:
 
 ```ts filename="form-data.ts"
 import { readFileSync } from 'fs'
 import { File, FormData } from 'fets'
 
-// Read a file from the disk
-// And create a File object
+// Read a file from the disk and create a new `File` object
 const imageFile = new File([readFileSync('cat.jpg')], 'cat.jpg', {
   type: 'image/jpeg'
 })
 
-// Pass the form data to the request
+// Pass the form data to the POST request
 client['/add-pet'].post({
   formData: {
     image: imageFile,
-    name: 'Van Cat',
-    description: 'A cat found around Lake Van'
+    name: 'Cheddar',
+    description: 'Small cat with a big attitude'
   }
 })
 ```
@@ -88,17 +90,16 @@ client['/add-pet'].post({
 ## Request Cancellation
 
 You can use [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to
-cancel a request.
+cancel a request. Pass the `signal` property as the second argument to the request:
 
-```ts
+```ts filename="request-cancellation.ts"
 const abortCtrl = new AbortController()
 
-// You can pass `signal` as the second argument to the request
-client['/add-post'].post(
+client['/add-pet'].post(
   {
     json: {
-      title: 'Hello World',
-      content: 'This is my first post'
+      name: 'Cheddar',
+      description: 'Small cat with a big attitude'
     }
   },
   {
@@ -114,20 +115,18 @@ abortCtrl.abort()
 
 You can use
 [AbortSignal.timeout](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout) to
-cancel a request.
+cancel a request. Pass the `signal` property with `AbortSignal.timeout()` to the request:
 
 ```ts filename="request-timeout.ts"
-client['/add-post'].post(
+client['/add-pet'].post(
   {
     json: {
-      title: 'Hello World',
-      content: 'This is my first post'
+      name: 'Cheddar',
+      description: 'Small cat with a big attitude'
     }
   },
   {
-    signal: AbortSignal.timeout(5000) // 5 seconds in milliseconds
+    signal: AbortSignal.timeout(5000)
   }
 )
 ```
-
-##

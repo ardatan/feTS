@@ -1,19 +1,19 @@
-# Error Handling
+# Error Handling in feTS
 
-There are different ways to handle errors in feTS.
+In feTS, there are several methods available to handle errors effectively.
 
-## HTTP Status Codes (Recommended)
+## Utilizing HTTP Status Codes (Recommended)
 
-We recommend using the status codes per HTTP specification instead of throwing errors.
+It is suggested to use HTTP status codes for error handling in lieu of throwing errors. When an
+error is anticipated, it is beneficial to catch them using `try/catch` blocks and return a response
+with a specific status code.
 
-If an error is expected in somewhere, it'd better to catch them with `try/catch` blocks and return a
-response with a specific status code.
+This approach allows you to also take advantage of response schemas. If multiple status codes are
+defined in the response schema for a specific endpoint, feTS enforces that only those status codes
+can be returned within the handler. Additionally, it provides type-checking for the response body
+associated with each status code.
 
-In this case, you can also benefit from the response schemas.
-
-If multiple status codes are defined in the response schema for a specific endpoint, feTS doesn't
-allow you to return a different status code inside the handler. And it also provides type-checking
-for the response body of that specific status code.
+Here is a sample use case:
 
 ```ts
 import { App } from 'uWebSockets.js';
@@ -80,16 +80,19 @@ App().any('/*', router).listen(3000, () => {
 });
 ```
 
-## Error Throwing
+## Throwing Errors
 
-If an unexpected error is thrown, the response will have a `500` status code. We highly recommend to
-handle errors inside the handlers with `try/catch` blocks, but you can also catch the errors with
-the error handling plugin.
+When an unexpected error is thrown, the response will have a `500` status code. Although it is
+highly recommended to handle errors inside the handlers using `try/catch` blocks, you can also use
+the error handling plugin to catch errors.
 
 ### Error Handling Plugin
 
-You can handle all errors thrown in the handlers. So you can prevent exposing internal errors to the
-consumer such as DB errors that might contain some sensitive information.
+This plugin allows you to handle all errors thrown in the handlers. This way, you can prevent
+exposing internal errors, such as database errors that might contain sensitive information, to the
+consumer.
+
+Here's an example:
 
 ```ts
 import { createRouter, useErrorHandling } from 'fets'
@@ -127,10 +130,16 @@ const router = createRouter({
 })
 ```
 
-### `HTTPError`
+### Utilizing `HTTPError`
 
-You can throw an `HTTPError` by determining the status code, message and the headers instead of a
-`Response`. This might be helpful if you are not able to return a `Response` in some places;
+In certain scenarios, you might find it helpful to throw an `HTTPError` instead of returning a
+`Response`. This can be particularly useful when you are unable to return a `Response` in some parts
+of your code.
+
+The `HTTPError` can be thrown by specifying the status code, message, headers, and body. If you pass
+a JSON object as the body, the response will be formatted as a JSON response.
+
+Here's an example of how to use `HTTPError`:
 
 ```ts
 import { createRouter, HTTPError } from 'fets'
@@ -154,9 +163,8 @@ const router = createRouter({
   },
   handler: request => {
     if (!request.headers.get('Authorization')) {
-      // You can use `HTTPError` to return a custom error response.
-      // It accepts a status code, a message, headers and a body.
-      // If you pass a json object as the body, the response will be a json response.
+      // The `HTTPError` can be used to return a custom error response.
+      // The function accepts a status code, a message, headers, and a body.
       throw new HTTPError(
         401,
         'Unauthorized',

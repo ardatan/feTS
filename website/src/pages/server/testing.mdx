@@ -2,22 +2,21 @@ import { Callout, LegacyPackageCmd, Tab, Tabs } from '@theguild/components'
 
 # Testing
 
-feTS has built-in support for HTTP injection. You can use any testing framework of your choice.
+feTS natively supports HTTP injection, offering compatibility with any testing framework you prefer.
 
-You can use the fetch method on your router instance for calling the router instance as if you were
-doing an HTTP request.
+The `fetch` function on your router instance can be used to simulate an HTTP request.
 
 <Callout>
-  Calling the router.fetch method does not send an actual HTTP request. It basically simulates the
-  HTTP request which is 100% conform with how Request/Response work.
+  Using the router.fetch function doesn't trigger a real HTTP request. Instead, it emulates the HTTP
+  request in a manner that is fully compatible with the way Request/Response operate.
 </Callout>
 
-### Using `fetch` method
+## Using the `fetch` Function
 
-You can use `fetch` method from the router instance directly or you can pass it to any client that
-accepts a `fetch` function.
+The `fetch` function can be directly employed from the router instance, or it can be given to any
+client that accepts a `fetch` function.
 
-`router.fetch` is compliant with
+The `router.fetch` is compliant with the
 [WHATWG `fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API.
 
 ```ts
@@ -40,8 +39,8 @@ console.assert(responseJson.title === 'Buy milk', 'Title should be "Buy milk"')
 
 ### Creating a feTS Client for Testing
 
-You can use [feTS Client](/client/quick-start) to test your API in a type-safe way. It doesn't need
-you to start any real HTTP server.
+You can use [feTS Client](/client/quick-start) to test your API in a type-safe way. It doesn't
+require you to launch any actual HTTP server.
 
 ```ts
 import { createClient } from 'fets'

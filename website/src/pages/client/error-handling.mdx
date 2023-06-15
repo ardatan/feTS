@@ -1,11 +1,16 @@
 # Error Handling
 
-feTS Client returns a WHATWG [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
-object for all requests. You can either use `status` attribute to handle specific status code or
-basically use `ok` attribute to check if the response is successful or not.
+When interacting with APIs, error handling is a crucial aspect. In feTS Client, we return a WHATWG
+[Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object for every request. This
+allows you to either use the `status` attribute to handle specific status codes or the `ok`
+attribute to verify whether the response was successful.
 
-Let's say you have a `/pet/{id}` endpoint that returns a pet object. If the pet is not found, the
-server will return a 404 status code. You can handle this case like this:
+Let's explore how you can manage various scenarios.
+
+## Handling Common HTTP Errors
+
+Suppose you have an endpoint `/pet/{id}` that fetches a pet object. If no pet matches the given id,
+the server will return a 404 status code. Here's how you can handle this:
 
 ```ts
 const response = await client['/pet/{id}']({
@@ -18,7 +23,8 @@ if (response.status === 404) {
     console.error('Pet not found');
     return;
 }
-// or handle any errors
+
+// Or handle any errors
 if (!response.ok) {
     console.error('Something went wrong');
     const errorResponse = await response.text();
@@ -30,10 +36,10 @@ const pet = await response.json();
 console.log(`Pet name is ${pet.name}`);
 ```
 
-## Validation errors with feTS Server
+## Working with Validation Errors in feTS Server
 
-If you are using [feTS Server](/server/quick-start), any request validation errors will be thrown as
-`ClientValidationError` and you can handle them like this:
+When using [feTS Server](/server/quick-start), request validation errors are thrown as
+`ClientValidationError`. You can handle them as shown below:
 
 ```ts
 import { ClientValidationError } from 'fets';
@@ -44,10 +50,12 @@ try {
             id: 1
         }
     });
+
     if (response.status === 404) {
         console.error('Pet not found');
         return;
     }
+
     const pet = await response.json();
     console.log(`Pet name is ${pet.name}`);
 } catch (error) {

@@ -5,24 +5,25 @@ import { Callout, LegacyPackageCmd, Tab, Tabs } from '@theguild/components'
 feTS uses [JSON Schema](https://json-schema.org/) to describe the request parameters and the
 response body.
 
-This allows us to have;
+It allows us to have:
 
-- **Type-safety:** In the `handler`, you have full type-safety for the request parameters and the
-  response body. Also you can use a client like
-  [feTS Client](/client/quick-start#infer-types-from-fets-server) that can infer these types from
-  the router instance itself.
-- **Request Validation:** feTS validates the request parameters and returns `400 Bad Request` if the
-  request is invalid. It uses [AJV](https://ajv.js.org/) under the hood.
-- **Safe and Fast Serialization:** feTS uses the response schema to serialize the response body. It
-  uses [fast-json-stringify](https://github.com/fastify/fast-json-stringify) under the hood instead
-  of `JSON.stringify`, and this is 2x faster according to the benchmarks can be found
+- **Type-safety:** In the `handler`, complete type safety for the request parameters and the
+  response body is ensured. You can use a tool like
+  [feTS Client](/client/quick-start#infer-types-from-fets-server) that is capable of inferring these
+  types from the router instance.
+- **Request Validation:** feTS validates the request parameters and if the request is invalid, it
+  returns a `400 Bad Request`. It uses [AJV](https://ajv.js.org/) for this purpose.
+- **Safe and Fast Serialization:** feTS uses the response schema to serialize the response body.
+  Rather than JSON.stringify, it uses
+  [fast-json-stringify](https://github.com/fastify/fast-json-stringify)which is twice as fast
+  according to the benchmarks found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
 
-## Setting up runtime validations with AJV
+## Setting Up Runtime Validations with AJV
 
-If you don't use [Zod](/server/zod) schemas and want to have a strict runtime validation with JSON
-schemas. You need to configure AJV plugin for feTS. AJV is opt-in because some environments like
-Cloudflare Workers do not play well with AJV.
+To implement strict runtime validation with JSON schemas, if you're not utilizing
+[Zod schemas](/server/zod), you'll need to configure the AJV plugin for feTS. AJV is opt-in since
+certain environments, such as Cloudflare Workers, aren't compatible with AJV.
 
 ```ts
 import { createRouter, useAjv } from 'fets'
@@ -37,10 +38,12 @@ const router = createRouter({
 You can type individual parts of the `Request` object including JSON body, form data, headers, query
 parameters, and URL parameters.
 
+{/* example ???? */}
+
 ### Headers
 
 You can describe the shape of the headers using `schemas.request.headers` property. This is useful
-for validating the API key or the authorization header.
+for validating API keys or authorization headers.
 
 ```ts
 import { createRouter, Response } from 'fets'
@@ -64,7 +67,7 @@ const router = createRouter().route({
   handler: async request => {
     // This part is fully typed
     const apiKey = request.headers.get('x-api-key')
-    // Would fail on TypeScript compilation
+    // Would result in TypeScript compilation fail
     const wrongHeaderName = request.headers.get('x-api-key-wrong')
     // ...
     return Response.json({ message: 'ok' })
@@ -74,7 +77,7 @@ const router = createRouter().route({
 
 ### Path Parameters
 
-`schemas.request.params` can be used to validate the URL parameters like `id` inside `/todos/:id`.
+`schemas.request.params` can be used to validate the URL parameters like `id` inside `/todos/:id`:
 
 ```ts
 import { createRouter, Response } from 'fets'
@@ -105,6 +108,9 @@ const router = createRouter().route({
 ```
 
 ### Query Parameters
+
+Similar, for query parameters like `/todos?limit=10&offset=0`, we can use `schemas.request.query` to
+define the schema:
 
 ```ts
 import { createRouter, Response } from 'fets'
@@ -139,6 +145,8 @@ const router = createRouter().addRoute({
 
 ### JSON Body
 
+We can also specify the JSON body schema by using `schemas.request.json` property:
+
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -171,11 +179,11 @@ const router = createRouter().route({
 ### Form Data / File Uploads
 
 You can also type the request body as `multipart/form-data` or `application/x-www-form-urlencoded`
-usually used for file uploads.
+which are typically used for file uploads.
 
-We use `type: string` and `format: binary` to define a `File` object. We can also use `maxLength`
-and `minLength` of JSON Schema to limit the file size.
-[Learn more from the OpenAPI docs](https://swagger.io/docs/specification/describing-request-body/file-upload/)
+We use `type: string` and `format: binary` to define a `File` object. The `maxLength` and
+`minLength` of JSON Schema can be used to limit the file size.
+[Learn more in the OpenAPI docs](https://swagger.io/docs/specification/describing-request-body/file-upload/).
 
 ```ts
 import { createRouter, Response } from 'fets'
@@ -213,16 +221,18 @@ const router = createRouter().route({
 
 ## Response (optional)
 
-You can also type the response body by the status code. We strongly recommend to explicitly define
-the status codes.
+The response body can also be typed by the status code. It is highly recommended to explicitly
+define the status codes.
 
 <Callout>
   If you don't define the response schema, feTS will still infer types from the handler's return
-  value. But in this case, you won't have response types in OpenAPI schema and runtime validation.
-  Let's say if you use OpenAPI schema with [feTS Client](/client/quick-start), you won't have
-  response typings. You have to infer types directly from router instead [as shown
-  here](/client/quick-start#infer-types-from-router).
+  value. However, in this case, you won't have response types in OpenAPI schema and runtime
+  validation. For example, if you use OpenAPI schema with [feTS Client](/client/quick-start), you
+  won't have response typings. You will need to infer types directly from the router instead [as
+  shown here](/client/inferring-schema-types).
 </Callout>
+
+Example:
 
 ```ts
 import { createRouter, Response } from 'fets'

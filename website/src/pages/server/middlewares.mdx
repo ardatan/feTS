@@ -1,26 +1,28 @@
 import { Callout, LegacyPackageCmd, Tab, Tabs } from '@theguild/components'
 
-# Middlewares
+# Utilizing Middlewares
 
-You can also use middlewares to handle requests. Middlewares are functions that are called before
-the request is handled by the router. You can use them to handle authentication, logging, etc.
+Middlewares provide a way to handle requests prior to their processing by the router. They are
+essentially functions that execute before the request is handled and can be used for authentication,
+logging, and other similar tasks.
 
-If a handler function doesn't return a `Response` object, the request will be passed to the next
+If a handler function doesn't yield a `Response` object, the request will be passed onto the next
 handler.
+
+Here's an example:
 
 ```ts
 import { createRouter, Response } from 'fets'
 
 const router = createRouter()
-  // Logging some headers before the response
+  // Log certain headers prior to the response
   .route({
     path: '*',
     handler: request => {
-      // Log some headers
       console.log(`User Agent: ${request.headers.get('user-agent')}`)
     }
   })
-  // or stop the request earlier
+  // Or halt the request early
   .route({
     path: '*',
     handler: request => {
@@ -38,15 +40,15 @@ const router = createRouter()
       /** .. */
     },
     handler: request => {
-      // It doesn't reach here if the request doesn't have an `Authorization` header.
+      // This code won't be reached if the request lacks an `Authorization` header.
     }
   })
 ```
 
-## Chaining handlers
+## Chaining Multiple Handlers
 
-You can also chain multiple handlers to a single route. In the following example, we are checking if
-the request has an `Authorization` header and if the user is an admin.
+It's also possible to link multiple handlers to a single route. In the following example, we're
+verifying if the request includes an `Authorization` header and whether the user holds admin status.
 
 ```ts
 import { createRouter, Response, RouteHandler } from 'fets'
@@ -68,15 +70,16 @@ const router = createRouter().route({
   handler: [
     withAuth,
     request => {
-      // It doesn't reach here if the request doesn't have an `Authorization` header.
+      // This code won't be reached if the request lacks an `Authorization` header.
     }
   ]
 })
 ```
 
-## Using `schemas` instead of middlewares
+## Using `schemas` as an Alternative to Middlewares
 
-Instead of middlewares, you can use the schemas directly to validate `Authorization` header.
+You can validate the `Authorization` header directly using `schemas` as an alternative to
+middlewares:
 
 ```ts
 import { createRouter, Response } from 'fets'
@@ -99,7 +102,7 @@ const router = createRouter().route({
       /** .. */
     },
     handler: request => {
-      // It doesn't reach here if the request doesn't have a valid Bearer token in the `Authorization` header.
+      // This code won't be reached if the request doesn't have a valid Bearer token in the `Authorization` header.
     }
   } as const
 })

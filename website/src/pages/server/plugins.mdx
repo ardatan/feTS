@@ -1,45 +1,47 @@
-import { Callout, LegacyPackageCmd, Tab, Tabs } from '@theguild/components'
+import { Callout, LegacyCommand, TabSelector, TabSet } from '@theguild/components'
 
-# Plugins
+# Extensions
 
-feTS Server provides a plugin system that allows you hook into the request/response lifecycle.
+The feTS Server includes an extension system, offering the ability to interact with the
+request/response process.
 
-- `onRequest` - Called before the request is handled by the router
-- - It has `endResponse` method that accepts a `Response` object to short-circuit the request
-- `onResponse` - Called after the request is handled by the router
-- - It allows you to modify the response before it is sent to the client
+- `onRequest` - Invoked prior to the router handling the request.
+  - It features an `endResponse` function that takes a `Response` object to preemptively conclude
+    the request.
+- `onResponse` - Invoked following the router's handling of the request.
+  - It offers the ability to alter the response before it's delivered to the client.
 
-<Callout>
-*What is the difference between middlewares and plugins?*
+<Callout type="info">
+**How do middlewares differ from extensions?**
 
-Middlewares can handle the request before the response.
+Middlewares are capable of managing the request before the response.
 
-In order to handle specific cases like logging the responses, adding some extra headers to the
-response for CORS, cookies etc, we need plugins that catches the final response before it reaches to
-the client.
+To deal with particular scenarios, such as logging responses, adding additional headers to the
+response for CORS or cookies, and so forth, we require extensions that can intercept the final
+response before it is received by the client.
 
-You can also use it for tracing and monitoring.
+It can also be employed for tracing and monitoring purposes.
 
 </Callout>
 
-## Logging the response latency
+## Recording the Response Delay
 
-Let's create a plugin that calculates the response latency and logs it to the console.
+We'll develop an extension that determines the response delay and logs it in the console.
 
 ```ts
-import { RouterPlugin } from 'fets'
+import { RoutingExtension } from 'fets'
 
-export function useLogLatency(): RouterPlugin {
-  const startTimeByRequest = new WeakMap<Request, number>()
+export function useLogDelay(): RoutingExtension {
+  const initialTimePerRequest = new WeakMap<Request, number>()
   return {
     onRequest({ request }) {
-      startTimeByRequest.set(request, Date.now())
+      initialTimePerRequest.set(request, Date.now())
     },
     onResponse({ request, response }) {
-      const startTime = startTimeByRequest.get(request)
-      if (startTime) {
-        const latency = Date.now() - startTime
-        console.log(`Response latency: ${latency}ms`)
+      const initialTime = initialTimePerRequest.get(request)
+      if (initialTime) {
+        const delay = Date.now() - initialTime
+        console.log(`Response delay: ${delay}ms`)
       }
     }
   }
