@@ -1,6 +1,6 @@
 import { Callout } from '@theguild/components'
 
-# Extensions
+# Plugins
 
 The feTS Server includes an extension system, offering the ability to interact with the
 request/response process.
@@ -12,13 +12,13 @@ request/response process.
   - It offers the ability to alter the response before it's delivered to the client.
 
 <Callout type="info">
-**How do middlewares differ from extensions?**
+**How do middlewares differ from plugins?**
 
 Middlewares are capable of managing the request before the response.
 
 To deal with particular scenarios, such as logging responses, adding additional headers to the
-response for CORS or cookies, and so forth, we require extensions that can intercept the final
-response before it is received by the client.
+response for CORS or cookies, and so forth, we require plugins that can intercept the final response
+before it is received by the client.
 
 It can also be employed for tracing and monitoring purposes.
 
