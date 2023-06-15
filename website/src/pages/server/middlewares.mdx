@@ -6,7 +6,7 @@ Middlewares provide a way to handle requests prior to their processing by the ro
 essentially functions that execute before the request is handled and can be used for authentication,
 logging, and other similar tasks.
 
-If a handler function doesn't yield a `Response` object, the request will be passed onto the next
+If a handler function doesn't return a `Response` object, the request will be passed onto the next
 handler.
 
 Here's an example:
