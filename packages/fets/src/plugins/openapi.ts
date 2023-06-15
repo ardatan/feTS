@@ -1,14 +1,17 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
 import { StatusCode } from '../typed-fetch.js';
-import { RouterPlugin } from '../types.js';
+import {
+  OpenAPIDocument,
+  OpenAPIOperationObject,
+  OpenAPIPathObject,
+  RouterPlugin,
+} from '../types.js';
 import { isZodSchema } from '../zod/types.js';
 
 export interface SwaggerUIOpts {
-  spec?: OpenAPIV3_1.Document;
+  spec?: OpenAPIDocument;
   dom_id?: string;
   displayOperationId?: boolean;
   tryItOutEnabled?: boolean;
@@ -45,7 +48,7 @@ export function useOpenAPI({
   swaggerUIEndpoint,
   swaggerUIOpts,
 }: OpenAPIPluginOptions): RouterPlugin<any> {
-  let paths: OpenAPIV3_1.PathsObject;
+  let paths: Record<string, OpenAPIPathObject>;
   return {
     onRouterInit(router) {
       paths = router.openAPIDocument.paths = router.openAPIDocument.paths || {};
@@ -97,7 +100,7 @@ export function useOpenAPI({
         const pathObj: any = (paths[pathForOAS] = paths[pathForOAS] || {});
         const lowerCasedMethod = method.toLowerCase();
         pathObj[lowerCasedMethod] = pathObj[lowerCasedMethod] || {};
-        const operation = pathObj[lowerCasedMethod] as OpenAPIV3_1.OperationObject;
+        const operation = pathObj[lowerCasedMethod] as OpenAPIOperationObject;
         operation.operationId = operationId;
         operation.description = description;
         operation.tags = tags;

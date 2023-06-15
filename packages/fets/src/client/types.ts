@@ -1,6 +1,6 @@
 import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
-import { FromSchema, JSONSchema } from '../types.js';
+import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
@@ -23,11 +23,6 @@ type ResolveRefsInObj<T, TBase = T> = {
 };
 
 type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
-
-export type OpenAPIDocument = {
-  openapi: string;
-  paths: {};
-};
 
 export { MutableResolvedObj as Mutable };
 
@@ -87,16 +82,47 @@ export type OASResponse<
   >;
 }[keyof OASStatusMap<TOAS, TPath, TMethod>];
 
-export type OASParamMap<
-  TParameters extends { name: string; schema: JSONSchema }[],
-  TParamType extends string,
-> = {
-  [TIndex in keyof TParameters]: {
-    [TName in TParameters[TIndex]['name']]: TParameters[TIndex] extends { in: TParamType }
-      ? FromSchema<TParameters[TIndex]['schema']>
+interface OASParamPropMap {
+  query: 'query';
+  path: 'params';
+  header: 'headers';
+}
+
+type UnionToIntersectionHelper<U> = (U extends unknown ? (k: U) => void : never) extends (
+  k: infer I,
+) => void
+  ? I
+  : never;
+
+type UnionToIntersection<U> = boolean extends U
+  ? UnionToIntersectionHelper<Exclude<U, boolean>> & boolean
+  : UnionToIntersectionHelper<U>;
+
+export type OASParamMap<TParameters extends { name: string; in: string }[]> = UnionToIntersection<
+  {
+    [TIndex in keyof TParameters]: TParameters[TIndex] extends { in: infer TParamType }
+      ? {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]: TParameters[TIndex] extends { required: true }
+            ? {
+                [TName in TParameters[TIndex]['name']]: TParameters[TIndex] extends {
+                  schema: JSONSchema;
+                }
+                  ? FromSchema<TParameters[TIndex]['schema']>
+                  : unknown;
+              }
+            : {
+                [TName in TParameters[TIndex]['name']]?: TParameters[TIndex] extends {
+                  schema: JSONSchema;
+                }
+                  ? FromSchema<TParameters[TIndex]['schema']>
+                  : unknown;
+              };
+        }
       : never;
-  };
-}[keyof TParameters];
+  }[number]
+>;
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
   [TPath in keyof OASPathMap<TOAS>]: {
@@ -155,51 +181,9 @@ export type OASRequestParams<
           >
         >;
       }
-  : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends {
-      parameters: { name: string; schema: JSONSchema; in: 'query' }[];
-    }
-      ? OASMethodMap<TOAS, TPath>[TMethod] extends {
-          parameters: [{ name: string; schema: JSONSchema; in: 'query'; required: true }, ...any[]];
-        }
-        ? {
-            query: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>;
-          }
-        : {
-            query?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'query'>;
-          }
+  : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
+      ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
       : {}) &
-      (OASMethodMap<TOAS, TPath>[TMethod] extends {
-        parameters: { name: string; schema: JSONSchema; in: 'path' }[];
-      }
-        ? OASMethodMap<TOAS, TPath>[TMethod] extends {
-            parameters: [
-              { name: string; schema: JSONSchema; in: 'path'; required: true },
-              ...any[],
-            ];
-          }
-          ? {
-              params: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>;
-            }
-          : {
-              params?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'path'>;
-            }
-        : {}) &
-      (OASMethodMap<TOAS, TPath>[TMethod] extends {
-        parameters: { name: string; schema: JSONSchema; in: 'header' }[];
-      }
-        ? OASMethodMap<TOAS, TPath>[TMethod] extends {
-            parameters: [
-              { name: string; schema: JSONSchema; in: 'header'; required: true },
-              ...any[],
-            ];
-          }
-          ? {
-              headers: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>;
-            }
-          : {
-              headers?: OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters'], 'header'>;
-            }
-        : {}) &
       (OASMethodMap<TOAS, TPath>[TMethod] extends {
         requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
       }

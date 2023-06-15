@@ -1,6 +1,6 @@
 import { fetch, URLSearchParams } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
-import { Router } from '../types.js';
+import { OpenAPIDocument, Router } from '../types.js';
 import {
   ClientMethod,
   ClientOptions,
@@ -10,7 +10,6 @@ import {
   OnFetchHook,
   OnRequestInitHook,
   OnResponseHook,
-  OpenAPIDocument,
 } from './types.js';
 
 export class ClientValidationError extends Error implements AggregateError {

@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import { FetchAPI } from '@whatwg-node/server';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch';
-import { OnRouteHook, RouteHandler, RouteSchemas } from './types';
+import { OnRouteHook, OpenAPIDocument, RouteHandler, RouteSchemas } from './types';
 
 export interface PatternHandlersObj<TServerContext> {
   pattern: URLPattern;
@@ -23,7 +21,7 @@ interface AddHandlerToMethodOpts<TServerContext> {
 
   // Router related options
   onRouteHooks: OnRouteHook<TServerContext>[];
-  openAPIDocument: OpenAPIV3_1.Document;
+  openAPIDocument: OpenAPIDocument;
   basePath: string;
   fetchAPI: FetchAPI;
 

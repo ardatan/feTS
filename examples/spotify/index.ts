@@ -8,7 +8,8 @@ const client = createClient<Mutable<typeof spotifyOas>>({
 async function main() {
   const res = await client['/search'].get({
     query: {
-      q: '2',
+      q: 'dance monkey',
+      type: ['track'],
     },
   });
   if (!res.ok) {
