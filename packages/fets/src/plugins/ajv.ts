@@ -17,6 +17,15 @@ import { getHeadersObj } from './utils.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
+function getMiddlewareForSerializer(
+  serializersByCtx: WeakMap<any, Map<number, JSONSerializer>>,
+  serializerByStatus: Map<number, JSONSerializer>,
+) {
+  return function (_request: Request, context: any) {
+    serializersByCtx.set(context, serializerByStatus);
+  };
+}
+
 export function useAjv({
   components = {},
 }: {
@@ -193,9 +202,7 @@ export function useAjv({
             serializerByStatusCode.set(Number(statusCode), serializer);
           }
         }
-        handlers.unshift((_request, ctx) => {
-          serializersByCtx.set(ctx, serializerByStatusCode);
-        });
+        handlers.unshift(getMiddlewareForSerializer(serializersByCtx, serializerByStatusCode));
       }
       if (validationMiddlewares.size > 0) {
         handlers.unshift(async (request): Promise<any> => {

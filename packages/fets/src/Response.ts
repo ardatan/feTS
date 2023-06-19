@@ -23,17 +23,21 @@ export function isLazySerializedResponse(response: any): response is LazySeriali
 }
 
 function isHeadersLike(headers: any): headers is Headers {
-  return headers.get && headers.forEach;
+  return headers?.get && headers?.forEach;
 }
+
+const JSON_CONTENT_TYPE = 'application/json; charset=utf-8';
 
 function getHeadersFromHeadersInit(init?: HeadersInit): Headers {
   let headers: Headers;
-  if (init != null && isHeadersLike(init)) {
+  if (isHeadersLike(init)) {
     headers = init;
   } else {
     headers = new Headers(init);
   }
-  headers.set('content-type', 'application/json; charset=utf-8');
+  if (!headers.has('content-type')) {
+    headers.set('content-type', JSON_CONTENT_TYPE);
+  }
   return headers;
 }
 
