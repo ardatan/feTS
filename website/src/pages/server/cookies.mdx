@@ -1,17 +1,19 @@
-# Cookies
+# Working with Cookies in feTS
 
-An HTTP cookie is a small piece of data that holds an information to let the server recognize the
-client. You can learn more about the cookies
-[here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
+HTTP cookies are small pieces of data used to maintain stateful information between the client and
+the server. They allow the server to recognize a client across multiple requests. To learn more
+about the concept of cookies, see the
+[HTTP Cookies documentation on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
-feTS has a plugin to handle cookies using the web standard
-[CookieStore](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore). So it allows you to get
-cookies from the client's request and set cookies back to the client in the response
+In feTS, a plugin is provided for handling cookies in accordance with the web standard
+[CookieStore](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore). The plugin allows you
+to retrieve cookies from a client's request and send cookies back to the client in your server's
+response. Comprehensive details about the CookieStore API are available in
+[the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore).
 
-You can learn more about the
-[CookieStore API here in the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore#examples).
+## How to Use Cookies in feTS
 
-## Usage
+First, you need to import the necessary modules and create a router with the `useCookies` plugin:
 
 ```ts filename="cookies.ts"
 import { createRouter, Response, useCookies } from 'fets'
@@ -19,27 +21,45 @@ import { createRouter, Response, useCookies } from 'fets'
 const router = createRouter({
   plugins: [useCookies()]
 })
-.route({
-  path: '/me',
-  method: 'GET',
-  schemas: {/* ... */},
-  handler: request => {
-    const sessionId = await request.cookieStore.get('session_id')
-    if (!sessionId) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-    const user = await getUserBySessionId(sessionId)
-    return Response.json(user)
-  }
-})
-.route({
-  path: '/login',
-  method: 'POST',
-  handler: async request => {
-    const { username, password } = await request.json()
-    const sessionId = await createSessionForUser({ username, password })
-    await request.cookieStore.set('session_id', sessionId)
-    return Response.json({ message: 'ok' })
-  }
-})
 ```
+
+Next, you can define routes. In this example, two routes are defined:
+
+1. A `GET` route at `/me` that checks if a `session_id` cookie is present, and if so, retrieves the
+   user associated with that session. If the `session_id` cookie is not found, it responds with a
+   401 Unauthorized error.
+
+   ```ts filename="cookies.ts"
+   .route({
+    path: '/me',
+    method: 'GET',
+    schemas: {/* ... */},
+    handler: async request => {
+     const sessionId = await request.cookieStore.get('session_id')
+     if (!sessionId) {
+       return Response.json({ error: 'Unauthorized' }, { status: 401 })
+     }
+     const user = await getUserBySessionId(sessionId)
+     return Response.json(user)
+    }
+   })
+   ```
+
+2. A `POST` route at `/login` that logs a user in by creating a new session for them and setting the
+   `session_id` cookie.
+
+   ```ts filename="cookies.ts"
+   .route({
+     path: '/login',
+     method: 'POST',
+     handler: async request => {
+       const { username, password } = await request.json()
+       const sessionId = await createSessionForUser({ username, password })
+       await request.cookieStore.set('session_id', sessionId)
+       return Response.json({ message: 'ok' })
+     }
+    })
+   ```
+
+This is a basic usage of the feTS cookies plugin. Depending on your application, you may need to
+implement more complex logic for handling cookies.

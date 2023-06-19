@@ -1,0 +1,37 @@
+# Inferring OAS Schema Types
+
+In feTS, you can leverage helpful helpers to infer specific fragments of an OpenAPI document.
+
+## Models
+
+To infer models from an OpenAPI document, use the `OASModel` type:
+
+```ts filename="user-type.ts"
+import { Mutable, OASModel } from 'fets'
+import type oas from './openapi'
+
+// This will infer User type from your OpenAPI schema
+type User = OASModel<Mutable<typeof oas>, 'User'>
+```
+
+## Request Parameters
+
+To infer request body parameters from an OpenAPI document, utilize the `OASRequestBody` type:
+
+```ts filename="user-request-parameters.ts"
+import { Mutable, OASRequestParameters } from 'fets'
+import type oas from './openapi'
+
+type AddUserInput = OASRequestParams<Mutable<typeof oas>, '/user', 'POST'>
+```
+
+## Response body
+
+Use the `OASResponseBody` type, to infer the response body from an OpenAPI document:
+
+```ts filename="user-response-body.ts"
+import { Mutable, OASResponseBody } from 'fets'
+import type oas from './openapi'
+
+type UserByIdResponse = OASResponseBody<Mutable<typeof oas>, '/user/:id', 'POST', 200>
+```

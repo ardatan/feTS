@@ -1,0 +1,23 @@
+# Client Configuration
+
+feTS Client allows you to customize its behavious by enabling various plugins. However, there's also
+an additional configuration that can be passed to the `createClient` function.
+
+## Customizing The `fetch` Function
+
+By default, feTS Client uses the `fetch` function provided by the environment. However, you can also
+pass a custom `fetch` function to the `createClient` function.
+
+One possible use case is enabling HTTP/2 support. While HTTP/2 is automatically handled by most
+environments, Node.js requires additional configuration to enable it.
+
+To enable HTTP/2 in Node.js, you can use the `fetch-h2` package:
+
+```ts
+import fetchH2 from 'fetch-h2'
+import { oas } from './oas'
+
+const client = createClient<typeof oas>({
+  fetch: fetchH2 as typeof fetch
+})
+```

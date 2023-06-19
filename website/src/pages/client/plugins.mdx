@@ -1,20 +1,61 @@
 # Plugins
 
-feTS Client provides a plugin system that allows you hook into the request/response lifecycle.
+feTS Client provides a powerful plugin system that allows you to hook into the request/response
+lifecycle and customize the behavior of the client.
 
-- `onRequestInit` - Called before the request is sent by the client
-- - It has `endResponse` method that accepts a `Response` object to short-circuit the request
-- `onFetch` - Called when `fetch` is called by the client
-- - You can change `fetch` options or change the `fetch` function
-- `onResponse` - Called after the request is handled by the router
-- - It allows you to modify the response or throw an error to prevent the response from being
-    returned
+## feTS Client Plugin
 
-## Cookies
+A plugin in feTS is a function that returns an object with the following optional properties:
 
-In order to handle cookies seperately from the environment, you can use the `useCookieStore` plugin.
+- `onRequestInit` - Called before the request is sent by the client.
+  - It includes an `endResponse` method that accepts a `Response` object to short-circuit the
+    request.
+- `onFetch` - Called when the underlying `fetch` function is invoked by the client.
+  - It allows you to modify the `fetch` options or replace the `fetch` function itself.
+- `onResponse` - Called after the request is handled by the router.
+  - It enables you to modify the response or throw an error to prevent the response from being
+    returned.
 
-> Note: This plugin is not needed for browsers
+### Custom Plugin example
+
+```ts
+import { ClientPlugin } from 'fets'
+
+export function myCustomPlugin(): ClientPlugin {
+  return {
+    onRequestInit({ requestInit }) {
+      requestInit.headers = {
+        ...requestInit.headers,
+        'X-Custom-Header': 'Custom value'
+      }
+    },
+    onFetch({ fetchFn, setFetchFn }) {
+      setFetchFn(async (input, init) => {
+        const response = await fetchFn(input, init)
+        if (response.status === 401) {
+          throw new Error('Unauthorized')
+        }
+        return response
+      })
+    },
+    onResponse({ response }) {
+      if (response.status === 401) {
+        throw new Error('Unauthorized')
+      }
+    }
+  }
+}
+
+const client = createClient<typeof someoas>({
+  plugins: [myCustomPlugin()]
+})
+```
+
+## Handling Cookies With Built-in Cookies Plugin
+
+To handle cookies separately from the environment, you can use the `useCookieStore` plugin.
+
+> Note: This plugin is not needed for browsers.
 
 ```ts
 import { CookieStore, useClientCookieStore } from 'fets'
@@ -27,13 +68,13 @@ const client = createClient<typeof someoas>({
 })
 ```
 
-You can store cookies in a custom storage by using the events of `CookieStore`. It implements WHATWG
-Cookie Store which is documented on MDN;
-[CookieStore documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore)
+You can store cookies in a custom storage by utilizing the events provided by feTS' `CookieStore`
+object, which implements the WHATWG CookieStore. Learn more in the
+[official documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore)
 
-## Retry on fail
+## Retrying on Fail With ‘Fetch-Retry’ as a Plugin
 
-You can install `fetch-retry` from npm and use it as a plugin.
+You can install `fetch-retry` from npm and use it to create a plugin:
 
 ```ts
 import fetchRetry from 'fetch-retry'
@@ -45,15 +86,19 @@ export function useRetry(): ClientPlugin {
     }
   }
 }
+
+const client = createClient<typeof someoas>({
+  plugins: [useRetry()]
+})
 ```
 
-## HTTP Caching on non-browser environments
+## HTTP Caching on Non-Browser Environments With ‘fetchache’
 
-Usually server environments don't have browser's HTTP caching logic. So with `fetchache`, you can
-bring this behavior to the server-side environments.
+Server environments typically lack the built-in HTTP caching logic found in browsers. To bring this
+behavior to server-side environments, you can use `fetchache`.
 
-`fetchache` needs a key value cache implementation to work. It can be Redis or a simple in-memory
-cache. The following example shows an example with in-memory cache.
+`fetchache` requires a key-value cache implementation, which can be Redis or a simple in-memory
+cache. The following example demonstrates using an in-memory approach:
 
 ```ts
 import { fetchFactory, KeyValueCache } from 'fetchache'
@@ -84,9 +129,13 @@ const useCache: ClientPlugin = {
     )
   }
 }
+
+const client = createClient<typeof someoas>({
+  plugins: [useCache()]
+})
 ```
 
-## Add `Authorization` header
+## Adding Auth Headers to Requests
 
 ```ts
 import { ClientPlugin } from 'fets'
@@ -101,9 +150,13 @@ export function useAuth(token: string): ClientPlugin {
     }
   }
 }
+
+const client = createClient<typeof someoas>({
+  plugins: [useAuth()]
+})
 ```
 
-## Calculate request duration
+## Calculating a request's duration
 
 ```ts
 import { ClientPlugin } from 'fets'
@@ -123,18 +176,4 @@ export function useDuration(): ClientPlugin {
     }
   }
 }
-```
-
-## HTTP/2 on Node.js
-
-HTTP/2 is automatically handled by the most of environments but Node.js needs a special treatment.
-
-You can use `fetch-h2` to enable HTTP/2 on Node.js.
-
-```ts
-import fetchH2 from 'fetch-h2'
-
-const client = createClient<typeof someoas>({
-  fetch: fetchH2 as typeof fetch
-})
 ```

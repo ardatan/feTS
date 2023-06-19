@@ -1,23 +1,23 @@
-# OpenAPI
+# OpenAPI Implementation
 
-OpenAPI is a specification for machine-readable interface files for describing, producing,
-consuming, and visualizing REST APIs. OpenAPI files allow you to describe your entire API in the
-JSON or YAML format. It has routes including all possible response types in all possible status
-codes together with all possible request types. So a well-written OpenAPI file can be used as a
-reference by the client to understand the API easier.
+OpenAPI offers a framework for building interface files that are machine-readable. These files help
+in describing, generating, consuming, and visualizing REST APIs. You can illustrate your complete
+API in JSON or YAML format with OpenAPI. This includes routes, all potential response types and
+status codes, and all possible request types. Consequently, a thoroughly composed OpenAPI file can
+act as a reference for clients, making it easier to understand the API.
 
-feTS uses this specification to generate the API documentation and the client SDKs. Even on the
-server side, it allows you to play with your API with a playground. Or you can even use any other
-OpenAPI-compliant tool like Postman to test your API.
+In feTS, this specification is used to generate API documentation and client SDKs. Even on the
+server-side, it enables interaction with your API via a playground. Alternatively, you can utilize
+any other OpenAPI-compliant tool like Postman for API testing.
 
-feTS creates two endpoints based on the defined routes by default;
+By default, feTS creates two endpoints based on the defined routes:
 
-- `/openapi.json` - Returns the OpenAPI specification in JSON format
-- `/docs` - [Swagger UI](https://swagger.io/tools/swagger-ui/) as a playground for the API
+- `/openapi.json` - Outputs the OpenAPI specification in JSON format
+- `/docs` - Provides a [Swagger UI](https://swagger.io/tools/swagger-ui/) as an API playground
 
 ## Customizing OpenAPI
 
-You can give a title and a description to your API;
+You have the option to assign a title and a description to your API:
 
 ```ts
 createRouter({
@@ -25,18 +25,18 @@ createRouter({
     info: {
       title: 'My API',
       description: 'My API description',
-      version: '1.0.0' // You can even give a version to your API
+      version: '1.0.0' // You can even assign a version to your API
     }
   }
 })
 ```
 
-## More Information on Routes
+## Enhancing Route Information
 
-You can add more information to your routes such as `operationId`, `description`, `tags` and
-`deprecated` to make the OpenAPI specification more detailed.
+You can enrich your routes with additional information like `operationId`, `description`, `tags`,
+and `deprecated`. This additional data can make your OpenAPI specification more comprehensive.
 
-[Learn more about operations in OpenAPI](https://swagger.io/docs/specification/paths-and-operations/)
+[Learn more about operations in OpenAPI](https://swagger.io/docs/specification/paths-and-operations/).
 
 ```ts
 createRouter().route({
@@ -54,10 +54,11 @@ createRouter().route({
 
 ## Models / Subschemas
 
-You can define models as subschemas and use them in your routes. This is useful when you have
-repeating structures in your API. feTS respects json schema's `$ref` keyword in this case.
+You can create models as subschemas and incorporate them into your routes. This is especially useful
+when your API has recurring structures. feTS honors the `$ref` keyword in json schema in this
+context.
 
-These models will be shown as models in the OpenAPI specification.
+These models will be presented as models in the OpenAPI specification.
 
 ```ts
 const router = createRouter({
@@ -123,8 +124,8 @@ const router = createRouter({
 
 ## Disabling OpenAPI
 
-For production, you probably don't want to expose the schema to the public. In this case, you can
-pass `false` to `swaggerUiEndpoint` and `oasEndpoint` options to disable them.
+For production, you may not want to expose the schema to the public. In this case, you can pass
+`false` to `swaggerUiEndpoint` and `oasEndpoint` options to disable them.
 
 ```ts
 const router = createRouter({

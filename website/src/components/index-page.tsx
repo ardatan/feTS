@@ -39,8 +39,8 @@ export function IndexPage(): ReactElement {
             Fetch API ❤️ TypeScript
           </p>
           <p className="max-w-screen-sm mx-auto mt-3 text-2xl text-gray-600 text-center dark:text-gray-400">
-            A new way of building and consuming <b>REST APIs</b> with the end-to-end type safety
-            using <b>TypeScript</b> and <b>OpenAPI</b>
+            Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
+            client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Anchor className={classes.button} href="/client/quick-start">
@@ -62,42 +62,43 @@ export function IndexPage(): ReactElement {
       <Feature
         gradient={1}
         image={ecosystemImage}
-        title="Consume Anywhere"
+        title="New Approach to REST APIs"
         description={
           <div className="flex flex-col gap-y-12">
-            feTS Client is an HTTP Client accepts any valid OpenAPI document and creates a type-safe
-            client for it.
+            The feTS Client and Server can be seamlessly used together for a comprehensive,
+            type-safe API experience. Alternatively, they can function independently, providing you
+            with the flexibility to adapt to your project's specific needs.
             <div className="flex flex-col gap-y-12">
               <FeatureHighlights
                 textColor={gradients[1][0]}
                 highlights={[
                   {
                     icon: <SiOpenapiinitiative size={36} />,
-                    title: 'OpenAPI',
+                    title: 'Harness the Power of OpenAPI',
                     description: (
                       <>
-                        Using OpenAPI spec that can be used with any tool from the OpenAPI
-                        ecosystem. Server also comes with a Swagger UI out-of-the-box.
+                        feTS leverages the OpenAPI specification for universal tool compatibility.
+                        Plus, enjoy the convenience of an out-of-the-box Swagger UI with our server.
                       </>
                     ),
                   },
                   {
                     icon: <SiJson size={36} />,
-                    title: 'JSON Schema',
+                    title: 'Route Description with JSON Schema',
                     description: (
                       <>
-                        Following JSON Schema specification to describe the routes. It can be used
-                        with any tool from the JSON Schema ecosystem.
+                        feTS utilizes the JSON Schema specification for route description, enabling
+                        integration with any tool within the JSON Schema ecosystem.
                       </>
                     ),
                   },
                   {
                     icon: <SiTypescript size={36} />,
-                    title: 'No Code Generation needed for type-safety',
+                    title: 'No Code Generation for Type-Safety',
                     description: (
                       <>
-                        feTS Client is fully type-safe. Types are inferred from the OpenAPI spec and
-                        JSON Schema without any <b>code generation</b> with the type inference.
+                        Experience full type-safety with the feTS Client. It infers types from the
+                        OpenAPI spec and JSON Schema, eliminating the need for code generation.
                       </>
                     ),
                   },
@@ -112,11 +113,11 @@ export function IndexPage(): ReactElement {
         title="Deploy Anywhere"
         description={
           <p>
-            feTS Server provides a super fast HTTP server that can run anywhere with the power of{' '}
+            The feTS Server, backed by the power of{' '}
             <Anchor href="https://github.com/ardatan/whatwg-node/tree/master/packages/server#whatwg-node-generic-server-adapter">
               <b>@whatwg-node/server</b>
             </Anchor>
-            .
+            , provides a high-speed HTTP service that can be efficiently deployed anywhere you need.
           </p>
         }
         gradient={2}
