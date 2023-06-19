@@ -143,6 +143,7 @@ export function createRouterBase(
                 for (const onSerializeResponseHook of onSerializeResponseHooks) {
                   onSerializeResponseHook({
                     request: routerRequest,
+                    path: pattern.pathname,
                     lazyResponse: handlerResult,
                     serverContext: context,
                   });

@@ -22,13 +22,36 @@ async function handler(request: Request) {
 
 let readyCount = 0;
 
+function greetingsHandler() {
+  return Response.json({ message: 'Hello, World!' });
+}
+
 const router = createRouter({
   plugins: [useAjv()],
 })
   .route({
     method: 'GET',
     path: '/greetings',
-    handler: () => Response.json({ message: 'Hello, World!' }),
+    handler: greetingsHandler,
+  })
+  .route({
+    method: 'GET',
+    path: '/greetings-ajv',
+    schemas: {
+      responses: {
+        200: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+            },
+          },
+          required: ['message'],
+          additionalProperties: false,
+        },
+      },
+    } as const,
+    handler: greetingsHandler,
   })
   .route({
     method: 'HEAD',
