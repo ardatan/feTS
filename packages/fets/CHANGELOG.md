@@ -1,5 +1,16 @@
 # fets
 
+## 0.2.7
+
+### Patch Changes
+
+- [`d3e334e`](https://github.com/ardatan/feTS/commit/d3e334e4b4265915fe56100e8312a402384b6cfc)
+  Thanks [@ardatan](https://github.com/ardatan)! - Performance optimizations
+
+- [#261](https://github.com/ardatan/feTS/pull/261)
+  [`bc6e8b4`](https://github.com/ardatan/feTS/commit/bc6e8b4ef9c6238d1cfdda2cbed360acc17b1bce)
+  Thanks [@ardatan](https://github.com/ardatan)! - Performance optimizations for AJV
+
 ## 0.2.6
 
 ### Patch Changes
