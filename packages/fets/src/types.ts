@@ -296,6 +296,7 @@ export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, a
 
 export type OnSerializeResponsePayload<TServerContext> = {
   request: TypedRequest;
+  path: string;
   serverContext: TServerContext;
   lazyResponse: LazySerializedResponse;
 };
