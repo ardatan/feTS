@@ -139,20 +139,21 @@ export function createRouterBase(
             });
             for (const handler of handlers) {
               const handlerResult = await handler(routerRequest, context);
-              if (isLazySerializedResponse(handlerResult)) {
-                for (const onSerializeResponseHook of onSerializeResponseHooks) {
-                  onSerializeResponseHook({
-                    request: routerRequest,
-                    path: pattern.pathname,
-                    lazyResponse: handlerResult,
-                    serverContext: context,
-                  });
+              if (handlerResult) {
+                if (isLazySerializedResponse(handlerResult)) {
+                  for (const onSerializeResponseHook of onSerializeResponseHooks) {
+                    onSerializeResponseHook({
+                      request: routerRequest,
+                      path: pattern.pathname,
+                      lazyResponse: handlerResult,
+                      serverContext: context,
+                    });
+                  }
+                  return (
+                    handlerResult.actualResponse ||
+                    fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
+                  );
                 }
-                if (!handlerResult.serializerSet) {
-                  return fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init);
-                }
-                return handlerResult.actualResponse;
-              } else if (handlerResult) {
                 return handlerResult;
               }
             }

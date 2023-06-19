@@ -10,7 +10,6 @@ export interface LazySerializedResponse {
   [LAZY_SERIALIZED_RESPONSE]: true;
   resolveWithSerializer(serializer: JSONSerializer): void;
   init?: ResponseInit;
-  serializerSet: boolean;
   actualResponse: Response;
   jsonObj: any;
   json: () => Promise<any>;
@@ -19,7 +18,7 @@ export interface LazySerializedResponse {
 }
 
 export function isLazySerializedResponse(response: any): response is LazySerializedResponse {
-  return response != null && response[LAZY_SERIALIZED_RESPONSE];
+  return response[LAZY_SERIALIZED_RESPONSE];
 }
 
 function isHeadersLike(headers: any): headers is Headers {
@@ -46,7 +45,6 @@ export function createLazySerializedResponse(
   init: ResponseInit = {},
 ): LazySerializedResponse {
   let actualResponse: Response;
-  let _serializerSet = false;
   let headers: Headers;
   function getHeaders() {
     if (headers == null) {
@@ -61,17 +59,13 @@ export function createLazySerializedResponse(
     },
     [LAZY_SERIALIZED_RESPONSE]: true,
     init,
-    get serializerSet() {
-      return _serializerSet;
-    },
     resolveWithSerializer(serializer: JSONSerializer) {
       const serialized = serializer(jsonObj);
-      _serializerSet = true;
       init.headers = getHeaders();
       actualResponse = new OriginalResponse(serialized, init) as Response;
     },
-    async json() {
-      return jsonObj;
+    json() {
+      return Promise.resolve(jsonObj);
     },
     get status() {
       return (init?.status || 200) as StatusCode;
