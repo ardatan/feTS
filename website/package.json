@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/font": "^13.4.6",
     "@theguild/components": "5.0.0",
     "clsx": "^1.2.1",
     "next": "13.4.6",
