@@ -1,10 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [
-      "./tsconfig.json",
-      "website/tsconfig.json"
-    ]
+    "project": ["./tsconfig.json", "website/tsconfig.json"]
   },
   "extends": [
     "eslint:recommended",
@@ -13,9 +10,7 @@
     "plugin:tailwindcss/recommended",
     "prettier"
   ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "settings": {
     "tailwindcss": {
       "config": "website/tailwind.config.cjs"
@@ -50,10 +45,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*.test.ts",
-          "**/*.spec.ts"
-        ]
+        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
       }
     ],
     // conflicts with official prettier-plugin-tailwindcss and tailwind v3
@@ -65,15 +57,10 @@
   },
   "overrides": [
     {
-      "files": [
-        "**/*.ts"
-      ]
+      "files": ["**/*.ts"]
     },
     {
-      "files": [
-        "**/{test,tests,testing}/**/*.{ts,js}",
-        "*.{spec,test}.{ts,js}"
-      ],
+      "files": ["**/{test,tests,testing}/**/*.{ts,js}", "*.{spec,test}.{ts,js}"],
       "env": {
         "jest": true
       },
