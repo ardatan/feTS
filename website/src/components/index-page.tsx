@@ -5,11 +5,16 @@ import { FiGithub } from 'react-icons/fi';
 import { SiJson, SiOpenapiinitiative, SiTypescript } from 'react-icons/si';
 import { Anchor, Image } from '@theguild/components';
 import ecosystemImage from 'public/assets/ecosystem.svg';
+import GitHubLogo from 'public/assets/github.svg';
 
 const classes = {
-  button:
+  button: clsx(
     'inline-block bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 text-gray-600 px-6 py-3 rounded-lg font-medium shadow-sm',
-  link: 'text-primary-500',
+  ),
+  link: clsx('text-primary-500'),
+  btn: clsx(
+    'transition-colors py-3 px-6 bg-gray-500 dark:bg-gray-100 text-white dark:text-gray-600 rounded-md font-bold hover:!bg-gray-300 hover:!text-white',
+  ),
 };
 
 const gradients: [string, string][] = [
@@ -30,6 +35,60 @@ function pickGradient(i: number) {
 export function IndexPage(): ReactElement {
   return (
     <>
+      {/*<section className="text-gray-600 body-font">*/}
+      {/*  <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">*/}
+      {/*    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">*/}
+      {/*      <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">*/}
+      {/*        Before they sold out*/}
+      {/*        <br className="hidden lg:inline-block" />*/}
+      {/*        readymade gluten*/}
+      {/*      </h1>*/}
+      {/*      <p className="mb-8 leading-relaxed">*/}
+      {/*        Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed*/}
+      {/*        tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken*/}
+      {/*        authentic tumeric truffaut hexagon try-hard chambray.*/}
+      {/*      </p>*/}
+      {/*      <div className="flex justify-center">*/}
+      {/*        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">*/}
+      {/*          Button*/}
+      {/*        </button>*/}
+      {/*        <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">*/}
+      {/*          Button*/}
+      {/*        </button>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">*/}
+      {/*      <img*/}
+      {/*        className="object-cover object-center rounded"*/}
+      {/*        alt="hero"*/}
+      {/*        src="https://dummyimage.com/720x600"*/}
+      {/*      />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
+
+      <div className="min-h-[calc(100vh-64px-68px)] bg-gradient-to-b from-[#1886ff]/20 dark:to-[#1c212c] flex items-center py-24">
+        <div className="flex container items-stretch max-lg:flex-col">
+          <div className="flex-1 pr-24 max-lg:pb-24 text-gray-600 dark:text-white">
+            <h1 className="text-[4rem] font-bold">feTS</h1>
+            <h2 className="text-2xl">Fetch API 💙 TypeScript</h2>
+            <h3 className="text-2xl my-8">
+              Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
+              client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
+            </h3>
+            <div className="flex gap-x-5">
+              <button className={clsx(classes.btn)}>Client</button>
+              <button className={clsx(classes.btn)}>Server</button>
+              <button className={clsx(classes.btn, 'inline-flex items-center gap-x-2')}>
+                <GitHubLogo />
+                GitHub
+              </button>
+            </div>
+          </div>
+          <div className="lg:flex-1 h-[350px] rounded-md bg-gray-500 drop-shadow-[40px_40px_50px_rgba(24,134,255,.8)] dark:drop-shadow-[40px_40px_50px_rgba(24,134,255,.3)]"/>
+        </div>
+      </div>
+
       <FeatureWrapper>
         <div className="container py-20 sm:py-24 lg:py-32">
           <h1 className="max-w-screen-md mx-auto font-extrabold text-5xl sm:text-5xl lg:text-6xl text-center bg-gradient-to-r from-orange-700 to-blue-400 dark:from-orange-700 dark:to-blue-400 bg-clip-text text-transparent !leading-tight">
@@ -267,6 +326,7 @@ function Feature({
     </FeatureWrapper>
   );
 }
+
 function FeatureHighlights({
   highlights,
   textColor,
