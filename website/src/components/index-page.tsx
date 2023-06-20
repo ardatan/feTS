@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { clsx } from 'clsx';
+// eslint-disable-next-line camelcase
 import { IBM_Plex_Sans } from '@next/font/google';
 import { Anchor, Image } from '@theguild/components';
 import AWSLambda from 'public/assets/aws-lambda.svg';

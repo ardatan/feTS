@@ -1,5 +1,6 @@
 import { withGuildDocs } from '@theguild/components/next.config';
 
+/** @type {import('next').NextConfig} */
 export default withGuildDocs({
   webpack(config) {
     config.module.rules.push({
@@ -7,5 +8,8 @@ export default withGuildDocs({
       use: ['@svgr/webpack'],
     });
     return config;
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 });
