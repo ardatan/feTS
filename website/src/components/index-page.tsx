@@ -153,7 +153,7 @@ export function IndexPage(): ReactElement {
                 link: '/server/integrations/gcp',
               },
               {
-                name: 'WebSockets',
+                name: 'µWebSockets',
                 icon: WebSockets,
                 link: '/server/integrations/uwebsockets',
                 isInverted: true,
