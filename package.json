@@ -13,7 +13,7 @@
     "ci:lint": "eslint --ext .ts . --output-file eslint_report.json --format json",
     "esm:check": "bob check",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
-    "lint": "eslint --ext .ts .",
+    "lint": "eslint --ignore-path .gitignore --ext ts,tsx .",
     "postinstall": "patch-package && husky install",
     "prebuild": "yarn generate-swagger-ui",
     "prerelease": "yarn build",
@@ -28,6 +28,7 @@
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
+    "eslint-plugin-tailwindcss": "3.12.1",
     "@babel/core": "7.22.5",
     "@babel/plugin-proposal-class-properties": "7.18.6",
     "@babel/preset-env": "7.22.5",

@@ -21,9 +21,7 @@ const classes = {
   btn: clsx(
     'transition-colors max-lg:px-4 py-3 px-6 bg-secondary-500 dark:bg-secondary-100 text-white dark:text-secondary-600 rounded-md font-bold hover:!bg-secondary-300 hover:!text-white',
   ),
-  title: clsx(
-    'lg:text-[48px] max-lg:text-3xl font-bold text-secondary-900 mb-4 dark:text-white lg:text-center',
-  ),
+  title: clsx('lg:text-[48px] max-lg:text-3xl font-bold mb-4 dark:text-white lg:text-center'),
   subtitle: clsx(
     'lg:text-lg xl:w-2/4 lg:w-3/4 mx-auto text-secondary-500 dark:text-white lg:[text-wrap:balance] lg:text-center',
   ),
@@ -63,7 +61,7 @@ export function IndexPage(): ReactElement {
         </div>
       </div>
 
-      <section className="dark:bg-dark text-secondary-600 body-font bg-white">
+      <section className="dark:bg-dark text-secondary-600 bg-white">
         <div className="container mx-auto py-24">
           <div className="mb-20">
             <h2 className={classes.title}>New Approach to REST APIs</h2>
@@ -96,7 +94,7 @@ export function IndexPage(): ReactElement {
             ].map(({ name, description, icon: Icon }) => (
               <div key={name} className="flex flex-col md:w-1/3 lg:items-center">
                 <Icon />
-                <h2 className="text-secondary-900 title-font mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl">
+                <h2 className="mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl">
                   {name}
                 </h2>
                 <p className="leading-relaxed dark:text-white lg:text-center lg:text-lg">

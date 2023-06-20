@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "clsx": "^1.2.1",
     "@theguild/components": "5.0.0",
     "next": "13.4.6",
     "next-sitemap": "4.1.3",
