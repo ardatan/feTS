@@ -9,7 +9,8 @@ module.exports = {
       colors: {
         ...tailwindConfig.theme.extend.colors,
         dark: '#0b0d11',
-        gray: {
+        // gray name conflicts with @guild/components
+        secondary: {
           100: '#f3f4f6',
           200: '#d0d3da',
           300: '#70788a',
