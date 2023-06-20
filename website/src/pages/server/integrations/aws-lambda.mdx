@@ -1,9 +1,7 @@
-import { LegacyPackageCmd } from '@theguild/components'
-
 # Integration with AWS Lambda
 
 AWS Lambda is a serverless computing platform that makes it easy to build applications that run on
-the AWS cloud. feTS is platform agnostic so they can fit together easily.
+the AWS cloud. feTS is platform-agnostic so they can fit together easily.
 
 ## Installation
 
@@ -11,9 +9,7 @@ the AWS cloud. feTS is platform agnostic so they can fit together easily.
 
 ## Example
 
-`fets.ts`
-
-```ts
+```ts filename="fets.ts"
 import { createRouter, Response } from 'fets'
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda'
 
