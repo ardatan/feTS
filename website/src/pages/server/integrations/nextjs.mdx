@@ -1,5 +1,3 @@
-import { LegacyPackageCmd } from '@theguild/components'
-
 # Integration with Next.js
 
 [Next.js](https://nextjs.org) is a web framework that allows you to build websites very quickly and
@@ -10,12 +8,14 @@ You can also consume the router in type-safe way by inferring router types from 
 
 ## Installation
 
-<LegacyPackageCmd packages={['fets']} />
+```sh npm2yarn
+npm i fets
+```
 
 ## Usage
 
 We recommend to use feTS as a main middleware for your API routes. In this case, you should create a
-`[..slug].ts` file under `pages/api` directory. Since your base route is `/api`, you should also
+`[...slug].ts` file under `pages/api` directory. Since your base route is `/api`, you should also
 configure `swaggerUiEndpoint` and `oasEndpoint` options as well.
 
 ```ts filename=pages/api/[...slug].ts
@@ -49,7 +49,7 @@ export default createRouter({
 
 Then on the client side, you can use the type-safe client.
 
-```ts filename = pages/index.tsx
+```tsx filename = pages/index.tsx
 import { createClient } from 'fets'
 import type router from './api/[...slug]'
 
