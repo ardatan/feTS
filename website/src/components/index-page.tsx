@@ -32,12 +32,12 @@ const classes = {
 export function IndexPage(): ReactElement {
   return (
     <>
-      <div className="lg:min-h-[calc(100vh-64px-68px)] bg-gradient-to-b from-[#1886ff]/20 to-secondary-100 dark:to-[#1c212c] flex items-center lg:py-24 py-14">
-        <div className="flex container items-stretch max-lg:flex-col">
-          <div className="flex-1 lg:pr-24 max-lg:pb-20 text-secondary-600 dark:text-white">
-            <h1 className="text-[4rem] max-lg:text-4xl font-bold">feTS</h1>
+      <div className="to-secondary-100 flex items-center bg-gradient-to-b from-[#1886ff]/20 py-14 dark:to-[#1c212c] lg:min-h-[calc(100vh-64px-68px)] lg:py-24">
+        <div className="container flex items-stretch max-lg:flex-col">
+          <div className="text-secondary-600 flex-1 dark:text-white max-lg:pb-20 lg:pr-24">
+            <h1 className="text-[4rem] font-bold max-lg:text-4xl">feTS</h1>
             <h2 className="text-2xl max-lg:text-lg">Fetch API 💙 TypeScript</h2>
-            <h3 className="text-2xl max-lg:text-lg my-8">
+            <h3 className="my-8 text-2xl max-lg:text-lg">
               Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
               client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
             </h3>
@@ -57,14 +57,14 @@ export function IndexPage(): ReactElement {
               </Anchor>
             </div>
           </div>
-          <div className="p-5 lg:flex-1 h-[350px] rounded-md bg-secondary-500 drop-shadow-[40px_40px_50px_rgba(24,134,255,.8)] dark:drop-shadow-[40px_40px_50px_rgba(24,134,255,.3)]">
-            <Image src={fetsTextLogo} alt="feTS logo" className="h-full w-auto mx-auto" />
+          <div className="bg-secondary-500 h-[350px] rounded-md p-5 drop-shadow-[40px_40px_50px_rgba(24,134,255,.8)] dark:drop-shadow-[40px_40px_50px_rgba(24,134,255,.3)] lg:flex-1">
+            <Image src={fetsTextLogo} alt="feTS logo" className="mx-auto h-full w-auto" />
           </div>
         </div>
       </div>
 
-      <section className="bg-white dark:bg-dark text-secondary-600 body-font">
-        <div className="container py-24 mx-auto">
+      <section className="dark:bg-dark text-secondary-600 body-font bg-white">
+        <div className="container mx-auto py-24">
           <div className="mb-20">
             <h2 className={classes.title}>New Approach to REST APIs</h2>
             <h3 className={classes.subtitle}>
@@ -73,7 +73,7 @@ export function IndexPage(): ReactElement {
               you with the flexibility to adapt to your project's specific needs.
             </h3>
           </div>
-          <div className="flex max-lg:flex-wrap my-24 gap-4">
+          <div className="my-24 flex gap-4 max-lg:flex-wrap">
             {[
               {
                 name: 'Harness the Power of OpenAPI',
@@ -94,12 +94,12 @@ export function IndexPage(): ReactElement {
                 icon: TypeScript,
               },
             ].map(({ name, description, icon: Icon }) => (
-              <div key={name} className="md:w-1/3 flex flex-col lg:items-center">
+              <div key={name} className="flex flex-col md:w-1/3 lg:items-center">
                 <Icon />
-                <h2 className="mt-5 text-secondary-900 dark:text-white max-lg:text-xl text-2xl title-font font-bold mb-3">
+                <h2 className="text-secondary-900 title-font mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl">
                   {name}
                 </h2>
-                <p className="leading-relaxed lg:text-lg dark:text-white lg:text-center">
+                <p className="leading-relaxed dark:text-white lg:text-center lg:text-lg">
                   {description}
                 </p>
               </div>
@@ -110,9 +110,9 @@ export function IndexPage(): ReactElement {
       </section>
 
       <section className="bg-secondary-100 dark:bg-secondary-600">
-        <div className="flex flex-col lg:items-center lg:py-40 py-14 container">
+        <div className="container flex flex-col py-14 lg:items-center lg:py-40">
           <h2 className={classes.title}>Deploy Anywhere</h2>
-          <h2 className={clsx(classes.subtitle, 'lg:text-center max-w-[500px]')}>
+          <h2 className={clsx(classes.subtitle, 'max-w-[500px] lg:text-center')}>
             feTS Server provides a super fast HTTP server that can run anywhere with the power of{' '}
             <Anchor
               href="https://github.com/ardatan/whatwg-node/tree/master/packages/server"
@@ -121,7 +121,7 @@ export function IndexPage(): ReactElement {
               @whatwg-node/server
             </Anchor>
           </h2>
-          <div className="grid lg:grid-cols-3 gap-7 lg:mt-24 mt-14 w-full">
+          <div className="mt-14 grid w-full gap-7 lg:mt-24 lg:grid-cols-3">
             {[
               { name: 'AWS Lambda', icon: AWSLambda, link: '/server/integrations/aws-lambda' },
               {
@@ -157,12 +157,12 @@ export function IndexPage(): ReactElement {
             ].map(({ name, icon: Icon, link, isInverted }) => (
               <Anchor
                 href={link}
-                className="group py-5 px-7 flex items-center bg-white hover:!bg-secondary-400 hover:text-white rounded gap-3 font-bold dark:bg-secondary-500"
+                className="hover:!bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 font-bold hover:text-white"
                 key={name}
               >
                 <Icon className={clsx(isInverted && 'dark:invert [a:hover>&]:invert')} />
                 {name}
-                <span className="transition-transform duration-75 group-hover:translate-x-[2px] font-light">
+                <span className="font-light transition-transform duration-75 group-hover:translate-x-[2px]">
                   →
                 </span>
               </Anchor>

@@ -20,7 +20,7 @@
     "prerelease-canary": "yarn build",
     "pretest": "yarn generate-swagger-ui",
     "prets:check": "yarn generate-swagger-ui",
-    "prettier": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --list-different .",
+    "prettier": "yarn prettier:check --write",
     "prettier:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
     "test": "jest --detectOpenHandles --detectLeaks",
@@ -56,6 +56,7 @@
     "lint-staged": "13.2.2",
     "patch-package": "7.0.0",
     "prettier": "2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "ts-jest": "29.1.0",
     "typescript": "5.1.3"
   },
