@@ -1,34 +1,45 @@
-import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+import { Callout } from '@theguild/components'
 
-# Quick start
+# Quick Start Guide
 
-feTS Client is a fully type safe HTTP Client that uses [OpenAPI](https://swagger.io/specification/)
-specification. It automatically infers types from the document and gives you a type safe API to
-interact with your API.
+Welcome to the feTS Client, a fully type-safe HTTP Client that leverages the
+[OpenAPI](https://swagger.io/specification/) specification. It automatically infers types from the
+document, providing you with a type-safe interface for seamless API interaction.
 
 ## Installation
 
-<PackageCmd packages={['fets']} />
+To install the feTS Client, use the following command:
 
-## Usage
+```sh npm2yarn
+npm i fets
+```
 
-First, you need to create a TypeScript file that exports your OpenAPI document. Due to the
-limitations in TypeScript, we cannot import types from JSON files directly.
-[See this issue](https://github.com/microsoft/TypeScript/issues/32063). Just copy and paste the
-content of the OpenAPI file inside the TypeScript file, and export it with `as const` modifier.
+## Usage with Existing REST API
+
+<Callout type="info">
+  Before diving in, make sure that you have an OpenAPI document, which is a language-agnostic
+  specification for HTTP APIs. You can usually retrieve it from your server, or manually create it
+  if you're familiar with the OpenAPI schema. Check out the [OpenAPI
+  docs](https://swagger.io/specification/) to learn more.
+</Callout>
+
+Start by creating a TypeScript file that exports your OpenAPI document. Due to certain limitations
+in TypeScript, importing types directly from JSON files isn't currently supported
+([see this issue](https://github.com/microsoft/TypeScript/issues/32063)). To work around this,
+simply copy and paste the content of your OpenAPI file into the TypeScript file and then export it
+with the `as const` modifier.
 
 ```ts filename="openapi.ts"
 export default { openapi: '3.0.0' /* ... */ } as const
 ```
 
-Then, you can create a client instance by passing the OpenAPI document to the `createClient`
-function.
+Next, create a client instance by passing the OpenAPI document to the `createClient` function.
 
-```ts filename="client.ts"
+```ts
 import { createClient, Mutable } from 'fets'
 import openapi from './openapi'
 
-const client = createClient<Mutable<typeof openapi>>()
+const client = createClient<Mutable<typeof openapi>>({})
 
 const response = await client['/pets'].get()
 
@@ -36,14 +47,14 @@ const pets = await response.json()
 console.log(pets)
 ```
 
-### Infer types from feTS Server
+## Usage with feTS Server
 
-If you are using [feTS Server](/server/quick-start) and share the types of your router instance. You
-can infer types from there directly.
+If you're using feTS Server and you're sharing the types of your router instance, you can infer
+types directly from there.
 
-```ts filename="client.ts"
+```ts
 import { createClient } from 'fets'
-// Don't forget to add `type` to get the types only.
+// Remember to add `type` to import types only.
 import type { router } from './router'
 
 const client = createClient<typeof router>({
@@ -54,3 +65,8 @@ const response = await client['/pets'].get()
 const pets = await response.json()
 console.log(pets)
 ```
+
+---
+
+This quick start guide should provide you with a solid foundation for using feTS Client. Enjoy
+exploring its full potential!

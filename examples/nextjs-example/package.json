@@ -1,6 +1,6 @@
 {
   "name": "nextjs-example",
-  "version": "0.1.19",
+  "version": "0.1.24",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -9,11 +9,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/node": "18.16.16",
-    "@types/react": "18.2.9",
-    "@types/react-dom": "18.2.4",
-    "fets": "0.2.3",
-    "next": "13.4.4",
+    "@types/node": "18.16.18",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
+    "fets": "0.2.8",
+    "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.3"

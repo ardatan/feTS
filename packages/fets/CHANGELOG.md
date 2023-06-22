@@ -1,5 +1,62 @@
 # fets
 
+## 0.2.8
+
+### Patch Changes
+
+- [`7f1c985`](https://github.com/ardatan/feTS/commit/7f1c985b33d4de2ce7f7f30b93f64ff3f108e898)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix cookie compatibility
+
+## 0.2.7
+
+### Patch Changes
+
+- [`d3e334e`](https://github.com/ardatan/feTS/commit/d3e334e4b4265915fe56100e8312a402384b6cfc)
+  Thanks [@ardatan](https://github.com/ardatan)! - Performance optimizations
+
+- [#261](https://github.com/ardatan/feTS/pull/261)
+  [`bc6e8b4`](https://github.com/ardatan/feTS/commit/bc6e8b4ef9c6238d1cfdda2cbed360acc17b1bce)
+  Thanks [@ardatan](https://github.com/ardatan)! - Performance optimizations for AJV
+
+## 0.2.6
+
+### Patch Changes
+
+- [#251](https://github.com/ardatan/feTS/pull/251)
+  [`7979639`](https://github.com/ardatan/feTS/commit/79796391c0ca6508e7b869244a30f6b63175eb1e)
+  Thanks [@ardatan](https://github.com/ardatan)! - Client;
+
+  - No more optional for each request parameter object, make them required if they are in OAS
+  - Now endpoint is required if OAS has `servers.url` in `createClient` options
+
+  Server;
+
+  - `requestBody` is now required in the generated OAS
+
+- [#251](https://github.com/ardatan/feTS/pull/251)
+  [`7979639`](https://github.com/ardatan/feTS/commit/79796391c0ca6508e7b869244a30f6b63175eb1e)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+  - Removed dependency
+    [`openapi-types@^12.1.0` ↗︎](https://www.npmjs.com/package/openapi-types/v/12.1.0) (from
+    `dependencies`)
+
+## 0.2.5
+
+### Patch Changes
+
+- [`b1fa478`](https://github.com/ardatan/feTS/commit/b1fa47834f48dd1fdfe3943dd61b3a89f51a7be8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Small performance optimizations for lazy
+  serialization
+
+## 0.2.4
+
+### Patch Changes
+
+- [#226](https://github.com/ardatan/feTS/pull/226)
+  [`96f0bb3`](https://github.com/ardatan/feTS/commit/96f0bb35d89ce60383dcb546290a0479c11b08a8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Workaround for missing type field and other
+  response types
+
 ## 0.2.3
 
 ### Patch Changes

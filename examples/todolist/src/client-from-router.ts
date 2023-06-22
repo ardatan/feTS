@@ -1,7 +1,7 @@
 import { createClient, RouteOutput } from 'fets';
 import type { router } from './router';
 
-const sdk = createClient<typeof router>();
+const sdk = createClient<typeof router>({});
 
 const someTodosToAdd = ['Drink coffee', 'Write some code', 'Drink more coffee', 'Write more code'];
 

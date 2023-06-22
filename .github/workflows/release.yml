@@ -15,5 +15,5 @@ jobs:
       releaseScript: release
       nodeVersion: 18
     secrets:
-      githubToken: ${{ secrets.GH_API_TOKEN }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
       npmToken: ${{ secrets.NODE_AUTH_TOKEN }}

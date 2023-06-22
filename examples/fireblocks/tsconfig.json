@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "sourceMap": true,
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "strict": true,
+    "paths": {
+      "fets": ["../../packages/fets/src/index.ts"]
+    }
+  },
+  "files": ["index.ts"],
+  "exclude": ["node_modules", "dist", "test"]
+}

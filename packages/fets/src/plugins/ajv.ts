@@ -68,9 +68,9 @@ export function useAjv({
     },
   });
 
-  const serializersByCtx = new WeakMap<any, Map<number, JSONSerializer>>();
+  const serializersByPath = new Map<string, Map<number, JSONSerializer>>();
   return {
-    onRoute({ schemas, handlers }) {
+    onRoute({ path, schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
       if (schemas?.request?.headers && !isZodSchema(schemas.request.headers)) {
         const validateFn = ajv.compile({
@@ -193,9 +193,7 @@ export function useAjv({
             serializerByStatusCode.set(Number(statusCode), serializer);
           }
         }
-        handlers.unshift((_request, ctx) => {
-          serializersByCtx.set(ctx, serializerByStatusCode);
-        });
+        serializersByPath.set(path, serializerByStatusCode);
       }
       if (validationMiddlewares.size > 0) {
         handlers.unshift(async (request): Promise<any> => {
@@ -227,8 +225,8 @@ export function useAjv({
         });
       }
     },
-    onSerializeResponse({ serverContext, lazyResponse }) {
-      const serializers = serializersByCtx.get(serverContext);
+    onSerializeResponse({ path, lazyResponse }) {
+      const serializers = serializersByPath.get(path);
       if (serializers) {
         const serializer = serializers.get(lazyResponse.init?.status || 200);
         if (serializer) {

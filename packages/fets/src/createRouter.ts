@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-import { OpenAPIV3_1 } from 'openapi-types';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
@@ -10,6 +8,8 @@ import type {
   OnRouteHook,
   OnRouterInitHook,
   OnSerializeResponseHook,
+  OpenAPIDocument,
+  OpenAPIInfo,
   RouteHandler,
   Router,
   RouterBaseObject,
@@ -19,6 +19,7 @@ import type {
   RouterSDK,
   RouteSchemas,
 } from './types.js';
+import { addHandlersToMethod, PatternHandlersObj } from './utils.js';
 import { useZod } from './zod/zod.js';
 
 const HTTP_METHODS: HTTPMethod[] = [
@@ -33,7 +34,7 @@ const HTTP_METHODS: HTTPMethod[] = [
   'PATCH',
 ];
 
-const urlByRequest = new WeakMap<Request, URL>();
+const EMPTY_OBJECT = {};
 const EMPTY_MATCH = { pathname: { groups: {} } } as URLPatternResult;
 
 export function createRouterBase(
@@ -43,7 +44,7 @@ export function createRouterBase(
     plugins = [],
     swaggerUI,
   }: RouterOptions<any, any> = {},
-  openAPIDocument: OpenAPIV3_1.Document,
+  openAPIDocument: OpenAPIDocument,
 ): RouterBaseObject<any, any, any> {
   const fetchAPI = {
     ...DefaultFetchAPI,
@@ -63,90 +64,24 @@ export function createRouterBase(
       onSerializeResponseHooks.push(plugin.onSerializeResponse);
     }
   }
-  const routesByMethod = new Map<
+  const handlersByPatternByMethod = new Map<
     HTTPMethod,
     Map<URLPattern, RouteHandler<any, TypedRequest, TypedResponse>[]>
   >();
   const internalPatternsByMethod = new Map<HTTPMethod, Set<URLPattern>>();
-  function addHandlersToMethod({
-    operationId,
-    description,
-    tags,
-    method,
-    path,
-    schemas,
-    handlers,
-    internal,
-  }: {
-    operationId?: string;
-    description?: string;
-    tags?: string[];
-    method: HTTPMethod;
-    path: string;
-    schemas?: RouteSchemas;
-    handlers: RouteHandler<any, TypedRequest, TypedResponse>[];
-    internal?: boolean;
-  }) {
-    for (const onRouteHook of onRouteHooks) {
-      onRouteHook({
-        operationId,
-        description,
-        tags,
-        openAPIDocument,
-        method,
-        path,
-        schemas,
-        handlers,
-      });
-    }
-    let methodPatternMaps = routesByMethod.get(method);
-    if (!methodPatternMaps) {
-      methodPatternMaps = new Map();
-      routesByMethod.set(method, methodPatternMaps);
-    }
-    let fullPath = '';
-    if (basePath === '/') {
-      fullPath = path;
-    } else if (path === '/') {
-      fullPath = basePath;
-    } else {
-      fullPath = `${basePath}${path}`;
-    }
-    const pattern = new fetchAPI.URLPattern({ pathname: fullPath });
-    methodPatternMaps.set(pattern, handlers);
-    // TODO: Better logic to make sure internal routes are always last
-    let internalPatterns = internalPatternsByMethod.get(method);
-    if (internal) {
-      if (!internalPatterns) {
-        internalPatterns = new Set();
-        internalPatternsByMethod.set(method, internalPatterns);
-      }
-      internalPatterns.add(pattern);
-    }
-    if (internalPatterns?.size) {
-      routesByMethod.set(
-        method,
-        new Map(
-          [...methodPatternMaps.entries()].sort(([a], [b]) => {
-            if (internalPatterns!.has(a)) {
-              return 1;
-            } else if (internalPatterns!.has(b)) {
-              return -1;
-            }
-            return 0;
-          }),
-        ),
-      );
-    }
-  }
+
+  // Use this in `handle` for iteration to get better performance
+  const patternHandlerObjByMethod = new Map<HTTPMethod, PatternHandlersObj<any>[]>();
   return {
     openAPIDocument,
     async handle(request: Request, context: any) {
-      const url = urlByRequest.get(request);
-      if (!url) {
-        throw new Error('Request not from this router');
-      }
-      const methodPatternMaps = routesByMethod.get(request.method as HTTPMethod);
+      let url = new Proxy(EMPTY_OBJECT as URL, {
+        get(_target, prop, _receiver) {
+          url = new fetchAPI.URL(request.url, 'http://localhost');
+          return Reflect.get(url, prop, url);
+        },
+      }) as URL;
+      const methodPatternMaps = patternHandlerObjByMethod.get(request.method as HTTPMethod);
       if (methodPatternMaps) {
         const queryProxy = new Proxy(
           {},
@@ -163,16 +98,13 @@ export function createRouterBase(
             },
           },
         );
-        for (const [pattern, handlers] of methodPatternMaps) {
+        for (const { pattern, handlers } of methodPatternMaps) {
           // Do not parse URL if not needed
           let match: URLPatternResult | null = null;
-          if (request.url.endsWith(pattern.pathname)) {
-            match = EMPTY_MATCH;
-          } else if (url.pathname === pattern.pathname) {
-            match = EMPTY_MATCH;
-            // Execute only if pattern is a regex
-          } else {
+          if (pattern.isPattern) {
             match = pattern.exec(url);
+          } else if (request.url.endsWith(pattern.pathname) || url.pathname === pattern.pathname) {
+            match = EMPTY_MATCH;
           }
           if (match != null) {
             const routerRequest = new Proxy(request as any, {
@@ -210,19 +142,21 @@ export function createRouterBase(
             });
             for (const handler of handlers) {
               const handlerResult = await handler(routerRequest, context);
-              if (isLazySerializedResponse(handlerResult)) {
-                for (const onSerializeResponseHook of onSerializeResponseHooks) {
-                  onSerializeResponseHook({
-                    request: routerRequest,
-                    lazyResponse: handlerResult,
-                    serverContext: context,
-                  });
+              if (handlerResult) {
+                if (isLazySerializedResponse(handlerResult)) {
+                  for (const onSerializeResponseHook of onSerializeResponseHooks) {
+                    onSerializeResponseHook({
+                      request: routerRequest,
+                      path: pattern.pathname,
+                      lazyResponse: handlerResult,
+                      serverContext: context,
+                    });
+                  }
+                  return (
+                    handlerResult.actualResponse ||
+                    fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
+                  );
                 }
-                if (!handlerResult.serializerSet) {
-                  return fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init);
-                }
-                return handlerResult.responsePromise;
-              } else if (handlerResult) {
                 return handlerResult;
               }
             }
@@ -263,6 +197,14 @@ export function createRouterBase(
             handlers,
             tags,
             internal,
+            // Router specific
+            onRouteHooks,
+            openAPIDocument,
+            basePath,
+            fetchAPI,
+            handlersByPatternByMethod,
+            internalPatternsByMethod,
+            patternHandlerObjByMethod,
           });
         }
       } else {
@@ -275,6 +217,14 @@ export function createRouterBase(
           handlers,
           tags,
           internal,
+          // Router specific
+          onRouteHooks,
+          openAPIDocument,
+          basePath,
+          fetchAPI,
+          handlersByPatternByMethod,
+          internalPatternsByMethod,
+          patternHandlerObjByMethod,
         });
       }
       return this as any;
@@ -300,7 +250,7 @@ export function createRouter<
     base = '/',
   } = options;
   openAPIDocument.openapi = openAPIDocument.openapi || '3.0.1';
-  const oasInfo = (openAPIDocument.info ||= {} as OpenAPIV3_1.InfoObject);
+  const oasInfo = (openAPIDocument.info ||= {} as OpenAPIInfo);
   oasInfo.title ||= 'feTS API';
   oasInfo.description ||= 'An API written with feTS';
   oasInfo.version ||= '1.0.0';
@@ -312,11 +262,6 @@ export function createRouter<
     ];
   }
   const plugins: RouterPlugin<TServerContext>[] = [
-    {
-      onRequest({ request, url }) {
-        urlByRequest.set(request, url);
-      },
-    },
     ...(oasEndpoint || swaggerUIEndpoint
       ? [
           useOpenAPI({
@@ -338,7 +283,7 @@ export function createRouter<
     base,
     plugins,
   };
-  const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIV3_1.Document);
+  const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIDocument);
   const router = createServerAdapter(routerBaseObject, finalOpts);
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
     onRouterInitHook(router);

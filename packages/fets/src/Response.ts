@@ -10,8 +10,7 @@ export interface LazySerializedResponse {
   [LAZY_SERIALIZED_RESPONSE]: true;
   resolveWithSerializer(serializer: JSONSerializer): void;
   init?: ResponseInit;
-  serializerSet: boolean;
-  responsePromise: Promise<Response>;
+  actualResponse: Response;
   jsonObj: any;
   json: () => Promise<any>;
   status: StatusCode;
@@ -19,48 +18,61 @@ export interface LazySerializedResponse {
 }
 
 export function isLazySerializedResponse(response: any): response is LazySerializedResponse {
-  return response != null && response[LAZY_SERIALIZED_RESPONSE];
+  return response[LAZY_SERIALIZED_RESPONSE];
+}
+
+function isHeadersLike(headers: any): headers is Headers {
+  return headers?.get && headers?.forEach;
+}
+
+const JSON_CONTENT_TYPE = 'application/json; charset=utf-8';
+
+function getHeadersFromHeadersInit(init?: HeadersInit): Headers {
+  let headers: Headers;
+  if (isHeadersLike(init)) {
+    headers = init;
+  } else {
+    headers = new Headers(init);
+  }
+  if (!headers.has('content-type')) {
+    headers.set('content-type', JSON_CONTENT_TYPE);
+  }
+  return headers;
 }
 
 export function createLazySerializedResponse(
   jsonObj: any,
-  init?: ResponseInit,
+  init: ResponseInit = {},
 ): LazySerializedResponse {
-  let resolve: (value: Response) => void;
-  const promise = new Promise<Response>(_resolve => {
-    resolve = _resolve;
-  });
-  let _serializerSet = false;
-  const headers = new Headers({
-    ...init?.headers,
-    'Content-Type': 'application/json',
-  });
+  let actualResponse: Response;
+  let headers: Headers;
+  function getHeaders() {
+    if (headers == null) {
+      headers = getHeadersFromHeadersInit(init.headers);
+    }
+    return headers;
+  }
   return {
     jsonObj,
-    responsePromise: promise,
+    get actualResponse() {
+      return actualResponse;
+    },
     [LAZY_SERIALIZED_RESPONSE]: true,
     init,
-    get serializerSet() {
-      return _serializerSet;
-    },
     resolveWithSerializer(serializer: JSONSerializer) {
       const serialized = serializer(jsonObj);
-      _serializerSet = true;
-      resolve(
-        new OriginalResponse(serialized, {
-          ...init,
-          status: init?.status || 200,
-          headers,
-        }) as Response,
-      );
+      init.headers = getHeaders();
+      actualResponse = new OriginalResponse(serialized, init) as Response;
     },
-    async json() {
-      return jsonObj;
+    json() {
+      return Promise.resolve(jsonObj);
     },
     get status() {
       return (init?.status || 200) as StatusCode;
     },
-    headers,
+    get headers() {
+      return getHeaders();
+    },
   };
 }
 

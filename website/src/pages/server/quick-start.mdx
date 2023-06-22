@@ -1,43 +1,47 @@
-import { Callout, PackageCmd, Tab, Tabs } from '@theguild/components'
+import { Callout } from '@theguild/components'
 
 # Quick Start
 
-feTS Server is a library that allows you create a fully type-safe REST API.
+feTS Server is a library that allows you to create a fully type-safe REST API.
 
-- Comes with a super fast HTTP server
-- Schemas are based on [JSON Schema](https://json-schema.org/) so you can use any tool from that
-  ecosystem
-- Exports [OpenAPI](https://swagger.io/specification/) documentation so you can consume the API with
-  any tool that supports OpenAPI
-- Platform agnostic so can be deployed to anywhere that supports JavaScript
-- Provides a simple way to test your API with [Swagger UI](https://swagger.io/tools/swagger-ui/)
+- It includes a high-speed HTTP server.
+- The schemas are based on [JSON Schema](https://json-schema.org/) allowing the use of any tool from
+  this ecosystem.
+- It provides [OpenAPI](https://swagger.io/specification/) documentation, making the API consumable
+  with any OpenAPI compatible tool.
+- It is platform-agnostic, and thus can be deployed on any platform that supports JavaScript.
+- It offers a simple way to test your API with [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
-> If the consumer is a JavaScript environment, we highly recommend using
-> [feTS Client](/client/quick-start) which is fully type-safe HTTP client that uses OpenAPI to
-> generate the client.
+<Callout type="info">
+  For JavaScript environments, we highly recommend using [feTS Client](/client/quick-start), which
+  is a HTTP client that uses OpenAPI to provide end-to-end type-safety without code generation.
+</Callout>
 
 ## Installation
 
-<PackageCmd packages={['fets', 'uWebSockets.js@uNetworking/uWebSockets.js#v20.30.0']} />
+Use the following command to install feTS Server:
 
-## Write your first route
+```sh npm2yarn
+npm i fets uWebSockets.js@uNetworking/uWebSockets.js#v20.30.0
+```
 
-Let's write a simple route that returns a greeting message.
+## Creating Your First Route
+
+The following example demonstrates how to create a route with feTS that returns a greeting message:
 
 ```ts filename="greetings-router.ts"
-// We recommend you to use `Response` from `fets`, because the native one isn't type-safe
-// Let's assume that we are using Node.js
-// We recommend µWebSockets.js instead of node:http for a better performance
+// The example code assumes that we're in a Node.js environment.
+// It's recommended to use `Response` from `fets` as the native one isn't type-safe.
 import { createRouter, Response } from 'fets'
 import { App } from 'uWebSockets.js'
 
-// Create a router
+// Creating a new router
 const router = createRouter()
-  // `.route` method should be in chain after `createRouter`
+  // Use `.route` method to create a new /greetings route
   .route({
     path: '/greetings',
     method: 'GET',
-    // Define the response schema
+    // Defining the response schema
     schemas: {
       responses: {
         // The status code
@@ -52,10 +56,10 @@ const router = createRouter()
           additionalProperties: false
         }
       }
-      // Schemas should always have `as const` modifier
+      // Always use `as const` modifier with Schemas
     } as const,
     handler() {
-      // If you don't specify the status code, it will be 200
+      // If the status code is not specified, it defaults to 200
       return Response.json({
         message: 'Hello from feTS!'
       })
@@ -69,37 +73,35 @@ App()
   })
 ```
 
-<Callout>
-  If you still want to use `node:http`, see [node:http integration recipe](/integrations/node-http)
+Test your API using [Swagger UI](https://swagger.io/tools/swagger-ui/), available at
+`http://localhost:3000/docs`.
+
+<Callout type="info">
+  If you prefer using `node:http` over `uWebSockets`, see [node:http integration
+  recipe](/integrations/node-http).
 </Callout>
 
-<Callout>
-  You can play with your API with [Swagger UI](https://swagger.io/tools/swagger-ui/) that is
-  available at <code>http://localhost:3000/docs</code>
-</Callout>
+## The `.route` API
 
-## `.route` API
+The `.route()` method allows you to create new routes and it accepts the following arguments:
 
-It uses `.route()` method to add routes to the router with the following parameters;
-
-- `method`: The HTTP method of the request. This is optional and it handles all methods if it's not
-  given.
-- `path`: The URL pattern that the request should match. The url pattern is a string that follows
-  the [URLPattern](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern) standard. You can
-  learn more about URL patterns
+- `method`: The HTTP method of the request. If not provided, it handles all methods.
+- `path`: The URL pattern to match the request. The URL pattern is a string that follows the
+  [URLPattern](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern) standard. Learn more
+  about URL patterns
   [here](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/URLPattern#matching_a_pathname).
-- `schemas`: An object that contains the schemas for the request and response. This brings a
-  type-safety and validation to your requests and responses. You can learn more about schemas
+- `schemas`: An object containing the schemas for the request and response, providing type safety
+  and validation. Learn more about schemas
   [here](#end-to-end-type-safety-and-validation-with-json-schema).
-- `handler`: The function that will be called when the request matches the given method and path.
-  This function can be either synchronous or asynchronous. If it's asynchronous, it should return a
-  `Promise` that resolves to a `Response` object.
+- `handler`: The function called when the request matches the specified method and path. This
+  function can be either synchronous or asynchronous. If asynchronous, it should return a `Promise`
+  that resolves to a `Response` object.
 
-`Router` gives you an extended version of the regular `Request` object that has the following
-properties:
+The feTS `Router` gives you an extended version of the regular `Request` object. It has the
+following properties:
 
-- `request.params`: An object that contains the parameters that are given in the url pattern.
-- `request.query`: An object that contains the query parameters that are given in the url.
+- `request.params`: An object containing the parameters passed in an URL.
+- `request.query`: An object containing the query parameters.
 
 You can learn more about the original `Request` object
 [here](https://developer.mozilla.org/en-US/docs/Web/API/Request).

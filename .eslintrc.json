@@ -1,15 +1,21 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": ["./tsconfig.json", "website/tsconfig.json"]
   },
   "extends": [
     "eslint:recommended",
     "standard",
-    "prettier",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
+    "prettier"
   ],
   "plugins": ["@typescript-eslint"],
+  "settings": {
+    "tailwindcss": {
+      "config": "website/tailwind.config.cjs"
+    }
+  },
   "rules": {
     "no-empty": "off",
     "no-console": "off",
@@ -38,8 +44,12 @@
     "@typescript-eslint/ban-types": "off",
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["**/*.test.ts", "**/*.spec.ts"] }
-    ]
+      {
+        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
+      }
+    ],
+    // conflicts with official prettier-plugin-tailwindcss and tailwind v3
+    "tailwindcss/classnames-order": "off"
   },
   "env": {
     "es6": true,
@@ -58,14 +68,11 @@
     }
   ],
   "ignorePatterns": [
-    "dist",
-    "node_modules",
     "packages/load/tests/loaders/schema",
-    "website",
     "scripts",
     "e2e",
-    "e2e",
-    "benchmark"
+    "benchmark",
+    "next-env.d.ts"
   ],
   "globals": {
     "BigInt": true
