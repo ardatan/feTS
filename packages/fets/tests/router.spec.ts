@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { createRouter, Response } from '../src/index.js';
 
 describe('Router', () => {
