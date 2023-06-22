@@ -3762,10 +3762,10 @@
     "@typescript-eslint/types" "5.60.0"
     eslint-visitor-keys "^3.3.0"
 
-"@whatwg-node/cookie-store@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/cookie-store/-/cookie-store-0.1.0.tgz#7f8d68e0d4b203d1c7dbb3e29a888bcff3fe36d0"
-  integrity sha512-Tw6r2flAHYeio6ivBrERhOzkgZGXJSP7tlJIeFQhkjaBiRBz9W1Gc8zs73aq7DKC3ZAGSOdl8jlF+LztSq98cg==
+"@whatwg-node/cookie-store@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/cookie-store/-/cookie-store-0.2.0.tgz#56d9729573945af0ecc6e7405210d245fa25c978"
+  integrity sha512-eksorZxQubxicFIn36eBgAXswejlrQnCMsdmmvWi/6I43bn++4K3wP3CUMs+rHl5NNuPcupYsJR1O5S6ALJkkQ==
   dependencies:
     tslib "^2.3.1"
 

@@ -9,7 +9,8 @@ describe('useClientCookieStore', () => {
     let receivedCookie = '';
     const client = createClient({
       async fetchFn(_, init) {
-        receivedCookie = (init?.headers as any).cookie ?? '';
+        const headers = new Headers(init?.headers);
+        receivedCookie = headers.get('cookie') ?? '';
         return new Response('test', {
           status: 200,
           headers: {
