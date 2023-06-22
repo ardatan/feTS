@@ -1,5 +1,12 @@
 # fets
 
+## 0.2.8
+
+### Patch Changes
+
+- [`7f1c985`](https://github.com/ardatan/feTS/commit/7f1c985b33d4de2ce7f7f30b93f64ff3f108e898)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix cookie compatibility
+
 ## 0.2.7
 
 ### Patch Changes
