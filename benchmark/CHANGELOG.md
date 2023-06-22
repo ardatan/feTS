@@ -1,5 +1,13 @@
 # @fets/benchmark
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies
+  [[`7f1c985`](https://github.com/ardatan/feTS/commit/7f1c985b33d4de2ce7f7f30b93f64ff3f108e898)]:
+  - fets@0.2.8
+
 ## 0.0.6
 
 ### Patch Changes
