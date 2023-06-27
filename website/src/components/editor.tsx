@@ -73,6 +73,14 @@ export default function Editor() {
         monacoRef.current = monaco;
         monacoEl.classList.remove('opacity-0');
         const sandbox = sandboxFactory.createTypeScriptSandbox(sandboxConfig, monaco, ts);
+        const [editor] = monaco.editor.getEditors();
+        editor.trigger('fold', 'editor.foldLevel2', {});
+
+        setTimeout(() => {
+          // https://github.com/microsoft/monaco-editor/issues/2052#issuecomment-689786705
+          editor.setPosition(new monaco.Position(8, 7));
+          editor.getAction('editor.action.showHover')!.run();
+        }, 500);
       });
     };
   }, []);
