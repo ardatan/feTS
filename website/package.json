@@ -9,7 +9,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/font": "^13.4.6",
     "@theguild/components": "5.0.0",
     "clsx": "^1.2.1",
     "next": "13.4.9",
@@ -24,7 +23,9 @@
     "@theguild/tailwind-config": "0.2.2",
     "@types/node": "18.16.19",
     "@types/react": "18.2.14",
-    "tailwindcss": "3.3.1",
+    "@typescript/sandbox": "^0.1.0",
+    "monaco-editor": "0.37.1",
+    "tailwindcss": "3.3.2",
     "typescript": "5.1.6"
   }
 }
