@@ -40,12 +40,14 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
+export interface CreateClientOptions<TOAS extends OpenAPIDocument>
+  extends Omit<ClientOptions, 'endpoint'> {
+  endpoint: TOAS extends { servers: { url: infer TEndpoint extends string }[] }
+    ? TEndpoint
+    : string;
+}
 export function createClient<TOAS extends OpenAPIDocument>(
-  options: Omit<ClientOptions, 'endpoint'> & TOAS extends {
-    servers: { url: infer TEndpoint extends string }[];
-  }
-    ? { endpoint: TEndpoint }
-    : { endpoint?: string },
+  options: CreateClientOptions<TOAS>,
 ): OASClient<TOAS>;
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,
