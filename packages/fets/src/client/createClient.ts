@@ -41,11 +41,12 @@ function useValidationErrors(): ClientPlugin {
 }
 
 export function createClient<TOAS extends OpenAPIDocument>(
-  options: Omit<ClientOptions, 'endpoint'> & TOAS extends {
-    servers: { url: infer TEndpoint extends string }[];
-  }
-    ? { endpoint: TEndpoint }
-    : { endpoint?: string },
+  options: Omit<ClientOptions, 'endpoint'> &
+    (TOAS extends {
+      servers: { url: infer TEndpoint extends string }[];
+    }
+      ? { endpoint: TEndpoint }
+      : { endpoint?: string }),
 ): OASClient<TOAS>;
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,
