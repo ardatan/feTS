@@ -51,12 +51,14 @@ export type OASJSONResponseSchema<
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
   TStatus extends keyof OASStatusMap<TOAS, TPath, TMethod>,
-> = OASResponseSchemas<TOAS, TPath, TMethod, TStatus>[keyof OASResponseSchemas<
-  TOAS,
-  TPath,
-  TMethod,
-  TStatus
->]['schema'];
+> = OASStatusMap<TOAS, TPath, TMethod>[TStatus] extends { content: any }
+  ? OASResponseSchemas<TOAS, TPath, TMethod, TStatus>[keyof OASResponseSchemas<
+      TOAS,
+      TPath,
+      TMethod,
+      TStatus
+    >]['schema']
+  : OASStatusMap<TOAS, TPath, TMethod>[TStatus]['schema'];
 
 type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']}`
   ? R['length']
@@ -110,6 +112,10 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Un
                   schema: JSONSchema;
                 }
                   ? FromSchema<TParameters[TIndex]['schema']>
+                  : TParameters[TIndex] extends { type: string }
+                  ? FromSchema<{
+                      type: TParameters[TIndex]['type'];
+                    }>
                   : unknown;
               }
             : {
@@ -117,6 +123,10 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Un
                   schema: JSONSchema;
                 }
                   ? FromSchema<TParameters[TIndex]['schema']>
+                  : TParameters[TIndex] extends { type: string }
+                  ? FromSchema<{
+                      type: TParameters[TIndex]['type'];
+                    }>
                   : unknown;
               };
         }
