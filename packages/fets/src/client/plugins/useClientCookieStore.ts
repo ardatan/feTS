@@ -16,11 +16,10 @@ export function useClientCookieStore(cookieStore: CookieStore): ClientPlugin {
       requestInit.headers.set('cookie', cookieHeader);
     },
     onResponse({ response }) {
-      const setCookie = response.headers.get('set-cookie');
-      if (setCookie) {
-        const setCookieHeaders = splitSetCookieHeader(setCookie);
-        for (const setCookieHeader of setCookieHeaders) {
-          const cookieMap = parse(setCookieHeader);
+      const setCookies = response.headers.getSetCookie?.();
+      if (setCookies) {
+        for (const setCookie of setCookies) {
+          const cookieMap = parse(setCookie);
           for (const [, cookie] of cookieMap) {
             cookieStore.set(cookie as CookieListItem);
           }
