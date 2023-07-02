@@ -1,5 +1,26 @@
 # fets
 
+## 0.2.9
+
+### Patch Changes
+
+- [#258](https://github.com/ardatan/feTS/pull/258)
+  [`a28661e`](https://github.com/ardatan/feTS/commit/a28661e90b8adc6f9873cc6eaf21cbce99f0ad7e)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+
+  - Updated dependency
+    [`@whatwg-node/server@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.9.0)
+    (from `^0.8.7`, in `dependencies`)
+
+- [#279](https://github.com/ardatan/feTS/pull/279)
+  [`951483c`](https://github.com/ardatan/feTS/commit/951483cc34f592e3cf19c562c0668697a6657661)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support response schemas for Swagger 2.0
+
+- [#278](https://github.com/ardatan/feTS/pull/278)
+  [`82d3bef`](https://github.com/ardatan/feTS/commit/82d3bef4ea3ea6fb40f398406a47b7171ade9297)
+  Thanks [@ardatan](https://github.com/ardatan)! - Automatically fix definitions with `properties`
+  but missing `type: object`
+
 ## 0.2.8
 
 ### Patch Changes
