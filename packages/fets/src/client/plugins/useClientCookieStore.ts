@@ -1,6 +1,5 @@
 import { CookieListItem, CookieStore, parse } from '@whatwg-node/cookie-store';
 import { Headers } from '@whatwg-node/fetch';
-import { splitSetCookieHeader } from '@whatwg-node/server';
 import { ClientPlugin } from '../types';
 
 export function useClientCookieStore(cookieStore: CookieStore): ClientPlugin {
@@ -16,11 +15,10 @@ export function useClientCookieStore(cookieStore: CookieStore): ClientPlugin {
       requestInit.headers.set('cookie', cookieHeader);
     },
     onResponse({ response }) {
-      const setCookie = response.headers.get('set-cookie');
-      if (setCookie) {
-        const setCookieHeaders = splitSetCookieHeader(setCookie);
-        for (const setCookieHeader of setCookieHeaders) {
-          const cookieMap = parse(setCookieHeader);
+      const setCookies = response.headers.getSetCookie?.();
+      if (setCookies) {
+        for (const setCookie of setCookies) {
+          const cookieMap = parse(setCookie);
           for (const [, cookie] of cookieMap) {
             cookieStore.set(cookie as CookieListItem);
           }
