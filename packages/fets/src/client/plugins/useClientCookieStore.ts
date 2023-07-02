@@ -1,6 +1,5 @@
 import { CookieListItem, CookieStore, parse } from '@whatwg-node/cookie-store';
 import { Headers } from '@whatwg-node/fetch';
-import { splitSetCookieHeader } from '@whatwg-node/server';
 import { ClientPlugin } from '../types';
 
 export function useClientCookieStore(cookieStore: CookieStore): ClientPlugin {
