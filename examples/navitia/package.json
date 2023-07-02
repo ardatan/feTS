@@ -1,0 +1,18 @@
+{
+  "name": "example-navitia",
+  "version": "0.0.0",
+  "description": "An example app uses Navitia API",
+  "private": true,
+  "scripts": {
+    "prepare": "ts-node scripts/download-oas.ts",
+    "start": "ts-node-dev index.ts"
+  },
+  "dependencies": {
+    "@types/node": "18.16.18",
+    "fets": "0.2.8",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "^5.0.0",
+    "zod": "3.21.4"
+  }
+}
