@@ -12,11 +12,9 @@ type RefToPath<T extends string> = T extends `#/${infer Ref}`
 
 type ResolveRef<TObj, TRef extends string> = Call<Objects.Get<RefToPath<TRef>>, TObj>;
 
-type ResolveRefInObj<T, TBase> = T extends { $ref: infer Ref }
-  ? Ref extends string
-    ? ResolveRef<TBase, Ref>
-    : T
-  : T;
+type ResolveRefInObj<T, TBase> = FixJSONSchema<
+  T extends { $ref: infer Ref } ? (Ref extends string ? ResolveRef<TBase, Ref> : T) : T
+>;
 
 type ResolveRefsInObj<T, TBase = T> = {
   [K in keyof T]: ResolveRefsInObj<ResolveRefInObj<T[K], TBase>, TBase>;
@@ -68,7 +66,7 @@ export type OASResponse<
   TMethod extends keyof TOAS['paths'][TPath],
 > = {
   [TStatus in keyof OASStatusMap<TOAS, TPath, TMethod>]: TypedResponse<
-    FromSchema<FixJSONSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>>,
+    FromSchema<OASJSONResponseSchema<TOAS, TPath, TMethod, TStatus>>,
     Record<string, string>,
     TStatus extends StatusCode
       ? TStatus
@@ -144,7 +142,7 @@ export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS 
   : never;
 
 // Later suggest using json-machete
-type FixJSONSchema<T extends JSONSchema> = T extends { properties: any }
+type FixJSONSchema<T> = T extends { properties: any }
   ? T extends { type: 'object' }
     ? T & { additionalProperties: false }
     : {
@@ -163,22 +161,12 @@ export type OASRequestParams<
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
     ? {
         json: FromSchema<
-          FixJSONSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['application/json']['schema']
-          >
+          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
       }
     : {
         json?: FromSchema<
-          FixJSONSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['application/json']['schema']
-          >
+          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
       }
   : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
