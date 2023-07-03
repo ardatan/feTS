@@ -7254,9 +7254,9 @@ hosted-git-info@^4.0.1:
     lru-cache "^6.0.0"
 
 hotscript@^1.0.11:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/hotscript/-/hotscript-1.0.12.tgz#4614fbf77f5fb3d1b60fd3f7743edd2bd743dfd0"
-  integrity sha512-ANWgLMEhhfmmUsAkmJR6eclnVMC7KrDAAtOxWYN7PclUr1N5P9irs3WVJvMT/NpUxOXluYXj5JgyBG0iuKW5+Q==
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/hotscript/-/hotscript-1.0.13.tgz#6eb5de757e9b33444ffc22555e98dbc17fa31fb4"
+  integrity sha512-C++tTF1GqkGYecL+2S1wJTfoH6APGAsbb7PAWQ3iVIwgG/EFseAfEVOKFgAFq4yK3+6j1EjUD4UQ9dRJHX/sSQ==
 
 htm@^3.1.1:
   version "3.1.1"
