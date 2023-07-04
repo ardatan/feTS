@@ -29,9 +29,9 @@ It can also be employed for tracing and monitoring purposes.
 We'll develop an extension that determines the response delay and logs it in the console.
 
 ```ts
-import { RoutingExtension } from 'fets'
+import { RouterPlugin } from 'fets'
 
-export function useLogDelay(): RoutingExtension {
+export function useLogDelay(): RouterPlugin {
   const initialTimePerRequest = new WeakMap<Request, number>()
   return {
     onRequest({ request }) {
