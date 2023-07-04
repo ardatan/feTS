@@ -3292,9 +3292,9 @@
     tailwindcss "^3.1.8"
 
 "@trpc/server@^10.9.0":
-  version "10.33.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.33.0.tgz#d07c479a68a51d059d3c7978a4503829b8f2b388"
-  integrity sha512-3EN7hiYFy1FsMqGIHEkRqtjxLhTRc/E73mdE+F/vqJWNwigM8UmAvZgFC0YTw87PYpztYzA1vxxK7LQfhXHeog==
+  version "10.33.1"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.33.1.tgz#2659921208c9222cde71e9ab0f366439551a1546"
+  integrity sha512-ObMzyEALXhQ7QTVQdSJ+IL1wYB7UdLLoIhqHraYzqKb9sTTsL3+U64kK084KPsRd4b8R3yH/bzBOnCn8Hbrxkw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
