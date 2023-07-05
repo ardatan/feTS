@@ -4497,9 +4497,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^0.6.0:
-  version "0.6.12"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.6.12.tgz#a2bdc7f2dc5e94f7e8f87f309c7c186956d28473"
-  integrity sha512-cICej22OR6uFNWMRgjKZR7X5w8WEsbM0lXhzftwCNvdsBDKNgLqLas5G2K0PuxLIxrUg859pP1i+FrngiotV1Q==
+  version "0.6.13"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.6.13.tgz#fe54eecbf33e99c459882e867594ed8cc2d41c0b"
+  integrity sha512-7jx6Lh3YefVv/0ZYKDQeKpB0C1zCe2XRH0XYwRgbGkbhj6YlIm49uaahllP9hhj0UciT4ZOx6mCq8I4oKlNOJQ==
 
 bundle-name@^3.0.0:
   version "3.0.0"
@@ -8306,9 +8306,9 @@ jsonfile@^6.0.1:
     graceful-fs "^4.1.6"
 
 jsonwebtoken@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.0.tgz#d0faf9ba1cc3a56255fe49c0961a67e520c1926d"
-  integrity sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.1.tgz#81d8c901c112c24e497a55daf6b2be1225b40145"
+  integrity sha512-K8wx7eJ5TPvEjuiVSkv167EVboBDv9PZdDoF7BgeQnBLVvZWW9clr2PsQHVJDTKaEIH5JBIwHujGcHp7GgI2eg==
   dependencies:
     jws "^3.2.2"
     lodash "^4.17.21"
