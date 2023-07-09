@@ -51,7 +51,6 @@ export default function Editor() {
         if (!monaco || !ts || !sandboxFactory) {
           console.error('Could not get all the dependencies of sandbox set up!');
           console.error('monaco', monaco, 'ts', ts, 'sandboxFactory', sandboxFactory);
-          fetsLogoEl.classList.remove('opacity-0');
           return;
         }
 
@@ -67,15 +66,16 @@ export default function Editor() {
           },
         };
         monacoRef.current = monaco;
-        monacoEl.classList.remove('opacity-0');
         const sandbox = sandboxFactory.createTypeScriptSandbox(sandboxConfig, monaco, ts);
         const [editor] = monaco.editor.getEditors();
         editor.trigger('fold', 'editor.foldLevel2', {});
 
         setTimeout(() => {
           // https://github.com/microsoft/monaco-editor/issues/2052#issuecomment-689786705
-          editor.setPosition(new monaco.Position(8, 7));
+          editor.setPosition(new monaco.Position(23, 52));
           editor.getAction('editor.action.showHover')!.run();
+          fetsLogoEl.classList.add('opacity-0');
+          monacoEl.classList.remove('opacity-0');
         }, 500);
       });
     };
@@ -90,10 +90,14 @@ export default function Editor() {
       <NextImage
         src={fetsTextLogo}
         alt="feTS logo"
-        className="absolute max-h-full w-auto opacity-0"
+        className="absolute max-h-full w-auto transition-opacity [transform:translate(10%,7%)] [transition-duration:12s] "
         ref={fetsHeroLogoRef}
       />
-      <div className="min-h-[calc(100vh/2)]" id="monaco-editor-embed" ref={monacoElementRef} />
+      <div
+        className="min-h-[calc(100vh/2)] opacity-0 transition-opacity [transition-duration:2s]"
+        id="monaco-editor-embed"
+        ref={monacoElementRef}
+      />
     </div>
   );
 }
