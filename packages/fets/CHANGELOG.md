@@ -1,5 +1,19 @@
 # fets
 
+## 0.3.0
+
+### Minor Changes
+
+- [`bb0b70b`](https://github.com/ardatan/feTS/commit/bb0b70b3ea66a4b3df18d79e1a7043237be54bf1)
+  Thanks [@ardatan](https://github.com/ardatan)! - BREAKING: Use `NormalizeOAS` to normalize
+  imported const schema type instead of \`Mutable\`
+
+### Patch Changes
+
+- [`bb0b70b`](https://github.com/ardatan/feTS/commit/bb0b70b3ea66a4b3df18d79e1a7043237be54bf1)
+  Thanks [@ardatan](https://github.com/ardatan)! - Client: infer types from path parameters
+  automatically
+
 ## 0.2.9
 
 ### Patch Changes
