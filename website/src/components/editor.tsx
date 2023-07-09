@@ -76,7 +76,7 @@ export default function Editor() {
           editor.getAction('editor.action.showHover')!.run();
           fetsLogoEl.classList.add('opacity-0');
           monacoEl.classList.remove('opacity-0');
-        }, 500);
+        }, 3000);
       });
     };
   }, []);
@@ -90,7 +90,7 @@ export default function Editor() {
       <NextImage
         src={fetsTextLogo}
         alt="feTS logo"
-        className="absolute max-h-full w-auto transition-opacity [transform:translate(10%,7%)] [transition-duration:12s] "
+        className="absolute max-h-full w-auto transition-opacity [transform:translate(10%,7%)] [transition-duration:2s] "
         ref={fetsHeroLogoRef}
       />
       <div
