@@ -1,7 +1,7 @@
-import { createClient, Mutable } from 'fets';
+import { createClient, type NormalizeOAS } from 'fets';
 import spotifyOas from './spotify-oas';
 
-const client = createClient<Mutable<typeof spotifyOas>>({
+const client = createClient<NormalizeOAS<typeof spotifyOas>>({
   endpoint: 'https://api.spotify.com/v1',
 });
 

@@ -1,13 +1,13 @@
-import { createClient, Mutable, OASOutput } from 'fets';
+import { createClient, OASOutput, type NormalizeOAS } from 'fets';
 import type oas from './saved_openapi';
 
-const client = createClient<Mutable<typeof oas>>({
+const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'http://localhost:3000',
 });
 
 const someTodosToAdd = ['Drink coffee', 'Write some code', 'Drink more coffee', 'Write more code'];
 
-type Todo = OASOutput<Mutable<typeof oas>, '/todo/{id}', 'get'>;
+type Todo = OASOutput<NormalizeOAS<typeof oas>, '/todo/{id}', 'get'>;
 
 (async () => {
   const todo: Todo = {

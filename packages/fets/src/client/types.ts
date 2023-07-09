@@ -2,7 +2,10 @@ import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
-type Mutable<Type> = {
+/**
+ * @deprecated Use `NormalizeOAS` to normalize OpenAPI schema typings for the client generic
+ */
+export type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
 
@@ -20,9 +23,10 @@ type ResolveRefsInObj<T, TBase = T> = {
   [K in keyof T]: ResolveRefsInObj<ResolveRefInObj<T[K], TBase>, TBase>;
 };
 
-type MutableResolvedObj<T> = Mutable<ResolveRefsInObj<T>>;
-
-export { MutableResolvedObj as Mutable };
+/**
+ * Resolve all $refs in the OpenAPI document and normalizes the types for the client generic
+ */
+export type NormalizeOAS<TOAS> = Mutable<ResolveRefsInObj<TOAS>>;
 
 export type OASPathMap<TOAS extends OpenAPIDocument> = TOAS['paths'];
 export type OASMethodMap<
@@ -182,6 +186,12 @@ export type OASRequestParams<
   : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
       ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
       : {}) &
+      (TPath extends `${string}{${string}}${string}`
+        ? { params: Record<ExtractPathParamsWithBrackets<TPath>, string | number> }
+        : {}) &
+      (TPath extends `${string}:${string}${string}`
+        ? { params: Record<ExtractPathParamsWithPattern<TPath>, string | number> }
+        : {}) &
       (OASMethodMap<TOAS, TPath>[TMethod] extends {
         requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
       }
@@ -276,3 +286,23 @@ export interface ClientOnResponseHookPayload {
   requestInit: RequestInit;
   response: Response;
 }
+
+export type ExtractPathParamsWithBrackets<TPath extends string> = Pipe<
+  TPath,
+  [
+    Strings.Split<'/'>,
+    Tuples.Filter<Strings.StartsWith<'{'>>,
+    Tuples.Map<Strings.Trim<'{' | '}'>>,
+    Tuples.ToUnion,
+  ]
+>;
+
+export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
+  TPath,
+  [
+    Strings.Split<'/'>,
+    Tuples.Filter<Strings.StartsWith<':'>>,
+    Tuples.Map<Strings.Trim<':'>>,
+    Tuples.ToUnion,
+  ]
+>;

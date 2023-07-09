@@ -1,17 +1,15 @@
-import { createClient, Mutable } from 'fets';
+import { createClient, type NormalizeOAS } from 'fets';
 import type clickhouseOas from './clickhouse-oas';
 
-const clickhouseClient = createClient<Mutable<typeof clickhouseOas>>({
+const clickhouseClient = createClient<NormalizeOAS<typeof clickhouseOas>>({
   endpoint: 'https://api.clickhouse.cloud',
 });
 
 async function main() {
   const res = await clickhouseClient['/v1/organizations/:organizationId/services/:serviceId'].get({
     params: {
-      // @ts-expect-error TODO: wrongly inferred names "Organizaiton ID" and "Service ID"
-      organizationId,
-      // @ts-expect-error TODO: wrongly inferred names "Organizaiton ID" and "Service ID"
-      serviceId,
+      organizationId: 'orgId',
+      serviceId: 'svcId',
     },
   });
   if (!res.ok) {

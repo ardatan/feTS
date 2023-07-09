@@ -435,8 +435,6 @@ export type AddRouteWithSchemasOpts<
   schemas: TRouteSchemas;
 } & AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 
-export type AddLowPriorityRoute = {};
-
 export type AddRouteWithTypesOpts<
   TServerContext,
   TMethod extends HTTPMethod,
@@ -446,7 +444,7 @@ export type AddRouteWithTypesOpts<
 > = {
   operationId?: string;
   description?: string;
-  method?: TMethod | Uppercase<TMethod>;
+  method?: TMethod;
   tags?: string[];
   internal?: boolean;
   path: TPath;

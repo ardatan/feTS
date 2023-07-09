@@ -1,7 +1,7 @@
-import { createClient, Mutable } from 'fets';
+import { createClient, type NormalizeOAS } from 'fets';
 import type fireblocksOas from './fireblocks-oas';
 
-const fireblocksClient = createClient<Mutable<typeof fireblocksOas>>({
+const fireblocksClient = createClient<NormalizeOAS<typeof fireblocksOas>>({
   endpoint: 'https://api.fireblocks.io/v1',
 });
 

@@ -1,6 +1,6 @@
-import { createClient, type Mutable } from 'fets';
-import { oas } from '../server/oas';
+import { createClient, type NormalizeOAS } from 'fets';
+import { type oas } from '../server/oas';
 
-export const client = createClient<Mutable<typeof oas>>({
+export const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'http://localhost:3000/api',
 });

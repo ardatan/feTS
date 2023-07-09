@@ -36,10 +36,10 @@ export default { openapi: '3.0.0' /* ... */ } as const
 Next, create a client instance by passing the OpenAPI document to the `createClient` function.
 
 ```ts
-import { createClient, Mutable } from 'fets'
-import openapi from './openapi'
+import { createClient, type NormalizeOAS } from 'fets'
+import type openapi from './openapi'
 
-const client = createClient<Mutable<typeof openapi>>({})
+const client = createClient<NormalizeOAS<typeof openapi>>({})
 
 const response = await client['/pets'].get()
 

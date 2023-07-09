@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import type { Mutable, OASOutput } from 'fets';
+import type { NormalizeOAS, OASOutput } from 'fets';
 import { client } from '../fets/client';
 import { oas } from '../server/oas';
 
-type Post = OASOutput<Mutable<typeof oas>, '/posts/{id}', 'get'>;
+type Post = OASOutput<NormalizeOAS<typeof oas>, '/posts/{id}', 'get'>;
 
 const Home: NextPage = () => {
   const [posts, setPosts] = useState<Post['post'][]>([]);

@@ -1,7 +1,7 @@
-import { createClient, type Mutable } from '../src';
+import { createClient, type NormalizeOAS } from '../src';
 import oas from './fixtures/large-oas';
 
-export const client = createClient<Mutable<typeof oas>>({
+export const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'http://localhost:3000/api',
 });
 
