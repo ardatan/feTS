@@ -1,15 +1,15 @@
 import { ReactElement } from 'react';
-import { clsx } from 'clsx';
+import dynamic from 'next/dynamic';
 // eslint-disable-next-line camelcase
-import { IBM_Plex_Sans } from '@next/font/google';
-import { Anchor, Image } from '@theguild/components';
+import { IBM_Plex_Sans } from 'next/font/google';
+import { clsx } from 'clsx';
+import { Anchor } from '@theguild/components';
 import AWSLambda from 'public/assets/aws-lambda.svg';
 import AzureFunctions from 'public/assets/azure-functions.svg';
 import Bun from 'public/assets/bun.svg';
 import CloudFlare from 'public/assets/cloudflare.svg';
 import Deno from 'public/assets/deno.svg';
 import Diagram from 'public/assets/diagram.svg';
-import fetsTextLogo from 'public/assets/fets-text-logo.png';
 import GitHubLogo from 'public/assets/github.svg';
 import GoogleCloudFunctions from 'public/assets/google-cloud-functions.svg';
 import JsonSchema from 'public/assets/json-schema.svg';
@@ -18,6 +18,8 @@ import NodeJs from 'public/assets/nodejs.svg';
 import OpenAPI from 'public/assets/openapi.svg';
 import TypeScript from 'public/assets/typescript.svg';
 import WebSockets from 'public/assets/websockets.svg';
+
+const Editor = dynamic(() => import('./editor'), { ssr: false });
 
 const IBMPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -68,9 +70,7 @@ export function IndexPage(): ReactElement {
               </Anchor>
             </div>
           </div>
-          <div className="bg-secondary-500 h-[350px] rounded-md p-5 drop-shadow-[40px_40px_50px_rgba(24,134,255,.8)] dark:drop-shadow-[40px_40px_50px_rgba(24,134,255,.3)] lg:flex-1">
-            <Image src={fetsTextLogo} alt="feTS logo" className="mx-auto h-full w-auto" />
-          </div>
+          <Editor />
         </div>
       </div>
 
