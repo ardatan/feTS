@@ -290,7 +290,7 @@ export interface ClientOnResponseHookPayload {
 export type ExtractPathParamsWithBrackets<TPath extends string> = Pipe<
   TPath,
   [
-    Strings.Split<'/'>,
+    Strings.Split<'/' | ';'>,
     Tuples.Filter<Strings.StartsWith<'{'>>,
     Tuples.Map<Strings.Trim<'{' | '}'>>,
     Tuples.ToUnion,
