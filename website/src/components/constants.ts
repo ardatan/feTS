@@ -1,15 +1,27 @@
 export const code = `
-import { createClient, type Mutable, type OASOutput } from 'fets'
+import { createClient, type NormalizeOAS } from 'fets'
 
-export const client = createClient<Mutable<typeof oas>>({
+const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'http://localhost:3000/api'
 })
 
-const response = await client['/posts'].get()
-const posts = await response.json()
+const response = await client['/auth/register'].post({
+  json: {
+    name: 'John Doe',
+    email: 'john@doe.com',
+    passcode: 12345,
+  }
+})
 
-type PostsResponse = OASOutput<Mutable<typeof oas>, '/posts', 'get'>
-type AuthResponse = OASOutput<Mutable<typeof oas>, '/auth/login', 'post'>
+if (!response.ok) {
+  const errorJson = await response.json();
+  console.error('Failed to register: ', errorJson.message);
+  process.exit(1);
+}
+
+const successRes = await response.json()
+
+console.log('User created with ID: ', successRes.user.name)
 
 export const oas = {
   openapi: '3.0.3',
@@ -411,7 +423,6 @@ export const oas = {
       }
     }
   },
-  tags: [{ name: 'auth' }, { name: 'users' }, { name: 'posts' }],
-  externalDocs: { url: 'https://github.com/jlalmes/trpc-openapi' }
+  tags: [{ name: 'auth' }, { name: 'users' }, { name: 'posts' }]
 } as const
 `.trimStart();
