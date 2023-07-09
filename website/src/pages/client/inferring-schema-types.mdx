@@ -27,11 +27,11 @@ type AddUserInput = OASRequestParams<NormalizeOAS<typeof oas>, '/user', 'POST'>
 
 ## Response body
 
-Use the `OASResponseBody` type, to infer the response body from an OpenAPI document:
+Use the `OASOutput` type, to infer the response body from an OpenAPI document:
 
 ```ts filename="user-response-body.ts"
-import type { NormalizeOAS, OASResponseBody } from 'fets'
+import type { NormalizeOAS, OASOutput } from 'fets'
 import type oas from './openapi'
 
-type UserByIdResponse = OASResponseBody<NormalizeOAS<typeof oas>, '/user/:id', 'POST', 200>
+type UserByIdResponse = OASOutput<NormalizeOAS<typeof oas>, '/user/:id', 'POST', 200>
 ```
