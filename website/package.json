@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@theguild/components": "5.0.0",
+    "@theguild/components": "5.1.0",
     "clsx": "^1.2.1",
     "next": "13.4.9",
     "next-sitemap": "4.1.8",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
-    "@theguild/algolia": "1.1.8",
+    "@theguild/algolia": "1.1.9",
     "@theguild/tailwind-config": "0.3.0",
     "@types/node": "18.16.19",
     "@types/react": "18.2.14",
