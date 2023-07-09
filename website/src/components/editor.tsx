@@ -51,12 +51,8 @@ export default function Editor() {
         if (!monaco || !ts || !sandboxFactory) {
           console.error('Could not get all the dependencies of sandbox set up!');
           console.error('monaco', monaco, 'ts', ts, 'sandboxFactory', sandboxFactory);
+          fetsLogoEl.classList.remove('opacity-0');
           return;
-        } else {
-          fetsLogoEl.classList.add('opacity-0');
-          setTimeout(() => {
-            fetsLogoEl.remove();
-          }, 12_000);
         }
 
         // Create a sandbox and embed it into the div #monaco-editor-embed
@@ -94,14 +90,10 @@ export default function Editor() {
       <NextImage
         src={fetsTextLogo}
         alt="feTS logo"
-        className="absolute max-h-full w-auto transition-opacity [transform:translate(10%,7%)] [transition-duration:12s] "
+        className="absolute max-h-full w-auto opacity-0"
         ref={fetsHeroLogoRef}
       />
-      <div
-        className="min-h-[calc(100vh/2)] opacity-0 transition-opacity [transition-duration:12s]"
-        id="monaco-editor-embed"
-        ref={monacoElementRef}
-      />
+      <div className="min-h-[calc(100vh/2)]" id="monaco-editor-embed" ref={monacoElementRef} />
     </div>
   );
 }
