@@ -138,10 +138,27 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Un
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
   [TPath in keyof OASPathMap<TOAS>]: {
-    [TMethod in keyof OASMethodMap<TOAS, TPath>]: (
-      requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
-      init?: RequestInit,
-    ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
+    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<TOAS, TPath, TMethod> extends
+      | {
+          json: {};
+        }
+      | {
+          params: {};
+        }
+      | {
+          headers: {};
+        }
+      | {
+          query: {};
+        }
+      ? (
+          requestParams: OASRequestParams<TOAS, TPath, TMethod>,
+          init?: RequestInit,
+        ) => Promise<OASResponse<TOAS, TPath, TMethod>>
+      : (
+          requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
+          init?: RequestInit,
+        ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
 };
 
