@@ -1,5 +1,14 @@
 # fets
 
+## 0.3.1
+
+### Patch Changes
+
+- [#307](https://github.com/ardatan/feTS/pull/307)
+  [`d15afe4`](https://github.com/ardatan/feTS/commit/d15afe4dd412e5fe94fc3bb3586a7cf19cd58c68)
+  Thanks [@ardatan](https://github.com/ardatan)! - Respect security schemes and definitions in the
+  request parameters (Authorization header for OAuth etc)
+
 ## 0.3.0
 
 ### Minor Changes
