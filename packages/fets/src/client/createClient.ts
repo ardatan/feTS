@@ -78,7 +78,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
                 path = path.replace(`{${pathParamKey}}`, value).replace(`:${pathParamKey}`, value);
               }
             }
-            if (!path.startsWith('/')) {
+            if (!path.startsWith('/') && !path.startsWith('http')) {
               path = `/${path}`;
             }
             let searchParams: URLSearchParams | undefined;
@@ -111,6 +111,11 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               requestInit.body = requestParams.formData;
             }
 
+            if (requestParams?.formUrlEncoded) {
+              requestInit.body = new URLSearchParams(requestParams.formUrlEncoded).toString();
+              requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            }
+
             let response: Response;
             for (const onRequestParamsHook of onRequestInitHooks) {
               await onRequestParamsHook({
@@ -125,7 +130,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             let finalUrl = path;
-            if (endpoint) {
+            if (endpoint && !path.startsWith('http')) {
               finalUrl = `${endpoint}${path}`;
             }
             if (searchParams) {
