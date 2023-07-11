@@ -102,46 +102,75 @@ type UnionToIntersection<U> = boolean extends U
   ? UnionToIntersectionHelper<Exclude<U, boolean>> & boolean
   : UnionToIntersectionHelper<U>;
 
+export type OASParamObj<
+  TParameter extends {
+    name: string;
+  },
+> = TParameter extends { required: true }
+  ? {
+      [TName in TParameter['name']]: TParameter extends {
+        schema: JSONSchema;
+      }
+        ? FromSchema<TParameter['schema']>
+        : TParameter extends { type: string }
+        ? FromSchema<{
+            type: TParameter['type'];
+          }>
+        : unknown;
+    }
+  : {
+      [TName in TParameter['name']]?: TParameter extends {
+        schema: JSONSchema;
+      }
+        ? FromSchema<TParameter['schema']>
+        : TParameter extends { type: string }
+        ? FromSchema<{
+            type: TParameter['type'];
+          }>
+        : unknown;
+    };
+
 export type OASParamMap<TParameters extends { name: string; in: string }[]> = UnionToIntersection<
   {
     [TIndex in keyof TParameters]: TParameters[TIndex] extends { in: infer TParamType }
-      ? {
-          [TKey in TParamType extends keyof OASParamPropMap
-            ? OASParamPropMap[TParamType]
-            : never]: TParameters[TIndex] extends { required: true }
-            ? {
-                [TName in TParameters[TIndex]['name']]: TParameters[TIndex] extends {
-                  schema: JSONSchema;
-                }
-                  ? FromSchema<TParameters[TIndex]['schema']>
-                  : TParameters[TIndex] extends { type: string }
-                  ? FromSchema<{
-                      type: TParameters[TIndex]['type'];
-                    }>
-                  : unknown;
-              }
-            : {
-                [TName in TParameters[TIndex]['name']]?: TParameters[TIndex] extends {
-                  schema: JSONSchema;
-                }
-                  ? FromSchema<TParameters[TIndex]['schema']>
-                  : TParameters[TIndex] extends { type: string }
-                  ? FromSchema<{
-                      type: TParameters[TIndex]['type'];
-                    }>
-                  : unknown;
-              };
-        }
+      ? TParameters[TIndex] extends { required: true }
+        ? {
+            [TKey in TParamType extends keyof OASParamPropMap
+              ? OASParamPropMap[TParamType]
+              : never]: OASParamObj<TParameters[TIndex]>;
+          }
+        : {
+            [TKey in TParamType extends keyof OASParamPropMap
+              ? OASParamPropMap[TParamType]
+              : never]?: OASParamObj<TParameters[TIndex]>;
+          }
       : never;
   }[number]
 >;
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
   [TPath in keyof OASPathMap<TOAS>]: {
-    [TMethod in keyof OASMethodMap<TOAS, TPath>]: (
-      requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
-      init?: RequestInit,
-    ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
+    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<TOAS, TPath, TMethod> extends
+      | {
+          json: {};
+        }
+      | {
+          params: {};
+        }
+      | {
+          headers: {};
+        }
+      | {
+          query: {};
+        }
+      ? (
+          requestParams: OASRequestParams<TOAS, TPath, TMethod>,
+          init?: RequestInit,
+        ) => Promise<OASResponse<TOAS, TPath, TMethod>>
+      : (
+          requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
+          init?: RequestInit,
+        ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
 };
 
