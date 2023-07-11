@@ -10246,10 +10246,10 @@ pascal-case@^3.1.2:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
-patch-package@7.0.0, patch-package@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-7.0.0.tgz#5c646b6b4b4bf37e5184a6950777b21dea6bb66e"
-  integrity sha512-eYunHbnnB2ghjTNc5iL1Uo7TsGMuXk0vibX3RFcE/CdVdXzmdbMsG/4K4IgoSuIkLTI5oHrMQk4+NkFqSed0BQ==
+patch-package@7.0.1, patch-package@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-7.0.1.tgz#ab6a20489f9d0253726fc692f60d3d4a2d3fc9cf"
+  integrity sha512-f2GYU+6fz67znVfroq0gRuE08IWbGaRGMCFVwaz+qgG6k0K7rEKG8rXL7vDBtAMBjk8z/AhaiDuWs1aGjr15Hg==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     chalk "^4.1.2"
@@ -10261,7 +10261,7 @@ patch-package@7.0.0, patch-package@^7.0.0:
     minimist "^1.2.6"
     open "^7.4.2"
     rimraf "^2.6.3"
-    semver "^5.6.0"
+    semver "^7.0.0"
     slash "^2.0.0"
     tmp "^0.0.33"
     yaml "^2.2.2"
@@ -11579,7 +11579,7 @@ selfsigned@^2.0.1:
   dependencies:
     node-forge "^1"
 
-"semver@2 || 3 || 4 || 5", semver@^5.4.0, semver@^5.6.0:
+"semver@2 || 3 || 4 || 5", semver@^5.4.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
@@ -13473,9 +13473,9 @@ zenscroll@^4.0.2:
   integrity sha512-jEA1znR7b4C/NnaycInCU6h/d15ZzCd1jmsruqOKnZP6WXQSMH3W2GL+OXbkruslU4h+Tzuos0HdswzRUk/Vgg==
 
 zod-to-json-schema@^3.20.5, zod-to-json-schema@^3.21.1:
-  version "3.21.3"
-  resolved "https://registry.yarnpkg.com/zod-to-json-schema/-/zod-to-json-schema-3.21.3.tgz#2ce40860570217979ad5c9734e2e2df717784859"
-  integrity sha512-09W/9oyxeF1/wWnzCb6MursW+lOzgKi91QwE7eTBbC+t/qgfuLsUVDai3lHemSQnQu/UONAcT/fv3ZnDvbTeKg==
+  version "3.21.4"
+  resolved "https://registry.yarnpkg.com/zod-to-json-schema/-/zod-to-json-schema-3.21.4.tgz#de97c5b6d4a25e9d444618486cb55c0c7fb949fd"
+  integrity sha512-fjUZh4nQ1s6HMccgIeE0VP4QG/YRGPmyjO9sAh890aQKPEk3nqbfUXhMFaC+Dr5KvYBm8BCyvfpZf2jY9aGSsw==
 
 zod@3.21.4, zod@^3.20.2, zod@^3.20.6, zod@^3.21.4:
   version "3.21.4"
