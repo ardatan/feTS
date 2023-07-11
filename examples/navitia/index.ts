@@ -11,6 +11,9 @@ async function main() {
       lon: 2.3387,
       lat: 48.8584,
     },
+    headers: {
+      Authorization: 'Basic {token}',
+    },
   });
 
   const result = await res.json();

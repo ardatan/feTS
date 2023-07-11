@@ -186,11 +186,54 @@ export type OASRequestParams<
   : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
       ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
       : {}) &
+      // If there is any parameters defined in path but not in the parameters array, we should add them to the params
       (TPath extends `${string}{${string}}${string}`
         ? { params: Record<ExtractPathParamsWithBrackets<TPath>, string | number> }
         : {}) &
       (TPath extends `${string}:${string}${string}`
         ? { params: Record<ExtractPathParamsWithPattern<TPath>, string | number> }
+        : {}) &
+      // Respect security definitions in path object
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[];
+      }
+        ? TOAS extends {
+            components: {
+              securitySchemes: {
+                [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+                  ? TSecuritySchemeName
+                  : never]: { type: infer TSecurityType };
+              };
+            };
+          }
+          ? OASSecurityParamsByType<TSecurityType>
+          : {}
+        : {}) &
+      // Respect global security definitions
+      (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+        ? TOAS extends {
+            components: {
+              securitySchemes: {
+                [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+                  ? TSecuritySchemeName
+                  : never]: { type: infer TSecurityType };
+              };
+            };
+          }
+          ? OASSecurityParamsByType<TSecurityType>
+          : {}
+        : {}) &
+      // Respect old swagger security definitions
+      (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+        ? TOAS extends {
+            securityDefinitions: {
+              [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+                ? TSecuritySchemeName
+                : never]: { type: infer TSecurityType };
+            };
+          }
+          ? OASSecurityParamsByType<TSecurityType>
+          : {}
         : {}) &
       (OASMethodMap<TOAS, TPath>[TMethod] extends {
         requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
@@ -306,3 +349,19 @@ export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
     Tuples.ToUnion,
   ]
 >;
+
+export interface OASSecurityParamsMap {
+  oauth2: {
+    headers: {
+      Authorization: `Bearer ${string}`;
+    };
+  };
+  basic: {
+    headers: {
+      Authorization: `Basic ${string}`;
+    };
+  };
+}
+
+export type OASSecurityParamsByType<TSecurityType> =
+  TSecurityType extends keyof OASSecurityParamsMap ? OASSecurityParamsMap[TSecurityType] : {};
