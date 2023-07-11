@@ -11,6 +11,9 @@ async function main() {
       q: 'dance monkey',
       type: ['track'],
     },
+    headers: {
+      Authorization: 'Bearer {token}',
+    },
   });
   if (!res.ok) {
     const errData = await res.json();
