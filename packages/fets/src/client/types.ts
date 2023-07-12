@@ -1,4 +1,4 @@
-import { Call, Pipe, Strings, Tuples } from 'hotscript';
+import { B, Call, Pipe, Strings, Tuples } from 'hotscript';
 import { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
@@ -183,13 +183,20 @@ export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS 
   : never;
 
 // Later suggest using json-machete
-type FixJSONSchema<T> = T extends { properties: any }
-  ? T extends { type: 'object' }
-    ? T & { additionalProperties: false }
-    : {
-        type: 'object';
-        additionalProperties: false;
-      } & T
+export type FixJSONSchema<T> = FixMissingAdditionalProperties<
+  FixMissingTypeObject<FixExtraRequiredFields<T>>
+>;
+
+type FixMissingTypeObject<T> = T extends { properties: any[] } ? T & { type: 'object' } : T;
+
+type FixMissingAdditionalProperties<T> = T extends { type: 'object'; properties: any[] }
+  ? T & { additionalProperties: false }
+  : T;
+
+type FixExtraRequiredFields<T> = T extends { properties: Record<string, any>; required: string[] }
+  ? Omit<T, 'required'> & {
+      required: Call<Tuples.Filter<B.Extends<keyof T['properties']>>, T['required']>;
+    }
   : T;
 
 export type OASRequestParams<
