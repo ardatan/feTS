@@ -377,10 +377,12 @@ export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
   ]
 >;
 
-export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends {
-  type: 'http';
-  scheme: 'basic';
-}
+export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends
+  | {
+      type: 'http';
+      scheme: 'basic';
+    }
+  | { type: 'basic' }
   ? {
       headers: {
         Authorization: `Basic ${string}`;
@@ -388,10 +390,12 @@ export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends {
     }
   : {};
 
-export type BearerAuthParams<TSecurityScheme> = TSecurityScheme extends {
-  type: 'http';
-  scheme: 'bearer';
-}
+export type BearerAuthParams<TSecurityScheme> = TSecurityScheme extends
+  | {
+      type: 'http';
+      scheme: 'bearer';
+    }
+  | { type: 'bearer' }
   ? {
       headers: {
         Authorization: `Bearer ${string}`;
