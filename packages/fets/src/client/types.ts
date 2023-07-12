@@ -491,12 +491,14 @@ export type OASOAuthPath<TOAS> = TOAS extends {
          * or accept the client ID and secret in the HTTP Basic auth header.
          */
         post(
-          requestParams: OASOAuthPathRequestParamsWithHeader | OASOAuthPathRequestParamsWithoutHeader,
+          requestParams:
+            | OASOAuthPathRequestParamsWithHeader
+            | OASOAuthPathRequestParamsWithoutHeader,
           requestInit?: RequestInit,
         ): Promise<
           TypedResponseWithJSONStatusMap<{
-            200: OAuthSuccessResponse;
-            400: OAuthFailedResponse;
+            200: OAuthPathSuccessResponse;
+            400: OAuthPathFailedResponse;
           }>
         >;
       };
@@ -531,7 +533,7 @@ export type OAuthPathSuccessResponse = {
 };
 
 export interface OAuthPathFailedResponse {
-  error: OAuthErrorType;
+  error: OAuthPathErrorType;
   error_description?: string;
   error_uri?: string;
 }
