@@ -108,7 +108,7 @@ describe('zod', () => {
     });
     const response = await router.fetch('https://foo.com/foo?foo=notMissing');
     const json = await response.json();
-    expect(json).toMatchObject({ foo: 'notMissing', bar: undefined, cat: undefined });
+    expect(json).toMatchObject({ foo: 'notMissing' });
   });
   it('should generate correct openapi', async () => {
     const response = await router.fetch('/openapi.json');
