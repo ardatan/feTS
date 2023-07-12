@@ -1,12 +1,6 @@
 import { B, Call, Pipe, Strings, Tuples } from 'hotscript';
 import { O } from 'ts-toolbelt';
-import {
-  HTTPMethod,
-  NotOkStatusCode,
-  StatusCode,
-  TypedResponse,
-  TypedResponseWithJSONStatusMap,
-} from '../typed-fetch.js';
+import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
 type Mutable<Type> = {
