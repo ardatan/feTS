@@ -1,4 +1,5 @@
-import { Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
+import { Call, Pipe, Strings, Tuples } from 'hotscript';
+import { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
@@ -10,10 +11,10 @@ export type Mutable<Type> = {
 };
 
 type RefToPath<T extends string> = T extends `#/${infer Ref}`
-  ? Pipe<Ref, [Strings.Split<'/'>, Tuples.Join<'.'>]>
+  ? Call<Strings.Split<'/'>, Ref>
   : never;
 
-type ResolveRef<TObj, TRef extends string> = Call<Objects.Get<RefToPath<TRef>>, TObj>;
+type ResolveRef<TObj, TRef extends string> = O.Path<TObj, RefToPath<TRef>>;
 
 type ResolveRefInObj<T, TBase> = FixJSONSchema<
   T extends { $ref: infer Ref } ? (Ref extends string ? ResolveRef<TBase, Ref> : T) : T

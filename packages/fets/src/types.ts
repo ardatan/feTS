@@ -34,9 +34,15 @@ export interface OpenAPIInfo {
   title?: string;
   description?: string;
   version?: string;
+  license?: {
+    name?: string;
+    url?: string;
+  };
 }
 
-export type OpenAPIPathObject = Record<string, OpenAPIOperationObject>;
+export type OpenAPIPathObject = Record<string, OpenAPIOperationObject> & {
+  parameters?: OpenAPIParameterObject[];
+};
 
 export interface OpenAPIParameterObject {
   name: string;
