@@ -229,11 +229,11 @@ export type OASRequestParams<
               securitySchemes: {
                 [TSecuritySchemeNameKey in TSecuritySchemeName extends string
                   ? TSecuritySchemeName
-                  : never]: { type: infer TSecurityType };
+                  : never]: infer TSecurityScheme;
               };
             };
           }
-          ? OASSecurityParamsByType<TSecurityType>
+          ? OASSecurityParams<TSecurityScheme>
           : {}
         : {}) &
       // Respect global security definitions
@@ -243,11 +243,11 @@ export type OASRequestParams<
               securitySchemes: {
                 [TSecuritySchemeNameKey in TSecuritySchemeName extends string
                   ? TSecuritySchemeName
-                  : never]: { type: infer TSecurityType };
+                  : never]: infer TSecurityScheme;
               };
             };
           }
-          ? OASSecurityParamsByType<TSecurityType>
+          ? OASSecurityParams<TSecurityScheme>
           : {}
         : {}) &
       // Respect old swagger security definitions
@@ -256,10 +256,10 @@ export type OASRequestParams<
             securityDefinitions: {
               [TSecuritySchemeNameKey in TSecuritySchemeName extends string
                 ? TSecuritySchemeName
-                : never]: { type: infer TSecurityType };
+                : never]: infer TSecurityScheme;
             };
           }
-          ? OASSecurityParamsByType<TSecurityType>
+          ? OASSecurityParams<TSecurityScheme>
           : {}
         : {}) &
       (OASMethodMap<TOAS, TPath>[TMethod] extends {
@@ -377,18 +377,61 @@ export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
   ]
 >;
 
-export interface OASSecurityParamsMap {
-  oauth2: {
-    headers: {
-      Authorization: `Bearer ${string}`;
-    };
-  };
-  basic: {
-    headers: {
-      Authorization: `Basic ${string}`;
-    };
-  };
+export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends {
+  type: 'http';
+  scheme: 'basic';
 }
+  ? {
+      headers: {
+        Authorization: `Basic ${string}`;
+      };
+    }
+  : {};
 
-export type OASSecurityParamsByType<TSecurityType> =
-  TSecurityType extends keyof OASSecurityParamsMap ? OASSecurityParamsMap[TSecurityType] : {};
+export type BearerAuthParams<TSecurityScheme> = TSecurityScheme extends {
+  type: 'http';
+  scheme: 'bearer';
+}
+  ? {
+      headers: {
+        Authorization: `Bearer ${string}`;
+      };
+    }
+  : {};
+
+export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
+  type: 'apiKey';
+  in: 'header';
+  name: infer TApiKeyHeaderName;
+}
+  ? {
+      headers: {
+        [THeaderName in TApiKeyHeaderName extends string ? TApiKeyHeaderName : never]: string;
+      };
+    }
+  : TSecurityScheme extends {
+      type: 'apiKey';
+      in: 'query';
+      name: infer TApiKeyQueryName;
+    }
+  ? {
+      query: {
+        [TQueryName in TApiKeyQueryName extends string ? TApiKeyQueryName : never]: string;
+      };
+    }
+  : {};
+
+export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
+  type: 'oauth2';
+}
+  ? {
+      headers: {
+        Authorization: `Bearer ${string}`;
+      };
+    }
+  : {};
+
+export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme> &
+  BearerAuthParams<TSecurityScheme> &
+  ApiKeyAuthParams<TSecurityScheme> &
+  OAuth2AuthParams<TSecurityScheme>;
