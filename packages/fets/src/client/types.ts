@@ -3,10 +3,7 @@ import { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
-/**
- * @deprecated Use `NormalizeOAS` to normalize OpenAPI schema typings for the client generic
- */
-export type Mutable<Type> = {
+type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
 
