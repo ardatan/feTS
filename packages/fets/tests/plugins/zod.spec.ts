@@ -85,6 +85,31 @@ describe('zod', () => {
       }
     `);
   });
+  it('can handle missing Zod query params', async () => {
+    const router = createRouter();
+    router.route({
+      path: '/foo',
+      method: 'GET',
+      schemas: {
+        request: {
+          query: z.object({
+            foo: z.string(),
+            bar: z.string().optional(),
+            cat: z.string().nullish(),
+          }),
+        },
+      },
+      handler: request =>
+        Response.json({
+          foo: request.query.foo,
+          bar: request.query.bar,
+          cat: request.query.cat,
+        }),
+    });
+    const response = await router.fetch('https://foo.com/foo?foo=notMissing');
+    const json = await response.json();
+    expect(json).toMatchObject({ foo: 'notMissing' });
+  });
   it('should generate correct openapi', async () => {
     const response = await router.fetch('/openapi.json');
     const json = await response.json();
