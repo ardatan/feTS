@@ -1,5 +1,28 @@
 # fets
 
+## 0.3.2
+
+### Patch Changes
+
+- [#316](https://github.com/ardatan/feTS/pull/316)
+  [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+
+  - Added dependency [`ts-toolbelt@^9.6.0` ↗︎](https://www.npmjs.com/package/ts-toolbelt/v/9.6.0)
+    (to `dependencies`)
+
+- [#316](https://github.com/ardatan/feTS/pull/316)
+  [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
+  Thanks [@ardatan](https://github.com/ardatan)! - - Support `parameters` in the OpenAPI Path
+  objects
+
+  - Support dots in `components.schemas` names
+
+- [#309](https://github.com/ardatan/feTS/pull/309)
+  [`663d2e0`](https://github.com/ardatan/feTS/commit/663d2e072a8b2a9ca542ac49d1bce63e0dd1a93f)
+  Thanks [@ardatan](https://github.com/ardatan)! - Make `requestParams` required only if any params
+  are required, otherwise keep it optional
+
 ## 0.3.1
 
 ### Patch Changes
