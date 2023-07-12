@@ -1,3 +1,5 @@
+// This OpenAPI schema has `parameters` under each endpoint in `paths` instead of method objects
+// And it also has `v1.User` schema which has dots in it
 import { createClient, type NormalizeOAS } from '../src';
 import type exampleOAS2 from './fixtures/example-oas2';
 
