@@ -1,13 +1,13 @@
 {
   "name": "@e2e/bun",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "private": true,
   "scripts": {
     "e2e": "bun wiptest",
     "start": "bun src/index.ts"
   },
   "dependencies": {
-    "@e2e/shared-server": "0.0.58",
+    "@e2e/shared-server": "0.0.59",
     "bun-types": "^0.6.0"
   },
   "devDependencies": {
