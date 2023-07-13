@@ -289,6 +289,27 @@ export type OASRequestParams<
                 >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
               >;
             }
+        : {}) &
+      (OASMethodMap<TOAS, TPath>[TMethod] extends {
+        requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
+      }
+        ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+          ? {
+              formUrlEncoded: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+              >;
+            }
+          : {
+              formUrlEncoded?: FromSchema<
+                OASMethodMap<
+                  TOAS,
+                  TPath
+                >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+              >;
+            }
         : {});
 
 export type OASInput<
@@ -324,6 +345,7 @@ export interface ClientOptions {
 export interface ClientRequestParams {
   json?: any;
   formData?: FormData;
+  formUrlEncoded?: Record<string, string>;
   params?: Record<string, string>;
   query?: Record<string, string | string[]>;
   headers?: Record<string, string>;

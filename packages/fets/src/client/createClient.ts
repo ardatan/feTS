@@ -111,6 +111,11 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               requestInit.body = requestParams.formData;
             }
 
+            if (requestParams?.formUrlEncoded) {
+              requestInit.body = new URLSearchParams(requestParams.formUrlEncoded);
+              requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            }
+
             let response: Response;
             for (const onRequestParamsHook of onRequestInitHooks) {
               await onRequestParamsHook({
