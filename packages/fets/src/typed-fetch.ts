@@ -154,7 +154,7 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
 };
 
 export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends StatusCodeMap<any>> = {
-  [TStatusCode in keyof TResponseJSONStatusMap]?: TStatusCode extends StatusCode
+  [TStatusCode in keyof TResponseJSONStatusMap]: TStatusCode extends StatusCode
     ? TypedResponse<TResponseJSONStatusMap[TStatusCode], Record<string, string>, TStatusCode>
     : never;
 }[keyof TResponseJSONStatusMap];

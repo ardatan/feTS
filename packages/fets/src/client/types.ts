@@ -1,7 +1,8 @@
-import { B, Call, Pipe, Strings, Tuples } from 'hotscript';
-import { O } from 'ts-toolbelt';
+import type { B, Call, Pipe, Strings, Tuples } from 'hotscript';
+import type { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
-import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
+import type { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
+import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
 
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
@@ -170,7 +171,7 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
           init?: RequestInit,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
-};
+} & OASOAuthPath<TOAS>;
 
 export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
   components: {
@@ -450,16 +451,6 @@ export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
   ? {
       query: {
         [TQueryName in TApiKeyQueryName extends string ? TApiKeyQueryName : never]: string;
-      };
-    }
-  : {};
-
-export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
-  type: 'oauth2';
-}
-  ? {
-      headers: {
-        Authorization: `Bearer ${string}`;
       };
     }
   : {};
