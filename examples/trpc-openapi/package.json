@@ -1,6 +1,6 @@
 {
   "name": "trpc-openapi-example",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@trpc/server": "^10.9.0",
-    "fets": "^0.3.0",
+    "fets": "^0.4.0",
     "jsonwebtoken": "^9.0.0",
     "next": "^13.1.5",
     "nextjs-cors": "^2.1.2",
