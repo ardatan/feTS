@@ -1,5 +1,17 @@
 # fets
 
+## 0.4.1
+
+### Patch Changes
+
+- [#326](https://github.com/ardatan/feTS/pull/326)
+  [`6b2d08a`](https://github.com/ardatan/feTS/commit/6b2d08a14bb8af177e97ef132ca65a80ff79d833)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support `application/x-www-form-urlencoded`
+
+- [#311](https://github.com/ardatan/feTS/pull/311)
+  [`f8f269e`](https://github.com/ardatan/feTS/commit/f8f269eb7c1346ac4e01d001c03dfe8b172ab109)
+  Thanks [@ardatan](https://github.com/ardatan)! - Include OAuth2 workflow
+
 ## 0.4.0
 
 ### Minor Changes
@@ -164,8 +176,8 @@
   [`49a7320`](https://github.com/ardatan/feTS/commit/49a7320c7bda3de82e4a51041973dbe5e60341fe)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3) (from
-    `^0.9.0`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3)
+    (from `^0.9.0`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.6` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.6)
     (from `^0.8.1`, in `dependencies`)
@@ -202,8 +214,8 @@
     [`@whatwg-node/cookie-store@^0.1.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/cookie-store/v/0.1.0)
     (from `^0.0.1`, in `dependencies`)
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0) (from
-    `^0.8.2`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0)
+    (from `^0.8.2`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.0)
     (from `^0.7.4`, in `dependencies`)
