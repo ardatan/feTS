@@ -133,11 +133,10 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
     body: BodyInit | null | undefined,
     init: (TypedResponseInit<TStatusCode> & { status: TStatusCode }) | undefined,
   ): TypedResponse<any, Record<string, string>, TStatusCode>;
-  new (body: BodyInit | null | undefined, init: ResponseInit | undefined): TypedResponse<
-    any,
-    Record<string, string>,
-    200
-  >;
+  new (
+    body: BodyInit | null | undefined,
+    init: ResponseInit | undefined,
+  ): TypedResponse<any, Record<string, string>, 200>;
   new (body?: BodyInit | null | undefined): TypedResponse<any, Record<string, string>, 200>;
 
   json<TJSON, TStatusCode extends StatusCode>(

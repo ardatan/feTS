@@ -256,7 +256,8 @@ export interface RouterBaseObject<
       TMethod,
       TTypeConfig
     > = TypedRequestFromTypeConfig<TMethod, TTypeConfig>,
-    TTypedResponse extends TypedResponseFromTypeConfig<TTypeConfig> = TypedResponseFromTypeConfig<TTypeConfig>,
+    TTypedResponse extends
+      TypedResponseFromTypeConfig<TTypeConfig> = TypedResponseFromTypeConfig<TTypeConfig>,
     TPath extends string = string,
   >(
     opts: AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>,
