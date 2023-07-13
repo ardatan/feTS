@@ -350,7 +350,6 @@ export interface ClientRequestParams {
   params?: Record<string, string>;
   query?: Record<string, string | string[]>;
   headers?: Record<string, string>;
-  formUrlEncoded?: Record<string, string>;
 }
 
 export type ClientMethod = (requestParams?: ClientRequestParams) => Promise<Response>;
