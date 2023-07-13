@@ -345,7 +345,7 @@ export interface ClientOptions {
 export interface ClientRequestParams {
   json?: any;
   formData?: FormData;
-  formUrlEncoded?: Record<string, string>;
+  formUrlEncoded?: Record<string, string | string[]>;
   params?: Record<string, string>;
   query?: Record<string, string | string[]>;
   headers?: Record<string, string>;
