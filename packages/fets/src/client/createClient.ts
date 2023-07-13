@@ -111,6 +111,24 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               requestInit.body = requestParams.formData;
             }
 
+            if (requestParams?.formUrlEncoded) {
+              const urlSearchParams = new URLSearchParams();
+              for (const key in requestParams.formUrlEncoded) {
+                const value = requestParams.formUrlEncoded[key];
+                if (value) {
+                  if (Array.isArray(value)) {
+                    for (const v of value) {
+                      urlSearchParams.append(key, v);
+                    }
+                  } else {
+                    urlSearchParams.append(key, value);
+                  }
+                }
+              }
+              requestInit.body = urlSearchParams;
+              requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            }
+
             let response: Response;
             for (const onRequestParamsHook of onRequestInitHooks) {
               await onRequestParamsHook({
