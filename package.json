@@ -28,16 +28,16 @@
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@babel/core": "7.22.8",
+    "@babel/core": "7.22.9",
     "@babel/plugin-proposal-class-properties": "7.18.6",
-    "@babel/preset-env": "7.22.7",
+    "@babel/preset-env": "7.22.9",
     "@babel/preset-typescript": "7.22.5",
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@theguild/prettier-config": "1.2.0",
     "@types/jest": "29.5.3",
     "@types/node": "18.16.19",
-    "@types/react-dom": "18.2.6",
+    "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
     "babel-jest": "29.6.1",
@@ -62,7 +62,7 @@
     "typescript": "5.1.6"
   },
   "resolutions": {
-    "@pulumi/pulumi": "3.74.0",
+    "@pulumi/pulumi": "3.75.0",
     "next": "13.4.9"
   },
   "lint-staged": {

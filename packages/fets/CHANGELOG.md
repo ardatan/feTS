@@ -1,5 +1,29 @@
 # fets
 
+## 0.4.0
+
+### Minor Changes
+
+- [#223](https://github.com/ardatan/feTS/pull/223)
+  [`6217215`](https://github.com/ardatan/feTS/commit/621721559528476e1fa5788f9d5b52c8fec2db87)
+  Thanks [@kylem123](https://github.com/kylem123)! - Altered logic on get query params to return
+  undefined when optional prop is missing or the empty string
+
+- [#317](https://github.com/ardatan/feTS/pull/317)
+  [`77d1b25`](https://github.com/ardatan/feTS/commit/77d1b2548b46c80fb15853ff035cada5628a147c)
+  Thanks [@beerose](https://github.com/beerose)! - Remove Mutable from the public API
+
+### Patch Changes
+
+- [#320](https://github.com/ardatan/feTS/pull/320)
+  [`695c091`](https://github.com/ardatan/feTS/commit/695c0919408c593bff1b16ec99708456aca3bbaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix allOf references
+
+- [#321](https://github.com/ardatan/feTS/pull/321)
+  [`e95fd8f`](https://github.com/ardatan/feTS/commit/e95fd8f824293bc452958ad320a4f1ed5f7eae7c)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support other Auth types and Security Schemes in
+  OpenAPI operation definitions
+
 ## 0.3.2
 
 ### Patch Changes
