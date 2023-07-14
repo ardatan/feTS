@@ -106,7 +106,42 @@ export type RouterComponentsBase = {
   schemas?: Record<string, JSONSchema>;
 };
 
-export type FromSchema<T> = T extends JSONSchema ? FromSchemaOriginal<T> : never;
+export type FromSchema<T> = T extends JSONSchema
+  ? FromSchemaOriginal<
+      T,
+      {
+        deserialize: T extends {
+          properties: {
+            [key: string]: T;
+          };
+        }
+          ? [
+              {
+                pattern: {
+                  type: 'string';
+                  format: 'binary';
+                };
+                output: File;
+              },
+              {
+                pattern: {
+                  type: 'number';
+                  format: 'int64';
+                };
+                output: bigint;
+              },
+              {
+                pattern: {
+                  type: 'integer';
+                  format: 'int64';
+                };
+                output: bigint;
+              },
+            ]
+          : false;
+      }
+    >
+  : never;
 
 export type FromRouterComponentSchema<
   TRouter extends Router<any, any, any>,
