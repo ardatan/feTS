@@ -281,9 +281,9 @@ export type Router<
 export type OnRouteHook<TServerContext> = (payload: OnRouteHookPayload<TServerContext>) => void;
 
 export type RouteHandler<
-  TServerContext,
-  TTypedRequest extends TypedRequest,
-  TTypedResponse extends TypedResponse,
+  TServerContext = any,
+  TTypedRequest extends TypedRequest = TypedRequest,
+  TTypedResponse extends TypedResponse = TypedResponse,
 > = (
   request: TTypedRequest,
   context: TServerContext,
