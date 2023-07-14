@@ -11,9 +11,10 @@ import type treeOAS from './fixtures/example-circular-ref-oas';
 type NormalizedOAS = NormalizeOAS<typeof treeOAS>;
 
 // So it does handle circular reference actually
-type Test = FromSchema<
-  NormalizedOAS['paths']['/tree']['get']['responses']['200']['content']['application/json']['schema']
->;
+type SchemaInOAS =
+  NormalizedOAS['paths']['/tree']['get']['responses']['200']['content']['application/json']['schema'];
+
+type Test = FromSchema<SchemaInOAS>;
 
 const a: Test = {
   number: 1,

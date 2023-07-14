@@ -110,12 +110,9 @@ export type FromSchema<T> = T extends JSONSchema
   ? FromSchemaOriginal<
       T,
       {
-        deserialize: T extends {
-          properties: {
-            [key: string]: T;
-          };
-        }
-          ? [
+        deserialize: T extends T['properties'][keyof T['properties']]
+          ? false
+          : [
               {
                 pattern: {
                   type: 'string';
@@ -137,8 +134,7 @@ export type FromSchema<T> = T extends JSONSchema
                 };
                 output: bigint;
               },
-            ]
-          : false;
+            ];
       }
     >
   : never;

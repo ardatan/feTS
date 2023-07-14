@@ -20,7 +20,9 @@ type RefToPath<T extends string> = T extends `#/${infer Ref}`
   ? Call<Strings.Split<'/'>, Ref>
   : never;
 
-type ResolveRef<TObj, TRef extends string> = O.Path<TObj, RefToPath<TRef>>;
+type ResolveRef<TObj, TRef extends string> = {
+  $id: TRef;
+} & O.Path<TObj, RefToPath<TRef>>;
 
 type ResolveRefInObj<T, TBase> = FixJSONSchema<
   T extends { $ref: infer Ref } ? (Ref extends string ? ResolveRef<TBase, Ref> : T) : T
