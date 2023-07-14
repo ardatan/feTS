@@ -1,6 +1,6 @@
 {
   "name": "example-fireblocks",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "An example app uses Fireblocks API",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "18.16.19",
-    "fets": "0.4.2",
+    "fets": "0.4.3",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
     "typescript": "^5.0.0",
