@@ -74,7 +74,7 @@ const router = createRouter().route({
 })
 ```
 
-## Using `schemas` as an Alternative to Middlewares
+## Using `schemas` as an Alternative to Middlewares (recommended)
 
 You can validate the `Authorization` header directly using `schemas` as an alternative to
 middlewares:
@@ -96,7 +96,7 @@ const router = createRouter().route({
         required: ['authorization']
       }
     },
-    response: {
+    responses: {
       /** .. */
     },
     handler: request => {
