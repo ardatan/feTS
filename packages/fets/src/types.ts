@@ -110,29 +110,31 @@ export type FromSchema<T> = T extends JSONSchema
   ? FromSchemaOriginal<
       T,
       {
-        deserialize: [
-          {
-            pattern: {
-              type: 'string';
-              format: 'binary';
-            };
-            output: File;
-          },
-          {
-            pattern: {
-              type: 'number';
-              format: 'int64';
-            };
-            output: bigint;
-          },
-          {
-            pattern: {
-              type: 'integer';
-              format: 'int64';
-            };
-            output: bigint;
-          },
-        ];
+        deserialize: T extends T['properties'][keyof T['properties']]
+          ? false
+          : [
+              {
+                pattern: {
+                  type: 'string';
+                  format: 'binary';
+                };
+                output: File;
+              },
+              {
+                pattern: {
+                  type: 'number';
+                  format: 'int64';
+                };
+                output: bigint;
+              },
+              {
+                pattern: {
+                  type: 'integer';
+                  format: 'int64';
+                };
+                output: bigint;
+              },
+            ];
       }
     >
   : never;

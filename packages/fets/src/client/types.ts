@@ -4,6 +4,15 @@ import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed
 import type { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
 
+type JSONSchema7TypeName =
+  | 'string' //
+  | 'number'
+  | 'integer'
+  | 'boolean'
+  | 'object'
+  | 'array'
+  | 'null';
+
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
@@ -12,7 +21,9 @@ type RefToPath<T extends string> = T extends `#/${infer Ref}`
   ? Call<Strings.Split<'/'>, Ref>
   : never;
 
-type ResolveRef<TObj, TRef extends string> = O.Path<TObj, RefToPath<TRef>>;
+type ResolveRef<TObj, TRef extends string> = {
+  $id: TRef;
+} & O.Path<TObj, RefToPath<TRef>>;
 
 type ResolveRefInObj<T, TBase> = FixJSONSchema<
   T extends { $ref: infer Ref } ? (Ref extends string ? ResolveRef<TBase, Ref> : T) : T
@@ -111,7 +122,7 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: string }
+        : TParameter extends { type: JSONSchema7TypeName }
         ? FromSchema<{
             type: TParameter['type'];
           }>
@@ -122,7 +133,7 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: string }
+        : TParameter extends { type: JSONSchema7TypeName }
         ? FromSchema<{
             type: TParameter['type'];
           }>
