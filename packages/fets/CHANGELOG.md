@@ -1,5 +1,13 @@
 # fets
 
+## 0.4.3
+
+### Patch Changes
+
+- [#341](https://github.com/ardatan/feTS/pull/341)
+  [`5222e99`](https://github.com/ardatan/feTS/commit/5222e998df5002c837518b85f3968343d56aecae)
+  Thanks [@ardatan](https://github.com/ardatan)! - Set default values for `RouteHandler`'s generics
+
 ## 0.4.2
 
 ### Patch Changes
