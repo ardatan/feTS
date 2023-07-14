@@ -1,5 +1,13 @@
 # @e2e/shared-server
 
+## 0.0.62
+
+### Patch Changes
+
+- Updated dependencies
+  [[`1fdab11`](https://github.com/ardatan/feTS/commit/1fdab11c0555baf15637a53f02a95bec48bc7d61)]:
+  - fets@0.4.2
+
 ## 0.0.61
 
 ### Patch Changes
