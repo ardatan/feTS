@@ -1,5 +1,13 @@
 # fets
 
+## 0.4.2
+
+### Patch Changes
+
+- [#335](https://github.com/ardatan/feTS/pull/335)
+  [`1fdab11`](https://github.com/ardatan/feTS/commit/1fdab11c0555baf15637a53f02a95bec48bc7d61)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support recursive nested types
+
 ## 0.4.1
 
 ### Patch Changes
