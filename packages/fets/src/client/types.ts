@@ -3,6 +3,15 @@ import { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 
+type JSONSchema7TypeName =
+  | 'string' //
+  | 'number'
+  | 'integer'
+  | 'boolean'
+  | 'object'
+  | 'array'
+  | 'null';
+
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
 };
@@ -110,7 +119,7 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: string }
+        : TParameter extends { type: JSONSchema7TypeName }
         ? FromSchema<{
             type: TParameter['type'];
           }>
@@ -121,7 +130,7 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: string }
+        : TParameter extends { type: JSONSchema7TypeName }
         ? FromSchema<{
             type: TParameter['type'];
           }>
