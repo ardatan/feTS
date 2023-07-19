@@ -16,7 +16,18 @@ export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
 
 export type OASOAuthPathRequestParamsWithHeader = {
   formUrlEncoded: {
+    /**
+     * The Client Credentials grant is used when applications request an access token to access their own resources, not on behalf of a user.
+     *
+     * The `grant_type` parameter must be set to `client_credentials`.
+     *
+     * @see https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/
+     */
     grant_type: 'client_credentials';
+    /**
+     * Your service can support different scopes for the client credentials grant. In practice, not many services actually support this.
+     */
+    scope?: string | string[];
   };
   headers: {
     /**
@@ -68,6 +79,10 @@ export type OASOAuthPath<TOAS> = TOAS extends {
     }
   : {};
 
+/**
+ * If the request for an access token is valid, the authorization server needs to generate an access token (and optional refresh token) and return these to the client, typically along with some additional properties about the authorization.
+ * @see https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/#page-202
+ */
 export type OAuthPathSuccessResponse = {
   /**
    * The access token string as issued by the authorization server.
@@ -95,9 +110,25 @@ export type OAuthPathSuccessResponse = {
   scope?: string;
 };
 
+/**
+ * If the access token request is invalid, such as the redirect URL didn’t match the one used during authorization, then the server needs to return an error response.
+ *
+ * Error responses are returned with an HTTP 400 status code (unless specified otherwise), with error and error_description parameters. The error parameter will always be one of the values listed below.
+ */
 export interface OAuthPathFailedResponse {
+  /**
+   * Error responses are returned with an HTTP 400 status code (unless specified otherwise), with `error` and `error_description`.
+   *
+   * @see https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/#error
+   */
   error: OAuthPathErrorType;
+  /**
+   * The error_description parameter can only include ASCII characters, and should be a sentence or two at most describing the circumstance of the error.
+   */
   error_description?: string;
+  /**
+   * The error_uri is a great place to link to your API documentation for information about how to correct the specific error that was encountered.
+   */
   error_uri?: string;
 }
 
