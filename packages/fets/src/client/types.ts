@@ -251,6 +251,46 @@ export type OASRequestParams<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
       }
+  : OASMethodMap<TOAS, TPath>[TMethod] extends {
+      requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+    }
+  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+    ? {
+        formData: FromSchema<
+          OASMethodMap<
+            TOAS,
+            TPath
+          >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+        >;
+      }
+    : {
+        formData?: FromSchema<
+          OASMethodMap<
+            TOAS,
+            TPath
+          >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+        >;
+      }
+  : OASMethodMap<TOAS, TPath>[TMethod] extends {
+      requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
+    }
+  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+    ? {
+        formUrlEncoded: FromSchema<
+          OASMethodMap<
+            TOAS,
+            TPath
+          >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+        >;
+      }
+    : {
+        formUrlEncoded?: FromSchema<
+          OASMethodMap<
+            TOAS,
+            TPath
+          >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+        >;
+      }
   : {}) &
   (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
     ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
@@ -305,48 +345,6 @@ export type OASRequestParams<
       }
       ? OASSecurityParams<TSecurityScheme>
       : {}
-    : {}) &
-  (OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
-  }
-    ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-      ? {
-          formData: FromSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-          >;
-        }
-      : {
-          formData?: FromSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-          >;
-        }
-    : {}) &
-  (OASMethodMap<TOAS, TPath>[TMethod] extends {
-    requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
-  }
-    ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-      ? {
-          formUrlEncoded: FromSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-          >;
-        }
-      : {
-          formUrlEncoded?: FromSchema<
-            OASMethodMap<
-              TOAS,
-              TPath
-            >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-          >;
-        }
     : {});
 
 export type OASInput<
