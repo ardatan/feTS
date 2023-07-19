@@ -1,5 +1,14 @@
 # fets
 
+## 0.4.5
+
+### Patch Changes
+
+- [#358](https://github.com/ardatan/feTS/pull/358)
+  [`5cc42a9`](https://github.com/ardatan/feTS/commit/5cc42a9344a600bb4395fabe595387610a5c76f9)
+  Thanks [@ardatan](https://github.com/ardatan)! - Less strict `endpoint` parameter to allow users
+  to give different endpoints (behind proxy etc)
+
 ## 0.4.4
 
 ### Patch Changes
