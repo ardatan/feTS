@@ -1,5 +1,13 @@
 # nextjs-example
 
+## 0.1.34
+
+### Patch Changes
+
+- Updated dependencies
+  [[`5cc42a9`](https://github.com/ardatan/feTS/commit/5cc42a9344a600bb4395fabe595387610a5c76f9)]:
+  - fets@0.4.5
+
 ## 0.1.33
 
 ### Patch Changes
