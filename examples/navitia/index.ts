@@ -1,7 +1,7 @@
 import { createClient, type NormalizeOAS } from 'fets';
-import type navitiaOas from './navitia-oas';
+import type oas from './oas';
 
-const navitiaClient = createClient<NormalizeOAS<typeof navitiaOas>>({
+const navitiaClient = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'https://api.fireblocks.io/v1',
 });
 

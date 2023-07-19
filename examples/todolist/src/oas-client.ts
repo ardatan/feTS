@@ -1,5 +1,5 @@
 import { createClient, OASOutput, type NormalizeOAS } from 'fets';
-import type oas from './saved_openapi';
+import type oas from './oas';
 
 const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'http://localhost:3000',

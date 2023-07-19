@@ -1,12 +1,12 @@
 import { createClient, type NormalizeOAS } from 'fets';
-import type clickhouseOas from './clickhouse-oas';
+import type oas from './oas';
 
-const clickhouseClient = createClient<NormalizeOAS<typeof clickhouseOas>>({
+const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'https://api.clickhouse.cloud',
 });
 
 async function main() {
-  const res = await clickhouseClient['/v1/organizations/:organizationId/services/:serviceId'].get({
+  const res = await client['/v1/organizations/:organizationId/services/:serviceId'].get({
     params: {
       organizationId: 'orgId',
       serviceId: 'svcId',

@@ -1,12 +1,12 @@
 import { createClient, type NormalizeOAS } from 'fets';
-import type fireblocksOas from './fireblocks-oas';
+import type oas from './oas';
 
-const fireblocksClient = createClient<NormalizeOAS<typeof fireblocksOas>>({
+const client = createClient<NormalizeOAS<typeof oas>>({
   endpoint: 'https://api.fireblocks.io/v1',
 });
 
 async function main() {
-  const res = await fireblocksClient['/vault/accounts'].post({
+  const res = await client['/vault/accounts'].post({
     json: {
       name: 'test',
     },

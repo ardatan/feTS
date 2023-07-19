@@ -4,7 +4,7 @@
   "description": "An example app uses ClickHouse Cloud API",
   "private": true,
   "scripts": {
-    "prepare": "ts-node scripts/download-oas.ts",
+    "prepare": "fets --openapi-url https://docs.fireblocks.com/api/v1/swagger.yaml",
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
@@ -14,9 +14,5 @@
     "ts-node-dev": "2.0.0",
     "typescript": "^5.0.0",
     "zod": "3.21.4"
-  },
-  "devDependencies": {
-    "@types/js-yaml": "4.0.5",
-    "js-yaml": "4.1.0"
   }
 }

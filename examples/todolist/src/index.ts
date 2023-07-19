@@ -7,7 +7,7 @@ app.listen(3000, () => {
   console.log('SwaggerUI is served at http://localhost:3000/docs');
 });
 
-const savedOpenAPIFilePath = join(__dirname, 'saved_openapi.ts');
+const savedOpenAPIFilePath = join(__dirname, 'oas.ts');
 
 // Write the OpenAPI spec to a file
 fsPromises
