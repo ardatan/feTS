@@ -374,10 +374,55 @@ export type OASComponentSchema<TOAS extends OpenAPIDocument, TName extends strin
   : never;
 
 export interface ClientOptions {
+  /**
+   * The base URL of the API
+   */
   endpoint?: string;
+  /**
+   * WHATWG compatible fetch implementation
+   *
+   * @see https://the-guild.dev/openapi/fets/client/client-configuration#customizing-the-fetch-function
+   */
   fetchFn?: typeof fetch;
+  /**
+   * Plugins to extend the client functionality
+   *
+   * @see https://the-guild.dev/openapi/fets/client/plugins
+   */
   plugins?: ClientPlugin[];
 }
+
+export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit<
+  ClientOptions,
+  'endpoint'
+> &
+  (TOAS extends {
+    servers: { url: infer TEndpoint extends string }[];
+  }
+    ? {
+        /**
+         * The base URL of the API defined in the OAS document.
+         *
+         * @see https://swagger.io/docs/specification/api-host-and-base-path/
+         */
+        endpoint: TEndpoint;
+      }
+    : TOAS extends {
+        host: infer THost extends string;
+        basePath: infer TBasePath extends string;
+        schemes: (infer TProtocol extends string)[];
+      }
+    ? {
+        /**
+         * REST APIs have a base URL to which the endpoint paths are appended. The base URL is defined by `schemes`, `host` and `basePath` on the root level of the API specification.
+         *
+         * @see https://swagger.io/docs/specification/2-0/api-host-and-base-path/
+         */
+        endpoint: `${TProtocol}://${THost}${TBasePath}`;
+      }
+    : {
+        endpoint?: string;
+      });
 
 export interface ClientRequestParams {
   json?: any;

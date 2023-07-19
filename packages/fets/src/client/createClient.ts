@@ -40,31 +40,7 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
-export function createClient<TOAS extends OpenAPIDocument>(
-  options: Omit<ClientOptions, 'endpoint'> &
-    (TOAS extends {
-      servers: { url: infer TEndpoint extends string }[];
-    }
-      ? {
-          /**
-           * The base URL of the API defined in the OAS document.
-           *
-           * @see https://swagger.io/docs/specification/api-host-and-base-path/
-           */
-          endpoint: TEndpoint;
-        }
-      : TOAS extends {
-          host: infer THost extends string;
-          basePath: infer TBasePath extends string;
-          schemes: (infer TProtocol extends string)[];
-        }
-      ? {
-          endpoint: `${TProtocol}://${THost}${TBasePath}`;
-        }
-      : {
-          endpoint?: string;
-        }),
-): OASClient<TOAS>;
+export function createClient<TOAS extends OpenAPIDocument>(options: ClientOptions): OASClient<TOAS>;
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,
 ): TRouter['__client'];
