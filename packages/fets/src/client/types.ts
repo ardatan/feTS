@@ -1,4 +1,4 @@
-import type { B, Call, Pipe, Strings, Tuples } from 'hotscript';
+import type { B, Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 import type { O } from 'ts-toolbelt';
 import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
 import type { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
@@ -13,9 +13,9 @@ type JSONSchema7TypeName =
   | 'array'
   | 'null';
 
-type Mutable<Type> = {
+type Mutable<Type> = FixJSONSchema<{
   -readonly [Key in keyof Type]: Mutable<Type[Key]>;
-};
+}>;
 
 type RefToPath<T extends string> = T extends `#/${infer Ref}`
   ? Call<Strings.Split<'/'>, Ref>
@@ -25,9 +25,11 @@ type ResolveRef<TObj, TRef extends string> = {
   $id: TRef;
 } & O.Path<TObj, RefToPath<TRef>>;
 
-type ResolveRefInObj<T, TBase> = FixJSONSchema<
-  T extends { $ref: infer Ref } ? (Ref extends string ? ResolveRef<TBase, Ref> : T) : T
->;
+type ResolveRefInObj<T, TBase> = T extends { $ref: infer Ref }
+  ? Ref extends string
+    ? ResolveRef<TBase, Ref>
+    : T
+  : T;
 
 type ResolveRefsInObj<T, TBase = T> = {
   [K in keyof T]: ResolveRefsInObj<ResolveRefInObj<T[K], TBase>, TBase>;
@@ -122,9 +124,10 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: JSONSchema7TypeName }
+        : TParameter extends { type: JSONSchema7TypeName; enum?: any[] }
         ? FromSchema<{
             type: TParameter['type'];
+            enum: TParameter['enum'];
           }>
         : unknown;
     }
@@ -133,9 +136,10 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: JSONSchema7TypeName }
+        : TParameter extends { type: JSONSchema7TypeName; enum?: any[] }
         ? FromSchema<{
             type: TParameter['type'];
+            enum: TParameter['enum'];
           }>
         : unknown;
     };
@@ -201,13 +205,19 @@ export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS 
   : never;
 
 // Later suggest using json-machete
-export type FixJSONSchema<T> = FixMissingAdditionalProperties<
-  FixMissingTypeObject<FixExtraRequiredFields<T>>
+export type FixJSONSchema<T> = FixAdditionalPropertiesForAllOf<
+  FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
 >;
 
-type FixMissingTypeObject<T> = T extends { properties: any[] } ? T & { type: 'object' } : T;
+type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
+  ? Omit<T, 'allOf'> & {
+      allOf: Call<Tuples.Map<Objects.Omit<'additionalProperties'>>, T['allOf']>;
+    }
+  : T;
 
-type FixMissingAdditionalProperties<T> = T extends { type: 'object'; properties: any[] }
+type FixMissingTypeObject<T> = T extends { properties: any } ? T & { type: 'object' } : T;
+
+type FixMissingAdditionalProperties<T> = T extends { type: 'object'; properties: any }
   ? T & { additionalProperties: false }
   : T;
 
@@ -254,13 +264,15 @@ export type OASRequestParams<
     : {}) &
   // Respect security definitions in path object
   (OASMethodMap<TOAS, TPath>[TMethod] extends {
-    security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[];
+    security: { [key: string]: any }[];
   }
     ? TOAS extends {
         components: {
           securitySchemes: {
-            [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-              ? TSecuritySchemeName
+            [TSecuritySchemeNameKey in SecuritySchemeName<
+              OASMethodMap<TOAS, TPath>[TMethod]
+            > extends string
+              ? SecuritySchemeName<OASMethodMap<TOAS, TPath>[TMethod]>
               : never]: infer TSecurityScheme;
           };
         };
@@ -269,12 +281,12 @@ export type OASRequestParams<
       : {}
     : {}) &
   // Respect global security definitions
-  (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+  (TOAS extends { security: { [key: string]: any }[] }
     ? TOAS extends {
         components: {
           securitySchemes: {
-            [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-              ? TSecuritySchemeName
+            [TSecuritySchemeNameKey in SecuritySchemeName<TOAS> extends string
+              ? SecuritySchemeName<TOAS>
               : never]: infer TSecurityScheme;
           };
         };
@@ -283,11 +295,11 @@ export type OASRequestParams<
       : {}
     : {}) &
   // Respect old swagger security definitions
-  (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+  (TOAS extends { security: { [key: string]: any }[] }
     ? TOAS extends {
         securityDefinitions: {
-          [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-            ? TSecuritySchemeName
+          [TSecuritySchemeNameKey in SecuritySchemeName<TOAS> extends string
+            ? SecuritySchemeName<TOAS>
             : never]: infer TSecurityScheme;
         };
       }
@@ -506,6 +518,11 @@ export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
       };
     }
   : {};
+
+export type SecuritySchemeName<T extends { security: { [key: string]: any }[] }> = Call<
+  Tuples.Map<Objects.Keys>,
+  T['security']
+>[number];
 
 export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme> &
   BearerAuthParams<TSecurityScheme> &

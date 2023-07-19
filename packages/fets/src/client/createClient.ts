@@ -53,7 +53,17 @@ export function createClient<TOAS extends OpenAPIDocument>(
            */
           endpoint: TEndpoint;
         }
-      : { endpoint?: string }),
+      : TOAS extends {
+          host: infer THost extends string;
+          basePath: infer TBasePath extends string;
+          schemes: (infer TProtocol extends string)[];
+        }
+      ? {
+          endpoint: `${TProtocol}://${THost}${TBasePath}`;
+        }
+      : {
+          endpoint?: string;
+        }),
 ): OASClient<TOAS>;
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,

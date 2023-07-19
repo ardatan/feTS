@@ -16,7 +16,18 @@ export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
 
 export type OASOAuthPathRequestParamsWithHeader = {
   formUrlEncoded: {
+    /**
+     * The Client Credentials grant is used when applications request an access token to access their own resources, not on behalf of a user.
+     *
+     * The `grant_type` parameter must be set to `client_credentials`.
+     *
+     * @see https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/
+     */
     grant_type: 'client_credentials';
+    /**
+     * Your service can support different scopes for the client credentials grant. In practice, not many services actually support this.
+     */
+    scope?: string | string[];
   };
   headers: {
     /**
