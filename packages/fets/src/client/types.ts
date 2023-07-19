@@ -221,7 +221,7 @@ export type OASRequestParams<
   TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
-> = OASMethodMap<TOAS, TPath>[TMethod] extends {
+> = (OASMethodMap<TOAS, TPath>[TMethod] extends {
   requestBody: { content: { 'application/json': { schema: JSONSchema } } };
 }
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
@@ -241,100 +241,101 @@ export type OASRequestParams<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
       }
-  : {} & (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
-      ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
-      : {}) &
-      // If there is any parameters defined in path but not in the parameters array, we should add them to the params
-      (TPath extends `${string}{${string}}${string}`
-        ? { params: Record<ExtractPathParamsWithBrackets<TPath>, string | number> }
-        : {}) &
-      (TPath extends `${string}:${string}${string}`
-        ? { params: Record<ExtractPathParamsWithPattern<TPath>, string | number> }
-        : {}) &
-      // Respect security definitions in path object
-      (OASMethodMap<TOAS, TPath>[TMethod] extends {
-        security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[];
+  : {}) &
+  (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
+    ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
+    : {}) &
+  // If there is any parameters defined in path but not in the parameters array, we should add them to the params
+  (TPath extends `${string}{${string}}${string}`
+    ? { params: Record<ExtractPathParamsWithBrackets<TPath>, string | number> }
+    : {}) &
+  (TPath extends `${string}:${string}${string}`
+    ? { params: Record<ExtractPathParamsWithPattern<TPath>, string | number> }
+    : {}) &
+  // Respect security definitions in path object
+  (OASMethodMap<TOAS, TPath>[TMethod] extends {
+    security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[];
+  }
+    ? TOAS extends {
+        components: {
+          securitySchemes: {
+            [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+              ? TSecuritySchemeName
+              : never]: infer TSecurityScheme;
+          };
+        };
       }
-        ? TOAS extends {
-            components: {
-              securitySchemes: {
-                [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-                  ? TSecuritySchemeName
-                  : never]: infer TSecurityScheme;
-              };
-            };
-          }
-          ? OASSecurityParams<TSecurityScheme>
-          : {}
-        : {}) &
-      // Respect global security definitions
-      (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
-        ? TOAS extends {
-            components: {
-              securitySchemes: {
-                [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-                  ? TSecuritySchemeName
-                  : never]: infer TSecurityScheme;
-              };
-            };
-          }
-          ? OASSecurityParams<TSecurityScheme>
-          : {}
-        : {}) &
-      // Respect old swagger security definitions
-      (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
-        ? TOAS extends {
-            securityDefinitions: {
-              [TSecuritySchemeNameKey in TSecuritySchemeName extends string
-                ? TSecuritySchemeName
-                : never]: infer TSecurityScheme;
-            };
-          }
-          ? OASSecurityParams<TSecurityScheme>
-          : {}
-        : {}) &
-      (OASMethodMap<TOAS, TPath>[TMethod] extends {
-        requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+      ? OASSecurityParams<TSecurityScheme>
+      : {}
+    : {}) &
+  // Respect global security definitions
+  (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+    ? TOAS extends {
+        components: {
+          securitySchemes: {
+            [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+              ? TSecuritySchemeName
+              : never]: infer TSecurityScheme;
+          };
+        };
       }
-        ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-          ? {
-              formData: FromSchema<
-                OASMethodMap<
-                  TOAS,
-                  TPath
-                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-              >;
-            }
-          : {
-              formData?: FromSchema<
-                OASMethodMap<
-                  TOAS,
-                  TPath
-                >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-              >;
-            }
-        : {}) &
-      (OASMethodMap<TOAS, TPath>[TMethod] extends {
-        requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
+      ? OASSecurityParams<TSecurityScheme>
+      : {}
+    : {}) &
+  // Respect old swagger security definitions
+  (TOAS extends { security: { [TSchemeNameKey in infer TSecuritySchemeName]: any }[] }
+    ? TOAS extends {
+        securityDefinitions: {
+          [TSecuritySchemeNameKey in TSecuritySchemeName extends string
+            ? TSecuritySchemeName
+            : never]: infer TSecurityScheme;
+        };
       }
-        ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-          ? {
-              formUrlEncoded: FromSchema<
-                OASMethodMap<
-                  TOAS,
-                  TPath
-                >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-              >;
-            }
-          : {
-              formUrlEncoded?: FromSchema<
-                OASMethodMap<
-                  TOAS,
-                  TPath
-                >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-              >;
-            }
-        : {});
+      ? OASSecurityParams<TSecurityScheme>
+      : {}
+    : {}) &
+  (OASMethodMap<TOAS, TPath>[TMethod] extends {
+    requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+  }
+    ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+      ? {
+          formData: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+          >;
+        }
+      : {
+          formData?: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+          >;
+        }
+    : {}) &
+  (OASMethodMap<TOAS, TPath>[TMethod] extends {
+    requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
+  }
+    ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+      ? {
+          formUrlEncoded: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+          >;
+        }
+      : {
+          formUrlEncoded?: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+          >;
+        }
+    : {});
 
 export type OASInput<
   TOAS extends OpenAPIDocument,
