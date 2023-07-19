@@ -45,7 +45,14 @@ export function createClient<TOAS extends OpenAPIDocument>(
     (TOAS extends {
       servers: { url: infer TEndpoint extends string }[];
     }
-      ? { endpoint: TEndpoint }
+      ? {
+          /**
+           * The base URL of the API defined in the OAS document.
+           *
+           * @see https://swagger.io/docs/specification/api-host-and-base-path/
+           */
+          endpoint: TEndpoint;
+        }
       : { endpoint?: string }),
 ): OASClient<TOAS>;
 export function createClient<TRouter extends Router<any, any, any>>(

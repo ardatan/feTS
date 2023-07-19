@@ -159,7 +159,13 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Un
 >;
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
+  /**
+   * The path to be used for the request
+   */
   [TPath in keyof OASPathMap<TOAS>]: {
+    /**
+     * HTTP Method to be used for this request
+     */
     [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<TOAS, TPath, TMethod> extends
       | {
           json: {};
@@ -220,11 +226,17 @@ export type OASRequestParams<
 }
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
     ? {
+        /**
+         * The request body in JSON is required for this request
+         */
         json: FromSchema<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
       }
     : {
+        /**
+         * The request body in JSON is optional for this request
+         */
         json?: FromSchema<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
         >;
@@ -426,6 +438,17 @@ export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends
   | { type: 'basic' }
   ? {
       headers: {
+        /**
+         * `Authorization` header is required for basic authentication
+         * @see https://en.wikipedia.org/wiki/Basic_access_authentication
+         *
+         * It contains the word `Basic` followed by a space and a base64-encoded string `username:password`
+         *
+         * @example
+         * ```
+         * Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+         * ```
+         */
         Authorization: `Basic ${string}`;
       };
     }
@@ -439,6 +462,17 @@ export type BearerAuthParams<TSecurityScheme> = TSecurityScheme extends
   | { type: 'bearer' }
   ? {
       headers: {
+        /**
+         * `Authorization` header is required for bearer authentication
+         * @see https://swagger.io/docs/specification/authentication/bearer-authentication/
+         *
+         * It contains the word `Bearer` followed by a space and the token
+         *
+         * @example
+         * ```
+         * Authorization: Bearer {token}
+         * ```
+         */
         Authorization: `Bearer ${string}`;
       };
     }
@@ -451,6 +485,9 @@ export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
 }
   ? {
       headers: {
+        /**
+         * Header required for API key authentication
+         */
         [THeaderName in TApiKeyHeaderName extends string ? TApiKeyHeaderName : never]: string;
       };
     }
@@ -461,6 +498,9 @@ export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
     }
   ? {
       query: {
+        /**
+         * Query parameter required for API key authentication
+         */
         [TQueryName in TApiKeyQueryName extends string ? TApiKeyQueryName : never]: string;
       };
     }

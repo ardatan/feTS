@@ -5,6 +5,10 @@ export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
 }
   ? {
       headers: {
+        /**
+         * The access token string as issued by the authorization server.
+         * @example `Authorization: Bearer <access_token>`
+         */
         Authorization: `Bearer ${string}`;
       };
     }
