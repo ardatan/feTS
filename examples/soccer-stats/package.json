@@ -4,7 +4,6 @@
   "description": "An example app uses Soccer Stats API",
   "private": true,
   "scripts": {
-    "prepare": "ts-node scripts/download-oas.ts",
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
@@ -12,7 +11,6 @@
     "fets": "0.4.4",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
-    "typescript": "^5.0.0",
-    "zod": "3.21.4"
+    "typescript": "^5.0.0"
   }
 }
