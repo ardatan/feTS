@@ -18,6 +18,38 @@ export default function Editor() {
   useEffect(() => {
     // First set up the VSCode loader in a script tag
     const getLoaderScript = document.createElement('script');
+    document.head.innerHTML += `
+    <style>
+    
+      .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+      }
+      .lds-dual-ring:before {
+        content: "Preview Editor is loading...";
+        white-space: nowrap;
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }</style>
+    `;
     document.head.append(getLoaderScript);
     getLoaderScript.src = 'https://www.typescriptlang.org/js/vs.loader.js';
     getLoaderScript.async = true;
@@ -87,6 +119,7 @@ export default function Editor() {
 
   return (
     <div className="relative max-h-[450px] rounded-md drop-shadow-[40px_40px_50px_rgba(24,134,255,.8)] dark:drop-shadow-[40px_40px_50px_rgba(24,134,255,.3)] lg:flex-1">
+      <div className="lds-dual-ring absolute max-h-full w-auto" />
       <NextImage
         src={fetsTextLogo}
         alt="feTS logo"
