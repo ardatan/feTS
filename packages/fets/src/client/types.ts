@@ -1,6 +1,12 @@
 import type { B, Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
 import type { O } from 'ts-toolbelt';
-import { HTTPMethod, NotOkStatusCode, StatusCode, TypedResponse } from '../typed-fetch.js';
+import {
+  HTTPMethod,
+  NotOkStatusCode,
+  OkStatusCode,
+  StatusCode,
+  TypedResponse,
+} from '../typed-fetch.js';
 import type { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
 import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
 
@@ -89,7 +95,9 @@ export type OASResponse<
     TStatus extends StatusCode
       ? TStatus
       : TStatus extends 'default'
-      ? NotOkStatusCode
+      ? OASStatusMap<TOAS, TPath, TMethod> extends Record<'200' | 200, any>
+        ? NotOkStatusCode
+        : OkStatusCode
       : TStatus extends `${number}${number}${number}`
       ? ToNumber<TStatus> extends StatusCode
         ? ToNumber<TStatus>
@@ -237,7 +245,9 @@ export type OASRequestParams<
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
     ? {
         /**
-         * The request body in JSON is required for this request
+         * The request body in JSON is required for this request.
+         *
+         * The value of `json` will be stringified and sent as the request body with `Content-Type: application/json`.
          */
         json: FromSchema<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
@@ -245,7 +255,9 @@ export type OASRequestParams<
       }
     : {
         /**
-         * The request body in JSON is optional for this request
+         * The request body in JSON is optional for this request.
+         *
+         * The value of `json` will be stringified and sent as the request body with `Content-Type: application/json`.
          */
         json?: FromSchema<
           OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
@@ -256,6 +268,11 @@ export type OASRequestParams<
     }
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
     ? {
+        /**
+         * The request body in multipart/form-data is required for this request.
+         *
+         * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
+         */
         formData: FromSchema<
           OASMethodMap<
             TOAS,
@@ -264,6 +281,11 @@ export type OASRequestParams<
         >;
       }
     : {
+        /**
+         * The request body in multipart/form-data is optional for this request.
+         *
+         * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
+         */
         formData?: FromSchema<
           OASMethodMap<
             TOAS,
@@ -276,6 +298,11 @@ export type OASRequestParams<
     }
   ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
     ? {
+        /**
+         * The request body in application/x-www-form-urlencoded is required for this request.
+         *
+         * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
+         */
         formUrlEncoded: FromSchema<
           OASMethodMap<
             TOAS,
@@ -284,6 +311,11 @@ export type OASRequestParams<
         >;
       }
     : {
+        /**
+         * The request body in application/x-www-form-urlencoded is optional for this request.
+         *
+         * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
+         */
         formUrlEncoded?: FromSchema<
           OASMethodMap<
             TOAS,
@@ -297,10 +329,28 @@ export type OASRequestParams<
     : {}) &
   // If there is any parameters defined in path but not in the parameters array, we should add them to the params
   (TPath extends `${string}{${string}}${string}`
-    ? { params: Record<ExtractPathParamsWithBrackets<TPath>, string | number> }
+    ? {
+        /**
+         * Parameters defined in the path are required for this request.
+         *
+         * The value of `params` will be used to replace the path parameters.
+         *
+         * For example if path is `/todos/{id}` and `params` is `{ id: '1' }`, the path will be `/todos/1`
+         */
+        params: Record<ExtractPathParamsWithBrackets<TPath>, string | number>;
+      }
     : {}) &
   (TPath extends `${string}:${string}${string}`
-    ? { params: Record<ExtractPathParamsWithPattern<TPath>, string | number> }
+    ? {
+        /**
+         * Parameters defined in the path are required for this request.
+         *
+         * The value of `params` will be used to replace the path parameters.
+         *
+         * For example if path is `/todos/:id` and `params` is `{ id: '1' }`, the path will be `/todos/1`.
+         */
+        params: Record<ExtractPathParamsWithPattern<TPath>, string | number>;
+      }
     : {}) &
   // Respect security definitions in path object
   (OASMethodMap<TOAS, TPath>[TMethod] extends {
