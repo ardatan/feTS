@@ -2561,10 +2561,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.1.0.tgz#8d9dc4c39cbca4cb88841d1b58ba901007169142"
-  integrity sha512-7NRILN5xCqEi64UrT4oZEi9jFy16yJZmkXlabl1eVkaX8j9SBfU/5Mc3tuUntTFXJjjAXJzJtMPIVMVnhqkXBg==
+"@pulumi/azure-native@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.1.1.tgz#f0c1d29f40650f5a6103a65d4448d16606b215ed"
+  integrity sha512-8DM6LkS7i8oIcFG7BjAcCW1PysA/hgEJPitfYdey08jh4E7nrq8K0i1MYLH5F+C0MGBD0qL0rsrWJ3ACxDC9Fw==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3296,9 +3296,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.34.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.34.0.tgz#0c56ca4a72f41bfc558b07a2db70d54b77077f8f"
-  integrity sha512-2VMW44Fpaoyqb50dBtzdSWMhqt8lmoJiocEyBBeDb03R0W+XrzbVD5kU/wqKPlcp1DWeNCkOEIMtetMZCfo1hA==
+  version "10.35.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.35.0.tgz#b6ec61c84a70da0d9280205a91148c367a6f2c48"
+  integrity sha512-UntbE9gG+kB2nEwuJ0hw7AmQuRWw67voKaVBPBA7Ow6+aGZc00gva7015Ey5BT7Qf1wq7xJMLUdgw4QiVU+VpQ==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
