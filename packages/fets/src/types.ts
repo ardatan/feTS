@@ -285,6 +285,10 @@ export type RouteHandler<
   TTypedRequest extends TypedRequest = TypedRequest,
   TTypedResponse extends TypedResponse = TypedResponse,
 > = (
+  /**
+   * The request object represents the incoming HTTP request.
+   * This object implements [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request) interface.
+   */
   request: TTypedRequest,
   context: TServerContext,
 ) => PromiseOrValue<TTypedResponse | Response | void>;

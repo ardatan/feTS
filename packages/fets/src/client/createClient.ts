@@ -40,7 +40,28 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
+/**
+ * Create a client for an OpenAPI document
+ * You need to pass the imported OpenAPI document as a generic
+ *
+ * We recommend using the `NormalizeOAS` type to normalize the OpenAPI document
+ *
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-existing-rest-api
+ *
+ * @example
+ * ```ts
+ * import { createClient, type NormalizeOAS } from 'fets';
+ * import type oas from './oas.ts';
+ *
+ * const client = createClient<NormalizeOAS<typeof oas>>({});
+ * ```
+ */
 export function createClient<TOAS extends OpenAPIDocument>(options: ClientOptions): OASClient<TOAS>;
+/**
+ * Create a client from a typed `Router`
+ *
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-fets-server
+ */
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,
 ): TRouter['__client'];
