@@ -1,5 +1,79 @@
 # fets
 
+## 0.4.6
+
+### Patch Changes
+
+- [#363](https://github.com/ardatan/feTS/pull/363)
+  [`85bd174`](https://github.com/ardatan/feTS/commit/85bd17471671f52d63b73379ce0c66b5c047daaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix the bug happening when there is no successful
+  response defined in the OpenAPI spec but only `default`;
+
+  For example;
+
+  ```json
+  {
+    // No 2xx response defined.
+    "responses": {
+      "400": {
+        "description": "Bad Request"
+        //...
+      },
+      "default": {
+        "description": "Successful response"
+        //...
+      }
+    }
+  }
+  ```
+
+  Then feTS should take the `default` response as the successful response.
+
+  ```ts
+  const response = await client['/user'].post({
+    json: { name: 'John' },
+  });
+
+  if (!res.ok) {
+    // 400 should be here
+  } else {
+    // default should be here
+  }
+  ```
+
+- [#360](https://github.com/ardatan/feTS/pull/360)
+  [`098806a`](https://github.com/ardatan/feTS/commit/098806ad1006496a3bf60eed85634c091de8adab)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix the bug happening when there are multiple
+  request bodies are defined in a single operation.
+
+  For example;
+
+  If the following exists in the OpenAPI spec,
+
+  ```json
+  {
+    "requestBody": {
+      "application/json": "...",
+      "multipart/form-data": "...",
+      "required": true
+    }
+  }
+  ```
+
+  feTS shouldn't take both `json` and `formData` required;
+
+  ```ts
+  client['/user'].post({
+    // Both shouldn't be required because only one of them is enough.
+    json: { name: 'John' },
+    formData: { name: 'John' },
+  });
+  ```
+
+- [#363](https://github.com/ardatan/feTS/pull/363)
+  [`85bd174`](https://github.com/ardatan/feTS/commit/85bd17471671f52d63b73379ce0c66b5c047daaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add comments to the types and fields
+
 ## 0.4.5
 
 ### Patch Changes
