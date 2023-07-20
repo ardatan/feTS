@@ -15,7 +15,7 @@ const response = await client['/auth/register'].post({
 
 if (!response.ok) {
   const errorJson = await response.json();
-  throw new Error('Failed to register: ', errorJson.message);
+  throw new Error(\`Failed to register: \${errorJson.message}\`);
 }
 
 const successRes = await response.json()
