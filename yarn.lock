@@ -4583,10 +4583,10 @@ builtins@^5.0.1:
   dependencies:
     semver "^7.0.0"
 
-bun-types@^0.6.0:
-  version "0.6.14"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.6.14.tgz#8d2d1262be3a9d78e48aa9c43e73b2f442d20cfc"
-  integrity sha512-sRdvu+t59+H/TVOe7FSGFWYITbqkhiCx9NxVUHt2+JOXM9gUOe5uMPvVvcr/hGngnh+/yb5a7uPE4JaS6uxujg==
+bun-types@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.7.0.tgz#24a661f12acf150243e4e66492f47f04e9607072"
+  integrity sha512-jXFiYtwSUQtD/Y3LHRWeWNwhFaUYvcO96zI7y3gSPgTq+ozxXpuTGDxABLdIKmFc672Q7Qp/OgrfJFEjg4Mnkg==
 
 bundle-name@^3.0.0:
   version "3.0.0"
