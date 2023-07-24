@@ -348,49 +348,9 @@ export type OASRequestParams<
       }
     : {}) &
   // Respect security definitions in path object
-  (OASMethodMap<TOAS, TPath>[TMethod] extends {
-    security: { [key: string]: any }[];
-  }
-    ? TOAS extends {
-        components: {
-          securitySchemes: {
-            [TSecuritySchemeNameKey in SecuritySchemeName<
-              OASMethodMap<TOAS, TPath>[TMethod]
-            > extends string
-              ? SecuritySchemeName<OASMethodMap<TOAS, TPath>[TMethod]>
-              : never]: infer TSecurityScheme;
-          };
-        };
-      }
-      ? OASSecurityParams<TSecurityScheme>
-      : {}
-    : {}) &
+  OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod]> &
   // Respect global security definitions
-  (TOAS extends { security: { [key: string]: any }[] }
-    ? TOAS extends {
-        components: {
-          securitySchemes: {
-            [TSecuritySchemeNameKey in SecuritySchemeName<TOAS> extends string
-              ? SecuritySchemeName<TOAS>
-              : never]: infer TSecurityScheme;
-          };
-        };
-      }
-      ? OASSecurityParams<TSecurityScheme>
-      : {}
-    : {}) &
-  // Respect old swagger security definitions
-  (TOAS extends { security: { [key: string]: any }[] }
-    ? TOAS extends {
-        securityDefinitions: {
-          [TSecuritySchemeNameKey in SecuritySchemeName<TOAS> extends string
-            ? SecuritySchemeName<TOAS>
-            : never]: infer TSecurityScheme;
-        };
-      }
-      ? OASSecurityParams<TSecurityScheme>
-      : {}
-    : {});
+  OASSecurityParamsBySecurityRef<TOAS, TOAS>;
 
 export type OASInput<
   TOAS extends OpenAPIDocument,
@@ -562,11 +522,12 @@ export type BearerAuthParams<TSecurityScheme> = TSecurityScheme extends
     }
   | { type: 'bearer' }
   ? {
+      /**
+       * `Authorization` header is required for bearer authentication
+       * @see https://swagger.io/docs/specification/authentication/bearer-authentication/
+       */
       headers: {
         /**
-         * `Authorization` header is required for bearer authentication
-         * @see https://swagger.io/docs/specification/authentication/bearer-authentication/
-         *
          * It contains the word `Bearer` followed by a space and the token
          *
          * @example
@@ -616,3 +577,43 @@ export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme
   BearerAuthParams<TSecurityScheme> &
   ApiKeyAuthParams<TSecurityScheme> &
   OAuth2AuthParams<TSecurityScheme>;
+
+export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj extends {
+  security: { [key: string]: any }[];
+}
+  ? TOAS extends
+      | {
+          components: {
+            securitySchemes: {
+              [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
+                ? SecuritySchemeName<TSecurityObj>
+                : never]: infer TSecurityScheme;
+            };
+          };
+        }
+      | {
+          securityDefinitions: {
+            [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
+              ? SecuritySchemeName<TSecurityObj>
+              : never]: infer TSecurityScheme;
+          };
+        }
+    ? OASSecurityParams<TSecurityScheme>
+    : // OAS may have a bad reference to a security scheme
+    // So we can assume it
+    SecuritySchemeName<TSecurityObj> extends `basic${string}`
+    ? BasicAuthParams<{
+        type: 'http';
+        scheme: 'basic';
+      }>
+    : SecuritySchemeName<TSecurityObj> extends `bearer${string}`
+    ? BearerAuthParams<{
+        type: 'http';
+        scheme: 'bearer';
+      }>
+    : SecuritySchemeName<TSecurityObj> extends `oauth${string}`
+    ? OAuth2AuthParams<{
+        type: 'oauth2';
+      }>
+    : {}
+  : {};
