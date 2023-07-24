@@ -197,7 +197,20 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
   };
 } & OASOAuthPath<TOAS>;
 
-export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS extends {
+export type OASModel<
+  TOAS extends OpenAPIDocument,
+  TName extends TOAS extends {
+    components: {
+      schemas: Record<string, JSONSchema>;
+    };
+  }
+    ? keyof TOAS['components']['schemas']
+    : TOAS extends {
+        definitions: Record<string, JSONSchema>;
+      }
+    ? keyof TOAS['definitions']
+    : never,
+> = TOAS extends {
   components: {
     schemas: {
       [TModelName in TName]: JSONSchema;
@@ -205,6 +218,12 @@ export type OASModel<TOAS extends OpenAPIDocument, TName extends string> = TOAS 
   };
 }
   ? FromSchema<TOAS['components']['schemas'][TName]>
+  : TOAS extends {
+      definitions: {
+        [TModelName in TName]: JSONSchema;
+      };
+    }
+  ? FromSchema<TOAS['definitions'][TName]>
   : never;
 
 // Later suggest using json-machete
