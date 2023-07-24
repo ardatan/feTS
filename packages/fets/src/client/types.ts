@@ -142,9 +142,11 @@ export type OASParamObj<
         : unknown;
     };
 
-interface OASParamToRequestParam extends Fn {
+interface OASParamToRequestParam<TParameters extends { in: string; required?: boolean }[]>
+  extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
-    ? this['arg0'] extends { required: true }
+    ? // If there is any required parameter for this parameter type, make that parameter type required
+      TParameters extends [{ in: TParamType; required?: true }]
       ? {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
@@ -160,7 +162,7 @@ interface OASParamToRequestParam extends Fn {
 
 export type OASParamMap<TParameters extends { name: string; in: string }[]> = Pipe<
   TParameters,
-  [Tuples.Map<OASParamToRequestParam>, Tuples.ToIntersection]
+  [Tuples.Map<OASParamToRequestParam<TParameters>>, Tuples.ToIntersection]
 >;
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
