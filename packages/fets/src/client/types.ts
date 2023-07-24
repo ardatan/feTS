@@ -144,11 +144,17 @@ export type OASParamObj<
 
 interface OASParamToRequestParam extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
-    ? {
-        [TKey in TParamType extends keyof OASParamPropMap
-          ? OASParamPropMap[TParamType]
-          : never]: OASParamObj<this['arg0']>;
-      }
+    ? this['arg0'] extends { required: true }
+      ? {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]: OASParamObj<this['arg0']>;
+        }
+      : {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]?: OASParamObj<this['arg0']>;
+        }
     : {};
 }
 
