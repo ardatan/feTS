@@ -107,39 +107,57 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
 export type RouterComponentsBase = {
   schemas?: Record<string, JSONSchema>;
 };
+/*
+Maybe later;
 
-export type FromSchema<T> = T extends JSONSchema
-  ? FromSchemaOriginal<
-      T,
-      {
-        deserialize: T extends T['properties'][keyof T['properties']]
-          ? false
-          : [
-              {
-                pattern: {
-                  type: 'string';
-                  format: 'binary';
-                };
-                output: File;
-              },
-              {
-                pattern: {
-                  type: 'number';
-                  format: 'int64';
-                };
-                output: bigint;
-              },
-              {
-                pattern: {
-                  type: 'integer';
-                  format: 'int64';
-                };
-                output: bigint;
-              },
-            ];
-      }
-    >
-  : never;
+type IntRange<
+  START extends number,
+  END extends number,
+  ARR extends unknown[] = [],
+  ACC extends number = never
+> = ARR['length'] extends END
+  ? ACC | START | END
+  : IntRange<START, END, [...ARR, 1], ARR[START] extends undefined ? ACC : ACC | ARR['length']>
+
+type RangedJSONSchema<T extends { minimum: number; maximum: number }> = T extends {
+  minimum: infer MIN;
+  maximum: infer MAX;
+} ? MIN extends number ? MAX extends number ? IntRange<MIN, MAX> : never : never : never;
+*/
+
+export type FromSchema<T> =
+  /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends JSONSchema
+    ? FromSchemaOriginal<
+        T,
+        {
+          deserialize: T extends T['properties'][keyof T['properties']]
+            ? false
+            : [
+                {
+                  pattern: {
+                    type: 'string';
+                    format: 'binary';
+                  };
+                  output: File;
+                },
+                {
+                  pattern: {
+                    type: 'number';
+                    format: 'int64';
+                  };
+                  output: bigint;
+                },
+                {
+                  pattern: {
+                    type: 'integer';
+                    format: 'int64';
+                  };
+                  output: bigint;
+                },
+              ];
+        }
+      >
+    : never;
 
 export type FromRouterComponentSchema<
   TRouter extends Router<any, any, any>,
