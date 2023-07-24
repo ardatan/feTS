@@ -31,6 +31,27 @@ async function getToken() {
   throw new Error(errData.error_description);
 }
 
+// For testing purposes
+export async function getRecommendations(token: string, artistId: string, trackId: string) {
+  const res = await client['/recommendations'].get({
+    query: {
+      seed_genres: 'pop',
+      limit: 3,
+      seed_artists: artistId,
+      seed_tracks: trackId,
+    },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    const errData = await res.json();
+    throw new Error(errData.error.message);
+  }
+  const data = await res.json();
+  return data;
+}
+
 async function main() {
   const token = await getToken();
   const res = await client['/search'].get({
