@@ -26,6 +26,8 @@ import {
 
 export { TypedRequest as RouterRequest };
 
+export type Simplify<T> = { [KeyType in keyof T]: Simplify<T[KeyType]> } & {};
+
 export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;

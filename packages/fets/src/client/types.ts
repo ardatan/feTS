@@ -1,5 +1,5 @@
-import type { B, Call, Objects, Pipe, Strings, Tuples } from 'hotscript';
-import type { O } from 'ts-toolbelt';
+import type { B, Call, Fn, Objects, Pipe, Strings, Tuples } from 'hotscript';
+import { type O } from 'ts-toolbelt';
 import {
   HTTPMethod,
   NotOkStatusCode,
@@ -7,7 +7,7 @@ import {
   StatusCode,
   TypedResponse,
 } from '../typed-fetch.js';
-import type { FromSchema, JSONSchema, OpenAPIDocument } from '../types.js';
+import type { FromSchema, JSONSchema, OpenAPIDocument, Simplify } from '../types.js';
 import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
 
 type JSONSchema7TypeName =
@@ -112,16 +112,6 @@ interface OASParamPropMap {
   header: 'headers';
 }
 
-type UnionToIntersectionHelper<U> = (U extends unknown ? (k: U) => void : never) extends (
-  k: infer I,
-) => void
-  ? I
-  : never;
-
-type UnionToIntersection<U> = boolean extends U
-  ? UnionToIntersectionHelper<Exclude<U, boolean>> & boolean
-  : UnionToIntersectionHelper<U>;
-
 export type OASParamObj<
   TParameter extends {
     name: string;
@@ -152,22 +142,27 @@ export type OASParamObj<
         : unknown;
     };
 
-export type OASParamMap<TParameters extends { name: string; in: string }[]> = UnionToIntersection<
-  {
-    [TIndex in keyof TParameters]: TParameters[TIndex] extends { in: infer TParamType }
-      ? TParameters[TIndex] extends { required: true }
-        ? {
-            [TKey in TParamType extends keyof OASParamPropMap
-              ? OASParamPropMap[TParamType]
-              : never]: OASParamObj<TParameters[TIndex]>;
-          }
-        : {
-            [TKey in TParamType extends keyof OASParamPropMap
-              ? OASParamPropMap[TParamType]
-              : never]?: OASParamObj<TParameters[TIndex]>;
-          }
-      : never;
-  }[number]
+interface OASParamToRequestParam<TParameters extends { in: string; required?: boolean }[]>
+  extends Fn {
+  return: this['arg0'] extends { name: string; in: infer TParamType }
+    ? // If there is any required parameter for this parameter type, make that parameter type required
+      TParameters extends [{ in: TParamType; required?: true }]
+      ? {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]: OASParamObj<this['arg0']>;
+        }
+      : {
+          [TKey in TParamType extends keyof OASParamPropMap
+            ? OASParamPropMap[TParamType]
+            : never]?: OASParamObj<this['arg0']>;
+        }
+    : {};
+}
+
+export type OASParamMap<TParameters extends { name: string; in: string }[]> = Pipe<
+  TParameters,
+  [Tuples.Map<OASParamToRequestParam<TParameters>>, Tuples.ToIntersection]
 >;
 
 export type OASClient<TOAS extends OpenAPIDocument> = {
@@ -192,11 +187,11 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
           query: {};
         }
       ? (
-          requestParams: OASRequestParams<TOAS, TPath, TMethod>,
+          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
           init?: RequestInit,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>
       : (
-          requestParams?: OASRequestParams<TOAS, TPath, TMethod>,
+          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
           init?: RequestInit,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
