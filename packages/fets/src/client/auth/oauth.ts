@@ -4,6 +4,9 @@ export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
   type: 'oauth2';
 }
   ? {
+      /**
+       * `Authorization` header is required for OAuth2.
+       */
       headers: {
         /**
          * The access token string as issued by the authorization server.
