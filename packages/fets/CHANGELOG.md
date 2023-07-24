@@ -1,5 +1,15 @@
 # fets
 
+## 0.4.7
+
+### Patch Changes
+
+- [#376](https://github.com/ardatan/feTS/pull/376)
+  [`5dc2a08`](https://github.com/ardatan/feTS/commit/5dc2a086d9a94925781ad6c20507d58d87c01e43)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix complex union issue happening if there are a
+  lot of parameters defined in OAS, and request parameters are now simplified automatically during
+  autocompletion
+
 ## 0.4.6
 
 ### Patch Changes
