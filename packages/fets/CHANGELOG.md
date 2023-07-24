@@ -1,5 +1,17 @@
 # fets
 
+## 0.4.8
+
+### Patch Changes
+
+- [#380](https://github.com/ardatan/feTS/pull/380)
+  [`92fe78e`](https://github.com/ardatan/feTS/commit/92fe78e1242a37687328713fd6e13d092776ce81)
+  Thanks [@ardatan](https://github.com/ardatan)! - Try to fix bad security references
+
+- [#382](https://github.com/ardatan/feTS/pull/382)
+  [`d904109`](https://github.com/ardatan/feTS/commit/d9041090d7a53ac46ca3e774fe8603cc056a8db5)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support old Swagger definitions in `OASModel`
+
 ## 0.4.7
 
 ### Patch Changes
