@@ -7,7 +7,14 @@ import {
   StatusCode,
   TypedResponse,
 } from '../typed-fetch.js';
-import type { FromSchema, JSONSchema, OpenAPIDocument, Simplify } from '../types.js';
+import type {
+  ExtractPathParamsWithBrackets,
+  ExtractPathParamsWithPattern,
+  FromSchema,
+  JSONSchema,
+  OpenAPIDocument,
+  Simplify,
+} from '../types.js';
 import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
 
 type JSONSchema7TypeName =
@@ -489,26 +496,6 @@ export interface ClientOnResponseHookPayload {
   requestInit: RequestInit;
   response: Response;
 }
-
-export type ExtractPathParamsWithBrackets<TPath extends string> = Pipe<
-  TPath,
-  [
-    Strings.Split<'/' | ';'>,
-    Tuples.Filter<Strings.StartsWith<'{'>>,
-    Tuples.Map<Strings.Trim<'{' | '}'>>,
-    Tuples.ToUnion,
-  ]
->;
-
-export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
-  TPath,
-  [
-    Strings.Split<'/'>,
-    Tuples.Filter<Strings.StartsWith<':'>>,
-    Tuples.Map<Strings.Trim<':'>>,
-    Tuples.ToUnion,
-  ]
->;
 
 export type BasicAuthParams<TSecurityScheme> = TSecurityScheme extends
   | {
