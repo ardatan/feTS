@@ -1,5 +1,13 @@
 # fets
 
+## 0.4.9
+
+### Patch Changes
+
+- [`432ef94`](https://github.com/ardatan/feTS/commit/432ef945e9d952fb51ccfd4e683931653c52daf8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Automatically infer path parameters from `path`
+  if `params` is not provided by the user
+
 ## 0.4.8
 
 ### Patch Changes
