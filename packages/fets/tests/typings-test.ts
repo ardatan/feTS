@@ -36,7 +36,7 @@ type TestGetOpts = {
 };
 
 const handler = (
-  request: TypedRequestFromTypeConfig<'GET', TestGetOpts>,
+  request: TypedRequestFromTypeConfig<'GET', string, TestGetOpts>,
 ): TypedResponseWithJSONStatusMap<TestGetOpts['responses']> => {
   // @ts-expect-error - a is not defined in headers
   request.headers.set('a', '2');
@@ -73,26 +73,30 @@ const handler = (
 
 // custom types
 router
-  .route<TestGetOpts, 'GET'>({
+  .route<TestGetOpts, 'GET', '/pet'>({
     method: 'GET',
     path: '/pet',
     handler,
   })
-  .route<{
-    request: {
-      json: {
-        name: string;
+  .route<
+    {
+      request: {
+        json: {
+          name: string;
+        };
       };
-    };
-    responses: {
-      200: {
-        id: string;
+      responses: {
+        200: {
+          id: string;
+        };
+        400: {
+          message: string;
+        };
       };
-      400: {
-        message: string;
-      };
-    };
-  }>({
+    },
+    'PUT',
+    '/pet'
+  >({
     method: 'PUT',
     path: '/pet',
     async handler(request) {

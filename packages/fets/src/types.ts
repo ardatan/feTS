@@ -326,7 +326,7 @@ export type RouteHandler<
    */
   request: TTypedRequest,
   context: TServerContext,
-) => PromiseOrValue<TTypedResponse | Response | void>;
+) => PromiseOrValue<TTypedResponse | void>;
 // TODO: Remove Response from here
 
 export type OnRouteHookPayload<TServerContext> = {
