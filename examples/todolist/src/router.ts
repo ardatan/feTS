@@ -25,8 +25,9 @@ export const router = createRouter({
       schemas: {
         Todo: TodoSchema,
       },
-    } as const,
+    },
   },
+  plugins: [],
 })
   .route({
     description: 'Get all todos',

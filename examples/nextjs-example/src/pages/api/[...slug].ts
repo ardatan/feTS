@@ -38,6 +38,7 @@ export default createRouter({
   openAPI: {
     endpoint: '/api/openapi.json',
   },
+  plugins: [],
 })
   .route({
     method: 'GET',

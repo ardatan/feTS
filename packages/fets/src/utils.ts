@@ -10,14 +10,14 @@ export interface PatternHandlersObj<TServerContext> {
 interface AddHandlerToMethodOpts<TServerContext> {
   // Operation related options
 
-  operationId?: string;
-  description?: string;
-  tags?: string[];
+  operationId?: string | undefined;
+  description?: string | undefined;
+  tags?: string[] | undefined;
   method: HTTPMethod;
   path: string;
-  schemas?: RouteSchemas;
+  schemas?: RouteSchemas | undefined;
   handlers: RouteHandler<TServerContext, TypedRequest, TypedResponse>[];
-  internal?: boolean;
+  internal?: boolean | undefined;
 
   // Router related options
   onRouteHooks: OnRouteHook<TServerContext>[];
@@ -59,7 +59,7 @@ function preparePatternHandlerObjByMethod<TServerContext>({
 
 declare global {
   interface URLPattern {
-    isPattern?: boolean;
+    isPattern?: boolean | undefined;
   }
 }
 

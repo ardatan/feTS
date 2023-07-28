@@ -1,3 +1,4 @@
+import type { ZodSchema } from 'zod';
 import {
   HTTPMethod,
   TypedRequest,
@@ -6,18 +7,20 @@ import {
 } from '../typed-fetch';
 import { AddRouteWithTypesOpts, StatusCodeMap } from '../types';
 
-export type ZodType = { _output: any; safeParse(input: any): any };
+export type ZodType = ZodSchema; // { _output: any; safeParse(input: any): any };
 export type InferZodType<T extends ZodType> = T['_output'];
 
 export type RouteZodSchemas = {
-  request?: {
-    json?: ZodType;
-    formData?: ZodType;
-    headers?: ZodType;
-    params?: ZodType;
-    query?: ZodType;
-  };
-  responses?: StatusCodeMap<ZodType>;
+  request?:
+    | {
+        json?: ZodType | undefined;
+        formData?: ZodType | undefined;
+        headers?: ZodType | undefined;
+        params?: ZodType | undefined;
+        query?: ZodType | undefined;
+      }
+    | undefined;
+  responses?: StatusCodeMap<ZodType> | undefined;
 };
 
 export type TypedRequestFromRouteZodSchemas<

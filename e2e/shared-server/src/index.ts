@@ -1,7 +1,7 @@
 import { createRouter, Response, useErrorHandling } from 'fets';
 import { z } from 'zod';
 
-export function createTestServerAdapter<TServerContext = {}>(base?: string) {
+export function createTestServerAdapter<TServerContext = {}>(base?: string | undefined) {
   return createRouter<TServerContext, {}>({
     base,
     plugins: [useErrorHandling()],

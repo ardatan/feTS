@@ -3,38 +3,39 @@ import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
 import { StatusCode } from '../typed-fetch.js';
 import {
+  JSONSchema,
   OpenAPIDocument,
   OpenAPIOperationObject,
   OpenAPIPathObject,
   RouterPlugin,
 } from '../types.js';
-import { isZodSchema } from '../zod/types.js';
+import { isZodSchema, ZodType } from '../zod/types.js';
 
 export interface SwaggerUIOpts {
-  spec?: OpenAPIDocument;
-  dom_id?: string;
-  displayOperationId?: boolean;
-  tryItOutEnabled?: boolean;
-  requestSnippetsEnabled?: boolean;
-  displayRequestDuration?: boolean;
-  defaultModelRendering?: 'model' | 'example' | 'schema';
-  defaultModelExpandDepth?: number;
-  defaultModelsExpandDepth?: number;
-  docExpansion?: 'none' | 'list' | 'full';
-  filter?: boolean;
-  maxDisplayedTags?: number;
-  showExtensions?: boolean;
-  showCommonExtensions?: boolean;
-  tagsSorter?: 'alpha';
-  operationsSorter?: 'alpha';
-  showTags?: boolean;
-  showMutatedRequest?: boolean;
-  oauth2RedirectUrl?: string;
-  validatorUrl?: string;
-  deepLinking?: boolean;
-  presets?: any[];
-  plugins?: any[];
-  layout?: string;
+  spec?: OpenAPIDocument | undefined;
+  dom_id?: string | undefined;
+  displayOperationId?: boolean | undefined;
+  tryItOutEnabled?: boolean | undefined;
+  requestSnippetsEnabled?: boolean | undefined;
+  displayRequestDuration?: boolean | undefined;
+  defaultModelRendering?: 'model' | 'example' | 'schema' | undefined;
+  defaultModelExpandDepth?: number | undefined;
+  defaultModelsExpandDepth?: number | undefined;
+  docExpansion?: 'none' | 'list' | 'full' | undefined;
+  filter?: boolean | undefined;
+  maxDisplayedTags?: number | undefined;
+  showExtensions?: boolean | undefined;
+  showCommonExtensions?: boolean | undefined;
+  tagsSorter?: 'alpha' | undefined;
+  operationsSorter?: 'alpha' | undefined;
+  showTags?: boolean | undefined;
+  showMutatedRequest?: boolean | undefined;
+  oauth2RedirectUrl?: string | undefined;
+  validatorUrl?: string | undefined;
+  deepLinking?: boolean | undefined;
+  presets?: any[] | undefined;
+  plugins?: any[] | undefined;
+  layout?: string | undefined;
 }
 
 export type OpenAPIPluginOptions = {
@@ -43,11 +44,11 @@ export type OpenAPIPluginOptions = {
   swaggerUIOpts: SwaggerUIOpts;
 };
 
-export function useOpenAPI({
+export function useOpenAPI<TServerContext = any>({
   oasEndpoint,
   swaggerUIEndpoint,
   swaggerUIOpts,
-}: OpenAPIPluginOptions): RouterPlugin<any> {
+}: OpenAPIPluginOptions): RouterPlugin<TServerContext> {
   let paths: Record<string, OpenAPIPathObject>;
   return {
     onRouterInit(router) {
@@ -97,7 +98,7 @@ export function useOpenAPI({
         if (!pathForOAS.startsWith('/')) {
           pathForOAS = `/${pathForOAS}`;
         }
-        const pathObj: any = (paths[pathForOAS] = paths[pathForOAS] || {});
+        const pathObj = (paths[pathForOAS] = paths[pathForOAS] || {});
         const lowerCasedMethod = method.toLowerCase();
         pathObj[lowerCasedMethod] = pathObj[lowerCasedMethod] || {};
         const operation = pathObj[lowerCasedMethod] as OpenAPIOperationObject;
@@ -106,9 +107,14 @@ export function useOpenAPI({
         operation.tags = tags;
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
-            let responseSchema = schemas.responses[statusCode as any as StatusCode];
+            let responseSchema: JSONSchema | ZodType | undefined =
+              schemas.responses[statusCode as unknown as StatusCode];
+
             if (isZodSchema(responseSchema)) {
-              responseSchema = zodToJsonSchema(responseSchema as any, {
+              // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              responseSchema = zodToJsonSchema(responseSchema, {
                 target: 'openApi3',
               });
             }
@@ -117,7 +123,7 @@ export function useOpenAPI({
               description: '',
               content: {
                 'application/json': {
-                  schema: responseSchema as any,
+                  schema: responseSchema,
                 },
               },
             };
@@ -130,80 +136,109 @@ export function useOpenAPI({
           };
         }
         if (schemas.request?.headers) {
-          let headersSchema: any = schemas.request.headers;
+          let headersSchema = schemas.request.headers;
+
           if (isZodSchema(headersSchema)) {
-            headersSchema = zodToJsonSchema(headersSchema as any, {
+            // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            headersSchema = zodToJsonSchema(headersSchema, {
               target: 'openApi3',
             });
           }
-          for (const headerName in headersSchema.properties) {
-            const headerSchema = headersSchema.properties[headerName];
-            operation.parameters = operation.parameters || [];
-            operation.parameters.push({
-              name: headerName,
-              in: 'header',
-              required: headersSchema.required?.includes(headerName),
-              schema: headerSchema,
-            });
+          if ('properties' in headersSchema) {
+            for (const headerName in headersSchema.properties) {
+              const headerSchema = headersSchema.properties[headerName];
+              operation.parameters = operation.parameters || [];
+              operation.parameters.push({
+                name: headerName,
+                in: 'header',
+                required: headersSchema.required?.includes(headerName),
+                schema: headerSchema,
+              });
+            }
           }
         }
         if (schemas.request?.params) {
-          let paramsSchema: any = schemas.request.params;
+          let paramsSchema = schemas.request.params;
+
           if (isZodSchema(paramsSchema)) {
-            paramsSchema = zodToJsonSchema(paramsSchema as any, {
+            // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            paramsSchema = zodToJsonSchema(paramsSchema, {
               target: 'openApi3',
             });
           }
-          for (const paramName in paramsSchema.properties) {
-            const paramSchema: any = paramsSchema.properties[paramName];
-            operation.parameters = operation.parameters || [];
-            operation.parameters.push({
-              name: paramName,
-              in: 'path',
-              required: paramsSchema.required?.includes(paramName),
-              schema: paramSchema,
-            });
+
+          if ('properties' in paramsSchema) {
+            for (const paramName in paramsSchema.properties) {
+              const paramSchema = paramsSchema.properties[paramName];
+
+              operation.parameters = operation.parameters || [];
+              operation.parameters.push({
+                name: paramName,
+                in: 'path',
+                required: paramsSchema.required?.includes(paramName),
+                schema: paramSchema,
+              });
+            }
           }
         }
         if (schemas.request?.query) {
-          let queriesSchema: any = schemas.request.query;
+          let queriesSchema = schemas.request.query;
           if (isZodSchema(queriesSchema)) {
-            queriesSchema = zodToJsonSchema(queriesSchema as any, {
+            // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            queriesSchema = zodToJsonSchema(queriesSchema, {
               target: 'openApi3',
             });
           }
-          for (const queryName in queriesSchema.properties) {
-            const querySchema = queriesSchema.properties[queryName];
-            operation.parameters = operation.parameters || [];
-            operation.parameters.push({
-              name: queryName,
-              in: 'query',
-              required: queriesSchema.required?.includes(queryName),
-              schema: querySchema as any,
-            });
+
+          if ('properties' in queriesSchema) {
+            for (const queryName in queriesSchema.properties) {
+              const querySchema = queriesSchema.properties[queryName];
+              operation.parameters = operation.parameters || [];
+              operation.parameters.push({
+                name: queryName,
+                in: 'query',
+                required: queriesSchema.required?.includes(queryName),
+                schema: querySchema,
+              });
+            }
           }
         }
         if (schemas.request?.json) {
-          let requestJsonSchema: any = schemas.request.json;
+          let requestJsonSchema = schemas.request.json;
+
           if (isZodSchema(requestJsonSchema)) {
-            requestJsonSchema = zodToJsonSchema(requestJsonSchema as any, {
+            // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            requestJsonSchema = zodToJsonSchema(requestJsonSchema, {
               target: 'openApi3',
             });
           }
-          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+
+          const requestBody = (operation.requestBody = operation.requestBody || {});
           requestBody.required = true;
-          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
+          const requestBodyContent = (requestBody.content = requestBody.content || {});
           requestBodyContent['application/json'] = {
             schema: requestJsonSchema,
           };
         }
         if (schemas.request?.formData) {
-          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          const requestBody = (operation.requestBody = operation.requestBody || {});
           requestBody.required = true;
-          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
-          let requestFormDataSchema: any = schemas.request.formData;
+          const requestBodyContent = (requestBody.content = requestBody.content || {});
+          let requestFormDataSchema = schemas.request.formData;
+
           if (isZodSchema(requestFormDataSchema)) {
-            requestFormDataSchema = zodToJsonSchema(requestFormDataSchema as any, {
+            // TODO: Possible bug. zodToJsonSchema is not returning the correct type.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            requestFormDataSchema = zodToJsonSchema(requestFormDataSchema, {
               target: 'openApi3',
             });
           }

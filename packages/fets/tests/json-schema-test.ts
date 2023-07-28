@@ -267,6 +267,7 @@ async function main() {
         },
       } as const,
     },
+    plugins: [],
   }).route({
     operationId: 'getTodos',
     method: 'GET',

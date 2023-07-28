@@ -33,42 +33,45 @@ export type JSONSerializer = (obj: any) => string;
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
 export interface OpenAPIInfo {
-  title?: string;
-  description?: string;
-  version?: string;
-  license?: {
-    name?: string;
-    url?: string;
-  };
+  title?: string | undefined;
+  description?: string | undefined;
+  version?: string | undefined;
+  license?:
+    | {
+        name?: string | undefined;
+        url?: string | undefined;
+      }
+    | undefined;
 }
 
 export type OpenAPIPathObject = Record<string, OpenAPIOperationObject> & {
-  parameters?: OpenAPIParameterObject[];
+  parameters?: OpenAPIParameterObject[] | undefined;
 };
 
 export interface OpenAPIParameterObject {
   name: string;
   in: 'path' | 'query' | 'header' | 'cookie';
-  required?: boolean;
+  required?: boolean | undefined;
   schema?: any;
 }
 
 export interface OpenAPIRequestBodyObject {
-  content?: Record<string, OpenAPIMediaTypeObject>;
+  content?: Record<string, OpenAPIMediaTypeObject> | undefined;
+  required?: boolean | undefined;
 }
 
 export interface OpenAPIOperationObject {
-  operationId?: string;
-  description?: string;
-  tags?: string[];
-  parameters?: OpenAPIParameterObject[];
-  requestBody?: OpenAPIRequestBodyObject;
-  responses?: Record<string | number, OpenAPIResponseObject>;
+  operationId?: string | undefined;
+  description?: string | undefined;
+  tags?: string[] | undefined;
+  parameters?: OpenAPIParameterObject[] | undefined;
+  requestBody?: OpenAPIRequestBodyObject | undefined;
+  responses?: Record<string | number, OpenAPIResponseObject> | undefined;
 }
 
 export interface OpenAPIResponseObject {
-  description?: string;
-  content?: Record<string, OpenAPIMediaTypeObject>;
+  description?: string | undefined;
+  content?: Record<string, OpenAPIMediaTypeObject> | undefined;
 }
 
 export interface OpenAPIMediaTypeObject {
@@ -76,36 +79,38 @@ export interface OpenAPIMediaTypeObject {
 }
 
 export type OpenAPIDocument = {
-  openapi?: string;
-  info?: OpenAPIInfo;
-  servers?: {
-    url: string;
-  }[];
-  paths?: Record<string, OpenAPIPathObject>;
+  openapi?: string | undefined;
+  info?: OpenAPIInfo | undefined;
+  servers?:
+    | {
+        url: string;
+      }[]
+    | undefined;
+  paths?: Record<string, OpenAPIPathObject> | undefined;
   components?: unknown;
 };
 
 export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>
   extends OpenAPIDocument {
-  endpoint?: string | false;
-  components?: TComponents;
+  endpoint?: string | false | undefined;
+  components?: TComponents | undefined;
 }
 
 export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
-  endpoint?: string | false;
+  endpoint?: string | false | undefined;
 }
 
 export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
-  base?: string;
-  plugins?: RouterPlugin<TServerContext>[];
+  base?: string | undefined;
+  plugins: RouterPlugin<TServerContext>[];
 
-  openAPI?: RouterOpenAPIOptions<TComponents>;
-  swaggerUI?: RouterSwaggerUIOptions;
+  openAPI?: RouterOpenAPIOptions<TComponents> | undefined;
+  swaggerUI?: RouterSwaggerUIOptions | undefined;
 }
 
 export type RouterComponentsBase = {
-  schemas?: Record<string, JSONSchema>;
+  schemas: Record<string, JSONSchema>;
 };
 /*
 Maybe later;
@@ -171,7 +176,7 @@ export type FromRouterComponentSchema<
 export type PromiseOrValue<T> = T | Promise<T>;
 
 export type StatusCodeMap<T> = {
-  [TKey in StatusCode]?: T;
+  [TKey in StatusCode]?: T | undefined;
 };
 
 export type TypedRouterHandlerTypeConfig<
@@ -183,13 +188,13 @@ export type TypedRouterHandlerTypeConfig<
   TResponseJSONStatusMap extends StatusCodeMap<any> = StatusCodeMap<any>,
 > = {
   request: {
-    json?: TRequestJSON;
-    formData?: TRequestFormData;
-    headers?: TRequestHeaders;
-    query?: TRequestQueryParams;
-    params?: TRequestPathParams;
+    json?: TRequestJSON | undefined;
+    formData?: TRequestFormData | undefined;
+    headers?: TRequestHeaders | undefined;
+    query?: TRequestQueryParams | undefined;
+    params?: TRequestPathParams | undefined;
   };
-  responses?: TResponseJSONStatusMap;
+  responses?: TResponseJSONStatusMap | undefined;
 };
 
 export type TypedRequestFromTypeConfig<
@@ -315,12 +320,12 @@ export type RouteHandler<
 // TODO: Remove Response from here
 
 export type OnRouteHookPayload<TServerContext> = {
-  operationId?: string;
-  description?: string;
-  tags?: string[];
+  operationId?: string | undefined;
+  description?: string | undefined;
+  tags?: string[] | undefined;
   method: HTTPMethod;
   path: string;
-  schemas?: RouteSchemas | RouteZodSchemas;
+  schemas?: RouteSchemas | RouteZodSchemas | undefined;
   openAPIDocument: OpenAPIDocument;
   handlers: RouteHandler<TServerContext, TypedRequest, TypedResponse>[];
 };
@@ -339,20 +344,22 @@ export type OnSerializeResponseHook<TServerContext> = (
 ) => void;
 
 export type RouterPlugin<TServerContext> = ServerAdapterPlugin<TServerContext> & {
-  onRouterInit?: OnRouterInitHook<TServerContext>;
-  onRoute?: OnRouteHook<TServerContext>;
-  onSerializeResponse?: OnSerializeResponseHook<TServerContext>;
+  onRouterInit?: OnRouterInitHook<TServerContext> | undefined;
+  onRoute?: OnRouteHook<TServerContext> | undefined;
+  onSerializeResponse?: OnSerializeResponseHook<TServerContext> | undefined;
 };
 
 export type RouteSchemas = {
-  request?: {
-    headers?: JSONSchema;
-    params?: JSONSchema;
-    query?: JSONSchema;
-    json?: JSONSchema;
-    formData?: JSONSchema;
-  };
-  responses?: StatusCodeMap<JSONSchema>;
+  request?:
+    | {
+        headers?: JSONSchema | undefined;
+        params?: JSONSchema | undefined;
+        query?: JSONSchema | undefined;
+        json?: JSONSchema | undefined;
+        formData?: JSONSchema | undefined;
+      }
+    | undefined;
+  responses?: StatusCodeMap<JSONSchema> | undefined;
 };
 
 export type RouterSDKOpts<
@@ -367,11 +374,11 @@ export type RouterSDKOpts<
   infer TPathParam
 >
   ? {
-      json?: TJSONBody;
-      formData?: TFormData;
-      headers?: THeaders;
-      query?: TQueryParams;
-      params?: TPathParam;
+      json?: TJSONBody | undefined;
+      formData?: TFormData | undefined;
+      headers?: THeaders | undefined;
+      query?: TQueryParams | undefined;
+      params?: TPathParam | undefined;
     }
   : never;
 
@@ -382,7 +389,7 @@ export type RouterSDK<
 > = {
   [TPathKey in TPath]: {
     [TMethod in Lowercase<TTypedRequest['method']>]: (
-      opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
+      opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']> | undefined,
     ) => Promise<Exclude<TTypedResponse, undefined>>;
   };
 };
@@ -475,11 +482,11 @@ export type AddRouteWithTypesOpts<
   TTypedRequest extends TypedRequest,
   TTypedResponse extends TypedResponse,
 > = {
-  operationId?: string;
-  description?: string;
-  method?: TMethod;
-  tags?: string[];
-  internal?: boolean;
+  operationId?: string | undefined;
+  description?: string | undefined;
+  method?: TMethod | undefined;
+  tags?: string[] | undefined;
+  internal?: boolean | undefined;
   path: TPath;
   handler:
     | RouteHandler<TServerContext, TTypedRequest, TTypedResponse>
@@ -521,7 +528,7 @@ export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__cli
 export type RouterInput<TRouter extends Router<any, any, any>> = {
   [TPath in keyof RouterClient<TRouter>]: {
     [TMethod in keyof RouterClient<TRouter>[TPath]]: RouterClient<TRouter>[TPath][TMethod] extends (
-      requestParams?: infer TRequestParams,
+      requestParams?: infer TRequestParams | undefined,
     ) => any
       ? Required<TRequestParams>
       : never;
