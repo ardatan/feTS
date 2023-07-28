@@ -17,10 +17,12 @@ import { getHeadersObj } from './utils.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
+const defaultComponents: RouterComponentsBase = { schemas: {} };
+
 export function useAjv({
-  components = {},
+  components = defaultComponents,
 }: {
-  components?: RouterComponentsBase;
+  components?: RouterComponentsBase | undefined;
 } = {}): RouterPlugin<any> {
   const ajv = new Ajv({
     strict: false,
@@ -73,10 +75,15 @@ export function useAjv({
     onRoute({ path, schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
       if (schemas?.request?.headers && !isZodSchema(schemas.request.headers)) {
-        const validateFn = ajv.compile({
-          ...schemas.request.headers,
+        const target = {
           components,
-        });
+          ...schemas.request.headers,
+        };
+
+        // TODO: possible bug?
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        const validateFn = ajv.compile(target);
         validationMiddlewares.set('headers', request => {
           const headersObj = getHeadersObj(request.headers);
           const isValid = validateFn(headersObj);
@@ -87,10 +94,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.params && !isZodSchema(schemas.request.params)) {
+        // TODO: possible bug?
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         const validateFn = ajv.compile({
           ...schemas.request.params,
           components,
         });
+
         validationMiddlewares.set('params', request => {
           const isValid = validateFn(request.params);
           if (!isValid) {
@@ -100,10 +111,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.query && !isZodSchema(schemas.request.query)) {
+        // TODO: possible bug?
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         const validateFn = ajv.compile({
           ...schemas.request.query,
           components,
         });
+
         validationMiddlewares.set('query', request => {
           const isValid = validateFn(request.query);
           if (!isValid) {
@@ -113,10 +128,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.json && !isZodSchema(schemas.request.json)) {
+        // TODO: possible bug?
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         const validateFn = ajv.compile({
           ...schemas.request.json,
           components,
         });
+
         validationMiddlewares.set('json', async request => {
           const contentType = request.headers.get('content-type');
           if (contentType?.includes('json')) {
@@ -134,10 +153,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.formData && !isZodSchema(schemas.request.formData)) {
+        // TODO: possible bug?
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         const validateFn = ajv.compile({
           ...schemas.request.formData,
           components,
         });
+
         validationMiddlewares.set('formData', async request => {
           const contentType = request.headers.get('content-type');
           if (

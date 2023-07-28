@@ -9,7 +9,7 @@ export const defaultSerializer: JSONSerializer = obj => JSON.stringify(obj);
 export interface LazySerializedResponse {
   [LAZY_SERIALIZED_RESPONSE]: true;
   resolveWithSerializer(serializer: JSONSerializer): void;
-  init?: ResponseInit;
+  init?: ResponseInit | undefined;
   actualResponse: Response;
   jsonObj: any;
   json: () => Promise<any>;
@@ -27,7 +27,7 @@ function isHeadersLike(headers: any): headers is Headers {
 
 const JSON_CONTENT_TYPE = 'application/json; charset=utf-8';
 
-function getHeadersFromHeadersInit(init?: HeadersInit): Headers {
+function getHeadersFromHeadersInit(init?: HeadersInit | undefined): Headers {
   let headers: Headers;
   if (isHeadersLike(init)) {
     headers = init;

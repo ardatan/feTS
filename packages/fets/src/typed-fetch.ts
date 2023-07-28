@@ -125,7 +125,7 @@ export type TypedHeaders<TMap extends Record<string, string>> = {
 };
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
-  init?: TMap,
+  init?: TMap | undefined,
 ) => TypedHeaders<TMap>;
 
 export type TypedResponseInit<TStatusCode extends StatusCode = 200> = Omit<
@@ -146,7 +146,9 @@ export type TypedResponseInit<TStatusCode extends StatusCode = 200> = Omit<
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Response/statusText
    */
-  statusText?: TStatusCode extends keyof StatusTextMap ? StatusTextMap[TStatusCode] : string;
+  statusText?:
+    | (TStatusCode extends keyof StatusTextMap ? StatusTextMap[TStatusCode] : string)
+    | undefined;
 };
 
 export type StatusTextMap = {
@@ -294,7 +296,10 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
   redirect(url: string | URL): TypedResponse<any, Record<string, string>, 302>;
 };
 
-export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends StatusCodeMap<any>> = {
+// Wrapped StatusCodeMap<any> in Partial<>, to fix packages/fets/src/client/auth/oauth.ts:76 error
+export type TypedResponseWithJSONStatusMap<
+  TResponseJSONStatusMap extends Partial<StatusCodeMap<any>>,
+> = {
   [TStatusCode in keyof TResponseJSONStatusMap]: TStatusCode extends StatusCode
     ? TypedResponse<TResponseJSONStatusMap[TStatusCode], Record<string, string>, TStatusCode>
     : never;
@@ -318,7 +323,7 @@ export type TypedRequestInit<
 > = Omit<RequestInit, 'method' | 'headers' | 'body'> & {
   method: TMethod;
   headers: TypedHeaders<THeaders>;
-  body?: Exclude<BodyInit, FormData> | TFormData;
+  body?: Exclude<BodyInit, FormData> | TFormData | undefined;
 };
 
 export type TypedRequest<
@@ -343,7 +348,7 @@ export type TypedRequestCtor = new <
   TFormData extends Record<string, FormDataEntryValue>,
 >(
   input: string | TypedURL<TQueryParams>,
-  init?: TypedRequestInit<THeaders, TMethod, TFormData>,
+  init?: TypedRequestInit<THeaders, TMethod, TFormData> | undefined,
 ) => TypedRequest<any, TFormData, THeaders, TMethod, TQueryParams, any>;
 
 export interface TypedURLSearchParams<TMap extends Record<string, string | string[]>> {
@@ -375,7 +380,7 @@ export interface TypedURLSearchParams<TMap extends Record<string, string | strin
 }
 
 export type TypedURLSearchParamsCtor = new <TMap extends Record<string, string | string[]>>(
-  init?: TMap,
+  init?: TMap | undefined,
 ) => TypedURLSearchParams<TMap>;
 
 export type TypedURL<TQueryParams extends Record<string, string | string[]>> = Omit<
@@ -387,7 +392,7 @@ export type TypedURL<TQueryParams extends Record<string, string | string[]>> = O
 
 export type TypedURLCtor = new <TQueryParams extends Record<string, string | string[]>>(
   input: string,
-  base?: string | TypedURL<any>,
+  base?: string | TypedURL<any> | undefined,
 ) => TypedURL<TQueryParams>;
 
 export interface TypedFormData<
@@ -396,7 +401,7 @@ export interface TypedFormData<
   append<TName extends keyof TMap>(
     name: TName,
     value: TMap[TName] extends any[] ? TMap[TName][0] : TMap[TName],
-    fileName?: string,
+    fileName?: string | undefined,
   ): void;
   delete(name: keyof TMap): void;
   get<TName extends keyof TMap>(
@@ -411,7 +416,7 @@ export interface TypedFormData<
   set<TName extends keyof TMap>(
     name: TName,
     value: TMap[TName] extends any[] ? TMap[TName][0] : TMap[TName],
-    fileName?: string,
+    fileName?: string | undefined,
   ): void;
   forEach(
     callbackfn: <TName extends keyof TMap>(value: TMap[TName], key: TName, parent: this) => void,

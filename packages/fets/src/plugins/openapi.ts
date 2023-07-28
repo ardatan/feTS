@@ -1,5 +1,8 @@
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import { Response } from '../Response.js';
+// TODO: not sure how html file is imported, but TS is complaining
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import swaggerUiHtml from '../swagger-ui-html.js';
 import { StatusCode } from '../typed-fetch.js';
 import {
@@ -11,30 +14,30 @@ import {
 import { isZodSchema } from '../zod/types.js';
 
 export interface SwaggerUIOpts {
-  spec?: OpenAPIDocument;
-  dom_id?: string;
-  displayOperationId?: boolean;
-  tryItOutEnabled?: boolean;
-  requestSnippetsEnabled?: boolean;
-  displayRequestDuration?: boolean;
-  defaultModelRendering?: 'model' | 'example' | 'schema';
-  defaultModelExpandDepth?: number;
-  defaultModelsExpandDepth?: number;
-  docExpansion?: 'none' | 'list' | 'full';
-  filter?: boolean;
-  maxDisplayedTags?: number;
-  showExtensions?: boolean;
-  showCommonExtensions?: boolean;
-  tagsSorter?: 'alpha';
-  operationsSorter?: 'alpha';
-  showTags?: boolean;
-  showMutatedRequest?: boolean;
-  oauth2RedirectUrl?: string;
-  validatorUrl?: string;
-  deepLinking?: boolean;
-  presets?: any[];
-  plugins?: any[];
-  layout?: string;
+  spec?: OpenAPIDocument | undefined;
+  dom_id?: string | undefined;
+  displayOperationId?: boolean | undefined;
+  tryItOutEnabled?: boolean | undefined;
+  requestSnippetsEnabled?: boolean | undefined;
+  displayRequestDuration?: boolean | undefined;
+  defaultModelRendering?: 'model' | 'example' | 'schema' | undefined;
+  defaultModelExpandDepth?: number | undefined;
+  defaultModelsExpandDepth?: number | undefined;
+  docExpansion?: 'none' | 'list' | 'full' | undefined;
+  filter?: boolean | undefined;
+  maxDisplayedTags?: number | undefined;
+  showExtensions?: boolean | undefined;
+  showCommonExtensions?: boolean | undefined;
+  tagsSorter?: 'alpha' | undefined;
+  operationsSorter?: 'alpha' | undefined;
+  showTags?: boolean | undefined;
+  showMutatedRequest?: boolean | undefined;
+  oauth2RedirectUrl?: string | undefined;
+  validatorUrl?: string | undefined;
+  deepLinking?: boolean | undefined;
+  presets?: any[] | undefined;
+  plugins?: any[] | undefined;
+  layout?: string | undefined;
 }
 
 export type OpenAPIPluginOptions = {
@@ -107,17 +110,27 @@ export function useOpenAPI({
         if (schemas.responses) {
           for (const statusCode in schemas.responses) {
             let responseSchema = schemas.responses[statusCode as any as StatusCode];
+
             if (isZodSchema(responseSchema)) {
-              responseSchema = zodToJsonSchema(responseSchema as any, {
-                target: 'openApi3',
-              });
+              // TODO: possible bug?
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              responseSchema = zodToJsonSchema(
+                // TODO: possible bug?
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-expect-error
+                responseSchema,
+                {
+                  target: 'openApi3',
+                },
+              );
             }
             operation.responses = operation.responses || {};
             operation.responses[statusCode] = {
               description: '',
               content: {
                 'application/json': {
-                  schema: responseSchema as any,
+                  schema: responseSchema,
                 },
               },
             };

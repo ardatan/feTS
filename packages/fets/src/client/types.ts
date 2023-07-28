@@ -122,7 +122,7 @@ export type OASParamObj<
         schema: JSONSchema;
       }
         ? FromSchema<TParameter['schema']>
-        : TParameter extends { type: JSONSchema7TypeName; enum?: any[] }
+        : TParameter extends { type: JSONSchema7TypeName; enum?: any[] | undefined }
         ? FromSchema<{
             type: TParameter['type'];
             enum: TParameter['enum'];
@@ -146,7 +146,7 @@ interface OASParamToRequestParam<TParameters extends { in: string; required?: bo
   extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
     ? // If there is any required parameter for this parameter type, make that parameter type required
-      TParameters extends [{ in: TParamType; required?: true }]
+      TParameters extends [{ in: TParamType; required?: true | undefined }]
       ? {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
@@ -155,7 +155,7 @@ interface OASParamToRequestParam<TParameters extends { in: string; required?: bo
       : {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
-            : never]?: OASParamObj<this['arg0']>;
+            : never]?: OASParamObj<this['arg0']> | undefined;
         }
     : {};
 }
@@ -188,11 +188,11 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
         }
       ? (
           requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
-          init?: RequestInit,
+          init?: RequestInit | undefined,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>
       : (
-          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
-          init?: RequestInit,
+          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>> | undefined,
+          init?: RequestInit | undefined,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
 } & OASOAuthPath<TOAS>;
@@ -273,9 +273,14 @@ export type OASRequestParams<
          *
          * The value of `json` will be stringified and sent as the request body with `Content-Type: application/json`.
          */
-        json?: FromSchema<
-          OASMethodMap<TOAS, TPath>[TMethod]['requestBody']['content']['application/json']['schema']
-        >;
+        json?:
+          | FromSchema<
+              OASMethodMap<
+                TOAS,
+                TPath
+              >[TMethod]['requestBody']['content']['application/json']['schema']
+            >
+          | undefined;
       }
   : OASMethodMap<TOAS, TPath>[TMethod] extends {
       requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
@@ -300,12 +305,14 @@ export type OASRequestParams<
          *
          * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
          */
-        formData?: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-        >;
+        formData?:
+          | FromSchema<
+              OASMethodMap<
+                TOAS,
+                TPath
+              >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+            >
+          | undefined;
       }
   : OASMethodMap<TOAS, TPath>[TMethod] extends {
       requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
@@ -330,12 +337,14 @@ export type OASRequestParams<
          *
          * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
          */
-        formUrlEncoded?: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-        >;
+        formUrlEncoded?:
+          | FromSchema<
+              OASMethodMap<
+                TOAS,
+                TPath
+              >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+            >
+          | undefined;
       }
   : {}) &
   (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
@@ -399,19 +408,19 @@ export interface ClientOptions {
   /**
    * The base URL of the API
    */
-  endpoint?: string;
+  endpoint?: string | undefined;
   /**
    * WHATWG compatible fetch implementation
    *
    * @see https://the-guild.dev/openapi/fets/client/client-configuration#customizing-the-fetch-function
    */
-  fetchFn?: typeof fetch;
+  fetchFn?: typeof fetch | undefined;
   /**
    * Plugins to extend the client functionality
    *
    * @see https://the-guild.dev/openapi/fets/client/plugins
    */
-  plugins?: ClientPlugin[];
+  plugins?: ClientPlugin[] | undefined;
 }
 
 export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit<
@@ -443,24 +452,24 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
         endpoint: `${TProtocol}://${THost}${TBasePath}`;
       }
     : {
-        endpoint?: string;
+        endpoint?: string | undefined;
       });
 
 export interface ClientRequestParams {
   json?: any;
-  formData?: FormData;
-  formUrlEncoded?: Record<string, string | string[]>;
-  params?: Record<string, string>;
-  query?: Record<string, string | string[]>;
-  headers?: Record<string, string>;
+  formData?: FormData | undefined;
+  formUrlEncoded?: Record<string, string | string[]> | undefined;
+  params?: Record<string, string> | undefined;
+  query?: Record<string, string | string[]> | undefined;
+  headers?: Record<string, string> | undefined;
 }
 
-export type ClientMethod = (requestParams?: ClientRequestParams) => Promise<Response>;
+export type ClientMethod = (requestParams?: ClientRequestParams | undefined) => Promise<Response>;
 
 export interface ClientPlugin {
-  onRequestInit?: OnRequestInitHook;
-  onFetch?: OnFetchHook;
-  onResponse?: OnResponseHook;
+  onRequestInit?: OnRequestInitHook | undefined;
+  onFetch?: OnFetchHook | undefined;
+  onResponse?: OnResponseHook | undefined;
 }
 
 export type OnRequestInitHook = (payload: ClientOnRequestInitPayload) => Promise<void> | void;

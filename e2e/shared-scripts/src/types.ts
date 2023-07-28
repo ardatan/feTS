@@ -3,8 +3,8 @@ import { OutputValue, Stack } from '@pulumi/pulumi/automation';
 
 export type DeploymentConfiguration<TProgramOutput = any> = {
   name: string;
-  prerequisites?: (stack: Stack) => Promise<void>;
-  config?: (stack: Stack) => Promise<void>;
+  prerequisites?: ((stack: Stack) => Promise<void>) | undefined;
+  config?: ((stack: Stack) => Promise<void>) | undefined;
   program: () => Promise<{
     [K in keyof TProgramOutput]: Output<TProgramOutput[K]> | TProgramOutput[K];
   }>;

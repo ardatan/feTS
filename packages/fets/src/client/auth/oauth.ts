@@ -30,7 +30,7 @@ export type OASOAuthPathRequestParamsWithHeader = {
     /**
      * Your service can support different scopes for the client credentials grant. In practice, not many services actually support this.
      */
-    scope?: string | string[];
+    scope?: string | string[] | undefined;
   };
   headers: {
     /**
@@ -71,7 +71,7 @@ export type OASOAuthPath<TOAS> = TOAS extends {
           requestParams:
             | OASOAuthPathRequestParamsWithHeader
             | OASOAuthPathRequestParamsWithoutHeader,
-          requestInit?: RequestInit,
+          requestInit?: RequestInit | undefined,
         ): Promise<
           TypedResponseWithJSONStatusMap<{
             200: OAuthPathSuccessResponse;
@@ -98,19 +98,19 @@ export type OAuthPathSuccessResponse = {
   /**
    * If the access token expires, the server should reply with the duration of time the access token is granted for.
    */
-  expires_in?: number;
+  expires_in?: number | undefined;
   /**
    * If the access token will expire,
    * then it is useful to return a refresh token which applications can use to obtain another access token.
    * However, tokens issued with the implicit grant cannot be issued a refresh token.
    */
-  refresh_token?: string;
+  refresh_token?: string | undefined;
   /**
    * If the scope the user granted is identical to the scope the app requested, this parameter is optional.
    * If the granted scope is different from the requested scope,
    * such as if the user modified the scope, then this parameter is required.
    */
-  scope?: string;
+  scope?: string | undefined;
 };
 
 /**
@@ -128,11 +128,11 @@ export interface OAuthPathFailedResponse {
   /**
    * The error_description parameter can only include ASCII characters, and should be a sentence or two at most describing the circumstance of the error.
    */
-  error_description?: string;
+  error_description?: string | undefined;
   /**
    * The error_uri is a great place to link to your API documentation for information about how to correct the specific error that was encountered.
    */
-  error_uri?: string;
+  error_uri?: string | undefined;
 }
 
 export enum OAuthPathErrorType {

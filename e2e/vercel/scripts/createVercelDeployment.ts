@@ -105,7 +105,11 @@ class VercelProvider implements pulumi.dynamic.ResourceProvider {
 export class VercelDeployment extends pulumi.dynamic.Resource {
   public readonly url!: pulumi.Output<string>;
 
-  constructor(name: string, props: VercelDeploymentInputs, opts?: pulumi.CustomResourceOptions) {
+  constructor(
+    name: string,
+    props: VercelDeploymentInputs,
+    opts?: pulumi.CustomResourceOptions | undefined,
+  ) {
     super(
       new VercelProvider(),
       name,
