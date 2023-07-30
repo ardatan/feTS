@@ -1,15 +1,16 @@
-import {
+import type { Pipe, Strings, Tuples } from 'hotscript';
+import type {
   FromSchema as FromSchemaOriginal,
   JSONSchema as JSONSchemaOrBoolean,
 } from 'json-schema-to-ts';
-import {
+import type {
   ServerAdapter,
   ServerAdapterOptions,
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
-import { SwaggerUIOpts } from './plugins/openapi.js';
-import { LazySerializedResponse } from './Response.js';
+import type { SwaggerUIOpts } from './plugins/openapi.js';
+import type { LazySerializedResponse } from './Response.js';
 import type {
   HTTPMethod,
   StatusCode,
@@ -17,7 +18,7 @@ import type {
   TypedResponse,
   TypedResponseWithJSONStatusMap,
 } from './typed-fetch.js';
-import {
+import type {
   AddRouteWithZodSchemasOpts,
   RouteZodSchemas,
   TypedRequestFromRouteZodSchemas,
@@ -180,11 +181,15 @@ export type StatusCodeMap<T> = {
 };
 
 export type TypedRouterHandlerTypeConfig<
+  TPath extends string,
   TRequestJSON = any,
   TRequestFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
   TRequestHeaders extends Record<string, string> = Record<string, string>,
   TRequestQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
-  TRequestPathParams extends Record<string, any> = Record<string, any>,
+  TRequestPathParams extends Record<string, any> = Record<
+    ExtractPathParamsWithPattern<TPath>,
+    string
+  >,
   TResponseJSONStatusMap extends StatusCodeMap<any> = StatusCodeMap<any>,
 > = {
   request: {
@@ -199,9 +204,11 @@ export type TypedRouterHandlerTypeConfig<
 
 export type TypedRequestFromTypeConfig<
   TMethod extends HTTPMethod,
-  TTypeConfig extends TypedRouterHandlerTypeConfig,
-> = TTypeConfig extends { request: Required<TypedRouterHandlerTypeConfig>['request'] }
+  TPath extends string,
+  TTypeConfig extends TypedRouterHandlerTypeConfig<TPath>,
+> = TTypeConfig extends { request: Required<TypedRouterHandlerTypeConfig<TPath>>['request'] }
   ? TTypeConfig extends TypedRouterHandlerTypeConfig<
+      TPath,
       infer TRequestJSON,
       infer TRequestFormData,
       infer TRequestHeaders,
@@ -217,9 +224,16 @@ export type TypedRequestFromTypeConfig<
         TRequestPathParams
       >
     : never
-  : TypedRequest;
+  : TypedRequest<
+      any,
+      Record<string, FormDataEntryValue>,
+      Record<string, string>,
+      TMethod,
+      Record<string, string | string[]>,
+      Record<ExtractPathParamsWithPattern<TPath>, string>
+    >;
 
-export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTypeConfig> =
+export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTypeConfig<string>> =
   TTypeConfig extends {
     responses: infer TResponses;
   }
@@ -239,7 +253,7 @@ export interface RouterBaseObject<
     TRouteSchemas extends RouteSchemas,
     TMethod extends HTTPMethod,
     TPath extends string,
-    TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+    TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
     TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
   >(
     opts: AddRouteWithSchemasOpts<
@@ -277,15 +291,16 @@ export interface RouterBaseObject<
     TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
   >;
   route<
-    TTypeConfig extends TypedRouterHandlerTypeConfig,
-    TMethod extends HTTPMethod = HTTPMethod,
+    TTypeConfig extends TypedRouterHandlerTypeConfig<TPath>,
+    TMethod extends HTTPMethod,
+    TPath extends string,
     TTypedRequest extends TypedRequestFromTypeConfig<
       TMethod,
+      TPath,
       TTypeConfig
-    > = TypedRequestFromTypeConfig<TMethod, TTypeConfig>,
+    > = TypedRequestFromTypeConfig<TMethod, TPath, TTypeConfig>,
     TTypedResponse extends
       TypedResponseFromTypeConfig<TTypeConfig> = TypedResponseFromTypeConfig<TTypeConfig>,
-    TPath extends string = string,
   >(
     opts: AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>,
   ): Router<
@@ -316,7 +331,7 @@ export type RouteHandler<
    */
   request: TTypedRequest,
   context: TServerContext,
-) => PromiseOrValue<TTypedResponse | Response | void>;
+) => PromiseOrValue<TTypedResponse | void>;
 // TODO: Remove Response from here
 
 export type OnRouteHookPayload<TServerContext> = {
@@ -411,6 +426,7 @@ export type TypedRequestFromRouteSchemas<
   TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
+  TPath extends string,
 > = TRouteSchemas extends { request: Required<RouteSchemas>['request'] }
   ? TypedRequest<
       TRouteSchemas['request'] extends { json: JSONSchema }
@@ -436,7 +452,7 @@ export type TypedRequestFromRouteSchemas<
       TRouteSchemas['request'] extends { query: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']> extends Record<
             string,
-            string
+            string | string[]
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
           : Record<string, string | string[]>
@@ -444,13 +460,20 @@ export type TypedRequestFromRouteSchemas<
       TRouteSchemas['request'] extends { params: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
             string,
-            string
+            any
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
-          : Record<string, any>
-        : Record<string, any>
+          : Record<ExtractPathParamsWithPattern<TPath>, string>
+        : Record<ExtractPathParamsWithPattern<TPath>, string>
     >
-  : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
+  : TypedRequest<
+      any,
+      Record<string, FormDataEntryValue>,
+      Record<string, string>,
+      TMethod,
+      Record<string, string | string[]>,
+      Record<ExtractPathParamsWithPattern<TPath>, string>
+    >;
 
 export type TypedResponseFromRouteSchemas<
   TComponents extends RouterComponentsBase,
@@ -469,7 +492,7 @@ export type AddRouteWithSchemasOpts<
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
   TPath extends string,
-  TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod>,
+  TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
   TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
   schemas: TRouteSchemas;
@@ -479,7 +502,14 @@ export type AddRouteWithTypesOpts<
   TServerContext,
   TMethod extends HTTPMethod,
   TPath extends string,
-  TTypedRequest extends TypedRequest,
+  TTypedRequest extends TypedRequest<
+    any,
+    Record<string, FormDataEntryValue>,
+    Record<string, string>,
+    TMethod,
+    Record<string, string | string[]>,
+    Record<ExtractPathParamsWithPattern<TPath>, string>
+  >,
   TTypedResponse extends TypedResponse,
 > = {
   operationId?: string | undefined;
@@ -577,3 +607,23 @@ export type RouterComponentSchema<
     ? FromSchema<TComponents['schemas'][TName]>
     : never
   : never;
+
+export type ExtractPathParamsWithBrackets<TPath extends string> = Pipe<
+  TPath,
+  [
+    Strings.Split<'/' | ';'>,
+    Tuples.Filter<Strings.StartsWith<'{'>>,
+    Tuples.Map<Strings.Trim<'{' | '}'>>,
+    Tuples.ToUnion,
+  ]
+>;
+
+export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
+  TPath,
+  [
+    Strings.Split<'/'>,
+    Tuples.Filter<Strings.StartsWith<':'>>,
+    Tuples.Map<Strings.Trim<':'>>,
+    Tuples.ToUnion,
+  ]
+>;
