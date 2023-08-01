@@ -291,9 +291,26 @@ export function createRouter<
     plugins,
   };
   const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIDocument);
+
+  // Argument of type 'RouterOptions<TServerContext, TComponents>' is not assignable to parameter of type 'ServerAdapterOptions<TServerContext>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  // Types of property 'plugins' are incompatible.
+  // Type 'RouterPlugin<TServerContext>[] | undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'.
+  //   Type 'undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const router = createServerAdapter(routerBaseObject, finalOpts);
+
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
+    // Argument of type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to parameter of type 'Router<any, any, any>'.
+    // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'RouterBaseObject<any, any, any>'.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     onRouterInitHook(router);
   }
+
+  // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'Router<TServerContext, TComponents, TRouterSDK>'.
+  // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'RouterBaseObject<TServerContext, TComponents, TRouterSDK>'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return router;
 }

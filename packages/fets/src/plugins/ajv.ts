@@ -167,14 +167,18 @@ export function useAjv({
             contentType?.includes('application/x-www-form-urlencoded')
           ) {
             const formData = await request.formData();
-            const formDataObj: Record<string, FormDataEntryValue> = {};
+            const formDataObj: Record<string, FormDataEntryValue | undefined> = {};
             const jobs: Promise<void>[] = [];
             formData.forEach((value, key) => {
+              if (typeof value === 'undefined') {
+                return;
+              }
+
               if (typeof value === 'string') {
                 formDataObj[key] = value;
               } else {
                 jobs.push(
-                  value.arrayBuffer().then(buffer => {
+                  value.arrayBuffer().then((buffer: ArrayBuffer): void => {
                     const typedArray = new Uint8Array(buffer);
                     const binaryStrParts: string[] = [];
                     typedArray.forEach((byte, index) => {

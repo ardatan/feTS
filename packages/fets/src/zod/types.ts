@@ -26,14 +26,14 @@ export type RouteZodSchemas = {
 export type TypedRequestFromRouteZodSchemas<
   TRouteZodSchemas extends RouteZodSchemas,
   TMethod extends HTTPMethod,
-> = TRouteZodSchemas extends { request: Required<RouteZodSchemas>['request'] }
+> = TRouteZodSchemas extends { request: RouteZodSchemas['request'] }
   ? TypedRequest<
       TRouteZodSchemas['request'] extends { json: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['json']>
         : any,
       TRouteZodSchemas['request'] extends { formData: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['formData']>
-        : Record<string, FormDataEntryValue>,
+        : Record<string, FormDataEntryValue | undefined>,
       TRouteZodSchemas['request'] extends { headers: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['headers']>
         : Record<string, string>,
@@ -45,7 +45,12 @@ export type TypedRequestFromRouteZodSchemas<
         ? InferZodType<TRouteZodSchemas['request']['params']>
         : Record<string, any>
     >
-  : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
+  : TypedRequest<
+      any,
+      Record<string, FormDataEntryValue | undefined>,
+      Record<string, string>,
+      TMethod
+    >;
 
 export type TypedResponseFromRouteZodSchemas<TRouteZodSchemas extends RouteZodSchemas> =
   TRouteZodSchemas extends { responses: StatusCodeMap<ZodType> }

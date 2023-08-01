@@ -190,7 +190,10 @@ export type StatusCodeMap<T> = {
 export type TypedRouterHandlerTypeConfig<
   TPath extends string,
   TRequestJSON = any,
-  TRequestFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
+  TRequestFormData extends Record<string, FormDataEntryValue | undefined> = Record<
+    string,
+    FormDataEntryValue | undefined
+  >,
   TRequestHeaders extends Record<string, string> = Record<string, string>,
   TRequestQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
   TRequestPathParams extends Record<string, any> = Record<
@@ -233,7 +236,7 @@ export type TypedRequestFromTypeConfig<
     : never
   : TypedRequest<
       any,
-      Record<string, FormDataEntryValue>,
+      Record<string, FormDataEntryValue | undefined>,
       Record<string, string>,
       TMethod,
       Record<string, string | string[]>,
@@ -443,10 +446,10 @@ export type TypedRequestFromRouteSchemas<
         ? FromSchemaWithComponents<
             TComponents,
             TRouteSchemas['request']['formData']
-          > extends Record<string, FormDataEntryValue>
+          > extends Record<string, FormDataEntryValue | undefined>
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
-          : Record<string, FormDataEntryValue>
-        : Record<string, FormDataEntryValue>,
+          : Record<string, FormDataEntryValue | undefined>
+        : Record<string, FormDataEntryValue | undefined>,
       TRouteSchemas['request'] extends { headers: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']> extends Record<
             string,
@@ -475,7 +478,7 @@ export type TypedRequestFromRouteSchemas<
     >
   : TypedRequest<
       any,
-      Record<string, FormDataEntryValue>,
+      Record<string, FormDataEntryValue | undefined>,
       Record<string, string>,
       TMethod,
       Record<string, string | string[]>,
@@ -511,7 +514,7 @@ export type AddRouteWithTypesOpts<
   TPath extends string,
   TTypedRequest extends TypedRequest<
     any,
-    Record<string, FormDataEntryValue>,
+    Record<string, FormDataEntryValue | undefined>,
     Record<string, string>,
     TMethod,
     Record<string, string | string[]>,
