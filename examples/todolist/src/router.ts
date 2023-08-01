@@ -1,5 +1,5 @@
 import { createRouter, FromSchema, Response } from 'fets';
-import { TypedRequest, TypedResponse } from 'fets/src/typed-fetch';
+import type { TypedRequest, TypedResponse } from 'fets/src/typed-fetch';
 
 const TodoSchema = {
   type: 'object',
