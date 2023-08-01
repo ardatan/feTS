@@ -27,7 +27,6 @@ export const router = createRouter({
       },
     },
   },
-  plugins: [],
 })
   .route({
     description: 'Get all todos',

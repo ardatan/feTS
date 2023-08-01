@@ -4,7 +4,6 @@ describe('OpenAPI spec', () => {
   it('respects base path', async () => {
     const router = createRouter({
       base: '/api',
-      plugins: [],
     }).route({
       path: '/greetings',
       method: 'GET',

@@ -111,7 +111,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello to you John!');
   });
   it('can pull route params from the basepath as well', async () => {
-    const router = createRouter({ base: '/api', plugins: [] });
+    const router = createRouter({ base: '/api' });
 
     router.route({
       path: '/greetings/:name',
@@ -130,7 +130,6 @@ describe('Router', () => {
     const router = createRouter<any, { schemas: {} }>();
     const nested = createRouter<any, { schemas: {} }>({
       base: '/api',
-      plugins: [],
     });
 
     nested.route({
@@ -171,7 +170,6 @@ describe('Router', () => {
   it('supports "/" with base', async () => {
     const router = createRouter({
       base: '/api',
-      plugins: [],
     });
     router.route({
       path: '/',
@@ -202,7 +200,6 @@ describe('Router', () => {
   it('supports "/" in the base', async () => {
     const router = createRouter({
       base: '/',
-      plugins: [],
     });
     router.route({
       path: '/greetings',
@@ -219,7 +216,6 @@ describe('Router', () => {
   it('supports "/" both in the base and in the route', async () => {
     const router = createRouter({
       base: '/',
-      plugins: [],
     });
     router.route({
       path: '/',

@@ -101,10 +101,17 @@ export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
   endpoint?: string | false | undefined;
 }
 
+// I've created a PR to fix this in @whatwg-node/server https://github.com/ardatan/whatwg-node/issues/391
+// Interface 'RouterOptions<TServerContext, TComponents>' incorrectly extends interface 'ServerAdapterOptions<TServerContext>'.
+// Types of property 'plugins' are incompatible.
+// Type 'RouterPlugin<TServerContext>[] | undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'.
+//   Type 'undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
   base?: string | undefined;
-  plugins: RouterPlugin<TServerContext>[];
+  plugins?: RouterPlugin<TServerContext>[] | undefined;
 
   openAPI?: RouterOpenAPIOptions<TComponents> | undefined;
   swaggerUI?: RouterSwaggerUIOptions | undefined;
