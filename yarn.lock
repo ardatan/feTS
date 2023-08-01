@@ -2545,10 +2545,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.1.1.tgz#f0c1d29f40650f5a6103a65d4448d16606b215ed"
-  integrity sha512-8DM6LkS7i8oIcFG7BjAcCW1PysA/hgEJPitfYdey08jh4E7nrq8K0i1MYLH5F+C0MGBD0qL0rsrWJ3ACxDC9Fw==
+"@pulumi/azure-native@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.2.0.tgz#17e333fefaeea76b50c062a8532368338857764b"
+  integrity sha512-31xcaF+u2sB6VHF1CzW1r+GQeV1SswajyTHsEvcEjY+cUspqkk7BRDbs/DyGdU7kN+KaGfItVeOGxdmokyFpbQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3845,9 +3845,9 @@
     debug "^4.1.1"
 
 "@whatwg-node/cookie-store@^0.2.0":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/cookie-store/-/cookie-store-0.2.1.tgz#2e063f9268e0a74ca670dccc262d41388c3b8d5e"
-  integrity sha512-rJv98m+nLBbmz5UwgYtWBBR+GIvMUXpuz1mCfJdBVVD5goR+8/jnKmNq2q1bxCakdGgqqFgZtyEuUjLPbSks2g==
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/cookie-store/-/cookie-store-0.2.2.tgz#cc9e932a4775a5d2f94093522a20789cafbfe7c6"
+  integrity sha512-poI6G6rYGsXNA+JTZLU+IUUXb+Xsau8M3GrcbF3VJdbvW6QGpbuvC+gvN4rD9zJAnqM0jpDKDhIWf2DmEAmWFQ==
   dependencies:
     tslib "^2.3.1"
 
