@@ -1,5 +1,4 @@
 import { createRouter, FromSchema, Response } from 'fets';
-import type { TypedRequest, TypedResponse } from 'fets/src/typed-fetch';
 
 const TodoSchema = {
   type: 'object',
@@ -75,18 +74,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: async (
-      request: TypedRequest<
-        any,
-        Record<string, FormDataEntryValue | undefined>,
-        Record<string, string>,
-        'GET',
-        Record<string, string | string[]>,
-        {
-          id: string;
-        }
-      >,
-    ) => {
+    handler: async request => {
       const { id } = request.params;
       const todo = todos.find(todo => todo.id === id);
       if (!todo) {
@@ -123,18 +111,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: async (
-      request: TypedRequest<
-        any,
-        Record<string, FormDataEntryValue | undefined>,
-        Record<string, string>,
-        'PUT',
-        Record<string, string | string[]>,
-        {
-          id: string;
-        }
-      >,
-    ) => {
+    handler: async request => {
       const input = await request.json();
       const todo: Todo = {
         id: crypto.randomUUID(),
@@ -178,18 +155,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: async (
-      request: TypedRequest<
-        any,
-        Record<string, FormDataEntryValue | undefined>,
-        Record<string, string>,
-        'DELETE',
-        Record<string, string | string[]>,
-        {
-          id: string;
-        }
-      >,
-    ) => {
+    handler: async request => {
       const { id } = request.params;
       const index = todos.findIndex(todo => todo.id === id);
       if (index === -1) {
@@ -245,28 +211,7 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: async (
-      request: TypedRequest<
-        any,
-        any,
-        Record<string, string>,
-        'POST',
-        Record<string, string | string[]>,
-        Record<never, string>
-      >,
-    ): Promise<
-      TypedResponse<
-        {
-          readonly name: string;
-          readonly description: string;
-          readonly type: string;
-          readonly size: number;
-          readonly lastModified: number;
-        },
-        Record<string, string>,
-        200
-      >
-    > => {
+    handler: async request => {
       const body = await request.formData();
       const file = body.get('file');
       const description = body.get('description');
