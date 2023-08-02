@@ -3876,9 +3876,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.0":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.5.tgz#c401bc1b00719811d4df72970c8e80a477969416"
-  integrity sha512-unJrvZj20XZv6VNJBmszOBAm/43tVd9LvFCTnKZwQtMd8lcrOYn/RZWgt2dDDsOz3kpe9U2ds6II4MLFxQJbwg==
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.6.tgz#f32f5977811f0601f7e6a4138348864fdffd4b53"
+  integrity sha512-JijJzNP/a6H9lDdkDWzwh5CxpRvyPpikGDy7KOc4z+ZrSM/HAZmhf+Y+o8NTFZEi9yulPi8aeBO52R3FYJn0Gg==
   dependencies:
     "@whatwg-node/fetch" "^0.9.7"
     tslib "^2.3.1"
@@ -12300,9 +12300,9 @@ swagger-client@^3.20.0:
     url "~0.11.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.3.0.tgz#1dcca75556105ea2e5686c6e321a91d1532b2a4a"
-  integrity sha512-14bxa5/bApADRDoh65usPvl216R7bpf6MZ3qNgDz9/1UUqjq5CTE1/UOlbjxoucLKp3B95zrDWhEVz0fQVA4rA==
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.3.1.tgz#dc1041bd9026cc043139fe2771ab3232834abe4f"
+  integrity sha512-+CwrdFZsy12LiS4Sy4UxSKRQBeO1p1jb4zI/hCXzasRjMGVWKnnq5PWTOuWWYdm2kk0fGE4rnK5gN4pG+5WwfQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.6"
     "@braintree/sanitize-url" "=6.0.2"
