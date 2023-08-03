@@ -3280,9 +3280,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.36.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.36.0.tgz#5cbec49edaa8b59b97a4a3c6084c350a1e865bf7"
-  integrity sha512-9kwFeGBuihUPZT2wRv2cmTpSoI+sSGj0/lBwvtgIq1P0+ONpj5NJOcWlvYbpnr5nRxc/+44lM/mg4TnSuTd5Kg==
+  version "10.37.1"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.37.1.tgz#7867a1042d3d055177327151a5abbf07ca0930f0"
+  integrity sha512-r3VeA319/braYMBIzj+XLgLKQ9lJSVglvPvP9HUv4kr5w6Y5grQMxMcExhTiZWltE9bnSJHKtBBzHafOo7KC8A==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -3876,9 +3876,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.0":
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.6.tgz#f32f5977811f0601f7e6a4138348864fdffd4b53"
-  integrity sha512-JijJzNP/a6H9lDdkDWzwh5CxpRvyPpikGDy7KOc4z+ZrSM/HAZmhf+Y+o8NTFZEi9yulPi8aeBO52R3FYJn0Gg==
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.7.tgz#414c917d3cfbd59a07dfe35e4019a9a4efb578e2"
+  integrity sha512-QVYQKVFxywLO9yblfDw7IEk6oP5axXAEqcabvfLGbTqrF8HP0sPgtfQjf1+wC4QlfYnooVwhqmNUIzaEY6ZZ7Q==
   dependencies:
     "@whatwg-node/fetch" "^0.9.7"
     tslib "^2.3.1"
@@ -9644,10 +9644,10 @@ module-details-from-path@^1.0.3:
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
   integrity sha512-ySViT69/76t8VhE1xXHK6Ch4NcDd26gx0MzKXLO+F7NOtnqH68d9zF94nT8ZWSxXh8ELOERsnJO/sWt1xZYw5A==
 
-monaco-editor@0.40.0:
-  version "0.40.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.40.0.tgz#d10834e15ad50a15ec61fd01892e508464ebe2fe"
-  integrity sha512-1wymccLEuFSMBvCk/jT1YDW/GuxMLYwnFwF9CDyYCxoTw2Pt379J3FUhwy9c43j51JdcxVPjwk0jm0EVDsBS2g==
+monaco-editor@0.41.0:
+  version "0.41.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.41.0.tgz#2ba31e5af7e3ae93ac5d7467ec2772ef9b3d967f"
+  integrity sha512-1o4olnZJsiLmv5pwLEAmzHTE/5geLKQ07BrGxlF4Ri/AXAc2yyDGZwHjiTqD8D/ROKUZmwMA28A+yEowLNOEcA==
 
 mri@^1.1.0:
   version "1.2.0"
