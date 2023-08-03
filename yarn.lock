@@ -6133,10 +6133,10 @@ eslint-config-next@13.4.12:
     eslint-plugin-react "^7.31.7"
     eslint-plugin-react-hooks "5.0.0-canary-7118f5dd7-20230705"
 
-eslint-config-prettier@8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.9.0.tgz#094b6254b2804b0544f7cee535f802b6d29ee10b"
-  integrity sha512-+sbni7NfVXnOpnRadUA8S28AUlsZt9GjgFvABIRL9Hkn8KqNzOp+7Lw4QWtrwn20KzU3wqu1QoOj2m+7rKRqkA==
+eslint-config-prettier@8.10.0:
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.10.0.tgz#3a06a662130807e2502fc3ff8b4143d8a0658e11"
+  integrity sha512-SM8AMJdeQqRYT9O9zguiruQZaN7+z+E4eAP9oiLNGKMtomwaB1E9dcgUD6ZAn/eQAb52USbvezbiljfZUhbJcg==
 
 eslint-config-standard@17.1.0:
   version "17.1.0"
@@ -10760,10 +10760,10 @@ prettier-plugin-tailwindcss@^0.4.0:
   resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.4.1.tgz#f7ed664199540978b2cbd037bac3a337d6689e86"
   integrity sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==
 
-prettier@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.0.tgz#e7b19f691245a21d618c68bc54dc06122f6105ae"
-  integrity sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==
+prettier@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.1.tgz#65271fc9320ce4913c57747a70ce635b30beaa40"
+  integrity sha512-fcOWSnnpCrovBsmFZIGIy9UqK2FaI7Hqax+DIO0A9UxeVoY4iweyaFjS5TavZN97Hfehph0nhsZnjlVKzEQSrQ==
 
 prettier@^2.7.1:
   version "2.8.8"
