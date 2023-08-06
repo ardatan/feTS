@@ -1,6 +1,5 @@
-import { isPromise } from 'node:util/types';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
-import { createServerAdapter } from '@whatwg-node/server';
+import { createServerAdapter, isPromise } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
