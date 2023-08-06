@@ -1,5 +1,13 @@
 # fets
 
+## 0.4.10
+
+### Patch Changes
+
+- [#438](https://github.com/ardatan/feTS/pull/438)
+  [`c08cc22`](https://github.com/ardatan/feTS/commit/c08cc22a9bc89fa35c26f6d81b4af53915a21aec)
+  Thanks [@ardatan](https://github.com/ardatan)! - Avoid unnecessary promises for optimizations
+
 ## 0.4.9
 
 ### Patch Changes
