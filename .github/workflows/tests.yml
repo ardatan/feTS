@@ -4,35 +4,14 @@ on:
   push:
     branches:
       - master
-  pull_request: {}
+  pull_request:
+    paths-ignore:
+      - 'website/**'
 
 env:
   NODE_OPTIONS: --max-old-space-size=4096
 
 jobs:
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Master
-        uses: actions/checkout@v3
-      - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
-        with:
-          nodeVersion: 18
-      - name: Prettier Check
-        run: yarn prettier:check
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Master
-        uses: actions/checkout@v3
-      - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
-        with:
-          nodeVersion: 18
-      - name: ESLint
-        run: yarn lint
-
   type-check:
     runs-on: ubuntu-latest
     steps:
