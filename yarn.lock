@@ -3590,10 +3590,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.19", "@types/react@>=16", "@types/react@^18.0.27":
-  version "18.2.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.19.tgz#f77cb2c8307368e624d464a25b9675fa35f95a8b"
-  integrity sha512-e2S8wmY1ePfM517PqCG80CcE48Xs5k0pwJzuDZsfE8IZRRBfOMCF+XqnFxu6mWtyivum1MQm4aco+WIt6Coimw==
+"@types/react@*", "@types/react@18.2.20", "@types/react@>=16", "@types/react@^18.0.27":
+  version "18.2.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.20.tgz#1605557a83df5c8a2cc4eeb743b3dfc0eb6aaeb2"
+  integrity sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3823,9 +3823,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.0":
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.10.tgz#d7e0ae5220b48140ec8d74cf04f6845f86cf97f7"
-  integrity sha512-CoFEflKASUL+gCDF21TwRmQ8kUIYcE++09h3D20XuWP+dsjiA4FBBGFNjIafKM5MNqiK6ncX0YBpRqeAwIFlbw==
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.11.tgz#a0fd914abe6bd3b8eac0994613b93a528c4cda26"
+  integrity sha512-G7OXKRqSeXsq9cDJubRfrLMvkxmIVm4CuZQTYSq5N/jr8apDo7HpEv+AYq2NN1jwoiYXhtVotcsAau+a+0J7bQ==
   dependencies:
     "@whatwg-node/fetch" "^0.9.7"
     tslib "^2.3.1"
