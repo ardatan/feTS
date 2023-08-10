@@ -17,6 +17,11 @@ because Node's HTTP package doesn't use Fetch API like Deno or Bun does. `itty-r
 to be used with Fetch-compliant environments like Deno, Bun or Cloudflare Workers, so it doesn't aim
 to support Node.js.
 
+feTS uses an adapter layer
+[@whatwg-node/server](https://github.com/ardatan/whatwg-node/tree/master/packages/server#whatwg-node-generic-server-adapter)
+that allows you to use Fetch API in Node.js's `http` library. So you don't need to implement an
+adapter for Node.js.
+
 ### Plugin system
 
 feTS has a plugin system that allows you to extend the functionality of the router. This allows us
