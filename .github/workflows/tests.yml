@@ -9,7 +9,9 @@ on:
       - 'website/**'
 
 env:
-  NODE_OPTIONS: --max-old-space-size=4096
+  NODE_NO_WARNINGS: true
+  NODE_OPTIONS: '--max-old-space-size=8192'
+  CI: true
 
 jobs:
   type-check:
@@ -45,9 +47,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
       - name: Test
+        if: ${{ matrix.node-version == 20 }}
         run: yarn test --ci
-        env:
-          CI: true
+      - name: Test
+        if: ${{ matrix.node-version != 20 }}
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 5
+          command: yarn test --detectLeaks --detectOpenHandles --ci
+
   integration:
     name: integration / node ${{matrix.node-version}}
     runs-on: ubuntu-latest

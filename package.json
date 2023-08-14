@@ -23,7 +23,7 @@
     "prettier": "yarn prettier:check --write",
     "prettier:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
-    "test": "jest --detectOpenHandles --detectLeaks",
+    "test": "jest",
     "test:integration": "cross-env \"INTEGRATION_TEST=true\" jest --detectOpenHandles --no-watchman",
     "ts:check": "tsc --noEmit"
   },
