@@ -63,7 +63,7 @@
   },
   "resolutions": {
     "@pulumi/pulumi": "3.78.1",
-    "next": "13.4.15"
+    "next": "13.4.16"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
