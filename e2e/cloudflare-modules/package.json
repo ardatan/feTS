@@ -16,6 +16,6 @@
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.1.6",
-    "wrangler": "3.5.0"
+    "wrangler": "3.5.1"
   }
 }
