@@ -1185,7 +1185,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime-corejs3@^7.20.13", "@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.6":
+"@babel/runtime-corejs3@^7.20.13", "@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.10":
   version "7.22.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.22.10.tgz#5ecc3d32faa70009f084cc2e087d79e5f5cdcca9"
   integrity sha512-IcixfV2Jl3UrqZX4c81+7lVg5++2ufYJyAFW3Aux/ZTvY6LVYYhJ9rMgnbX0zGVq6eqfVpnoatTjZdVki/GmWA==
@@ -10163,7 +10163,7 @@ pascal-case@^3.1.2:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
-patch-package@8.0.0:
+patch-package@8.0.0, patch-package@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-8.0.0.tgz#d191e2f1b6e06a4624a0116bcb88edd6714ede61"
   integrity sha512-da8BVIhzjtgScwDJ2TtKsfT5JFWz1hYoBl9rUQ1f38MC2HwnEIkK8VN3dKMKcP7P7bvvgzNDbfNHtx3MsQb5vA==
@@ -10175,26 +10175,6 @@ patch-package@8.0.0:
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^9.0.0"
     json-stable-stringify "^1.0.2"
-    klaw-sync "^6.0.0"
-    minimist "^1.2.6"
-    open "^7.4.2"
-    rimraf "^2.6.3"
-    semver "^7.5.3"
-    slash "^2.0.0"
-    tmp "^0.0.33"
-    yaml "^2.2.2"
-
-patch-package@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/patch-package/-/patch-package-7.0.2.tgz#c01589bb6964854b5210506a5845d47900641f5a"
-  integrity sha512-PMYfL8LXxGIRmxXLqlEaBxzKPu7/SdP13ld6GSfAUJUZRmBDPp8chZs0dpzaAFn9TSPnFiMwkC6PJt6pBiAl8Q==
-  dependencies:
-    "@yarnpkg/lockfile" "^1.1.0"
-    chalk "^4.1.2"
-    ci-info "^3.7.0"
-    cross-spawn "^7.0.3"
-    find-yarn-workspace-root "^2.0.0"
-    fs-extra "^9.0.0"
     klaw-sync "^6.0.0"
     minimist "^1.2.6"
     open "^7.4.2"
@@ -12150,11 +12130,11 @@ swagger-client@^3.20.0:
     url "~0.11.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.3.2.tgz#86fd9e4d3c4f302b1e97e229e67114016c2ad932"
-  integrity sha512-9WeIdabPmGUFeRFkjncYKmQnmPp7i0w092hGCdRhIRxdkxrRXO1CAgRuE7B0X18yEoM5EwKhsJX647rReOBGSw==
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.4.1.tgz#2d4f0108ba88f345cce72fcfc24537d7ba5d9c3f"
+  integrity sha512-8ThPV2bGmeSa5rQbIu71+WCeTCACHZgpEAkBZ4LqfTR/LRVYOhPyGifNyWd6FOSpMuKgkugjEkThPRSrVql1GQ==
   dependencies:
-    "@babel/runtime-corejs3" "^7.22.6"
+    "@babel/runtime-corejs3" "^7.22.10"
     "@braintree/sanitize-url" "=6.0.4"
     base64-js "^1.5.1"
     classnames "^2.3.1"
@@ -12166,7 +12146,7 @@ swagger-ui-react@^5.0.0:
     js-file-download "^0.4.12"
     js-yaml "=4.1.0"
     lodash "^4.17.21"
-    patch-package "^7.0.2"
+    patch-package "^8.0.0"
     prop-types "^15.8.1"
     randexp "^0.5.3"
     randombytes "^2.1.0"
