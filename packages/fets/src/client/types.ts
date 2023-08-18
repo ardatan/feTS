@@ -358,7 +358,7 @@ export type OASRequestParams<
          *
          * For example if path is `/todos/{id}` and `params` is `{ id: '1' }`, the path will be `/todos/1`
          */
-        params: Record<ExtractPathParamsWithBrackets<TPath>, string | number>;
+        params: Record<ExtractPathParamsWithBrackets<TPath>, string | number | bigint | boolean>;
       }
     : {}) &
   (TPath extends `${string}:${string}${string}`
@@ -370,7 +370,7 @@ export type OASRequestParams<
          *
          * For example if path is `/todos/:id` and `params` is `{ id: '1' }`, the path will be `/todos/1`.
          */
-        params: Record<ExtractPathParamsWithPattern<TPath>, string | number>;
+        params: Record<ExtractPathParamsWithPattern<TPath>, string | number | bigint | boolean>;
       }
     : {}) &
   // Respect security definitions in path object
