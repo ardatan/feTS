@@ -1,5 +1,12 @@
 # fets
 
+## 0.4.11
+
+### Patch Changes
+
+- [`a22afe3`](https://github.com/ardatan/feTS/commit/a22afe39cdf16312fbd381c6c137b20b6eaf51a4)
+  Thanks [@ardatan](https://github.com/ardatan)! - Handle bigints as path parameters
+
 ## 0.4.10
 
 ### Patch Changes
