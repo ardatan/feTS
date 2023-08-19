@@ -4,6 +4,6 @@
   "private": true,
   "dependencies": {
     "fets": "0.4.11",
-    "zod": "3.22.1"
+    "zod": "3.22.2"
   }
 }
