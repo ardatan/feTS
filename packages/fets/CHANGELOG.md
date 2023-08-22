@@ -1,5 +1,14 @@
 # fets
 
+## 0.4.12
+
+### Patch Changes
+
+- [#486](https://github.com/ardatan/feTS/pull/486)
+  [`22b21ef`](https://github.com/ardatan/feTS/commit/22b21ef82c6efb0475699ba1f981197eb30afa34)
+  Thanks [@ardatan](https://github.com/ardatan)! - `default` status code in operation objects should
+  exclude other defined status codes
+
 ## 0.4.11
 
 ### Patch Changes
