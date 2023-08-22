@@ -1,5 +1,13 @@
 # example-fireblocks
 
+## 0.0.17
+
+### Patch Changes
+
+- Updated dependencies
+  [[`0c14bd1`](https://github.com/ardatan/feTS/commit/0c14bd13cdeb98d8c753d9ee613565bf4f79be49)]:
+  - fets@0.4.12
+
 ## 0.0.16
 
 ### Patch Changes
