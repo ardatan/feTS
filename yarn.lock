@@ -3534,10 +3534,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@18.17.8", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^18.11.18":
-  version "18.17.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.8.tgz#fd69eb04c25d50374245e8bd69ba29dd0eb7ff5e"
-  integrity sha512-Av/7MqX/iNKwT9Tr60V85NqMnsmh8ilfJoBlIVibkXfitk9Q22D9Y5mSpm+FvG5DET7EbVfB40bOiLzKgYFgPw==
+"@types/node@*", "@types/node@18.17.9", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^18.11.18":
+  version "18.17.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.9.tgz#b219fa0da3c574399f4a44455ea4b388029afd56"
+  integrity sha512-fxaKquqYcPOGwE7tC1anJaPJ0GHyOVzfA2oUoXECjBjrtsIz4YJvtNYsq8LUcjEUehEF+jGpx8Z+lFrtT6z0tg==
 
 "@types/node@^12.7.1":
   version "12.20.55"
@@ -4513,10 +4513,10 @@ builtins@^5.0.1:
   dependencies:
     semver "^7.0.0"
 
-bun-types@^0.7.0:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.7.3.tgz#9ee3aaefa9d231c2b300521b42e71039a8479679"
-  integrity sha512-kssLD5mDLoawmLZFgQRRq0Wy+dca/os6TZ0MHWyFVoVAEwSrpAxmNCZ1K1GUelfhlDaL2FikRxeF9GkATdzXZg==
+bun-types@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-0.8.0.tgz#3b95eda7b5b3e54bb8717cc818a16d819139f7f0"
+  integrity sha512-7QitK+gU5gPm/JmfGVq2wEjVhoT1ZSAl7y0HPqV9kFWuI8AhQ5flaBiAAqKckUHOyXXeRb1WzSETQDuFZLzjSA==
 
 busboy@1.6.0, busboy@^1.6.0:
   version "1.6.0"
