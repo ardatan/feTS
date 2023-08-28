@@ -38,7 +38,7 @@ jobs:
         with:
           cloudflareApiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflareAccountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GH_API_TOKEN }}
           projectName: fets
           prId: ${{ github.event.pull_request.number }}
           websiteDirectory: ./
