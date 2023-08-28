@@ -10,6 +10,7 @@ on:
   pull_request:
     paths-ignore:
       - 'website/**'
+permissions: write-all
 
 jobs:
   stable:
