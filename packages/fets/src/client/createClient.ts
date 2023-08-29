@@ -105,6 +105,11 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
                     for (const v of value) {
                       searchParams.append(queryParamKey, v);
                     }
+                  } else if (typeof value === 'object' && value !== null) {
+                    // @see https://swagger.io/docs/specification/serialization/#query
+                    for (const v of Object.keys(value)) {
+                      searchParams.append(`${queryParamKey}[${v}]`, value[v]);
+                    }
                   } else {
                     searchParams.append(queryParamKey, value);
                   }
