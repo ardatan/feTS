@@ -70,9 +70,7 @@ export function IndexPage(): ReactElement {
               </Anchor>
             </div>
           </div>
-          <div className="relative min-h-[50vh] dark:drop-shadow-[24px_20px_30px_rgba(24,134,255,.2)]">
             <Editor />
-          </div>
         </div>
       </div>
 

@@ -64,10 +64,16 @@ export function Editor() {
   const monacoLoadingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const loadingElement = monacoLoadingRef.current!;
+
+    if (window.innerWidth < 1024) {
+      loadingElement.parentElement!.remove();
+      return;
+    }
+
     sandboxSingleton()
       .then(({ monaco, sandboxFactory, ts }) => {
         const monacoEl = monacoElementRef.current!;
-
         // Create a sandbox and embed it into the div #monaco-editor-embed
         const sandboxConfig: Parameters<SandboxFactory['createTypeScriptSandbox']>[0] = {
           text: code,
@@ -79,6 +85,11 @@ export function Editor() {
             theme: 'night-owl',
             hover: { above: false },
           },
+          // @ts-expect-error -- logger exists
+          logger: {
+            // disable logging from the sandbox
+            log: () => {},
+          },
         };
         monaco.editor.defineTheme('night-owl', nightOwlTheme as any);
         const sandbox = sandboxFactory.createTypeScriptSandbox(sandboxConfig, monaco, ts);
@@ -89,15 +100,15 @@ export function Editor() {
           // https://github.com/microsoft/monaco-editor/issues/2052#issuecomment-689786705
           editor.setPosition(new monaco.Position(7, 7));
           editor.getAction('editor.action.showHover')!.run();
+          loadingElement.remove();
           monacoEl.classList.remove('opacity-0');
-          monacoLoadingRef.current!.remove();
         }, 3000);
       })
       .catch(console.error);
   }, []);
 
   return (
-    <>
+    <div className="relative min-h-[50vh] dark:drop-shadow-[24px_20px_30px_rgba(24,134,255,.2)] max-lg:hidden">
       <div
         ref={monacoLoadingRef}
         className="absolute inset-0 flex flex-col items-center justify-center gap-8 bg-[#011627] text-gray-100"
@@ -110,7 +121,7 @@ export function Editor() {
         id="monaco-editor-embed"
         ref={monacoElementRef}
       />
-    </>
+    </div>
   );
 }
 
