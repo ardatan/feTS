@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { clsx } from 'clsx';
 import { Anchor } from '@theguild/components';
+import { Editor } from './editor';
 import AWSLambda from 'public/assets/aws-lambda.svg';
 import AzureFunctions from 'public/assets/azure-functions.svg';
 import Bun from 'public/assets/bun.svg';
@@ -18,7 +19,6 @@ import NodeJs from 'public/assets/nodejs.svg';
 import OpenAPI from 'public/assets/openapi.svg';
 import TypeScript from 'public/assets/typescript.svg';
 import WebSockets from 'public/assets/websockets.svg';
-import { Editor } from './editor';
 
 const IBMPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -70,7 +70,7 @@ export function IndexPage(): ReactElement {
               </Anchor>
             </div>
           </div>
-            <Editor />
+          <Editor />
         </div>
       </div>
 
