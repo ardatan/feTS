@@ -62,14 +62,14 @@ export function IndexPage(): ReactElement {
       <div
         className={clsx(
           classes.font,
-          'to-secondary-100 flex items-center bg-gradient-to-r from-primary/10 py-14 dark:to-secondary-600 lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
+          'to-secondary-100 from-primary/10 dark:to-secondary-600 flex items-center bg-gradient-to-r py-14 lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
         )}
       >
-        <div className="container max-lg:px-8 grid gap-20 lg:grid-cols-2">
+        <div className="container grid gap-20 max-lg:px-8 lg:grid-cols-2">
           <div className="text-secondary-600 flex flex-col justify-center dark:text-white lg:max-w-lg">
             <h1 className="text-[4rem] font-bold max-lg:text-4xl">feTS</h1>
-            <h2 className="lg:text-2xl text-lg">Fetch API 💙 TypeScript</h2>
-            <h3 className="my-8 lg:text-lg text-base/7">
+            <h2 className="text-lg lg:text-2xl">Fetch API 💙 TypeScript</h2>
+            <h3 className="my-8 text-base/7 lg:text-lg">
               Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
               client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
             </h3>
