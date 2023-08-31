@@ -35,8 +35,26 @@ const classes = {
   subtitle: clsx(
     'lg:text-lg xl:w-2/4 lg:w-3/4 mx-auto text-secondary-500 dark:text-white lg:[text-wrap:balance] lg:text-center',
   ),
-  section: clsx('container px-8 lg:px-24 py-16 lg:py-32'),
+  section: clsx('container px-8 py-16 lg:px-24 lg:py-32'),
 };
+
+function Spinner() {
+  return (
+    <svg
+      className="h-16 w-16 animate-spin"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  );
+}
 
 export function IndexPage(): ReactElement {
   return (
@@ -44,14 +62,14 @@ export function IndexPage(): ReactElement {
       <div
         className={clsx(
           classes.font,
-          'to-secondary-100 flex items-center bg-gradient-to-b from-[#1886ff]/20 py-14 dark:to-[#1c212c] lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
+          'to-secondary-100 flex items-center bg-gradient-to-r from-primary/10 py-14 dark:to-secondary-600 lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
         )}
       >
-        <div className="container flex items-stretch max-lg:flex-col">
-          <div className="text-secondary-600 flex-1 dark:text-white max-lg:pb-20 lg:pr-24">
+        <div className="container max-lg:px-8 grid gap-20 lg:grid-cols-2">
+          <div className="text-secondary-600 flex flex-col justify-center dark:text-white lg:max-w-lg">
             <h1 className="text-[4rem] font-bold max-lg:text-4xl">feTS</h1>
-            <h2 className="text-2xl max-lg:text-lg">Fetch API 💙 TypeScript</h2>
-            <h3 className="my-8 text-2xl max-lg:text-lg">
+            <h2 className="lg:text-2xl text-lg">Fetch API 💙 TypeScript</h2>
+            <h3 className="my-8 lg:text-lg text-base/7">
               Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
               client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
             </h3>
@@ -71,7 +89,13 @@ export function IndexPage(): ReactElement {
               </Anchor>
             </div>
           </div>
-          <Editor />
+          <div className="relative min-h-[50vh] dark:drop-shadow-[24px_20px_30px_rgba(24,134,255,.2)]">
+            <div className="monaco-loading absolute flex h-full w-full flex-col items-center justify-center gap-8 bg-[#011627] text-gray-100">
+              <span className="text-2xl">Preview editor is loading...</span>
+              <Spinner />
+            </div>
+            <Editor />
+          </div>
         </div>
       </div>
 
@@ -138,7 +162,7 @@ export function IndexPage(): ReactElement {
               @whatwg-node/server
             </Anchor>
           </h3>
-          <div className="mt-14 grid w-full gap-7 lg:mt-24 lg:grid-cols-3">
+          <div className="mt-14 grid w-full gap-7 md:grid-cols-2 lg:mt-24 xl:grid-cols-3">
             {[
               { name: 'AWS Lambda', icon: AWSLambda, link: '/server/integrations/aws-lambda' },
               {
@@ -174,10 +198,12 @@ export function IndexPage(): ReactElement {
             ].map(({ name, icon: Icon, link, isInverted }) => (
               <Anchor
                 href={link}
-                className="dark:hover:bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 font-bold hover:shadow-xl dark:hover:text-white"
+                className="dark:hover:bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 text-xl/8 font-bold hover:shadow-xl dark:hover:text-white lg:text-2xl/9"
                 key={name}
               >
-                <Icon className={clsx(isInverted && 'dark:invert dark:[a:hover>&]:invert')} />
+                <Icon
+                  className={clsx('shrink-0', isInverted && 'dark:invert dark:[a:hover>&]:invert')}
+                />
                 {name}
                 <span className="font-sans font-light transition-transform duration-75 group-hover:translate-x-[2px]">
                   →
