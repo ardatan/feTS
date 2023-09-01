@@ -2523,10 +2523,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.4.0.tgz#dd343d5fd44374eeb45989852ddde87bf1cc1c27"
-  integrity sha512-dLkmjksxBOFKNaw3FXTmsIBSYqy5uY6zH5OsmCYFg+0OShw6rimPZVLJpifx8sxy7qSbREvo9HytG6yuDfb0+Q==
+"@pulumi/azure-native@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.5.0.tgz#a4d88ae9b6ba0327d4d68b3cbd4fea03bbc3b94b"
+  integrity sha512-cAOw008DjwCmkuDVoAth/i/yDseWgMD8Dxw7Pr53Rxzg6R+W6LYZmknz1uhvt3hooLAHnuhr6ugh9auR0hhd/g==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3528,10 +3528,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@20.5.7", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
-  version "20.5.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.7.tgz#4b8ecac87fbefbc92f431d09c30e176fc0a7c377"
-  integrity sha512-dP7f3LdZIysZnmvP3ANJYTSwg+wLLl8p7RqniVlV7j+oXSXAbt9h0WIBFmJy5inWZoX9wZN6eXx+YXd9Rh3RBA==
+"@types/node@*", "@types/node@20.5.8", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
+  version "20.5.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.8.tgz#fb171fd22d37ca6e2ea97fde88e6a13ee14bc327"
+  integrity sha512-eajsR9aeljqNhK028VG0Wuw+OaY5LLxYmxeoXynIoE6jannr9/Ucd1LL0hSSoafk5LTYG+FfqsyGt81Q6Zkybw==
 
 "@types/node@^12.7.1":
   version "12.20.55"
@@ -3548,12 +3548,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/qs@*":
-  version "6.9.7"
-  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
-  integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
-
-"@types/qs@^6.9.8":
+"@types/qs@*", "@types/qs@^6.9.8":
   version "6.9.8"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.8.tgz#f2a7de3c107b89b441e071d5472e6b726b4adf45"
   integrity sha512-u95svzDlTysU5xecFNTgfFG5RUWu1A9P0VzgpcIiGZA9iraHOdSzcxMxQ55DyeRaGCSxQi7LxXDI4rzq/MYfdg==
@@ -3790,17 +3785,17 @@
   integrity sha512-AyQEn5hIPV7Ze+xFoXVU3QTHXVbWPrzaOkxtENMPMuNL6VVHrp4hHfDt9nrQpjO7BgvuM95dMtkycX5M/DZR3w==
 
 "@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.10", "@whatwg-node/fetch@^0.9.4":
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.10.tgz#7c98c3b3ac980b982268dbc73f7a7a9d3d5c31be"
-  integrity sha512-m3a30Po0ec4se4HEcUgChG4AHF+2imKLWpP/qzhW1T1dH1qnFkroN6ohwsG1Fqp5eFCQws2s5vu3+yfDBWoRoA==
+  version "0.9.12"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.12.tgz#3b20ac8f286a2196003976b6f1452c2c513fad00"
+  integrity sha512-zNUkPJNfM1v9Jhy3Vmi2a7lQxaNIDTSiAb1NKO5eMsSdo05XoddBEj/CHj1xu4IOMU68VerDvuBVwzPjxBl12g==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.4.15"
+    "@whatwg-node/node-fetch" "^0.4.17"
     urlpattern-polyfill "^9.0.0"
 
-"@whatwg-node/node-fetch@^0.4.15":
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.4.15.tgz#41da6519948cbe6ee2057dd46a802ec1adbb6039"
-  integrity sha512-xpXxgBi5EgN3odDu4FWJQp1RjjJotx+7GW9l9ElQ66nWYzCBTpvlFuGVvuKltN99w2SpdhycqXBDU4YxDAIw7g==
+"@whatwg-node/node-fetch@^0.4.17":
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.4.17.tgz#726b381cb6fed68fa31d84c921e8682ea3a8f66a"
+  integrity sha512-ltsmEHHToxug9CsMpfUtyoKUQl6GBCN8PcRAY8NLy2NLrGqRTO3N8hRuEH6z4STle9Gvv62pIvgwI/N5rNpzJQ==
   dependencies:
     "@whatwg-node/events" "^0.1.0"
     busboy "^1.6.0"
@@ -10897,14 +10892,14 @@ pure-rand@^6.0.0:
   resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-6.0.2.tgz#a9c2ddcae9b68d736a8163036f088a2781c8b306"
   integrity sha512-6Yg0ekpKICSjPswYOuC5sku/TSWaRYlA0qsXqJgM/d/4pLPHPuTxK7Nbf7jFKzAeedUhR8C7K9Uv63FBsSo8xQ==
 
-qs@6.11.0, qs@^6.10.2, qs@^6.11.0, qs@^6.5.2:
+qs@6.11.0:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
   integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
   dependencies:
     side-channel "^1.0.4"
 
-qs@^6.11.2:
+qs@^6.10.2, qs@^6.11.0, qs@^6.11.2, qs@^6.5.2:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.2.tgz#64bea51f12c1f5da1bc01496f48ffcff7c69d7d9"
   integrity sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==
