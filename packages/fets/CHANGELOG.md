@@ -1,5 +1,14 @@
 # fets
 
+## 0.4.13
+
+### Patch Changes
+
+- [#517](https://github.com/ardatan/feTS/pull/517)
+  [`0b5278f`](https://github.com/ardatan/feTS/commit/0b5278fd6dac549376cfec58fb42223ea44911cc)
+  Thanks [@mezannic](https://github.com/mezannic)! - Handle deep objects in query parameter
+  serialization
+
 ## 0.4.12
 
 ### Patch Changes

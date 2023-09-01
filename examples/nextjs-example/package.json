@@ -1,6 +1,6 @@
 {
   "name": "nextjs-example",
-  "version": "0.1.41",
+  "version": "0.1.42",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -12,7 +12,7 @@
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "fets": "0.4.12",
+    "fets": "0.4.13",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
