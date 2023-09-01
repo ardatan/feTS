@@ -2530,10 +2530,10 @@
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
-"@pulumi/cloudflare@4.16.0":
-  version "4.16.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/cloudflare/-/cloudflare-4.16.0.tgz#a49db37a7f7707bc402253631c103f547ffbe9ad"
-  integrity sha512-cwdB70bLeKL/VNIqqOD5fpHQcocVmpHuiHH589eR+QUfbLa4f+M8yA/TTCcxx2AFFctTqO5wgVuC+faL8xZmWQ==
+"@pulumi/cloudflare@5.9.0":
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/cloudflare/-/cloudflare-5.9.0.tgz#243426e97a61d210ab9716896478d51e2c4ec473"
+  integrity sha512-2Lm/KrJh8dbZSdLl26uWQu56aBnux0bbMq7ot8pPnRjx8zQW+llkK/M3D9XUqfjbM0gUewjN8BB5OcYzk13j7A==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
