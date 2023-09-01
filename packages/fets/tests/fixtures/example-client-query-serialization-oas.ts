@@ -17,7 +17,7 @@ export default {
             schema: {
               type: 'string',
               required: false,
-            }
+            },
           },
           {
             name: 'deep',
@@ -51,7 +51,7 @@ export default {
               },
             },
             required: false,
-          }
+          },
         ],
         responses: {
           '200': {
