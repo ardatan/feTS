@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@pulumi/azure-native": "2.4.0",
-    "@pulumi/pulumi": "3.79.0",
+    "@pulumi/pulumi": "3.80.0",
     "esbuild": "0.19.2",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",

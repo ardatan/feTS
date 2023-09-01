@@ -2545,10 +2545,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.79.0", "@pulumi/pulumi@^3.0.0":
-  version "3.79.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.79.0.tgz#555f5e26b3006d7b7cf5782be670950ceb6da3c8"
-  integrity sha512-BtycJsN073tcrFfAegz8gQF78N+EzjayzFxHwn8RHJ2suENGfQ5GWvI1z6/umxCx8SamOrz8d7rinRRDybPkPA==
+"@pulumi/pulumi@3.80.0", "@pulumi/pulumi@^3.0.0":
+  version "3.80.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.80.0.tgz#9e58103f608e08a867f1f823dbe564e1c0eb3d9e"
+  integrity sha512-UsUwlk0yojgZOjK9MiAim8Dlf/m5LQPcrax8Z+H10FvB6KrtLizX/uvS7emkNKXu3Vs6yJ0paiEBn5bim/UQ+g==
   dependencies:
     "@grpc/grpc-js" "^1.8.16"
     "@logdna/tail-file" "^2.0.6"
