@@ -433,7 +433,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
   'endpoint'
 > &
   (TOAS extends {
-    servers: { url: infer TEndpoint extends string }[];
+    servers: { url: infer TEndpoint extends string }[] | Array<infer TEndpoint>;
   }
     ? {
         /**

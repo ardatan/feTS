@@ -79,9 +79,11 @@ export interface OpenAPIMediaTypeObject {
 export type OpenAPIDocument = {
   openapi?: string;
   info?: OpenAPIInfo;
-  servers?: {
-    url: string;
-  }[];
+  servers?:
+    | {
+        url: string;
+      }[]
+    | string[];
   paths?: Record<string, OpenAPIPathObject>;
   components?: unknown;
 };

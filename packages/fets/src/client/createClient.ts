@@ -5,6 +5,7 @@ import { OpenAPIDocument, Router } from '../types.js';
 import {
   ClientMethod,
   ClientOptions,
+  ClientOptionsWithStrictEndpoint,
   ClientPlugin,
   ClientRequestParams,
   OASClient,
@@ -62,7 +63,9 @@ function useValidationErrors(): ClientPlugin {
  * const client = createClient<NormalizeOAS<typeof oas>>({});
  * ```
  */
-export function createClient<TOAS extends OpenAPIDocument>(options: ClientOptions): OASClient<TOAS>;
+export function createClient<TOAS extends OpenAPIDocument>(
+  options: ClientOptionsWithStrictEndpoint<TOAS>,
+): OASClient<TOAS>;
 /**
  * Create a client from a typed `Router`
  *
