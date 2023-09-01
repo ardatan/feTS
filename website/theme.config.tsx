@@ -1,16 +1,9 @@
 /* eslint sort-keys: error */
 import { useRouter } from 'next/router';
 import { defineConfig, Giscus, useTheme } from '@theguild/components';
-import FetsLogo from 'public/assets/fets-logo.svg';
 
 export default defineConfig({
   docsRepositoryBase: 'https://github.com/ardatan/fets/tree/master/website',
-  logo: (
-    <div className="flex items-center gap-x-2">
-      <FetsLogo />
-      <span className="font-bold text-gray-500 dark:text-gray-100">feTS</span>
-    </div>
-  ),
   main({ children }) {
     const { resolvedTheme } = useTheme();
     const { route } = useRouter();
