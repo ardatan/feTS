@@ -1,5 +1,5 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
-import { fetch, URLSearchParams } from '@whatwg-node/fetch';
+import { fetch } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router } from '../types.js';
 import {
@@ -119,7 +119,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             if (requestParams?.formUrlEncoded) {
-              requestInit.body = qsStringify(urlSearchParams, qsOptions);
+              requestInit.body = qsStringify(requestParams.formUrlEncoded, qsOptions);
               requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
