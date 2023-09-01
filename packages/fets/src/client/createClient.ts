@@ -1,3 +1,4 @@
+import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch, URLSearchParams } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router } from '../types.js';
@@ -11,6 +12,11 @@ import {
   OnRequestInitHook,
   OnResponseHook,
 } from './types.js';
+
+const qsOptions: IStringifyOptions = {
+  indices: false,
+  arrayFormat: 'repeat',
+};
 
 export class ClientValidationError extends Error implements AggregateError {
   constructor(
@@ -95,27 +101,6 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             if (!path.startsWith('/') && !path.startsWith('http')) {
               path = `/${path}`;
             }
-            let searchParams: URLSearchParams | undefined;
-            if (requestParams?.query) {
-              searchParams = new URLSearchParams();
-              for (const queryParamKey in requestParams?.query || {}) {
-                const value = requestParams?.query?.[queryParamKey];
-                if (value) {
-                  if (Array.isArray(value)) {
-                    for (const v of value) {
-                      searchParams.append(queryParamKey, v);
-                    }
-                  } else if (typeof value === 'object' && value !== null) {
-                    // @see https://swagger.io/docs/specification/serialization/#query
-                    for (const v of Object.keys(value)) {
-                      searchParams.append(`${queryParamKey}[${v}]`, value[v]);
-                    }
-                  } else {
-                    searchParams.append(queryParamKey, value);
-                  }
-                }
-              }
-            }
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               method,
               headers: requestParams?.headers || {},
@@ -131,20 +116,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             if (requestParams?.formUrlEncoded) {
-              const urlSearchParams = new URLSearchParams();
-              for (const key in requestParams.formUrlEncoded) {
-                const value = requestParams.formUrlEncoded[key];
-                if (value) {
-                  if (Array.isArray(value)) {
-                    for (const v of value) {
-                      urlSearchParams.append(key, v);
-                    }
-                  } else {
-                    urlSearchParams.append(key, value);
-                  }
-                }
-              }
-              requestInit.body = urlSearchParams;
+              requestInit.body = qsStringify(urlSearchParams, qsOptions);
               requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
@@ -165,11 +137,12 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             if (endpoint && !path.startsWith('http')) {
               finalUrl = `${endpoint}${path}`;
             }
-            if (searchParams) {
+            if (requestParams?.query) {
+              const searchParams = qsStringify(requestParams.query, qsOptions);
               if (finalUrl.includes('?')) {
-                finalUrl += '&' + searchParams.toString();
+                finalUrl += '&' + searchParams;
               } else {
-                finalUrl += '?' + searchParams.toString();
+                finalUrl += '?' + searchParams;
               }
             }
 
