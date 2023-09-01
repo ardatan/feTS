@@ -1,7 +1,9 @@
 import { createClient, type NormalizeOAS } from 'fets';
 import exampleSpringOas from './fixtures/example-spring-oas';
 
-const client = createClient<NormalizeOAS<typeof exampleSpringOas>>({});
+const client = createClient<NormalizeOAS<typeof exampleSpringOas>>({
+  endpoint: 'http://localhost:8080',
+});
 
 const createUserRes = await client['/user'].post({
   json: {
