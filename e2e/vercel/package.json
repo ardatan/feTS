@@ -1,6 +1,6 @@
 {
   "name": "@e2e/vercel",
-  "version": "0.0.69",
+  "version": "0.0.73",
   "private": true,
   "scripts": {
     "build": "node scripts/bundle.js",
@@ -12,20 +12,20 @@
   },
   "dependencies": {
     "@e2e/shared-scripts": "0.0.0",
-    "@e2e/shared-server": "0.0.69",
+    "@e2e/shared-server": "0.0.73",
     "encoding": "0.1.13",
-    "next": "13.4.12",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.76.1",
-    "@types/react": "18.2.18",
-    "esbuild": "0.18.17",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12",
+    "@pulumi/pulumi": "3.80.0",
+    "@types/react": "18.2.21",
+    "esbuild": "0.19.2",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   }
 }

@@ -22,8 +22,12 @@ configure `swaggerUiEndpoint` and `oasEndpoint` options as well.
 import { createRouter, Response } from 'fets'
 
 export default createRouter({
-  swaggerUiEndpoint: '/api/docs',
-  oasEndpoint: '/api/openapi.json'
+  swaggerUI: {
+    endpoint: '/api/docs'
+  },
+  openAPI: {
+    endpoint: '/api/openapi.json'
+  }
 }).route({
   method: 'GET',
   path: '/api/greetings',

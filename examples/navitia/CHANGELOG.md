@@ -1,5 +1,37 @@
 # example-navitia
 
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies
+  [[`0b5278f`](https://github.com/ardatan/feTS/commit/0b5278fd6dac549376cfec58fb42223ea44911cc)]:
+  - fets@0.4.13
+
+## 0.0.17
+
+### Patch Changes
+
+- Updated dependencies
+  [[`22b21ef`](https://github.com/ardatan/feTS/commit/22b21ef82c6efb0475699ba1f981197eb30afa34)]:
+  - fets@0.4.12
+
+## 0.0.16
+
+### Patch Changes
+
+- Updated dependencies
+  [[`a22afe3`](https://github.com/ardatan/feTS/commit/a22afe39cdf16312fbd381c6c137b20b6eaf51a4)]:
+  - fets@0.4.11
+
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies
+  [[`c08cc22`](https://github.com/ardatan/feTS/commit/c08cc22a9bc89fa35c26f6d81b4af53915a21aec)]:
+  - fets@0.4.10
+
 ## 0.0.14
 
 ### Patch Changes

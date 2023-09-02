@@ -4,35 +4,16 @@ on:
   push:
     branches:
       - master
-  pull_request: {}
+  pull_request:
+    paths-ignore:
+      - 'website/**'
 
 env:
-  NODE_OPTIONS: --max-old-space-size=4096
+  NODE_NO_WARNINGS: true
+  NODE_OPTIONS: '--max-old-space-size=8192'
+  CI: true
 
 jobs:
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Master
-        uses: actions/checkout@v3
-      - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
-        with:
-          nodeVersion: 18
-      - name: Prettier Check
-        run: yarn prettier:check
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Master
-        uses: actions/checkout@v3
-      - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
-        with:
-          nodeVersion: 18
-      - name: ESLint
-        run: yarn lint
-
   type-check:
     runs-on: ubuntu-latest
     steps:
@@ -66,9 +47,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
       - name: Test
+        if: ${{ matrix.node-version == 20 }}
         run: yarn test --ci
-        env:
-          CI: true
+      - name: Test
+        if: ${{ matrix.node-version != 20 }}
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 5
+          command: yarn test --detectLeaks --detectOpenHandles --ci
+
   integration:
     name: integration / node ${{matrix.node-version}}
     runs-on: ubuntu-latest

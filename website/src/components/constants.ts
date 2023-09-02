@@ -9,7 +9,7 @@ const response = await client['/auth/register'].post({
   json: {
     name: 'John Doe',
     email: 'john@doe.com',
-    passcode: 12345,
+    passcode: 12345
   }
 })
 

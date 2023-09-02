@@ -1,3 +1,98 @@
 # Comparison
 
-Oops, nothing to see here right now. Come back later!
+## [`itty-router`](https://github.com/kwhitley/itty-router)
+
+`itty-router` is a very thin router library that allows you to define routes and handlers based on
+Fetch API just like feTS does.
+
+### More optimized Fetch API for Node.js
+
+feTS uses a better optimized version of Fetch API for Node.js as
+[you can see here the differences between the Fetch impl feTS uses and the default one in Node.js.](https://github.com/ardatan/whatwg-node/tree/master/packages/fetch#why-we-should-still-use-these-for-nodejs-even-if-it-already-implements-them-natively)
+
+### No need to implement an adapter for Node.js
+
+If you want to use `itty-router` in Node.js, you need to implement an adapter Node.js's server API
+because Node's HTTP package doesn't use Fetch API like Deno or Bun does. `itty-router` is designed
+to be used with Fetch-compliant environments like Deno, Bun or Cloudflare Workers, so it doesn't aim
+to support Node.js.
+
+feTS uses an adapter layer
+[@whatwg-node/server](https://github.com/ardatan/whatwg-node/tree/master/packages/server#whatwg-node-generic-server-adapter)
+that allows you to use Fetch API in Node.js's `http` library. So you don't need to implement an
+adapter for Node.js.
+
+### Plugin system
+
+feTS has a plugin system that allows you to extend the functionality of the router. This allows us
+to hook different phases of the request lifecycle and add new features to the router. For example,
+you can manipulate the response after the handler resolves. In `itty-router`, you need to wrap the
+router's `fetch` method to do that.
+
+```ts
+import { Router } from "itty-router";
+
+const router = Router();
+
+router.get("/hello", () => new Response("Hello World!"));
+
+const wrappedFetch = (request: Request) => {
+  const response = await router.fetch(request);
+  // Do something with the response here
+  logResponse(response);
+  // Manipulate the response here
+  response.headers.set("X-Hello", "World");
+  return response;
+};
+```
+
+But in feTS;
+
+```ts
+import { createRouter } from 'fets'
+
+const router = createRouter({
+  plugins: [
+    {
+      onResponse({ response }) {
+        // Do something with the response here
+        logResponse(response)
+        // Manipulate the response here
+        response.headers.set('X-Hello', 'World')
+      }
+    }
+  ]
+})
+```
+
+On the other hand, even if you can manipulate the request, return an early response for the missing
+auth params etc but a plugin system usually makes things easier.
+
+[See the differences between middlewares and plugins here](/docs/server/plugins)
+
+### Type Safe Route handlers
+
+feTS allows you to define type-safe route handlers in most cases even if a schema is not defined.
+
+```ts
+import { createRouter } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/user/:id',
+  handler: req => {
+    // req.params.id is type safe
+    // req.params.name would be an error in TypeScript
+    return new Response(`Hello ${req.params.id}`)
+  }
+})
+```
+
+### Out-of-box support for JSON Schema and OpenAPI
+
+feTS has out-of-box support for JSON Schema and OpenAPI. You can define a schema for your routes and
+feTS will validate the request and response against the schema. And you can generate OpenAPI
+documentation from your routes.
+
+[Learn more about validations](/docs/server/type-safety-and-validation)
+[Learn more about OpenAPI](/docs/server/openapi)

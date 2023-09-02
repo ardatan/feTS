@@ -87,9 +87,13 @@ export type OASJSONResponseSchema<
     >]['schema']
   : OASStatusMap<TOAS, TPath, TMethod>[TStatus]['schema'];
 
-type ToNumber<T extends string, R extends any[] = []> = T extends `${R['length']}`
-  ? R['length']
-  : ToNumber<T, [1, ...R]>;
+type ToNumber<T extends string | number, R extends any[] = []> = T extends number
+  ? T
+  : T extends `${number}`
+  ? T extends `${R['length']}`
+    ? R['length']
+    : ToNumber<T, [1, ...R]>
+  : never;
 
 export type OASResponse<
   TOAS extends OpenAPIDocument,
@@ -103,8 +107,11 @@ export type OASResponse<
       ? TStatus
       : TStatus extends 'default'
       ? OASStatusMap<TOAS, TPath, TMethod> extends Record<'200' | 200, any>
-        ? NotOkStatusCode
-        : OkStatusCode
+        ? Exclude<
+            NotOkStatusCode,
+            ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
+          >
+        : Exclude<OkStatusCode, ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>>
       : TStatus extends `${number}${number}${number}`
       ? ToNumber<TStatus> extends StatusCode
         ? ToNumber<TStatus>
@@ -358,7 +365,7 @@ export type OASRequestParams<
          *
          * For example if path is `/todos/{id}` and `params` is `{ id: '1' }`, the path will be `/todos/1`
          */
-        params: Record<ExtractPathParamsWithBrackets<TPath>, string | number>;
+        params: Record<ExtractPathParamsWithBrackets<TPath>, string | number | bigint | boolean>;
       }
     : {}) &
   (TPath extends `${string}:${string}${string}`
@@ -370,7 +377,7 @@ export type OASRequestParams<
          *
          * For example if path is `/todos/:id` and `params` is `{ id: '1' }`, the path will be `/todos/1`.
          */
-        params: Record<ExtractPathParamsWithPattern<TPath>, string | number>;
+        params: Record<ExtractPathParamsWithPattern<TPath>, string | number | bigint | boolean>;
       }
     : {}) &
   // Respect security definitions in path object
@@ -426,8 +433,19 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
   'endpoint'
 > &
   (TOAS extends {
-    servers: { url: infer TEndpoint extends string }[];
+    servers: (infer TEndpoint extends string)[];
   }
+    ? {
+        /**
+         * The base URL of the API defined in the OAS document.
+         *
+         * @see https://swagger.io/docs/specification/api-host-and-base-path/
+         */
+        endpoint: TEndpoint;
+      }
+    : TOAS extends {
+        servers: { url: infer TEndpoint extends string }[];
+      }
     ? {
         /**
          * The base URL of the API defined in the OAS document.

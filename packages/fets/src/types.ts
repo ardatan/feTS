@@ -86,6 +86,7 @@ export type OpenAPIDocument = {
     | {
         url: string;
       }[]
+    | string[]
     | undefined;
   paths?: Record<string, OpenAPIPathObject> | undefined;
   components?: unknown;
@@ -158,14 +159,14 @@ export type FromSchema<T> =
                     type: 'number';
                     format: 'int64';
                   };
-                  output: bigint;
+                  output: bigint | number;
                 },
                 {
                   pattern: {
                     type: 'integer';
                     format: 'int64';
                   };
-                  output: bigint;
+                  output: bigint | number;
                 },
               ];
         }
