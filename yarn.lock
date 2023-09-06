@@ -12306,9 +12306,9 @@ swagger-client@^3.20.0:
     url "~0.11.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.6.1.tgz#f01aba55d4a311a54095c31ee73899cec9ef4ce6"
-  integrity sha512-qjCcGu1nj1SjkhDw1qKZL+gxlMvLR3H2T36L+yiStMBtNxTQNN9eyu3bah/mdJlTDWF/SKEAV0gzMlqds4XtUg==
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.6.2.tgz#12162d98535d8b6ae97ee571bc60422f33ce71f9"
+  integrity sha512-UBjk84s+bu7KZ0vt4sU/R6Ej43Kf4prt9RRKFG+Bu1R4JQTNDXwlKz/+fsC2G98kxZDTkOrZKWnlJrHTSKGq7Q==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.11"
     "@braintree/sanitize-url" "=6.0.4"
