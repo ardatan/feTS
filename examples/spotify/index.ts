@@ -52,6 +52,25 @@ export async function getRecommendations(token: string, artistId: string, trackI
   return data;
 }
 
+export async function createPlaylist(token: string, userId: string, name: string) {
+  const res = await client['/users/{user_id}/playlists'].post({
+    json: {
+      name,
+    },
+    params: {
+      user_id: userId,
+    },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) {
+    const errData = await res.json();
+    throw new Error(errData.error.message);
+  }
+  return res.json();
+}
+
 async function main() {
   const token = await getToken();
   const res = await client['/search'].get({
