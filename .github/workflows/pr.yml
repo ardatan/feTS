@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - 'website/**'
 
 env:
   NODE_OPTIONS: --max-old-space-size=4096

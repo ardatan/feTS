@@ -16,6 +16,7 @@
     "util": "https://deno.land/std@0.165.0/node/util.ts",
     "zod-to-json-schema": "npm:zod-to-json-schema",
     "zod": "npm:zod",
-    "@repeaterjs/repeater": "npm:@repeaterjs/repeater"
+    "@repeaterjs/repeater": "npm:@repeaterjs/repeater",
+    "qs": "npm:qs"
   }
 }

@@ -1,5 +1,237 @@
 # fets
 
+## 0.4.13
+
+### Patch Changes
+
+- [#517](https://github.com/ardatan/feTS/pull/517)
+  [`0b5278f`](https://github.com/ardatan/feTS/commit/0b5278fd6dac549376cfec58fb42223ea44911cc)
+  Thanks [@mezannic](https://github.com/mezannic)! - Handle deep objects in query parameter
+  serialization
+
+## 0.4.12
+
+### Patch Changes
+
+- [#486](https://github.com/ardatan/feTS/pull/486)
+  [`22b21ef`](https://github.com/ardatan/feTS/commit/22b21ef82c6efb0475699ba1f981197eb30afa34)
+  Thanks [@ardatan](https://github.com/ardatan)! - `default` status code in operation objects should
+  exclude other defined status codes
+
+## 0.4.11
+
+### Patch Changes
+
+- [`a22afe3`](https://github.com/ardatan/feTS/commit/a22afe39cdf16312fbd381c6c137b20b6eaf51a4)
+  Thanks [@ardatan](https://github.com/ardatan)! - Handle bigints as path parameters
+
+## 0.4.10
+
+### Patch Changes
+
+- [#438](https://github.com/ardatan/feTS/pull/438)
+  [`c08cc22`](https://github.com/ardatan/feTS/commit/c08cc22a9bc89fa35c26f6d81b4af53915a21aec)
+  Thanks [@ardatan](https://github.com/ardatan)! - Avoid unnecessary promises for optimizations
+
+## 0.4.9
+
+### Patch Changes
+
+- [`432ef94`](https://github.com/ardatan/feTS/commit/432ef945e9d952fb51ccfd4e683931653c52daf8)
+  Thanks [@ardatan](https://github.com/ardatan)! - Automatically infer path parameters from `path`
+  if `params` is not provided by the user
+
+## 0.4.8
+
+### Patch Changes
+
+- [#380](https://github.com/ardatan/feTS/pull/380)
+  [`92fe78e`](https://github.com/ardatan/feTS/commit/92fe78e1242a37687328713fd6e13d092776ce81)
+  Thanks [@ardatan](https://github.com/ardatan)! - Try to fix bad security references
+
+- [#382](https://github.com/ardatan/feTS/pull/382)
+  [`d904109`](https://github.com/ardatan/feTS/commit/d9041090d7a53ac46ca3e774fe8603cc056a8db5)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support old Swagger definitions in `OASModel`
+
+## 0.4.7
+
+### Patch Changes
+
+- [#376](https://github.com/ardatan/feTS/pull/376)
+  [`5dc2a08`](https://github.com/ardatan/feTS/commit/5dc2a086d9a94925781ad6c20507d58d87c01e43)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix complex union issue happening if there are a
+  lot of parameters defined in OAS, and request parameters are now simplified automatically during
+  autocompletion
+
+## 0.4.6
+
+### Patch Changes
+
+- [#363](https://github.com/ardatan/feTS/pull/363)
+  [`85bd174`](https://github.com/ardatan/feTS/commit/85bd17471671f52d63b73379ce0c66b5c047daaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix the bug happening when there is no successful
+  response defined in the OpenAPI spec but only `default`;
+
+  For example;
+
+  ```json
+  {
+    // No 2xx response defined.
+    "responses": {
+      "400": {
+        "description": "Bad Request"
+        //...
+      },
+      "default": {
+        "description": "Successful response"
+        //...
+      }
+    }
+  }
+  ```
+
+  Then feTS should take the `default` response as the successful response.
+
+  ```ts
+  const response = await client['/user'].post({
+    json: { name: 'John' },
+  });
+
+  if (!res.ok) {
+    // 400 should be here
+  } else {
+    // default should be here
+  }
+  ```
+
+- [#360](https://github.com/ardatan/feTS/pull/360)
+  [`098806a`](https://github.com/ardatan/feTS/commit/098806ad1006496a3bf60eed85634c091de8adab)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix the bug happening when there are multiple
+  request bodies are defined in a single operation.
+
+  For example;
+
+  If the following exists in the OpenAPI spec,
+
+  ```json
+  {
+    "requestBody": {
+      "application/json": "...",
+      "multipart/form-data": "...",
+      "required": true
+    }
+  }
+  ```
+
+  feTS shouldn't take both `json` and `formData` required;
+
+  ```ts
+  client['/user'].post({
+    // Both shouldn't be required because only one of them is enough.
+    json: { name: 'John' },
+    formData: { name: 'John' },
+  });
+  ```
+
+- [#363](https://github.com/ardatan/feTS/pull/363)
+  [`85bd174`](https://github.com/ardatan/feTS/commit/85bd17471671f52d63b73379ce0c66b5c047daaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add comments to the types and fields
+
+## 0.4.5
+
+### Patch Changes
+
+- [#358](https://github.com/ardatan/feTS/pull/358)
+  [`5cc42a9`](https://github.com/ardatan/feTS/commit/5cc42a9344a600bb4395fabe595387610a5c76f9)
+  Thanks [@ardatan](https://github.com/ardatan)! - Less strict `endpoint` parameter to allow users
+  to give different endpoints (behind proxy etc)
+
+## 0.4.4
+
+### Patch Changes
+
+- [`888dd1e`](https://github.com/ardatan/feTS/commit/888dd1e6f0d584409dd4ccd388f6258cee6efe80)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix Authentication support with JSON bodies
+
+- [#355](https://github.com/ardatan/feTS/pull/355)
+  [`b5f0c17`](https://github.com/ardatan/feTS/commit/b5f0c17adf6e64f1ddb1f1ab953e3da03b9056dc)
+  Thanks [@ardatan](https://github.com/ardatan)! - Improve Swagger 2.0 support
+
+## 0.4.3
+
+### Patch Changes
+
+- [#341](https://github.com/ardatan/feTS/pull/341)
+  [`5222e99`](https://github.com/ardatan/feTS/commit/5222e998df5002c837518b85f3968343d56aecae)
+  Thanks [@ardatan](https://github.com/ardatan)! - Set default values for `RouteHandler`'s generics
+
+## 0.4.2
+
+### Patch Changes
+
+- [#335](https://github.com/ardatan/feTS/pull/335)
+  [`1fdab11`](https://github.com/ardatan/feTS/commit/1fdab11c0555baf15637a53f02a95bec48bc7d61)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support recursive nested types
+
+## 0.4.1
+
+### Patch Changes
+
+- [#326](https://github.com/ardatan/feTS/pull/326)
+  [`6b2d08a`](https://github.com/ardatan/feTS/commit/6b2d08a14bb8af177e97ef132ca65a80ff79d833)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support `application/x-www-form-urlencoded`
+
+- [#311](https://github.com/ardatan/feTS/pull/311)
+  [`f8f269e`](https://github.com/ardatan/feTS/commit/f8f269eb7c1346ac4e01d001c03dfe8b172ab109)
+  Thanks [@ardatan](https://github.com/ardatan)! - Include OAuth2 workflow
+
+## 0.4.0
+
+### Minor Changes
+
+- [#223](https://github.com/ardatan/feTS/pull/223)
+  [`6217215`](https://github.com/ardatan/feTS/commit/621721559528476e1fa5788f9d5b52c8fec2db87)
+  Thanks [@kylem123](https://github.com/kylem123)! - Altered logic on get query params to return
+  undefined when optional prop is missing or the empty string
+
+- [#317](https://github.com/ardatan/feTS/pull/317)
+  [`77d1b25`](https://github.com/ardatan/feTS/commit/77d1b2548b46c80fb15853ff035cada5628a147c)
+  Thanks [@beerose](https://github.com/beerose)! - Remove Mutable from the public API
+
+### Patch Changes
+
+- [#320](https://github.com/ardatan/feTS/pull/320)
+  [`695c091`](https://github.com/ardatan/feTS/commit/695c0919408c593bff1b16ec99708456aca3bbaf)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix allOf references
+
+- [#321](https://github.com/ardatan/feTS/pull/321)
+  [`e95fd8f`](https://github.com/ardatan/feTS/commit/e95fd8f824293bc452958ad320a4f1ed5f7eae7c)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support other Auth types and Security Schemes in
+  OpenAPI operation definitions
+
+## 0.3.2
+
+### Patch Changes
+
+- [#316](https://github.com/ardatan/feTS/pull/316)
+  [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+
+  - Added dependency [`ts-toolbelt@^9.6.0` ↗︎](https://www.npmjs.com/package/ts-toolbelt/v/9.6.0)
+    (to `dependencies`)
+
+- [#316](https://github.com/ardatan/feTS/pull/316)
+  [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
+  Thanks [@ardatan](https://github.com/ardatan)! - - Support `parameters` in the OpenAPI Path
+  objects
+
+  - Support dots in `components.schemas` names
+
+- [#309](https://github.com/ardatan/feTS/pull/309)
+  [`663d2e0`](https://github.com/ardatan/feTS/commit/663d2e072a8b2a9ca542ac49d1bce63e0dd1a93f)
+  Thanks [@ardatan](https://github.com/ardatan)! - Make `requestParams` required only if any params
+  are required, otherwise keep it optional
+
 ## 0.3.1
 
 ### Patch Changes
@@ -117,8 +349,8 @@
   [`49a7320`](https://github.com/ardatan/feTS/commit/49a7320c7bda3de82e4a51041973dbe5e60341fe)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3) (from
-    `^0.9.0`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3)
+    (from `^0.9.0`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.6` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.6)
     (from `^0.8.1`, in `dependencies`)
@@ -155,8 +387,8 @@
     [`@whatwg-node/cookie-store@^0.1.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/cookie-store/v/0.1.0)
     (from `^0.0.1`, in `dependencies`)
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0) (from
-    `^0.8.2`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0)
+    (from `^0.8.2`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.0)
     (from `^0.7.4`, in `dependencies`)

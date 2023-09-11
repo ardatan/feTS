@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { clsx } from 'clsx';
 import { Anchor } from '@theguild/components';
+import { Editor } from './editor';
 import AWSLambda from 'public/assets/aws-lambda.svg';
 import AzureFunctions from 'public/assets/azure-functions.svg';
 import Bun from 'public/assets/bun.svg';
@@ -19,8 +20,6 @@ import OpenAPI from 'public/assets/openapi.svg';
 import TypeScript from 'public/assets/typescript.svg';
 import WebSockets from 'public/assets/websockets.svg';
 
-const Editor = dynamic(() => import('./editor'), { ssr: false });
-
 const IBMPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -35,6 +34,7 @@ const classes = {
   subtitle: clsx(
     'lg:text-lg xl:w-2/4 lg:w-3/4 mx-auto text-secondary-500 dark:text-white lg:[text-wrap:balance] lg:text-center',
   ),
+  section: clsx('container px-8 py-16 lg:px-24 lg:py-32'),
 };
 
 export function IndexPage(): ReactElement {
@@ -43,14 +43,14 @@ export function IndexPage(): ReactElement {
       <div
         className={clsx(
           classes.font,
-          'to-secondary-100 flex items-center bg-gradient-to-b from-[#1886ff]/20 py-14 dark:to-[#1c212c] lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
+          'to-secondary-100 from-primary/10 dark:to-secondary-600 flex items-center bg-gradient-to-r py-14 lg:min-h-[calc(100vh-64px-68px)] lg:py-24',
         )}
       >
-        <div className="container flex items-stretch max-lg:flex-col">
-          <div className="text-secondary-600 flex-1 dark:text-white max-lg:pb-20 lg:pr-24">
+        <div className="container grid gap-20 max-lg:px-8 lg:grid-cols-2">
+          <div className="text-secondary-600 flex flex-col justify-center dark:text-white lg:max-w-lg">
             <h1 className="text-[4rem] font-bold max-lg:text-4xl">feTS</h1>
-            <h2 className="text-2xl max-lg:text-lg">Fetch API 💙 TypeScript</h2>
-            <h3 className="my-8 text-2xl max-lg:text-lg">
+            <h2 className="text-lg lg:text-2xl">Fetch API 💙 TypeScript</h2>
+            <h3 className="my-8 text-base/7 lg:text-lg">
               Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
               client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
             </h3>
@@ -75,7 +75,7 @@ export function IndexPage(): ReactElement {
       </div>
 
       <section className={clsx(classes.font, 'dark:bg-dark text-secondary-600 bg-white')}>
-        <div className="container mx-auto py-24">
+        <div className={classes.section}>
           <div className="mb-20">
             <h2 className={classes.title}>New Approach to REST APIs</h2>
             <h3 className={classes.subtitle}>
@@ -84,7 +84,7 @@ export function IndexPage(): ReactElement {
               you with the flexibility to adapt to your project's specific needs.
             </h3>
           </div>
-          <div className="my-24 flex gap-4 max-lg:flex-wrap">
+          <div className="my-24 flex gap-16 max-lg:flex-col">
             {[
               {
                 name: 'Harness the Power of OpenAPI',
@@ -105,9 +105,9 @@ export function IndexPage(): ReactElement {
                 icon: TypeScript,
               },
             ].map(({ name, description, icon: Icon }) => (
-              <div key={name} className="flex flex-col md:w-1/3 lg:items-center">
+              <div key={name} className="flex flex-col lg:w-1/3 lg:items-center">
                 <Icon />
-                <h2 className="mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl">
+                <h2 className="mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl lg:text-center">
                   {name}
                 </h2>
                 <p className="leading-relaxed dark:text-white lg:text-center lg:text-lg">
@@ -116,14 +116,19 @@ export function IndexPage(): ReactElement {
               </div>
             ))}
           </div>
-          <Diagram className="mx-auto max-w-[980px]" />
+          <Diagram className="mx-auto max-w-[980px] [&_[fill=\#70788A]]:dark:fill-gray-100 [&_[fill=\#F3F4F6]]:dark:fill-gray-500" />
         </div>
       </section>
 
-      <section className={clsx(classes.font, 'bg-secondary-100 dark:bg-secondary-600')}>
-        <div className="container flex flex-col py-14 lg:items-center lg:py-40">
+      <section
+        className={clsx(
+          classes.font,
+          'from-secondary-100 to-primary/10 dark:from-secondary-600 bg-gradient-to-r dark:bg-gradient-to-l',
+        )}
+      >
+        <div className={classes.section}>
           <h2 className={classes.title}>Deploy Anywhere</h2>
-          <h2 className={clsx(classes.subtitle, 'max-w-[500px] lg:text-center')}>
+          <h3 className={clsx(classes.subtitle, 'lg:text-center')}>
             feTS Server provides a super fast HTTP server that can run anywhere with the power of{' '}
             <Anchor
               href="https://github.com/ardatan/whatwg-node/tree/master/packages/server"
@@ -131,8 +136,8 @@ export function IndexPage(): ReactElement {
             >
               @whatwg-node/server
             </Anchor>
-          </h2>
-          <div className="mt-14 grid w-full gap-7 lg:mt-24 lg:grid-cols-3">
+          </h3>
+          <div className="mt-14 grid w-full gap-7 md:grid-cols-2 lg:mt-24 xl:grid-cols-3">
             {[
               { name: 'AWS Lambda', icon: AWSLambda, link: '/server/integrations/aws-lambda' },
               {
@@ -168,10 +173,12 @@ export function IndexPage(): ReactElement {
             ].map(({ name, icon: Icon, link, isInverted }) => (
               <Anchor
                 href={link}
-                className="hover:!bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 font-bold hover:text-white"
+                className="dark:hover:bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 text-xl/8 font-bold hover:shadow-xl dark:hover:text-white lg:text-2xl/9"
                 key={name}
               >
-                <Icon className={clsx(isInverted && 'dark:invert [a:hover>&]:invert')} />
+                <Icon
+                  className={clsx('shrink-0', isInverted && 'dark:invert dark:[a:hover>&]:invert')}
+                />
                 {name}
                 <span className="font-sans font-light transition-transform duration-75 group-hover:translate-x-[2px]">
                   →

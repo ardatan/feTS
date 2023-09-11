@@ -11,8 +11,8 @@ We will use `fets` which has an agnostic HTTP handler using
 Create a `deno-fets.ts` file:
 
 ```ts filename="deno-fets.ts"
-import { createRouter, Response } from 'https://cdn.skypack.dev/fets?dts'
 import { serve } from 'https://deno.land/std@0.157.0/http/server.ts'
+import { createRouter, Response } from 'npm:fets'
 
 const router = createRouter().route({
   method: 'GET',
@@ -46,6 +46,3 @@ And run it:
 ```bash
 deno run --allow-net index.ts
 ```
-
-> You can also check a full example on our GitHub repository
-> [here](https://github.com/ardatan/fets/tree/master/examples/deno)

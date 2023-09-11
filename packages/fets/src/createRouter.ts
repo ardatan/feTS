@@ -1,5 +1,5 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
-import { createServerAdapter } from '@whatwg-node/server';
+import { createServerAdapter, isPromise } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
 import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
@@ -16,6 +16,7 @@ import type {
   RouterComponentsBase,
   RouterOptions,
   RouterPlugin,
+  RouterRequest,
   RouterSDK,
   RouteSchemas,
 } from './types.js';
@@ -72,9 +73,81 @@ export function createRouterBase(
 
   // Use this in `handle` for iteration to get better performance
   const patternHandlerObjByMethod = new Map<HTTPMethod, PatternHandlersObj<any>[]>();
+
+  function handleUnhandledRoute() {
+    if (swaggerUI?.endpoint) {
+      return new fetchAPI.Response(null, {
+        status: 302,
+        headers: {
+          location: swaggerUI.endpoint,
+        },
+      });
+    }
+    return new fetchAPI.Response(null, { status: 404 });
+  }
+
+  interface ProcessHandlerResultOpts {
+    routerRequest: RouterRequest;
+    context: any;
+    pattern: URLPattern;
+  }
+
+  function processHandlerResult(
+    handlerResult: TypedResponse | Response | undefined,
+    opts: ProcessHandlerResultOpts,
+  ) {
+    if (handlerResult) {
+      if (isLazySerializedResponse(handlerResult)) {
+        const onSerializeResponseHookPayload = {
+          request: opts.routerRequest,
+          path: opts.pattern.pathname,
+          lazyResponse: handlerResult,
+          serverContext: opts.context,
+        };
+        for (const onSerializeResponseHook of onSerializeResponseHooks) {
+          onSerializeResponseHook(onSerializeResponseHookPayload);
+        }
+        return (
+          handlerResult.actualResponse ||
+          fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
+        );
+      }
+      return handlerResult;
+    }
+  }
+
+  function asyncIterationUntilReturn<TInput, TOutput>(
+    iterable: Iterable<TInput>,
+    callback: (result: TInput) => Promise<TOutput | undefined> | TOutput | undefined,
+  ): Promise<TOutput | undefined> | TOutput | undefined {
+    const iterator = iterable[Symbol.iterator]();
+    function iterate(): Promise<TOutput | undefined> | TOutput | undefined {
+      const { value, done } = iterator.next();
+      if (done) {
+        return;
+      }
+      if (value) {
+        const callbackResult$ = callback(value);
+        if (isPromise(callbackResult$)) {
+          return callbackResult$.then(callbackResult => {
+            if (callbackResult) {
+              return callbackResult;
+            }
+            return iterate();
+          });
+        }
+        if (callbackResult$) {
+          return callbackResult$;
+        }
+        return iterate();
+      }
+    }
+    return iterate();
+  }
+
   return {
     openAPIDocument,
-    async handle(request: Request, context: any) {
+    handle(request: Request, context: any) {
       let url = new Proxy(EMPTY_OBJECT as URL, {
         get(_target, prop, _receiver) {
           url = new fetchAPI.URL(request.url, 'http://localhost');
@@ -87,7 +160,16 @@ export function createRouterBase(
           {},
           {
             get(_, prop) {
+              if (prop !== 'then' && !url.searchParams.has(prop as string)) {
+                return undefined;
+              }
+
               const allQueries = url.searchParams.getAll(prop.toString());
+
+              if (allQueries.length === 0) {
+                return '';
+              }
+
               return allQueries.length === 1 ? allQueries[0] : allQueries;
             },
             has(_, prop) {
@@ -95,80 +177,90 @@ export function createRouterBase(
             },
           },
         );
-        for (const { pattern, handlers } of methodPatternMaps) {
-          // Do not parse URL if not needed
-          let match: URLPatternResult | null = null;
-          if (pattern.isPattern) {
-            match = pattern.exec(url);
-          } else if (request.url.endsWith(pattern.pathname) || url.pathname === pattern.pathname) {
-            match = EMPTY_MATCH;
-          }
-          if (match != null) {
-            const routerRequest = new Proxy(request as any, {
-              get(target, prop: keyof TypedRequest) {
-                if (prop === 'parsedUrl') {
-                  return url;
-                }
-                if (prop === 'params') {
-                  return new Proxy(match!.pathname.groups, {
-                    get(_, prop) {
-                      const value = (match!.pathname.groups as Record<string, string>)[
-                        prop.toString()
-                      ];
-                      if (value != null) {
-                        return decodeURIComponent(value);
-                      }
-                      return value;
-                    },
-                  });
-                }
-                if (prop === 'query') {
-                  return queryProxy;
-                }
-                const targetProp = target[prop];
-                if (typeof targetProp === 'function') {
-                  return targetProp.bind(target);
-                }
-                return targetProp;
-              },
-              has(target, prop) {
-                return (
-                  prop in target || prop === 'parsedUrl' || prop === 'params' || prop === 'query'
-                );
-              },
-            });
-            for (const handler of handlers) {
-              const handlerResult = await handler(routerRequest, context);
-              if (handlerResult) {
-                if (isLazySerializedResponse(handlerResult)) {
-                  for (const onSerializeResponseHook of onSerializeResponseHooks) {
-                    onSerializeResponseHook({
-                      request: routerRequest,
-                      path: pattern.pathname,
-                      lazyResponse: handlerResult,
-                      serverContext: context,
+        const iterationResult$ = asyncIterationUntilReturn(
+          methodPatternMaps,
+          ({ pattern, handlers }) => {
+            // Do not parse URL if not needed
+            let match: URLPatternResult | null = null;
+            if (pattern.isPattern) {
+              match = pattern.exec(url);
+            } else if (
+              request.url.endsWith(pattern.pathname) ||
+              url.pathname === pattern.pathname
+            ) {
+              match = EMPTY_MATCH;
+            }
+            if (match != null) {
+              const routerRequest = new Proxy(request as any, {
+                get(target, prop: keyof TypedRequest) {
+                  if (prop === 'parsedUrl') {
+                    return url;
+                  }
+                  if (prop === 'params') {
+                    return new Proxy(match!.pathname.groups, {
+                      get(_, prop) {
+                        const value = (match!.pathname.groups as Record<string, string>)[
+                          prop.toString()
+                        ];
+                        if (value != null) {
+                          return decodeURIComponent(value);
+                        }
+                        return value;
+                      },
                     });
                   }
+                  if (prop === 'query') {
+                    return queryProxy;
+                  }
+                  const targetProp = target[prop];
+                  if (typeof targetProp === 'function') {
+                    return targetProp.bind(target);
+                  }
+                  return targetProp;
+                },
+                has(target, prop) {
                   return (
-                    handlerResult.actualResponse ||
-                    fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
+                    prop in target || prop === 'parsedUrl' || prop === 'params' || prop === 'query'
                   );
+                },
+              });
+              return asyncIterationUntilReturn(handlers, handler => {
+                const handlerResult$ = handler(routerRequest, context);
+                if (isPromise(handlerResult$)) {
+                  return handlerResult$.then(handlerResult => {
+                    if (handlerResult) {
+                      return processHandlerResult(handlerResult, {
+                        routerRequest,
+                        context,
+                        pattern,
+                      });
+                    }
+                  });
                 }
-                return handlerResult;
-              }
+                if (handlerResult$) {
+                  return processHandlerResult(handlerResult$, {
+                    routerRequest,
+                    context,
+                    pattern,
+                  });
+                }
+              });
             }
-          }
+          },
+        );
+        if (isPromise(iterationResult$)) {
+          return iterationResult$.then(iterationResult => {
+            if (iterationResult) {
+              return iterationResult as Response;
+            }
+            return handleUnhandledRoute();
+          });
+        }
+        if (iterationResult$) {
+          return iterationResult$ as Response;
         }
       }
-      if (swaggerUI?.endpoint) {
-        return new fetchAPI.Response(null, {
-          status: 302,
-          headers: {
-            location: swaggerUI.endpoint,
-          },
-        });
-      }
-      return new fetchAPI.Response(null, { status: 404 });
+      return handleUnhandledRoute();
     },
     route(
       opts: AddRouteWithSchemasOpts<

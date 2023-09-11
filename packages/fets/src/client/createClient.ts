@@ -1,9 +1,11 @@
-import { fetch, URLSearchParams } from '@whatwg-node/fetch';
+import { stringify as qsStringify, type IStringifyOptions } from 'qs';
+import { fetch } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router } from '../types.js';
 import {
   ClientMethod,
   ClientOptions,
+  ClientOptionsWithStrictEndpoint,
   ClientPlugin,
   ClientRequestParams,
   OASClient,
@@ -11,6 +13,11 @@ import {
   OnRequestInitHook,
   OnResponseHook,
 } from './types.js';
+
+const qsOptions: IStringifyOptions = {
+  indices: false,
+  arrayFormat: 'repeat',
+};
 
 export class ClientValidationError extends Error implements AggregateError {
   constructor(
@@ -40,14 +47,30 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
+/**
+ * Create a client for an OpenAPI document
+ * You need to pass the imported OpenAPI document as a generic
+ *
+ * We recommend using the `NormalizeOAS` type to normalize the OpenAPI document
+ *
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-existing-rest-api
+ *
+ * @example
+ * ```ts
+ * import { createClient, type NormalizeOAS } from 'fets';
+ * import type oas from './oas.ts';
+ *
+ * const client = createClient<NormalizeOAS<typeof oas>>({});
+ * ```
+ */
 export function createClient<TOAS extends OpenAPIDocument>(
-  options: Omit<ClientOptions, 'endpoint'> &
-    (TOAS extends {
-      servers: { url: infer TEndpoint extends string }[];
-    }
-      ? { endpoint: TEndpoint }
-      : { endpoint?: string }),
+  options: ClientOptionsWithStrictEndpoint<TOAS>,
 ): OASClient<TOAS>;
+/**
+ * Create a client from a typed `Router`
+ *
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-fets-server
+ */
 export function createClient<TRouter extends Router<any, any, any>>(
   options: ClientOptions,
 ): TRouter['__client'];
@@ -78,24 +101,8 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
                 path = path.replace(`{${pathParamKey}}`, value).replace(`:${pathParamKey}`, value);
               }
             }
-            if (!path.startsWith('/')) {
+            if (!path.startsWith('/') && !path.startsWith('http')) {
               path = `/${path}`;
-            }
-            let searchParams: URLSearchParams | undefined;
-            if (requestParams?.query) {
-              searchParams = new URLSearchParams();
-              for (const queryParamKey in requestParams?.query || {}) {
-                const value = requestParams?.query?.[queryParamKey];
-                if (value) {
-                  if (Array.isArray(value)) {
-                    for (const v of value) {
-                      searchParams.append(queryParamKey, v);
-                    }
-                  } else {
-                    searchParams.append(queryParamKey, value);
-                  }
-                }
-              }
             }
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               method,
@@ -109,6 +116,11 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
 
             if (requestParams?.formData) {
               requestInit.body = requestParams.formData;
+            }
+
+            if (requestParams?.formUrlEncoded) {
+              requestInit.body = qsStringify(requestParams.formUrlEncoded, qsOptions);
+              requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
             let response: Response;
@@ -125,14 +137,15 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             let finalUrl = path;
-            if (endpoint) {
+            if (endpoint && !path.startsWith('http')) {
               finalUrl = `${endpoint}${path}`;
             }
-            if (searchParams) {
+            if (requestParams?.query) {
+              const searchParams = qsStringify(requestParams.query, qsOptions);
               if (finalUrl.includes('?')) {
-                finalUrl += '&' + searchParams.toString();
+                finalUrl += '&' + searchParams;
               } else {
-                finalUrl += '?' + searchParams.toString();
+                finalUrl += '?' + searchParams;
               }
             }
 

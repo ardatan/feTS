@@ -11,12 +11,19 @@ to retrieve cookies from a client's request and send cookies back to the client 
 response. Comprehensive details about the CookieStore API are available in
 [the MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore).
 
+## Installation
+
+```sh npm2yarn
+npm i @whatwg-node/server-plugin-cookies
+```
+
 ## How to Use Cookies in feTS
 
 First, you need to import the necessary modules and create a router with the `useCookies` plugin:
 
 ```ts filename="cookies.ts"
-import { createRouter, Response, useCookies } from 'fets'
+import { createRouter, Response } from 'fets'
+import { useCookies } from '@whatwg-node/server-plugin-cookies'
 
 const router = createRouter({
   plugins: [useCookies()]
@@ -35,7 +42,7 @@ Next, you can define routes. In this example, two routes are defined:
     method: 'GET',
     schemas: {/* ... */},
     handler: async request => {
-     const sessionId = await request.cookieStore.get('session_id')
+     const sessionId = await request.cookieStore?.get('session_id')
      if (!sessionId) {
        return Response.json({ error: 'Unauthorized' }, { status: 401 })
      }
@@ -55,7 +62,7 @@ Next, you can define routes. In this example, two routes are defined:
      handler: async request => {
        const { username, password } = await request.json()
        const sessionId = await createSessionForUser({ username, password })
-       await request.cookieStore.set('session_id', sessionId)
+       await request.cookieStore?.set('session_id', sessionId)
        return Response.json({ message: 'ok' })
      }
     })

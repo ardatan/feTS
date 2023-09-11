@@ -1,6 +1,6 @@
 import { Callout } from '@theguild/components'
 
-# Quick Start Guide
+# Quickstart Guide
 
 Welcome to the feTS Client, a fully type-safe HTTP Client that leverages the
 [OpenAPI](https://swagger.io/specification/) specification. It automatically infers types from the
@@ -47,12 +47,14 @@ const pets = await response.json()
 console.log(pets)
 ```
 
-> If you get `This node exceeds the maximum length error from TypeScript`, you need to add
-> `disableSizeLimit: true` to `compilerOptions` in your `tsconfig.json` file.
+<Callout type="warning">
+  If you get `This node exceeds the maximum length error from TypeScript`, you need to add
+  `disableSizeLimit: true` to `compilerOptions` in your `tsconfig.json` file.
+</Callout>
 
 ## Usage with feTS Server
 
-If you're using feTS Server and you're sharing the types of your router instance, you can infer
+If you're using feTS Server, and you're sharing the types of your router instance, you can infer
 types directly from there.
 
 ```ts
