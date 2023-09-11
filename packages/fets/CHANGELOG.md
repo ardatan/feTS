@@ -1,5 +1,14 @@
 # fets
 
+## 0.4.14
+
+### Patch Changes
+
+- [#550](https://github.com/ardatan/feTS/pull/550)
+  [`9aea4fc`](https://github.com/ardatan/feTS/commit/9aea4fc376ef3fc286cfb0b5fc0c99080b459dd9)
+  Thanks [@romaindurand](https://github.com/romaindurand)! - Fix json field typing for client POST
+  requests
+
 ## 0.4.13
 
 ### Patch Changes
