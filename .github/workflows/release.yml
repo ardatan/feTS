@@ -7,9 +7,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    paths-ignore:
-      - 'website/**'
 permissions: write-all
 
 jobs:
