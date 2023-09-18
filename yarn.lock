@@ -208,25 +208,25 @@
     "@babel/highlight" "^7.22.13"
     chalk "^2.4.2"
 
-"@babel/compat-data@^7.22.6", "@babel/compat-data@^7.22.9":
+"@babel/compat-data@^7.22.20", "@babel/compat-data@^7.22.6", "@babel/compat-data@^7.22.9":
   version "7.22.20"
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.22.20.tgz#8df6e96661209623f1975d66c35ffca66f3306d0"
   integrity sha512-BQYjKbpXjoXwFW5jGqiizJQQT/aC7pFm9Ok1OWssonuguICi264lbgMzRp2ZMmRSlfkX6DsWDDcsrctK8Rwfiw==
 
-"@babel/core@7.22.19", "@babel/core@^7.11.6", "@babel/core@^7.12.3", "@babel/core@^7.21.3", "@babel/core@^7.21.8":
-  version "7.22.19"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.22.19.tgz#b38162460a6f3baf2a424bda720b24a8aafea241"
-  integrity sha512-Q8Yj5X4LHVYTbLCKVz0//2D2aDmHF4xzCdEttYvKOnWvErGsa6geHXD6w46x64n5tP69VfeH+IfSrdyH3MLhwA==
+"@babel/core@7.22.20", "@babel/core@^7.11.6", "@babel/core@^7.12.3", "@babel/core@^7.21.3", "@babel/core@^7.21.8":
+  version "7.22.20"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.22.20.tgz#e3d0eed84c049e2a2ae0a64d27b6a37edec385b7"
+  integrity sha512-Y6jd1ahLubuYweD/zJH+vvOY141v4f9igNQAQ+MBgq9JlHS2iTsZKn1aMsb3vGccZsXI16VzTBw52Xx0DWmtnA==
   dependencies:
     "@ampproject/remapping" "^2.2.0"
     "@babel/code-frame" "^7.22.13"
     "@babel/generator" "^7.22.15"
     "@babel/helper-compilation-targets" "^7.22.15"
-    "@babel/helper-module-transforms" "^7.22.19"
+    "@babel/helper-module-transforms" "^7.22.20"
     "@babel/helpers" "^7.22.15"
     "@babel/parser" "^7.22.16"
     "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.22.19"
+    "@babel/traverse" "^7.22.20"
     "@babel/types" "^7.22.19"
     convert-source-map "^1.7.0"
     debug "^4.1.0"
@@ -338,7 +338,7 @@
   dependencies:
     "@babel/types" "^7.22.15"
 
-"@babel/helper-module-transforms@^7.22.15", "@babel/helper-module-transforms@^7.22.19", "@babel/helper-module-transforms@^7.22.5", "@babel/helper-module-transforms@^7.22.9":
+"@babel/helper-module-transforms@^7.22.15", "@babel/helper-module-transforms@^7.22.20", "@babel/helper-module-transforms@^7.22.5", "@babel/helper-module-transforms@^7.22.9":
   version "7.22.20"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.22.20.tgz#da9edc14794babbe7386df438f3768067132f59e"
   integrity sha512-dLT7JVWIUUxKOs1UnJUBR3S70YK+pKX6AbJgB2vMIvEkZkrfJDbYDJesnPshtKV4LhDOR3Oc5YULeDizRek+5A==
@@ -1062,12 +1062,12 @@
     "@babel/helper-create-regexp-features-plugin" "^7.22.5"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/preset-env@7.22.15", "@babel/preset-env@^7.20.2":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.22.15.tgz#142716f8e00bc030dae5b2ac6a46fbd8b3e18ff8"
-  integrity sha512-tZFHr54GBkHk6hQuVA8w4Fmq+MSPsfvMG0vPnOYyTnJpyfMqybL8/MbNCPRT9zc2KBO2pe4tq15g6Uno4Jpoag==
+"@babel/preset-env@7.22.20", "@babel/preset-env@^7.20.2":
+  version "7.22.20"
+  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.22.20.tgz#de9e9b57e1127ce0a2f580831717f7fb677ceedb"
+  integrity sha512-11MY04gGC4kSzlPHRfvVkNAZhUxOvm7DCJ37hPDnUENwe06npjIRAfInEMTGSb4LZK5ZgDFkv5hw0lGebHeTyg==
   dependencies:
-    "@babel/compat-data" "^7.22.9"
+    "@babel/compat-data" "^7.22.20"
     "@babel/helper-compilation-targets" "^7.22.15"
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/helper-validator-option" "^7.22.15"
@@ -1141,7 +1141,7 @@
     "@babel/plugin-transform-unicode-regex" "^7.22.5"
     "@babel/plugin-transform-unicode-sets-regex" "^7.22.5"
     "@babel/preset-modules" "0.1.6-no-external-plugins"
-    "@babel/types" "^7.22.15"
+    "@babel/types" "^7.22.19"
     babel-plugin-polyfill-corejs2 "^0.4.5"
     babel-plugin-polyfill-corejs3 "^0.8.3"
     babel-plugin-polyfill-regenerator "^0.5.2"
@@ -1209,7 +1209,7 @@
     "@babel/parser" "^7.22.15"
     "@babel/types" "^7.22.15"
 
-"@babel/traverse@^7.21.5", "@babel/traverse@^7.22.15", "@babel/traverse@^7.22.19":
+"@babel/traverse@^7.21.5", "@babel/traverse@^7.22.15", "@babel/traverse@^7.22.20":
   version "7.22.20"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.22.20.tgz#db572d9cb5c79e02d83e5618b82f6991c07584c9"
   integrity sha512-eU260mPZbU7mZ0N+X10pxXhQFMGTeLb9eFS0mxehS8HZp9o1uSnFeWQuG1UPrlxgA7QoUzFhOnilHDp0AXCyHw==
@@ -2523,10 +2523,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.7.0.tgz#6afb2c708cd39d962d142c84fabc6254e2699417"
-  integrity sha512-W4ptsTqKnW/z7rDmYd+auptG01uD8+pi98sHvutlTB0dI5dGQw3sk7OHgpbYFHkV7Jh3T6SeAAYEEiJddoRbfQ==
+"@pulumi/azure-native@2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.8.0.tgz#5a807a884c1e66e1b5b415d51ef2f19d1eab3bfe"
+  integrity sha512-oGHGqC+BKHjgfc4mbkkaQymDGhxjjCEIx/dqZ8SVo+4w6d1esvWyxiOKvHJeR6fE7f+5EVku05iG64YQF2WdTQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3591,10 +3591,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.21", "@types/react@>=16", "@types/react@^18.0.27":
-  version "18.2.21"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.21.tgz#774c37fd01b522d0b91aed04811b58e4e0514ed9"
-  integrity sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==
+"@types/react@*", "@types/react@18.2.22", "@types/react@>=16", "@types/react@^18.0.27":
+  version "18.2.22"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.22.tgz#abe778a1c95a07fa70df40a52d7300a40b949ccb"
+  integrity sha512-60fLTOLqzarLED2O3UQImc/lsNRgG0jE/a1mPW9KjMemY0LMITWEsbS4VvZ4p6rorEHd5YKxxmMKSDK505GHpA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -12327,9 +12327,9 @@ swagger-client@^3.22.1:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.7.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.7.1.tgz#4b5ba36c4ecd33c3ace07b0759a9c34bfa894951"
-  integrity sha512-feRg3w72AI3lKjHPnSj4hAdijEnDSMML1F60fryLuSZanD2Hxsnw52rto15yG97YlILW2II7rNFN8Do0VxDcBA==
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.7.2.tgz#83425ca3bf97d7190aeeb1863146a3c06a0f43b1"
+  integrity sha512-Bzf6feEFx7i429kkM2XncsBoMR7WAGyk9lKjenaEsZaLf8ccOq2jspPRyZWBdGT3BmG8sO4x9S98CpKs5POk1w==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.11"
     "@braintree/sanitize-url" "=6.0.4"
