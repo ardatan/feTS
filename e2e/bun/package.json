@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@e2e/shared-server": "0.0.73",
-    "bun-types": "^1.0.2"
+    "bun-types": "^1.0.3"
   },
   "devDependencies": {
     "typescript": "5.2.2"

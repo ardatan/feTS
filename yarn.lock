@@ -4512,10 +4512,10 @@ builtins@^5.0.1:
   dependencies:
     semver "^7.0.0"
 
-bun-types@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.2.tgz#4905f5debd69c1e2695e15fd64a4e68061a4f6d3"
-  integrity sha512-yqBp2SX9cqr5/GReb56uCfM+YP+Hntx3XPjbqX1VJXqOBu+Yqw8iWRFLKFIsz9uEfykLgflhramQ8a5Jgo+Tlg==
+bun-types@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.3.tgz#a39cab751be5c881bf757afc5d9e9c7ff7a797d8"
+  integrity sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==
 
 busboy@1.6.0, busboy@^1.6.0:
   version "1.6.0"
