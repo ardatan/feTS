@@ -16,6 +16,6 @@
     "fets": "0.4.13"
   },
   "devDependencies": {
-    "start-server-and-test": "2.0.0"
+    "start-server-and-test": "2.0.1"
   }
 }
