@@ -2502,7 +2502,7 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@5.42.0":
+"@pulumi/aws@5.42.0", "@pulumi/aws@^5.35.0":
   version "5.42.0"
   resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-5.42.0.tgz#ba035c893b71923fc99150ec96b935a741d7a60a"
   integrity sha512-1h7Q5DjwoWVGxhBMcNragx/Q1US1KT7g29Tk3RghTg/9N7rGUbzTQKEXSrGgRSjGA/aKTbU+gt5A9ZmhONLiLg==
@@ -2514,13 +2514,15 @@
     read-package-tree "^5.2.1"
     resolve "^1.7.1"
 
-"@pulumi/awsx@0.40.1":
-  version "0.40.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/awsx/-/awsx-0.40.1.tgz#999920bdf360ed6d9f6f809ef0c15fcbf6f4cf33"
-  integrity sha512-ws5pIxq4tghP6keXBHaSMhuEY0mcxD7kO31rJDjgRL10bqnRGTtblXssULEYMM0dQWTfxXhSeXGwWKSTkalLIw==
+"@pulumi/awsx@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pulumi/awsx/-/awsx-1.0.5.tgz#63f446a8b2840e9394b7afa2e080129c0f170fdf"
+  integrity sha512-iGkDzPalPhzRlfqCaWgwJkaA8EfgPwzWkcqdg0TgcnUefNwKGEXfEelORxMXKxZe5M0VV3U3ljrEq6P0SLCtWg==
   dependencies:
-    "@pulumi/docker" "^3.0.0"
-    "@types/aws-lambda" "8.10.93"
+    "@pulumi/aws" "^5.35.0"
+    "@pulumi/docker" "^3.6.1"
+    "@pulumi/pulumi" "^3.0.0"
+    "@types/aws-lambda" "^8.10.23"
     mime "^2.0.0"
 
 "@pulumi/azure-native@2.8.0":
@@ -2537,7 +2539,7 @@
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
-"@pulumi/docker@^3.0.0":
+"@pulumi/docker@^3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@pulumi/docker/-/docker-3.6.1.tgz#a216c9bd2bbd35dd7091db2827a3a434adff021c"
   integrity sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now==
@@ -3313,15 +3315,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.122":
+"@types/aws-lambda@8.10.122", "@types/aws-lambda@^8.10.23":
   version "8.10.122"
   resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.122.tgz#206c8d71b09325d26a458dba27db842afdc54df1"
   integrity sha512-vBkIh9AY22kVOCEKo5CJlyCgmSWvasC+SWUxL/x/vOwRobMpI/HG1xp/Ae3AqmSiZeLUbOhW0FCD3ZjqqUxmXw==
-
-"@types/aws-lambda@8.10.93":
-  version "8.10.93"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.93.tgz#3e2c80894122477040aabf29b7320556f5702a76"
-  integrity sha512-Vsyi9ogDAY3REZDjYnXMRJJa62SDvxHXxJI5nGDQdZW058dDE+av/anynN2rLKbCKXDRNw3D/sQmqxVflZFi4A==
 
 "@types/babel__core@^7.1.14":
   version "7.20.2"
