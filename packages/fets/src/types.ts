@@ -603,14 +603,28 @@ export type RouterComponentSchema<
     : never
   : never;
 
-export type ExtractPathParamsWithBrackets<TPath extends string> = Pipe<
-  TPath,
-  [
-    Strings.Split<'/' | ';'>,
-    Tuples.Filter<Strings.StartsWith<'{'>>,
-    Tuples.Map<Strings.Trim<'{' | '}'>>,
-    Tuples.ToUnion,
-  ]
+type SplitByDelimiter<T extends string, D extends string> = T extends `${infer P}${D}${infer Q}`
+  ? [P, ...SplitByDelimiter<Q, D>]
+  : [T];
+
+type IsPathParameter<T extends string> = T extends `{${infer U}}` ? U : never;
+
+type ExtractPathParametersFromSegment<T extends string> = IsPathParameter<T>;
+
+type ExtractPathParameters<T extends any[]> = {
+  [K in keyof T]: ExtractPathParametersFromSegment<T[K]>;
+};
+
+type TupleToUnion<T> = T extends any[] ? T[number] : never;
+
+type ExtractSegments<TPath extends string> = SplitByDelimiter<TPath, '/'>;
+
+type ExtractSubSegments<T extends any[]> = {
+  [K in keyof T]: SplitByDelimiter<T[K], ';'>;
+};
+
+export type ExtractPathParamsWithBrackets<TPath extends string> = TupleToUnion<
+  ExtractPathParameters<ExtractSubSegments<ExtractSegments<TPath>>[number]>
 >;
 
 export type ExtractPathParamsWithPattern<TPath extends string> = Pipe<
