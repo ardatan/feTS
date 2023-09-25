@@ -2502,13 +2502,12 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@5.42.0":
-  version "5.42.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-5.42.0.tgz#ba035c893b71923fc99150ec96b935a741d7a60a"
-  integrity sha512-1h7Q5DjwoWVGxhBMcNragx/Q1US1KT7g29Tk3RghTg/9N7rGUbzTQKEXSrGgRSjGA/aKTbU+gt5A9ZmhONLiLg==
+"@pulumi/aws@6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.2.1.tgz#bbeeede3bf46316d5fd04bc2086277cf1ea1078d"
+  integrity sha512-i6DcHpi9BkIX1Tx5Z2L+O3HlL3uxF5o1YqI3Ol5U7zPiROgUkZ9O7+xPqJEeL6zLZw/HyV3FFZRGco2oX+Mk+g==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
-    aws-sdk "^2.0.0"
     builtin-modules "3.0.0"
     mime "^2.0.0"
     read-package-tree "^5.2.1"
@@ -4218,7 +4217,7 @@ aws-lambda@1.0.7:
     js-yaml "^3.14.1"
     watchpack "^2.0.0-beta.10"
 
-aws-sdk@^2.0.0, aws-sdk@^2.814.0:
+aws-sdk@^2.814.0:
   version "2.1463.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1463.0.tgz#ae584a0ea57c73fb43ef75f4d51a5076a4aaba8b"
   integrity sha512-NGJLovoHEX6uN3u9iHx0KWg9AigZfSz9YekLQssqGk5vHAEzW7TlCgRsqTu6vhGI5FzlYWapSvUpJUriQUCwMA==
