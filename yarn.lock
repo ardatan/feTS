@@ -2255,15 +2255,10 @@
   dependencies:
     webpack-bundle-analyzer "4.7.0"
 
-"@next/env@13.5.2":
+"@next/env@13.5.2", "@next/env@^13.4.3":
   version "13.5.2"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.5.2.tgz#1c09e6cf1df8b1edf3cf0ca9c0e0119a49802a5d"
   integrity sha512-dUseBIQVax+XtdJPzhwww4GetTjlkRSsXeQnisIJWBaHsnxYcN2RGzsPHi58D6qnkATjnhuAtQTJmR1hKYQQPg==
-
-"@next/env@^13.4.3":
-  version "13.5.3"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-13.5.3.tgz#402da9a0af87f93d853519f0c2a602b1ab637c2c"
-  integrity sha512-X4te86vsbjsB7iO4usY9jLPtZ827Mbx+WcwNBGUOIuswuTAKQtzsuoxc/6KLxCMvogKG795MhrR1LDhYgDvasg==
 
 "@next/eslint-plugin-next@13.5.2":
   version "13.5.2"
@@ -2549,10 +2544,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.85.0", "@pulumi/pulumi@^3.0.0":
-  version "3.85.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.85.0.tgz#e97e8011d6a58310d20110bfbeaa49c254be66af"
-  integrity sha512-eoSTEOpNk8oF2fGcYV6PL3SrbDc3iNQA402Pxq9iuWbyU4J2klzze/qgtLSPLbI24iS6eKWNcHketUQt9bWgXg==
+"@pulumi/pulumi@3.86.0", "@pulumi/pulumi@^3.0.0":
+  version "3.86.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.86.0.tgz#be81fd735246f8ec47bef55a687c37faf8c67ec5"
+  integrity sha512-A521m5y/ucwyy327tMWf+yhffS8ySRB1+maMUF0vCXLvr4ttRrYoE7iqonnfz46ScLDuFR88H3c9ZgMOMkGkMQ==
   dependencies:
     "@grpc/grpc-js" "^1.8.16"
     "@logdna/tail-file" "^2.0.6"
@@ -3608,10 +3603,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.22", "@types/react@>=16", "@types/react@^18.0.27":
-  version "18.2.22"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.22.tgz#abe778a1c95a07fa70df40a52d7300a40b949ccb"
-  integrity sha512-60fLTOLqzarLED2O3UQImc/lsNRgG0jE/a1mPW9KjMemY0LMITWEsbS4VvZ4p6rorEHd5YKxxmMKSDK505GHpA==
+"@types/react@*", "@types/react@18.2.23", "@types/react@>=16", "@types/react@^18.0.27":
+  version "18.2.23"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.23.tgz#60ad6cf4895e93bed858db0e03bcc4ff97d0410e"
+  integrity sha512-qHLW6n1q2+7KyBEYnrZpcsAmU/iiCh9WGCKgXvMxx89+TYdJWRjZohVIo9XTcoLhfX3+/hP0Pbulu3bCZQ9PSA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -13561,10 +13556,10 @@ workerd@1.20230922.0:
     "@cloudflare/workerd-linux-arm64" "1.20230922.0"
     "@cloudflare/workerd-windows-64" "1.20230922.0"
 
-wrangler@3.9.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.9.1.tgz#065d24fee2e77db8a8c076fd92b1829b31507096"
-  integrity sha512-8fDyJM5pK/8NqgtYyO1RScuizEZsf5Kx3IeH8hKV1oQXLSftm/bq4mXoC9WV/hO4ikFbYQujNaWxKLGiPjghrw==
+wrangler@3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.10.0.tgz#bc0e1564be2cbc9a586ba2dc5ab4e9072b9e6987"
+  integrity sha512-426QvIxEU7JDiZrsCF+B84lWw9BeMVcH4kzn9MZlVTqUD21CbLS1bEs9pdaB8nsnB9Y/n5JTH8bv/vpTBO0Z4g==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.2.0"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
