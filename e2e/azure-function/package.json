@@ -7,7 +7,7 @@
     "e2e": "ts-node -r tsconfig-paths/register scripts/e2e.ts"
   },
   "dependencies": {
-    "@azure/functions": "3.5.1",
+    "@azure/functions": "4.0.0",
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
