@@ -2521,10 +2521,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.8.0.tgz#5a807a884c1e66e1b5b415d51ef2f19d1eab3bfe"
-  integrity sha512-oGHGqC+BKHjgfc4mbkkaQymDGhxjjCEIx/dqZ8SVo+4w6d1esvWyxiOKvHJeR6fE7f+5EVku05iG64YQF2WdTQ==
+"@pulumi/azure-native@2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.9.0.tgz#712273b9cc1dcc38786d97eb264bab973b1e0c01"
+  integrity sha512-K3bhC3FiwfBLBsgn4GVDo/z4boWZpqgrkV5i0GCRaHfmeW7wZHu1Q1QXJjmjfNp/+smLNx0qai2V9ihLHbVuQQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3558,10 +3558,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@20.7.0", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
-  version "20.7.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.0.tgz#c03de4572f114a940bc2ca909a33ddb2b925e470"
-  integrity sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==
+"@types/node@*", "@types/node@20.7.1", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
+  version "20.7.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.1.tgz#06d732ead0bd5ad978ef0ea9cbdeb24dc8717514"
+  integrity sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==
 
 "@types/node@^12.7.1":
   version "12.20.55"
