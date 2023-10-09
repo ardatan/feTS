@@ -11,7 +11,6 @@ permissions: write-all
 
 jobs:
   stable:
-    if: github.event.pull_request.head.repo.full_name == github.repository
     uses: the-guild-org/shared-config/.github/workflows/release-stable.yml@main
     with:
       releaseScript: release
