@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import dynamic from 'next/dynamic';
 // eslint-disable-next-line camelcase
 import { IBM_Plex_Sans } from 'next/font/google';
 import { clsx } from 'clsx';
