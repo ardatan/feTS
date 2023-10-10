@@ -1,5 +1,5 @@
 diff --git a/node_modules/bob-the-bundler/dist/commands/build.js b/node_modules/bob-the-bundler/dist/commands/build.js
-index e89c398..a836601 100644
+index e89c398..966fa27 100644
 --- a/node_modules/bob-the-bundler/dist/commands/build.js
 +++ b/node_modules/bob-the-bundler/dist/commands/build.js
 @@ -128,7 +128,7 @@ export const buildCommand = createCommand(api => {
@@ -7,7 +7,15 @@ index e89c398..a836601 100644
              await buildTypeScript(bobBuildPath, { cwd, tsconfig, incremental });
              await Promise.all(packageInfoList.map(({ cwd, pkg, fullName }) => limit(async () => {
 -                const getBuildPath = (target) => join(cwd.replace('packages', join('.bob', target)), 'src');
-+                const getBuildPath = (target) => join(process.cwd(), '.bob', target);
++                const getBuildPath = (target) => cwd.replace('packages/fets', join('.bob', target));
                  const distPath = join(cwd, 'dist');
                  await build({
                      cwd,
+@@ -153,6 +153,7 @@ async function build({ cwd, pkg, fullName, reporter, getBuildPath, distPath, })
+     validatePackageJson(pkg, {
+         includesCommonJS: (_a = config === null || config === void 0 ? void 0 : config.commonjs) !== null && _a !== void 0 ? _a : true,
+     });
++    console.log('a', getBuildPath('esm'));
+     const declarations = await globby('**/*.d.ts', {
+         cwd: getBuildPath('esm'),
+         absolute: false,
