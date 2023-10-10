@@ -79,7 +79,7 @@ export function createRouterBase(
       return new fetchAPI.Response(null, {
         status: 302,
         headers: {
-          location: swaggerUI.endpoint,
+          location: `${basePath}${swaggerUI.endpoint}`,
         },
       });
     }
