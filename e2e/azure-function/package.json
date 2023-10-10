@@ -7,13 +7,13 @@
     "e2e": "ts-node -r tsconfig-paths/register scripts/e2e.ts"
   },
   "dependencies": {
-    "@azure/functions": "4.0.0",
+    "@azure/functions": "4.0.1",
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
-    "@pulumi/azure-native": "2.9.0",
-    "@pulumi/pulumi": "3.86.0",
-    "esbuild": "0.19.3",
+    "@pulumi/azure-native": "2.10.0",
+    "@pulumi/pulumi": "3.88.0",
+    "esbuild": "0.19.4",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.2.2"

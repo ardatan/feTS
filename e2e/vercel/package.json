@@ -19,10 +19,10 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.86.0",
-    "@types/react": "18.2.23",
-    "esbuild": "0.19.3",
-    "eslint": "8.50.0",
+    "@pulumi/pulumi": "3.88.0",
+    "@types/react": "18.2.27",
+    "esbuild": "0.19.4",
+    "eslint": "8.51.0",
     "eslint-config-next": "13.5.3",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
