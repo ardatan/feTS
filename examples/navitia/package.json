@@ -16,7 +16,7 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@types/js-yaml": "4.0.6",
+    "@types/js-yaml": "4.0.7",
     "js-yaml": "4.1.0"
   }
 }
