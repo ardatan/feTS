@@ -11,11 +11,3 @@ index e89c398..966fa27 100644
                  const distPath = join(cwd, 'dist');
                  await build({
                      cwd,
-@@ -153,6 +153,7 @@ async function build({ cwd, pkg, fullName, reporter, getBuildPath, distPath, })
-     validatePackageJson(pkg, {
-         includesCommonJS: (_a = config === null || config === void 0 ? void 0 : config.commonjs) !== null && _a !== void 0 ? _a : true,
-     });
-+    console.log('a', getBuildPath('esm'));
-     const declarations = await globby('**/*.d.ts', {
-         cwd: getBuildPath('esm'),
-         absolute: false,

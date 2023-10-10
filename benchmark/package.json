@@ -13,7 +13,7 @@
     "test": "start-server-and-test start http://127.0.0.1:4000/ping loadtest"
   },
   "dependencies": {
-    "fets": "0.4.14"
+    "fets": "0.4.15"
   },
   "devDependencies": {
     "start-server-and-test": "2.0.1"

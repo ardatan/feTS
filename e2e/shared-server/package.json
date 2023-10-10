@@ -3,7 +3,7 @@
   "version": "0.0.74",
   "private": true,
   "dependencies": {
-    "fets": "0.4.14",
+    "fets": "0.4.15",
     "zod": "3.22.2"
   }
 }
