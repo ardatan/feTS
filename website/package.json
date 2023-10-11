@@ -9,13 +9,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "@theguild/components": "6.0.0",
+    "@theguild/components": "^6.0.1",
     "clsx": "^2.0.0",
-    "next": "13.5.4",
-    "next-sitemap": "4.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "4.11.0"
+    "next": "^13.5.4",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
