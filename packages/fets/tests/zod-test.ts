@@ -13,6 +13,12 @@ const router = createRouter().route({
         }),
       }),
     },
+    responses: {
+      200: z.object({
+        id: z.number(),
+        title: z.string(),
+      }),
+    },
   },
   async handler(req) {
     const body = await req.json();
