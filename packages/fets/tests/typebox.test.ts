@@ -143,4 +143,32 @@ describe('TypeBox', () => {
       ],
     });
   });
+  it('applies body validation', async () => {
+    const router = createRouter().route({
+      path: '/lol',
+      method: 'POST',
+      schemas: {
+        request: {
+          json: Type.Object({
+            id: Type.String(),
+          }),
+        },
+      } as const,
+      async handler(request) {
+        await request.json();
+        return Response.json({
+          foo: 'If you see this validation for body is not working.',
+        });
+      },
+    });
+
+    const response = await router.fetch('/lol', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: 'kek',
+      }),
+    });
+
+    expect(response.status).toEqual(400);
+  });
 });
