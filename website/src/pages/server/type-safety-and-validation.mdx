@@ -49,7 +49,7 @@ for validating API keys or authorization headers.
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -83,7 +83,7 @@ const router = createRouter().route({
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'get',
+  method: 'GET',
   path: '/todos/:id',
   // Define the request body schema
   schemas: {
@@ -116,7 +116,7 @@ define the schema:
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().addRoute({
-  method: 'get',
+  method: 'GET',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -151,7 +151,7 @@ We can also specify the JSON body schema by using `schemas.request.json` propert
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -189,7 +189,7 @@ We use `type: string` and `format: binary` to define a `File` object. The `maxLe
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/upload-image',
   // Define the request body schema
   schemas: {
@@ -238,7 +238,7 @@ Example:
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().addRoute({
-  method: 'get',
+  method: 'GET',
   path: '/todos',
   // Define the request body schema
   schemas: {
