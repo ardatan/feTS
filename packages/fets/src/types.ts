@@ -10,7 +10,6 @@ import type {
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
 import type { SwaggerUIOpts } from './plugins/openapi.js';
-import type { LazySerializedResponse } from './Response.js';
 import type {
   HTTPMethod,
   StatusCode,
@@ -18,12 +17,6 @@ import type {
   TypedResponse,
   TypedResponseWithJSONStatusMap,
 } from './typed-fetch.js';
-import type {
-  AddRouteWithZodSchemasOpts,
-  RouteZodSchemas,
-  TypedRequestFromRouteZodSchemas,
-  TypedResponseFromRouteZodSchemas,
-} from './zod/types.js';
 
 export { TypedRequest as RouterRequest };
 
@@ -129,7 +122,11 @@ type RangedJSONSchema<T extends { minimum: number; maximum: number }> = T extend
 */
 
 export type FromSchema<T> =
-  /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends JSONSchema
+  /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends {
+    static: infer U;
+  }
+    ? U
+    : T extends JSONSchema
     ? FromSchemaOriginal<
         T,
         {
@@ -268,26 +265,6 @@ export interface RouterBaseObject<
     TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
   >;
   route<
-    TRouteZodSchemas extends RouteZodSchemas,
-    TMethod extends HTTPMethod,
-    TPath extends string,
-    TTypedRequest extends TypedRequestFromRouteZodSchemas<TRouteZodSchemas, TMethod>,
-    TTypedResponse extends TypedResponseFromRouteZodSchemas<TRouteZodSchemas>,
-  >(
-    opts: AddRouteWithZodSchemasOpts<
-      TServerContext,
-      TRouteZodSchemas,
-      TMethod,
-      TPath,
-      TTypedRequest,
-      TTypedResponse
-    >,
-  ): Router<
-    TServerContext,
-    TComponents,
-    TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
-  >;
-  route<
     TTypeConfig extends TypedRouterHandlerTypeConfig<TPath>,
     TMethod extends HTTPMethod,
     TPath extends string,
@@ -337,28 +314,16 @@ export type OnRouteHookPayload<TServerContext> = {
   tags?: string[];
   method: HTTPMethod;
   path: string;
-  schemas?: RouteSchemas | RouteZodSchemas;
+  schemas?: RouteSchemas;
   openAPIDocument: OpenAPIDocument;
   handlers: RouteHandler<TServerContext, TypedRequest, TypedResponse>[];
 };
 
 export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any, any>) => void;
 
-export type OnSerializeResponsePayload<TServerContext> = {
-  request: TypedRequest;
-  path: string;
-  serverContext: TServerContext;
-  lazyResponse: LazySerializedResponse;
-};
-
-export type OnSerializeResponseHook<TServerContext> = (
-  payload: OnSerializeResponsePayload<TServerContext>,
-) => void;
-
 export type RouterPlugin<TServerContext> = ServerAdapterPlugin<TServerContext> & {
   onRouterInit?: OnRouterInitHook<TServerContext>;
   onRoute?: OnRouteHook<TServerContext>;
-  onSerializeResponse?: OnSerializeResponseHook<TServerContext>;
 };
 
 export type RouteSchemas = {

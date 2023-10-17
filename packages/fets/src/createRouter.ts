@@ -1,13 +1,12 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter, isPromise } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
-import { isLazySerializedResponse } from './Response.js';
+import { useTypeBox } from './plugins/typebox.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
   AddRouteWithSchemasOpts,
   OnRouteHook,
   OnRouterInitHook,
-  OnSerializeResponseHook,
   OpenAPIDocument,
   OpenAPIInfo,
   RouteHandler,
@@ -16,12 +15,10 @@ import type {
   RouterComponentsBase,
   RouterOptions,
   RouterPlugin,
-  RouterRequest,
   RouterSDK,
   RouteSchemas,
 } from './types.js';
 import { addHandlersToMethod, PatternHandlersObj } from './utils.js';
-import { useZod } from './zod/zod.js';
 
 const HTTP_METHODS: HTTPMethod[] = [
   'GET',
@@ -53,16 +50,12 @@ export function createRouterBase(
   };
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
-  const onSerializeResponseHooks: OnSerializeResponseHook<any>[] = [];
   for (const plugin of plugins) {
     if (plugin.onRouterInit) {
       __onRouterInitHooks.push(plugin.onRouterInit);
     }
     if (plugin.onRoute) {
       onRouteHooks.push(plugin.onRoute);
-    }
-    if (plugin.onSerializeResponse) {
-      onSerializeResponseHooks.push(plugin.onSerializeResponse);
     }
   }
   const handlersByPatternByMethod = new Map<
@@ -84,36 +77,6 @@ export function createRouterBase(
       });
     }
     return new fetchAPI.Response(null, { status: 404 });
-  }
-
-  interface ProcessHandlerResultOpts {
-    routerRequest: RouterRequest;
-    context: any;
-    pattern: URLPattern;
-  }
-
-  function processHandlerResult(
-    handlerResult: TypedResponse | Response | undefined,
-    opts: ProcessHandlerResultOpts,
-  ) {
-    if (handlerResult) {
-      if (isLazySerializedResponse(handlerResult)) {
-        const onSerializeResponseHookPayload = {
-          request: opts.routerRequest,
-          path: opts.pattern.pathname,
-          lazyResponse: handlerResult,
-          serverContext: opts.context,
-        };
-        for (const onSerializeResponseHook of onSerializeResponseHooks) {
-          onSerializeResponseHook(onSerializeResponseHookPayload);
-        }
-        return (
-          handlerResult.actualResponse ||
-          fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
-        );
-      }
-      return handlerResult;
-    }
   }
 
   function asyncIterationUntilReturn<TInput, TOutput>(
@@ -224,27 +187,9 @@ export function createRouterBase(
                   );
                 },
               });
-              return asyncIterationUntilReturn(handlers, handler => {
-                const handlerResult$ = handler(routerRequest, context);
-                if (isPromise(handlerResult$)) {
-                  return handlerResult$.then(handlerResult => {
-                    if (handlerResult) {
-                      return processHandlerResult(handlerResult, {
-                        routerRequest,
-                        context,
-                        pattern,
-                      });
-                    }
-                  });
-                }
-                if (handlerResult$) {
-                  return processHandlerResult(handlerResult$, {
-                    routerRequest,
-                    context,
-                    pattern,
-                  });
-                }
-              });
+              return asyncIterationUntilReturn(handlers, handler =>
+                handler(routerRequest, context),
+              );
             }
           },
         );
@@ -360,7 +305,7 @@ export function createRouter<
           }),
         ]
       : []),
-    useZod(),
+    useTypeBox(),
     ...userPlugins,
   ];
   const finalOpts: RouterOptions<TServerContext, TComponents> = {
