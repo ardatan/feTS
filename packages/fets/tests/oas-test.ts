@@ -47,6 +47,35 @@ if (getTodo.ok) {
   errorResponse.message = 'Hello world';
 }
 
+const getTodo2 = await client['/todo/{id}.json'].get({
+  params: {
+    id: '1',
+    // @ts-expect-error - foo is not a parameter
+    foo: 'bar',
+  },
+});
+
+const todo2 = await getTodo2.json();
+
+// @ts-expect-error - it can be an error response
+todo2.id = '123';
+
+// @ts-expect-error - it can be a success response
+todo2.message = 'Hello world';
+
+if (getTodo2.ok) {
+  const successResponse = await getTodo2.json();
+  successResponse.id = '123';
+  successResponse.content = 'Hello world';
+  // @ts-expect-error - completed is not a property on Todo
+  successResponse.completed = true;
+} else {
+  const errorResponse = await getTodo2.json();
+  // @ts-expect-error - it cannot be a success response
+  errorResponse.id = '123';
+  errorResponse.message = 'Hello world';
+}
+
 const uploadRes = await client['/upload'].post({
   formData: {
     file: new File(['Hello world'], 'hello.txt'),

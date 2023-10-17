@@ -100,6 +100,62 @@ export default {
         parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
       },
     },
+    '/todo/{id}.json': {
+      get: {
+        description: 'Get a todo',
+        responses: {
+          '200': {
+            description: '',
+            content: { 'application/json': { schema: { $ref: '#/components/schemas/Todo' } } },
+          },
+          '404': {
+            description: '',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: { message: { type: 'string' } },
+                  additionalProperties: false,
+                },
+              },
+            },
+          },
+        },
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
+      },
+      delete: {
+        description: 'Delete a todo',
+        responses: {
+          '200': {
+            description: '',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: { id: { type: 'string' } },
+                  required: ['id'],
+                  additionalProperties: false,
+                },
+              },
+            },
+          },
+          '404': {
+            description: '',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: { error: { type: 'string' } },
+                  required: ['error'],
+                  additionalProperties: false,
+                },
+              },
+            },
+          },
+        },
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
+      },
+    },
     '/todo': {
       put: {
         description: 'Add a todo',
