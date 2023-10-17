@@ -45,7 +45,7 @@ function getOptionsForScenario(mode, server, index) {
 }
 
 const servers = ['node-http', 'uWebSockets'];
-const modes = ['no-schema', 'json-schema', 'zod'];
+const modes = ['no-schema', 'json-schema'];
 
 servers.forEach((server, serverIndex) => {
   modes.forEach((mode, modeIndex) => {

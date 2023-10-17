@@ -3,7 +3,7 @@ export default {
   'type-safety-and-validation': 'Type-Safety & Validation',
   middlewares: 'Middlewares',
   'error-handling': 'Error Handling',
-  zod: 'Programmatic Schemas with Zod',
+  'programmatic-schemas': 'Programmatic Schemas with TypeBox',
   testing: 'Testing',
   cors: 'CORS',
   cookies: 'Cookies',

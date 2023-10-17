@@ -3,7 +3,7 @@
   "version": "0.0.74",
   "private": true,
   "dependencies": {
-    "fets": "0.4.15",
-    "zod": "3.22.4"
+    "@sinclair/typebox": "0.31.18",
+    "fets": "0.4.15"
   }
 }

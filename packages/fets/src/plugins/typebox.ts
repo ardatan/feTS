@@ -1,4 +1,4 @@
-import { TypeCompiler, ValueError, ValueErrorIterator } from '@sinclair/typebox/compiler';
+import { TypeCompiler, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Response } from '../Response.js';
 import { PromiseOrValue, RouterComponentsBase, RouterPlugin, RouterRequest } from '../types.js';
 import { getHeadersObj } from './utils.js';
@@ -60,7 +60,7 @@ export function useTypeBox({
         });
       }
       if (schemas?.request?.formData) {
-        const ajv = TypeCompiler.Compile({
+        const validator = TypeCompiler.Compile({
           ...schemas.request.formData,
           components,
         } as any);
@@ -94,7 +94,7 @@ export function useTypeBox({
               value: async () => formData,
               configurable: true,
             });
-            return ajv.Errors(formDataObj);
+            return validator.Errors(formDataObj);
           }
           return [];
         });

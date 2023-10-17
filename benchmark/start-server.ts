@@ -1,7 +1,7 @@
 import { createServer } from 'http';
-import { createRouter, Response, useAjv } from 'fets';
+import { createRouter, Response } from 'fets';
 import { App } from 'uWebSockets.js';
-import { z } from 'zod';
+import { Type } from '@sinclar/typebox';
 
 async function handler(request: Request) {
   const body = await request.json();
@@ -26,9 +26,7 @@ function greetingsHandler() {
   return Response.json({ message: 'Hello, World!' });
 }
 
-const router = createRouter({
-  plugins: [useAjv()],
-})
+const router = createRouter({})
   .route({
     method: 'GET',
     path: '/greetings',
@@ -36,19 +34,12 @@ const router = createRouter({
   })
   .route({
     method: 'GET',
-    path: '/greetings-ajv',
+    path: '/greetings-json-schema',
     schemas: {
       responses: {
-        200: {
-          type: 'object',
-          properties: {
-            message: {
-              type: 'string',
-            },
-          },
-          required: ['message'],
-          additionalProperties: false,
-        },
+        200: Type.Object({
+          message: Type.String(),
+        }),
       },
     } as const,
     handler: greetingsHandler,
@@ -83,32 +74,8 @@ const router = createRouter({
         },
       },
       responses: {
-        200: {
-          type: 'object',
-          properties: {
-            message: {
-              type: 'string',
-            },
-          },
-          required: ['message'],
-          additionalProperties: false,
-        },
-      },
-    } as const,
-    handler,
-  })
-  .route({
-    method: 'POST',
-    path: '/zod',
-    schemas: {
-      request: {
-        json: z.object({
-          name: z.string(),
-        }),
-      },
-      responses: {
-        200: z.object({
-          message: z.string(),
+        200: Type.Object({
+          message: Type.String(),
         }),
       },
     } as const,

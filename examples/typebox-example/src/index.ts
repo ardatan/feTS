@@ -1,13 +1,13 @@
 import { createServer } from 'http';
-import { createRouter, Response } from 'fets';
-import { z } from 'zod';
+import { createRouter, FromSchema, Response } from 'fets';
+import { Type } from '@sinclair/typebox';
 
-const TodoSchema = z.object({
-  id: z.string(),
-  content: z.string(),
+const TodoSchema = Type.Object({
+  id: Type.String(),
+  content: Type.String(),
 });
 
-type Todo = z.infer<typeof TodoSchema>;
+type Todo = FromSchema<typeof TodoSchema>;
 
 const todos: Todo[] = [];
 
@@ -24,13 +24,18 @@ export const router = createRouter()
     path: '/todo/:id',
     schemas: {
       request: {
-        params: z.object({
-          id: z.string(),
+        params: Type.Object({
+          id: Type.String(),
+        }),
+      },
+      responses: {
+        200: TodoSchema,
+        404: Type.Object({
+          message: Type.String(),
         }),
       },
     },
-    handler: async request => {
-      const { id } = request.params;
+    handler: async ({ params: { id } }) => {
       const todo = todos.find(todo => todo.id === id);
       if (!todo) {
         return Response.json(
@@ -51,9 +56,12 @@ export const router = createRouter()
     path: '/todo',
     schemas: {
       request: {
-        json: z.object({
-          content: z.string(),
+        json: Type.Object({
+          content: Type.String(),
         }),
+      },
+      responses: {
+        200: TodoSchema,
       },
     },
     handler: async request => {
@@ -72,12 +80,20 @@ export const router = createRouter()
     path: '/todo/:id',
     schemas: {
       request: {
-        params: z.object({
-          id: z.string(),
+        params: Type.Object({
+          id: Type.String(),
+        }),
+      },
+      responses: {
+        200: Type.Object({
+          id: Type.String(),
+        }),
+        404: Type.Object({
+          error: Type.String(),
         }),
       },
     },
-    handler: async request => {
+    async handler(request) {
       const { id } = request.params;
       const index = todos.findIndex(todo => todo.id === id);
       if (index === -1) {

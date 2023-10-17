@@ -12,26 +12,12 @@ It allows us to have:
   [feTS Client](/client/quick-start#infer-types-from-fets-server) that is capable of inferring these
   types from the router instance.
 - **Request Validation:** feTS validates the request parameters and if the request is invalid, it
-  returns a `400 Bad Request`. It uses [AJV](https://ajv.js.org/) for this purpose.
+  returns a `400 Bad Request`.
 - **Safe and Fast Serialization:** feTS uses the response schema to serialize the response body.
   Rather than JSON.stringify, it uses
   [fast-json-stringify](https://github.com/fastify/fast-json-stringify)which is twice as fast
   according to the benchmarks found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
-
-## Setting Up Runtime Validations with AJV
-
-To implement strict runtime validation with JSON schemas, if you're not utilizing
-[Zod schemas](/server/zod), you'll need to configure the AJV plugin for feTS. AJV is opt-in since
-certain environments, such as Cloudflare Workers, aren't compatible with AJV.
-
-```ts
-import { createRouter, useAjv } from 'fets'
-
-const router = createRouter({
-  plugins: [useAjv()]
-})
-```
 
 ## Request
 

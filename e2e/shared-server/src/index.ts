@@ -1,5 +1,5 @@
 import { createRouter, Response, useErrorHandling } from 'fets';
-import { z } from 'zod';
+import { Type } from '@sinclair/typebox';
 
 export function createTestServerAdapter<TServerContext = {}>(base?: string) {
   return createRouter<TServerContext, {}>({
@@ -11,8 +11,13 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
       path: '/greetings/:name',
       schemas: {
         request: {
-          params: z.object({
-            name: z.string(),
+          params: Type.Object({
+            name: Type.String(),
+          }),
+        },
+        responses: {
+          200: Type.Object({
+            message: Type.String(),
           }),
         },
       },
@@ -23,9 +28,14 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
       path: '/bye',
       schemas: {
         request: {
-          json: z.object({
-            name: z.string(),
+          json: Type.Object({
+            name: Type.String(),
           }),
+          responses: {
+            200: Type.Object({
+              message: Type.String(),
+            }),
+          },
         },
       },
       handler: async req => {
