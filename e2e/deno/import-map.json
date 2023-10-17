@@ -10,6 +10,7 @@
     "@pulumi/pulumi": "npm:@pulumi/pulumi",
     "@sinclair/typebox": "npm:@sinclair/typebox",
     "@sinclair/typebox/compiler": "npm:@sinclair/typebox/compiler",
+    "@sinclair/typebox/value": "npm:@sinclair/typebox/value",
     "child_process": "https://deno.land/std@0.165.0/node/child_process.ts",
     "fs": "https://deno.land/std@0.165.0/node/fs.ts",
     "util": "https://deno.land/std@0.165.0/node/util.ts",
