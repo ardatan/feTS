@@ -14,7 +14,7 @@ const client = createClient<typeof router>({
 async function main() {
   // Add todo
 
-  const addTodoRes = await client['/todo'].put({
+  const addTodoRes = await client['/todos'].put({
     json: {
       content: 'Drink coffee',
     },
@@ -24,7 +24,7 @@ async function main() {
 
   // Ensure todo is there
 
-  const getTodosRes = await client['/todo/:id'].get({
+  const getTodosRes = await client['/todos/:id'].get({
     params: {
       id: addedTodo.id,
     },
@@ -38,7 +38,7 @@ async function main() {
 
   // Delete todo
 
-  const deleteTodoRes = await client['/todo/:id'].delete({
+  const deleteTodoRes = await client['/todos/:id'].delete({
     params: {
       id: addedTodo.id,
     },

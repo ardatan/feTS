@@ -13,9 +13,11 @@
     "test": "start-server-and-test start http://127.0.0.1:4000/ping loadtest"
   },
   "dependencies": {
+    "@sinclair/typebox": "0.31.18",
     "fets": "0.4.15"
   },
   "devDependencies": {
+    "@types/k6": "0.47.0",
     "start-server-and-test": "2.0.1"
   }
 }
