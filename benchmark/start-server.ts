@@ -1,23 +1,13 @@
 import { createServer } from 'http';
-import { createRouter, Response } from 'fets';
+import { createRouter, Response, RouterRequest } from 'fets';
 import { App } from 'uWebSockets.js';
-import { Type } from '@sinclar/typebox';
+import { Type } from '@sinclair/typebox';
 
-async function handler(request: Request) {
+async function handler(request: RouterRequest) {
   const body = await request.json();
-  if (body.name) {
-    return Response.json({
-      message: `Hello, ${body.name}!`,
-    });
-  }
-  return Response.json(
-    {
-      error: 'name is required',
-    },
-    {
-      status: 400,
-    },
-  );
+  return Response.json({
+    message: `Hello, ${body.name}!`,
+  });
 }
 
 let readyCount = 0;
@@ -62,16 +52,9 @@ const router = createRouter({})
     path: '/json-schema',
     schemas: {
       request: {
-        json: {
-          type: 'object',
-          properties: {
-            name: {
-              type: 'string',
-            },
-          },
-          required: ['name'],
-          additionalProperties: false,
-        },
+        json: Type.Object({
+          name: Type.String(),
+        }),
       },
       responses: {
         200: Type.Object({

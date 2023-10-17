@@ -1,9 +1,23 @@
 import { TypeCompiler, ValueErrorIterator } from '@sinclair/typebox/compiler';
+import { Value } from '@sinclair/typebox/value';
 import { Response } from '../Response.js';
 import { PromiseOrValue, RouterComponentsBase, RouterPlugin, RouterRequest } from '../types.js';
 import { getHeadersObj } from './utils.js';
 
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ValueErrorIterator | []>;
+
+function createValidateFn(schema: any) {
+  try {
+    const validator = TypeCompiler.Compile(schema);
+    return function getErrors(data: any) {
+      return validator.Errors(data);
+    };
+  } catch (e) {
+    return function getErrors(data: any) {
+      return Value.Errors(schema, data);
+    };
+  }
+}
 
 export function useTypeBox({
   components = {},
@@ -14,38 +28,38 @@ export function useTypeBox({
     onRoute({ schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
       if (schemas?.request?.headers) {
-        const validator = TypeCompiler.Compile({
+        const validateFn = createValidateFn({
           ...schemas.request.headers,
           components,
-        } as any);
+        });
         validationMiddlewares.set('headers', request => {
           const headersObj = getHeadersObj(request.headers);
-          return validator.Errors(headersObj);
+          return validateFn(headersObj);
         });
       }
       if (schemas?.request?.params) {
-        const validator = TypeCompiler.Compile({
+        const validateFn = createValidateFn({
           ...schemas.request.params,
           components,
-        } as any);
+        });
         validationMiddlewares.set('params', request => {
-          return validator.Errors(request.params);
+          return validateFn(request.params);
         });
       }
       if (schemas?.request?.query) {
-        const validator = TypeCompiler.Compile({
+        const validateFn = createValidateFn({
           ...schemas.request.query,
           components,
-        } as any);
+        });
         validationMiddlewares.set('query', request => {
-          return validator.Errors(request.query);
+          return validateFn(request.query);
         });
       }
       if (schemas?.request?.json) {
-        const validator = TypeCompiler.Compile({
+        const validateFn = createValidateFn({
           ...schemas.request.json,
           components,
-        } as any);
+        });
         validationMiddlewares.set('json', async request => {
           const contentType = request.headers.get('content-type');
           if (contentType?.includes('json')) {
@@ -54,16 +68,16 @@ export function useTypeBox({
               value: async () => jsonObj,
               configurable: true,
             });
-            return validator.Errors(jsonObj);
+            return validateFn(jsonObj);
           }
           return [];
         });
       }
       if (schemas?.request?.formData) {
-        const validator = TypeCompiler.Compile({
+        const validateFn = createValidateFn({
           ...schemas.request.formData,
           components,
-        } as any);
+        });
         validationMiddlewares.set('formData', async request => {
           const contentType = request.headers.get('content-type');
           if (
@@ -94,7 +108,7 @@ export function useTypeBox({
               value: async () => formData,
               configurable: true,
             });
-            return validator.Errors(formDataObj);
+            return validateFn(formDataObj);
           }
           return [];
         });
