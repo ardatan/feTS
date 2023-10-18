@@ -1,10 +1,40 @@
 import { createServer } from 'http';
+import * as crypto from 'node:crypto';
 import { createRouter, FromSchema, Response } from 'fets';
 import { Type } from '@sinclair/typebox';
 
-const TodoSchema = Type.Object({
-  id: Type.String(),
-  content: Type.String(),
+const UUIDSchema = Type.String({
+  format: 'uuid',
+});
+
+const ErrorSchema = Type.Object({
+  message: Type.String(),
+});
+
+const ErrorResponseSchema = Type.Object(
+  {
+    error: ErrorSchema,
+  },
+  {
+    title: 'ErrorResponse',
+  },
+);
+
+const TodoSchema = Type.Object(
+  {
+    id: UUIDSchema,
+    content: Type.String(),
+    isDone: Type.Boolean(),
+  },
+  {
+    title: 'Todo',
+    description: 'A todo item',
+  },
+);
+
+const TodoList = Type.Array(TodoSchema, {
+  title: 'TodoList',
+  description: 'A list of todo items',
 });
 
 type Todo = FromSchema<typeof TodoSchema>;
@@ -16,23 +46,31 @@ export const router = createRouter()
     description: 'Get all todos',
     method: 'GET',
     path: '/todos',
+    schemas: {
+      responses: {
+        200: TodoList,
+      },
+    },
     handler: () => Response.json(todos),
   })
   .route({
-    description: 'Get a todo',
+    description: 'Get a todo item by id.',
     method: 'GET',
-    path: '/todo/:id',
+    path: '/todos/:id',
     schemas: {
       request: {
-        params: Type.Object({
-          id: Type.String(),
-        }),
+        params: Type.Object(
+          {
+            id: UUIDSchema,
+          },
+          {
+            title: 'GetTodoParams',
+          },
+        ),
       },
       responses: {
         200: TodoSchema,
-        404: Type.Object({
-          message: Type.String(),
-        }),
+        404: ErrorResponseSchema,
       },
     },
     handler: async ({ params: { id } }) => {
@@ -40,7 +78,9 @@ export const router = createRouter()
       if (!todo) {
         return Response.json(
           {
-            message: `Todo with id ${id} not found`,
+            error: {
+              message: `Todo with id ${id} not found`,
+            },
           },
           {
             status: 404,
@@ -51,9 +91,9 @@ export const router = createRouter()
     },
   })
   .route({
-    description: 'Add a todo',
+    description: 'Create a new todo item.',
     method: 'PUT',
-    path: '/todo',
+    path: '/todos',
     schemas: {
       request: {
         json: Type.Object({
@@ -69,28 +109,72 @@ export const router = createRouter()
       const todo: Todo = {
         id: crypto.randomUUID(),
         content: input.content,
+        isDone: false,
       };
       todos.push(todo);
       return Response.json(todo);
     },
   })
   .route({
-    description: 'Delete a todo',
-    method: 'DELETE',
-    path: '/todo/:id',
+    description: 'Update an existing todo item.',
+    method: 'PATCH',
+    path: '/todos/:id',
     schemas: {
       request: {
         params: Type.Object({
-          id: Type.String(),
+          id: UUIDSchema,
+        }),
+        json: Type.Object({
+          content: Type.Optional(Type.String()),
+          isDone: Type.Optional(Type.Boolean()),
+        }),
+      },
+      responses: {
+        200: TodoSchema,
+        404: ErrorResponseSchema,
+      },
+    },
+    handler: async request => {
+      const { id } = request.params;
+      const index = todos.findIndex(todo => todo.id === id);
+      if (index === -1) {
+        return Response.json(
+          {
+            error: {
+              message: 'not found',
+            },
+          },
+          {
+            status: 404,
+          },
+        );
+      }
+      const todo = todos[index];
+      const input = await request.json();
+      if (input.content !== undefined) {
+        todo.content = input.content;
+      }
+      if (input.isDone !== undefined) {
+        todo.isDone = input.isDone;
+      }
+      return Response.json(todo);
+    },
+  })
+  .route({
+    description: 'Delete a todo item by id.',
+    method: 'DELETE',
+    path: '/todos/:id',
+    schemas: {
+      request: {
+        params: Type.Object({
+          id: UUIDSchema,
         }),
       },
       responses: {
         200: Type.Object({
-          id: Type.String(),
+          id: UUIDSchema,
         }),
-        404: Type.Object({
-          error: Type.String(),
-        }),
+        404: ErrorResponseSchema,
       },
     },
     async handler(request) {
@@ -98,7 +182,11 @@ export const router = createRouter()
       const index = todos.findIndex(todo => todo.id === id);
       if (index === -1) {
         return Response.json(
-          { error: 'not found' },
+          {
+            error: {
+              message: 'not found',
+            },
+          },
           {
             status: 404,
           },
