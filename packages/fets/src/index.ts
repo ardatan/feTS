@@ -4,4 +4,3 @@ export { URLPattern } from '@whatwg-node/fetch';
 export { useCORS, useErrorHandling, HTTPError } from '@whatwg-node/server';
 export * from './client/index.js';
 export * from './Response.js';
-export { useAjv } from './plugins/ajv.js';

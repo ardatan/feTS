@@ -8,14 +8,12 @@
     "@whatwg-node/events": "../../node_modules/@whatwg-node/events/dist/global-polyfill.js",
     "@whatwg-node/server": "../../node_modules/@whatwg-node/server/esm/index.js",
     "@pulumi/pulumi": "npm:@pulumi/pulumi",
-    "@ardatan/fast-json-stringify": "npm:@ardatan/fast-json-stringify",
-    "ajv": "npm:ajv",
-    "ajv-formats": "npm:ajv-formats",
+    "@sinclair/typebox": "npm:@sinclair/typebox",
+    "@sinclair/typebox/compiler": "npm:@sinclair/typebox/compiler",
+    "@sinclair/typebox/value": "npm:@sinclair/typebox/value",
     "child_process": "https://deno.land/std@0.165.0/node/child_process.ts",
     "fs": "https://deno.land/std@0.165.0/node/fs.ts",
     "util": "https://deno.land/std@0.165.0/node/util.ts",
-    "zod-to-json-schema": "npm:zod-to-json-schema",
-    "zod": "npm:zod",
     "@repeaterjs/repeater": "npm:@repeaterjs/repeater",
     "qs": "npm:qs"
   }
