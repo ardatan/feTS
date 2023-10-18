@@ -3648,9 +3648,9 @@
   integrity sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==
 
 "@types/swagger-ui-react@^4.11.0":
-  version "4.18.1"
-  resolved "https://registry.yarnpkg.com/@types/swagger-ui-react/-/swagger-ui-react-4.18.1.tgz#5b1d061adfba8c5e30233c49f39742cb01b73bce"
-  integrity sha512-nYhNi+cyN78vve1/QY5PNKYzHYlDKETtXj+gQAhuoCRB+GxGT3MVJUj8WCdwYj4vF0s1j68qkLv/66DGe5ZlnA==
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/@types/swagger-ui-react/-/swagger-ui-react-4.18.2.tgz#009a7469b48457b349e0ec7501b21f11c0fc4ca0"
+  integrity sha512-uLiHyNGFdgQINNSq3hgca+TNnNMS7/X59M02EbmDfARgvh7KcB6wU+FVfkVY13qE4Zk9opKvjGqygwjjP7+u6w==
   dependencies:
     "@types/react" "*"
 
