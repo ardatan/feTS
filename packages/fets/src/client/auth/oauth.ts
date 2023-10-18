@@ -1,20 +1,20 @@
 import type { TypedResponseWithJSONStatusMap } from '../../typed-fetch.js';
+import { ClientPuginWithOAuth } from '../types.js';
 
-export type OAuth2AuthParams<TSecurityScheme> = TSecurityScheme extends {
+export type OAuth2AuthParams<TSecurityScheme, TClientWithPlugin> = TSecurityScheme extends {
   type: 'oauth2';
 }
-  ? {
-      /**
-       * `Authorization` header is required for OAuth2.
-       */
-      headers: {
-        /**
-         * The access token string as issued by the authorization server.
-         * @example `Authorization: Bearer <access_token>`
-         */
-        Authorization: `Bearer ${string}`;
-      };
-    }
+  ? TClientWithPlugin extends ClientPuginWithOAuth
+    ? {
+        headers?: {
+          Authorization?: `Bearer ${string}`;
+        };
+      }
+    : {
+        headers: {
+          Authorization: `Bearer ${string}`;
+        };
+      }
   : {};
 
 export type OASOAuthPathRequestParamsWithHeader = {

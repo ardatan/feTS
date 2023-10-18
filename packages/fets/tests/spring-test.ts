@@ -1,4 +1,5 @@
-import { createClient, type NormalizeOAS } from 'fets';
+import { ClientPuginWithOAuth, createClient, type NormalizeOAS } from 'fets';
+import { useOAuth } from '../src/client/plugins/useAuth';
 import exampleSpringOas from './fixtures/example-spring-oas';
 
 const client = createClient<NormalizeOAS<typeof exampleSpringOas>>({
@@ -63,3 +64,34 @@ client['/pet'].post({
     photoUrls: [],
   },
 });
+
+const secondClient = createClient<NormalizeOAS<typeof exampleSpringOas>, ClientPuginWithOAuth>({
+  endpoint: 'http://localhost:8080',
+  plugins: [useOAuth('YOUR_TOKEN_HERE')],
+});
+
+const uploadPetRes = await secondClient['/pet/{petId}/uploadImage'].post({
+  params: {
+    petId: 0,
+  },
+});
+
+if (!uploadPetRes.ok) {
+  throw new Error(`failed with status: ${uploadPetRes.status} ${uploadPetRes.statusText}}`);
+}
+
+const thirdClient = createClient<NormalizeOAS<typeof exampleSpringOas>>({
+  endpoint: 'http://localhost:8080',
+  plugins: [useOAuth('YOUR_TOKEN_HERE')],
+});
+
+// @ts-expect-error Expect to get an error for missing Authorization headers
+const uploadPetRes3 = await thirdClient['/pet/{petId}/uploadImage'].post({
+  params: {
+    petId: 0,
+  },
+});
+
+if (!uploadPetRes3.ok) {
+  throw new Error(`failed with status: ${uploadPetRes3.status} ${uploadPetRes3.statusText}}`);
+}

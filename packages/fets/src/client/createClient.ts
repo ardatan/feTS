@@ -57,15 +57,20 @@ function useValidationErrors(): ClientPlugin {
  *
  * @example
  * ```ts
- * import { createClient, type NormalizeOAS } from 'fets';
+ * import { ClientPluginWithAuth, createClient, type NormalizeOAS } from 'fets';
  * import type oas from './oas.ts';
  *
+ * // with Auth plugin
+ * const client = createClient<NormalizeOAS<typeof oas>, ClientPluginWithAuth>({});
+ *
+ * // without Auth plugin
  * const client = createClient<NormalizeOAS<typeof oas>>({});
  * ```
  */
-export function createClient<TOAS extends OpenAPIDocument>(
+export function createClient<TOAS extends OpenAPIDocument, TClientWithPlugin = {}>(
   options: ClientOptionsWithStrictEndpoint<TOAS>,
-): OASClient<TOAS>;
+): OASClient<TOAS, TClientWithPlugin>;
+
 /**
  * Create a client from a typed `Router`
  *
@@ -90,6 +95,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
       onResponseHooks.push(plugin.onResponse);
     }
   }
+
   return new Proxy({} as any, {
     get(_target, path: string) {
       return new Proxy({} as any, {

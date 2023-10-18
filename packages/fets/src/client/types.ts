@@ -179,7 +179,7 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Pi
   [Tuples.Map<OASParamToRequestParam<TParameters>>, Tuples.ToIntersection]
 >;
 
-export type OASClient<TOAS extends OpenAPIDocument> = {
+export type OASClient<TOAS extends OpenAPIDocument, TClientWithPlugin> = {
   /**
    * The path to be used for the request
    */
@@ -187,7 +187,12 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
     /**
      * HTTP Method to be used for this request
      */
-    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<TOAS, TPath, TMethod> extends
+    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<
+      TOAS,
+      TPath,
+      TMethod,
+      TClientWithPlugin
+    > extends
       | {
           json: {};
         }
@@ -201,11 +206,11 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
           query: {};
         }
       ? (
-          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
+          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod, TClientWithPlugin>>,
           init?: RequestInit,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>
       : (
-          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
+          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod, TClientWithPlugin>>,
           init?: RequestInit,
         ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
   };
@@ -267,6 +272,7 @@ export type OASRequestParams<
   TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
+  TClientWithPlugin = {},
 > = (OASMethodMap<TOAS, TPath>[TMethod] extends {
   requestBody: { content: { 'application/json': { schema: JSONSchema } } };
 }
@@ -381,9 +387,9 @@ export type OASRequestParams<
       }
     : {}) &
   // Respect security definitions in path object
-  OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod]> &
+  OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod], TClientWithPlugin> &
   // Respect global security definitions
-  OASSecurityParamsBySecurityRef<TOAS, TOAS>;
+  OASSecurityParamsBySecurityRef<TOAS, TOAS, TClientWithPlugin>;
 
 export type OASInput<
   TOAS extends OpenAPIDocument,
@@ -597,47 +603,56 @@ export type SecuritySchemeName<T extends { security: { [key: string]: any }[] }>
   T['security']
 >[number];
 
-export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme> &
-  BearerAuthParams<TSecurityScheme> &
-  ApiKeyAuthParams<TSecurityScheme> &
-  OAuth2AuthParams<TSecurityScheme>;
+export type OASSecurityParams<TSecurityScheme, TClientWithPlugin> =
+  BasicAuthParams<TSecurityScheme> &
+    BearerAuthParams<TSecurityScheme> &
+    ApiKeyAuthParams<TSecurityScheme> &
+    OAuth2AuthParams<TSecurityScheme, TClientWithPlugin>;
 
-export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj extends {
-  security: { [key: string]: any }[];
-}
-  ? TOAS extends
-      | {
-          components: {
-            securitySchemes: {
+export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj, TClientWithPlugin> =
+  TSecurityObj extends {
+    security: { [key: string]: any }[];
+  }
+    ? TOAS extends
+        | {
+            components: {
+              securitySchemes: {
+                [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
+                  ? SecuritySchemeName<TSecurityObj>
+                  : never]: infer TSecurityScheme;
+              };
+            };
+          }
+        | {
+            securityDefinitions: {
               [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
                 ? SecuritySchemeName<TSecurityObj>
                 : never]: infer TSecurityScheme;
             };
-          };
-        }
-      | {
-          securityDefinitions: {
-            [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
-              ? SecuritySchemeName<TSecurityObj>
-              : never]: infer TSecurityScheme;
-          };
-        }
-    ? OASSecurityParams<TSecurityScheme>
-    : // OAS may have a bad reference to a security scheme
-    // So we can assume it
-    SecuritySchemeName<TSecurityObj> extends `basic${string}`
-    ? BasicAuthParams<{
-        type: 'http';
-        scheme: 'basic';
-      }>
-    : SecuritySchemeName<TSecurityObj> extends `bearer${string}`
-    ? BearerAuthParams<{
-        type: 'http';
-        scheme: 'bearer';
-      }>
-    : SecuritySchemeName<TSecurityObj> extends `oauth${string}`
-    ? OAuth2AuthParams<{
-        type: 'oauth2';
-      }>
-    : {}
-  : {};
+          }
+      ? OASSecurityParams<TSecurityScheme, TClientWithPlugin>
+      : // OAS may have a bad reference to a security scheme
+      // So we can assume it
+      SecuritySchemeName<TSecurityObj> extends `basic${string}`
+      ? BasicAuthParams<{
+          type: 'http';
+          scheme: 'basic';
+        }>
+      : SecuritySchemeName<TSecurityObj> extends `bearer${string}`
+      ? BearerAuthParams<{
+          type: 'http';
+          scheme: 'bearer';
+        }>
+      : SecuritySchemeName<TSecurityObj> extends `oauth${string}`
+      ? OAuth2AuthParams<
+          {
+            type: 'oauth2';
+          },
+          TClientWithPlugin
+        >
+      : {}
+    : {};
+
+export type ClientPuginWithOAuth = {
+  _authIndicator: true;
+};
