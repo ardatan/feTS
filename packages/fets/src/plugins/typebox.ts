@@ -1,5 +1,6 @@
 import { TypeCompiler, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
+import { HTTPError } from '@whatwg-node/server';
 import { Response } from '../Response.js';
 import { PromiseOrValue, RouterComponentsBase, RouterPlugin, RouterRequest } from '../types.js';
 import { getHeadersObj } from './utils.js';
@@ -61,15 +62,29 @@ export function useTypeBox({
           components,
         });
         validationMiddlewares.set('json', async request => {
-          const contentType = request.headers.get('content-type');
-          if (contentType?.includes('json')) {
-            const jsonObj = await request.json();
-            Object.defineProperty(request, 'json', {
-              value: async () => jsonObj,
-              configurable: true,
-            });
-            return validateFn(jsonObj);
-          }
+          const origReqJsonMethod = request.json.bind(request);
+          Object.defineProperty(request, 'json', {
+            value: () =>
+              origReqJsonMethod().then(jsonObj => {
+                const errors = [...validateFn(jsonObj)].map(({ schema, type, ...error }) => ({
+                  name: 'json',
+                  ...error,
+                }));
+                if (errors.length) {
+                  throw new HTTPError(
+                    400,
+                    'Bad Request',
+                    {
+                      'x-error-type': 'validation',
+                    },
+                    {
+                      errors,
+                    },
+                  );
+                }
+              }),
+            configurable: true,
+          });
           return [];
         });
       }

@@ -1,5 +1,5 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
-import { createServerAdapter, isPromise } from '@whatwg-node/server';
+import { createServerAdapter, isPromise, useErrorHandling } from '@whatwg-node/server';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
@@ -306,6 +306,7 @@ export function createRouter<
         ]
       : []),
     useTypeBox(),
+    useErrorHandling(options?.onError),
     ...userPlugins,
   ];
   const finalOpts: RouterOptions<TServerContext, TComponents> = {

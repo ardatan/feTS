@@ -63,18 +63,6 @@ describe('TypeBox', () => {
           value: 'Basic 123',
           path: '/authorization',
         },
-        {
-          message: 'Expected string',
-          name: 'json',
-          path: '/foo',
-          value: 123,
-        },
-        {
-          message: 'Expected number',
-          name: 'json',
-          path: '/bar',
-          value: '123',
-        },
       ],
     });
     expect(response.status).toBe(400);
