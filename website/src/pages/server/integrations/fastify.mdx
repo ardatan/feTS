@@ -57,7 +57,7 @@ app.route({
     void reply.status(response.status)
 
     const textResponse = await response.text()
-    void reply.send(textResponse)
+    void reply.send(response.body)
   }
 })
 
