@@ -29,6 +29,7 @@ const TodoSchema = Type.Object(
   {
     title: 'Todo',
     description: 'A todo item',
+    $id: '#/components/schemas/Todo' 
   },
 );
 
@@ -41,7 +42,15 @@ type Todo = FromSchema<typeof TodoSchema>;
 
 const todos: Todo[] = [];
 
-export const router = createRouter()
+export const router = createRouter({
+  openAPI: {
+    components: {
+      schemas: {
+        Todo: TodoSchema,
+      },
+    },
+  },
+})
   .route({
     description: 'Get all todos',
     method: 'GET',
@@ -69,8 +78,10 @@ export const router = createRouter()
         ),
       },
       responses: {
-        200: TodoSchema,
-        404: ErrorResponseSchema,
+        200: Type.Ref(TodoSchema),
+        404: Type.Object({
+          message: Type.String(),
+        }),
       },
     },
     handler: async ({ params: { id } }) => {
@@ -101,7 +112,7 @@ export const router = createRouter()
         }),
       },
       responses: {
-        200: TodoSchema,
+        200: Type.Ref(TodoSchema),
       },
     },
     handler: async request => {
