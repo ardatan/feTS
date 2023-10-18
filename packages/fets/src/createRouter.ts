@@ -38,13 +38,13 @@ const HTTP_METHODS: HTTPMethod[] = [
 const EMPTY_OBJECT = {};
 const EMPTY_MATCH = { pathname: { groups: {} } } as URLPatternResult;
 
-export function createRouterBase(
+export function createRouterBase<TServerContext>(
   {
     fetchAPI: givenFetchAPI,
     base: basePath = '/',
     plugins = [],
     swaggerUI,
-  }: RouterOptions<any, any> = {},
+  }: RouterOptions<TServerContext, any>,
   openAPIDocument: OpenAPIDocument,
 ): RouterBaseObject<any, any, any> {
   const fetchAPI = {
@@ -325,19 +325,20 @@ export function createRouterBase(
 
 export function createRouter<
   TServerContext,
-  TComponents extends RouterComponentsBase = {},
+  TComponents extends RouterComponentsBase,
   TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
     [TKey: string]: never;
   },
 >(
-  options: RouterOptions<TServerContext, TComponents> = {},
+  options?: RouterOptions<TServerContext, TComponents> | undefined,
 ): Router<TServerContext, TComponents, TRouterSDK> {
   const {
     openAPI: { endpoint: oasEndpoint = '/openapi.json', ...openAPIDocument } = {},
     swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
     plugins: userPlugins = [],
     base = '/',
-  } = options;
+  } = options || {};
+
   openAPIDocument.openapi = openAPIDocument.openapi || '3.0.1';
   const oasInfo = (openAPIDocument.info ||= {} as OpenAPIInfo);
   oasInfo.title ||= 'feTS API';
@@ -373,9 +374,26 @@ export function createRouter<
     plugins,
   };
   const routerBaseObject = createRouterBase(finalOpts, openAPIDocument as OpenAPIDocument);
+
+  // Argument of type 'RouterOptions<TServerContext, TComponents>' is not assignable to parameter of type 'ServerAdapterOptions<TServerContext>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  // Types of property 'plugins' are incompatible.
+  // Type 'RouterPlugin<TServerContext>[] | undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'.
+  //   Type 'undefined' is not assignable to type 'ServerAdapterPlugin<TServerContext>[]'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const router = createServerAdapter(routerBaseObject, finalOpts);
+
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
+    // Argument of type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to parameter of type 'Router<any, any, any>'.
+    // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'RouterBaseObject<any, any, any>'.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     onRouterInitHook(router);
   }
+
+  // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'Router<TServerContext, TComponents, TRouterSDK>'.
+  // Type 'ServerAdapter<TServerContext, ServerAdapterBaseObject<TServerContext, ServerAdapterRequestHandler<TServerContext>>>' is not assignable to type 'RouterBaseObject<TServerContext, TComponents, TRouterSDK>'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return router;
 }

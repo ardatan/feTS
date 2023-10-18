@@ -47,7 +47,7 @@ export type NotOkStatusCode = Exclude<StatusCode, OkStatusCode>;
 
 export type TypedBody<
   TJSON,
-  TFormData extends Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
   THeaders extends Record<string, string>,
 > = Omit<Body, 'json' | 'formData' | 'headers'> & {
   /**
@@ -314,7 +314,7 @@ export type HTTPMethod =
 export type TypedRequestInit<
   THeaders extends Record<string, string>,
   TMethod extends HTTPMethod,
-  TFormData extends Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
 > = Omit<RequestInit, 'method' | 'headers' | 'body'> & {
   method: TMethod;
   headers: TypedHeaders<THeaders>;
@@ -323,7 +323,10 @@ export type TypedRequestInit<
 
 export type TypedRequest<
   TJSON = any,
-  TFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined> = Record<
+    string,
+    FormDataEntryValue | undefined
+  >,
   THeaders extends Record<string, string> = Record<string, string>,
   TMethod extends HTTPMethod = HTTPMethod,
   TQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
@@ -340,7 +343,7 @@ export type TypedRequestCtor = new <
   THeaders extends Record<string, string>,
   TMethod extends HTTPMethod,
   TQueryParams extends Record<string, string | string[]>,
-  TFormData extends Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
 >(
   input: string | TypedURL<TQueryParams>,
   init?: TypedRequestInit<THeaders, TMethod, TFormData>,
@@ -391,7 +394,10 @@ export type TypedURLCtor = new <TQueryParams extends Record<string, string | str
 ) => TypedURL<TQueryParams>;
 
 export interface TypedFormData<
-  TMap extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
+  TMap extends Record<string, FormDataEntryValue | undefined> = Record<
+    string,
+    FormDataEntryValue | undefined
+  >,
 > {
   append<TName extends keyof TMap>(
     name: TName,

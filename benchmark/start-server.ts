@@ -115,6 +115,11 @@ const router = createRouter({
     handler,
   });
 
+// @ts-ignore  Types of parameters 'req' and 'req' are incompatible.
+// Type 'IncomingMessage' is not assignable to type 'NodeRequest' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+// Types of property 'url' are incompatible.
+//   Type 'string | undefined' is not assignable to type 'string'.
+//     Type 'undefined' is not assignable to type 'string'.
 createServer(router).listen(4000, () => {
   readyCount++;
   console.log('listening on 0.0.0.0:4000');

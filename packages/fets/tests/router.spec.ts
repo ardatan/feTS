@@ -58,9 +58,14 @@ describe('Router', () => {
     expect(json.message).toBe('Hello John!');
   });
   it('should process multiple handlers for the same route', async () => {
-    const router = createRouter<{
-      message: string;
-    }>();
+    const router = createRouter<
+      {
+        message: string;
+      },
+      { schemas: {} },
+      {}
+    >();
+
     router.route({
       path: '/greetings',
       method: 'GET',
@@ -107,6 +112,7 @@ describe('Router', () => {
   });
   it('can pull route params from the basepath as well', async () => {
     const router = createRouter({ base: '/api' });
+
     router.route({
       path: '/greetings/:name',
       method: 'GET',
@@ -121,10 +127,11 @@ describe('Router', () => {
   });
 
   it('can handle nested routers', async () => {
-    const router = createRouter<any, {}>();
-    const nested = createRouter<any, {}>({
+    const router = createRouter<any, { schemas: {} }>();
+    const nested = createRouter<any, { schemas: {} }>({
       base: '/api',
     });
+
     nested.route({
       path: '/greetings/:name',
       method: 'GET',

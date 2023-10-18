@@ -25,7 +25,7 @@ export const router = createRouter({
       schemas: {
         Todo: TodoSchema,
       },
-    } as const,
+    },
   },
 })
   .route({
@@ -42,7 +42,9 @@ export const router = createRouter({
         },
       },
     } as const,
-    handler: () => Response.json(todos),
+    handler: () => {
+      return Response.json(todos);
+    },
   })
   .route({
     description: 'Get a todo',
@@ -193,7 +195,7 @@ export const router = createRouter({
           required: ['file'],
           additionalProperties: false,
         },
-      },
+      } as const,
       responses: {
         200: {
           type: 'object',
@@ -213,12 +215,15 @@ export const router = createRouter({
       const body = await request.formData();
       const file = body.get('file');
       const description = body.get('description');
-      return Response.json({
+
+      const json = {
         name: file.name,
-        description,
+        description: description || '',
         type: file.type,
         size: file.size,
         lastModified: file.lastModified,
-      });
+      } as const;
+
+      return Response.json(json);
     },
   });

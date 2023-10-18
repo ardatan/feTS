@@ -4,8 +4,8 @@ import addFormats from 'ajv-formats';
 import jsonSerializerFactory from '@ardatan/fast-json-stringify';
 import { URL } from '@whatwg-node/fetch';
 import { Response } from '../Response.js';
-import { StatusCode } from '../typed-fetch.js';
-import {
+import type { StatusCode } from '../typed-fetch.js';
+import type {
   JSONSerializer,
   PromiseOrValue,
   RouterComponentsBase,
@@ -18,9 +18,9 @@ import { getHeadersObj } from './utils.js';
 type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ErrorObject[]>;
 
 export function useAjv({
-  components = {},
+  components = { schemas: {} },
 }: {
-  components?: RouterComponentsBase;
+  components?: RouterComponentsBase | undefined;
 } = {}): RouterPlugin<any> {
   const ajv = new Ajv({
     strict: false,
@@ -73,10 +73,16 @@ export function useAjv({
     onRoute({ path, schemas, handlers }) {
       const validationMiddlewares = new Map<string, ValidateRequestFn>();
       if (schemas?.request?.headers && !isZodSchema(schemas.request.headers)) {
+        const { headers } = schemas.request;
+
+        // TODO: Property '$async' is missing in type '{ components: RouterComponentsBase; type?: JSONSchema7TypeName | JSONSchema7TypeName[] | undefined; pattern?: string | undefined; ... 46 more ...; [$JSONSchema7]?: unique symbol; }' but required in type 'AsyncSchema'
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const validateFn = ajv.compile({
-          ...schemas.request.headers,
+          ...headers,
           components,
         });
+
         validationMiddlewares.set('headers', request => {
           const headersObj = getHeadersObj(request.headers);
           const isValid = validateFn(headersObj);
@@ -87,10 +93,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.params && !isZodSchema(schemas.request.params)) {
+        // TODO: Property '$async' is missing in type '{ components: RouterComponentsBase; type?: JSONSchema7TypeName | JSONSchema7TypeName[] | undefined; pattern?: string | undefined; ... 46 more ...; [$JSONSchema7]?: unique symbol; }' but required in type 'AsyncSchema'
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const validateFn = ajv.compile({
           ...schemas.request.params,
           components,
         });
+
         validationMiddlewares.set('params', request => {
           const isValid = validateFn(request.params);
           if (!isValid) {
@@ -100,10 +110,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.query && !isZodSchema(schemas.request.query)) {
+        // TODO: Property '$async' is missing in type '{ components: RouterComponentsBase; type?: JSONSchema7TypeName | JSONSchema7TypeName[] | undefined; pattern?: string | undefined; ... 46 more ...; [$JSONSchema7]?: unique symbol; }' but required in type 'AsyncSchema'
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const validateFn = ajv.compile({
           ...schemas.request.query,
           components,
         });
+
         validationMiddlewares.set('query', request => {
           const isValid = validateFn(request.query);
           if (!isValid) {
@@ -113,10 +127,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.json && !isZodSchema(schemas.request.json)) {
+        // TODO: Property '$async' is missing in type '{ components: RouterComponentsBase; type?: JSONSchema7TypeName | JSONSchema7TypeName[] | undefined; pattern?: string | undefined; ... 46 more ...; [$JSONSchema7]?: unique symbol; }' but required in type 'AsyncSchema'
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const validateFn = ajv.compile({
           ...schemas.request.json,
           components,
         });
+
         validationMiddlewares.set('json', async request => {
           const contentType = request.headers.get('content-type');
           if (contentType?.includes('json')) {
@@ -134,10 +152,14 @@ export function useAjv({
         });
       }
       if (schemas?.request?.formData && !isZodSchema(schemas.request.formData)) {
+        // TODO: Property '$async' is missing in type '{ components: RouterComponentsBase; type?: JSONSchema7TypeName | JSONSchema7TypeName[] | undefined; pattern?: string | undefined; ... 46 more ...; [$JSONSchema7]?: unique symbol; }' but required in type 'AsyncSchema'
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const validateFn = ajv.compile({
           ...schemas.request.formData,
           components,
         });
+
         validationMiddlewares.set('formData', async request => {
           const contentType = request.headers.get('content-type');
           if (
@@ -145,14 +167,18 @@ export function useAjv({
             contentType?.includes('application/x-www-form-urlencoded')
           ) {
             const formData = await request.formData();
-            const formDataObj: Record<string, FormDataEntryValue> = {};
+            const formDataObj: Record<string, FormDataEntryValue | undefined> = {};
             const jobs: Promise<void>[] = [];
             formData.forEach((value, key) => {
+              if (typeof value === 'undefined') {
+                return;
+              }
+
               if (typeof value === 'string') {
                 formDataObj[key] = value;
               } else {
                 jobs.push(
-                  value.arrayBuffer().then(buffer => {
+                  value.arrayBuffer().then((buffer: ArrayBuffer): void => {
                     const typedArray = new Uint8Array(buffer);
                     const binaryStrParts: string[] = [];
                     typedArray.forEach((byte, index) => {

@@ -96,6 +96,12 @@ export const router = createRouter()
     },
   });
 
+// TODO: Type 'IncomingMessage' is not assignable to type 'NodeRequest' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+// Types of property 'url' are incompatible.
+// Type 'string | undefined' is not assignable to type 'string'.
+// Type 'undefined' is not assignable to type 'string'.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 createServer(router).listen(3000, () => {
   console.log('SwaggerUI is served at http://localhost:3000/docs');
 });

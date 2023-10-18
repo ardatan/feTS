@@ -26,6 +26,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": false,
+    "exactOptionalPropertyTypes": true,
     "paths": {
       "@e2e/*": ["e2e/*/src/index.ts"],
       "fets": ["packages/fets/src/index.ts"]

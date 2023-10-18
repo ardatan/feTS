@@ -1,3 +1,4 @@
+import type { ZodSchema } from 'zod';
 import {
   HTTPMethod,
   TypedRequest,
@@ -6,31 +7,33 @@ import {
 } from '../typed-fetch';
 import { AddRouteWithTypesOpts, StatusCodeMap } from '../types';
 
-export type ZodType = { _output: any; safeParse(input: any): any };
+export type ZodType = ZodSchema; // { _output: any; safeParse(input: any): any };
 export type InferZodType<T extends ZodType> = T['_output'];
 
 export type RouteZodSchemas = {
-  request?: {
-    json?: ZodType;
-    formData?: ZodType;
-    headers?: ZodType;
-    params?: ZodType;
-    query?: ZodType;
-  };
-  responses?: StatusCodeMap<ZodType>;
+  request?:
+    | {
+        json?: ZodType | undefined;
+        formData?: ZodType | undefined;
+        headers?: ZodType | undefined;
+        params?: ZodType | undefined;
+        query?: ZodType | undefined;
+      }
+    | undefined;
+  responses?: StatusCodeMap<ZodType> | undefined;
 };
 
 export type TypedRequestFromRouteZodSchemas<
   TRouteZodSchemas extends RouteZodSchemas,
   TMethod extends HTTPMethod,
-> = TRouteZodSchemas extends { request: Required<RouteZodSchemas>['request'] }
+> = TRouteZodSchemas extends { request: RouteZodSchemas['request'] }
   ? TypedRequest<
       TRouteZodSchemas['request'] extends { json: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['json']>
         : any,
       TRouteZodSchemas['request'] extends { formData: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['formData']>
-        : Record<string, FormDataEntryValue>,
+        : Record<string, FormDataEntryValue | undefined>,
       TRouteZodSchemas['request'] extends { headers: ZodType }
         ? InferZodType<TRouteZodSchemas['request']['headers']>
         : Record<string, string>,
@@ -42,7 +45,12 @@ export type TypedRequestFromRouteZodSchemas<
         ? InferZodType<TRouteZodSchemas['request']['params']>
         : Record<string, any>
     >
-  : TypedRequest<any, Record<string, FormDataEntryValue>, Record<string, string>, TMethod>;
+  : TypedRequest<
+      any,
+      Record<string, FormDataEntryValue | undefined>,
+      Record<string, string>,
+      TMethod
+    >;
 
 export type TypedResponseFromRouteZodSchemas<TRouteZodSchemas extends RouteZodSchemas> =
   TRouteZodSchemas extends { responses: StatusCodeMap<ZodType> }
