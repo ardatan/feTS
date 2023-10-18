@@ -3516,10 +3516,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.47.0":
-  version "0.47.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.47.0.tgz#8df914fa95e52cd72a48673c804be0a37ae477d7"
-  integrity sha512-maHj30n8FfS8YHL8XqGP+DYzxpURgOvsAUI35L2RSJ5BlhF9JggghnBXea6dAw4KJRJfa5hKCqGaDD/kmsrHdA==
+"@types/k6@0.47.1":
+  version "0.47.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.47.1.tgz#01e355d9f28f3be247c27c010cd71c5794f7f8f5"
+  integrity sha512-dQCSM3WT4f5MWCyyxmY/fO+BSYS217nvlvOhDvqg4lZGfzbAuS6pOG+UuwoH+3mLTChccEds+0Q0q7YWBbtgMQ==
 
 "@types/katex@^0.16.0":
   version "0.16.3"
