@@ -8,4 +8,5 @@ export default {
   bun: 'Bun',
   deno: 'Deno',
   'node-http': 'Node:HTTP',
+  fastify: 'Fastify',
 };
