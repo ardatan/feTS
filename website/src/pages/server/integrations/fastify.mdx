@@ -1,0 +1,64 @@
+# Integration with Fastify
+
+[Fastify is one of the popular HTTP server frameworks for Node.js.](https://www.fastify.io/).
+
+## Installation
+
+```sh npm2yarn
+npm i fets fastify
+```
+
+## Example
+
+```ts
+import fastify, { FastifyReply, FastifyRequest } from 'fastify'
+import { createRouter, Response } from 'fets'
+
+const app = fastify()
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  } as const,
+  handler: () => Response.json({ message: 'Hello World!' })
+})
+
+app.route({
+  method: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  url: '/*',
+  async handler(req, reply) {
+    const response = await router.handleNodeRequest(req, {
+      req,
+      reply
+    })
+
+    if (response === undefined) {
+      void reply.status(404).send('Not found.')
+      return reply
+    }
+
+    response.headers.forEach((value, key) => {
+      void reply.header(key, value)
+    })
+
+    void reply.status(response.status)
+
+    void reply.send(response.body)
+  }
+})
+
+app.listen(4000)
+```
