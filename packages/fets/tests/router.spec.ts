@@ -2,8 +2,7 @@ import { createRouter, Response } from '../src/index.js';
 
 describe('Router', () => {
   it('should have parsedUrl in Request object', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/greetings/:name',
       method: 'GET',
       handler: request =>
@@ -16,8 +15,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello /greetings/John!');
   });
   it('should process parameters in the path', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/greetings/:name',
       method: 'GET',
       handler: request =>
@@ -30,8 +28,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello John!');
   });
   it('should decode parameters in the path', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/greetings/:name',
       method: 'GET',
       handler: request =>
@@ -44,8 +41,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello John Doe!');
   });
   it('should process query parameters', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/greetings',
       method: 'GET',
       handler: request =>
@@ -60,8 +56,7 @@ describe('Router', () => {
   it('should process multiple handlers for the same route', async () => {
     const router = createRouter<{
       message: string;
-    }>();
-    router.route({
+    }>().route({
       path: '/greetings',
       method: 'GET',
       handler: [
@@ -80,34 +75,33 @@ describe('Router', () => {
   });
 
   it('can match multiple routes if earlier handlers do not return (as middleware)', async () => {
-    const router = createRouter<any, any>();
-    router.route({
-      path: '/greetings',
-      method: 'GET',
-      handler: [
-        (_request, ctx) => {
-          ctx.message = 'Hello';
+    const router = createRouter<any, any>()
+      .route({
+        path: '/greetings',
+        method: 'GET',
+        handler: [
+          (_request, ctx) => {
+            ctx.message = 'Hello';
+          },
+          (_request, ctx) => {
+            ctx.message += ` to you`;
+          },
+        ],
+      })
+      .route({
+        path: '/greetings',
+        method: 'GET',
+        handler: (request, ctx) => {
+          ctx.message += ` ${request.query.name}!`;
+          return Response.json({ message: ctx.message });
         },
-        (_request, ctx) => {
-          ctx.message += ` to you`;
-        },
-      ],
-    });
-    router.route({
-      path: '/greetings',
-      method: 'GET',
-      handler: (request, ctx) => {
-        ctx.message += ` ${request.query.name}!`;
-        return Response.json({ message: ctx.message });
-      },
-    });
+      });
     const response = await router.fetch('/greetings?name=John');
     const json = await response.json();
     expect(json.message).toBe('Hello to you John!');
   });
   it('can pull route params from the basepath as well', async () => {
-    const router = createRouter({ base: '/api' });
-    router.route({
+    const router = createRouter({ base: '/api' }).route({
       path: '/greetings/:name',
       method: 'GET',
       handler: request =>
@@ -145,8 +139,7 @@ describe('Router', () => {
   });
 
   it('can get query params', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/foo',
       method: 'GET',
       handler: request =>
@@ -163,8 +156,7 @@ describe('Router', () => {
   it('supports "/" with base', async () => {
     const router = createRouter({
       base: '/api',
-    });
-    router.route({
+    }).route({
       path: '/',
       method: 'GET',
       handler: () =>
@@ -177,8 +169,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello Root!');
   });
   it('supports "/" without base', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/',
       method: 'GET',
       handler: () =>
@@ -193,8 +184,7 @@ describe('Router', () => {
   it('supports "/" in the base', async () => {
     const router = createRouter({
       base: '/',
-    });
-    router.route({
+    }).route({
       path: '/greetings',
       method: 'GET',
       handler: () =>
@@ -209,8 +199,7 @@ describe('Router', () => {
   it('supports "/" both in the base and in the route', async () => {
     const router = createRouter({
       base: '/',
-    });
-    router.route({
+    }).route({
       path: '/',
       method: 'GET',
       handler: () =>
@@ -223,8 +212,7 @@ describe('Router', () => {
     expect(json.message).toBe('Hello World!');
   });
   it('handles POST bodies', async () => {
-    const router = createRouter();
-    router.route({
+    const router = createRouter().route({
       path: '/greetings',
       method: 'POST',
       handler: async request => {

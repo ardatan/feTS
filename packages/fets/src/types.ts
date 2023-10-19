@@ -177,68 +177,6 @@ export type StatusCodeMap<T> = {
   [TKey in StatusCode]?: T;
 };
 
-export type TypedRouterHandlerTypeConfig<
-  TPath extends string,
-  TRequestJSON = any,
-  TRequestFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
-  TRequestHeaders extends Record<string, string> = Record<string, string>,
-  TRequestQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
-  TRequestPathParams extends Record<string, any> = Record<
-    ExtractPathParamsWithPattern<TPath>,
-    string
-  >,
-  TResponseJSONStatusMap extends StatusCodeMap<any> = StatusCodeMap<any>,
-> = {
-  request: {
-    json?: TRequestJSON;
-    formData?: TRequestFormData;
-    headers?: TRequestHeaders;
-    query?: TRequestQueryParams;
-    params?: TRequestPathParams;
-  };
-  responses?: TResponseJSONStatusMap;
-};
-
-export type TypedRequestFromTypeConfig<
-  TMethod extends HTTPMethod,
-  TPath extends string,
-  TTypeConfig extends TypedRouterHandlerTypeConfig<TPath>,
-> = TTypeConfig extends { request: Required<TypedRouterHandlerTypeConfig<TPath>>['request'] }
-  ? TTypeConfig extends TypedRouterHandlerTypeConfig<
-      TPath,
-      infer TRequestJSON,
-      infer TRequestFormData,
-      infer TRequestHeaders,
-      infer TRequestQueryParams,
-      infer TRequestPathParams
-    >
-    ? TypedRequest<
-        TRequestJSON,
-        TRequestFormData,
-        TRequestHeaders,
-        TMethod,
-        TRequestQueryParams,
-        TRequestPathParams
-      >
-    : never
-  : TypedRequest<
-      any,
-      Record<string, FormDataEntryValue>,
-      Record<string, string>,
-      TMethod,
-      Record<string, string | string[]>,
-      Record<ExtractPathParamsWithPattern<TPath>, string>
-    >;
-
-export type TypedResponseFromTypeConfig<TTypeConfig extends TypedRouterHandlerTypeConfig<string>> =
-  TTypeConfig extends {
-    responses: infer TResponses;
-  }
-    ? TResponses extends StatusCodeMap<any>
-      ? TypedResponseWithJSONStatusMap<TResponses>
-      : never
-    : TypedResponse;
-
 export interface RouterBaseObject<
   TServerContext,
   TComponents extends RouterComponentsBase,
@@ -268,16 +206,17 @@ export interface RouterBaseObject<
     TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
   >;
   route<
-    TTypeConfig extends TypedRouterHandlerTypeConfig<TPath>,
     TMethod extends HTTPMethod,
     TPath extends string,
-    TTypedRequest extends TypedRequestFromTypeConfig<
+    TTypedRequest extends TypedRequest<
+      any,
+      Record<string, FormDataEntryValue>,
+      Record<string, string>,
       TMethod,
-      TPath,
-      TTypeConfig
-    > = TypedRequestFromTypeConfig<TMethod, TPath, TTypeConfig>,
-    TTypedResponse extends
-      TypedResponseFromTypeConfig<TTypeConfig> = TypedResponseFromTypeConfig<TTypeConfig>,
+      Record<string, string | string[]>,
+      Record<ExtractPathParamsWithPattern<TPath>, string>
+    >,
+    TTypedResponse extends TypedResponse,
   >(
     opts: AddRouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>,
   ): Router<
