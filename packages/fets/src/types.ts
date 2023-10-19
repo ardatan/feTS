@@ -4,6 +4,7 @@ import type {
   JSONSchema as JSONSchemaOrBoolean,
 } from 'json-schema-to-ts';
 import type {
+  ErrorHandler,
   ServerAdapter,
   ServerAdapterOptions,
   ServerAdapterPlugin,
@@ -98,6 +99,8 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
 
   openAPI?: RouterOpenAPIOptions<TComponents>;
   swaggerUI?: RouterSwaggerUIOptions;
+
+  onError?: ErrorHandler<TServerContext>;
 }
 
 export type RouterComponentsBase = {

@@ -1,10 +1,9 @@
-import { createRouter, Response, useErrorHandling } from 'fets';
+import { createRouter, Response } from 'fets';
 import { Type } from '@sinclair/typebox';
 
 export function createTestServerAdapter<TServerContext = {}>(base?: string) {
   return createRouter<TServerContext, {}>({
     base,
-    plugins: [useErrorHandling()],
   })
     .route({
       method: 'GET',
