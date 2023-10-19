@@ -18,7 +18,9 @@ const router = createRouter().route({
         authorization: Type.String().regex(/Bearer .+/)
       }),
       params: Type.Object({
-        id: Type.String().uuid()
+        id: Type.String({
+          format: 'uuid'
+        })
       })
     }
   },

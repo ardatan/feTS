@@ -8,9 +8,6 @@ const router = createRouter().route({
   method: 'POST',
   schemas: {
     request: {
-      params: Type.Object({
-        id: Type.String(),
-      }),
       json: Type.Object({
         name: Type.String(),
       }),

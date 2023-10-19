@@ -41,15 +41,7 @@ type Todo = FromSchema<typeof TodoSchema>;
 
 const todos: Todo[] = [];
 
-export const router = createRouter({
-  openAPI: {
-    components: {
-      schemas: {
-        Todo: TodoSchema,
-      },
-    },
-  },
-})
+export const router = createRouter()
   .route({
     description: 'Get all todos',
     method: 'GET',

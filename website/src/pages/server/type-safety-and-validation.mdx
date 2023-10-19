@@ -65,6 +65,9 @@ const router = createRouter().route({
 
 `schemas.request.params` can be used to validate the URL parameters like `id` inside `/todos/:id`:
 
+By default, feTS already extracts and validates path parameters defined in the path. So unless you
+have some specific format for parameters, you don't need to define schemas for path parameters..
+
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -74,10 +77,20 @@ const router = createRouter().route({
   // Define the request body schema
   schemas: {
     request: {
+      // This is not needed since feTS already extracts and validates path parameters
       params: {
         type: 'object',
         properties: {
           id: { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['id']
+      }
+      // Unless it is `uuid` or some specific format
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', format: 'uuid' }
         },
         additionalProperties: false,
         required: ['id']

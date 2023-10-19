@@ -9,18 +9,13 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
       method: 'GET',
       path: '/greetings/:name',
       schemas: {
-        request: {
-          params: Type.Object({
-            name: Type.String(),
-          }),
-        },
         responses: {
           200: Type.Object({
             message: Type.String(),
           }),
         },
       },
-      handler: req => Response.json({ message: `Hello ${req.params?.name}!` }),
+      handler: req => Response.json({ message: `Hello ${req.params.name}!` }),
     })
     .route({
       method: 'POST',
