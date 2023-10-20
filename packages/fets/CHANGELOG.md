@@ -1,5 +1,14 @@
 # fets
 
+## 0.6.0
+
+### Minor Changes
+
+- [#706](https://github.com/ardatan/feTS/pull/706)
+  [`2f1aab9`](https://github.com/ardatan/feTS/commit/2f1aab925375ba7599e0ef994a01a0badecacce1)
+  Thanks [@ardatan](https://github.com/ardatan)! - BREAKING: `handler` doesn't accept multiple
+  handlers anymore. For middleware approach, you can use `onRouteHandle`
+
 ## 0.5.0
 
 ### Minor Changes
