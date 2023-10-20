@@ -1,33 +1,33 @@
-import { createRouter, Response } from 'fets';
+import { createRouter, Response } from "fets";
 
 const handler = createRouter({
   swaggerUI: {
-    endpoint: '/api/docs',
+    endpoint: "/api/docs",
   },
   openAPI: {
-    endpoint: '/api/openapi.json',
+    endpoint: "/api/openapi.json",
   },
   fetchAPI: {
     Response: globalThis.Response,
   },
 }).route({
-  method: 'GET',
-  path: '/api/greetings',
+  method: "GET",
+  path: "/api/greetings",
   schemas: {
     responses: {
       200: {
-        type: 'object',
+        type: "object",
         properties: {
           message: {
-            type: 'string',
+            type: "string",
           },
         },
-        required: ['message'],
+        required: ["message"],
         additionalProperties: false,
       },
     },
   } as const,
-  handler: () => Response.json({ message: 'Hello World!' }),
+  handler: () => Response.json({ message: "Hello World!" }),
 });
 
 export { handler as GET, handler as POST };
