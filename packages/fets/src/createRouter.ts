@@ -233,7 +233,7 @@ export function createRouterBase(
     route(
       route: RouteWithSchemasOpts<
         any,
-        any,
+        RouterComponentsBase,
         RouteSchemas,
         HTTPMethod,
         string,
