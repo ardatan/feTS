@@ -97,7 +97,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
     get(_target, path: string) {
       return new Proxy(EMPTY_OBJECT, {
         get(_target, method: HTTPMethod): ClientMethod {
-          async function clientMethod(requestParams: ClientRequestParams) {
+          async function clientMethod(requestParams: ClientRequestParams = {}, init?: RequestInit) {
             for (const pathParamKey in requestParams?.params || {}) {
               const value = requestParams?.params?.[pathParamKey];
               if (value) {
@@ -110,6 +110,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               method,
               headers: requestParams?.headers || {},
+              signal: init?.signal,
             };
 
             if (requestParams?.json) {
