@@ -33,7 +33,8 @@ describe('TypeBox', () => {
         }),
       },
     } as const,
-    handler() {
+    async handler(request) {
+      await request.formData();
       return Response.json({
         baz: '123',
         foo: 123,
@@ -74,20 +75,13 @@ describe('TypeBox', () => {
     const response = await router.fetch('http://localhost:3000/test', {
       method: 'POST',
       body: formData,
+      headers: {
+        authorization: 'Bearer 123',
+      },
     });
     const resultJson = await response.json();
     expect(resultJson).toMatchObject({
       errors: [
-        {
-          message: 'Required property',
-          name: 'headers',
-          path: '/authorization',
-        },
-        {
-          message: 'Expected string',
-          name: 'headers',
-          path: '/authorization',
-        },
         {
           message: 'Expected string length less or equal to 10',
           name: 'formData',

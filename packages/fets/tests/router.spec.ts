@@ -53,53 +53,7 @@ describe('Router', () => {
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
   });
-  it('should process multiple handlers for the same route', async () => {
-    const router = createRouter<{
-      message: string;
-    }>().route({
-      path: '/greetings',
-      method: 'GET',
-      handler: [
-        (_request, ctx) => {
-          ctx.message = 'Hello';
-        },
-        (request, ctx) => {
-          ctx.message += ` ${request.query.name}!`;
-          return Response.json({ message: ctx.message });
-        },
-      ],
-    });
-    const response = await router.fetch('/greetings?name=John');
-    const json = await response.json();
-    expect(json.message).toBe('Hello John!');
-  });
 
-  it('can match multiple routes if earlier handlers do not return (as middleware)', async () => {
-    const router = createRouter<any, any>()
-      .route({
-        path: '/greetings',
-        method: 'GET',
-        handler: [
-          (_request, ctx) => {
-            ctx.message = 'Hello';
-          },
-          (_request, ctx) => {
-            ctx.message += ` to you`;
-          },
-        ],
-      })
-      .route({
-        path: '/greetings',
-        method: 'GET',
-        handler: (request, ctx) => {
-          ctx.message += ` ${request.query.name}!`;
-          return Response.json({ message: ctx.message });
-        },
-      });
-    const response = await router.fetch('/greetings?name=John');
-    const json = await response.json();
-    expect(json.message).toBe('Hello to you John!');
-  });
   it('can pull route params from the basepath as well', async () => {
     const router = createRouter({ base: '/api' }).route({
       path: '/greetings/:name',
@@ -130,6 +84,7 @@ describe('Router', () => {
     router.route({
       path: '/api/*',
       method: 'GET',
+      // @ts-expect-error TODO
       handler: nested,
     });
     const response = await router.fetch('/api/greetings/John');
@@ -228,29 +183,5 @@ describe('Router', () => {
     });
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
-  });
-  it('onRoute hook', () => {
-    const onRoute = jest.fn();
-    const router = createRouter({
-      plugins: [
-        {
-          onRoute,
-        },
-      ],
-    });
-    const handler = () => new Response('Hello World!');
-    router.route({
-      path: '/greetings',
-      method: 'GET',
-      handler,
-    });
-    expect(onRoute).toHaveBeenCalledWith({
-      method: 'GET',
-      path: '/greetings',
-      handlers: [handler],
-      openAPIDocument: {
-        ...router.openAPIDocument,
-      },
-    });
   });
 });

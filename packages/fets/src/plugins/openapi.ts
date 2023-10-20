@@ -1,6 +1,6 @@
 import { Response } from '../Response.js';
 import swaggerUiHtml from '../swagger-ui-html.js';
-import { StatusCode } from '../typed-fetch.js';
+import { HTTPMethod, StatusCode } from '../typed-fetch.js';
 import {
   OpenAPIDocument,
   OpenAPIOperationObject,
@@ -125,19 +125,20 @@ export function useOpenAPI({
         });
       }
     },
-    onRoute({ method, path, operationId, description, tags, schemas }) {
+    onRoute({ route: { method, path, operationId, description, tags, schemas, security } }) {
       if (schemas) {
         let pathForOAS = path.replace(/:([^/]+)/g, '{$1}');
         if (!pathForOAS.startsWith('/')) {
           pathForOAS = `/${pathForOAS}`;
         }
         const pathObj: any = (paths[pathForOAS] = paths[pathForOAS] || {});
-        const lowerCasedMethod = method.toLowerCase();
+        const lowerCasedMethod = (method as HTTPMethod).toLowerCase();
         pathObj[lowerCasedMethod] = pathObj[lowerCasedMethod] || {};
         const operation = pathObj[lowerCasedMethod] as OpenAPIOperationObject;
         operation.operationId = operationId;
         operation.description = description;
         operation.tags = tags;
+        operation.security = security;
         let isRequestValidated = false;
         if (schemas.request?.headers) {
           isRequestValidated = true;

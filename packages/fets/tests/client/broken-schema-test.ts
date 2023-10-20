@@ -1,4 +1,4 @@
-import { createClient, NormalizeOAS } from '../src/client';
+import { createClient, NormalizeOAS } from '../../src/client';
 import type brokenSchemaOas from './fixtures/example-broken-schema-oas';
 
 const client = createClient<NormalizeOAS<typeof brokenSchemaOas>>({});

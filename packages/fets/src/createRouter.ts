@@ -1,15 +1,15 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter, isPromise, useErrorHandling } from '@whatwg-node/server';
+import { useDefineRoutes } from './plugins/define-routes.js';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
-  AddRouteWithSchemasOpts,
+  OnRouteHandleHook,
   OnRouteHook,
   OnRouterInitHook,
   OpenAPIDocument,
   OpenAPIInfo,
-  RouteHandler,
   Router,
   RouterBaseObject,
   RouterComponentsBase,
@@ -17,23 +17,11 @@ import type {
   RouterPlugin,
   RouterSDK,
   RouteSchemas,
+  RouteWithSchemasOpts,
 } from './types.js';
-import { addHandlersToMethod, PatternHandlersObj } from './utils.js';
-
-const HTTP_METHODS: HTTPMethod[] = [
-  'GET',
-  'HEAD',
-  'POST',
-  'PUT',
-  'DELETE',
-  'CONNECT',
-  'OPTIONS',
-  'TRACE',
-  'PATCH',
-];
+import { asyncIterationUntilReturn } from './utils.js';
 
 const EMPTY_OBJECT = {};
-const EMPTY_MATCH = { pathname: { groups: {} } } as URLPatternResult;
 
 export function createRouterBase(
   {
@@ -50,6 +38,7 @@ export function createRouterBase(
   };
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
+  const onRouteHandleHooks: OnRouteHandleHook<any>[] = [];
   for (const plugin of plugins) {
     if (plugin.onRouterInit) {
       __onRouterInitHooks.push(plugin.onRouterInit);
@@ -57,15 +46,40 @@ export function createRouterBase(
     if (plugin.onRoute) {
       onRouteHooks.push(plugin.onRoute);
     }
+    if (plugin.onRouteHandle) {
+      onRouteHandleHooks.push(plugin.onRouteHandle);
+    }
   }
-  const handlersByPatternByMethod = new Map<
+  const routeByPatternByMethod = new Map<
     HTTPMethod,
-    Map<URLPattern, RouteHandler<any, TypedRequest, TypedResponse>[]>
+    Map<
+      URLPattern,
+      RouteWithSchemasOpts<
+        any,
+        RouterComponentsBase,
+        RouteSchemas,
+        HTTPMethod,
+        string,
+        TypedRequest,
+        TypedResponse
+      >
+    >
   >();
-  const internalPatternsByMethod = new Map<HTTPMethod, Set<URLPattern>>();
-
-  // Use this in `handle` for iteration to get better performance
-  const patternHandlerObjByMethod = new Map<HTTPMethod, PatternHandlersObj<any>[]>();
+  const routeByPathByMethod = new Map<
+    HTTPMethod,
+    Map<
+      string,
+      RouteWithSchemasOpts<
+        any,
+        RouterComponentsBase,
+        RouteSchemas,
+        HTTPMethod,
+        string,
+        TypedRequest,
+        TypedResponse
+      >
+    >
+  >();
 
   function handleUnhandledRoute() {
     if (swaggerUI?.endpoint) {
@@ -79,35 +93,6 @@ export function createRouterBase(
     return new fetchAPI.Response(null, { status: 404 });
   }
 
-  function asyncIterationUntilReturn<TInput, TOutput>(
-    iterable: Iterable<TInput>,
-    callback: (result: TInput) => Promise<TOutput | undefined> | TOutput | undefined,
-  ): Promise<TOutput | undefined> | TOutput | undefined {
-    const iterator = iterable[Symbol.iterator]();
-    function iterate(): Promise<TOutput | undefined> | TOutput | undefined {
-      const { value, done } = iterator.next();
-      if (done) {
-        return;
-      }
-      if (value) {
-        const callbackResult$ = callback(value);
-        if (isPromise(callbackResult$)) {
-          return callbackResult$.then(callbackResult => {
-            if (callbackResult) {
-              return callbackResult;
-            }
-            return iterate();
-          });
-        }
-        if (callbackResult$) {
-          return callbackResult$;
-        }
-        return iterate();
-      }
-    }
-    return iterate();
-  }
-
   return {
     openAPIDocument,
     handle(request: Request, context: any) {
@@ -117,42 +102,76 @@ export function createRouterBase(
           return Reflect.get(url, prop, url);
         },
       }) as URL;
-      const methodPatternMaps = patternHandlerObjByMethod.get(request.method as HTTPMethod);
-      if (methodPatternMaps) {
-        const queryProxy = new Proxy(
-          {},
-          {
-            get(_, prop) {
-              if (prop !== 'then' && !url.searchParams.has(prop as string)) {
-                return undefined;
-              }
-
-              const allQueries = url.searchParams.getAll(prop.toString());
-
-              if (allQueries.length === 0) {
-                return '';
-              }
-
-              return allQueries.length === 1 ? allQueries[0] : allQueries;
-            },
-            has(_, prop) {
-              return url.searchParams.has(prop.toString());
-            },
-          },
-        );
-        const iterationResult$ = asyncIterationUntilReturn(
-          methodPatternMaps,
-          ({ pattern, handlers }) => {
-            // Do not parse URL if not needed
-            let match: URLPatternResult | null = null;
-            if (pattern.isPattern) {
-              match = pattern.exec(url);
-            } else if (
-              request.url.endsWith(pattern.pathname) ||
-              url.pathname === pattern.pathname
-            ) {
-              match = EMPTY_MATCH;
+      const queryProxy = new Proxy(
+        {},
+        {
+          get(_, prop) {
+            if (prop !== 'then' && !url.searchParams.has(prop as string)) {
+              return undefined;
             }
+
+            const allQueries = url.searchParams.getAll(prop.toString());
+
+            if (allQueries.length === 0) {
+              return '';
+            }
+
+            return allQueries.length === 1 ? allQueries[0] : allQueries;
+          },
+          has(_, prop) {
+            return url.searchParams.has(prop.toString());
+          },
+        },
+      );
+      const pathPatternMapByMethod = routeByPathByMethod.get(request.method as HTTPMethod);
+      if (pathPatternMapByMethod) {
+        const route = pathPatternMapByMethod.get(url.pathname);
+        if (route) {
+          const routerRequest = new Proxy(request as any, {
+            get(target, prop: keyof TypedRequest) {
+              if (prop === 'parsedUrl') {
+                return url;
+              }
+              if (prop === 'query') {
+                return queryProxy;
+              }
+              const targetProp = target[prop];
+              if (typeof targetProp === 'function') {
+                return targetProp.bind(target);
+              }
+              return targetProp;
+            },
+            has(target, prop) {
+              return prop in target || prop === 'parsedUrl' || prop === 'query';
+            },
+          });
+          for (const onRouteHandleHook of onRouteHandleHooks) {
+            onRouteHandleHook({
+              route,
+              request: routerRequest,
+            });
+          }
+          const handlerResult$ = route.handler(routerRequest, context);
+          if (isPromise(handlerResult$)) {
+            return handlerResult$.then(handlerResult => {
+              if (handlerResult) {
+                return handlerResult as Response;
+              }
+              return handleUnhandledRoute();
+            });
+          }
+          if (handlerResult$) {
+            return handlerResult$ as Response;
+          }
+        }
+      }
+      const methodPatternMaps = routeByPatternByMethod.get(request.method as HTTPMethod);
+      if (methodPatternMaps) {
+        const patternHandlerResult$ = asyncIterationUntilReturn(
+          methodPatternMaps.entries(),
+          ([pattern, route]) => {
+            // Do not parse URL if not needed
+            const match = pattern.exec(url);
             if (match != null) {
               const routerRequest = new Proxy(request as any, {
                 get(target, prop: keyof TypedRequest) {
@@ -187,30 +206,34 @@ export function createRouterBase(
                   );
                 },
               });
-              return asyncIterationUntilReturn(handlers, handler =>
-                handler(routerRequest, context),
-              );
+              for (const onRouteHandleHook of onRouteHandleHooks) {
+                onRouteHandleHook({
+                  route,
+                  request: routerRequest,
+                });
+              }
+              return route.handler(routerRequest, context);
             }
           },
         );
-        if (isPromise(iterationResult$)) {
-          return iterationResult$.then(iterationResult => {
-            if (iterationResult) {
-              return iterationResult as Response;
+        if (isPromise(patternHandlerResult$)) {
+          return patternHandlerResult$.then(patternHandlerResult => {
+            if (patternHandlerResult) {
+              return patternHandlerResult as Response;
             }
             return handleUnhandledRoute();
           });
         }
-        if (iterationResult$) {
-          return iterationResult$ as Response;
+        if (patternHandlerResult$) {
+          return patternHandlerResult$ as Response;
         }
       }
       return handleUnhandledRoute();
     },
     route(
-      opts: AddRouteWithSchemasOpts<
+      route: RouteWithSchemasOpts<
         any,
-        any,
+        RouterComponentsBase,
         RouteSchemas,
         HTTPMethod,
         string,
@@ -218,47 +241,13 @@ export function createRouterBase(
         TypedResponse
       >,
     ) {
-      const { operationId, description, method, path, schemas, tags, internal, handler } = opts;
-      const handlers = Array.isArray(handler) ? handler : [handler];
-      if (!method) {
-        for (const method of HTTP_METHODS) {
-          addHandlersToMethod({
-            operationId,
-            description,
-            method,
-            path,
-            schemas,
-            handlers,
-            tags,
-            internal,
-            // Router specific
-            onRouteHooks,
-            openAPIDocument,
-            basePath,
-            fetchAPI,
-            handlersByPatternByMethod,
-            internalPatternsByMethod,
-            patternHandlerObjByMethod,
-          });
-        }
-      } else {
-        addHandlersToMethod({
-          operationId,
-          description,
-          method,
-          path,
-          schemas,
-          handlers,
-          tags,
-          internal,
-          // Router specific
-          onRouteHooks,
-          openAPIDocument,
+      for (const onRouteHook of onRouteHooks) {
+        onRouteHook({
           basePath,
-          fetchAPI,
-          handlersByPatternByMethod,
-          internalPatternsByMethod,
-          patternHandlerObjByMethod,
+          route,
+          routeByPathByMethod,
+          routeByPatternByMethod,
+          openAPIDocument,
         });
       }
       return this as any;
@@ -307,6 +296,7 @@ export function createRouter<
       : []),
     useTypeBox(),
     useErrorHandling(options?.onError),
+    useDefineRoutes(),
     ...userPlugins,
   ];
   const finalOpts: RouterOptions<TServerContext, TComponents> = {

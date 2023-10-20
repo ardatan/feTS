@@ -1,13 +1,12 @@
-import { TypeCompiler, ValueErrorIterator } from '@sinclair/typebox/compiler';
+import { TypeCompiler, ValueError, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
 import { HTTPError } from '@whatwg-node/server';
-import { Response } from '../Response.js';
-import { PromiseOrValue, RouterComponentsBase, RouterPlugin, RouterRequest } from '../types.js';
+import { RouterComponentsBase, RouterPlugin } from '../types.js';
 import { getHeadersObj } from './utils.js';
 
-type ValidateRequestFn = (request: RouterRequest) => PromiseOrValue<ValueErrorIterator | []>;
+type ValidateFn = (data: any) => ValueErrorIterator;
 
-function createValidateFn(schema: any) {
+function createValidateFn(schema: any): ValidateFn {
   try {
     const validator = TypeCompiler.Compile(schema);
     return function getErrors(data: any) {
@@ -20,141 +19,152 @@ function createValidateFn(schema: any) {
   }
 }
 
+function sanitizeError({ schema, type, ...error }: ValueError, name: string) {
+  return {
+    ...error,
+    name,
+  };
+}
+
 export function useTypeBox({
   components = {},
 }: {
   components?: RouterComponentsBase;
 } = {}): RouterPlugin<any> {
+  const validateFnBySchema = new WeakMap<any, ValidateFn>();
+
+  function getValidateFn(schema: any) {
+    let validateFn = validateFnBySchema.get(schema);
+    if (!validateFn) {
+      validateFn = createValidateFn({
+        ...schema,
+        components,
+      });
+      validateFnBySchema.set(schema, validateFn);
+    }
+    return validateFn;
+  }
   return {
-    onRoute({ schemas, handlers }) {
-      const validationMiddlewares = new Map<string, ValidateRequestFn>();
+    onRouteHandle({ route: { schemas }, request }) {
       if (schemas?.request?.headers) {
-        const validateFn = createValidateFn({
-          ...schemas.request.headers,
-          components,
-        });
-        validationMiddlewares.set('headers', request => {
-          const headersObj = getHeadersObj(request.headers);
-          return validateFn(headersObj);
-        });
+        const validateFn = getValidateFn(schemas.request.headers);
+        const headersObj = getHeadersObj(request.headers);
+        const errors = [...validateFn(headersObj)].map(error => sanitizeError(error, 'headers'));
+        if (errors.length) {
+          throw new HTTPError(
+            400,
+            'Bad Request',
+            {
+              'x-error-type': 'validation',
+            },
+            {
+              errors,
+            },
+          );
+        }
       }
       if (schemas?.request?.params) {
-        const validateFn = createValidateFn({
-          ...schemas.request.params,
-          components,
-        });
-        validationMiddlewares.set('params', request => {
-          return validateFn(request.params);
-        });
+        const validateFn = getValidateFn(schemas.request.params);
+        const errors = [...validateFn(request.params)].map(error => sanitizeError(error, 'params'));
+        if (errors.length) {
+          throw new HTTPError(
+            400,
+            'Bad Request',
+            {
+              'x-error-type': 'validation',
+            },
+            {
+              errors,
+            },
+          );
+        }
       }
       if (schemas?.request?.query) {
-        const validateFn = createValidateFn({
-          ...schemas.request.query,
-          components,
-        });
-        validationMiddlewares.set('query', request => {
-          return validateFn(request.query);
-        });
+        const validateFn = getValidateFn(schemas.request.query);
+        const errors = [...validateFn(request.query)].map(error => sanitizeError(error, 'query'));
+        if (errors.length) {
+          throw new HTTPError(
+            400,
+            'Bad Request',
+            {
+              'x-error-type': 'validation',
+            },
+            {
+              errors,
+            },
+          );
+        }
       }
       if (schemas?.request?.json) {
-        const validateFn = createValidateFn({
-          ...schemas.request.json,
-          components,
-        });
-        validationMiddlewares.set('json', async request => {
-          const origReqJsonMethod = request.json.bind(request);
-          Object.defineProperty(request, 'json', {
-            value: () =>
-              origReqJsonMethod().then(jsonObj => {
-                const errors = [...validateFn(jsonObj)].map(({ schema, type, ...error }) => ({
-                  name: 'json',
-                  ...error,
-                }));
-                if (errors.length) {
-                  throw new HTTPError(
-                    400,
-                    'Bad Request',
-                    {
-                      'x-error-type': 'validation',
-                    },
-                    {
-                      errors,
-                    },
-                  );
-                }
-              }),
-            configurable: true,
-          });
-          return [];
+        const validateFn = getValidateFn(schemas.request.json);
+        const origReqJsonMethod = request.json.bind(request);
+        Object.defineProperty(request, 'json', {
+          value: () =>
+            origReqJsonMethod().then(jsonObj => {
+              const errors = [...validateFn(jsonObj)].map(({ schema, type, ...error }) => ({
+                name: 'json',
+                ...error,
+              }));
+              if (errors.length) {
+                throw new HTTPError(
+                  400,
+                  'Bad Request',
+                  {
+                    'x-error-type': 'validation',
+                  },
+                  {
+                    errors,
+                  },
+                );
+              }
+              return jsonObj;
+            }),
+          configurable: true,
         });
       }
       if (schemas?.request?.formData) {
-        const validateFn = createValidateFn({
-          ...schemas.request.formData,
-          components,
-        });
-        validationMiddlewares.set('formData', async request => {
-          const contentType = request.headers.get('content-type');
-          if (
-            contentType?.includes('multipart/form-data') ||
-            contentType?.includes('application/x-www-form-urlencoded')
-          ) {
-            const formData = await request.formData();
-            const formDataObj: Record<string, FormDataEntryValue> = {};
-            const jobs: Promise<void>[] = [];
-            formData.forEach((value, key) => {
-              if (typeof value === 'string') {
-                formDataObj[key] = value;
-              } else {
-                jobs.push(
-                  value.arrayBuffer().then(buffer => {
-                    const typedArray = new Uint8Array(buffer);
-                    const binaryStrParts: string[] = [];
-                    typedArray.forEach((byte, index) => {
-                      binaryStrParts[index] = String.fromCharCode(byte);
-                    });
-                    formDataObj[key] = binaryStrParts.join('');
-                  }),
+        const validateFn = getValidateFn(schemas.request.formData);
+        const origMethod = request.formData.bind(request);
+        Object.defineProperty(request, 'formData', {
+          configurable: true,
+          value: () =>
+            origMethod().then(async formData => {
+              const formDataObj: Record<string, FormDataEntryValue> = {};
+              const jobs: Promise<void>[] = [];
+              formData.forEach((value, key) => {
+                if (typeof value === 'string') {
+                  formDataObj[key] = value;
+                } else {
+                  jobs.push(
+                    value.arrayBuffer().then(buffer => {
+                      const typedArray = new Uint8Array(buffer);
+                      const binaryStrParts: string[] = [];
+                      typedArray.forEach((byte, index) => {
+                        binaryStrParts[index] = String.fromCharCode(byte);
+                      });
+                      formDataObj[key] = binaryStrParts.join('');
+                    }),
+                  );
+                }
+              });
+              await Promise.all(jobs);
+              const errors = [...validateFn(formDataObj)].map(error =>
+                sanitizeError(error, 'formData'),
+              );
+              if (errors.length) {
+                throw new HTTPError(
+                  400,
+                  'Bad Request',
+                  {
+                    'x-error-type': 'validation',
+                  },
+                  {
+                    errors,
+                  },
                 );
               }
-            });
-            await Promise.all(jobs);
-            Object.defineProperty(request, 'formData', {
-              value: async () => formData,
-              configurable: true,
-            });
-            return validateFn(formDataObj);
-          }
-          return [];
-        });
-      }
-      if (validationMiddlewares.size > 0) {
-        handlers.unshift(async (request): Promise<any> => {
-          const validationErrorsNonFlat = await Promise.all(
-            [...validationMiddlewares.entries()].map(async ([name, fn]) => {
-              const errors = [...(await fn(request))];
-              if (errors.length > 0) {
-                return errors.map(({ schema, type, ...error }) => ({
-                  name,
-                  ...error,
-                }));
-              }
+              return formDataObj;
             }),
-          );
-          const validationErrors = validationErrorsNonFlat.flat().filter(Boolean);
-          if (validationErrors.length > 0) {
-            return Response.json(
-              {
-                errors: validationErrors,
-              },
-              {
-                status: 400,
-                headers: {
-                  'x-error-type': 'validation',
-                },
-              },
-            );
-          }
         });
       }
     },

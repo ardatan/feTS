@@ -25,11 +25,11 @@ export function createTestServerAdapter<TServerContext = {}>(base?: string) {
           json: Type.Object({
             name: Type.String(),
           }),
-          responses: {
-            200: Type.Object({
-              message: Type.String(),
-            }),
-          },
+        },
+        responses: {
+          200: Type.Object({
+            message: Type.String(),
+          }),
         },
       },
       handler: async req => {
