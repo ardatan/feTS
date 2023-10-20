@@ -117,6 +117,7 @@ export function useTypeBox({
                   },
                 );
               }
+              return jsonObj;
             }),
           configurable: true,
         });
