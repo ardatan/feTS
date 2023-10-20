@@ -110,7 +110,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               method,
               headers: requestParams?.headers || {},
-              signal: init?.signal,
+              ...init,
             };
 
             if (requestParams?.json) {
