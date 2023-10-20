@@ -1,10 +1,10 @@
-dist
+dist/
 CHANGELOG.md
-.next
-[...slug].js
-.changeset
-.husky
-.bob
+.next/
+.changeset/*.md
+.husky/
+.bob/
 examples/todolist/src/saved_openapi.ts
 packages/fets/src/swagger-ui-html.ts
-website/out
+out/
+pnpm-lock.yaml

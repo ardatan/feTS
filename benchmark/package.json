@@ -1,6 +1,6 @@
 {
   "name": "@fets/benchmark",
-  "version": "0.0.24",
+  "version": "0.0.28",
   "type": "module",
   "private": true,
   "scripts": {
@@ -13,9 +13,11 @@
     "test": "start-server-and-test start http://127.0.0.1:4000/ping loadtest"
   },
   "dependencies": {
-    "fets": "0.4.12"
+    "@sinclair/typebox": "0.31.18",
+    "fets": "0.6.0"
   },
   "devDependencies": {
-    "start-server-and-test": "2.0.0"
+    "@types/k6": "0.47.1",
+    "start-server-and-test": "2.0.1"
   }
 }

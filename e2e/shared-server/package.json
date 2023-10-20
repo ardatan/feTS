@@ -1,9 +1,9 @@
 {
   "name": "@e2e/shared-server",
-  "version": "0.0.72",
+  "version": "0.0.76",
   "private": true,
   "dependencies": {
-    "fets": "0.4.12",
-    "zod": "3.22.2"
+    "@sinclair/typebox": "0.31.18",
+    "fets": "0.6.0"
   }
 }

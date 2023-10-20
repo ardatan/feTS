@@ -12,26 +12,12 @@ It allows us to have:
   [feTS Client](/client/quick-start#infer-types-from-fets-server) that is capable of inferring these
   types from the router instance.
 - **Request Validation:** feTS validates the request parameters and if the request is invalid, it
-  returns a `400 Bad Request`. It uses [AJV](https://ajv.js.org/) for this purpose.
+  returns a `400 Bad Request`.
 - **Safe and Fast Serialization:** feTS uses the response schema to serialize the response body.
   Rather than JSON.stringify, it uses
   [fast-json-stringify](https://github.com/fastify/fast-json-stringify)which is twice as fast
   according to the benchmarks found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
-
-## Setting Up Runtime Validations with AJV
-
-To implement strict runtime validation with JSON schemas, if you're not utilizing
-[Zod schemas](/server/zod), you'll need to configure the AJV plugin for feTS. AJV is opt-in since
-certain environments, such as Cloudflare Workers, aren't compatible with AJV.
-
-```ts
-import { createRouter, useAjv } from 'fets'
-
-const router = createRouter({
-  plugins: [useAjv()]
-})
-```
 
 ## Request
 
@@ -49,7 +35,7 @@ for validating API keys or authorization headers.
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -79,19 +65,32 @@ const router = createRouter().route({
 
 `schemas.request.params` can be used to validate the URL parameters like `id` inside `/todos/:id`:
 
+By default, feTS already extracts and validates path parameters defined in the path. So unless you
+have some specific format for parameters, you don't need to define schemas for path parameters..
+
 ```ts
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'get',
+  method: 'GET',
   path: '/todos/:id',
   // Define the request body schema
   schemas: {
     request: {
+      // This is not needed since feTS already extracts and validates path parameters
       params: {
         type: 'object',
         properties: {
           id: { type: 'string' }
+        },
+        additionalProperties: false,
+        required: ['id']
+      }
+      // Unless it is `uuid` or some specific format
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', format: 'uuid' }
         },
         additionalProperties: false,
         required: ['id']
@@ -116,7 +115,7 @@ define the schema:
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().addRoute({
-  method: 'get',
+  method: 'GET',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -151,7 +150,7 @@ We can also specify the JSON body schema by using `schemas.request.json` propert
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/todos',
   // Define the request body schema
   schemas: {
@@ -189,7 +188,7 @@ We use `type: string` and `format: binary` to define a `File` object. The `maxLe
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().route({
-  method: 'post',
+  method: 'POST',
   path: '/upload-image',
   // Define the request body schema
   schemas: {
@@ -238,7 +237,7 @@ Example:
 import { createRouter, Response } from 'fets'
 
 const router = createRouter().addRoute({
-  method: 'get',
+  method: 'GET',
   path: '/todos',
   // Define the request body schema
   schemas: {

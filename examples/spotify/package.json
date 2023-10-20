@@ -1,6 +1,6 @@
 {
   "name": "example-spotify",
-  "version": "0.0.20",
+  "version": "0.0.24",
   "description": "An example app uses Spotify API",
   "private": true,
   "scripts": {
@@ -8,16 +8,15 @@
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
-    "@types/node": "18.17.11",
+    "@types/node": "20.8.7",
     "dotenv": "16.3.1",
-    "fets": "0.4.12",
+    "fets": "0.6.0",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
-    "typescript": "^5.0.0",
-    "zod": "3.22.2"
+    "typescript": "^5.0.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "4.0.5",
+    "@types/js-yaml": "4.0.8",
     "js-yaml": "4.1.0"
   }
 }

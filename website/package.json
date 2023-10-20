@@ -9,22 +9,22 @@
     "start": "next start"
   },
   "dependencies": {
-    "@theguild/components": "5.2.2",
+    "@theguild/components": "^6.0.1",
     "clsx": "^2.0.0",
-    "next": "13.4.19",
-    "next-sitemap": "4.2.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "4.10.1"
+    "next": "^13.5.4",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
-    "@theguild/algolia": "1.1.9",
+    "@theguild/algolia": "2.0.0",
     "@theguild/tailwind-config": "0.3.0",
-    "@types/node": "18.17.11",
-    "@types/react": "18.2.21",
+    "@types/node": "20.8.7",
+    "@types/react": "18.2.31",
     "@typescript/sandbox": "^0.1.0",
-    "monaco-editor": "0.41.0",
+    "monaco-editor": "0.44.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   }

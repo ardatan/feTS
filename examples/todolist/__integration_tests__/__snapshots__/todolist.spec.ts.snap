@@ -1,0 +1,419 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList should expose OpenAPI document 1`] = `
+{
+  "components": {
+    "schemas": {
+      "Todo": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "type": "string",
+          },
+          "id": {
+            "type": "string",
+          },
+        },
+        "required": [
+          "id",
+          "content",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": {
+    "description": "A simple todo list example with feTS",
+    "title": "Todo List Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.1",
+  "paths": {
+    "/todo": {
+      "put": {
+        "description": "Add a todo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "content": {
+                    "type": "string",
+                  },
+                },
+                "required": [
+                  "content",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "required": true,
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo",
+                },
+              },
+            },
+            "description": "",
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                    },
+                    "name": {
+                      "type": "string",
+                    },
+                    "path": {
+                      "type": "string",
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                        },
+                        {
+                          "type": "number",
+                        },
+                        {
+                          "type": "boolean",
+                        },
+                        {
+                          "type": "array",
+                        },
+                        {
+                          "type": "object",
+                        },
+                      ],
+                    },
+                  },
+                  "title": "RequestValidationError",
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Request validation failed",
+          },
+        },
+      },
+    },
+    "/todo/{id}": {
+      "delete": {
+        "description": "Delete a todo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+            },
+          },
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                    },
+                  },
+                  "required": [
+                    "id",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "",
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                    },
+                    "name": {
+                      "type": "string",
+                    },
+                    "path": {
+                      "type": "string",
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                        },
+                        {
+                          "type": "number",
+                        },
+                        {
+                          "type": "boolean",
+                        },
+                        {
+                          "type": "array",
+                        },
+                        {
+                          "type": "object",
+                        },
+                      ],
+                    },
+                  },
+                  "title": "RequestValidationError",
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Request validation failed",
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                    },
+                  },
+                  "required": [
+                    "error",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+      "get": {
+        "description": "Get a todo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+            },
+          },
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo",
+                },
+              },
+            },
+            "description": "",
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                    },
+                    "name": {
+                      "type": "string",
+                    },
+                    "path": {
+                      "type": "string",
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                        },
+                        {
+                          "type": "number",
+                        },
+                        {
+                          "type": "boolean",
+                        },
+                        {
+                          "type": "array",
+                        },
+                        {
+                          "type": "object",
+                        },
+                      ],
+                    },
+                  },
+                  "title": "RequestValidationError",
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Request validation failed",
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                    },
+                  },
+                  "type": "object",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+    "/todos": {
+      "get": {
+        "description": "Get all todos",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Todo",
+                  },
+                  "type": "array",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+    "/upload": {
+      "post": {
+        "description": "Upload a file",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "maxLength": 255,
+                    "type": "string",
+                  },
+                  "file": {
+                    "format": "binary",
+                    "type": "string",
+                  },
+                },
+                "required": [
+                  "file",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "required": true,
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string",
+                    },
+                    "lastModified": {
+                      "type": "number",
+                    },
+                    "name": {
+                      "type": "string",
+                    },
+                    "size": {
+                      "type": "number",
+                    },
+                    "type": {
+                      "type": "string",
+                    },
+                  },
+                  "required": [
+                    "name",
+                    "type",
+                    "size",
+                    "lastModified",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "",
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                    },
+                    "name": {
+                      "type": "string",
+                    },
+                    "path": {
+                      "type": "string",
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                        },
+                        {
+                          "type": "number",
+                        },
+                        {
+                          "type": "boolean",
+                        },
+                        {
+                          "type": "array",
+                        },
+                        {
+                          "type": "object",
+                        },
+                      ],
+                    },
+                  },
+                  "title": "RequestValidationError",
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Request validation failed",
+          },
+        },
+      },
+    },
+  },
+}
+`;

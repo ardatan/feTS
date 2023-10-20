@@ -1,30 +1,34 @@
-import { createRouter, Response, useErrorHandling } from 'fets';
-import { z } from 'zod';
+import { createRouter, Response } from 'fets';
+import { Type } from '@sinclair/typebox';
 
 export function createTestServerAdapter<TServerContext = {}>(base?: string) {
   return createRouter<TServerContext, {}>({
     base,
-    plugins: [useErrorHandling()],
   })
     .route({
       method: 'GET',
       path: '/greetings/:name',
       schemas: {
-        request: {
-          params: z.object({
-            name: z.string(),
+        responses: {
+          200: Type.Object({
+            message: Type.String(),
           }),
         },
       },
-      handler: req => Response.json({ message: `Hello ${req.params?.name}!` }),
+      handler: req => Response.json({ message: `Hello ${req.params.name}!` }),
     })
     .route({
       method: 'POST',
       path: '/bye',
       schemas: {
         request: {
-          json: z.object({
-            name: z.string(),
+          json: Type.Object({
+            name: Type.String(),
+          }),
+        },
+        responses: {
+          200: Type.Object({
+            message: Type.String(),
           }),
         },
       },

@@ -86,41 +86,38 @@ When an unexpected error is thrown, the response will have a `500` status code. 
 highly recommended to handle errors inside the handlers using `try/catch` blocks, you can also use
 the error handling plugin to catch errors.
 
-### Error Handling Plugin
+### Error Handling
 
-This plugin allows you to handle all errors thrown in the handlers. This way, you can prevent
-exposing internal errors, such as database errors that might contain sensitive information, to the
-consumer.
+feTS allows you to handle all errors thrown in the handlers. This way, you can prevent exposing
+internal errors, such as database errors that might contain sensitive information, to the consumer.
 
 Here's an example:
 
 ```ts
-import { createRouter, useErrorHandling } from 'fets'
+import { createRouter } from 'fets'
 
 const router = createRouter({
-  plugins: [
-    useErrorHandling((error, request, context) => {
-      if (error.name === 'MyError') {
-        return Response.json(
-          {
-            message: error.message
-          },
-          {
-            status: 400
-          }
-        )
-      }
-      console.error(`Unexpected error in ${request.method} ${request.url}:\n${error.stack}`)
+  onError(error, request, context) {
+    if (error.name === 'MyError') {
       return Response.json(
         {
-          message: 'Something went wrong'
+          message: error.message
         },
         {
-          status: 500
+          status: 400
         }
       )
-    })
-  ]
+    }
+    console.error(`Unexpected error in ${request.method} ${request.url}:\n${error.stack}`)
+    return Response.json(
+      {
+        message: 'Something went wrong'
+      },
+      {
+        status: 500
+      }
+    )
+  }
 }).route({
   path: '/users',
   method: 'GET',
@@ -144,11 +141,9 @@ Here's an example of how to use `HTTPError`:
 ```ts
 import { createRouter, HTTPError } from 'fets'
 
-import { HTTPError, useErrorHandling } from 'fets'
+import { HTTPError } from 'fets'
 
-const router = createRouter({
-  plugins: [useErrorHandling()]
-}).route({
+const router = createRouter().route({
   path: '/me',
   method: 'GET',
   schemas: {
@@ -160,7 +155,7 @@ const router = createRouter({
         }
       }
     }
-  },
+  } as const,
   handler: request => {
     if (!request.headers.get('Authorization')) {
       // The `HTTPError` can be used to return a custom error response.

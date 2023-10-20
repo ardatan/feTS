@@ -1,5 +1,68 @@
 # fets
 
+## 0.6.0
+
+### Minor Changes
+
+- [#706](https://github.com/ardatan/feTS/pull/706)
+  [`2f1aab9`](https://github.com/ardatan/feTS/commit/2f1aab925375ba7599e0ef994a01a0badecacce1)
+  Thanks [@ardatan](https://github.com/ardatan)! - BREAKING: `handler` doesn't accept multiple
+  handlers anymore. For middleware approach, you can use `onRouteHandle`
+
+## 0.5.0
+
+### Minor Changes
+
+- [#682](https://github.com/ardatan/feTS/pull/682)
+  [`bf99477`](https://github.com/ardatan/feTS/commit/bf99477d36901795fe7e889d8dbba93a60ffe4c4)
+  Thanks [@ardatan](https://github.com/ardatan)! - BREAKING: Drop AJV and Zod support in favor of
+  TypeBox
+
+### Patch Changes
+
+- [#682](https://github.com/ardatan/feTS/pull/682)
+  [`bf99477`](https://github.com/ardatan/feTS/commit/bf99477d36901795fe7e889d8dbba93a60ffe4c4)
+  Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
+
+  - Added dependency
+    [`@sinclair/typebox@^0.31.18` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.31.18)
+    (to `dependencies`)
+  - Removed dependency [`ajv@^8.12.0` ↗︎](https://www.npmjs.com/package/ajv/v/8.12.0) (from
+    `dependencies`)
+  - Removed dependency [`ajv-formats@^2.1.1` ↗︎](https://www.npmjs.com/package/ajv-formats/v/2.1.1)
+    (from `dependencies`)
+  - Removed dependency [`zod@^3.22.4` ↗︎](https://www.npmjs.com/package/zod/v/3.22.4) (from
+    `dependencies`)
+  - Removed dependency
+    [`zod-to-json-schema@^3.20.5` ↗︎](https://www.npmjs.com/package/zod-to-json-schema/v/3.20.5)
+    (from `dependencies`)
+
+- [#597](https://github.com/ardatan/feTS/pull/597)
+  [`a350cc6`](https://github.com/ardatan/feTS/commit/a350cc67018fed4f0f33cf3eb0d927223e5e9b72)
+  Thanks [@Ashraf-Ali-aa](https://github.com/Ashraf-Ali-aa)! - Better support for open and closed
+  brackets "{example}" for params
+
+## 0.4.14
+
+### Patch Changes
+
+- [`d7ccad5`](https://github.com/ardatan/feTS/commit/d7ccad57315e38fa9a04a80453af30d900139097)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix dark mode in Swagger UI
+
+- [#550](https://github.com/ardatan/feTS/pull/550)
+  [`9aea4fc`](https://github.com/ardatan/feTS/commit/9aea4fc376ef3fc286cfb0b5fc0c99080b459dd9)
+  Thanks [@romaindurand](https://github.com/romaindurand)! - Fix json field typing for client POST
+  requests
+
+## 0.4.13
+
+### Patch Changes
+
+- [#517](https://github.com/ardatan/feTS/pull/517)
+  [`0b5278f`](https://github.com/ardatan/feTS/commit/0b5278fd6dac549376cfec58fb42223ea44911cc)
+  Thanks [@mezannic](https://github.com/mezannic)! - Handle deep objects in query parameter
+  serialization
+
 ## 0.4.12
 
 ### Patch Changes

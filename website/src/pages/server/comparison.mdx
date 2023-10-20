@@ -66,9 +66,7 @@ const router = createRouter({
 ```
 
 On the other hand, even if you can manipulate the request, return an early response for the missing
-auth params etc but a plugin system usually makes things easier.
-
-[See the differences between middlewares and plugins here](/docs/server/plugins)
+auth params etc. but a plugin system usually makes things easier.
 
 ### Type Safe Route handlers
 
@@ -94,5 +92,6 @@ feTS has out-of-box support for JSON Schema and OpenAPI. You can define a schema
 feTS will validate the request and response against the schema. And you can generate OpenAPI
 documentation from your routes.
 
-[Learn more about validations](/docs/server/type-safety-and-validation)
-[Learn more about OpenAPI](/docs/server/openapi)
+[Learn more about validations](/server/type-safety-and-validation)
+
+[Learn more about OpenAPI](/server/openapi)

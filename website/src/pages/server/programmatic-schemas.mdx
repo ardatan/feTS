@@ -1,0 +1,56 @@
+# Building Schemas Programmatically with TypeBox
+
+Instead of using JSON Schemas, you have the option to define your schemas using
+[TypeBox](https://github.com/sinclairzx81/typebox).
+
+## Example
+
+```typescript
+import { createRouter, Response } from 'fets'
+import { Type } from '@sinclair/typebox'
+
+const router = createRouter().route({
+  path: '/user/:id',
+  method: 'POST',
+  schemas: {
+    request: {
+      headers: Type.Object({
+        authorization: Type.String().regex(/Bearer .+/)
+      }),
+      params: Type.Object({
+        id: Type.String({
+          format: 'uuid'
+        })
+      })
+    }
+  },
+  // Response type will be automatically inferred from the handler's return type
+  handler: request => {
+    if (request.params.id !== EXPECTED_UUID) {
+      return Response.json(
+        {
+          message: 'User not found'
+        },
+        {
+          status: 404
+        }
+      )
+    }
+    return Response.json({
+      id: request.params.id,
+      name: 'John Doe'
+    })
+  }
+})
+```
+
+## Why not Zod?
+
+feTS uses JSON Schemas, and libraries like Zod have their own API and logic to handle validations
+and modeling. With feTS, you can use any tool that generates JSON Schemas programmatically but we
+recommend using TypeBox which keeps the types of output JSON Schemas so feTS can infer types from
+them. And without any conversion process, those generated schemas can be directly added into the
+OpenAPI document.
+
+In addition, you can see how fast TypeBox is;
+[Type Benchmarks](https://moltar.github.io/typescript-runtime-type-benchmarks/)
