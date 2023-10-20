@@ -1,4 +1,4 @@
-import { createClient, type NormalizeOAS } from '../src';
+import { createClient, type NormalizeOAS } from '../../src';
 import type apiKeyExampleOas from './fixtures/example-apiKey-header-oas';
 
 const client = createClient<NormalizeOAS<typeof apiKeyExampleOas>>({});

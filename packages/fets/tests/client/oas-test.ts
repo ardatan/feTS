@@ -1,4 +1,4 @@
-import { createClient, type NormalizeOAS } from '../src/client';
+import { createClient, type NormalizeOAS } from '../../src/client';
 import oas from './fixtures/example-oas';
 
 const client = createClient<NormalizeOAS<typeof oas>>({});

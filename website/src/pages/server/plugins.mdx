@@ -10,19 +10,8 @@ request/response process.
     the request.
 - `onResponse` - Invoked following the router's handling of the request.
   - It offers the ability to alter the response before it's delivered to the client.
-
-<Callout type="info">
-**How do middlewares differ from plugins?**
-
-Middlewares are capable of managing the request before the response.
-
-To deal with particular scenarios, such as logging responses, adding additional headers to the
-response for CORS or cookies, and so forth, we require plugins that can intercept the final response
-before it is received by the client.
-
-It can also be employed for tracing and monitoring purposes.
-
-</Callout>
+- `onRouteHandle` - When a route is matched, this is invoked with all the details of the route. So
+  you can apply any logic (tracing, auth etc) before the actual handler is invoked.
 
 ## Recording the Response Delay
 

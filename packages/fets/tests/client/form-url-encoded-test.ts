@@ -1,4 +1,4 @@
-import { createClient, type NormalizeOAS } from '../src';
+import { createClient, type NormalizeOAS } from '../../src';
 import type formUrlEncodedOas from './fixtures/example-form-url-encoded.oas';
 
 const client = createClient<NormalizeOAS<typeof formUrlEncodedOas>>({});

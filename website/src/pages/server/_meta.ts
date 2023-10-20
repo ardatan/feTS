@@ -1,7 +1,6 @@
 export default {
   'quick-start': 'Quickstart',
   'type-safety-and-validation': 'Type-Safety & Validation',
-  middlewares: 'Middlewares',
   'error-handling': 'Error Handling',
   'programmatic-schemas': 'Programmatic Schemas with TypeBox',
   testing: 'Testing',
