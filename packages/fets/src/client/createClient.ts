@@ -108,7 +108,6 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             if (!path.startsWith('/') && !path.startsWith('http')) {
               path = `/${path}`;
             }
-
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               ...init,
               method,
