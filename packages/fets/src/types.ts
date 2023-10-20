@@ -59,7 +59,7 @@ export interface OpenAPIOperationObject {
   parameters?: OpenAPIParameterObject[];
   requestBody?: OpenAPIRequestBodyObject;
   responses?: Record<string | number, OpenAPIResponseObject>;
-  security?: string[];
+  security?: any[];
 }
 
 export interface OpenAPIResponseObject {
