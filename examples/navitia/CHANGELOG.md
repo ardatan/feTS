@@ -1,5 +1,13 @@
 # example-navitia
 
+## 0.0.21
+
+### Patch Changes
+
+- Updated dependencies
+  [[`2f1aab9`](https://github.com/ardatan/feTS/commit/2f1aab925375ba7599e0ef994a01a0badecacce1)]:
+  - fets@0.6.0
+
 ## 0.0.20
 
 ### Patch Changes
