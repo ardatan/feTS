@@ -84,6 +84,7 @@ describe('Router', () => {
     router.route({
       path: '/api/*',
       method: 'GET',
+      // @ts-expect-error TODO
       handler: nested,
     });
     const response = await router.fetch('/api/greetings/John');
