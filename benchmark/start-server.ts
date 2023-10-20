@@ -4,10 +4,16 @@ import { App } from 'uWebSockets.js';
 import { Type } from '@sinclair/typebox';
 
 async function handler(request: RouterRequest) {
-  const body = await request.json();
-  return Response.json({
-    message: `Hello, ${body.name}!`,
-  });
+  try {
+    const body = await request.json();
+    if (!body || !body.name) {
+      return Response.json({ message: 'Invalid request body' }, { status: 200 });
+    }
+    return Response.json({ message: `Hello, ${body.name}!` });
+  } catch (error) {
+    console.error('Error in handler:', error);
+    return Response.json({ message: 'An error occurred' }, { status: 200 });
+  }
 }
 
 let readyCount = 0;
@@ -67,6 +73,7 @@ const router = createRouter({})
 
 createServer(router).listen(4000, () => {
   readyCount++;
+
   console.log('listening on 0.0.0.0:4000');
 });
 
