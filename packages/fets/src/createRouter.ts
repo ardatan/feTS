@@ -38,7 +38,7 @@ export function createRouterBase(
   };
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
-  const onRouteHandleHooks: OnRouteHandleHook<any>[] = [];
+  const onRouteHandleHooks: OnRouteHandleHook<any, RouterComponentsBase>[] = [];
   for (const plugin of plugins) {
     if (plugin.onRouterInit) {
       __onRouterInitHooks.push(plugin.onRouterInit);
@@ -284,10 +284,10 @@ export function createRouter<
       },
     ];
   }
-  const plugins: RouterPlugin<TServerContext>[] = [
+  const plugins: RouterPlugin<TServerContext, TComponents>[] = [
     ...(oasEndpoint || swaggerUIEndpoint
       ? [
-          useOpenAPI({
+          useOpenAPI<TServerContext, TComponents>({
             oasEndpoint,
             swaggerUIEndpoint,
             swaggerUIOpts,

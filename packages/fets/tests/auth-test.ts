@@ -17,11 +17,7 @@ createRouter({
 }).route({
   path: '/me',
   method: 'GET',
-  security: [
-    {
-      bearerAuth: [],
-    },
-  ],
+  security: [{ bearerAuth: {} }],
   schemas: {
     responses: {
       200: Type.Object({

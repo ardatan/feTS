@@ -96,7 +96,7 @@ export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
 export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
   extends ServerAdapterOptions<TServerContext> {
   base?: string;
-  plugins?: RouterPlugin<TServerContext>[];
+  plugins?: RouterPlugin<TServerContext, TComponents>[];
 
   openAPI?: RouterOpenAPIOptions<TComponents>;
   swaggerUI?: RouterSwaggerUIOptions;
@@ -260,15 +260,18 @@ export type Router<
 
 export type OnRouteHook<TServerContext> = (payload: OnRouteHookPayload<TServerContext>) => void;
 
-export type OnRouteHandleHook<TServerContext> = (
-  payload: OnRouteHandleHookPayload<TServerContext>,
+export type OnRouteHandleHook<TServerContext, TComponents extends RouterComponentsBase> = (
+  payload: OnRouteHandleHookPayload<TServerContext, TComponents>,
 ) => void;
 
-export interface OnRouteHandleHookPayload<TServerContext> {
+export interface OnRouteHandleHookPayload<
+  TServerContext,
+  TComponents extends RouterComponentsBase,
+> {
   request: TypedRequest;
   route: RouteWithSchemasOpts<
     TServerContext,
-    RouterComponentsBase,
+    TComponents,
     RouteSchemas,
     HTTPMethod,
     string,
@@ -337,10 +340,13 @@ export type OnRouteHookPayload<TServerContext> = {
 
 export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any, any>) => void;
 
-export type RouterPlugin<TServerContext> = ServerAdapterPlugin<TServerContext> & {
+export type RouterPlugin<
+  TServerContext,
+  TComponents extends RouterComponentsBase,
+> = ServerAdapterPlugin<TServerContext> & {
   onRouterInit?: OnRouterInitHook<TServerContext>;
   onRoute?: OnRouteHook<TServerContext>;
-  onRouteHandle?: OnRouteHandleHook<TServerContext>;
+  onRouteHandle?: OnRouteHandleHook<TServerContext, TComponents>;
 };
 
 export type RouteSchemas = {
