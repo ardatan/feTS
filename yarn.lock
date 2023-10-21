@@ -4526,9 +4526,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.2:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.6.tgz#e20d8cc6845650d23df5aefd3653d3d75b8375ac"
-  integrity sha512-5QwynfXiRCRxPW3ZnC0Dv+sHHmctP4SHIuzsRKOWYO0HF/qUpsxQVexoviaxpmwDsF1hoVDDFdc4xUuafOzx1g==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.7.tgz#b206cc2db0739e22befbb3f78bac2df223c58221"
+  integrity sha512-zlIp+SCutbbugs6xDy+3WC3KO3zKySpF/bRfiTk/VJUdKt+WHAzlCtLplS7XglRYDFzhRhlzXMW/R5BHkw+u2Q==
 
 busboy@1.6.0, busboy@^1.6.0:
   version "1.6.0"
