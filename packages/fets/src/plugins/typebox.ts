@@ -26,11 +26,11 @@ function sanitizeError({ schema, type, ...error }: ValueError, name: string) {
   };
 }
 
-export function useTypeBox({
-  components = {},
+export function useTypeBox<TServerContext, TComponents extends RouterComponentsBase>({
+  components = {} as TComponents,
 }: {
-  components?: RouterComponentsBase;
-} = {}): RouterPlugin<any> {
+  components?: TComponents;
+} = {}): RouterPlugin<TServerContext, TComponents> {
   const validateFnBySchema = new WeakMap<any, ValidateFn>();
 
   function getValidateFn(schema: any) {

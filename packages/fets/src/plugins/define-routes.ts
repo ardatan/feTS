@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 import { HTTPMethod } from '../typed-fetch';
-import { RouterPlugin } from '../types';
+import { RouterComponentsBase, RouterPlugin } from '../types';
 
 const HTTP_METHODS: HTTPMethod[] = [
   'GET',
@@ -14,7 +14,10 @@ const HTTP_METHODS: HTTPMethod[] = [
   'PATCH',
 ];
 
-export function useDefineRoutes(): RouterPlugin<any> {
+export function useDefineRoutes<
+  TServerContext,
+  TComponents extends RouterComponentsBase,
+>(): RouterPlugin<TServerContext, TComponents> {
   return {
     onRoute({ basePath, route, routeByPathByMethod, routeByPatternByMethod }) {
       let fullPath = '';

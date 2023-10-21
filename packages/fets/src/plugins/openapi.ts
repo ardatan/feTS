@@ -5,6 +5,7 @@ import {
   OpenAPIDocument,
   OpenAPIOperationObject,
   OpenAPIPathObject,
+  RouterComponentsBase,
   RouterPlugin,
 } from '../types.js';
 
@@ -77,11 +78,11 @@ const requestValidationErrorSchema = {
   additionalProperties: false,
 };
 
-export function useOpenAPI({
+export function useOpenAPI<TServerContext, TComponents extends RouterComponentsBase>({
   oasEndpoint,
   swaggerUIEndpoint,
   swaggerUIOpts,
-}: OpenAPIPluginOptions): RouterPlugin<any> {
+}: OpenAPIPluginOptions): RouterPlugin<TServerContext, TComponents> {
   let paths: Record<string, OpenAPIPathObject>;
   return {
     onRouterInit(router) {
