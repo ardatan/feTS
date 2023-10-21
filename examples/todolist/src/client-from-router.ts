@@ -1,14 +1,14 @@
-import { createClient, RouteOutput } from 'fets';
+import { createClient } from 'fets';
 import type { router } from './router';
 
 const sdk = createClient<typeof router>({});
 
 const someTodosToAdd = ['Drink coffee', 'Write some code', 'Drink more coffee', 'Write more code'];
 
-type Todo = RouteOutput<typeof router, '/todo/:id', 'get'>;
+// type Todo = RouteOutput<typeof router, '/todo/:id', 'get'>;
 
 (async () => {
-  const todo: Todo = {
+  const todo = {
     id: '1',
     content: 'Drink coffee',
   };

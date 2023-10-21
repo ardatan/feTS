@@ -208,26 +208,17 @@ export interface RouterBaseObject<
 > {
   openAPIDocument: OpenAPIDocument;
   handle: ServerAdapterRequestHandler<TServerContext>;
-  route<
-    TRouteSchemas extends RouteSchemas,
-    TMethod extends HTTPMethod,
-    TPath extends string,
-    TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
-    TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
-  >(
-    opts: RouteWithSchemasOpts<
-      TServerContext,
-      TComponents,
-      TRouteSchemas,
-      TMethod,
-      TPath,
-      TTypedRequest,
-      TTypedResponse
-    >,
+  route<TRouteSchemas extends RouteSchemas, TMethod extends HTTPMethod, TPath extends string>(
+    opts: RouteWithSchemasOpts<TServerContext, TComponents, TRouteSchemas, TMethod, TPath>,
   ): Router<
     TServerContext,
     TComponents,
-    TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
+    TRouterSDK &
+      RouterSDK<
+        TPath,
+        TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
+        TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>
+      >
   >;
   route<
     TMethod extends HTTPMethod,
@@ -269,15 +260,7 @@ export interface OnRouteHandleHookPayload<
   TComponents extends RouterComponentsBase,
 > {
   request: TypedRequest;
-  route: RouteWithSchemasOpts<
-    TServerContext,
-    TComponents,
-    RouteSchemas,
-    HTTPMethod,
-    string,
-    TypedRequest,
-    TypedResponse
-  >;
+  route: RouteWithSchemasOpts<TServerContext, TComponents, RouteSchemas, HTTPMethod, string>;
 }
 
 export type RouteHandler<
@@ -301,40 +284,19 @@ export type OnRouteHookPayload<TServerContext> = {
     HTTPMethod,
     Map<
       URLPattern,
-      RouteWithSchemasOpts<
-        any,
-        RouterComponentsBase,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest,
-        TypedResponse
-      >
+      RouteWithSchemasOpts<any, RouterComponentsBase, RouteSchemas, HTTPMethod, string>
     >
   >;
   routeByPathByMethod: Map<
     HTTPMethod,
-    Map<
-      string,
-      RouteWithSchemasOpts<
-        any,
-        RouterComponentsBase,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest,
-        TypedResponse
-      >
-    >
+    Map<string, RouteWithSchemasOpts<any, RouterComponentsBase, RouteSchemas, HTTPMethod, string>>
   >;
   route: RouteWithSchemasOpts<
     TServerContext,
     RouterComponentsBase,
     RouteSchemas,
     HTTPMethod,
-    string,
-    TypedRequest,
-    TypedResponse
+    string
   >;
 };
 
@@ -475,12 +437,16 @@ export type RouteWithSchemasOpts<
   TRouteSchemas extends RouteSchemas,
   TMethod extends HTTPMethod,
   TPath extends string,
-  TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
-  TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
   schemas: TRouteSchemas;
   security?: SecuritySchemeRefsFromComponents<TComponents>[];
-} & RouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
+} & RouteWithTypesOpts<
+  TServerContext,
+  TMethod,
+  TPath,
+  TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
+  TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>
+>;
 
 export type SecuritySchemeRefsFromComponents<TComponents extends RouterComponentsBase> =
   TComponents extends {

@@ -1,7 +1,7 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
-import { OpenAPIDocument, Router } from '../types.js';
+import { OpenAPIDocument } from '../types.js';
 import {
   ClientMethod,
   ClientOptions,
@@ -71,7 +71,7 @@ export function createClient<TOAS extends OpenAPIDocument>(
  *
  * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-fets-server
  */
-export function createClient<TRouter extends Router<any, any, any>>(
+export function createClient<TRouter extends { __client: any }>(
   options: ClientOptions,
 ): TRouter['__client'];
 export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions) {
