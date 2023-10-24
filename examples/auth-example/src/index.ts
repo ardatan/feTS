@@ -1,7 +1,6 @@
 import { createServer } from 'http';
 import * as crypto from 'node:crypto';
-import { createRouter, Response } from 'fets';
-import { Type } from '@sinclair/typebox';
+import { createRouter, Response, Type } from 'fets';
 import { bearerAuthPlugin, UnauthorizedSchema } from './common';
 
 export const router = createRouter({
@@ -19,6 +18,7 @@ export const router = createRouter({
 }).route({
   path: '/me',
   method: 'GET',
+  tags: ['Operations for authenticated users'],
   security: [
     {
       myExampleAuth: {},

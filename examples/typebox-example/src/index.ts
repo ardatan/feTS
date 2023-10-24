@@ -1,7 +1,6 @@
 import { createServer } from 'http';
 import * as crypto from 'node:crypto';
-import { createRouter, FromSchema, Response } from 'fets';
-import { Type } from '@sinclair/typebox';
+import { createRouter, FromSchema, Response, Type } from 'fets';
 
 const UUIDSchema = Type.String({
   format: 'uuid',

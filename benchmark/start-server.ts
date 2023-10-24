@@ -1,7 +1,6 @@
 import { createServer } from 'http';
-import { createRouter, Response, RouterRequest } from 'fets';
+import { createRouter, Response, RouterRequest, Type } from 'fets';
 import { App } from 'uWebSockets.js';
-import { Type } from '@sinclair/typebox';
 
 async function handler(request: RouterRequest) {
   const body = await request.json();

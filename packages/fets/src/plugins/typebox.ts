@@ -1,19 +1,20 @@
+import { TSchema, TypeGuard } from '@sinclair/typebox';
 import { TypeCompiler, ValueError, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
 import { HTTPError } from '@whatwg-node/server';
 import { RouterComponentsBase, RouterPlugin } from '../types.js';
 import { getHeadersObj } from './utils.js';
 
-type ValidateFn = (data: any) => ValueErrorIterator;
+type ValidateFn = <T>(data: T) => ValueErrorIterator;
 
-function createValidateFn(schema: any): ValidateFn {
+function createValidateFn(schema: TSchema): ValidateFn {
   try {
     const validator = TypeCompiler.Compile(schema);
-    return function getErrors(data: any) {
+    return function getErrors(data: TSchema['static']) {
       return validator.Errors(data);
     };
   } catch (e) {
-    return function getErrors(data: any) {
+    return function getErrors(data: TSchema['static']) {
       return Value.Errors(schema, data);
     };
   }
@@ -46,7 +47,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
   }
   return {
     onRouteHandle({ route: { schemas }, request }) {
-      if (schemas?.request?.headers) {
+      if (schemas?.request?.headers && TypeGuard.TSchema(schemas.request.headers)) {
         const validateFn = getValidateFn(schemas.request.headers);
         const headersObj = getHeadersObj(request.headers);
         const errors = [...validateFn(headersObj)].map(error => sanitizeError(error, 'headers'));
@@ -63,7 +64,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.params) {
+      if (schemas?.request?.params && TypeGuard.TSchema(schemas.request.params)) {
         const validateFn = getValidateFn(schemas.request.params);
         const errors = [...validateFn(request.params)].map(error => sanitizeError(error, 'params'));
         if (errors.length) {
@@ -79,7 +80,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.query) {
+      if (schemas?.request?.query && TypeGuard.TSchema(schemas.request.query)) {
         const validateFn = getValidateFn(schemas.request.query);
         const errors = [...validateFn(request.query)].map(error => sanitizeError(error, 'query'));
         if (errors.length) {
@@ -95,7 +96,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.json) {
+      if (schemas?.request?.json && TypeGuard.TSchema(schemas.request.json)) {
         const validateFn = getValidateFn(schemas.request.json);
         const origReqJsonMethod = request.json.bind(request);
         Object.defineProperty(request, 'json', {
@@ -122,7 +123,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           configurable: true,
         });
       }
-      if (schemas?.request?.formData) {
+      if (schemas?.request?.formData && TypeGuard.TSchema(schemas.request.formData)) {
         const validateFn = getValidateFn(schemas.request.formData);
         const origMethod = request.formData.bind(request);
         Object.defineProperty(request, 'formData', {

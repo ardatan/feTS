@@ -1,5 +1,4 @@
-import { createRouter, Response } from 'fets';
-import { Type } from '@sinclair/typebox';
+import { createRouter, Response, Type } from 'fets';
 
 export function createTestServerAdapter<TServerContext = {}>(base?: string) {
   return createRouter<TServerContext, {}>({

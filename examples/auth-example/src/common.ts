@@ -1,5 +1,4 @@
-import { HTTPError, RouterPlugin } from 'fets';
-import { Type } from '@sinclair/typebox';
+import { HTTPError, RouterPlugin, Type } from 'fets';
 
 export const TOKEN = '1234-5678-9123-4567';
 

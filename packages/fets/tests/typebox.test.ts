@@ -1,6 +1,5 @@
-import { Type } from '@sinclair/typebox';
 import { File, FormData } from '@whatwg-node/fetch';
-import { createRouter, Response } from '../src/index.js';
+import { createRouter, Response, Type } from '../src/index.js';
 
 describe('TypeBox', () => {
   const router = createRouter({}).route({
@@ -152,5 +151,38 @@ describe('TypeBox', () => {
     });
 
     expect(response.status).toEqual(400);
+  });
+  it('skips validating with non typebox schemas', async () => {
+    const router = createRouter().route({
+      path: '/lol',
+      method: 'POST',
+      schemas: {
+        request: {
+          json: {
+            type: 'object',
+            properties: {
+              id: {
+                type: 'string',
+              },
+            },
+          },
+        },
+      } as const,
+      async handler(request) {
+        await request.json();
+        return Response.json({
+          foo: 'If you see this validation for body is not working.',
+        });
+      },
+    });
+
+    const response = await router.fetch('/lol', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: 'kek',
+      }),
+    });
+
+    expect(response.status).toEqual(200);
   });
 });

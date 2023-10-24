@@ -3,7 +3,6 @@
   "version": "0.0.76",
   "private": true,
   "dependencies": {
-    "@sinclair/typebox": "0.31.18",
     "fets": "0.6.0"
   }
 }
