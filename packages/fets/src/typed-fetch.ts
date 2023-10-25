@@ -122,6 +122,7 @@ export type TypedHeaders<TMap extends Record<string, string>> = {
   keys(): IterableIterator<keyof TMap>;
   values(): IterableIterator<TMap[keyof TMap]>;
   [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
+  getSetCookie(): string[];
 };
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
