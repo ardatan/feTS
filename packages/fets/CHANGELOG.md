@@ -1,5 +1,18 @@
 # fets
 
+## 0.6.1
+
+### Patch Changes
+
+- [`635a1bd`](https://github.com/ardatan/feTS/commit/635a1bdaafd8ed5db6ad5ac8ae6c8d890b9696a0)
+  Thanks [@ardatan](https://github.com/ardatan)! - Skip validation for non typebox schemas
+
+- [`635a1bd`](https://github.com/ardatan/feTS/commit/635a1bdaafd8ed5db6ad5ac8ae6c8d890b9696a0)
+  Thanks [@ardatan](https://github.com/ardatan)! - Improvements in Swagger UI
+
+- [`635a1bd`](https://github.com/ardatan/feTS/commit/635a1bdaafd8ed5db6ad5ac8ae6c8d890b9696a0)
+  Thanks [@ardatan](https://github.com/ardatan)! - Export TypeBox
+
 ## 0.6.0
 
 ### Minor Changes
