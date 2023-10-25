@@ -3793,9 +3793,9 @@
   integrity sha512-PaJ16WouPV/SaA+c0tnOKIqYq24+m93ipl/e0Dkxuianer+ibc5b0/6ZgfCFF8J7QEp57dySMSP9nWOFaCfJnw==
 
 "@typescript/sandbox@^0.1.0":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.1.tgz#bdc1fd7d27abfb74d3fcd7c9fb48da0d33f27123"
-  integrity sha512-AStdlspzpCEZiCHwkUOEYHJIMQ1TcAhgD4SKWpXEsP0/mF5g6qWizHSJDDiez5mlpg0E4ddw/DMfSHCrj7c9xw==
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.2.tgz#8883de33b3521a6d08247ff1b8e386320f2569e2"
+  integrity sha512-ncMaLNwC76leRfRvzkZn5oujEb/7EPqWuPfObG/mJWyjXNmct1PW9+cruJDUCU7Ntc4K10oMf3HEYZCp6FCs3Q==
   dependencies:
     "@typescript/ata" "0.9.4"
     "@typescript/vfs" "1.5.0"
