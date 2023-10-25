@@ -11,8 +11,8 @@
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
-    "@pulumi/azure-native": "2.12.0",
-    "@pulumi/pulumi": "3.89.0",
+    "@pulumi/azure-native": "2.13.0",
+    "@pulumi/pulumi": "3.90.1",
     "esbuild": "0.19.5",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
