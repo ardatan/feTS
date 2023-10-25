@@ -1179,7 +1179,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.15", "@babel/runtime-corejs3@^7.23.1":
+"@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.15", "@babel/runtime-corejs3@^7.23.2":
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.23.2.tgz#a5cd9d8b408fb946b2f074b21ea40c04e516795c"
   integrity sha512-54cIh74Z1rp4oIjsHjqN+WM4fMyCBYe+LpZ9jWm51CZ1fbH3SkAzQD/3XLoNkjbJ7YEmjobLXyvQrFypRHOrXw==
@@ -2521,10 +2521,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.12.0.tgz#96216a2ef432caa2113a61ee2ddd49debe944915"
-  integrity sha512-Zym6pGcGIAmSvRccefLQHyweF/I2ictGEBSL0ayCKQ6CgqtCEifUFvOjc3r4OHGkVwJY8KC2UMGf6d0B0E/97Q==
+"@pulumi/azure-native@2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.13.0.tgz#a81a7abe569293170aa86035c4d559b3a66d67cc"
+  integrity sha512-ENBBXc4tlHd1JBY49BwzgW5v3SoyrpVyIxFRlaePkFRlwc//tIDgTd2xirkGmBBdCBm998QWRJh0MXwRPWy4zQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2543,10 +2543,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.89.0", "@pulumi/pulumi@^3.0.0":
-  version "3.89.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.89.0.tgz#e0841b51afd52e9ba11c7313eff502073c472a20"
-  integrity sha512-/Ux9Rcj6whMt8oA/COTuVy1J4LM08BZ3ZKHoQqXjthw5N1TaPZFRAMEn1MfVQCFYLSQ87nITRDg9QQQd6Q8k1g==
+"@pulumi/pulumi@3.90.1", "@pulumi/pulumi@^3.0.0":
+  version "3.90.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.90.1.tgz#dc1c8c2703f25b3a7a2408603b183d2569af39b7"
+  integrity sha512-+uRb3urpCj4wcyRL7AJ6tll6ix4giXreObrwf1Qdlgq8ErKfNvK+UZMt9GhX9yI+8dgAt2hpf066x1F92Ik3xg==
   dependencies:
     "@grpc/grpc-js" "^1.8.16"
     "@logdna/tail-file" "^2.0.6"
@@ -3277,9 +3277,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.41.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.41.0.tgz#4689d71677e5f67a7d1e5ed72d01fce24babf2ca"
-  integrity sha512-uC0xLelzOuoFwxbBQ3GzX4DaWNucO9lW2vlGPdKu8ycXu2ObSa739oQ/lNF6qWDNUKXS0tQvGnDCAxEd178EzQ==
+  version "10.42.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.42.0.tgz#3a37ed80253e1c20e403f71eec7e31bc9758c453"
+  integrity sha512-s0QuK72orW+pYce60sd4I36N3xJKzypS2k+8GJ7phH4KqO4XjBXezOFmGMcXTznsVqEiX5zs5ujLfQdJ9X3Y2g==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -3561,10 +3561,10 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.33.tgz#80bf1da64b15f21fd8c1dc387c31929317d99ee9"
   integrity sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==
 
-"@types/node@*", "@types/node@20.8.7", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
-  version "20.8.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.7.tgz#ad23827850843de973096edfc5abc9e922492a25"
-  integrity sha512-21TKHHh3eUHIi2MloeptJWALuCu5H7HQTdTrWIFReA8ad+aggoX+lRes3ex7/FtpC+sVUpFMQ+QTfYr74mruiQ==
+"@types/node@*", "@types/node@20.8.8", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
+  version "20.8.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.8.tgz#adee050b422061ad5255fc38ff71b2bb96ea2a0e"
+  integrity sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==
   dependencies:
     undici-types "~5.25.1"
 
@@ -3849,9 +3849,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.0", "@whatwg-node/server@^0.9.15":
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.15.tgz#43e7b8ee931af5c463fcfd6e77025678fa1958cd"
-  integrity sha512-MDmw3HYfZt8hzP8Vac/LPwD8LyZFByVuO1vHPBDsOMYNf4XWv6eHbRCk4UFfLT8OMFgd+qMy/zNYc74o+3tXZg==
+  version "0.9.16"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.16.tgz#96789f68d3214a50c437480a4d237e91ab81ea34"
+  integrity sha512-gktQkRyONEw2EGpx7UZaC6zNlUm21CGlqAHQXU3QC6W0zlLM5ZQNDCeD66q/nsPHDV08X2NTHlABsuAEk5rh/w==
   dependencies:
     "@whatwg-node/fetch" "^0.9.10"
     tslib "^2.3.1"
@@ -11468,7 +11468,7 @@ react-player@2.13.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.0.1"
 
-react-redux@^8.1.2:
+react-redux@^8.1.3:
   version "8.1.3"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.1.3.tgz#4fdc0462d0acb59af29a13c27ffef6f49ab4df46"
   integrity sha512-n0ZrutD7DaX/j9VscF+uTALI3oUPa/pO4Z3soOBIjuRn/FzVu6aehhysxZCLi6y7duMf52WNZGMl7CtuK5EnRw==
@@ -12698,7 +12698,7 @@ svgo@^3.0.2:
     csso "^5.0.5"
     picocolors "^1.0.0"
 
-swagger-client@^3.22.3:
+swagger-client@^3.23.1:
   version "3.23.1"
   resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.23.1.tgz#22364b76b6f61b7c69f8846563fad59f28891380"
   integrity sha512-ecRJsoGozhGvEUmim2kIc/pH9BllnPVuajuEXVm49EDbwbwbp7P+i5EW+8w5FLaqmGrx9eio51G9bvJV/XC+YQ==
@@ -12720,11 +12720,11 @@ swagger-client@^3.22.3:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.9.0.tgz#574411a191f454d2451d2f533caa397b503934fd"
-  integrity sha512-j45ceuGHMRmI8nhOaG71VeQwrPutFHDq6QhgrxOmf4BRMOdOQgVY1POQY9ksnXZtskbD9J2NHURs4BLEDIs8gA==
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.9.1.tgz#ee19b02d9680eea3433ac6187fed8c6f77d0927f"
+  integrity sha512-DxX8Xm47Q4S+Mn/SsFH3HvSi6PrM3/ElTtKK3UEK1fYlyQvnO13jLhd2P0XggDOitfJVmIghLx+ANvqBjNNPiw==
   dependencies:
-    "@babel/runtime-corejs3" "^7.23.1"
+    "@babel/runtime-corejs3" "^7.23.2"
     "@braintree/sanitize-url" "=6.0.4"
     base64-js "^1.5.1"
     classnames "^2.3.1"
@@ -12745,7 +12745,7 @@ swagger-ui-react@^5.0.0:
     react-immutable-proptypes "2.2.0"
     react-immutable-pure-component "^2.2.0"
     react-inspector "^6.0.1"
-    react-redux "^8.1.2"
+    react-redux "^8.1.3"
     react-syntax-highlighter "^15.5.0"
     redux "^4.1.2"
     redux-immutable "^4.0.0"
@@ -12753,7 +12753,7 @@ swagger-ui-react@^5.0.0:
     reselect "^4.1.8"
     serialize-error "^8.1.0"
     sha.js "^2.4.11"
-    swagger-client "^3.22.3"
+    swagger-client "^3.23.1"
     url-parse "^1.5.10"
     xml "=1.0.1"
     xml-but-prettier "^1.0.1"
