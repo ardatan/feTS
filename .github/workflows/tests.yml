@@ -22,7 +22,7 @@ jobs:
       - name: Setup env
         uses: the-guild-org/shared-config/setup@main
         with:
-          nodeVersion: 18
+          nodeVersion: 20
       - name: Type Check
         run: yarn ts:check
   unit:
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20]
+        node-version: [18, 20, 21]
       fail-fast: false
     steps:
       - name: Checkout Master
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20]
+        node-version: [18, 20, 21]
       fail-fast: false
     steps:
       - name: Checkout Master
@@ -92,7 +92,7 @@ jobs:
       - name: Setup env
         uses: the-guild-org/shared-config/setup@main
         with:
-          nodeVersion: 18
+          nodeVersion: 20
       - name: Build Packages
         run: yarn build
       - name: Test ESM

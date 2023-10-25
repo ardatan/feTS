@@ -1,4 +1,5 @@
 import { createClient, type NormalizeOAS } from 'fets';
+import { Request, Response } from '@whatwg-node/fetch';
 import type clientQuerySerializationOAS from './fixtures/example-client-query-serialization-oas';
 
 type NormalizedOAS = NormalizeOAS<typeof clientQuerySerializationOAS>;
@@ -7,6 +8,14 @@ describe('Client', () => {
   it('should support deep objects in query', async () => {
     const client = createClient<NormalizedOAS>({
       endpoint: 'https://postman-echo.com',
+      fetchFn(info, init) {
+        const request = new Request(info.toString(), init);
+        return Promise.resolve(
+          Response.json({
+            url: request.url,
+          }),
+        );
+      },
     });
 
     const response = await client['/get'].get({
