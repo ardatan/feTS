@@ -1,7 +1,11 @@
 import { runTests } from '@e2e/shared-scripts';
 import { createVercelDeployment } from './createVercelDeployment';
 
-runTests(createVercelDeployment()).catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+runTests(createVercelDeployment())
+  .then(() => {
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
