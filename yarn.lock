@@ -2757,9 +2757,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.31.19":
-  version "0.31.19"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.19.tgz#99f7b9746546b2b38b9d02e1fbd5d07e558b04c8"
-  integrity sha512-8GznR/3FgDgA20Its5gd+BZqbtE0amjEidsIX4T2stmDFcaAcQviGsBmzlBtJ0E1Gxk8VtHxL4rt4/KSc/UdxQ==
+  version "0.31.20"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.20.tgz#74e855ba87a795f10c1eb9d791c7316d930d292e"
+  integrity sha512-pqkf2X6fc1yk6c3Rk41cT8NYFKmzngl8TVHy375X7ihlONCsX7/YTReRLyZX7zZhuUUBx9KTZPFFDZo6AIERCw==
 
 "@sinonjs/commons@^3.0.0":
   version "3.0.0"
@@ -3277,9 +3277,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.42.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.42.0.tgz#3a37ed80253e1c20e403f71eec7e31bc9758c453"
-  integrity sha512-s0QuK72orW+pYce60sd4I36N3xJKzypS2k+8GJ7phH4KqO4XjBXezOFmGMcXTznsVqEiX5zs5ujLfQdJ9X3Y2g==
+  version "10.43.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.0.tgz#3435feeeb83337b0333a441ff15b181d4bf101f5"
+  integrity sha512-1/h9KCPkTNNmpN5VKfKO4kPcl/W4Y9VQla4YGg4pydSh/+4b//0IPfvk3Oz4tz/tvWyAUlBKkBVhD3GfDLcAQA==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
