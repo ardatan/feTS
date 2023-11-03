@@ -2762,9 +2762,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.31.19":
-  version "0.31.21"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.21.tgz#d52d8e35f71e5651042aa0237e918e4b21fbbbf8"
-  integrity sha512-Wtq/K44EMkREaXytK+2c5DrygtYsH7ZxT0StQL8HMJz2BoOM7NZ/xfrUFBVuZxDrhJCoXf5Im282P2CCz5DHwQ==
+  version "0.31.22"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.22.tgz#f13fa4050a7e883d252365902e38186fa0dc8ab8"
+  integrity sha512-CKviMgpcXd8q8IsQQD8cCleswe4/EkQRcOqtVQcP1e+XUyszjJYjgL5Dtf3XunWZc2zEGmQPqJEsq08NiW9xfw==
 
 "@sinonjs/commons@^3.0.0":
   version "3.0.0"
@@ -3282,9 +3282,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.43.0"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.0.tgz#3435feeeb83337b0333a441ff15b181d4bf101f5"
-  integrity sha512-1/h9KCPkTNNmpN5VKfKO4kPcl/W4Y9VQla4YGg4pydSh/+4b//0IPfvk3Oz4tz/tvWyAUlBKkBVhD3GfDLcAQA==
+  version "10.43.1"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.1.tgz#5a263b6da5d4c5c66729d144872ff28190f1cd07"
+  integrity sha512-rKOSCpJOb1MdTyJFqdf3QNNESDfPkbP+yBOZBM2x6iIOS4VlCfJqxsaSrb3uLPR6s8Ni7DhTu+cu/q1r0xOGcw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -4541,9 +4541,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.2:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.7.tgz#b206cc2db0739e22befbb3f78bac2df223c58221"
-  integrity sha512-zlIp+SCutbbugs6xDy+3WC3KO3zKySpF/bRfiTk/VJUdKt+WHAzlCtLplS7XglRYDFzhRhlzXMW/R5BHkw+u2Q==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.8.tgz#c4e5f788f1bfa7619add8bd7970708c53a3b8970"
+  integrity sha512-2dNB+dBwAcFW7RSd4y5vKycRjouKVklSwPk4EjBKWvcMYUBOqZGGNzV7+b2tfKBG3BeRXnozbnegVKR1azuATg==
 
 busboy@1.6.0, busboy@^1.6.0:
   version "1.6.0"
