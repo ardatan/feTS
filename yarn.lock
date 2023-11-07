@@ -2506,10 +2506,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.7.0.tgz#50b4d7d3d604c21bbef404b9c1563485b9c7f16b"
-  integrity sha512-7COqQ4jkXNtfcfoNbLAvp1BK00STwNLnsM9liKl4MnRiKg7+wL+Z7jz7UiIE8m9ZqxW10wEVW8Inj92TkgjwVg==
+"@pulumi/aws@6.8.0":
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.8.0.tgz#856738deab91ce5a8a10c531402d69c496539e9d"
+  integrity sha512-V9Z755RrAFDaAfnEf545EXd3ejqBafURKvUY5IeTbPkJhA48yZIjCNW5qA7hMFurGGiFl0c/Bx2iNfR9D6EW6g==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -3358,10 +3358,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.125":
-  version "8.10.125"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.125.tgz#c2ba86f7d98fe1827a7b048e0d31a65a8b5aed8c"
-  integrity sha512-Vqw/WMlV4O1fJT6capim01v7VLDZkcX1n6Yhb52E7IfnMqYbNfwHfyDV8rRN42NLBtdDvfaqcCqs2K0fr5ljZw==
+"@types/aws-lambda@8.10.126":
+  version "8.10.126"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.126.tgz#be132de6e68353e240c88505940e67cd95d3066e"
+  integrity sha512-5eh4ffLdGYgGYI1Xr6W5L4IVse4RR7L2ns5OVUXA52nW5GFapIcGMcCzHAIMMOdpcQs3aGVxbvFlJNZH6IpgEQ==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
