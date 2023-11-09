@@ -3330,9 +3330,9 @@
     tailwindcss "^3.3.2"
 
 "@trpc/server@^10.9.0":
-  version "10.43.1"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.1.tgz#5a263b6da5d4c5c66729d144872ff28190f1cd07"
-  integrity sha512-rKOSCpJOb1MdTyJFqdf3QNNESDfPkbP+yBOZBM2x6iIOS4VlCfJqxsaSrb3uLPR6s8Ni7DhTu+cu/q1r0xOGcw==
+  version "10.43.2"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.2.tgz#90dd0061ac8cdd3becc204d6afc44efae16e6048"
+  integrity sha512-88C9sFCdmk1IFL4ub7gqRPM0lFVmyZPjxpOcYy4GZw5yJif/FLyFuzSJiwsy9NygHOjqpfCxsDrLYsFr4eANPA==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -12819,9 +12819,9 @@ swagger-client@^3.24.5:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.9.2.tgz#983134351b0f94619f1fff9d561f196e9c015b52"
-  integrity sha512-J/7Sf9UX+ObVF7IoXWWky6sn8Gd9rKNTyDdjhPyvwq0akJuN0Q76EI6cyiCwx7U2KmDsj88mnih7TU963CTW3g==
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.9.3.tgz#8da415015b9b8588da1a8d3962812134af8dd038"
+  integrity sha512-4jVjVpbhn3EgAgOkKUiQcwZAlUsvX+2NXSY8c15MQ7iiBkwep0pC9i3I/4yw1DSmX5FSrqJZ4e0l7TI6ePdDiw==
   dependencies:
     "@babel/runtime-corejs3" "^7.23.2"
     "@braintree/sanitize-url" "=6.0.4"
