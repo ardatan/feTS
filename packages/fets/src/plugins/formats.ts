@@ -14,10 +14,6 @@ const URIREF =
 const URITEMPLATE =
   // eslint-disable-next-line no-control-regex
   /^(?:(?:[^\x00-\x20"'<>%\\^`{|}]|%[0-9a-f]{2})|\{[+#./;?&=,!@|]?(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?(?:,(?:[a-z0-9_]|%[0-9a-f]{2})+(?::[1-9][0-9]{0,3}|\*)?)*\})*$/i;
-// For the source: https://gist.github.com/dperini/729294
-// For test cases: https://mathiasbynens.be/demo/url-regex
-const URL_ =
-  /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u{00a1}-\u{ffff}0-9]+-?)*[a-z\u{00a1}-\u{ffff}0-9]+)(?:\.(?:[a-z\u{00a1}-\u{ffff}0-9]+-?)*[a-z\u{00a1}-\u{ffff}0-9]+)*(?:\.(?:[a-z\u{00a1}-\u{ffff}]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/iu;
 const UUID = /^(?:urn:uuid:)?[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
 const JSON_POINTER = /^(?:\/(?:[^~/]|~0|~1)*)*$/;
 const JSON_POINTER_URI_FRAGMENT = /^#(?:\/(?:[a-z0-9_\-.!$&'()*+,;:=@]|%[0-9a-f]{2}|~0|~1)*)*$/i;
@@ -82,7 +78,15 @@ export const fullFormat: Record<FormatName, (s: string) => boolean> = {
   uri,
   'uri-reference': bind(URIREF),
   'uri-template': bind(URITEMPLATE),
-  url: bind(URL_),
+  url: v => {
+    try {
+      // eslint-disable-next-line no-new
+      new URL(v);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
   email: EMAIL,
   hostname: bind(HOSTNAME),
   ipv4: bind(IPV4),
