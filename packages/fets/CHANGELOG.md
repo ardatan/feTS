@@ -1,5 +1,12 @@
 # fets
 
+## 0.6.2
+
+### Patch Changes
+
+- [`f9c095a`](https://github.com/ardatan/feTS/commit/f9c095a7229c0b3876e17a33f0af669d89f77a8e)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add `getSetCookie` to `TypedHeaders`
+
 ## 0.6.1
 
 ### Patch Changes

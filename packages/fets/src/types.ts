@@ -35,6 +35,12 @@ export interface OpenAPIInfo {
     name?: string;
     url?: string;
   };
+  termsOfService?: string;
+  contact?: {
+    name?: string;
+    url?: string;
+    email?: string;
+  };
 }
 
 export type OpenAPIPathObject = Record<string, OpenAPIOperationObject> & {
@@ -154,37 +160,37 @@ export type FromSchema<T> =
   }
     ? U
     : T extends JSONSchema
-    ? FromSchemaOriginal<
-        T,
-        {
-          deserialize: T extends T['properties'][keyof T['properties']]
-            ? false
-            : [
-                {
-                  pattern: {
-                    type: 'string';
-                    format: 'binary';
-                  };
-                  output: File;
-                },
-                {
-                  pattern: {
-                    type: 'number';
-                    format: 'int64';
-                  };
-                  output: bigint | number;
-                },
-                {
-                  pattern: {
-                    type: 'integer';
-                    format: 'int64';
-                  };
-                  output: bigint | number;
-                },
-              ];
-        }
-      >
-    : never;
+      ? FromSchemaOriginal<
+          T,
+          {
+            deserialize: T extends T['properties'][keyof T['properties']]
+              ? false
+              : [
+                  {
+                    pattern: {
+                      type: 'string';
+                      format: 'binary';
+                    };
+                    output: File;
+                  },
+                  {
+                    pattern: {
+                      type: 'number';
+                      format: 'int64';
+                    };
+                    output: bigint | number;
+                  },
+                  {
+                    pattern: {
+                      type: 'integer';
+                      format: 'int64';
+                    };
+                    output: bigint | number;
+                  },
+                ];
+          }
+        >
+      : never;
 
 export type FromRouterComponentSchema<
   TRouter extends Router<any, any, any>,

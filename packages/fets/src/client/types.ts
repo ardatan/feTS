@@ -90,10 +90,10 @@ export type OASJSONResponseSchema<
 type ToNumber<T extends string | number, R extends any[] = []> = T extends number
   ? T
   : T extends `${number}`
-  ? T extends `${R['length']}`
-    ? R['length']
-    : ToNumber<T, [1, ...R]>
-  : never;
+    ? T extends `${R['length']}`
+      ? R['length']
+      : ToNumber<T, [1, ...R]>
+    : never;
 
 export type OASResponse<
   TOAS extends OpenAPIDocument,
@@ -106,17 +106,20 @@ export type OASResponse<
     TStatus extends StatusCode
       ? TStatus
       : TStatus extends 'default'
-      ? OASStatusMap<TOAS, TPath, TMethod> extends Record<'200' | 200, any>
-        ? Exclude<
-            NotOkStatusCode,
-            ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
-          >
-        : Exclude<OkStatusCode, ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>>
-      : TStatus extends `${number}${number}${number}`
-      ? ToNumber<TStatus> extends StatusCode
-        ? ToNumber<TStatus>
-        : 200
-      : 200
+        ? OASStatusMap<TOAS, TPath, TMethod> extends Record<'200' | 200, any>
+          ? Exclude<
+              NotOkStatusCode,
+              ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
+            >
+          : Exclude<
+              OkStatusCode,
+              ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
+            >
+        : TStatus extends `${number}${number}${number}`
+          ? ToNumber<TStatus> extends StatusCode
+            ? ToNumber<TStatus>
+            : 200
+          : 200
   >;
 }[keyof OASStatusMap<TOAS, TPath, TMethod>];
 
@@ -137,11 +140,11 @@ export type OASParamObj<
       }
         ? FromSchema<TParameter['schema']>
         : TParameter extends { type: JSONSchema7TypeName; enum?: any[] }
-        ? FromSchema<{
-            type: TParameter['type'];
-            enum: TParameter['enum'];
-          }>
-        : unknown;
+          ? FromSchema<{
+              type: TParameter['type'];
+              enum: TParameter['enum'];
+            }>
+          : unknown;
     }
   : {
       [TName in TParameter['name']]?: TParameter extends {
@@ -149,11 +152,11 @@ export type OASParamObj<
       }
         ? FromSchema<TParameter['schema']>
         : TParameter extends { type: JSONSchema7TypeName; enum?: any[] }
-        ? FromSchema<{
-            type: TParameter['type'];
-            enum: TParameter['enum'];
-          }>
-        : unknown;
+          ? FromSchema<{
+              type: TParameter['type'];
+              enum: TParameter['enum'];
+            }>
+          : unknown;
     };
 
 interface OASParamToRequestParam<TParameters extends { in: string; required?: boolean }[]>
@@ -220,10 +223,10 @@ export type OASModel<
   }
     ? keyof TOAS['components']['schemas']
     : TOAS extends {
-        definitions: Record<string, JSONSchema>;
-      }
-    ? keyof TOAS['definitions']
-    : never,
+          definitions: Record<string, JSONSchema>;
+        }
+      ? keyof TOAS['definitions']
+      : never,
 > = TOAS extends {
   components: {
     schemas: {
@@ -233,12 +236,12 @@ export type OASModel<
 }
   ? FromSchema<TOAS['components']['schemas'][TName]>
   : TOAS extends {
-      definitions: {
-        [TModelName in TName]: JSONSchema;
-      };
-    }
-  ? FromSchema<TOAS['definitions'][TName]>
-  : never;
+        definitions: {
+          [TModelName in TName]: JSONSchema;
+        };
+      }
+    ? FromSchema<TOAS['definitions'][TName]>
+    : never;
 
 // Later suggest using json-machete
 export type FixJSONSchema<T> = FixAdditionalPropertiesForAllOf<
@@ -253,11 +256,17 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
 
 type FixMissingTypeObject<T> = T extends { properties: any } ? T & { type: 'object' } : T;
 
-type FixMissingAdditionalProperties<T> = T extends { type: 'object'; properties: any }
+type FixMissingAdditionalProperties<T> = T extends {
+  type: 'object';
+  properties: any;
+}
   ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
   : T;
 
-type FixExtraRequiredFields<T> = T extends { properties: Record<string, any>; required: string[] }
+type FixExtraRequiredFields<T> = T extends {
+  properties: Record<string, any>;
+  required: string[];
+}
   ? Omit<T, 'required'> & {
       required: Call<Tuples.Filter<B.Extends<keyof T['properties']>>, T['required']>;
     }
@@ -292,67 +301,75 @@ export type OASRequestParams<
         >;
       }
   : OASMethodMap<TOAS, TPath>[TMethod] extends {
-      requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
-    }
-  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-    ? {
-        /**
-         * The request body in multipart/form-data is required for this request.
-         *
-         * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
-         */
-        formData: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-        >;
+        requestBody: {
+          content: { 'multipart/form-data': { schema: JSONSchema } };
+        };
       }
-    : {
-        /**
-         * The request body in multipart/form-data is optional for this request.
-         *
-         * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
-         */
-        formData?: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
-        >;
-      }
-  : OASMethodMap<TOAS, TPath>[TMethod] extends {
-      requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
-    }
-  ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
-    ? {
-        /**
-         * The request body in application/x-www-form-urlencoded is required for this request.
-         *
-         * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
-         */
-        formUrlEncoded: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-        >;
-      }
-    : {
-        /**
-         * The request body in application/x-www-form-urlencoded is optional for this request.
-         *
-         * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
-         */
-        formUrlEncoded?: FromSchema<
-          OASMethodMap<
-            TOAS,
-            TPath
-          >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
-        >;
-      }
-  : {}) &
-  (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
+    ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+      ? {
+          /**
+           * The request body in multipart/form-data is required for this request.
+           *
+           * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
+           */
+          formData: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+          >;
+        }
+      : {
+          /**
+           * The request body in multipart/form-data is optional for this request.
+           *
+           * The value of `formData` will be sent as the request body with `Content-Type: multipart/form-data`.
+           */
+          formData?: FromSchema<
+            OASMethodMap<
+              TOAS,
+              TPath
+            >[TMethod]['requestBody']['content']['multipart/form-data']['schema']
+          >;
+        }
+    : OASMethodMap<TOAS, TPath>[TMethod] extends {
+          requestBody: {
+            content: {
+              'application/x-www-form-urlencoded': { schema: JSONSchema };
+            };
+          };
+        }
+      ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
+        ? {
+            /**
+             * The request body in application/x-www-form-urlencoded is required for this request.
+             *
+             * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
+             */
+            formUrlEncoded: FromSchema<
+              OASMethodMap<
+                TOAS,
+                TPath
+              >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+            >;
+          }
+        : {
+            /**
+             * The request body in application/x-www-form-urlencoded is optional for this request.
+             *
+             * The value of `formUrlEncoded` will be sent as the request body with `Content-Type: application/x-www-form-urlencoded`.
+             */
+            formUrlEncoded?: FromSchema<
+              OASMethodMap<
+                TOAS,
+                TPath
+              >[TMethod]['requestBody']['content']['application/x-www-form-urlencoded']['schema']
+            >;
+          }
+      : {}) &
+  (OASMethodMap<TOAS, TPath>[TMethod] extends {
+    parameters: { name: string; in: string }[];
+  }
     ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
     : {}) &
   // If there is any parameters defined in path but not in the parameters array, we should add them to the params
@@ -444,32 +461,32 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
         endpoint: TEndpoint;
       }
     : TOAS extends {
-        servers: { url: infer TEndpoint extends string }[];
-      }
-    ? {
-        /**
-         * The base URL of the API defined in the OAS document.
-         *
-         * @see https://swagger.io/docs/specification/api-host-and-base-path/
-         */
-        endpoint: TEndpoint;
-      }
-    : TOAS extends {
-        host: infer THost extends string;
-        basePath: infer TBasePath extends string;
-        schemes: (infer TProtocol extends string)[];
-      }
-    ? {
-        /**
-         * REST APIs have a base URL to which the endpoint paths are appended. The base URL is defined by `schemes`, `host` and `basePath` on the root level of the API specification.
-         *
-         * @see https://swagger.io/docs/specification/2-0/api-host-and-base-path/
-         */
-        endpoint: `${TProtocol}://${THost}${TBasePath}`;
-      }
-    : {
-        endpoint?: string;
-      });
+          servers: { url: infer TEndpoint extends string }[];
+        }
+      ? {
+          /**
+           * The base URL of the API defined in the OAS document.
+           *
+           * @see https://swagger.io/docs/specification/api-host-and-base-path/
+           */
+          endpoint: TEndpoint;
+        }
+      : TOAS extends {
+            host: infer THost extends string;
+            basePath: infer TBasePath extends string;
+            schemes: (infer TProtocol extends string)[];
+          }
+        ? {
+            /**
+             * REST APIs have a base URL to which the endpoint paths are appended. The base URL is defined by `schemes`, `host` and `basePath` on the root level of the API specification.
+             *
+             * @see https://swagger.io/docs/specification/2-0/api-host-and-base-path/
+             */
+            endpoint: `${TProtocol}://${THost}${TBasePath}`;
+          }
+        : {
+            endpoint?: string;
+          });
 
 export interface ClientRequestParams {
   json?: any;
@@ -578,19 +595,19 @@ export type ApiKeyAuthParams<TSecurityScheme> = TSecurityScheme extends {
       };
     }
   : TSecurityScheme extends {
-      type: 'apiKey';
-      in: 'query';
-      name: infer TApiKeyQueryName;
-    }
-  ? {
-      query: {
-        /**
-         * Query parameter required for API key authentication
-         */
-        [TQueryName in TApiKeyQueryName extends string ? TApiKeyQueryName : never]: string;
-      };
-    }
-  : {};
+        type: 'apiKey';
+        in: 'query';
+        name: infer TApiKeyQueryName;
+      }
+    ? {
+        query: {
+          /**
+           * Query parameter required for API key authentication
+           */
+          [TQueryName in TApiKeyQueryName extends string ? TApiKeyQueryName : never]: string;
+        };
+      }
+    : {};
 
 export type SecuritySchemeName<T extends { security: { [key: string]: any }[] }> = Call<
   Tuples.Map<Objects.Keys>,
@@ -624,20 +641,20 @@ export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj ex
         }
     ? OASSecurityParams<TSecurityScheme>
     : // OAS may have a bad reference to a security scheme
-    // So we can assume it
-    SecuritySchemeName<TSecurityObj> extends `basic${string}`
-    ? BasicAuthParams<{
-        type: 'http';
-        scheme: 'basic';
-      }>
-    : SecuritySchemeName<TSecurityObj> extends `bearer${string}`
-    ? BearerAuthParams<{
-        type: 'http';
-        scheme: 'bearer';
-      }>
-    : SecuritySchemeName<TSecurityObj> extends `oauth${string}`
-    ? OAuth2AuthParams<{
-        type: 'oauth2';
-      }>
-    : {}
+      // So we can assume it
+      SecuritySchemeName<TSecurityObj> extends `basic${string}`
+      ? BasicAuthParams<{
+          type: 'http';
+          scheme: 'basic';
+        }>
+      : SecuritySchemeName<TSecurityObj> extends `bearer${string}`
+        ? BearerAuthParams<{
+            type: 'http';
+            scheme: 'bearer';
+          }>
+        : SecuritySchemeName<TSecurityObj> extends `oauth${string}`
+          ? OAuth2AuthParams<{
+              type: 'oauth2';
+            }>
+          : {}
   : {};

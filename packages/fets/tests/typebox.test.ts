@@ -1,5 +1,6 @@
 import { File, FormData } from '@whatwg-node/fetch';
 import { createRouter, Response, Type } from '../src/index.js';
+import { registerFormats } from '../src/plugins/formats.js';
 
 describe('TypeBox', () => {
   const router = createRouter({}).route({
@@ -184,6 +185,61 @@ describe('TypeBox', () => {
     });
 
     expect(response.status).toEqual(200);
+  });
+  it('validates the string formats', async () => {
+    registerFormats();
+    const router = createRouter().route({
+      path: '/hello',
+      method: 'POST',
+      schemas: {
+        request: {
+          json: Type.Object({
+            id: Type.String({
+              format: 'uuid',
+            }),
+          }),
+        },
+      } as const,
+      async handler(request) {
+        const { id } = await request.json();
+        return Response.json({
+          message: `Hello ${id}!`,
+        });
+      },
+    });
+
+    const response = await router.fetch('/hello', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: '123',
+      }),
+    });
+
+    expect(response.status).toEqual(400);
+
+    const resultJson = await response.json();
+    expect(resultJson).toMatchObject({
+      errors: [
+        {
+          message: "Expected string to match 'uuid' format",
+          name: 'json',
+          path: '/id',
+          value: '123',
+        },
+      ],
+    });
+
+    const validResponse = await router.fetch('/hello', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: '123e4567-e89b-12d3-a456-426614174000',
+      }),
+    });
+
+    const validResultJson = await validResponse.json();
+    expect(validResultJson).toMatchObject({
+      message: 'Hello 123e4567-e89b-12d3-a456-426614174000!',
+    });
   });
   it('should validate query parameters', async () => {
     const router = createRouter().route({
