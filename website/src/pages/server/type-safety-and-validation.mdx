@@ -19,6 +19,16 @@ It allows us to have:
   according to the benchmarks found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
 
+<Callout>
+If you want to use [JSON Schema formats](https://json-schema.org/understanding-json-schema/reference/string#format) like `uuid`, you need to register formats using `registerFormats`.
+```ts
+import { registerFormats } from 'fets'
+
+registerFormats();
+
+````
+</Callout>
+
 ## Request
 
 You can type individual parts of the `Request` object including JSON body, form data, headers, query
@@ -59,7 +69,7 @@ const router = createRouter().route({
     return Response.json({ message: 'ok' })
   }
 })
-```
+````
 
 ### Path Parameters
 
