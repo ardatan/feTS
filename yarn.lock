@@ -186,10 +186,10 @@
     fast-deep-equal "^3.1.3"
     rfdc "^1.2.0"
 
-"@azure/functions@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.0.1.tgz#b72930b445760aef508f2bb122e2c6edeba8e9e7"
-  integrity sha512-Ol38b4XOlu6IDkLnO91HaYeo2utMixG0LIA1NR9Qehu17U/cGjNx+bAcOEdNlSJWNYh5ChhzjxA/uFB5dQJtmg==
+"@azure/functions@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.1.0.tgz#f8a1996fce2b464fb69b0f6506a85ee064e19075"
+  integrity sha512-45WDaJZiTmvaIOPSdWWKL5NgzgUWsNzXDNlF7oCMLS43lE602qG7XE6Hdg9ewPWBj55URHRU7UWTHk4uDVqBGg==
   dependencies:
     long "^4.0.0"
     undici "^5.13.0"
