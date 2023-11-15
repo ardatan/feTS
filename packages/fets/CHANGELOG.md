@@ -1,5 +1,22 @@
 # fets
 
+## 0.6.3
+
+### Patch Changes
+
+- [#813](https://github.com/ardatan/feTS/pull/813)
+  [`88fc0c9`](https://github.com/ardatan/feTS/commit/88fc0c9e66415ed5667c32bc4a8af15856d3d0cd)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix query parameters validation
+
+- [#814](https://github.com/ardatan/feTS/pull/814)
+  [`d1a7484`](https://github.com/ardatan/feTS/commit/d1a74843b5b1c3844294a86a253a773bb5b85a09)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add `registerFormats` to support string formats
+  such as `uuid`, `email` or `url`
+
+- [`039991b`](https://github.com/ardatan/feTS/commit/039991b9ad94d8170efc1cb2b8393e53c242be30)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add termsOfService and contact fields to the
+  OpenAPIInfo type
+
 ## 0.6.2
 
 ### Patch Changes
