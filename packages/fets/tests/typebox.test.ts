@@ -185,4 +185,52 @@ describe('TypeBox', () => {
 
     expect(response.status).toEqual(200);
   });
+  it('should validate query parameters', async () => {
+    const router = createRouter().route({
+      path: '/hello',
+      method: 'GET',
+      schemas: {
+        request: {
+          query: Type.Object({
+            name: Type.String(),
+          }),
+        },
+      } as const,
+      handler(request) {
+        const { name } = request.query;
+        return Response.json({
+          message: `Hello ${name}!`,
+        });
+      },
+    });
+
+    const response = await router.fetch('/hello');
+
+    expect(response.status).toEqual(400);
+
+    const resultJson = await response.json();
+    expect(resultJson).toMatchObject({
+      errors: [
+        {
+          message: 'Required property',
+          name: 'query',
+          path: '/name',
+        },
+        {
+          message: 'Expected string',
+          name: 'query',
+          path: '/name',
+        },
+      ],
+    });
+
+    const validResponse = await router.fetch('/hello?name=world');
+
+    expect(validResponse.status).toEqual(200);
+
+    const validResultJson = await validResponse.json();
+    expect(validResultJson).toMatchObject({
+      message: 'Hello world!',
+    });
+  });
 });
