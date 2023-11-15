@@ -95,17 +95,17 @@ export type TypedHeaders<TMap extends Record<string, string>> = {
   ): TName extends keyof TMap
     ? UndefinedToNull<TMap[TName]>
     : TName extends DefaultHTTPHeaders
-    ? string | null
-    : never;
+      ? string | null
+      : never;
   has<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
   ): TName extends DefaultHTTPHeaders
     ? boolean
     : TName extends keyof TMap
-    ? TMap[TName] extends Maybe
-      ? boolean
-      : true
-    : never;
+      ? TMap[TName] extends Maybe
+        ? boolean
+        : true
+      : never;
   set<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
     value: TName extends keyof TMap ? TMap[TName] : string,

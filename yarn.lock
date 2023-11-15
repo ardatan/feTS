@@ -2534,10 +2534,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.16.0":
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.16.0.tgz#6fedbe51d19a28b8fa9b649da1520b4a117638bf"
-  integrity sha512-LHYBSwo3j7iiuSpQxL8bO/Z5vTi/omF7bOBxUGbD9CwPPs+znAUwsDWSH98Wpmn9Zm3k2tivAFl45quRYfpDzg==
+"@pulumi/azure-native@2.17.0":
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.17.0.tgz#5acc5b8f43770d35c4491f63dbe3de94fe9a8571"
+  integrity sha512-6HzszvkZxa4vInY6Sbnjr7RrYiaIfkuY18mGj2put2nz/GAHEEFRHt0JuAO5sCJYmHLcbqi6amHDZuP+n2WzrA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2556,10 +2556,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.93.0", "@pulumi/pulumi@^3.0.0":
-  version "3.93.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.93.0.tgz#d0cac5cc9c92497f3966ea3704bf5ef0eadd256d"
-  integrity sha512-3Hg9lTIu1EmD288NdSkBKog/x6A6YdYmk/xP48JJ3IpksquiLANvkEgjx10v6tgt9xWVZ8h4oeKuFZVZ9jxZvw==
+"@pulumi/pulumi@3.94.0", "@pulumi/pulumi@^3.0.0":
+  version "3.94.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.94.0.tgz#66e5264016779b9f1b4902ad62a2ea0c2f942c1e"
+  integrity sha512-+CGFuAmFI5Z4bL42I2qBH9kG2Y92aNLH6Vw2n7bYZ6uGYOiI5NUOpDBDcwilexZyPOpEACmeF6m+3vRMDAxLog==
   dependencies:
     "@grpc/grpc-js" "1.9.6"
     "@logdna/tail-file" "^2.0.6"
@@ -2770,9 +2770,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.31.23":
-  version "0.31.23"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.23.tgz#5ae0235824e63b595952dceb001b813349688b1f"
-  integrity sha512-ZzrzE8yCrWWU4mcBstBgdlBMjB8My3ESY9nZ/v996GptIJb4+MU1p7s1Qxrc2xvZeOiDDnAheLLmdHjPgZV79g==
+  version "0.31.25"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.31.25.tgz#6ad0dca016c5a4a8f4578118815c3e4fe340c3fe"
+  integrity sha512-tc075wfx6qCftSuNHq7kPNVTNhb5qBDf7B+c7pBdLkzxGsXdsqeinlRZQuGzrSowSh7nxEKvZKRUdbRGqy0GCA==
 
 "@sinonjs/commons@^3.0.0":
   version "3.0.0"
@@ -11272,10 +11272,10 @@ prettier-plugin-tailwindcss@^0.5.0:
   resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.5.7.tgz#d05dc42c6f2167e3bf2c20e9f71a1fff4232b5d9"
   integrity sha512-4v6uESAgwCni6YF6DwJlRaDjg9Z+al5zM4JfngcazMy4WEf/XkPS5TEQjbD+DZ5iNuG6RrKQLa/HuX2SYzC3kQ==
 
-prettier@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.3.tgz#432a51f7ba422d1469096c0fdc28e235db8f9643"
-  integrity sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==
+prettier@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.1.0.tgz#c6d16474a5f764ea1a4a373c593b779697744d5e"
+  integrity sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==
 
 prettier@^2.7.1:
   version "2.8.8"
@@ -11520,9 +11520,9 @@ react-fast-compare@^3.0.1:
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
 
 react-icons@^4.11.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.11.0.tgz#4b0e31c9bfc919608095cc429c4f1846f4d66c65"
-  integrity sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.12.0.tgz#54806159a966961bfd5cdb26e492f4dafd6a8d78"
+  integrity sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==
 
 react-immutable-proptypes@2.2.0:
   version "2.2.0"
@@ -12832,9 +12832,9 @@ swagger-client@^3.24.5:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.9.3"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.9.3.tgz#8da415015b9b8588da1a8d3962812134af8dd038"
-  integrity sha512-4jVjVpbhn3EgAgOkKUiQcwZAlUsvX+2NXSY8c15MQ7iiBkwep0pC9i3I/4yw1DSmX5FSrqJZ4e0l7TI6ePdDiw==
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.10.0.tgz#fc8ca8eddd525c84e75cd42f2976563a60e35e54"
+  integrity sha512-2iWvBRtamhTmr6W0Kj0N1DYy5iuYZcQ2HIv3lEscyoWfn+Tomy5aLZ3Z4LrB5QpNsMebmix9AoDgGFZaqcYPWA==
   dependencies:
     "@babel/runtime-corejs3" "^7.23.2"
     "@braintree/sanitize-url" "=6.0.4"
