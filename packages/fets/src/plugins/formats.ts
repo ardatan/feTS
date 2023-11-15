@@ -1,4 +1,5 @@
-// based on https://github.com/epoberezkin/ajv/blob/master/lib/compile/formats.js
+// based on https://github.com/epoberezkin/ajv/blob/master/lib/compile/formats.js &
+// https://github.com/cfworker/cfworker/blob/main/packages/json-schema/src/format.ts
 
 import { FormatRegistry } from '@sinclair/typebox';
 
