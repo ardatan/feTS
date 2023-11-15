@@ -122,34 +122,34 @@ Similar, for query parameters like `/todos?limit=10&offset=0`, we can use `schem
 define the schema:
 
 ```ts
-import { createRouter, Response } from 'fets'
+import { createRouter, Response } from "fets";
 
 const router = createRouter().addRoute({
-  method: 'GET',
-  path: '/todos',
+  method: "GET",
+  path: "/todos",
   // Define the request body schema
   schemas: {
     request: {
       query: {
-        type: 'object',
+        type: "object",
         properties: {
-          limit: { type: 'number' },
-          offset: { type: 'number' }
+          limit: { type: "number" },
+          offset: { type: "number" },
         },
         additionalProperties: false,
-        required: ['limit']
+        required: ["limit"],
       },
-    }
+    },
   } as const,
-  handler: async request => {
+  handler: async (request) => {
     // This part is fully typed
-    const { limit, offset } = request.query
+    const { limit, offset } = request.query;
     // You can also use `URLSearchParams` API
-    const limit = request.parsedURL.searchParams.get('limit')
+    const limit = request.parsedURL.searchParams.get("limit");
     // ...
-    return Response.json({ message: 'ok' })
-  }
-})
+    return Response.json({ message: "ok" });
+  },
+});
 ```
 
 ### JSON Body

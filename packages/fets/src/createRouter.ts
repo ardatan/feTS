@@ -121,6 +121,9 @@ export function createRouterBase(
           has(_, prop) {
             return url.searchParams.has(prop.toString());
           },
+          ownKeys() {
+            return [...url.searchParams.keys()];
+          },
         },
       );
       const pathPatternMapByMethod = routeByPathByMethod.get(request.method as HTTPMethod);

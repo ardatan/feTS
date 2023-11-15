@@ -256,11 +256,17 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
 
 type FixMissingTypeObject<T> = T extends { properties: any } ? T & { type: 'object' } : T;
 
-type FixMissingAdditionalProperties<T> = T extends { type: 'object'; properties: any }
+type FixMissingAdditionalProperties<T> = T extends {
+  type: 'object';
+  properties: any;
+}
   ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
   : T;
 
-type FixExtraRequiredFields<T> = T extends { properties: Record<string, any>; required: string[] }
+type FixExtraRequiredFields<T> = T extends {
+  properties: Record<string, any>;
+  required: string[];
+}
   ? Omit<T, 'required'> & {
       required: Call<Tuples.Filter<B.Extends<keyof T['properties']>>, T['required']>;
     }
@@ -295,7 +301,9 @@ export type OASRequestParams<
         >;
       }
   : OASMethodMap<TOAS, TPath>[TMethod] extends {
-        requestBody: { content: { 'multipart/form-data': { schema: JSONSchema } } };
+        requestBody: {
+          content: { 'multipart/form-data': { schema: JSONSchema } };
+        };
       }
     ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
       ? {
@@ -325,7 +333,11 @@ export type OASRequestParams<
           >;
         }
     : OASMethodMap<TOAS, TPath>[TMethod] extends {
-          requestBody: { content: { 'application/x-www-form-urlencoded': { schema: JSONSchema } } };
+          requestBody: {
+            content: {
+              'application/x-www-form-urlencoded': { schema: JSONSchema };
+            };
+          };
         }
       ? OASMethodMap<TOAS, TPath>[TMethod]['requestBody'] extends { required: true }
         ? {
@@ -355,7 +367,9 @@ export type OASRequestParams<
             >;
           }
       : {}) &
-  (OASMethodMap<TOAS, TPath>[TMethod] extends { parameters: { name: string; in: string }[] }
+  (OASMethodMap<TOAS, TPath>[TMethod] extends {
+    parameters: { name: string; in: string }[];
+  }
     ? OASParamMap<OASMethodMap<TOAS, TPath>[TMethod]['parameters']>
     : {}) &
   // If there is any parameters defined in path but not in the parameters array, we should add them to the params
