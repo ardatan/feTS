@@ -35,6 +35,12 @@ export interface OpenAPIInfo {
     name?: string;
     url?: string;
   };
+  termsOfService?: string;
+  contact?: {
+    name?: string;
+    url?: string;
+    email?: string;
+  };
 }
 
 export type OpenAPIPathObject = Record<string, OpenAPIOperationObject> & {
