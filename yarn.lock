@@ -3315,10 +3315,10 @@
     postcss-import "^15.1.0"
     tailwindcss "^3.3.2"
 
-"@trpc/server@^10.9.0":
-  version "10.43.3"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.3.tgz#eb232662320b2ab4092c464d38dd19d4ead527ee"
-  integrity sha512-U7HsNtgjupNvPzH6ho4rPlIXZ2t5PctOH6pmFX4jv4YJi98RjGuOhHUNhiiVb8KUw6Kuh5EHTAv7cUV+igbMuQ==
+"@trpc/server@^10.43.4":
+  version "10.43.4"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.43.4.tgz#c49c23e3b4572fb73f910663bc52b8e5ab942d46"
+  integrity sha512-PySqtDKf3pVXBnPLiL7Q3CNXYFV3S6VrZRTFctnsrLEcQ3wOCLZSfKMwx2uHleZV/bwzSOtUJTZYolqY5JTDmQ==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
