@@ -15,7 +15,7 @@
     "@pulumi/pulumi": "3.94.2",
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.2.2",
+    "typescript": "5.3.2",
     "wrangler": "3.16.0"
   }
 }
