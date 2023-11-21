@@ -35,7 +35,7 @@
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@theguild/prettier-config": "2.0.2",
-    "@types/jest": "29.5.8",
+    "@types/jest": "29.5.9",
     "@types/node": "20.9.2",
     "@types/react-dom": "18.2.15",
     "@typescript-eslint/eslint-plugin": "6.12.0",
