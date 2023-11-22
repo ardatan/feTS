@@ -3352,10 +3352,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.126":
-  version "8.10.126"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.126.tgz#be132de6e68353e240c88505940e67cd95d3066e"
-  integrity sha512-5eh4ffLdGYgGYI1Xr6W5L4IVse4RR7L2ns5OVUXA52nW5GFapIcGMcCzHAIMMOdpcQs3aGVxbvFlJNZH6IpgEQ==
+"@types/aws-lambda@8.10.128":
+  version "8.10.128"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.128.tgz#1c26e3e062e33961b250355cb4c9b6b3544b74a9"
+  integrity sha512-bw4+ORfyywsj9Tq3WJA9j6HG4EbYy+dz+k8LN73ApmwjTdf82ZCSELz3b7BJQzeG5HE8IaTy9SXTHmruIK5ZlQ==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
@@ -3526,10 +3526,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@29.5.9":
-  version "29.5.9"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.9.tgz#eb997ab4a201b7504662ac9ebb84a748e17f95ab"
-  integrity sha512-zJeWhqBwVoPm83sP8h1/SVntwWTu5lZbKQGCvBjxQOyEWnKnsaomt2y7SlV4KfwlrHAHHAn00Sh4IAWaIsGOgQ==
+"@types/jest@29.5.10":
+  version "29.5.10"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.10.tgz#a10fc5bab9e426081c12b2ef73d24d4f0c9b7f50"
+  integrity sha512-tE4yxKEphEyxj9s4inideLHktW/x6DwesIwWZ9NN1FKf9zbJYsnhBoA9vrHA/IuIOKwPa5PcFBNV4lpMIOEzyQ==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -3607,10 +3607,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.9.3", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
-  version "20.9.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.3.tgz#e089e1634436f676ff299596c9531bd2b59fffc6"
-  integrity sha512-nk5wXLAXGBKfrhLB0cyHGbSqopS+nz0BUgZkUQqSHSSgdee0kssp1IAqlQOu333bW+gMNs2QREx7iynm19Abxw==
+"@types/node@*", "@types/node@20.9.4", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.5.6":
+  version "20.9.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.4.tgz#cc8f970e869c26834bdb7ed480b30ede622d74c7"
+  integrity sha512-wmyg8HUhcn6ACjsn8oKYjkN/zUzQeNtMy44weTJSM6p4MMzEOuKbA3OjJ267uPCOW7Xex9dyrNTful8XTQYoDA==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3646,10 +3646,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@18.2.16", "@types/react-dom@^18.2.8":
-  version "18.2.16"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.16.tgz#028f44b08f8cc3401c37dde4c2a5e36ddf9cb5b0"
-  integrity sha512-766c37araZ9vxtYs25gvY2wNdFWsT2ZiUvOd0zMhTaoGj6B911N8CKQWgXXJoPMLF3J82thpRqQA7Rf3rBwyJw==
+"@types/react-dom@18.2.17", "@types/react-dom@^18.2.8":
+  version "18.2.17"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.17.tgz#375c55fab4ae671bd98448dcfa153268d01d6f64"
+  integrity sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==
   dependencies:
     "@types/react" "*"
 
@@ -3663,9 +3663,9 @@
     csstype "^3.0.2"
 
 "@types/scheduler@*":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.7.tgz#d62f1bd54724c84089f51f9218393930ba4abcf4"
-  integrity sha512-8g25Nl3AuB1KulTlSUsUhUo/oBgBU6XIXQ+XURpeioEbEJvkO7qI4vDfREv3vJYHHzqXjcAHvoJy4pTtSQNZtA==
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.8.tgz#ce5ace04cfeabe7ef87c0091e50752e36707deff"
+  integrity sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==
 
 "@types/semver@^7.5.0":
   version "7.5.5"
@@ -12779,9 +12779,9 @@ swagger-client@^3.24.5:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.10.0.tgz#fc8ca8eddd525c84e75cd42f2976563a60e35e54"
-  integrity sha512-2iWvBRtamhTmr6W0Kj0N1DYy5iuYZcQ2HIv3lEscyoWfn+Tomy5aLZ3Z4LrB5QpNsMebmix9AoDgGFZaqcYPWA==
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.10.2.tgz#ef56a15180d63a02c113e8f9d0a207b3cab20a92"
+  integrity sha512-OANc3s85gEXGdcDJ9FlB5nCjRBtAnfhGms73yM1nLAt26+yPkyD4SOU/Arax3iHVe7Q/7sMW8DXwXF8UcaidDg==
   dependencies:
     "@babel/runtime-corejs3" "^7.23.2"
     "@braintree/sanitize-url" "=6.0.4"
