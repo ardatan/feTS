@@ -1,5 +1,13 @@
 # fets
 
+## 0.6.4
+
+### Patch Changes
+
+- [`adadcb2`](https://github.com/ardatan/feTS/commit/adadcb2e0b634d199d44742d7aa9f9750a657d94)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add a landing page configurable with
+  \`landingPage\` option, and fix Swagger UI redirection problem
+
 ## 0.6.3
 
 ### Patch Changes
