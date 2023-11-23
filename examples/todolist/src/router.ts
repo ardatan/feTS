@@ -27,7 +27,6 @@ export const router = createRouter({
       },
     } as const,
   },
-  landingPage: false,
 })
   .route({
     description: 'Get all todos',
