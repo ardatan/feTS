@@ -3352,10 +3352,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.128":
-  version "8.10.128"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.128.tgz#1c26e3e062e33961b250355cb4c9b6b3544b74a9"
-  integrity sha512-bw4+ORfyywsj9Tq3WJA9j6HG4EbYy+dz+k8LN73ApmwjTdf82ZCSELz3b7BJQzeG5HE8IaTy9SXTHmruIK5ZlQ==
+"@types/aws-lambda@8.10.129":
+  version "8.10.129"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.129.tgz#c4e040778a13b70a9cdf8ad54c1b853c94e2a44d"
+  integrity sha512-0Rl7CpTPVws5cp0Ui1gZh4Q+TXC65bXVwTOGoI2RKW45dxWzyZGbjIX0uFjFYdIJ8vnD45y584rIIqvD2vBBfQ==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
@@ -12779,9 +12779,9 @@ swagger-client@^3.24.5:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.10.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.10.2.tgz#ef56a15180d63a02c113e8f9d0a207b3cab20a92"
-  integrity sha512-OANc3s85gEXGdcDJ9FlB5nCjRBtAnfhGms73yM1nLAt26+yPkyD4SOU/Arax3iHVe7Q/7sMW8DXwXF8UcaidDg==
+  version "5.10.3"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.10.3.tgz#35db9855d18c36674d585837ba0c653db8cd0eb0"
+  integrity sha512-AB/ko3xD76wyCFbfb5zihy8Gacg7Lz62umzcmBLC/+VN8twib4ayWNZ48lTRh6Kb9vitvEQCDM/4VS2uTwwy0w==
   dependencies:
     "@babel/runtime-corejs3" "^7.23.2"
     "@braintree/sanitize-url" "=6.0.4"
@@ -13879,10 +13879,10 @@ workerd@1.20231030.0:
     "@cloudflare/workerd-linux-arm64" "1.20231030.0"
     "@cloudflare/workerd-windows-64" "1.20231030.0"
 
-wrangler@3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.17.0.tgz#4c96564ad7b5993f75670a173511313362bd5217"
-  integrity sha512-xMPB7mmGzAzeel5bFAKOIO7O+rIG1TT7+iRiu4RAjxPkCAWRAL79++zi7KJVFnyHzGh+PBF91ramBWH2m8VDUw==
+wrangler@3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.17.1.tgz#1fc439b8a083795366dd17108c41fc3ab4cae190"
+  integrity sha512-Pr9+/tjFkthzG63uoVm1NtVvgokT6p92fy1UsOgrntHyTu0pZMC1VJzG0NC8Vhs+z/+yTT8AqVV6AiJb3w8ZOQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.2.0"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
