@@ -23,6 +23,10 @@ type Todo = OASOutput<NormalizeOAS<typeof oas>, '/todo/{id}', 'get'>;
       },
     });
 
+    if (!addTodoRes.ok) {
+      console.error('Failed to add todo');
+      break;
+    }
     const addTodoJson = await addTodoRes.json();
     console.log(addTodoJson.id);
   }
