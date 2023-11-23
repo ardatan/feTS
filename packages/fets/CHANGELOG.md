@@ -1,5 +1,13 @@
 # fets
 
+## 0.6.5
+
+### Patch Changes
+
+- [`a4a8328`](https://github.com/ardatan/feTS/commit/a4a8328e0d771913ea817daa3d6e0c8190843ce1)
+  Thanks [@ardatan](https://github.com/ardatan)! - Add request validation errors to the response
+  schema only if specified
+
 ## 0.6.4
 
 ### Patch Changes
