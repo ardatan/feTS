@@ -1,5 +1,6 @@
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter, isPromise, useErrorHandling } from '@whatwg-node/server';
+import landingPageRaw from './landing-page.js';
 import { useDefineRoutes } from './plugins/define-routes.js';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';
@@ -28,7 +29,9 @@ export function createRouterBase(
     fetchAPI: givenFetchAPI,
     base: basePath = '/',
     plugins = [],
+    openAPI,
     swaggerUI,
+    landingPage = true,
   }: RouterOptions<any, any> = {},
   openAPIDocument: OpenAPIDocument,
 ): RouterBaseObject<any, any, any> {
@@ -81,16 +84,22 @@ export function createRouterBase(
     >
   >();
 
-  function handleUnhandledRoute() {
-    if (swaggerUI?.endpoint) {
-      return new fetchAPI.Response(null, {
-        status: 302,
-        headers: {
-          location: `${basePath}${swaggerUI.endpoint}`,
+  function handleUnhandledRoute(requestPath: string) {
+    if (landingPage) {
+      return new fetchAPI.Response(
+        landingPageRaw
+          .replaceAll('__BASE_PATH__', basePath)
+          .replaceAll('__OAS_PATH__', openAPI?.endpoint || '/openapi.json')
+          .replaceAll('__SWAGGER_UI_PATH__', swaggerUI?.endpoint || '/docs')
+          .replaceAll('__REQUEST_PATH__', requestPath),
+        {
+          headers: {
+            'Content-Type': 'text/html',
+          },
         },
-      });
+      );
     }
-    return new fetchAPI.Response(null, { status: 404 });
+    return undefined as any;
   }
 
   return {
@@ -160,7 +169,7 @@ export function createRouterBase(
               if (handlerResult) {
                 return handlerResult as Response;
               }
-              return handleUnhandledRoute();
+              return handleUnhandledRoute(request.url);
             });
           }
           if (handlerResult$) {
@@ -224,14 +233,14 @@ export function createRouterBase(
             if (patternHandlerResult) {
               return patternHandlerResult as Response;
             }
-            return handleUnhandledRoute();
+            return handleUnhandledRoute(request.url);
           });
         }
         if (patternHandlerResult$) {
           return patternHandlerResult$ as Response;
         }
       }
-      return handleUnhandledRoute();
+      return handleUnhandledRoute(request.url);
     },
     route(
       route: RouteWithSchemasOpts<

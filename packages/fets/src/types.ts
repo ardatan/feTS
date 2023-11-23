@@ -106,6 +106,7 @@ export interface RouterOptions<TServerContext, TComponents extends RouterCompone
 
   openAPI?: RouterOpenAPIOptions<TComponents>;
   swaggerUI?: RouterSwaggerUIOptions;
+  landingPage?: boolean;
 
   onError?: ErrorHandler<TServerContext>;
 }
