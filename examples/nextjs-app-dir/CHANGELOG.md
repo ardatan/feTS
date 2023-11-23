@@ -1,5 +1,13 @@
 # nextjs-app-dir
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies
+  [[`a4a8328`](https://github.com/ardatan/feTS/commit/a4a8328e0d771913ea817daa3d6e0c8190843ce1)]:
+  - fets@0.6.5
+
 ## 0.1.2
 
 ### Patch Changes
