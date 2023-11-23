@@ -279,7 +279,11 @@ export function createRouter<
   options: RouterOptions<TServerContext, TComponents> = {},
 ): Router<TServerContext, TComponents, TRouterSDK> {
   const {
-    openAPI: { endpoint: oasEndpoint = '/openapi.json', ...openAPIDocument } = {},
+    openAPI: {
+      endpoint: oasEndpoint = '/openapi.json',
+      includeValidationErrors,
+      ...openAPIDocument
+    } = {},
     swaggerUI: { endpoint: swaggerUIEndpoint = '/docs', ...swaggerUIOpts } = {},
     plugins: userPlugins = [],
     base = '/',
@@ -303,6 +307,7 @@ export function createRouter<
             oasEndpoint,
             swaggerUIEndpoint,
             swaggerUIOpts,
+            includeValidationErrors,
           }),
         ]
       : []),

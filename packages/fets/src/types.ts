@@ -93,6 +93,7 @@ export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>
   extends OpenAPIDocument {
   endpoint?: string | false;
   components?: TComponents;
+  includeValidationErrors?: boolean;
 }
 
 export interface RouterSwaggerUIOptions extends SwaggerUIOpts {

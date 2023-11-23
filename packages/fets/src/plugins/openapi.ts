@@ -40,6 +40,7 @@ export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;
   swaggerUIEndpoint: string | false;
   swaggerUIOpts: SwaggerUIOpts;
+  includeValidationErrors?: boolean;
 };
 
 const requestValidationErrorSchema = {
@@ -82,10 +83,17 @@ export function useOpenAPI<TServerContext, TComponents extends RouterComponentsB
   oasEndpoint,
   swaggerUIEndpoint,
   swaggerUIOpts,
+  includeValidationErrors,
 }: OpenAPIPluginOptions): RouterPlugin<TServerContext, TComponents> {
   let paths: Record<string, OpenAPIPathObject>;
   return {
     onRouterInit(router) {
+      if (includeValidationErrors) {
+        const components: any = (router.openAPIDocument.components =
+          router.openAPIDocument.components || {});
+        const schemas = (components.schemas = components.schemas || {});
+        schemas.RequestValidationError = requestValidationErrorSchema;
+      }
       paths = router.openAPIDocument.paths = router.openAPIDocument.paths || {};
       if (oasEndpoint) {
         router.route({
@@ -222,13 +230,15 @@ export function useOpenAPI<TServerContext, TComponents extends RouterComponentsB
             },
           };
         }
-        if (isRequestValidated && !operation.responses?.[400]) {
+        if (includeValidationErrors && isRequestValidated && !operation.responses?.[400]) {
           operation.responses ||= {};
           operation.responses[400] = {
             description: 'Request validation failed',
             content: {
               'application/json': {
-                schema: requestValidationErrorSchema,
+                schema: {
+                  $ref: '#/components/schemas/RequestValidationError',
+                },
               },
             },
           };
