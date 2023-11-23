@@ -62,48 +62,6 @@ exports[`TodoList should expose OpenAPI document 1`] = `
             },
             "description": "",
           },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                    },
-                    "name": {
-                      "type": "string",
-                    },
-                    "path": {
-                      "type": "string",
-                    },
-                    "value": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                        },
-                        {
-                          "type": "number",
-                        },
-                        {
-                          "type": "boolean",
-                        },
-                        {
-                          "type": "array",
-                        },
-                        {
-                          "type": "object",
-                        },
-                      ],
-                    },
-                  },
-                  "title": "RequestValidationError",
-                  "type": "object",
-                },
-              },
-            },
-            "description": "Request validation failed",
-          },
         },
       },
     },
@@ -139,48 +97,6 @@ exports[`TodoList should expose OpenAPI document 1`] = `
               },
             },
             "description": "",
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                    },
-                    "name": {
-                      "type": "string",
-                    },
-                    "path": {
-                      "type": "string",
-                    },
-                    "value": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                        },
-                        {
-                          "type": "number",
-                        },
-                        {
-                          "type": "boolean",
-                        },
-                        {
-                          "type": "array",
-                        },
-                        {
-                          "type": "object",
-                        },
-                      ],
-                    },
-                  },
-                  "title": "RequestValidationError",
-                  "type": "object",
-                },
-              },
-            },
-            "description": "Request validation failed",
           },
           "404": {
             "content": {
@@ -225,48 +141,6 @@ exports[`TodoList should expose OpenAPI document 1`] = `
               },
             },
             "description": "",
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                    },
-                    "name": {
-                      "type": "string",
-                    },
-                    "path": {
-                      "type": "string",
-                    },
-                    "value": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                        },
-                        {
-                          "type": "number",
-                        },
-                        {
-                          "type": "boolean",
-                        },
-                        {
-                          "type": "array",
-                        },
-                        {
-                          "type": "object",
-                        },
-                      ],
-                    },
-                  },
-                  "title": "RequestValidationError",
-                  "type": "object",
-                },
-              },
-            },
-            "description": "Request validation failed",
           },
           "404": {
             "content": {
@@ -368,48 +242,6 @@ exports[`TodoList should expose OpenAPI document 1`] = `
               },
             },
             "description": "",
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                    },
-                    "name": {
-                      "type": "string",
-                    },
-                    "path": {
-                      "type": "string",
-                    },
-                    "value": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                        },
-                        {
-                          "type": "number",
-                        },
-                        {
-                          "type": "boolean",
-                        },
-                        {
-                          "type": "array",
-                        },
-                        {
-                          "type": "object",
-                        },
-                      ],
-                    },
-                  },
-                  "title": "RequestValidationError",
-                  "type": "object",
-                },
-              },
-            },
-            "description": "Request validation failed",
           },
         },
       },
