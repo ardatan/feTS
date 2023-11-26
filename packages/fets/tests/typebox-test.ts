@@ -22,7 +22,7 @@ const router = createRouter().route({
       }),
     },
   },
-  async handler(req) {
+  handler(req) {
     if (req.params.id !== '1') {
       return Response.json(
         {

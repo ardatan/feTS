@@ -57,31 +57,12 @@ export function createRouterBase(
     HTTPMethod,
     Map<
       URLPattern,
-      RouteWithSchemasOpts<
-        any,
-        RouterComponentsBase,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest,
-        TypedResponse
-      >
+      RouteWithSchemasOpts<any, RouterComponentsBase, RouteSchemas, HTTPMethod, string>
     >
   >();
   const routeByPathByMethod = new Map<
     HTTPMethod,
-    Map<
-      string,
-      RouteWithSchemasOpts<
-        any,
-        RouterComponentsBase,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest,
-        TypedResponse
-      >
-    >
+    Map<string, RouteWithSchemasOpts<any, RouterComponentsBase, RouteSchemas, HTTPMethod, string>>
   >();
 
   function handleUnhandledRoute(requestPath: string) {
@@ -243,15 +224,7 @@ export function createRouterBase(
       return handleUnhandledRoute(request.url);
     },
     route(
-      route: RouteWithSchemasOpts<
-        any,
-        RouterComponentsBase,
-        RouteSchemas,
-        HTTPMethod,
-        string,
-        TypedRequest,
-        TypedResponse
-      >,
+      route: RouteWithSchemasOpts<any, RouterComponentsBase, RouteSchemas, HTTPMethod, string>,
     ) {
       for (const onRouteHook of onRouteHooks) {
         onRouteHook({
@@ -330,5 +303,5 @@ export function createRouter<
   for (const onRouterInitHook of routerBaseObject.__onRouterInitHooks) {
     onRouterInitHook(router);
   }
-  return router;
+  return router as any;
 }
