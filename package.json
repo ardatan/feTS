@@ -40,7 +40,7 @@
     "@types/node": "20.10.0",
     "@types/react-dom": "18.2.17",
     "@typescript-eslint/eslint-plugin": "6.13.1",
-    "@typescript-eslint/parser": "6.12.0",
+    "@typescript-eslint/parser": "6.13.1",
     "babel-jest": "29.7.0",
     "bob-the-bundler": "7.0.1",
     "cross-env": "7.0.3",
