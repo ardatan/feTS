@@ -49,7 +49,7 @@ export default createRouter({
           items: TODO_SCHEMA,
         },
       },
-    } as const,
+    },
     handler: () => Response.json(todos),
   })
   .route({
@@ -71,7 +71,7 @@ export default createRouter({
       responses: {
         201: TODO_SCHEMA,
       },
-    } as const,
+    },
     handler: async req => {
       const input = await req.json();
       const todo = {

@@ -56,8 +56,7 @@ const router = createRouter()
           additionalProperties: false
         }
       }
-      // Always use `as const` modifier with Schemas
-    } as const,
+    },
     handler() {
       // If the status code is not specified, it defaults to 200
       return Response.json({

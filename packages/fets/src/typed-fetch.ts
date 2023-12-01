@@ -84,7 +84,7 @@ type Maybe = undefined | null;
 
 type UndefinedToNull<T> = T extends undefined ? Exclude<T, undefined> | null : T;
 
-export type TypedHeaders<TMap extends Record<string, string>> = {
+export interface TypedHeaders<TMap extends Record<string, string>> {
   append<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
     value: TName extends keyof TMap ? TMap[TName] : string,
@@ -123,7 +123,7 @@ export type TypedHeaders<TMap extends Record<string, string>> = {
   values(): IterableIterator<TMap[keyof TMap]>;
   [Symbol.iterator](): IterableIterator<[keyof TMap, TMap[keyof TMap]]>;
   getSetCookie(): string[];
-};
+}
 
 export type TypedHeadersCtor = new <TMap extends Record<string, string>>(
   init?: TMap,
@@ -242,8 +242,17 @@ export type TypedResponse<
     ok: TStatusCode extends OkStatusCode ? true : false;
   };
 
-export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
-  new <TStatusCode extends StatusCode = 200>(
+export type JSONofResponse<TResponse extends TypedResponse> = TResponse extends TypedResponse<
+  infer TJSON
+>
+  ? TJSON
+  : never;
+
+export type TypedResponseCtor<TTypedResponse extends TypedResponse = TypedResponse> = Omit<
+  typeof Response,
+  'json'
+> & {
+  new <TStatusCode extends TTypedResponse['status'] = 200>(
     body: BodyInit | null | undefined,
     init: (TypedResponseInit<TStatusCode> & { status: TStatusCode }) | undefined,
   ): TypedResponse<any, Record<string, string>, TStatusCode>;
@@ -261,7 +270,7 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static
    */
-  json<TJSON, TStatusCode extends StatusCode>(
+  json<TJSON extends JSONofResponse<TTypedResponse>, TStatusCode extends TTypedResponse['status']>(
     data: TJSON,
     options: TypedResponseInit<TStatusCode>,
   ): TypedResponse<TJSON, Record<string, string>, TStatusCode>;
@@ -272,7 +281,9 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static
    */
-  json<TJSON>(data: TJSON): TypedResponse<TJSON, Record<string, string>, 200>;
+  json<TJSON extends JSONofResponse<TTypedResponse>>(
+    data: TJSON,
+  ): TypedResponse<TJSON, Record<string, string>, 200>;
 
   /**
    * The redirect() static method of the Response interface returns a Response resulting in a redirect to the specified URL.
@@ -281,7 +292,7 @@ export type TypedResponseCtor = Omit<typeof Response, 'json'> & {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect_static
    */
-  redirect<TStatusCode extends StatusCode>(
+  redirect<TStatusCode extends TTypedResponse['status']>(
     url: string | URL,
     status: TStatusCode,
   ): TypedResponse<any, Record<string, string>, TStatusCode>;
@@ -327,12 +338,12 @@ export type TypedRequest<
   TFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
   THeaders extends Record<string, string> = Record<string, string>,
   TMethod extends HTTPMethod = HTTPMethod,
-  TQueryParams extends Record<string, string | string[]> = Record<string, string | string[]>,
+  TQueryParams = any,
   TPathParams extends Record<string, any> = Record<string, any>,
 > = Omit<Request, 'json' | 'method' | 'headers' | 'formData'> &
   TypedBody<TJSON, TFormData, THeaders> & {
+    parsedUrl: URL;
     method: TMethod;
-    parsedUrl: TypedURL<TQueryParams>;
     params: TPathParams;
     query: TQueryParams;
   };
@@ -340,56 +351,11 @@ export type TypedRequest<
 export type TypedRequestCtor = new <
   THeaders extends Record<string, string>,
   TMethod extends HTTPMethod,
-  TQueryParams extends Record<string, string | string[]>,
   TFormData extends Record<string, FormDataEntryValue>,
 >(
-  input: string | TypedURL<TQueryParams>,
+  input: string | URL,
   init?: TypedRequestInit<THeaders, TMethod, TFormData>,
-) => TypedRequest<any, TFormData, THeaders, TMethod, TQueryParams, any>;
-
-export interface TypedURLSearchParams<TMap extends Record<string, string | string[]>> {
-  append<TName extends keyof TMap>(
-    name: TName,
-    value: TMap[TName] extends any[] ? TMap[TName][1] : TMap[TName],
-  ): void;
-  delete(name: keyof TMap): void;
-  get<TName extends keyof TMap>(
-    name: TName,
-  ): TMap[TName] extends any[] ? TMap[TName][1] : TMap[TName];
-  getAll<TName extends keyof TMap>(
-    name: TName,
-  ): TMap[TName] extends any[] ? TMap[TName] : [TMap[TName]];
-  set<TName extends keyof TMap>(
-    name: TName,
-    value: TMap[TName] extends any[] ? TMap[TName][1] : TMap[TName],
-  ): void;
-  sort(): void;
-  toString(): string;
-  forEach(
-    callbackfn: <TName extends keyof TMap>(
-      value: TMap[TName] extends any[] ? TMap[TName][1] : TMap[TName],
-      name: TName,
-      parent: TypedURLSearchParams<TMap>,
-    ) => void,
-    thisArg?: any,
-  ): void;
-}
-
-export type TypedURLSearchParamsCtor = new <TMap extends Record<string, string | string[]>>(
-  init?: TMap,
-) => TypedURLSearchParams<TMap>;
-
-export type TypedURL<TQueryParams extends Record<string, string | string[]>> = Omit<
-  URL,
-  'searchParams'
-> & {
-  searchParams: TypedURLSearchParams<TQueryParams>;
-};
-
-export type TypedURLCtor = new <TQueryParams extends Record<string, string | string[]>>(
-  input: string,
-  base?: string | TypedURL<any>,
-) => TypedURL<TQueryParams>;
+) => TypedRequest<any, TFormData, THeaders, TMethod, any, any>;
 
 export interface TypedFormData<
   TMap extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,

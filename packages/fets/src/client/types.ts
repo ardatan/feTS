@@ -493,7 +493,7 @@ export interface ClientRequestParams {
   formData?: FormData;
   formUrlEncoded?: Record<string, string | string[]>;
   params?: Record<string, string>;
-  query?: Record<string, string | string[]>;
+  query?: any;
   headers?: Record<string, string>;
 }
 

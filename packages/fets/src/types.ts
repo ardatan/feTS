@@ -217,7 +217,7 @@ export interface RouterBaseObject<
   openAPIDocument: OpenAPIDocument;
   handle: ServerAdapterRequestHandler<TServerContext>;
   route<
-    TRouteSchemas extends RouteSchemas,
+    const TRouteSchemas extends RouteSchemas,
     TMethod extends HTTPMethod,
     TPath extends string,
     TTypedRequest extends TypedRequestFromRouteSchemas<TComponents, TRouteSchemas, TMethod, TPath>,
@@ -245,7 +245,7 @@ export interface RouterBaseObject<
       Record<string, FormDataEntryValue>,
       Record<string, string>,
       TMethod,
-      Record<string, string | string[]>,
+      any,
       Record<ExtractPathParamsWithPattern<TPath>, string>
     >,
     TTypedResponse extends TypedResponse,
@@ -441,13 +441,8 @@ export type TypedRequestFromRouteSchemas<
         : Record<string, string>,
       TMethod,
       TRouteSchemas['request'] extends { query: JSONSchema }
-        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']> extends Record<
-            string,
-            string | string[]
-          >
-          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
-          : Record<string, string | string[]>
-        : Record<string, string | string[]>,
+        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
+        : any,
       TRouteSchemas['request'] extends { params: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
             string,
@@ -462,7 +457,7 @@ export type TypedRequestFromRouteSchemas<
       Record<string, FormDataEntryValue>,
       Record<string, string>,
       TMethod,
-      Record<string, string | string[]>,
+      any,
       Record<ExtractPathParamsWithPattern<TPath>, string>
     >;
 
@@ -506,7 +501,7 @@ export type RouteWithTypesOpts<
     Record<string, FormDataEntryValue>,
     Record<string, string>,
     TMethod,
-    Record<string, string | string[]>,
+    any,
     Record<ExtractPathParamsWithPattern<TPath>, string>
   >,
   TTypedResponse extends TypedResponse,

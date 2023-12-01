@@ -26,7 +26,7 @@ const handler = createRouter({
         additionalProperties: false,
       },
     },
-  } as const,
+  },
   handler: () => Response.json({ message: 'Hello World!' }),
 });
 

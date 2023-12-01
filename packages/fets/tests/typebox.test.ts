@@ -32,7 +32,7 @@ describe('TypeBox', () => {
           baz: Type.String(),
         }),
       },
-    } as const,
+    },
     async handler(request) {
       await request.formData();
       return Response.json({
@@ -135,7 +135,7 @@ describe('TypeBox', () => {
             id: Type.String(),
           }),
         },
-      } as const,
+      },
       async handler(request) {
         await request.json();
         return Response.json({
@@ -168,7 +168,7 @@ describe('TypeBox', () => {
             },
           },
         },
-      } as const,
+      },
       async handler(request) {
         await request.json();
         return Response.json({
@@ -199,7 +199,7 @@ describe('TypeBox', () => {
             }),
           }),
         },
-      } as const,
+      },
       async handler(request) {
         const { id } = await request.json();
         return Response.json({
@@ -251,7 +251,7 @@ describe('TypeBox', () => {
             name: Type.String(),
           }),
         },
-      } as const,
+      },
       handler(request) {
         const { name } = request.query;
         return Response.json({

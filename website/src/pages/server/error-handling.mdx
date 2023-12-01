@@ -57,7 +57,7 @@ const router = createRouter().route({
         additionalProperties: false,
       }
     }
-  } as const /* schemas should always be const */,
+  },
   handler: ({ params }) => {
     const user = users.find(user => user.id === params.id);
     if (!user) {
@@ -155,7 +155,7 @@ const router = createRouter().route({
         }
       }
     }
-  } as const,
+  } ,
   handler: request => {
     if (!request.headers.get('Authorization')) {
       // The `HTTPError` can be used to return a custom error response.

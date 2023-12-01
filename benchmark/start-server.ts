@@ -30,7 +30,7 @@ const router = createRouter({})
           message: Type.String(),
         }),
       },
-    } as const,
+    },
     handler: greetingsHandler,
   })
   .route({
@@ -60,7 +60,7 @@ const router = createRouter({})
           message: Type.String(),
         }),
       },
-    } as const,
+    },
     handler,
   });
 

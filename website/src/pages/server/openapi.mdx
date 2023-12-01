@@ -74,7 +74,7 @@ const router = createRouter({
         }
       }
     }
-  } as const
+  }
 })
   // Use the User model in different routes
   .route({
@@ -89,7 +89,7 @@ const router = createRouter({
           }
         }
       }
-    } as const,
+    },
     handler() {
       return Response.json(users)
     }
@@ -111,7 +111,7 @@ const router = createRouter({
           additionalProperties: false
         }
       }
-    } as const,
+    },
     handler() {
       const user = users.find(user => user.id === params.id)
       if (!user) {

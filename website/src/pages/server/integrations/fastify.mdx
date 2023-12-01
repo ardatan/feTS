@@ -32,7 +32,7 @@ const router = createRouter().route({
         additionalProperties: false
       }
     }
-  } as const,
+  },
   handler: () => Response.json({ message: 'Hello World!' })
 })
 

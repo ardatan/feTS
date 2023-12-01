@@ -1,3 +1,4 @@
+import { parse as qsParse } from 'qs';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter, isPromise, useErrorHandling } from '@whatwg-node/server';
 import landingPageRaw from './landing-page.js';
@@ -111,59 +112,39 @@ export function createRouterBase(
           return Reflect.get(url, prop, url);
         },
       }) as URL;
-      const queryProxy = new Proxy(
-        {},
-        {
-          get(_, prop) {
-            if (prop !== 'then' && !url.searchParams.has(prop as string)) {
-              return undefined;
-            }
-
-            const allQueries = url.searchParams.getAll(prop.toString());
-
-            if (allQueries.length === 0) {
-              return '';
-            }
-
-            return allQueries.length === 1 ? allQueries[0] : allQueries;
+      let parsedQuery: any;
+      Object.defineProperties(request, {
+        parsedUrl: {
+          get() {
+            return url;
           },
-          has(_, prop) {
-            return url.searchParams.has(prop.toString());
-          },
-          ownKeys() {
-            return [...url.searchParams.keys()];
-          },
+          configurable: true,
         },
-      );
+        query: {
+          get() {
+            if (parsedQuery == null) {
+              const searchPart = request.url.split('?')[1];
+              if (searchPart == null) {
+                return EMPTY_OBJECT;
+              }
+              parsedQuery = qsParse(searchPart);
+            }
+            return parsedQuery;
+          },
+          configurable: true,
+        },
+      });
       const pathPatternMapByMethod = routeByPathByMethod.get(request.method as HTTPMethod);
       if (pathPatternMapByMethod) {
         const route = pathPatternMapByMethod.get(url.pathname);
         if (route) {
-          const routerRequest = new Proxy(request as any, {
-            get(target, prop: keyof TypedRequest) {
-              if (prop === 'parsedUrl') {
-                return url;
-              }
-              if (prop === 'query') {
-                return queryProxy;
-              }
-              const targetProp = target[prop];
-              if (typeof targetProp === 'function') {
-                return targetProp.bind(target);
-              }
-              return targetProp;
-            },
-            has(target, prop) {
-              return prop in target || prop === 'parsedUrl' || prop === 'query';
-            },
-          });
           for (const onRouteHandleHook of onRouteHandleHooks) {
             onRouteHandleHook({
               route,
-              request: routerRequest,
+              request: request as TypedRequest,
             });
           }
-          const handlerResult$ = route.handler(routerRequest, context);
+          const handlerResult$ = route.handler(request as TypedRequest, context);
           if (isPromise(handlerResult$)) {
             return handlerResult$.then(handlerResult => {
               if (handlerResult) {
@@ -185,13 +166,11 @@ export function createRouterBase(
             // Do not parse URL if not needed
             const match = pattern.exec(url);
             if (match != null) {
-              const routerRequest = new Proxy(request as any, {
-                get(target, prop: keyof TypedRequest) {
-                  if (prop === 'parsedUrl') {
-                    return url;
-                  }
-                  if (prop === 'params') {
-                    return new Proxy(match!.pathname.groups, {
+              let paramsProxy: any;
+              Object.defineProperty(request, 'params', {
+                get() {
+                  if (paramsProxy == null) {
+                    paramsProxy = new Proxy(match!.pathname.groups, {
                       get(_, prop) {
                         const value = (match!.pathname.groups as Record<string, string>)[
                           prop.toString()
@@ -203,28 +182,17 @@ export function createRouterBase(
                       },
                     });
                   }
-                  if (prop === 'query') {
-                    return queryProxy;
-                  }
-                  const targetProp = target[prop];
-                  if (typeof targetProp === 'function') {
-                    return targetProp.bind(target);
-                  }
-                  return targetProp;
+                  return paramsProxy;
                 },
-                has(target, prop) {
-                  return (
-                    prop in target || prop === 'parsedUrl' || prop === 'params' || prop === 'query'
-                  );
-                },
+                configurable: true,
               });
               for (const onRouteHandleHook of onRouteHandleHooks) {
                 onRouteHandleHook({
                   route,
-                  request: routerRequest,
+                  request: request as TypedRequest,
                 });
               }
-              return route.handler(routerRequest, context);
+              return route.handler(request as TypedRequest, context);
             }
           },
         );
@@ -271,8 +239,8 @@ export function createRouterBase(
 
 export function createRouter<
   TServerContext,
-  TComponents extends RouterComponentsBase = {},
-  TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
+  const TComponents extends RouterComponentsBase = {},
+  const TRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse> = {
     [TKey: string]: never;
   },
 >(

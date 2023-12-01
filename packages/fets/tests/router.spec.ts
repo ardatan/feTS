@@ -1,4 +1,4 @@
-import { createRouter, Response } from '../src/index.js';
+import { createRouter, Response, Type } from '../src/index.js';
 
 describe('Router', () => {
   it('should have parsedUrl in Request object', async () => {
@@ -183,5 +183,28 @@ describe('Router', () => {
     });
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
+  });
+  it('nested query parameters', async () => {
+    const schema = Type.Object({
+      foo: Type.Object({
+        bar: Type.String(),
+      }),
+    });
+    const router = createRouter().route({
+      path: '/nested_qs',
+      method: 'GET',
+      schemas: {
+        request: {
+          query: schema,
+        },
+        responses: {
+          200: schema,
+        },
+      },
+      handler: request => Response.json(request.query),
+    });
+    const response = await router.fetch('/nested_qs?foo[bar]=baz');
+    const json = await response.json();
+    expect(json).toEqual({ foo: { bar: 'baz' } });
   });
 });
