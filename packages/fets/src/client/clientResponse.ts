@@ -1,8 +1,9 @@
 import { JSONofResponse, TypedResponse } from '../typed-fetch';
 
-export type ClientTypedResponsePromise<TTypedResponse extends Response> = Promise<Response> & {
-  json(): Promise<TTypedResponse extends TypedResponse ? JSONofResponse<TTypedResponse> : any>;
-};
+export type ClientTypedResponsePromise<TTypedResponse extends Response> =
+  Promise<TTypedResponse> & {
+    json(): Promise<TTypedResponse extends TypedResponse ? JSONofResponse<TTypedResponse> : any>;
+  };
 
 export function createClientTypedResponsePromise<TTypedResponse extends Response>(
   response$: Promise<TTypedResponse>,
