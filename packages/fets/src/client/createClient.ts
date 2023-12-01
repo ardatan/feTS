@@ -2,6 +2,7 @@ import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router } from '../types.js';
+import { createClientTypedResponsePromise } from './clientResponse.js';
 import {
   ClientMethod,
   ClientOptions,
@@ -47,6 +48,8 @@ function useValidationErrors(): ClientPlugin {
   };
 }
 
+const EMPTY_OBJECT = {};
+
 /**
  * Create a client for an OpenAPI document
  * You need to pass the imported OpenAPI document as a generic
@@ -90,11 +93,11 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
       onResponseHooks.push(plugin.onResponse);
     }
   }
-  return new Proxy({} as any, {
+  return new Proxy(EMPTY_OBJECT, {
     get(_target, path: string) {
-      return new Proxy({} as any, {
+      return new Proxy(EMPTY_OBJECT, {
         get(_target, method: HTTPMethod): ClientMethod {
-          return async function (requestParams: ClientRequestParams = {}) {
+          async function clientMethod(requestParams: ClientRequestParams) {
             for (const pathParamKey in requestParams?.params || {}) {
               const value = requestParams?.params?.[pathParamKey];
               if (value) {
@@ -177,6 +180,9 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             return response;
+          }
+          return function wrappedClientMethod(requestParams: ClientRequestParams = {}) {
+            return createClientTypedResponsePromise(clientMethod(requestParams));
           };
         },
       });

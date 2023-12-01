@@ -5,19 +5,18 @@ import type clientQuerySerializationOAS from './fixtures/example-client-query-se
 type NormalizedOAS = NormalizeOAS<typeof clientQuerySerializationOAS>;
 
 describe('Client', () => {
+  const client = createClient<NormalizedOAS>({
+    endpoint: 'https://postman-echo.com',
+    fetchFn(info, init) {
+      const request = new Request(info.toString(), init);
+      return Promise.resolve(
+        Response.json({
+          url: request.url,
+        }),
+      );
+    },
+  });
   it('should support deep objects in query', async () => {
-    const client = createClient<NormalizedOAS>({
-      endpoint: 'https://postman-echo.com',
-      fetchFn(info, init) {
-        const request = new Request(info.toString(), init);
-        return Promise.resolve(
-          Response.json({
-            url: request.url,
-          }),
-        );
-      },
-    });
-
     const response = await client['/get'].get({
       query: {
         shallow: 'foo',
@@ -29,10 +28,14 @@ describe('Client', () => {
       },
     });
 
-    const json = await response.json();
+    const resJson = await response.json();
 
-    expect(json.url).toBe(
+    expect(resJson.url).toBe(
       'https://postman-echo.com/get?shallow=foo&deep%5Bkey1%5D=bar&deep%5Bkey2%5D=baz&array=qux&array=quux',
     );
+  });
+  it('lazily handles json', async () => {
+    const resJson = await client['/get'].get().json();
+    expect(resJson.url).toBe('https://postman-echo.com/get');
   });
 });
