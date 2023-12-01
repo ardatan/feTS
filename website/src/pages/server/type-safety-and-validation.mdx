@@ -59,7 +59,7 @@ const router = createRouter().route({
         required: ['x-api-key']
       }
     }
-  } as const,
+  } ,
   handler: async request => {
     // This part is fully typed
     const apiKey = request.headers.get('x-api-key')
@@ -106,7 +106,7 @@ const router = createRouter().route({
         required: ['id']
       }
     }
-  } as const,
+  } ,
   handler: async request => {
     // This part is fully typed
     const { id } = request.params
@@ -140,7 +140,7 @@ const router = createRouter().addRoute({
         required: ["limit"],
       },
     },
-  } as const,
+  } ,
   handler: async (request) => {
     // This part is fully typed
     const { limit, offset } = request.query;
@@ -175,7 +175,7 @@ const router = createRouter().route({
         required: ['title']
       }
     }
-  } as const,
+  },
   handler: async request => {
     // This part is fully typed
     const { title, completed } = await request.json()
@@ -218,7 +218,7 @@ const router = createRouter().route({
         required: ['title']
       }
     }
-  } as const,
+  },
   handler: async request => {
     // This part is fully typed
     const { title, completed, file } = await request.formData()
@@ -284,7 +284,7 @@ const router = createRouter().addRoute({
         required: ['message']
       }
     }
-  } as const,
+  },
   handler: async request => {
     const apiKey = request.headers.get('x-api-key')
     if (!apiKey) {

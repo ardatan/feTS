@@ -35,7 +35,7 @@ const router = createRouter<ServerContext>().route({
         additionalProperties: false
       }
     }
-  } as const,
+  },
   handler: () => Response.json({ message: 'Hello World!' })
 })
 

@@ -105,7 +105,7 @@ async function main() {
           },
           401: unauthorizedResponseSchema,
         },
-      } as const,
+      },
       handler: async req => {
         const token = req.headers.get('x-token');
         if (!token) {
@@ -225,7 +225,7 @@ async function main() {
           additionalProperties: false,
         },
       },
-    } as const,
+    },
     async handler(req) {
       const formData = await req.formData();
       const file = formData.get('file');
@@ -265,7 +265,7 @@ async function main() {
             additionalProperties: false,
           },
         },
-      } as const,
+      },
     },
   }).route({
     operationId: 'getTodos',
@@ -280,16 +280,15 @@ async function main() {
           },
         },
       },
-    } as const,
-    async handler() {
-      return Response.json([
+    },
+    handler: () =>
+      Response.json([
         {
           id: '1',
           title: 'Todo 1',
           completed: false,
         },
-      ]);
-    },
+      ]),
   });
 }
 
@@ -320,7 +319,7 @@ const router = createRouter().route({
         },
       },
     },
-  } as const,
+  } ,
   handler: () => {
     if (Math.random() > 0.5) {
       return Response.json(

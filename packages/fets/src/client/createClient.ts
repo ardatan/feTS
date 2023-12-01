@@ -63,7 +63,7 @@ function useValidationErrors(): ClientPlugin {
  * const client = createClient<NormalizeOAS<typeof oas>>({});
  * ```
  */
-export function createClient<TOAS extends OpenAPIDocument>(
+export function createClient<const TOAS extends OpenAPIDocument>(
   options: ClientOptionsWithStrictEndpoint<TOAS>,
 ): OASClient<TOAS>;
 /**
@@ -71,7 +71,7 @@ export function createClient<TOAS extends OpenAPIDocument>(
  *
  * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-fets-server
  */
-export function createClient<TRouter extends Router<any, any, any>>(
+export function createClient<const TRouter extends Router<any, any, any>>(
   options: ClientOptions,
 ): TRouter['__client'];
 export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions) {
@@ -123,7 +123,7 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
-            let response: Response;
+            let response: Response | undefined;
             for (const onRequestParamsHook of onRequestInitHooks) {
               await onRequestParamsHook({
                 path,
@@ -136,33 +136,35 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               });
             }
 
-            let finalUrl = path;
-            if (endpoint && !path.startsWith('http')) {
-              finalUrl = `${endpoint}${path}`;
-            }
-            if (requestParams?.query) {
-              const searchParams = qsStringify(requestParams.query, qsOptions);
-              if (finalUrl.includes('?')) {
-                finalUrl += '&' + searchParams;
-              } else {
-                finalUrl += '?' + searchParams;
+            if (response == null) {
+              let finalUrl = path;
+              if (endpoint && !path.startsWith('http')) {
+                finalUrl = `${endpoint}${path}`;
               }
+              if (requestParams?.query) {
+                const searchParams = qsStringify(requestParams.query, qsOptions);
+                if (finalUrl.includes('?')) {
+                  finalUrl += '&' + searchParams;
+                } else {
+                  finalUrl += '?' + searchParams;
+                }
+              }
+
+              let currentFetchFn = fetchFn;
+
+              for (const onFetchHook of onFetchHooks) {
+                await onFetchHook({
+                  url: finalUrl,
+                  init: requestInit as RequestInit,
+                  fetchFn: currentFetchFn,
+                  setFetchFn(newFetchFn) {
+                    currentFetchFn = newFetchFn;
+                  },
+                });
+              }
+
+              response = await currentFetchFn(finalUrl, requestInit);
             }
-
-            let currentFetchFn = fetchFn;
-
-            for (const onFetchHook of onFetchHooks) {
-              await onFetchHook({
-                url: finalUrl,
-                init: requestInit as RequestInit,
-                fetchFn: currentFetchFn,
-                setFetchFn(newFetchFn) {
-                  currentFetchFn = newFetchFn;
-                },
-              });
-            }
-
-            response ||= await currentFetchFn(finalUrl, requestInit);
 
             for (const onResponseHook of onResponseHooks) {
               await onResponseHook({

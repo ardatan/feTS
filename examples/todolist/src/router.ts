@@ -25,7 +25,7 @@ export const router = createRouter({
       schemas: {
         Todo: TodoSchema,
       },
-    } as const,
+    },
   },
 })
   .route({
@@ -41,7 +41,7 @@ export const router = createRouter({
           },
         },
       },
-    } as const,
+    },
     handler: () => Response.json(todos),
   })
   .route({
@@ -71,7 +71,7 @@ export const router = createRouter({
           additionalProperties: false,
         },
       },
-    } as const,
+    },
     handler: async request => {
       const { id } = request.params;
       const todo = todos.find(todo => todo.id === id);
@@ -108,7 +108,7 @@ export const router = createRouter({
           $ref: '#/components/schemas/Todo',
         },
       },
-    } as const,
+    },
     handler: async request => {
       const input = await request.json();
       const todo: Todo = {
@@ -152,7 +152,7 @@ export const router = createRouter({
           additionalProperties: false,
         },
       },
-    } as const,
+    },
     handler: async request => {
       const { id } = request.params;
       const index = todos.findIndex(todo => todo.id === id);
@@ -208,7 +208,7 @@ export const router = createRouter({
           additionalProperties: false,
         },
       },
-    } as const,
+    },
     handler: async request => {
       const body = await request.formData();
       const file = body.get('file');
