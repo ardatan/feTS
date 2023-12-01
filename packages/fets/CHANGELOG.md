@@ -1,5 +1,18 @@
 # fets
 
+## 0.6.6
+
+### Patch Changes
+
+- [#878](https://github.com/ardatan/feTS/pull/878)
+  [`7fe80cc`](https://github.com/ardatan/feTS/commit/7fe80ccc8959bbc76f81cb6f5d4e7df372b442bd)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support nested query parameters
+
+- [#878](https://github.com/ardatan/feTS/pull/878)
+  [`7fe80cc`](https://github.com/ardatan/feTS/commit/7fe80ccc8959bbc76f81cb6f5d4e7df372b442bd)
+  Thanks [@ardatan](https://github.com/ardatan)! - \`as const\` is no longer needed for route
+  schemas
+
 ## 0.6.5
 
 ### Patch Changes
