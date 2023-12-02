@@ -502,14 +502,12 @@ export type ClientMethod = (requestParams?: ClientRequestParams) => ClientTypedR
 
 export interface ClientPlugin {
   onRequestInit?: OnRequestInitHook;
-  onRequestSerialize?: OnRequestSerializeHook;
   onFetch?: OnFetchHook;
   onResponse?: OnResponseHook;
 }
 
 export type OnRequestInitHook = (payload: ClientOnRequestInitPayload) => Promise<void> | void;
 export type OnFetchHook = (payload: ClientOnFetchHookPayload) => Promise<void> | void;
-export type OnRequestSerializeHook = (payload: ClientRequestParams) => Promise<void> | void;
 export type OnResponseHook = (payload: ClientOnResponseHookPayload) => Promise<void> | void;
 
 export interface ClientOnRequestInitPayload {
