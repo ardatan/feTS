@@ -2499,10 +2499,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.12.3":
-  version "6.12.3"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.12.3.tgz#aa76f1c90c3718b9e83010c28d0e9e853e83d36b"
-  integrity sha512-Y76SkyQ43YGXabHRPfJvSo/i1eLPIG7rTYYKIWiZcK3xAS880XPgTBe1oVH9prDGqIBSJ80Mo9kR3Qi2qeK4cQ==
+"@pulumi/aws@6.13.0":
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.13.0.tgz#94d4e92814fabbf59ba90b0e62007777fcddc8ce"
+  integrity sha512-ZmOCSglyCgsALYtF2ORvZNeJaPBErN5m2ZuxKYiWFjconI1+fdnsr2I1YHyLXoqBzj1EINllaHvl5LY1F+ZXNQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -6099,10 +6099,10 @@ eslint-config-next@14.0.3:
     eslint-plugin-react "^7.33.2"
     eslint-plugin-react-hooks "^4.5.0 || 5.0.0-canary-7118f5dd7-20230705"
 
-eslint-config-prettier@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-9.0.0.tgz#eb25485946dd0c66cd216a46232dc05451518d1f"
-  integrity sha512-IcJsTkJae2S35pRsRAwoCE+925rJJStOdkKnLVgtE+tEpqU0EVVM7OqrwxqgptKdX29NUwC82I5pXsGFIgSevw==
+eslint-config-prettier@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-9.1.0.tgz#31af3d94578645966c082fcb71a5846d3c94867f"
+  integrity sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==
 
 eslint-config-standard@17.1.0:
   version "17.1.0"
