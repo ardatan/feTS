@@ -2499,10 +2499,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.13.0":
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.13.0.tgz#94d4e92814fabbf59ba90b0e62007777fcddc8ce"
-  integrity sha512-ZmOCSglyCgsALYtF2ORvZNeJaPBErN5m2ZuxKYiWFjconI1+fdnsr2I1YHyLXoqBzj1EINllaHvl5LY1F+ZXNQ==
+"@pulumi/aws@6.13.1":
+  version "6.13.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.13.1.tgz#39f4b0816a30b605fce766ce55d3a87f81e61ca7"
+  integrity sha512-/yrcZVaYx45gaaQe8X4iPA368ZNk8WbETJ4BwUzcDK9Om36o4Meqfh7JTGpruAgu4LmQLwiMYj8Bznk7lbtbmA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -3518,10 +3518,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@29.5.10":
-  version "29.5.10"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.10.tgz#a10fc5bab9e426081c12b2ef73d24d4f0c9b7f50"
-  integrity sha512-tE4yxKEphEyxj9s4inideLHktW/x6DwesIwWZ9NN1FKf9zbJYsnhBoA9vrHA/IuIOKwPa5PcFBNV4lpMIOEzyQ==
+"@types/jest@29.5.11":
+  version "29.5.11"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.11.tgz#0c13aa0da7d0929f078ab080ae5d4ced80fa2f2c"
+  integrity sha512-S2mHmYIVe13vrm6q4kN6fLYYAka15ALQki/vgDC3mIukEOx8WJlv0kQPM+d4w8Gp6u0uSdKND04IlTXBv0rwnQ==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
