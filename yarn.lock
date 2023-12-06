@@ -3548,10 +3548,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.47.3":
-  version "0.47.3"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.47.3.tgz#3334dbca04e4608c235340575106108ab8698320"
-  integrity sha512-5epuxqaZ6oFYMDuzIK9H7GxJfApkCPiupiF5cKTfJvetmsImP/3F2nS22DoJ7/2XoieTLSffR8yyicGco9dpMw==
+"@types/k6@0.48.0":
+  version "0.48.0"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.48.0.tgz#7a2a1322e3aef5e6496d67b3735c485976e38ba4"
+  integrity sha512-TobNNdz8XAr2xjg7sT0janwMpi54wKvBMklgVrrEl4X/Caw3WdFhzbF9yjTEr8TZmFad4ZDxechYeIuRowfhlA==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
