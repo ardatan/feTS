@@ -489,7 +489,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
             endpoint?: string;
           });
 
-export interface ClientRequestParams {
+export interface ClientRequestParams extends Omit<RequestInit, 'body' | 'method' | 'headers'> {
   json?: any;
   formData?: Record<string, string | Blob>;
   formUrlEncoded?: Record<string, string | string[]>;
