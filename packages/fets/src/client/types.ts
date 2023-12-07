@@ -16,6 +16,7 @@ import type {
   Simplify,
 } from '../types.js';
 import type { OASOAuthPath, OAuth2AuthParams } from './auth/oauth.js';
+import { ClientTypedResponsePromise } from './clientResponse.js';
 
 type JSONSchema7TypeName =
   | 'string' //
@@ -206,11 +207,11 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
       ? (
           requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
           init?: RequestInit,
-        ) => Promise<OASResponse<TOAS, TPath, TMethod>>
+        ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>
       : (
           requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
           init?: RequestInit,
-        ) => Promise<OASResponse<TOAS, TPath, TMethod>>;
+        ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>;
   };
 } & OASOAuthPath<TOAS>;
 
@@ -497,7 +498,7 @@ export interface ClientRequestParams {
   headers?: Record<string, string>;
 }
 
-export type ClientMethod = (requestParams?: ClientRequestParams) => Promise<Response>;
+export type ClientMethod = (requestParams?: ClientRequestParams) => ClientTypedResponsePromise<any>;
 
 export interface ClientPlugin {
   onRequestInit?: OnRequestInitHook;

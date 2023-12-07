@@ -10,6 +10,7 @@ import type {
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
+import { ClientTypedResponsePromise } from './client/clientResponse.js';
 import type { SwaggerUIOpts } from './plugins/openapi.js';
 import type {
   HTTPMethod,
@@ -401,10 +402,10 @@ export type RouterSDK<
     > extends RouterSDKOpts<TTypedRequest, TTypedRequest['method']>
       ? (
           opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
-        ) => Promise<Exclude<TTypedResponse, undefined>>
+        ) => ClientTypedResponsePromise<Exclude<TTypedResponse, undefined>>
       : (
           opts: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
-        ) => Promise<Exclude<TTypedResponse, undefined>>;
+        ) => ClientTypedResponsePromise<Exclude<TTypedResponse, undefined>>;
   };
 };
 
