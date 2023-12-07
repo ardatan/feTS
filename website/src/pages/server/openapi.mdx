@@ -132,7 +132,7 @@ For production, you may not want to expose the schema to the public. In this cas
 ```ts
 const router = createRouter({
   swaggerUI: {
-    endpoint: false // or process.env.NODE_ENV === 'production'
+    endpoint: false // or process.env.NODE_ENV !== 'production'
   },
   openAPI: {
     endpoint: false
