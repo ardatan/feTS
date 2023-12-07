@@ -1,5 +1,5 @@
 import { createClient, type NormalizeOAS } from 'fets';
-import type clientQuerySerializationOAS from './fixtures/example-client-query-serialization-oas';
+import type clientQuerySerializationOAS from './client/fixtures/example-client-query-serialization-oas';
 
 type NormalizedOAS = NormalizeOAS<typeof clientQuerySerializationOAS>;
 
@@ -9,7 +9,7 @@ describe('Client Abort', () => {
       endpoint: 'https://postman-echo.com',
     });
 
-    await expect(client['/get'].get(undefined, { signal: AbortSignal.timeout(0) })).rejects.toThrow(
+    await expect(client['/get'].get({ signal: AbortSignal.timeout(1) })).rejects.toThrow(
       'The operation was aborted',
     );
   });

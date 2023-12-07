@@ -205,12 +205,10 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
           query: {};
         }
       ? (
-          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
-          init?: RequestInit,
+          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>> & ClientRequestInit,
         ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>
       : (
-          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>>,
-          init?: RequestInit,
+          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>> & ClientRequestInit,
         ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>;
   };
 } & OASOAuthPath<TOAS>;
@@ -489,7 +487,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
             endpoint?: string;
           });
 
-export interface ClientRequestParams extends Omit<RequestInit, 'body' | 'method' | 'headers'> {
+export interface ClientRequestParams extends ClientRequestInit {
   json?: any;
   formData?: Record<string, string | Blob>;
   formUrlEncoded?: Record<string, string | string[]>;
@@ -497,6 +495,8 @@ export interface ClientRequestParams extends Omit<RequestInit, 'body' | 'method'
   query?: any;
   headers?: Record<string, string>;
 }
+
+export type ClientRequestInit = Omit<RequestInit, 'body' | 'method' | 'headers'>;
 
 export type ClientMethod = (requestParams?: ClientRequestParams) => ClientTypedResponsePromise<any>;
 
