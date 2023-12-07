@@ -62,15 +62,17 @@ These models will be presented as models in the OpenAPI specification.
 
 ```ts
 const router = createRouter({
-  components: {
-    schemas: {
-      // Define a model named User
-      User: {
-        type: 'object',
-        properties: {
-          id: { type: 'string' },
-          name: { type: 'string' },
-          email: { type: 'string' }
+  openAPI: {
+    components: {
+      schemas: {
+        // Define a model named User
+        User: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            name: { type: 'string' },
+            email: { type: 'string' }
+          }
         }
       }
     }
@@ -125,11 +127,15 @@ const router = createRouter({
 ## Disabling OpenAPI
 
 For production, you may not want to expose the schema to the public. In this case, you can pass
-`false` to `swaggerUiEndpoint` and `oasEndpoint` options to disable them.
+`false` to `swaggerUI.endpoint` and `openAPI.endpoint` options to disable them.
 
 ```ts
 const router = createRouter({
-  swaggerUiEndpoint: false, // or process.env.NODE_ENV === 'production'
-  oasEndpoint: false
+  swaggerUI: {
+    endpoint: false // or process.env.NODE_ENV === 'production'
+  },
+  openAPI: {
+    endpoint: false
+  }
 })
 ```
