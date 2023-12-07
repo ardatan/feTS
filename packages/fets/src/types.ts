@@ -243,8 +243,8 @@ export interface RouterBaseObject<
     TPath extends string,
     TTypedRequest extends TypedRequest<
       any,
-      Record<string, FormDataEntryValue>,
-      Record<string, string>,
+      Record<string, FormDataEntryValue | undefined>,
+      Record<string, string | undefined>,
       TMethod,
       any,
       Record<ExtractPathParamsWithPattern<TPath>, string>
@@ -380,13 +380,15 @@ export type RouterSDKOpts<
   infer TQueryParams,
   infer TPathParam
 >
-  ? {
-      json?: TJSONBody;
-      formData?: TFormData;
-      headers?: THeaders;
-      query?: TQueryParams;
-      params?: TPathParam;
-    }
+  ? Simplify<
+      (Partial<TJSONBody> extends TJSONBody ? { json?: TJSONBody } : { json: TJSONBody }) &
+        (Partial<THeaders> extends THeaders ? { headers?: THeaders } : { headers: THeaders }) &
+        (Partial<TQueryParams> extends TQueryParams
+          ? { query?: TQueryParams }
+          : { query: TQueryParams }) &
+        (Partial<TPathParam> extends TPathParam ? { params?: TPathParam } : { params: TPathParam })
+    > &
+      (Partial<TFormData> extends TFormData ? { formData?: TFormData } : { formData: TFormData })
   : never;
 
 export type RouterSDK<
@@ -395,9 +397,15 @@ export type RouterSDK<
   TTypedResponse extends TypedResponse = TypedResponse,
 > = {
   [TPathKey in TPath]: {
-    [TMethod in Lowercase<TTypedRequest['method']>]: (
-      opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
-    ) => ClientTypedResponsePromise<Exclude<TTypedResponse, undefined>>;
+    [TMethod in Lowercase<TTypedRequest['method']>]: Partial<
+      RouterSDKOpts<TTypedRequest, TTypedRequest['method']>
+    > extends RouterSDKOpts<TTypedRequest, TTypedRequest['method']>
+      ? (
+          opts?: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
+        ) => ClientTypedResponsePromise<Exclude<TTypedResponse, undefined>>
+      : (
+          opts: RouterSDKOpts<TTypedRequest, TTypedRequest['method']>,
+        ) => ClientTypedResponsePromise<Exclude<TTypedResponse, undefined>>;
   };
 };
 
@@ -423,40 +431,40 @@ export type TypedRequestFromRouteSchemas<
   ? TypedRequest<
       TRouteSchemas['request'] extends { json: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['json']>
-        : any,
+        : {},
       TRouteSchemas['request'] extends { formData: JSONSchema }
         ? FromSchemaWithComponents<
             TComponents,
             TRouteSchemas['request']['formData']
-          > extends Record<string, FormDataEntryValue>
+          > extends Record<string, FormDataEntryValue | undefined>
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
-          : Record<string, FormDataEntryValue>
-        : Record<string, FormDataEntryValue>,
+          : never
+        : {},
       TRouteSchemas['request'] extends { headers: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']> extends Record<
             string,
             string
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']>
-          : Record<string, string>
-        : Record<string, string>,
+          : never
+        : {},
       TMethod,
       TRouteSchemas['request'] extends { query: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
-        : any,
+        : {},
       TRouteSchemas['request'] extends { params: JSONSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
             string,
             any
           >
           ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
-          : Record<ExtractPathParamsWithPattern<TPath>, string>
+          : never
         : Record<ExtractPathParamsWithPattern<TPath>, string>
     >
   : TypedRequest<
       any,
-      Record<string, FormDataEntryValue>,
-      Record<string, string>,
+      Partial<Record<string, FormDataEntryValue>>,
+      Partial<Record<string, string>>,
       TMethod,
       any,
       Record<ExtractPathParamsWithPattern<TPath>, string>
@@ -499,8 +507,8 @@ export type RouteWithTypesOpts<
   TPath extends string,
   TTypedRequest extends TypedRequest<
     any,
-    Record<string, FormDataEntryValue>,
-    Record<string, string>,
+    Record<string, FormDataEntryValue | undefined>,
+    Record<string, string | undefined>,
     TMethod,
     any,
     Record<ExtractPathParamsWithPattern<TPath>, string>

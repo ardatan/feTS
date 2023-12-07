@@ -47,8 +47,8 @@ export type NotOkStatusCode = Exclude<StatusCode, OkStatusCode>;
 
 export type TypedBody<
   TJSON,
-  TFormData extends Record<string, FormDataEntryValue>,
-  THeaders extends Record<string, string>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
+  THeaders extends Record<string, string | undefined>,
 > = Omit<Body, 'json' | 'formData' | 'headers'> & {
   /**
    * The `json()` method takes the stream and reads it to completion.
@@ -84,7 +84,7 @@ type Maybe = undefined | null;
 
 type UndefinedToNull<T> = T extends undefined ? Exclude<T, undefined> | null : T;
 
-export interface TypedHeaders<TMap extends Record<string, string>> {
+export interface TypedHeaders<TMap extends Record<string, string | undefined>> {
   append<TName extends DefaultHTTPHeaders | keyof TMap>(
     name: TName,
     value: TName extends keyof TMap ? TMap[TName] : string,
@@ -324,9 +324,9 @@ export type HTTPMethod =
   | 'TRACE';
 
 export type TypedRequestInit<
-  THeaders extends Record<string, string>,
+  THeaders extends Record<string, string | undefined>,
   TMethod extends HTTPMethod,
-  TFormData extends Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
 > = Omit<RequestInit, 'method' | 'headers' | 'body'> & {
   method: TMethod;
   headers: TypedHeaders<THeaders>;
@@ -335,8 +335,11 @@ export type TypedRequestInit<
 
 export type TypedRequest<
   TJSON = any,
-  TFormData extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
-  THeaders extends Record<string, string> = Record<string, string>,
+  TFormData extends Record<string, FormDataEntryValue | undefined> = Record<
+    string,
+    FormDataEntryValue | undefined
+  >,
+  THeaders extends Record<string, string | undefined> = Record<string, string | undefined>,
   TMethod extends HTTPMethod = HTTPMethod,
   TQueryParams = any,
   TPathParams extends Record<string, any> = Record<string, any>,
@@ -349,16 +352,19 @@ export type TypedRequest<
   };
 
 export type TypedRequestCtor = new <
-  THeaders extends Record<string, string>,
+  THeaders extends Record<string, string | undefined>,
   TMethod extends HTTPMethod,
-  TFormData extends Record<string, FormDataEntryValue>,
+  TFormData extends Record<string, FormDataEntryValue | undefined>,
 >(
   input: string | URL,
   init?: TypedRequestInit<THeaders, TMethod, TFormData>,
 ) => TypedRequest<any, TFormData, THeaders, TMethod, any, any>;
 
 export interface TypedFormData<
-  TMap extends Record<string, FormDataEntryValue> = Record<string, FormDataEntryValue>,
+  TMap extends Record<string, FormDataEntryValue | undefined> = Record<
+    string,
+    FormDataEntryValue | undefined
+  >,
 > {
   append<TName extends keyof TMap>(
     name: TName,

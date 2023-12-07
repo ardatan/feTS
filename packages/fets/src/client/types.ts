@@ -437,7 +437,7 @@ export interface ClientOptions {
    *
    * @see https://the-guild.dev/openapi/fets/client/client-configuration#customizing-the-fetch-function
    */
-  fetchFn?: typeof fetch;
+  fetchFn?: ClientFetchFn;
   /**
    * Plugins to extend the client functionality
    *
@@ -491,7 +491,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
 
 export interface ClientRequestParams {
   json?: any;
-  formData?: FormData;
+  formData?: Record<string, string | Blob>;
   formUrlEncoded?: Record<string, string | string[]>;
   params?: Record<string, string>;
   query?: any;
@@ -518,11 +518,13 @@ export interface ClientOnRequestInitPayload {
   endResponse(response: Response): void;
 }
 
+export type ClientFetchFn = (input: string, init?: RequestInit) => Promise<Response> | Response;
+
 export interface ClientOnFetchHookPayload {
   url: string;
   init: RequestInit;
-  fetchFn: typeof fetch;
-  setFetchFn(fetchFn: typeof fetch): void;
+  fetchFn: ClientFetchFn;
+  setFetchFn(fetchFn: ClientFetchFn): void;
 }
 
 export interface ClientOnResponseHookPayload {
