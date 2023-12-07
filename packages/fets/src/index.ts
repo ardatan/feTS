@@ -5,3 +5,4 @@ export { useCORS, HTTPError } from '@whatwg-node/server';
 export * from './client/index.js';
 export * from './Response.js';
 export * from '@sinclair/typebox';
+export { registerFormats } from './plugins/formats.js';
