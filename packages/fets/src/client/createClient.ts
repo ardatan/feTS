@@ -97,38 +97,54 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
     get(_target, path: string) {
       return new Proxy(EMPTY_OBJECT, {
         get(_target, method: HTTPMethod): ClientMethod {
-          async function clientMethod(requestParams: ClientRequestParams) {
-            for (const pathParamKey in requestParams?.params || {}) {
-              const value = requestParams?.params?.[pathParamKey];
-              if (value) {
-                path = path.replace(`{${pathParamKey}}`, value).replace(`:${pathParamKey}`, value);
+          async function clientMethod(requestParams: ClientRequestParams = {}) {
+            const {
+              headers = {},
+              params: paramsBody,
+              json: jsonBody,
+              formData: formDataBody,
+              formUrlEncoded: formUrlEncodedBody,
+              query: queryBody,
+              ...requestInitByUser
+            } = requestParams;
+
+            if (paramsBody) {
+              for (const pathParamKey in paramsBody) {
+                const value = paramsBody[pathParamKey];
+                if (value) {
+                  path = path
+                    .replace(`{${pathParamKey}}`, value)
+                    .replace(`:${pathParamKey}`, value);
+                }
               }
             }
             if (!path.startsWith('/') && !path.startsWith('http')) {
               path = `/${path}`;
             }
+
             const requestInit: RequestInit & { headers: Record<string, string> } = {
+              ...requestInitByUser,
               method,
-              headers: requestParams?.headers || {},
+              headers,
             };
 
-            if (requestParams?.json) {
-              requestInit.body = JSON.stringify(requestParams.json);
-              requestInit.headers['Content-Type'] = 'application/json';
+            if (jsonBody) {
+              requestInit.body = JSON.stringify(jsonBody);
+              headers['Content-Type'] = 'application/json';
             }
 
-            if (requestParams?.formData) {
+            if (formDataBody) {
               requestInit.body = new FormData();
-              for (const key in requestParams.formData) {
-                const value = requestParams.formData[key];
+              for (const key in formDataBody) {
+                const value = formDataBody[key];
                 if (value != null) {
                   requestInit.body.append(key, value);
                 }
               }
             }
 
-            if (requestParams?.formUrlEncoded) {
-              requestInit.body = qsStringify(requestParams.formUrlEncoded, qsOptions);
+            if (formUrlEncodedBody) {
+              requestInit.body = qsStringify(formUrlEncodedBody, qsOptions);
               requestInit.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
@@ -150,8 +166,8 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
               if (endpoint && !path.startsWith('http')) {
                 finalUrl = `${endpoint}${path}`;
               }
-              if (requestParams?.query) {
-                const searchParams = qsStringify(requestParams.query, qsOptions);
+              if (queryBody) {
+                const searchParams = qsStringify(queryBody, qsOptions);
                 if (finalUrl.includes('?')) {
                   finalUrl += '&' + searchParams;
                 } else {
