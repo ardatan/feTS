@@ -1,5 +1,25 @@
 # fets
 
+## 0.6.7
+
+### Patch Changes
+
+- [#912](https://github.com/ardatan/feTS/pull/912)
+  [`bb3f338`](https://github.com/ardatan/feTS/commit/bb3f3383f5f7662fb43970d964b6e0a1fd9179cc)
+  Thanks [@ardatan](https://github.com/ardatan)! - Better type safety
+
+- [#912](https://github.com/ardatan/feTS/pull/912)
+  [`bb3f338`](https://github.com/ardatan/feTS/commit/bb3f3383f5f7662fb43970d964b6e0a1fd9179cc)
+  Thanks [@ardatan](https://github.com/ardatan)! - Send `FormData` for `multipart/form-data`
+
+- [#880](https://github.com/ardatan/feTS/pull/880)
+  [`22b3efc`](https://github.com/ardatan/feTS/commit/22b3efc733754dbcaf8c9cde006b99eed480a11f)
+  Thanks [@ardatan](https://github.com/ardatan)! - Easy JSON parsing with \`get().json()\` syntax
+
+- [#914](https://github.com/ardatan/feTS/pull/914)
+  [`3b41c50`](https://github.com/ardatan/feTS/commit/3b41c50ae5ea0bc8e18bda63e457f5ef49e35903)
+  Thanks [@ardatan](https://github.com/ardatan)! - Export `registerFormats`
+
 ## 0.6.6
 
 ### Patch Changes
