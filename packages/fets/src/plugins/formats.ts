@@ -110,7 +110,10 @@ export const fullFormat: Record<FormatName, (s: string) => boolean> = {
   float,
   double: float,
   password: () => true,
-  binary: () => true,
+  binary: val =>
+    val != null &&
+    typeof val === 'object' &&
+    (val[Symbol.toStringTag] === 'File' || val[Symbol.toStringTag] === 'Blob'),
 };
 
 export const fastFormat: Record<FormatName, (s: string) => boolean> = {

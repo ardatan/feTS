@@ -33,9 +33,10 @@ const router = createRouter().route({
         },
       );
     }
+    const resJson = await req.json();
     return Response.json({
       id: '1',
-      name: 'John',
+      name: resJson.name,
     });
   },
 });

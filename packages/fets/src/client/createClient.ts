@@ -1,5 +1,5 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
-import { fetch } from '@whatwg-node/fetch';
+import { fetch, FormData } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router } from '../types.js';
 import {
@@ -115,7 +115,13 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
             }
 
             if (requestParams?.formData) {
-              requestInit.body = requestParams.formData;
+              requestInit.body = new FormData();
+              for (const key in requestParams.formData) {
+                const value = requestParams.formData[key];
+                if (value != null) {
+                  requestInit.body.append(key, value);
+                }
+              }
             }
 
             if (requestParams?.formUrlEncoded) {

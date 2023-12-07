@@ -49,7 +49,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
     onRouteHandle({ route: { schemas }, request }) {
       if (schemas?.request?.headers && TypeGuard.TSchema(schemas.request.headers)) {
         const validateFn = getValidateFn(schemas.request.headers);
-        const headersObj = getHeadersObj(request.headers);
+        const headersObj = getHeadersObj(request.headers as any);
         const errors = [...validateFn(headersObj)].map(error => sanitizeError(error, 'headers'));
         if (errors.length) {
           throw new HTTPError(
@@ -133,19 +133,21 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
               const formDataObj: Record<string, FormDataEntryValue> = {};
               const jobs: Promise<void>[] = [];
               formData.forEach((value, key) => {
-                if (typeof value === 'string') {
-                  formDataObj[key] = value;
-                } else {
-                  jobs.push(
-                    value.arrayBuffer().then(buffer => {
-                      const typedArray = new Uint8Array(buffer);
-                      const binaryStrParts: string[] = [];
-                      typedArray.forEach((byte, index) => {
-                        binaryStrParts[index] = String.fromCharCode(byte);
-                      });
-                      formDataObj[key] = binaryStrParts.join('');
-                    }),
-                  );
+                if (value != null) {
+                  if (typeof value === 'string') {
+                    formDataObj[key] = value;
+                  } else {
+                    jobs.push(
+                      value.arrayBuffer().then(buffer => {
+                        const typedArray = new Uint8Array(buffer);
+                        const binaryStrParts: string[] = [];
+                        typedArray.forEach((byte, index) => {
+                          binaryStrParts[index] = String.fromCharCode(byte);
+                        });
+                        formDataObj[key] = binaryStrParts.join('');
+                      }),
+                    );
+                  }
                 }
               });
               await Promise.all(jobs);
