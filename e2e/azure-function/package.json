@@ -14,7 +14,7 @@
     "@pulumi/azure-native": "2.21.1",
     "@pulumi/pulumi": "3.96.1",
     "esbuild": "0.19.8",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.3.3"
   }
