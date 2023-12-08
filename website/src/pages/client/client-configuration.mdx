@@ -21,3 +21,20 @@ const client = createClient<typeof oas>({
   fetch: fetchH2 as typeof fetch
 })
 ```
+
+## Global Parameters
+
+You can also pass global parameters to the `createClient` function. These parameters will be passed
+to every request made by the client.
+
+```ts
+import { oas } from './oas'
+
+const client = createClient<typeof oas>({
+  globalParams: {
+    headers: {
+      Authorization: 'Bearer 123'
+    }
+  }
+})
+```

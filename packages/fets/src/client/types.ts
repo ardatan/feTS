@@ -183,7 +183,7 @@ export type OASParamMap<TParameters extends { name: string; in: string }[]> = Pi
   [Tuples.Map<OASParamToRequestParam<TParameters>>, Tuples.ToIntersection]
 >;
 
-export type OASClient<TOAS extends OpenAPIDocument> = {
+export type OASClient<TOAS extends OpenAPIDocument, TAuthParamsRequired extends boolean = true> = {
   /**
    * The path to be used for the request
    */
@@ -191,7 +191,12 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
     /**
      * HTTP Method to be used for this request
      */
-    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<TOAS, TPath, TMethod> extends
+    [TMethod in keyof OASMethodMap<TOAS, TPath>]: OASRequestParams<
+      TOAS,
+      TPath,
+      TMethod,
+      TAuthParamsRequired
+    > extends
       | {
           json: {};
         }
@@ -205,10 +210,12 @@ export type OASClient<TOAS extends OpenAPIDocument> = {
           query: {};
         }
       ? (
-          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod>> & ClientRequestInit,
+          requestParams: Simplify<OASRequestParams<TOAS, TPath, TMethod, TAuthParamsRequired>> &
+            ClientRequestInit,
         ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>
       : (
-          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod>> & ClientRequestInit,
+          requestParams?: Simplify<OASRequestParams<TOAS, TPath, TMethod, TAuthParamsRequired>> &
+            ClientRequestInit,
         ) => ClientTypedResponsePromise<OASResponse<TOAS, TPath, TMethod>>;
   };
 } & OASOAuthPath<TOAS>;
@@ -275,6 +282,7 @@ export type OASRequestParams<
   TOAS extends OpenAPIDocument,
   TPath extends keyof OASPathMap<TOAS>,
   TMethod extends keyof OASMethodMap<TOAS, TPath>,
+  TAuthParamsRequired extends boolean = true,
 > = (OASMethodMap<TOAS, TPath>[TMethod] extends {
   requestBody: { content: { 'application/json': { schema: JSONSchema } } };
 }
@@ -397,9 +405,15 @@ export type OASRequestParams<
       }
     : {}) &
   // Respect security definitions in path object
-  OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod]> &
+  (TAuthParamsRequired extends true
+    ? OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod]>
+    : DeepPartial<OASSecurityParamsBySecurityRef<TOAS, OASMethodMap<TOAS, TPath>[TMethod]>>) &
   // Respect global security definitions
-  OASSecurityParamsBySecurityRef<TOAS, TOAS>;
+  (TAuthParamsRequired extends true
+    ? OASSecurityParamsBySecurityRef<TOAS, TOAS>
+    : DeepPartial<OASSecurityParamsBySecurityRef<TOAS, TOAS>>);
+
+type DeepPartial<T> = T extends Record<string, any> ? { [K in keyof T]?: DeepPartial<T[K]> } : T;
 
 export type OASInput<
   TOAS extends OpenAPIDocument,
@@ -442,6 +456,10 @@ export interface ClientOptions {
    * @see https://the-guild.dev/openapi/fets/client/plugins
    */
   plugins?: ClientPlugin[];
+  /**
+   * Global parameters
+   */
+  globalParams?: ClientRequestParams;
 }
 
 export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit<
