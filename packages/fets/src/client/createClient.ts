@@ -1,7 +1,7 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch, FormData } from '@whatwg-node/fetch';
 import { HTTPMethod } from '../typed-fetch.js';
-import { OpenAPIDocument, Router } from '../types.js';
+import { OpenAPIDocument, Router, SecurityScheme } from '../types.js';
 import { createClientTypedResponsePromise } from './clientResponse.js';
 import {
   ClientMethod,
@@ -10,6 +10,7 @@ import {
   ClientPlugin,
   ClientRequestParams,
   OASClient,
+  OASSecurityParams,
   OnFetchHook,
   OnRequestInitHook,
   OnResponseHook,
@@ -66,6 +67,33 @@ const EMPTY_OBJECT = {};
  * const client = createClient<NormalizeOAS<typeof oas>>({});
  * ```
  */
+export function createClient<
+  const TOAS extends OpenAPIDocument & {
+    components: { securitySchemes: Record<string, SecurityScheme> };
+  },
+>(
+  options: Omit<ClientOptionsWithStrictEndpoint<TOAS>, 'globalParams'> & {
+    globalParams: OASSecurityParams<
+      TOAS['components']['securitySchemes'][keyof TOAS['components']['securitySchemes']]
+    >;
+  },
+): OASClient<TOAS, false>;
+/**
+ * Create a client for an OpenAPI document
+ * You need to pass the imported OpenAPI document as a generic
+ *
+ * We recommend using the `NormalizeOAS` type to normalize the OpenAPI document
+ *
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-existing-rest-api
+ *
+ * @example
+ * ```ts
+ * import { createClient, type NormalizeOAS } from 'fets';
+ * import type oas from './oas.ts';
+ *
+ * const client = createClient<NormalizeOAS<typeof oas>>({});
+ * ```
+ */
 export function createClient<const TOAS extends OpenAPIDocument>(
   options: ClientOptionsWithStrictEndpoint<TOAS>,
 ): OASClient<TOAS>;
@@ -77,7 +105,12 @@ export function createClient<const TOAS extends OpenAPIDocument>(
 export function createClient<const TRouter extends Router<any, any, any>>(
   options: ClientOptions,
 ): TRouter['__client'];
-export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: ClientOptions) {
+export function createClient({
+  endpoint,
+  fetchFn = fetch,
+  plugins = [],
+  globalParams,
+}: ClientOptions) {
   plugins.unshift(useValidationErrors());
   const onRequestInitHooks: OnRequestInitHook[] = [];
   const onFetchHooks: OnFetchHook[] = [];
@@ -98,6 +131,44 @@ export function createClient({ endpoint, fetchFn = fetch, plugins = [] }: Client
       return new Proxy(EMPTY_OBJECT, {
         get(_target, method: HTTPMethod): ClientMethod {
           async function clientMethod(requestParams: ClientRequestParams = {}) {
+            // Merge globalParams with the current requestParams
+            if (globalParams?.headers) {
+              requestParams.headers = {
+                ...globalParams.headers,
+                ...requestParams.headers,
+              };
+            }
+            if (globalParams?.query) {
+              requestParams.query = {
+                ...globalParams.query,
+                ...requestParams.query,
+              };
+            }
+            if (globalParams?.params) {
+              requestParams.params = {
+                ...globalParams.params,
+                ...requestParams.params,
+              };
+            }
+            if (globalParams?.json) {
+              requestParams.json = {
+                ...globalParams.json,
+                ...requestParams.json,
+              };
+            }
+            if (globalParams?.formData) {
+              requestParams.formData = {
+                ...globalParams.formData,
+                ...requestParams.formData,
+              };
+            }
+            if (globalParams?.formUrlEncoded) {
+              requestParams.formUrlEncoded = {
+                ...globalParams.formUrlEncoded,
+                ...requestParams.formUrlEncoded,
+              };
+            }
+
             const {
               headers = {},
               params: paramsBody,

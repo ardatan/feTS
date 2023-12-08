@@ -16,41 +16,6 @@ A plugin in feTS is a function that returns an object with the following optiona
   - It enables you to modify the response or throw an error to prevent the response from being
     returned.
 
-### Custom Plugin example
-
-```ts
-import { ClientPlugin } from 'fets'
-
-export function myCustomPlugin(): ClientPlugin {
-  return {
-    onRequestInit({ requestInit }) {
-      requestInit.headers = {
-        ...requestInit.headers,
-        'X-Custom-Header': 'Custom value'
-      }
-    },
-    onFetch({ fetchFn, setFetchFn }) {
-      setFetchFn(async (input, init) => {
-        const response = await fetchFn(input, init)
-        if (response.status === 401) {
-          throw new Error('Unauthorized')
-        }
-        return response
-      })
-    },
-    onResponse({ response }) {
-      if (response.status === 401) {
-        throw new Error('Unauthorized')
-      }
-    }
-  }
-}
-
-const client = createClient<typeof someoas>({
-  plugins: [myCustomPlugin()]
-})
-```
-
 ## Handling Cookies With Built-in Cookies Plugin
 
 To handle cookies separately from the environment, you can use the `useCookieStore` plugin.
