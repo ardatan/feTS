@@ -1,5 +1,14 @@
 # fets
 
+## 0.6.8
+
+### Patch Changes
+
+- [#852](https://github.com/ardatan/feTS/pull/852)
+  [`40ff0b4`](https://github.com/ardatan/feTS/commit/40ff0b4752edf94341231455bca8790115af25ad)
+  Thanks [@thelinuxlich](https://github.com/thelinuxlich)! - Make auth params optional if they are
+  provided in the client options as `globalParams`
+
 ## 0.6.7
 
 ### Patch Changes
