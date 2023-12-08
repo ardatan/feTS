@@ -25,4 +25,4 @@ const clientWithPredefined = createClient<NormalizedOAS>({
   },
 });
 
-const res2 = await clientWithPredefined['/me'].get();
+await clientWithPredefined['/me'].get();
