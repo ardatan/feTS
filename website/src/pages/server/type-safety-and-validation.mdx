@@ -124,7 +124,7 @@ define the schema:
 ```ts
 import { createRouter, Response } from "fets";
 
-const router = createRouter().addRoute({
+const router = createRouter().route({
   method: "GET",
   path: "/todos",
   // Define the request body schema
@@ -246,7 +246,7 @@ Example:
 ```ts
 import { createRouter, Response } from 'fets'
 
-const router = createRouter().addRoute({
+const router = createRouter().route({
   method: 'GET',
   path: '/todos',
   // Define the request body schema
