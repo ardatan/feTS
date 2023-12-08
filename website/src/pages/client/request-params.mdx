@@ -95,17 +95,13 @@ cancel a request. Pass the `signal` property as the second argument to the reque
 ```ts filename="request-cancellation.ts"
 const abortCtrl = new AbortController()
 
-client['/add-pet'].post(
-  {
-    json: {
-      name: 'Cheddar',
-      description: 'Small cat with a big attitude'
-    }
+client['/add-pet'].post({
+  json: {
+    name: 'Cheddar',
+    description: 'Small cat with a big attitude'
   },
-  {
-    signal: abortCtrl.signal
-  }
-)
+  signal: abortCtrl.signal
+})
 
 // Cancel the request
 abortCtrl.abort()
@@ -118,15 +114,11 @@ You can use
 cancel a request. Pass the `signal` property with `AbortSignal.timeout()` to the request:
 
 ```ts filename="request-timeout.ts"
-client['/add-pet'].post(
-  {
-    json: {
-      name: 'Cheddar',
-      description: 'Small cat with a big attitude'
-    }
+client['/add-pet'].post({
+  json: {
+    name: 'Cheddar',
+    description: 'Small cat with a big attitude'
   },
-  {
-    signal: AbortSignal.timeout(5000)
-  }
-)
+  signal: AbortSignal.timeout(5000)
+})
 ```
