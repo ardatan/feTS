@@ -2519,10 +2519,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.21.1":
-  version "2.21.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.21.1.tgz#88d834014a36dff2ab848256b06678913ab93c07"
-  integrity sha512-hToXoK5Oi1UOWApHNOzqN0zqRNYnigb8qv548IDjQ5C7mAnhGR3/NDaA+PzYDlL2ij2DR8SXYg0VGykEYmS9+g==
+"@pulumi/azure-native@2.21.2":
+  version "2.21.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.21.2.tgz#85259dfe9d7bdfaa420433a8ab74fa6acc3d52ec"
+  integrity sha512-gYSQrIbGUbOcFItxT2ZpzKQPHBVf90ISppkRfvK+2c3lEJk5OW+4MS/2IAwRrKtVS1GnDtwte7jlhYtOL0GuCA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3651,10 +3651,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.42", "@types/react@>=16", "@types/react@^18.2.38":
-  version "18.2.42"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.42.tgz#6f6b11a904f6d96dda3c2920328a97011a00aba7"
-  integrity sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==
+"@types/react@*", "@types/react@18.2.43", "@types/react@>=16", "@types/react@^18.2.38":
+  version "18.2.43"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.43.tgz#c58e5abe241e6f71f60ce30e2a9aceb9d3a2a374"
+  integrity sha512-nvOV01ZdBdd/KW6FahSbcNplt2jCJfyWdTos61RYHV+FVv5L/g9AOX1bmbVcWcLFL8+KHQfh1zVIQrud6ihyQA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
