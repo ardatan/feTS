@@ -3893,10 +3893,10 @@
     fast-querystring "^1.1.1"
     tslib "^2.3.1"
 
-"@whatwg-node/server@^0.9.15":
-  version "0.9.20"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.20.tgz#82ad2531b5d81a6af797bc891bf288ccbf4e4802"
-  integrity sha512-gNM+FM4xr1VvnpWkVw7wiCQjqLkxsxaY6SSP2v2Rp59yVkk5TNqn987XrbIbCgLB2B3CSUc41fRmoad9Vdh2tA==
+"@whatwg-node/server@^0.9.21":
+  version "0.9.21"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.21.tgz#4c98906bd1495a70ee3ae8bf6e204cf4822bd4d5"
+  integrity sha512-D8fhTttCTwCvjc7dPCFmymHuZyLDIDS/jD5oAmNoEQL+rT8omAbSuRfFwzM2G04siMQlYSEij/Sa2GYujw0kzA==
   dependencies:
     "@whatwg-node/fetch" "^0.9.10"
     tslib "^2.3.1"
