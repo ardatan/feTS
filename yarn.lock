@@ -2530,10 +2530,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.22.0":
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.22.0.tgz#cfca231318aa026735d05e9cd5b1d1d1ce1082e0"
-  integrity sha512-HutD/G2iCOh/CfYlVf1KTDLi9wn8ilwAzpdwYsndpkWRVihooK20ZxcjUOr/8VOC3wZvo56OCNsE+YCrb8oqJQ==
+"@pulumi/azure-native@2.22.1":
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.22.1.tgz#6dd8aef27d472733737959fed272f626ed5dca53"
+  integrity sha512-X/apQqagDZt+2uR9p4tQGb3dm9SYLzCabSG3j5rQ8XJk3/qrDRs8wi+k62hJfMoUJv1QihEFZsLBntph2HIRLw==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2552,10 +2552,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.97.0", "@pulumi/pulumi@^3.0.0":
-  version "3.97.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.97.0.tgz#3fa8f56fee6c529e89cb66cd664a2ee962818df0"
-  integrity sha512-yPtC/RUHHV8FgcRmq/l05ZyVwcIjLIA+7F+sCceKSNga0NOno6D/VD3PRU/TkApTseKRce4NQgdshXDumh+mdA==
+"@pulumi/pulumi@3.98.0", "@pulumi/pulumi@^3.0.0":
+  version "3.98.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.98.0.tgz#cd89d0ad0d4785695300f71635f21bdc2a644a28"
+  integrity sha512-G5LpwM7CvR5hLvyscgWp5TVVJYTOJqeLSL0uTUtHSBz/Tpiqv1lgygW8oUIUD4gPm33UfcK1cVejCASdQk+74Q==
   dependencies:
     "@grpc/grpc-js" "1.9.6"
     "@logdna/tail-file" "^2.0.6"
