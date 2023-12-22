@@ -1,4 +1,4 @@
-import { TSchema, TypeGuard } from '@sinclair/typebox';
+import { TypeGuard, type TSchema } from '@sinclair/typebox';
 import { TypeCompiler, ValueError, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
 import { HTTPError } from '@whatwg-node/server';
@@ -47,7 +47,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
   }
   return {
     onRouteHandle({ route: { schemas }, request }) {
-      if (schemas?.request?.headers && TypeGuard.TSchema(schemas.request.headers)) {
+      if (schemas?.request?.headers && TypeGuard.IsSchema(schemas.request.headers)) {
         const validateFn = getValidateFn(schemas.request.headers);
         const headersObj = getHeadersObj(request.headers as any);
         const errors = [...validateFn(headersObj)].map(error => sanitizeError(error, 'headers'));
@@ -64,7 +64,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.params && TypeGuard.TSchema(schemas.request.params)) {
+      if (schemas?.request?.params && TypeGuard.IsSchema(schemas.request.params)) {
         const validateFn = getValidateFn(schemas.request.params);
         const errors = [...validateFn(request.params)].map(error => sanitizeError(error, 'params'));
         if (errors.length) {
@@ -80,7 +80,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.query && TypeGuard.TSchema(schemas.request.query)) {
+      if (schemas?.request?.query && TypeGuard.IsSchema(schemas.request.query)) {
         const validateFn = getValidateFn(schemas.request.query);
         const errors = [...validateFn(request.query)].map(error => sanitizeError(error, 'query'));
         if (errors.length) {
@@ -96,7 +96,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           );
         }
       }
-      if (schemas?.request?.json && TypeGuard.TSchema(schemas.request.json)) {
+      if (schemas?.request?.json && TypeGuard.IsSchema(schemas.request.json)) {
         const validateFn = getValidateFn(schemas.request.json);
         const origReqJsonMethod = request.json.bind(request);
         Object.defineProperty(request, 'json', {
@@ -123,7 +123,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
           configurable: true,
         });
       }
-      if (schemas?.request?.formData && TypeGuard.TSchema(schemas.request.formData)) {
+      if (schemas?.request?.formData && TypeGuard.IsSchema(schemas.request.formData)) {
         const validateFn = getValidateFn(schemas.request.formData);
         const origMethod = request.formData.bind(request);
         Object.defineProperty(request, 'formData', {
