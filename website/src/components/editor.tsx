@@ -108,7 +108,7 @@ export function Editor() {
   }, []);
 
   return (
-    <div className="relative min-h-[50vh] dark:drop-shadow-[24px_20px_30px_rgba(24,134,255,.2)] max-lg:hidden">
+    <div className="relative min-h-[50vh] max-lg:hidden dark:drop-shadow-[24px_20px_30px_rgba(24,134,255,.2)]">
       <div
         ref={monacoLoadingRef}
         className="absolute inset-0 flex flex-col items-center justify-center gap-8 bg-[#011627] text-gray-100"
