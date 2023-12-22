@@ -4,20 +4,20 @@ import { IBM_Plex_Sans } from 'next/font/google';
 import { clsx } from 'clsx';
 import { Anchor } from '@theguild/components';
 import { Editor } from './editor';
-import AWSLambda from 'public/assets/aws-lambda.svg';
-import AzureFunctions from 'public/assets/azure-functions.svg';
-import Bun from 'public/assets/bun.svg';
-import CloudFlare from 'public/assets/cloudflare.svg';
-import Deno from 'public/assets/deno.svg';
-import Diagram from 'public/assets/diagram.svg';
-import GitHubLogo from 'public/assets/github.svg';
-import GoogleCloudFunctions from 'public/assets/google-cloud-functions.svg';
-import JsonSchema from 'public/assets/json-schema.svg';
-import NextJs from 'public/assets/nextjs.svg';
-import NodeJs from 'public/assets/nodejs.svg';
-import OpenAPI from 'public/assets/openapi.svg';
-import TypeScript from 'public/assets/typescript.svg';
-import WebSockets from 'public/assets/websockets.svg';
+import AWSLambda from '../../public/assets/aws-lambda.svg';
+import AzureFunctions from '../../public/assets/azure-functions.svg';
+import Bun from '../../public/assets/bun.svg';
+import CloudFlare from '../../public/assets/cloudflare.svg';
+import Deno from '../../public/assets/deno.svg';
+import Diagram from '../../public/assets/diagram.svg';
+import GitHubLogo from '../../public/assets/github.svg';
+import GoogleCloudFunctions from '../../public/assets/google-cloud-functions.svg';
+import JsonSchema from '../../public/assets/json-schema.svg';
+import NextJs from '../../public/assets/nextjs.svg';
+import NodeJs from '../../public/assets/nodejs.svg';
+import OpenAPI from '../../public/assets/openapi.svg';
+import TypeScript from '../../public/assets/typescript.svg';
+import WebSockets from '../../public/assets/websockets.svg';
 
 const IBMPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
