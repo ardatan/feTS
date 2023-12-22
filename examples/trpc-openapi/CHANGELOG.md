@@ -1,5 +1,12 @@
 # trpc-openapi-example
 
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies [[`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a), [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1), [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288), [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)]:
+  - fets@0.7.0
+
 ## 0.1.16
 
 ### Patch Changes
