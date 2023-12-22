@@ -228,6 +228,7 @@ export function createRouterBase(
           routeByPathByMethod,
           routeByPatternByMethod,
           openAPIDocument,
+          fetchAPI,
         });
       }
       return this as any;

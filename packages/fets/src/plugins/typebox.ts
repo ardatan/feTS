@@ -129,7 +129,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
         Object.defineProperty(request, 'formData', {
           configurable: true,
           value: () =>
-            origMethod().then(async formData => {
+            origMethod().then(formData => {
               const formDataObj: Record<string, FormDataEntryValue> = {};
               const jobs: Promise<void>[] = [];
               formData.forEach((value, key) => {
@@ -139,7 +139,7 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
                   } else {
                     jobs.push(
                       value.arrayBuffer().then(buffer => {
-                        const typedArray = new Uint8Array(buffer);
+                        const typedArray = isByteArray(buffer) ? buffer : new Uint8Array(buffer);
                         const binaryStrParts: string[] = [];
                         typedArray.forEach((byte, index) => {
                           binaryStrParts[index] = String.fromCharCode(byte);
@@ -150,26 +150,37 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
                   }
                 }
               });
-              await Promise.all(jobs);
-              const errors = [...validateFn(formDataObj)].map(error =>
-                sanitizeError(error, 'formData'),
-              );
-              if (errors.length) {
-                throw new HTTPError(
-                  400,
-                  'Bad Request',
-                  {
-                    'x-error-type': 'validation',
-                  },
-                  {
-                    errors,
-                  },
+              function handleErrors() {
+                const errors = [...validateFn(formDataObj)].map(error =>
+                  sanitizeError(error, 'formData'),
                 );
+                if (errors.length) {
+                  throw new HTTPError(
+                    400,
+                    'Bad Request',
+                    {
+                      'x-error-type': 'validation',
+                    },
+                    {
+                      errors,
+                    },
+                  );
+                }
+                return formDataObj;
               }
-              return formDataObj;
+              if (jobs.length) {
+                return Promise.all(jobs).then(handleErrors);
+              }
+              return handleErrors();
             }),
         });
       }
     },
   };
+}
+
+function isByteArray(value: any): value is {
+  forEach: (callbackfn: (value: number, index: number) => void) => void;
+} {
+  return value?.forEach != null;
 }
