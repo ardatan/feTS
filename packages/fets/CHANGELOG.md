@@ -1,5 +1,24 @@
 # fets
 
+## 0.7.0
+
+### Minor Changes
+
+- [#977](https://github.com/ardatan/feTS/pull/977) [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288) Thanks [@renovate](https://github.com/apps/renovate)! - Update typebox
+
+### Patch Changes
+
+- [#915](https://github.com/ardatan/feTS/pull/915) [`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+
+  - Updated dependency [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from `^0.31.23`, in `dependencies`)
+
+- [#967](https://github.com/ardatan/feTS/pull/967) [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+
+  - Updated dependency [`json-schema-to-ts@^3.0.0` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/3.0.0) (from `^2.9.1`, in `dependencies`)
+
+- [#977](https://github.com/ardatan/feTS/pull/977) [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+  - Updated dependency [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from `^0.31.23`, in `dependencies`)
+
 ## 0.6.8
 
 ### Patch Changes
@@ -242,8 +261,8 @@
   Then feTS should take the `default` response as the successful response.
 
   ```ts
-  const response = await client['/user'].post({
-    json: { name: 'John' },
+  const response = await client["/user"].post({
+    json: { name: "John" },
   });
 
   if (!res.ok) {
@@ -275,10 +294,10 @@
   feTS shouldn't take both `json` and `formData` required;
 
   ```ts
-  client['/user'].post({
+  client["/user"].post({
     // Both shouldn't be required because only one of them is enough.
-    json: { name: 'John' },
-    formData: { name: 'John' },
+    json: { name: "John" },
+    formData: { name: "John" },
   });
   ```
 
