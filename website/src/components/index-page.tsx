@@ -46,7 +46,7 @@ export function IndexPage(): ReactElement {
         )}
       >
         <div className="container grid gap-20 max-lg:px-8 lg:grid-cols-2">
-          <div className="text-secondary-600 flex flex-col justify-center dark:text-white lg:max-w-lg">
+          <div className="text-secondary-600 flex flex-col justify-center lg:max-w-lg dark:text-white">
             <h1 className="text-[4rem] font-bold max-lg:text-4xl">feTS</h1>
             <h2 className="text-lg lg:text-2xl">Fetch API 💙 TypeScript</h2>
             <h3 className="my-8 text-base/7 lg:text-lg">
@@ -106,10 +106,10 @@ export function IndexPage(): ReactElement {
             ].map(({ name, description, icon: Icon }) => (
               <div key={name} className="flex flex-col lg:w-1/3 lg:items-center">
                 <Icon />
-                <h2 className="mb-3 mt-5 text-2xl font-bold dark:text-white max-lg:text-xl lg:text-center">
+                <h2 className="mb-3 mt-5 text-2xl font-bold max-lg:text-xl lg:text-center dark:text-white">
                   {name}
                 </h2>
-                <p className="leading-relaxed dark:text-white lg:text-center lg:text-lg">
+                <p className="leading-relaxed lg:text-center lg:text-lg dark:text-white">
                   {description}
                 </p>
               </div>
@@ -172,7 +172,7 @@ export function IndexPage(): ReactElement {
             ].map(({ name, icon: Icon, link, isInverted }) => (
               <Anchor
                 href={link}
-                className="dark:hover:bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 text-xl/8 font-bold hover:shadow-xl dark:hover:text-white lg:text-2xl/9"
+                className="dark:hover:bg-secondary-400 dark:bg-secondary-500 group flex items-center gap-3 rounded bg-white px-7 py-5 text-xl/8 font-bold hover:shadow-xl lg:text-2xl/9 dark:hover:text-white"
                 key={name}
               >
                 <Icon
