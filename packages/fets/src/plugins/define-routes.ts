@@ -19,7 +19,7 @@ export function useDefineRoutes<
   TComponents extends RouterComponentsBase,
 >(): RouterPlugin<TServerContext, TComponents> {
   return {
-    onRoute({ basePath, route, routeByPathByMethod, routeByPatternByMethod }) {
+    onRoute({ basePath, route, routeByPathByMethod, routeByPatternByMethod, fetchAPI }) {
       let fullPath = '';
       if (basePath === '/') {
         fullPath = route.path;
@@ -29,7 +29,7 @@ export function useDefineRoutes<
         fullPath = `${basePath}${route.path}`;
       }
       if (fullPath.includes(':') || fullPath.includes('*')) {
-        const pattern = new URLPattern({ pathname: fullPath });
+        const pattern = new fetchAPI.URLPattern({ pathname: fullPath });
         function addHandler(method: HTTPMethod) {
           let methodPatternMaps = routeByPatternByMethod.get(method);
           if (!methodPatternMaps) {

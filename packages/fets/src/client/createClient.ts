@@ -1,10 +1,14 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch, FormData } from '@whatwg-node/fetch';
+import { iterateAsyncVoid } from '@whatwg-node/server';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router, SecurityScheme } from '../types.js';
 import { createClientTypedResponsePromise } from './clientResponse.js';
 import {
   ClientMethod,
+  ClientOnFetchHookPayload,
+  ClientOnRequestInitPayload,
+  ClientOnResponseHookPayload,
   ClientOptions,
   ClientOptionsWithStrictEndpoint,
   ClientPlugin,
@@ -38,12 +42,13 @@ export class ClientValidationError extends Error implements AggregateError {
 
 function useValidationErrors(): ClientPlugin {
   return {
-    async onResponse({ path, method, response }) {
+    onResponse({ path, method, response }) {
       if (response.status === 400 && response.headers.get('x-error-type') === 'validation') {
-        const resJson = await response.json();
-        if (resJson.errors) {
-          throw new ClientValidationError(path, method, resJson.errors, response);
-        }
+        return response.json().then(resJson => {
+          if (resJson.errors) {
+            throw new ClientValidationError(path, method, resJson.errors, response);
+          }
+        });
       }
     },
   };
@@ -220,8 +225,9 @@ export function createClient({
             }
 
             let response: Response | undefined;
-            for (const onRequestParamsHook of onRequestInitHooks) {
-              await onRequestParamsHook({
+
+            if (onRequestInitHooks.length) {
+              const onRequestParamsHookPayload: ClientOnRequestInitPayload = {
                 path,
                 method,
                 requestParams,
@@ -229,7 +235,11 @@ export function createClient({
                 endResponse(res) {
                   response = res;
                 },
-              });
+              };
+
+              await iterateAsyncVoid(onRequestInitHooks, onRequestParamsHook =>
+                onRequestParamsHook(onRequestParamsHookPayload),
+              );
             }
 
             if (response == null) {
@@ -248,30 +258,37 @@ export function createClient({
 
               let currentFetchFn = fetchFn;
 
-              for (const onFetchHook of onFetchHooks) {
-                await onFetchHook({
+              if (onFetchHooks.length > 0) {
+                const onFetchHookPayload: ClientOnFetchHookPayload = {
                   url: finalUrl,
                   init: requestInit as RequestInit,
                   fetchFn: currentFetchFn,
                   setFetchFn(newFetchFn) {
                     currentFetchFn = newFetchFn;
                   },
-                });
+                };
+
+                await iterateAsyncVoid(onFetchHooks, onFetchHook =>
+                  onFetchHook(onFetchHookPayload),
+                );
               }
 
               response = await currentFetchFn(finalUrl, requestInit);
             }
 
-            for (const onResponseHook of onResponseHooks) {
-              await onResponseHook({
+            if (onResponseHooks.length > 0) {
+              const onResponsePayload: ClientOnResponseHookPayload = {
                 path,
                 method,
                 requestParams,
                 requestInit,
                 response,
-              });
-            }
+              };
 
+              await iterateAsyncVoid(onResponseHooks, onResponseHook =>
+                onResponseHook(onResponsePayload),
+              );
+            }
             return response;
           }
           return function wrappedClientMethod(requestParams: ClientRequestParams = {}) {

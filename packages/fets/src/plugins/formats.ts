@@ -2,6 +2,7 @@
 // https://github.com/cfworker/cfworker/blob/main/packages/json-schema/src/format.ts
 
 import { FormatRegistry } from '@sinclair/typebox';
+import { URL } from '@whatwg-node/fetch';
 
 const DATE = /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
 const DAYS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];

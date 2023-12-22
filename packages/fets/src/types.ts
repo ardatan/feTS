@@ -5,6 +5,7 @@ import type {
 } from 'json-schema-to-ts';
 import type {
   ErrorHandler,
+  FetchAPI,
   ServerAdapter,
   ServerAdapterOptions,
   ServerAdapterPlugin,
@@ -346,6 +347,7 @@ export type OnRouteHookPayload<TServerContext> = {
     TypedRequest,
     TypedResponse
   >;
+  fetchAPI: FetchAPI;
 };
 
 export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any, any>) => void;
