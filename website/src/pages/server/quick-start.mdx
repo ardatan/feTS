@@ -66,7 +66,7 @@ const router = createRouter()
   })
 
 App()
-  .any('/*', router)
+  .any('*', router)
   .listen(3000, () => {
     console.info(`Server is listening on http://localhost:3000`)
   })

@@ -38,7 +38,7 @@ const router = createRouter().route({
 
 app.route({
   method: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  url: '/*',
+  url: '*',
   async handler(req, reply) {
     const response = await router.handleNodeRequest(req, {
       req,

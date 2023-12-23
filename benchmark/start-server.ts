@@ -70,7 +70,7 @@ createServer(router).listen(4000, () => {
 });
 
 App()
-  .any('/*', router)
+  .any('*', router)
   .listen('0.0.0.0', 4001, socket => {
     if (!socket) {
       console.error('failed to listen');
