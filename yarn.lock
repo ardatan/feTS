@@ -13340,9 +13340,9 @@ typescript@~3.8.3:
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
-  version "20.34.0"
-  uid fca27c05066342b01951782248640c8013b37196
-  resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/fca27c05066342b01951782248640c8013b37196"
+  version "20.36.0"
+  uid "2fc43d487628d7ce1919abe7a74ecf8dbe0977e4"
+  resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/2fc43d487628d7ce1919abe7a74ecf8dbe0977e4"
 
 ufo@^1.3.2:
   version "1.3.2"
