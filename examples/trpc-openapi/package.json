@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^20.5.6",
-    "@types/react": "^18.2.38",
+    "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.8",
     "@types/swagger-ui-react": "^4.11.0",
     "@types/uuid": "^9.0.0",
