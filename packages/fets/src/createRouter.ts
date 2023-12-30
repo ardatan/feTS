@@ -5,6 +5,7 @@ import landingPageRaw from './landing-page.js';
 import { useDefineRoutes } from './plugins/define-routes.js';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';
+import { EMPTY_OBJECT } from './plugins/utils.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
   OnRouteHandleHook,
@@ -22,8 +23,6 @@ import type {
   RouteWithSchemasOpts,
 } from './types.js';
 import { asyncIterationUntilReturn } from './utils.js';
-
-const EMPTY_OBJECT = {};
 
 export function createRouterBase(
   {

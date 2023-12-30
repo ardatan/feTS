@@ -1,6 +1,7 @@
 import { stringify as qsStringify, type IStringifyOptions } from 'qs';
 import { fetch, FormData } from '@whatwg-node/fetch';
 import { iterateAsyncVoid } from '@whatwg-node/server';
+import { EMPTY_OBJECT } from '../plugins/utils.js';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router, SecurityScheme } from '../types.js';
 import { createClientTypedResponsePromise } from './clientResponse.js';
@@ -53,8 +54,6 @@ function useValidationErrors(): ClientPlugin {
     },
   };
 }
-
-const EMPTY_OBJECT = {};
 
 /**
  * Create a client for an OpenAPI document
