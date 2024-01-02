@@ -4589,9 +4589,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.17:
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.20.tgz#a2998ebf1bffa0ddfab1c62c7026091fa082603a"
-  integrity sha512-MB9OwwwNDdolaPBX9TSEq/9WlexEH1n2d5G/fnre/sz0NAzoxYaOgd3cpxNmNGsExMbgxkccSLNcVPV0rrfunA==
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.21.tgz#dc60fe20d565f9cc6fcc38a012011500e8e2bcf9"
+  integrity sha512-Ugagjf+XZUXDvxDRa3EnhLeMzm2g8ZYFleBF55Ac3GZSzPqdMLAdK9kvZB6M1H4nAFvrEHdV2PHqkzIoNs+3wQ==
   dependencies:
     "@types/node" "*"
     "@types/ws" "*"
@@ -6257,10 +6257,10 @@ eslint-plugin-jsx-a11y@^6.7.1:
     object.entries "^1.1.7"
     object.fromentries "^2.0.7"
 
-eslint-plugin-n@16.6.0:
-  version "16.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-16.6.0.tgz#035acc6154cbbe81a0611dffb53e70b883e246fb"
-  integrity sha512-Ag3tYFF90lYU8JdHEl9qSSpeLYbVnO+Oj7sgPUarWUacv1mPL3d5h5yG4Bv3tLe71hrcxmgTi7oByYwKXaVatw==
+eslint-plugin-n@16.6.1:
+  version "16.6.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-16.6.1.tgz#b16e0033bc9ce592b1c3512cb1cee24f84ecb5ae"
+  integrity sha512-M1kE5bVQRLBMDYRZwDhWzlzbp370SRRRC1MHqq4I3L2Tatey+9/2csc5mwLDPlmhJaDvkojbrNUME5/llpRyDg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
     builtins "^5.0.1"
