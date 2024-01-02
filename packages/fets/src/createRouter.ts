@@ -35,10 +35,12 @@ export function createRouterBase(
   }: RouterOptions<any, any> = {},
   openAPIDocument: OpenAPIDocument,
 ): RouterBaseObject<any, any, any> {
-  const fetchAPI = {
-    ...DefaultFetchAPI,
-    ...givenFetchAPI,
-  };
+  const fetchAPI = givenFetchAPI
+    ? {
+        ...DefaultFetchAPI,
+        ...givenFetchAPI,
+      }
+    : DefaultFetchAPI;
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
   const onRouteHandleHooks: OnRouteHandleHook<any, RouterComponentsBase>[] = [];
