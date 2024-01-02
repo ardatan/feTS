@@ -1,5 +1,11 @@
 # fets
 
+## 0.7.1
+
+### Patch Changes
+
+- [`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d) Thanks [@ardatan](https://github.com/ardatan)! - Use the same EMPTY_OBJECT for proxies
+
 ## 0.7.0
 
 ### Minor Changes

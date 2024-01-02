@@ -1,5 +1,12 @@
 # example-auth
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [[`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d)]:
+  - fets@0.7.1
+
 ## 0.0.9
 
 ### Patch Changes
