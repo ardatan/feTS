@@ -15,54 +15,48 @@ npm i fets
 ## Usage
 
 We recommend to use feTS as a main middleware for your API routes. In this case, you should create a
-`[...slug].ts` file under `pages/api` directory. Since your base route is `/api`, you should also
-configure `swaggerUiEndpoint` and `oasEndpoint` options as well.
+`route.ts` file under `app/api/[...slug]` directory. Since your base route is `/api`, you should
+configure `base`. Then you can create a router and export it as `GET` and `POST` methods.
 
-```ts filename=pages/api/[...slug].ts
-import { createRouter, Response } from 'fets'
+```ts filename=app/api/[...slug]/route.ts
+import { createRouter, Response, Type } from 'fets'
 
-export default createRouter({
-  swaggerUI: {
-    endpoint: '/api/docs'
-  },
-  openAPI: {
-    endpoint: '/api/openapi.json'
-  }
+export const router = createRouter({
+  base: '/api'
 }).route({
   method: 'GET',
-  path: '/api/greetings',
+  path: '/greetings',
   schemas: {
     responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
+      200: Type.Object({
+        message: Type.String()
+      })
     }
   },
   handler: () => Response.json({ message: 'Hello World!' })
 })
+
+export { router as GET, router as POST }
 ```
 
 ## Type-safe client usage
 
-Then on the client side, you can use the type-safe client.
+Then on the client side, you can use the type-safe client. You should import the router from the
+server side as a `type`, then you can create a client with the router type with `endpoint` option
+set to `/api`.
 
 ```tsx filename = pages/index.tsx
 import { createClient } from 'fets'
-import type router from './api/[...slug]'
+import type router from './api/[...slug]/router'
 
-const client = createClient<typeof router>({})
+const client = createClient<typeof router>({
+  endpoint: '/api'
+})
 
 export default function Home({ greetingsResponse }: Props) {
   const [message, setMessage] = useState('')
   useEffect(() => {
-    client['/api/greetings']
+    client['/greetings']
       .get()
       .then(res => res.json())
       .then(res => setMessage(res.message))

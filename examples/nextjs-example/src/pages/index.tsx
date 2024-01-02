@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { createClient } from 'fets';
-import type router from './api/[...slug]';
-import { Todo } from './api/[...slug]';
+import type { router, Todo } from '../app/api/[...slug]/route';
 
-const client = createClient<typeof router>({});
+const client = createClient<typeof router>({
+  endpoint: '/api',
+});
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
-    client['/api/todos']
+    client['/todos']
       .get()
       .then(res => res.json())
       .then(todos => {
@@ -49,7 +50,7 @@ export default function Home() {
               <button
                 onClick={async e => {
                   e.preventDefault();
-                  const addRes = await client['/api/add-todo'].post({
+                  const addRes = await client['/add-todo'].post({
                     json: {
                       content: newTodo,
                     },

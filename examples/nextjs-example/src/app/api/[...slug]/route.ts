@@ -1,18 +1,9 @@
-import { createRouter, FromSchema, Response } from 'fets';
+import { createRouter, FromSchema, Response, Type } from 'fets';
 
-const TODO_SCHEMA = {
-  type: 'object',
-  properties: {
-    id: {
-      type: 'string',
-    },
-    content: {
-      type: 'string',
-    },
-  },
-  required: ['id', 'content'],
-  additionalProperties: false,
-} as const;
+const TODO_SCHEMA = Type.Object({
+  id: Type.String(),
+  content: Type.String(),
+});
 
 export type Todo = FromSchema<typeof TODO_SCHEMA>;
 
@@ -31,42 +22,27 @@ const todos: Todo[] = [
   },
 ];
 
-export default createRouter({
-  swaggerUI: {
-    endpoint: '/api/docs',
-  },
-  openAPI: {
-    endpoint: '/api/openapi.json',
-  },
+export const router = createRouter({
+  base: '/api',
 })
   .route({
     method: 'GET',
-    path: '/api/todos',
+    path: '/todos',
     schemas: {
       responses: {
-        200: {
-          type: 'array',
-          items: TODO_SCHEMA,
-        },
+        200: Type.Array(TODO_SCHEMA),
       },
     },
     handler: () => Response.json(todos),
   })
   .route({
     method: 'POST',
-    path: '/api/add-todo',
+    path: '/add-todo',
     schemas: {
       request: {
-        json: {
-          type: 'object',
-          properties: {
-            content: {
-              type: 'string',
-            },
-          },
-          required: ['content'],
-          additionalProperties: false,
-        },
+        json: Type.Object({
+          content: Type.String(),
+        }),
       },
       responses: {
         201: TODO_SCHEMA,
@@ -84,3 +60,5 @@ export default createRouter({
       });
     },
   });
+
+export { router as GET, router as POST };
