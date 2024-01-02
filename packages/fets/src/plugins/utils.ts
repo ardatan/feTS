@@ -1,4 +1,4 @@
-export const EMPTY_OBJECT = Object.freeze({});
+export const EMPTY_OBJECT = {};
 
 export function getHeadersObj(headers: Headers): Record<string, string> {
   return new Proxy(EMPTY_OBJECT, {
