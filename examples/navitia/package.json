@@ -1,6 +1,6 @@
 {
   "name": "example-navitia",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "An example app uses Navitia API",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "20.10.6",
-    "fets": "0.7.0",
+    "fets": "0.7.1",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typescript": "^5.0.0"
