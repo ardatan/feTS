@@ -2573,10 +2573,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.100.0", "@pulumi/pulumi@^3.0.0":
-  version "3.100.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.100.0.tgz#de9db220b3b02beeb2a0b68d7788386bd7a52062"
-  integrity sha512-eRAm+IzDjoIYpgqVkivQUsvkM8+X8g9VCCMEeufqwDaC0OgXjmXmglkYq7KJKq5/FFiJgZ1isV7xluo/wVTySQ==
+"@pulumi/pulumi@3.101.0", "@pulumi/pulumi@^3.0.0":
+  version "3.101.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.101.0.tgz#db89022abccac39198868b569e9a228fd0f99b11"
+  integrity sha512-QDX4ExQwRTkOUS6QUq1ldHeTeqFQhsHAyPFS858AFicyOZuOpuD99hKNtFeBz6SEpv7ep1FOSAT/Kp5+IYOqyQ==
   dependencies:
     "@grpc/grpc-js" "1.9.6"
     "@logdna/tail-file" "^2.0.6"
@@ -2788,9 +2788,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.32.0":
-  version "0.32.5"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.5.tgz#7f5995e2abc02be4e9fa38b58987b77e0bfe5ead"
-  integrity sha512-0M6FyxZwIEu/Ly6W+l7iYqiZQYJ8khLOJGzg+cxivNKRKqk9hctcuDC0UYI7B9vNgycExA8w40m4M3yDKW37RA==
+  version "0.32.6"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.6.tgz#b3a7c5290ce6f713924f29ffad0bfdf0db4c1b6a"
+  integrity sha512-mgcPAfLZEL2B/hrF+vPDdwwZ1MR0UuALvz+tI2zx7IYHfREmua3C82XsYgkwxCCJKpO3ibTje4QrHYrOAHWhxA==
 
 "@sinonjs/commons@^3.0.0":
   version "3.0.0"
@@ -4627,9 +4627,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.17:
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.21.tgz#dc60fe20d565f9cc6fcc38a012011500e8e2bcf9"
-  integrity sha512-Ugagjf+XZUXDvxDRa3EnhLeMzm2g8ZYFleBF55Ac3GZSzPqdMLAdK9kvZB6M1H4nAFvrEHdV2PHqkzIoNs+3wQ==
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.22.tgz#b329f2dd8fa5933c24ac161aa4b41f8e95c0bdd6"
+  integrity sha512-JxmXAx6cXb37+rMsn30WRXlz9lbPFR9rQE78hNSoy5wJ8m/nUktkmHpo7xZb/YKDds23ifxWLjDtyni9MeXLgw==
   dependencies:
     "@types/node" "*"
     "@types/ws" "*"
