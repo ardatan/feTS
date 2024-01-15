@@ -197,14 +197,12 @@ export type FromSchema<T> =
         >
       : never;
 
-export type FromRouterComponentSchema<
-  TRouter extends Router<any, any, any>,
-  TName extends string,
-> = TRouter extends Router<any, infer TComponents, any>
-  ? TComponents extends Required<RouterComponentsBase>
-    ? FromSchema<TComponents['schemas'][TName]>
-    : never
-  : never;
+export type FromRouterComponentSchema<TRouter extends Router<any, any, any>, TName extends string> =
+  TRouter extends Router<any, infer TComponents, any>
+    ? TComponents extends Required<RouterComponentsBase>
+      ? FromSchema<TComponents['schemas'][TName]>
+      : never
+    : never;
 
 export type PromiseOrValue<T> = T | Promise<T>;
 
@@ -375,24 +373,27 @@ export type RouteSchemas = {
 export type RouterSDKOpts<
   TTypedRequest extends TypedRequest = TypedRequest,
   TMethod extends HTTPMethod = HTTPMethod,
-> = TTypedRequest extends TypedRequest<
-  infer TJSONBody,
-  infer TFormData,
-  infer THeaders,
-  TMethod,
-  infer TQueryParams,
-  infer TPathParam
->
-  ? Simplify<
-      (Partial<TJSONBody> extends TJSONBody ? { json?: TJSONBody } : { json: TJSONBody }) &
-        (Partial<THeaders> extends THeaders ? { headers?: THeaders } : { headers: THeaders }) &
-        (Partial<TQueryParams> extends TQueryParams
-          ? { query?: TQueryParams }
-          : { query: TQueryParams }) &
-        (Partial<TPathParam> extends TPathParam ? { params?: TPathParam } : { params: TPathParam })
-    > &
-      (Partial<TFormData> extends TFormData ? { formData?: TFormData } : { formData: TFormData })
-  : never;
+> =
+  TTypedRequest extends TypedRequest<
+    infer TJSONBody,
+    infer TFormData,
+    infer THeaders,
+    TMethod,
+    infer TQueryParams,
+    infer TPathParam
+  >
+    ? Simplify<
+        (Partial<TJSONBody> extends TJSONBody ? { json?: TJSONBody } : { json: TJSONBody }) &
+          (Partial<THeaders> extends THeaders ? { headers?: THeaders } : { headers: THeaders }) &
+          (Partial<TQueryParams> extends TQueryParams
+            ? { query?: TQueryParams }
+            : { query: TQueryParams }) &
+          (Partial<TPathParam> extends TPathParam
+            ? { params?: TPathParam }
+            : { params: TPathParam })
+      > &
+        (Partial<TFormData> extends TFormData ? { formData?: TFormData } : { formData: TFormData })
+    : never;
 
 export type RouterSDK<
   TPath extends string = string,
@@ -532,30 +533,32 @@ export type RouteInput<
   TPath extends string,
   TMethod extends Lowercase<HTTPMethod> = 'post',
   TParamType extends keyof RouterSDKOpts = 'json',
-> = TRouter extends Router<any, any, infer TRouterSDK>
-  ? TRouterSDK[TPath][TMethod] extends (requestParams?: infer TRequestParams) => any
-    ? TRequestParams extends {
-        [TParamTypeKey in TParamType]?: infer TParamTypeValue;
-      }
-      ? TParamTypeValue
+> =
+  TRouter extends Router<any, any, infer TRouterSDK>
+    ? TRouterSDK[TPath][TMethod] extends (requestParams?: infer TRequestParams) => any
+      ? TRequestParams extends {
+          [TParamTypeKey in TParamType]?: infer TParamTypeValue;
+        }
+        ? TParamTypeValue
+        : never
       : never
-    : never
-  : never;
+    : never;
 
 export type RouteOutput<
   TRouter extends Router<any, any, {}>,
   TPath extends string,
   TMethod extends Lowercase<HTTPMethod> = 'post',
   TStatusCode extends StatusCode = 200,
-> = TRouter extends Router<any, any, infer TRouterSDK>
-  ? TRouterSDK extends RouterSDK
-    ? TRouterSDK[TPath][TMethod] extends (...args: any[]) => Promise<infer TTypedResponse>
-      ? TTypedResponse extends TypedResponse<infer TJSONBody, any, TStatusCode>
-        ? TJSONBody
+> =
+  TRouter extends Router<any, any, infer TRouterSDK>
+    ? TRouterSDK extends RouterSDK
+      ? TRouterSDK[TPath][TMethod] extends (...args: any[]) => Promise<infer TTypedResponse>
+        ? TTypedResponse extends TypedResponse<infer TJSONBody, any, TStatusCode>
+          ? TJSONBody
+          : never
         : never
       : never
-    : never
-  : never;
+    : never;
 
 export type RouterClient<TRouter extends Router<any, any, any>> = TRouter['__client'];
 
@@ -603,14 +606,12 @@ export type RouterOutput<TRouter extends Router<any, any, any>> = {
   };
 };
 
-export type RouterComponentSchema<
-  TRouter extends Router<any, any, any>,
-  TName extends string,
-> = TRouter extends Router<any, infer TComponents, any>
-  ? TComponents extends { schemas: Record<string, JSONSchema> }
-    ? FromSchema<TComponents['schemas'][TName]>
-    : never
-  : never;
+export type RouterComponentSchema<TRouter extends Router<any, any, any>, TName extends string> =
+  TRouter extends Router<any, infer TComponents, any>
+    ? TComponents extends { schemas: Record<string, JSONSchema> }
+      ? FromSchema<TComponents['schemas'][TName]>
+      : never
+    : never;
 
 type SplitByDelimiter<T extends string, D extends string> = T extends `${infer P}${D}${infer Q}`
   ? [P, ...SplitByDelimiter<Q, D>]

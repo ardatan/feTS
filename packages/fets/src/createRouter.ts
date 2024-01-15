@@ -1,7 +1,7 @@
 import { parse as qsParse } from 'qs';
 import * as DefaultFetchAPI from '@whatwg-node/fetch';
 import { createServerAdapter, isPromise, useErrorHandling } from '@whatwg-node/server';
-import landingPageRaw from './landing-page.js';
+import landingPageRaw from './landing-page-html.js';
 import { useDefineRoutes } from './plugins/define-routes.js';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';

@@ -20,7 +20,7 @@ async function minifyLandingPage() {
   );
 
   fs.writeFileSync(
-    path.join(__dirname, '../src/landing-page.ts'),
+    path.join(__dirname, '../src/landing-page-html.ts'),
     `export default ${JSON.stringify(minified)}`,
   );
 }

@@ -242,11 +242,8 @@ export type TypedResponse<
     ok: TStatusCode extends OkStatusCode ? true : false;
   };
 
-export type JSONofResponse<TResponse extends TypedResponse> = TResponse extends TypedResponse<
-  infer TJSON
->
-  ? TJSON
-  : never;
+export type JSONofResponse<TResponse extends TypedResponse> =
+  TResponse extends TypedResponse<infer TJSON> ? TJSON : never;
 
 export type TypedResponseCtor<TTypedResponse extends TypedResponse = TypedResponse> = Omit<
   typeof Response,
