@@ -37,7 +37,7 @@ jobs:
           deno-version: vx.x.x
 
       - name: Cache Node Modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: node-modules-cache-deployment-e2e
         with:
           path: '**/node_modules'
