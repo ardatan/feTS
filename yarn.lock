@@ -2543,10 +2543,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.18.1":
-  version "6.18.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.18.1.tgz#edf232bd5f4f173ff06af7aa26f84ce44a8fe074"
-  integrity sha512-72/j9kAFXetO7BaL8XAI0FF2R9OleAJp/X/FcKAcpDMbgB4eSu3wy7/DdJ/PXhIhyIkMgYkYyy4yu/OvXYaHKw==
+"@pulumi/aws@6.18.2":
+  version "6.18.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.18.2.tgz#5554d79765a00e14aef2d13e48d79c19e8ff8b4e"
+  integrity sha512-mkjPn52WXFHg/U7pYk15mmYI2n1my6y4VrRqitKY89O0q4lDhtoRzPZJ4tXunJyNshpeWTx1i52ik8x/X7bFmA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -13256,10 +13256,10 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-ts-jest@29.1.1:
-  version "29.1.1"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.1.1.tgz#f58fe62c63caf7bfcc5cc6472082f79180f0815b"
-  integrity sha512-D6xjnnbP17cC85nliwGiL+tpoKN0StpgE0TeOjXQTU6MVCfsB4v7aW05CgQ/1OywGb0x/oy9hHFnN+sczTiRaA==
+ts-jest@29.1.2:
+  version "29.1.2"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.1.2.tgz#7613d8c81c43c8cb312c6904027257e814c40e09"
+  integrity sha512-br6GJoH/WUX4pu7FbZXuWGKGNDuU7b8Uj77g/Sp7puZV6EXzuByl6JrECvm0MzVzSTkSHWTihsXt+5XYER5b+g==
   dependencies:
     bs-logger "0.x"
     fast-json-stable-stringify "2.x"
