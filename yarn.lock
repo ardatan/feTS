@@ -2584,10 +2584,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.103.0", "@pulumi/pulumi@^3.0.0":
-  version "3.103.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.103.0.tgz#044da14911df5dec3eac38c924b5991f809fd5ab"
-  integrity sha512-yyVj8udKpbJ83O8BN3NRzu2NrDvDx48g0AUQCZmXrNjG9hR0HFJtxGvgEEchjP3TVx/S2QDcaZRF/ysuPNAuyQ==
+"@pulumi/pulumi@3.103.1", "@pulumi/pulumi@^3.0.0":
+  version "3.103.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.103.1.tgz#a71d00aacfc2602d89b6cdf721957c6850a0508f"
+  integrity sha512-bv87x4vcjHs09Yss8WWJkbWxf4sABVXPbLPrHn5SOhng4TaGtFejDaDzgTaevOHCchJJNyXpPqTYzKqc2WmeEQ==
   dependencies:
     "@grpc/grpc-js" "1.9.6"
     "@logdna/tail-file" "^2.0.6"
@@ -2601,6 +2601,7 @@
     "@opentelemetry/semantic-conventions" "^1.6.0"
     "@pulumi/query" "^0.3.0"
     "@types/google-protobuf" "^3.15.5"
+    "@types/semver" "^7.5.6"
     "@types/tmp" "^0.2.6"
     execa "^5.1.0"
     google-protobuf "^3.5.0"
@@ -3796,7 +3797,7 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.8.tgz#ce5ace04cfeabe7ef87c0091e50752e36707deff"
   integrity sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==
 
-"@types/semver@^7.5.0":
+"@types/semver@^7.5.0", "@types/semver@^7.5.6":
   version "7.5.6"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.6.tgz#c65b2bfce1bec346582c07724e3f8c1017a20339"
   integrity sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==
