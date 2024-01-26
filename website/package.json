@@ -21,7 +21,7 @@
     "@svgr/webpack": "^8.0.1",
     "@theguild/algolia": "2.1.0",
     "@theguild/tailwind-config": "0.3.2",
-    "@types/node": "20.11.6",
+    "@types/node": "20.11.7",
     "@types/react": "18.2.48",
     "@typescript/sandbox": "^0.1.0",
     "monaco-editor": "0.45.0",
