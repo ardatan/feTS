@@ -11,7 +11,6 @@ We will use `fets` which has an agnostic HTTP handler using
 Create a `deno-fets.ts` file:
 
 ```ts filename="deno-fets.ts"
-import { serve } from 'https://deno.land/std@0.157.0/http/server.ts'
 import { createRouter, Response } from 'npm:fets'
 
 const router = createRouter().route({
@@ -34,11 +33,7 @@ const router = createRouter().route({
   handler: () => Response.json({ message: 'Hello World!' })
 })
 
-serve(router, {
-  onListen({ hostname, port }) {
-    console.log(`SwaggerUI -> http://${hostname}:${port}/docs`)
-  }
-})
+Deno.serve(router)
 ```
 
 And run it:
