@@ -7,7 +7,7 @@
     "start": "ts-node-dev src/index.ts"
   },
   "dependencies": {
-    "@types/node": "20.11.9",
+    "@types/node": "20.11.10",
     "fets": "0.7.1",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
