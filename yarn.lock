@@ -3660,10 +3660,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.48.0":
-  version "0.48.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.48.0.tgz#7a2a1322e3aef5e6496d67b3735c485976e38ba4"
-  integrity sha512-TobNNdz8XAr2xjg7sT0janwMpi54wKvBMklgVrrEl4X/Caw3WdFhzbF9yjTEr8TZmFad4ZDxechYeIuRowfhlA==
+"@types/k6@0.49.0":
+  version "0.49.0"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.49.0.tgz#11cef0c283062100402c05238dc9890c267cd76c"
+  integrity sha512-WXT3L51mocfKBB7rCWyAUZL0+HRE7sGwbykwBx8g1BZIlbMbuXjUPPVo0vrCxJD87TjsgL4bAbmRFth07Iwwqg==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
@@ -13125,9 +13125,9 @@ swagger-client@^3.25.0:
     undici "^5.24.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.11.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.11.1.tgz#712b78023cb4872414eb6ec1461fdb436c3a2b45"
-  integrity sha512-nyrPxEmmOvprJJ4+JB7kI/qW6mg20MxDFqg0ANb/lbWSmh6y/SCWSCeSyFYxTwcZ7S4bKYWMHf7vtiZcqit31A==
+  version "5.11.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.11.2.tgz#00d6f08b106e345c9236ad39e151948577b98a23"
+  integrity sha512-J7QevDccLZYXV1OkplfWPdgW17MVbFozcwmfWX6Ob+XwukXGjPC5XY9EqhZiwRQd02MfZX9uQLKp4kPrlibAGA==
   dependencies:
     "@babel/runtime-corejs3" "^7.23.8"
     "@braintree/sanitize-url" "=7.0.0"
