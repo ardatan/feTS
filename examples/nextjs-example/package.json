@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/node": "20.11.14",
-    "@types/react": "18.2.50",
+    "@types/node": "20.11.16",
+    "@types/react": "18.2.51",
     "@types/react-dom": "18.2.18",
     "fets": "0.7.1",
     "next": "14.1.0",
