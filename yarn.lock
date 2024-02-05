@@ -2551,10 +2551,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.27.0":
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.27.0.tgz#6a0353cb0f8878b596e47ef455d8933ea35495de"
-  integrity sha512-MCcTv7bHweZdOB6FetsR91p1zE06CoQrkDvIBS9ExQHM27XLiiIn2mv2y3Wfo7sWUN9PxTcMFyYJt1wXuJ50OA==
+"@pulumi/azure-native@2.28.0":
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.28.0.tgz#9051cf3f92e9298f2680fa891dc03d2c31771e3e"
+  integrity sha512-w4lriRSwXRsiZHSNTWOXxtPRZASBl5CVY6H9qfplvFH+WrmKG1I/YR07/XEXcupZm/9a6IFKeo1CqjgKAgcHvg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -8955,10 +8955,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@15.2.1:
-  version "15.2.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-15.2.1.tgz#25beb6e587f54245b20163f5efede073f12c4d1b"
-  integrity sha512-dhwAPnM85VdshybV9FWI/9ghTvMLoQLEXgVMx+ua2DN7mdfzd/tRfoU2yhMcBac0RHkofoxdnnJUokr8s4zKmQ==
+lint-staged@15.2.2:
+  version "15.2.2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-15.2.2.tgz#ad7cbb5b3ab70e043fa05bff82a09ed286bc4c5f"
+  integrity sha512-TiTt93OPh1OZOsb5B7k96A/ATl2AjIZo+vnzFZ6oHK5FuTk63ByDtxGQpHm+kFETjEWqgkF95M8FRXKR/LEBcw==
   dependencies:
     chalk "5.3.0"
     commander "11.1.0"
