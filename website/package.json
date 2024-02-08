@@ -24,7 +24,7 @@
     "@types/node": "20.11.16",
     "@types/react": "18.2.55",
     "@typescript/sandbox": "^0.1.0",
-    "monaco-editor": "0.45.0",
+    "monaco-editor": "0.46.0",
     "tailwindcss": "3.4.1",
     "typescript": "5.3.3"
   }
