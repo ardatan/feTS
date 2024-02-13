@@ -2537,10 +2537,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.21.0":
-  version "6.21.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.21.0.tgz#20bcdd7711cd1080fb051f6d13d7dd828b403eaf"
-  integrity sha512-miVcesYxR2swElfm+QuM0P0ARTneydDjapewxEuIw55n5K0N2yrWZCem9iDIOGYE2wZKYF7zQ0TrB06EUlgz6Q==
+"@pulumi/aws@6.22.0":
+  version "6.22.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.22.0.tgz#719dcaeb6fb0fd041d939dddb89fdb6e8282cc29"
+  integrity sha512-SLSKJvGr91fqB8xLVb+dKPtMlkrVUBXj5+yeHnHBl2ICTgb/gmfpk4gx/PCJYE+sY1ffEeR9tzvU0QTD0+7kEg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -5989,10 +5989,10 @@ dot-case@^3.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
-dotenv@16.4.2:
-  version "16.4.2"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.2.tgz#7ca798f89ae2011846bbdbf6470785307754120d"
-  integrity sha512-rZSSFxke7d9nYQ5NeMIwp5PP+f8wXgKNljpOb7KtH6SKW1cEqcXAz9VSJYVLKe7Jhup/gUYOkaeSVyK8GJ+nBg==
+dotenv@16.4.3:
+  version "16.4.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.3.tgz#481235ec516c4e47d2612a478482ee36607f70c1"
+  integrity sha512-II98GFrje5psQTSve0E7bnwMFybNLqT8Vu8JIFWRjsE3khyNUm/loZupuy5DVzG2IXf/ysxvrixYOQnM6mjD3A==
 
 dotenv@^8.1.0:
   version "8.6.0"
