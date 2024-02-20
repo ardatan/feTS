@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "20.11.19",
-    "dotenv": "16.4.4",
+    "dotenv": "16.4.5",
     "fets": "0.7.1",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
