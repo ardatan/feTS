@@ -3776,10 +3776,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.57", "@types/react@^18.2.38":
-  version "18.2.57"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.57.tgz#147b516d8bdb2900219acbfc6f939bdeecca7691"
-  integrity sha512-ZvQsktJgSYrQiMirAN60y4O/LRevIV8hUzSOSNB6gfR3/o3wCBFQx3sPwIYtuDMeiVgsSS3UzCV26tEzgnfvQw==
+"@types/react@*", "@types/react@18.2.58", "@types/react@^18.2.38":
+  version "18.2.58"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.58.tgz#22082d12898d11806f4a1aefb5583116a047493d"
+  integrity sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4761,9 +4761,9 @@ builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.17:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.28.tgz#c4fa0a542d7629b8b651feaf72e282e061f99b23"
-  integrity sha512-wQqbLYRM0YnsXZMFujbCr/9YxlEl51jshMXcJ2Y9wEuU7k6TKcX2KDh032k9oHfB1wH8/SleXboIsULMtFaAaA==
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.0.29.tgz#b761f9c181aa0efa1c749ddfba2a28e4778dfaf2"
+  integrity sha512-Z+U1ORr/2UCwxelIZxE83pyPLclviYL9UewQCNEUmGeLObY8ao+3WF3D8N1+NMv2+S+hUWsdBJam+4GoPEz35g==
   dependencies:
     "@types/node" "~20.11.3"
     "@types/ws" "~8.5.10"
