@@ -2690,10 +2690,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.24.0":
-  version "6.24.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.24.0.tgz#efad839b810eebbacb47c4cc8de2dd0c64b92f5a"
-  integrity sha512-Dl3r1x+cSe8khZb9pt0TkW8/D5PN7EV/10de8Ld1Tv0Uzijdn7qS0S6x6WKwyzJLEhJ9Nu011GOGapUZiNIS1g==
+"@pulumi/aws@6.24.1":
+  version "6.24.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.24.1.tgz#d236e8a4afe275eeb36ffdd165947f1a4d85bf6b"
+  integrity sha512-GithOlzkTt1pdIDswb1e/CgC42xxta35wnip81D3U8E4SEbqeA5U17QXvqkizzHTo3aAvChYo0TIs6BtuwKS9A==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2731,10 +2731,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.108.0", "@pulumi/pulumi@^3.0.0":
-  version "3.108.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.108.0.tgz#f7e7db554c5dad332bf3918e967fbec657e10484"
-  integrity sha512-NkGvmUE/mVNPIRkwNbKvDf8HH5fnNSnMt+c9iTsnLGLzpsIE5N9iYl7arnRLQdDGvraboUF+7aO/dSRnnCEI7w==
+"@pulumi/pulumi@3.108.1", "@pulumi/pulumi@^3.0.0":
+  version "3.108.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.108.1.tgz#1880d0c93d8be05234e8cc31052a95a2e6d46152"
+  integrity sha512-CJeYoleoRZ+uDN38xJ9GaRSzU3BIpgJrRdBRBXUEjKF3OYJedfFEp8PvmPvbFc7/IYo91Gc2P5wcDWRvRSdZJw==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -2748,7 +2748,6 @@
     "@opentelemetry/sdk-trace-node" "^1.6.0"
     "@opentelemetry/semantic-conventions" "^1.6.0"
     "@pulumi/query" "^0.3.0"
-    "@types/glob" "^8.1.0"
     "@types/google-protobuf" "^3.15.5"
     "@types/semver" "^7.5.6"
     "@types/tmp" "^0.2.6"
@@ -3792,14 +3791,6 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/glob@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-8.1.0.tgz#b63e70155391b0584dce44e7ea25190bbc38f2fc"
-  integrity sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==
-  dependencies:
-    "@types/minimatch" "^5.1.2"
-    "@types/node" "*"
-
 "@types/google-protobuf@^3.15.5":
   version "3.15.12"
   resolved "https://registry.yarnpkg.com/@types/google-protobuf/-/google-protobuf-3.15.12.tgz#eb2ba0eddd65712211a2b455dc6071d665ccf49b"
@@ -3925,11 +3916,6 @@
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.5.tgz#1ef302e01cf7d2b5a0fa526790c9123bf1d06690"
   integrity sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==
-
-"@types/minimatch@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-5.1.2.tgz#07508b45797cb81ec3f273011b054cd0755eddca"
-  integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
 "@types/minimist@^1.2.0":
   version "1.2.5"
@@ -4284,18 +4270,18 @@
   resolved "https://registry.yarnpkg.com/@whatwg-node/events/-/events-0.1.1.tgz#0ca718508249419587e130da26d40e29d99b5356"
   integrity sha512-AyQEn5hIPV7Ze+xFoXVU3QTHXVbWPrzaOkxtENMPMuNL6VVHrp4hHfDt9nrQpjO7BgvuM95dMtkycX5M/DZR3w==
 
-"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.10", "@whatwg-node/fetch@^0.9.4":
-  version "0.9.16"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.16.tgz#c833eb714f41f5d2caf1a345bed7a05f56db7b16"
-  integrity sha512-mqasZiUNquRe3ea9+aCAuo81BR6vq5opUKprPilIHTnrg8a21Z1T1OrI+KiMFX8OmwO5HUJe/vro47lpj2JPWQ==
+"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.17", "@whatwg-node/fetch@^0.9.4":
+  version "0.9.17"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.17.tgz#10e4ea2392926c8d41ff57e3156857e885317d3f"
+  integrity sha512-TDYP3CpCrxwxpiNY0UMNf096H5Ihf67BK1iKGegQl5u9SlpEDYrvnV71gWBGJm+Xm31qOy8ATgma9rm8Pe7/5Q==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.5.5"
+    "@whatwg-node/node-fetch" "^0.5.7"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.5.5":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.6.tgz#3ec2044ff66dd78134492b5f2f841bedf1cc73c9"
-  integrity sha512-cmAsGMHoI0S3AHi3CmD3ma1Q234ZI2JNmXyDyM9rLtbXejBKxU3ZWdhS+mzRIAyUxZCMGlFW1tHmROv0MDdxpw==
+"@whatwg-node/node-fetch@^0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.7.tgz#88d231c4e377354580f317cd5bb719fa1868850d"
+  integrity sha512-YZA+N3JcW1eh2QRi7o/ij+M07M0dqID73ltgsOEMRyEc2UYVDbyomaih+CWCEZqBIDHw4KMDveXvv4SBZ4TLIw==
   dependencies:
     "@kamilkisiela/fast-url-parser" "^1.1.4"
     "@whatwg-node/events" "^0.1.0"
@@ -4304,11 +4290,11 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.25"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.25.tgz#23c136ddcb7e5517120bb953ce4d3bac5b96be56"
-  integrity sha512-DlPqPPcfyzh4/9Lz1fl4c5bZsGp/1wCh7B+cK8FE1bWoW7tlZkVguvGn/XnYPKthGzEIwo/fLdHwevH44z+eeg==
+  version "0.9.26"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.26.tgz#d8e00864753af06a02721db38799a1529810de37"
+  integrity sha512-QqNktlXBqhpZtHf1rq8h2St/flbSegrGTAhhlYo8aOQagM7MrKy+GhAS9h2FAM7JVnxAIIV4NHSJHPcYf7TqzQ==
   dependencies:
-    "@whatwg-node/fetch" "^0.9.10"
+    "@whatwg-node/fetch" "^0.9.17"
     tslib "^2.3.1"
 
 "@yarnpkg/lockfile@^1.1.0":
