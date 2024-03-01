@@ -23,7 +23,7 @@
     "@types/react": "18.2.61",
     "esbuild": "0.20.1",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "14.1.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.3.3"
