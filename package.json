@@ -63,7 +63,7 @@
     "typescript": "5.3.3"
   },
   "resolutions": {
-    "@pulumi/pulumi": "3.108.0",
+    "@pulumi/pulumi": "3.108.1",
     "next": "14.1.1"
   },
   "lint-staged": {
