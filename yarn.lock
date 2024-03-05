@@ -2690,10 +2690,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.24.1":
-  version "6.24.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.24.1.tgz#d236e8a4afe275eeb36ffdd165947f1a4d85bf6b"
-  integrity sha512-GithOlzkTt1pdIDswb1e/CgC42xxta35wnip81D3U8E4SEbqeA5U17QXvqkizzHTo3aAvChYo0TIs6BtuwKS9A==
+"@pulumi/aws@6.24.2":
+  version "6.24.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.24.2.tgz#dccef8f4d2e09f7b77116386734d667f9b63017e"
+  integrity sha512-srAHI3FennlQ2oRdH84mjVxm1uOgZ2YWJWhHBv3I1eUTHgFR1FgRFQYhn96cyx9JryPFFLJTDAw/0PqXohynTA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -3980,17 +3980,17 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@18.2.19", "@types/react-dom@^18.2.8":
-  version "18.2.19"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.19.tgz#b84b7c30c635a6c26c6a6dfbb599b2da9788be58"
-  integrity sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==
+"@types/react-dom@18.2.20", "@types/react-dom@^18.2.8":
+  version "18.2.20"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.20.tgz#cbdf7abb3cc2377980bb1294bc51375016a8320f"
+  integrity sha512-HXN/biJY8nv20Cn9ZbCFq3liERd4CozVZmKbaiZ9KiKTrWqsP7eoGDO6OOGvJQwoVFuiXaiJ7nBBjiFFbRmQMQ==
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.62", "@types/react@^18.2.38":
-  version "18.2.62"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.62.tgz#2527a7a54749b1a99c87a4aa8b83e26846face38"
-  integrity sha512-l3f57BbaEKP0xcFzf+5qRG8/PXykZiuVM6eEoPtqBPCp6dxO3HhDkLIgIyXPhPKNAeXn3KO2pEaNgzaEo/asaw==
+"@types/react@*", "@types/react@18.2.63", "@types/react@^18.2.38":
+  version "18.2.63"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.63.tgz#4637c56146ad90f96d0583171edab953f7e6fe57"
+  integrity sha512-ppaqODhs15PYL2nGUOaOu2RSCCB4Difu4UFrP4I3NHLloXC/ESQzQMi9nvjfT1+rudd0d2L3fQPJxRSey+rGlQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
