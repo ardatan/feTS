@@ -10991,7 +10991,7 @@ next-videos@1.5.0:
   dependencies:
     file-loader "^4.2.0"
 
-next@14.1.1, next@^14.0.4:
+next@14.1.1, next@14.1.2, next@^14.1.2:
   version "14.1.1"
   resolved "https://registry.yarnpkg.com/next/-/next-14.1.1.tgz#92bd603996c050422a738e90362dff758459a171"
   integrity sha512-McrGJqlGSHeaz2yTRPkEucxQKe5Zq7uPwyeHNmJaZNY4wx9E9QdxmTp310agFRoMuIYgQrCrT3petg13fSVOww==
