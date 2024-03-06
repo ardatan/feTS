@@ -3876,10 +3876,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.49.0":
-  version "0.49.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.49.0.tgz#11cef0c283062100402c05238dc9890c267cd76c"
-  integrity sha512-WXT3L51mocfKBB7rCWyAUZL0+HRE7sGwbykwBx8g1BZIlbMbuXjUPPVo0vrCxJD87TjsgL4bAbmRFth07Iwwqg==
+"@types/k6@0.49.1":
+  version "0.49.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.49.1.tgz#6efaa2640f2683681e4a9d823bea5f29f725746e"
+  integrity sha512-jgj34Zbxof5ICSVVr/ds2xztBOG+izrokqX9QLMlkbLCQvhEGz3d/fQm+aqRYHX7am3tYVnS+27GFygNGlNQBA==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
