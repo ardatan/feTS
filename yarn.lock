@@ -3876,10 +3876,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.49.0":
-  version "0.49.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.49.0.tgz#11cef0c283062100402c05238dc9890c267cd76c"
-  integrity sha512-WXT3L51mocfKBB7rCWyAUZL0+HRE7sGwbykwBx8g1BZIlbMbuXjUPPVo0vrCxJD87TjsgL4bAbmRFth07Iwwqg==
+"@types/k6@0.49.1":
+  version "0.49.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.49.1.tgz#6efaa2640f2683681e4a9d823bea5f29f725746e"
+  integrity sha512-jgj34Zbxof5ICSVVr/ds2xztBOG+izrokqX9QLMlkbLCQvhEGz3d/fQm+aqRYHX7am3tYVnS+27GFygNGlNQBA==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
@@ -3941,10 +3941,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.11.24", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6", "@types/node@~20.11.3":
-  version "20.11.24"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.24.tgz#cc207511104694e84e9fb17f9a0c4c42d4517792"
-  integrity sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==
+"@types/node@*", "@types/node@20.11.25", "@types/node@>=12.12.47", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6", "@types/node@~20.11.3":
+  version "20.11.25"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.25.tgz#0f50d62f274e54dd7a49f7704cc16bfbcccaf49f"
+  integrity sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3980,17 +3980,17 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@18.2.20", "@types/react-dom@^18.2.8":
-  version "18.2.20"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.20.tgz#cbdf7abb3cc2377980bb1294bc51375016a8320f"
-  integrity sha512-HXN/biJY8nv20Cn9ZbCFq3liERd4CozVZmKbaiZ9KiKTrWqsP7eoGDO6OOGvJQwoVFuiXaiJ7nBBjiFFbRmQMQ==
+"@types/react-dom@18.2.21", "@types/react-dom@^18.2.8":
+  version "18.2.21"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.21.tgz#b8c81715cebdebb2994378616a8d54ace54f043a"
+  integrity sha512-gnvBA/21SA4xxqNXEwNiVcP0xSGHh/gi1VhWv9Bl46a0ItbTT5nFY+G9VSQpaG/8N/qdJpJ+vftQ4zflTtnjLw==
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.63", "@types/react@^18.2.38":
-  version "18.2.63"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.63.tgz#4637c56146ad90f96d0583171edab953f7e6fe57"
-  integrity sha512-ppaqODhs15PYL2nGUOaOu2RSCCB4Difu4UFrP4I3NHLloXC/ESQzQMi9nvjfT1+rudd0d2L3fQPJxRSey+rGlQ==
+"@types/react@*", "@types/react@18.2.64", "@types/react@^18.2.38":
+  version "18.2.64"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.64.tgz#3700fbb6b2fa60a6868ec1323ae4cbd446a2197d"
+  integrity sha512-MlmPvHgjj2p3vZaxbQgFUQFvD8QiZwACfGqEdDSWou5yISWxDQ4/74nCAwsUiX7UFLKZz3BbVSPj+YxeoGGCfg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -12306,11 +12306,11 @@ qs@6.11.0:
     side-channel "^1.0.4"
 
 qs@^6.10.2, qs@^6.11.2, qs@^6.5.2:
-  version "6.11.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.2.tgz#64bea51f12c1f5da1bc01496f48ffcff7c69d7d9"
-  integrity sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.12.0.tgz#edd40c3b823995946a8a0b1f208669c7a200db77"
+  integrity sha512-trVZiI6RMOkO476zLGaBIzszOdFPnCCXHPG9kn0yuS1uz6xdVxPfZdB3vUig9pxPFDM9BRAgz/YUIVQ1/vuiUg==
   dependencies:
-    side-channel "^1.0.4"
+    side-channel "^1.0.6"
 
 querystring@0.2.0:
   version "0.2.0"
@@ -13297,7 +13297,7 @@ short-unique-id@^5.0.2:
   resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-5.0.3.tgz#bc6975dc5e8b296960ff5ac91ddabbc7ddb693d9"
   integrity sha512-yhniEILouC0s4lpH0h7rJsfylZdca10W9mDJRAFh3EpcSUanCHGb0R7kcFOIUCZYSAPo0PUD5ZxWQdW0T4xaug==
 
-side-channel@^1.0.4:
+side-channel@^1.0.4, side-channel@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.6.tgz#abd25fb7cd24baf45466406b1096b7831c9215f2"
   integrity sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==
@@ -13894,9 +13894,9 @@ swagger-client@^3.25.4:
     traverse "~0.6.6"
 
 swagger-ui-react@^5.0.0:
-  version "5.11.9"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.11.9.tgz#9535f70c64f8a47b6b89fac55a9f23532b4f7b5b"
-  integrity sha512-MbDlLbVUiDMAq0I/OrsyDzlbHD8ZCUMCcuzE0BVZzKiu/GTBYdHXb73zypPEa51aoRdCtbOT/vmyguvAQ95MMw==
+  version "5.11.10"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.11.10.tgz#098913b5d4733d38e0d8c4ab43a273ff9b1d6885"
+  integrity sha512-X5HwC5h/HN5txkjOmSfL2nuhQH3fkePSdH8rrvqKFKwzZpvUYw0CmwBpBkJyQm24FuI7U9q/k3/ru6dVG32cQw==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.0"
     "@braintree/sanitize-url" "=7.0.0"
