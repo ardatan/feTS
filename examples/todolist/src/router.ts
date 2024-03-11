@@ -1,4 +1,5 @@
 import { createRouter, FromSchema, Response } from 'fets';
+import * as crypto from 'node:crypto';
 
 const TodoSchema = {
   type: 'object',
