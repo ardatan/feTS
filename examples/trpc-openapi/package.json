@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@trpc/server": "^10.44.0",
+    "@trpc/server": "^10.45.2",
     "fets": "^0.7.0",
     "jsonwebtoken": "^9.0.0",
     "next": "^14.0.4",
