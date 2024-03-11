@@ -3629,9 +3629,9 @@
     tailwindcss "^3.3.6"
 
 "@trpc/server@^10.44.0":
-  version "10.45.1"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.45.1.tgz#481b9d6747bbb585ef91b980198dd4ff3226baf4"
-  integrity sha512-KOzBEVaHW9IxEedUP9E50y0tYxAuvlzyjn80Bpemw4rcNbT4WtJnhkFPUY+qDJl7Crt3B/oY2qMgSxVWi9toLg==
+  version "10.45.2"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.45.2.tgz#5f2778c4810f93b5dc407146334f8da70a0b51fb"
+  integrity sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -4301,9 +4301,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.26"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.26.tgz#d8e00864753af06a02721db38799a1529810de37"
-  integrity sha512-QqNktlXBqhpZtHf1rq8h2St/flbSegrGTAhhlYo8aOQagM7MrKy+GhAS9h2FAM7JVnxAIIV4NHSJHPcYf7TqzQ==
+  version "0.9.28"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.28.tgz#6ee717ae148f73f5b77438de4ce13db426ff4fe4"
+  integrity sha512-6VvmIpZUpHmsrt44TXUp0zWyZAKbskJ7L9LZL1onZhq4jmMTdjLwNWc/WeeN5rYuICpIgwHcSAM0fSukqb33tg==
   dependencies:
     "@whatwg-node/fetch" "^0.9.17"
     tslib "^2.3.1"
