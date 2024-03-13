@@ -7,7 +7,7 @@
     "eslint:recommended",
     "standard",
     "plugin:@typescript-eslint/recommended",
-    "plugin:tailwindcss/recommended",
+    // "plugin:tailwindcss/recommended",
     "prettier"
   ],
   "plugins": ["@typescript-eslint"],
