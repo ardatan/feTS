@@ -1,5 +1,11 @@
 # fets
 
+## 0.7.2
+
+### Patch Changes
+
+- [#1238](https://github.com/ardatan/feTS/pull/1238) [`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a) Thanks [@renovate](https://github.com/apps/renovate)! - Support the latest TS version
+
 ## 0.7.1
 
 ### Patch Changes
