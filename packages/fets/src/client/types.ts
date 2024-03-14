@@ -111,9 +111,7 @@ export type OASResponse<
               ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
             >
         : TStatus extends `${StatusCode}`
-          ? ToNumber<TStatus> extends StatusCode
-            ? ToNumber<TStatus>
-            : 200
+          ? ToNumber<TStatus>
           : 200
   >;
 }[keyof OASStatusMap<TOAS, TPath, TMethod>];
