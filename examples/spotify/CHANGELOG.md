@@ -1,5 +1,12 @@
 # example-spotify
 
+## 0.0.35
+
+### Patch Changes
+
+- Updated dependencies [[`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a)]:
+  - fets@0.7.2
+
 ## 0.0.34
 
 ### Patch Changes
