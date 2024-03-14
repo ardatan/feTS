@@ -88,13 +88,7 @@ export type OASJSONResponseSchema<
     >]['schema']
   : OASStatusMap<TOAS, TPath, TMethod>[TStatus]['schema'];
 
-type ToNumber<T extends string | number, R extends any[] = []> = T extends number
-  ? T
-  : T extends `${number}`
-    ? T extends `${R['length']}`
-      ? R['length']
-      : ToNumber<T, [1, ...R]>
-    : never;
+type ToNumber<T> = T extends `${infer N extends number}` ? N : never;
 
 export type OASResponse<
   TOAS extends OpenAPIDocument,
@@ -116,7 +110,7 @@ export type OASResponse<
               OkStatusCode,
               ToNumber<Exclude<keyof OASStatusMap<TOAS, TPath, TMethod>, symbol>>
             >
-        : TStatus extends `${number}${number}${number}`
+        : TStatus extends `${StatusCode}`
           ? ToNumber<TStatus> extends StatusCode
             ? ToNumber<TStatus>
             : 200
