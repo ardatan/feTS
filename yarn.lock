@@ -3001,9 +3001,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.32.0":
-  version "0.32.17"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.17.tgz#4b9795a5c42c84a03d27f0f466be87149a8e326e"
-  integrity sha512-jgY31gR1xtOB9XpGo+xqrq6K3ssdEyCPKSrB6uRUPNuZ26L5S4u8Qi+bhiNa6PbJklozEoFZvbev7SoQ9ffuAA==
+  version "0.32.18"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.18.tgz#6d342310d85a993edec9a32fce9eb3d03d2bb008"
+  integrity sha512-ioMK5TA5YOloYf/GcnF+1fT4eTvowJes2j7Pm0Ivlm9xq61keqQw/XtbQQnPG8O4uq2y2DDenU8OqNc93xn11Q==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4296,9 +4296,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.29"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.29.tgz#69d4c6b4f31ab4044d2a8f19f9f6afc1669a6a80"
-  integrity sha512-YB0i658fBj/GmgdAEo/AzwMvWHFnGC+oxdBFuPnLgq6REiDLvWs/qIkppUDg8rABZXHsIxNt3HPrPcuqqpagBw==
+  version "0.9.30"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.30.tgz#0bf82c259e0f39fed303bcc03ebeed9c44cc079b"
+  integrity sha512-SeL1vL0/uF2xBkpy/dW4sA3aS4IBQMPk097QQ15vW21EhO0ow3RqQu2FCRLCnU1Xgiu8SCpvt3iQUBx74o4ZjQ==
   dependencies:
     "@whatwg-node/fetch" "^0.9.17"
     tslib "^2.3.1"
