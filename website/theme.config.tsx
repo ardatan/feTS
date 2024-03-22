@@ -1,9 +1,11 @@
 /* eslint sort-keys: error */
 import { useRouter } from 'next/router';
-import { defineConfig, Giscus, useTheme } from '@theguild/components';
+import { defineConfig, Giscus, PRODUCTS, useTheme } from '@theguild/components';
 
 export default defineConfig({
+  description: PRODUCTS.FETS.title,
   docsRepositoryBase: 'https://github.com/ardatan/fets/tree/master/website',
+  logo: PRODUCTS.FETS.logo,
   main({ children }) {
     const { resolvedTheme } = useTheme();
     const { route } = useRouter();
@@ -27,5 +29,5 @@ export default defineConfig({
       </>
     );
   },
-  siteName: 'FETS',
+  websiteName: 'FETS',
 });
