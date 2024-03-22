@@ -213,7 +213,10 @@ export function createClient({
               for (const key in formDataBody) {
                 const value = formDataBody[key];
                 if (value != null) {
-                  requestInit.body.append(key, value instanceof Blob ? value : String(value));
+                  requestInit.body.append(
+                    key,
+                    typeof (value as any)['stream'] === 'function' ? value : String(value),
+                  );
                 }
               }
             }
