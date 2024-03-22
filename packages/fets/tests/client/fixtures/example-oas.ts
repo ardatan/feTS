@@ -211,6 +211,7 @@ export default {
                 properties: {
                   file: { type: 'string', format: 'binary' },
                   description: { type: 'string', maxLength: 255 },
+                  licensed: { type: 'boolean' },
                 },
                 required: ['file'],
                 additionalProperties: false,
