@@ -80,6 +80,7 @@ const uploadRes = await client['/upload'].post({
   formData: {
     file: new File(['Hello world'], 'hello.txt'),
     description: 'Greetings',
+    licensed: true,
   },
 });
 

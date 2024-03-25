@@ -4,6 +4,7 @@ import { iterateAsyncVoid } from '@whatwg-node/server';
 import { EMPTY_OBJECT } from '../plugins/utils.js';
 import { HTTPMethod } from '../typed-fetch.js';
 import { OpenAPIDocument, Router, SecurityScheme } from '../types.js';
+import { isBlob } from '../utils.js';
 import { createClientTypedResponsePromise } from './clientResponse.js';
 import {
   ClientMethod,
@@ -213,7 +214,7 @@ export function createClient({
               for (const key in formDataBody) {
                 const value = formDataBody[key];
                 if (value != null) {
-                  requestInit.body.append(key, value);
+                  requestInit.body.append(key, isBlob(value) ? value : value.toString());
                 }
               }
             }
