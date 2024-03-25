@@ -28,3 +28,7 @@ export function asyncIterationUntilReturn<TInput, TOutput>(
   }
   return iterate();
 }
+
+export function isBlob(value: any): value is Blob {
+  return value.arrayBuffer !== undefined;
+}
