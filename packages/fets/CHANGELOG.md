@@ -1,5 +1,11 @@
 # fets
 
+## 0.8.0
+
+### Minor Changes
+
+- [#1313](https://github.com/ardatan/feTS/pull/1313) [`4f9c219`](https://github.com/ardatan/feTS/commit/4f9c219e7dc459ce9863a3c923adf084354e6318) Thanks [@colonel-sanders](https://github.com/colonel-sanders)! - Support for multipart fields other than string or file
+
 ## 0.7.2
 
 ### Patch Changes
