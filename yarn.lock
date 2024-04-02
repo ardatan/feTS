@@ -2678,10 +2678,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.34.0":
-  version "2.34.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.34.0.tgz#dc602b16bfd257b76c7d895d8a2d1a6e4e0c65c1"
-  integrity sha512-F4y9AIG2cGmZP7FydTCUvMSnvLRUSsGZOE9gK68hAltxSKpxrFBlCdn9CzytZ1kseVZEhGE8cdF9ksPGwb9wlw==
+"@pulumi/azure-native@2.35.0":
+  version "2.35.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.35.0.tgz#8551883055703a3f8089b0d8181572d2f25b4bcb"
+  integrity sha512-cpIvVY1/OTnOfbK/AOuTYu5RHatHJDcVYoI0RvXhybErbx+sxACdwVoqkDaI3xjr5C5PoaDTsotWEO40dx9LGA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3919,10 +3919,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.12.2", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6":
-  version "20.12.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.2.tgz#9facdd11102f38b21b4ebedd9d7999663343d72e"
-  integrity sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==
+"@types/node@*", "@types/node@20.12.3", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6":
+  version "20.12.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.3.tgz#d6658c2c7776c1cad93534bb45428195ed840c65"
+  integrity sha512-sD+ia2ubTeWrOu+YMF+MTAB7E+O7qsMqAbMfW7DG3K1URwhZ5hN1pLlRVGbf4wDFzSfikL05M17EyorS86jShw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -15057,10 +15057,10 @@ workerd@1.20240329.0:
     "@cloudflare/workerd-linux-arm64" "1.20240329.0"
     "@cloudflare/workerd-windows-64" "1.20240329.0"
 
-wrangler@3.43.0:
-  version "3.43.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.43.0.tgz#f235d818ecfb45864b2c8458995504726b8298b6"
-  integrity sha512-v+uJmSVmxdv3aVRQsJLPHXgI5nhOBvJaZ5yUcSO8rJ+m5X2l9HzFQzFlUi1GtYIOejFSr8kcCuLm3YY6JbQruQ==
+wrangler@3.44.0:
+  version "3.44.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.44.0.tgz#d35dceb5f67bbf5c9456614680c02045d1ac5906"
+  integrity sha512-7tMJslGQX3f2zD18k7oPY1YcE+mYe93DSX9XXuusf/lxOPgaaSaS01qXL3zYlOIn+3wG1LkxPH/0CqUk4jZarQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.1"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
