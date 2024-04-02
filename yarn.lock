@@ -3972,10 +3972,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.73", "@types/react@^18.2.38":
-  version "18.2.73"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.73.tgz#0579548ad122660d99e00499d22e33b81e73ed94"
-  integrity sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==
+"@types/react@*", "@types/react@18.2.74", "@types/react@^18.2.38":
+  version "18.2.74"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.74.tgz#2d52eb80e4e7c4ea8812c89181d6d590b53f958c"
+  integrity sha512-9AEqNZZyBx8OdZpxzQlaFEVCSFUM2YXJH46yPOiOpm078k6ZLOCcuAzGum/zK8YBwY+dbahVNbHrbgrAwIRlqw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -15057,10 +15057,10 @@ workerd@1.20240329.0:
     "@cloudflare/workerd-linux-arm64" "1.20240329.0"
     "@cloudflare/workerd-windows-64" "1.20240329.0"
 
-wrangler@3.42.0:
-  version "3.42.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.42.0.tgz#73711b7fa6264e0079ab4d5ca45cfc658c773483"
-  integrity sha512-t/Fq80aG5RrCyN118aV9oG1Tt66QEatz0tarKzpy0cuUMUf3T3yJAuYb6kmYIy6+beQJNoGWSAjjhAQnOn2MCQ==
+wrangler@3.43.0:
+  version "3.43.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.43.0.tgz#f235d818ecfb45864b2c8458995504726b8298b6"
+  integrity sha512-v+uJmSVmxdv3aVRQsJLPHXgI5nhOBvJaZ5yUcSO8rJ+m5X2l9HzFQzFlUi1GtYIOejFSr8kcCuLm3YY6JbQruQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.1"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
