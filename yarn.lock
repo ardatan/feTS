@@ -3928,10 +3928,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.12.4", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6":
-  version "20.12.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.4.tgz#af5921bd75ccdf3a3d8b3fa75bf3d3359268cd11"
-  integrity sha512-E+Fa9z3wSQpzgYQdYmme5X3OTuejnnTx88A6p6vkkJosR3KBz+HpE3kqNm98VE6cfLFcISx7zW7MsJkH6KwbTw==
+"@types/node@*", "@types/node@20.12.5", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6":
+  version "20.12.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.5.tgz#74c4f31ab17955d0b5808cdc8fd2839526ad00b3"
+  integrity sha512-BD+BjQ9LS/D8ST9p5uqBxghlN+S42iuNxjsUGjeZobe/ciXzk2qb1B6IXc6AnRLS+yFJRpN2IPEHMzwspfDJNw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -15066,10 +15066,10 @@ workerd@1.20240404.0:
     "@cloudflare/workerd-linux-arm64" "1.20240404.0"
     "@cloudflare/workerd-windows-64" "1.20240404.0"
 
-wrangler@3.47.1:
-  version "3.47.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.47.1.tgz#5474fbaec03f1e444798a879c398ed78d515d768"
-  integrity sha512-KEnYxAnhpn8vkAV3thrdCB79CK43Wr+L5xvUmfUSZu9j9HFm0I2z9HHPKzzIwdhpcvdC3WtZZz+n5NS2NQ1yzA==
+wrangler@3.48.0:
+  version "3.48.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.48.0.tgz#2f42f70b29ae39b9673dbe7b5a07cb4847160e03"
+  integrity sha512-Wv7JS6FyX1j9HkaM6WL3fmTzBMAYc4hPSyZCuxuH55hkJDX/7ts+YAgsaN1U8rKoDrV3FVSgBfI9TyqP9iuM8Q==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.1"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
