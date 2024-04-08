@@ -4996,9 +4996,9 @@ builtins@^5.0.0, builtins@^5.0.1:
     semver "^7.0.0"
 
 bun-types@^1.0.17:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.2.tgz#919e1152732e55b06b99092bd0349a6965cd068d"
-  integrity sha512-orHLB/tiBuKlk3c/0Vqbu5F1F/dnLlLrcCJxPy3uxFsIhQbwet7gkthMJ6i9B+HI8aR2nV50uikOqd8lpRx2KQ==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.3.tgz#27c71ee5bd3c98d81d5289901436e53927287b53"
+  integrity sha512-UB6AlrfSzOmSV3gCTrm2d2e+p/ZeHXrNdrEbFYFL3uy9pIJ02pEYCbtj/HHrDyxKt9YBRH13PDH6Avmt3rKYRA==
   dependencies:
     "@types/node" "~20.11.3"
     "@types/ws" "~8.5.10"
