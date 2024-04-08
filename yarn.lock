@@ -1152,7 +1152,7 @@
   resolved "https://registry.yarnpkg.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.15", "@babel/runtime-corejs3@^7.24.1":
+"@babel/runtime-corejs3@^7.20.7", "@babel/runtime-corejs3@^7.22.15", "@babel/runtime-corejs3@^7.24.4":
   version "7.24.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.24.4.tgz#b9ebe728087cfbb22bbaccc6f9a70d69834124a0"
   integrity sha512-VOQOexSilscN24VEY810G/PqtpFvx/z6UqDIjIWbDe2368HhDLkYN5TYwaEz/+eRCUkhJ2WaNLLmQAlxzfWj4w==
@@ -2692,10 +2692,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.35.0":
-  version "2.35.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.35.0.tgz#8551883055703a3f8089b0d8181572d2f25b4bcb"
-  integrity sha512-cpIvVY1/OTnOfbK/AOuTYu5RHatHJDcVYoI0RvXhybErbx+sxACdwVoqkDaI3xjr5C5PoaDTsotWEO40dx9LGA==
+"@pulumi/azure-native@2.36.0":
+  version "2.36.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.36.0.tgz#16867d956010160c15e65bdf0ddef03e77cfff6e"
+  integrity sha512-O7wl5hZ/TKtp1VHZYTBAcFTpysodGGGtaksz2NGubMgPxBJjnwTopmgyYIBcQOxnWjRmEIU6VzQAkH7eBJ9fUA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -13875,10 +13875,10 @@ svgo@^3.0.2, svgo@^3.2.0:
     csso "^5.0.5"
     picocolors "^1.0.0"
 
-swagger-client@^3.26.4:
-  version "3.26.6"
-  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.26.6.tgz#d272ef5aeb3fd278f5c9c4b94ec98a9703cba92c"
-  integrity sha512-PYYca8BsamZaOjlKr5ombOTeDje1ddiYAKGstpmAU3iU+mBKgqHiw5G2J77SC9+chKU5y0aJzmQX4hNu3p2y5A==
+swagger-client@^3.26.5:
+  version "3.26.7"
+  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.26.7.tgz#655784b0cec6eeefaad07442219ef2436762a51f"
+  integrity sha512-/5bsjyWh8wAAsx7w3lu5tqPB3hruEf/d3VwJS+LTkUvQ3irSfqoeU3Y3TAXKocpjObCnTIjDxaW6k7uDfa51Fg==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.15"
     "@swagger-api/apidom-core" ">=0.99.0 <1.0.0"
@@ -13897,11 +13897,11 @@ swagger-client@^3.26.4:
     traverse "~0.6.6"
 
 swagger-ui-react@^5.0.0:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.13.0.tgz#a49bcc62cef23a215f17a62dadd0e478abdf0240"
-  integrity sha512-R/BarkuPXPMSMnBFWPpZjxlxL1gCJtjv/SjZbRhCwPZq9UScfYU2t779XFQV7WjunK+19fIMvo/ya+dNSPkckA==
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.14.0.tgz#9b7ea1fd1a7cb7e2d3cadbae8591755df8052ba8"
+  integrity sha512-6RUCv7ii6jcdMu9LpNuq5gGboxlS2HfNeeDPdWML0Wt3lwOc7yroOzux08a8FtwFQB5ridprYobcZXVQvLcyjQ==
   dependencies:
-    "@babel/runtime-corejs3" "^7.24.1"
+    "@babel/runtime-corejs3" "^7.24.4"
     "@braintree/sanitize-url" "=7.0.1"
     base64-js "^1.5.1"
     classnames "^2.5.1"
@@ -13930,7 +13930,7 @@ swagger-ui-react@^5.0.0:
     reselect "^5.1.0"
     serialize-error "^8.1.0"
     sha.js "^2.4.11"
-    swagger-client "^3.26.4"
+    swagger-client "^3.26.5"
     url-parse "^1.5.10"
     xml "=1.0.1"
     xml-but-prettier "^1.0.1"
