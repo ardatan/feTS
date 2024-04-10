@@ -3405,9 +3405,9 @@
     remove-markdown "^0.5.0"
 
 "@theguild/components@^6.4.0":
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-6.5.1.tgz#33953d7f070d234f818cb4951b398229b5a8fcf2"
-  integrity sha512-mWKEVaJsPxjUhHcjiqPxZgg8GrW7TddEVOinoZ8ND5gM+6lPgk3OUU2y/vFg4rVG25haippZ/BzH/budkb7KAg==
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-6.5.2.tgz#690b5b352754b6e84f44650ed71e89c1cb16a31b"
+  integrity sha512-ZgU1xr0b4wap57gjwSwYG27lLMCez/rEEvGgxbxCEUziyFK/fVsCEQC6wIzbJfJt2CHvsR2gjiUcnNsaHSQM9Q==
   dependencies:
     "@giscus/react" "3.0.0"
     "@next/bundle-analyzer" "13.4.2"
@@ -3419,7 +3419,6 @@
     react-paginate "8.2.0"
     react-player "2.16.0"
     remark-mdx-disable-explicit-jsx "0.1.0"
-    search-insights "2.13.0"
     semver "^7.3.8"
 
 "@theguild/prettier-config@2.0.6":
@@ -12951,11 +12950,6 @@ scroll-into-view-if-needed@^3.1.0:
   integrity sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==
   dependencies:
     compute-scroll-into-view "^3.0.2"
-
-search-insights@2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/search-insights/-/search-insights-2.13.0.tgz#a79fdcf4b5dad2fba8975b06f2ebc37a865032b7"
-  integrity sha512-Orrsjf9trHHxFRuo9/rzm0KIWmgzE8RMlZMzuhZOJ01Rnz3D0YBAe+V6473t6/H6c7irs6Lt48brULAiRWb3Vw==
 
 section-matter@^1.0.0:
   version "1.0.0"
