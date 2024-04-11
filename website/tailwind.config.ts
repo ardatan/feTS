@@ -1,12 +1,14 @@
-const tailwindConfig = require('@theguild/tailwind-config');
+import tailwindConfig, { Config } from '@theguild/tailwind-config';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   ...tailwindConfig,
+  // @ts-expect-error false positive?
   theme: {
+    // @ts-expect-error false positive?
     ...tailwindConfig.theme,
     extend: {
       colors: {
+        // @ts-expect-error false positive?
         ...tailwindConfig.theme.extend.colors,
         dark: '#0b0d11',
         // gray name conflicts with @theguild/components
@@ -22,4 +24,4 @@ module.exports = {
       },
     },
   },
-};
+} satisfies Config;
