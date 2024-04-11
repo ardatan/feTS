@@ -20,7 +20,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@theguild/algolia": "2.1.0",
-    "@theguild/tailwind-config": "0.4.0",
+    "@theguild/tailwind-config": "0.4.1",
     "@types/node": "20.12.7",
     "@types/react": "18.2.75",
     "@typescript/sandbox": "^0.1.0",
