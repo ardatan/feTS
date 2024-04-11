@@ -2,6 +2,7 @@ import tailwindConfig, { Config } from '@theguild/tailwind-config';
 
 export default {
   ...tailwindConfig,
+  // @ts-expect-error false positive?
   theme: {
     ...tailwindConfig.theme,
     extend: {
