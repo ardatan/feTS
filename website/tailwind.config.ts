@@ -4,9 +4,11 @@ export default {
   ...tailwindConfig,
   // @ts-expect-error false positive?
   theme: {
+    // @ts-expect-error false positive?
     ...tailwindConfig.theme,
     extend: {
       colors: {
+        // @ts-expect-error false positive?
         ...tailwindConfig.theme.extend.colors,
         dark: '#0b0d11',
         // gray name conflicts with @theguild/components
