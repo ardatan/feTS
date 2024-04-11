@@ -1,7 +1,6 @@
-const tailwindConfig = require('@theguild/tailwind-config');
+import tailwindConfig, { Config } from '@theguild/tailwind-config';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   ...tailwindConfig,
   theme: {
     ...tailwindConfig.theme,
@@ -22,4 +21,4 @@ module.exports = {
       },
     },
   },
-};
+} satisfies Config;
