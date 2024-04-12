@@ -2552,10 +2552,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.29.1":
-  version "6.29.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.29.1.tgz#c3715fb154cdd1b77b9bd52cd453efd6ec988f19"
-  integrity sha512-2TdzaRQRLvOld1fp8hINEh23n0JOX6lC1qp+9h+hT8wCEIt5a+RjA6Z/zpyGrB2cFTguo1J0C2Mb+WtULvw0Yg==
+"@pulumi/aws@6.30.0":
+  version "6.30.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.30.0.tgz#03ae7347dc2560cf177963d870dc5c08af5bf098"
+  integrity sha512-MmJpyh9qXvAvw3xA5v7BKCDo9gYBvS10VTsPhNYp/0gHAKf+MoLwyCxVbu45LcTG7Muk84JCQUVxCguWqeeC1Q==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -3700,10 +3700,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.76", "@types/react@^18.2.38":
-  version "18.2.76"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.76.tgz#49bf63dac2ade25289d5be9c5af9adda2cb8a18e"
-  integrity sha512-T6z/v7YxpswDM61Vq5KoSPTJqCkroJfsDIsvXCr4+qOY6gik5Ju4w0jf67cpC5z7ydOnp/E0V0W08pDRy8u9Xw==
+"@types/react@*", "@types/react@18.2.77", "@types/react@^18.2.38":
+  version "18.2.77"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.77.tgz#af2f857b6a6dfb6ca89ec102ebc147b1f1616880"
+  integrity sha512-CUT9KUUF+HytDM7WiXKLF9qUSg4tGImwy4FXTlfEDPEkkNUzJ7rVFolYweJ9fS1ljoIaP7M7Rdjc5eUm/Yu5AA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
