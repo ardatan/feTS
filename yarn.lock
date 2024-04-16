@@ -2553,10 +2553,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.30.0":
-  version "6.30.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.30.0.tgz#03ae7347dc2560cf177963d870dc5c08af5bf098"
-  integrity sha512-MmJpyh9qXvAvw3xA5v7BKCDo9gYBvS10VTsPhNYp/0gHAKf+MoLwyCxVbu45LcTG7Muk84JCQUVxCguWqeeC1Q==
+"@pulumi/aws@6.31.0":
+  version "6.31.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.31.0.tgz#ef70656f7086bb2aae7104750c24271bfb04dfe0"
+  integrity sha512-pZ4FOIWGXmyzr2icVx2hoVVyxKLtQZKmwreAx/SWU5jCajFak3U7I5Pale3vlEjfmzKR+q3U5u212z4yQVp0YA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -3682,9 +3682,9 @@
   integrity sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
 
 "@types/qs@*", "@types/qs@^6.9.8":
-  version "6.9.14"
-  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.14.tgz#169e142bfe493895287bee382af6039795e9b75b"
-  integrity sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==
+  version "6.9.15"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.15.tgz#adde8a060ec9c305a82de1babc1056e73bd64dce"
+  integrity sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==
 
 "@types/ramda@~0.29.6":
   version "0.29.12"
