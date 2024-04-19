@@ -2720,9 +2720,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.32.0":
-  version "0.32.20"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.20.tgz#32bdeb6b185188622f965ebbc88e1a6d5127d88a"
-  integrity sha512-ziK497ILSIYMxD/thl496idIb03IZPlha04itLQu1xAFQbumWZ+Dj4PMMCkDRpAYhvVSdmRlTjGu2B2MA5RplQ==
+  version "0.32.21"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.21.tgz#706850e946efd6b413d73c48e885b65268c2b721"
+  integrity sha512-mIJHip7dc98j2KAUvwqmkSn02R8dNk7698g5Vb7J58fLLMSEBNi1ps10WzNM5HcKH90SvyFb3Vny6BvBmt5GnQ==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -13574,9 +13574,9 @@ swagger-client@^3.27.0:
     traverse "~0.6.6"
 
 swagger-ui-react@^5.0.0:
-  version "5.16.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.16.1.tgz#4a42bcb9a598afa138175ed3806903064d880fdc"
-  integrity sha512-y3pKvG9WDmULlrz5JBcebGpZpntS3U5m8SCJF19CJqrBODPbgXsDSLrZl2Qlqlai8u4y5MvIzPS1xRYRiVDdYQ==
+  version "5.16.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.16.2.tgz#c78af7c2cdd8df29a5ef5632643ee71f67a2ef40"
+  integrity sha512-trni55effpq3O2nqnBCMjr3mmFpkpBvhAQa9MDyWleRSkAt4z2aETYiU9/yaIJqrzEL92gUnI7f8cVC2ncW51g==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.4"
     "@braintree/sanitize-url" "=7.0.1"
