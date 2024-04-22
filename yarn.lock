@@ -2585,10 +2585,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.37.0":
-  version "2.37.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.37.0.tgz#73c926f66d536ceb9beecae707e33f50079e09ad"
-  integrity sha512-7Ixfb4hqQmSZr232nx1C7Uva0ogATeHPxc9FRKHv3tE2yF1Vtn9lfpyndP1egvAJKQmIZrwaqWGT/kyCCTp19g==
+"@pulumi/azure-native@2.38.0":
+  version "2.38.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.38.0.tgz#c65e2fc0119b2b0c8f4abfec45751be21e209ce5"
+  integrity sha512-9HIa+FjRYMH9tsvSpRVZNZN5lL/5ebTzb7U70pT96jE5EN4dDjERJJyeBbgTftJ2MCc8tZoLbxYCEmDDw7hopw==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -13603,9 +13603,9 @@ swagger-client@^3.27.0:
     traverse "~0.6.6"
 
 swagger-ui-react@^5.0.0:
-  version "5.16.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.16.2.tgz#c78af7c2cdd8df29a5ef5632643ee71f67a2ef40"
-  integrity sha512-trni55effpq3O2nqnBCMjr3mmFpkpBvhAQa9MDyWleRSkAt4z2aETYiU9/yaIJqrzEL92gUnI7f8cVC2ncW51g==
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.17.0.tgz#27077eb44da7f5277b9804e5dfd0c81e53ff54bd"
+  integrity sha512-z9IwISLWdlrWfLT9p0eTOoW1eDHEu/InEzZhKxZA+ylUbbNHLIdMwKHaalbnv2dhjtsLs7Nf87hHJs2wKtn2iA==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.4"
     "@braintree/sanitize-url" "=7.0.1"
