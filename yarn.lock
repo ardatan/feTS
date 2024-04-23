@@ -3600,10 +3600,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.50.0":
-  version "0.50.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.50.0.tgz#ce643418a2e4c06fd56c014c7cc462d41570fa09"
-  integrity sha512-+KpsLr549oFSpr80Zk9lf9wsEgESYTYzGeBIlS6NnH4PBiqJuRk+xv3KSFfDOCD0ZHbhUsXMV7mEVhWLOzfzmw==
+"@types/k6@0.50.1":
+  version "0.50.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.50.1.tgz#fcf0de8398a73c1c351731bf473b09f7e3ef8aa9"
+  integrity sha512-szGVf09jYCvZoaYZcNa8YaGwJFHOVlYUdLfEVXQLLG6RC/XtBqITDlDGbM8YOsnE5Sb6GlQzJGzSLR8eojhnEA==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
@@ -10582,10 +10582,10 @@ module-details-from-path@^1.0.3:
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
   integrity sha512-ySViT69/76t8VhE1xXHK6Ch4NcDd26gx0MzKXLO+F7NOtnqH68d9zF94nT8ZWSxXh8ELOERsnJO/sWt1xZYw5A==
 
-monaco-editor@0.47.0:
-  version "0.47.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.47.0.tgz#39865d67e0c9fb8c6b49e760bf9caf6a6650d28e"
-  integrity sha512-VabVvHvQ9QmMwXu4du008ZDuyLnHs9j7ThVFsiJoXSOQk18+LF89N4ADzPbFenm0W4V2bGHnFBztIRQTgBfxzw==
+monaco-editor@0.48.0:
+  version "0.48.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.48.0.tgz#9e54541bbe0ba3f2bb238477d5b981a282205ea0"
+  integrity sha512-goSDElNqFfw7iDHMg8WDATkfcyeLTNpBHQpO8incK6p5qZt5G/1j41X0xdGzpIkGojGXM+QiRQyLjnfDVvrpwA==
 
 mri@^1.1.0:
   version "1.2.0"
@@ -15047,9 +15047,9 @@ zod-validation-error@^1.5.0:
   integrity sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==
 
 zod@^3.20.2, zod@^3.20.6, zod@^3.22.3, zod@^3.22.4:
-  version "3.23.3"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.3.tgz#eeb068f83acb55310174673dee631dfa0be5510d"
-  integrity sha512-tPvq1B/2Yu/dh2uAIH2/BhUlUeLIUvAjr6dpL/75I0pCYefHgjhXk1o1Kob3kTU8C7yU1j396jFHlsVWFi9ogg==
+  version "3.23.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.4.tgz#c63805b2f39e10d4ab3d55eb3c8cdb472c79dfb1"
+  integrity sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==
 
 zwitch@^2.0.0:
   version "2.0.4"
