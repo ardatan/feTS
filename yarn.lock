@@ -4015,9 +4015,9 @@
     tslib "^2.3.1"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.33"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.33.tgz#7c9e6a3daa35635ccdacda79231c095ac5675d70"
-  integrity sha512-bHWZi6YhVsDKAzjlPn5EN7u5j7SvHqDI6Acr37hgMBjKyCzqHivfPFgC/sRZ6LLxM9pJNsXpFoAF1kySXhAn6w==
+  version "0.9.34"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.34.tgz#6b4c578c90c57099984f6085b3e2db9ab01fad3f"
+  integrity sha512-1sHRjqUtZIyTR2m2dS/dJpzS5OcNDpPuUSVDa2PoEgzYVKr4GsqJaYtRaEXXFohvvyh6PkouYCc1rE7jMDWVCA==
   dependencies:
     "@whatwg-node/fetch" "^0.9.17"
     tslib "^2.3.1"
@@ -4702,9 +4702,9 @@ builtins@^5.0.0:
     semver "^7.0.0"
 
 bun-types@^1.0.17:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.4.tgz#9116f1014adfd584714b877f66152fa303f58ff2"
-  integrity sha512-E1kk0FNpxpkSSlCVXEa4HfyhSUEpKtCFrybPVyz1A4TEnBGy5bqqtSYkyjKTfKScdyZTBeFrTxJLiKGOIRWgwg==
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.5.tgz#bea4305a652d4c3ccec18395769113c93494636a"
+  integrity sha512-1FloaacqFksMRm9q5+v7bfgpH6r2IRxmPGMJnzu6zvobviER+EMUustKYSJXXotQV9La0CF764NbI8jDp/yolA==
   dependencies:
     "@types/node" "~20.11.3"
     "@types/ws" "~8.5.10"
