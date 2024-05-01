@@ -37,7 +37,7 @@
     "@changesets/cli": "2.27.1",
     "@theguild/prettier-config": "2.0.6",
     "@types/jest": "29.5.12",
-    "@types/node": "20.12.7",
+    "@types/node": "20.12.8",
     "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "7.8.0",
     "@typescript-eslint/parser": "7.8.0",

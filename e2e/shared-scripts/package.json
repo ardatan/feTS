@@ -4,6 +4,6 @@
   "private": true,
   "dependencies": {
     "@pulumi/pulumi": "3.114.0",
-    "@types/node": "20.12.7"
+    "@types/node": "20.12.8"
   }
 }
