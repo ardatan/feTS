@@ -2550,10 +2550,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.33.0":
-  version "6.33.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.33.0.tgz#7918e57878d07426750b80f74d25de92370cb5ae"
-  integrity sha512-N98+XNhYwcsR1yp+b7pO4WxSy54UNQUsH+6ULhY6FeJfMo8V9u11WqGQml8pogLSdCmcPlRo65o7vHkaMM6Dkw==
+"@pulumi/aws@6.33.1":
+  version "6.33.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.33.1.tgz#32fc2e7c0e3ee75540a169e2c235c20cdc198629"
+  integrity sha512-N6EGHI2m92qoe3eOBc1qsvy1FnjIKuY7rd50FlbAbVTWPr+DiDRDw0H4KzejYBEdOctR7YYprAXOOsIfueSHmQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2591,10 +2591,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.114.0", "@pulumi/pulumi@^3.0.0":
-  version "3.114.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.114.0.tgz#72015dc5e697c51e99892c0b7407489f06bb9b4f"
-  integrity sha512-+GDzWl/Udpw5uRs/DaM4X3Hl8LR4bvdmiHl4PFL9aaSUN+4x3TMIuKsg+IEpfK5apLW34gb3MnIkZZweNcOx5A==
+"@pulumi/pulumi@3.115.0", "@pulumi/pulumi@^3.0.0":
+  version "3.115.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.115.0.tgz#592c77753540f0390d235d2e04669a67ec55c07c"
+  integrity sha512-IqMibjR0bw6acE2kve8Qj/Xud3iX+PbNXLlE+A3oJ9CasPvqVW8EZdr1g5QJp5DfVAn1uSfawwcTkFGY6YVFyQ==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -14897,9 +14897,9 @@ zod-validation-error@^1.5.0:
   integrity sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==
 
 zod@^3.20.2, zod@^3.20.6, zod@^3.22.3, zod@^3.22.4:
-  version "3.23.5"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.5.tgz#c7b7617d017d4a2f21852f533258d26a9a5ae09f"
-  integrity sha512-fkwiq0VIQTksNNA131rDOsVJcns0pfVUjHzLrNBiF/O/Xxb5lQyEXkhZWcJ7npWsYlvs+h0jFWXXy4X46Em1JA==
+  version "3.23.6"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.6.tgz#c08a977e2255dab1fdba933651584a05fcbf19e1"
+  integrity sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==
 
 zwitch@^2.0.0:
   version "2.0.4"

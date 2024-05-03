@@ -12,9 +12,9 @@
     "aws-lambda": "1.0.7"
   },
   "devDependencies": {
-    "@pulumi/aws": "6.33.0",
+    "@pulumi/aws": "6.33.1",
     "@pulumi/awsx": "0.40.1",
-    "@pulumi/pulumi": "3.114.0",
+    "@pulumi/pulumi": "3.115.0",
     "@types/aws-lambda": "8.10.137",
     "esbuild": "0.20.2",
     "ts-node": "10.9.2",
