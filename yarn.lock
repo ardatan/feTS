@@ -3649,7 +3649,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.12.8", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6":
+"@types/node@*", "@types/node@20.12.8", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6", "@types/node@~20.12.8":
   version "20.12.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.8.tgz#35897bf2bfe3469847ab04634636de09552e8256"
   integrity sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==
@@ -3660,13 +3660,6 @@
   version "12.20.55"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.55.tgz#c329cbd434c42164f846b909bd6f85b5537f6240"
   integrity sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==
-
-"@types/node@~20.11.3":
-  version "20.11.30"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.30.tgz#9c33467fc23167a347e73834f788f4b9f399d66f"
-  integrity sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==
-  dependencies:
-    undici-types "~5.26.4"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.4"
@@ -4675,12 +4668,12 @@ builtins@^5.0.0:
   dependencies:
     semver "^7.0.0"
 
-bun-types@^1.0.17:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.6.tgz#6d053b5d580ae3c4dcfc3a4870ceb19fcdc84333"
-  integrity sha512-LK2aaJdBBTUkDyN+kRiJHLF3VGrAcdkEHrbBvbmTkccShPw6ZalxxKjWSBJwn4UkikhZdrdA87bZWmfUgkRUYg==
+bun-types@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.7.tgz#65fabfac11975066b63b2f6071537a9a85c6de7a"
+  integrity sha512-9L1w3dxXrJ5dg9ERd8cc8IJTHZ+0WpSDB9kIo6tVl1s3msNsotsTeh02Wwy8cvd3a4XWEz9+TrJsqhT0dJ6XCQ==
   dependencies:
-    "@types/node" "~20.11.3"
+    "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
 
 busboy@1.6.0, busboy@^1.6.0:
