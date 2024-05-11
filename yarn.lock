@@ -2717,9 +2717,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.32.0":
-  version "0.32.29"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.29.tgz#35a31aac1078f14b722bd08086cea44fa73b206a"
-  integrity sha512-GWKskKPGQV0vVYizqCu0E1YLwGthvlkDqpRxB3iBuqxJ8dN/9n1cnDRSQHF59GMoxDJwzSgmxpU617SidtUnMw==
+  version "0.32.30"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.32.30.tgz#91ecaad8ed9e5972a2ee52df049b6bd5da93fad7"
+  integrity sha512-IYK1H0k2sHVB2GjzBK2DXBErhex45GoLuPdgn8lNw5t0+5elIuhpixOMPobFyq6kE0AGIBa4+76Ph4enco0q2Q==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -3695,10 +3695,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.3.1", "@types/react@^18.2.38":
-  version "18.3.1"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.1.tgz#fed43985caa834a2084d002e4771e15dfcbdbe8e"
-  integrity sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==
+"@types/react@*", "@types/react@18.3.2", "@types/react@^18.2.38":
+  version "18.3.2"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.2.tgz#462ae4904973bc212fa910424d901e3d137dbfcd"
+  integrity sha512-Btgg89dAnqD4vV7R3hlwOxgqobUQKgx3MmrQRi0yYbs/P0ym8XozIAlkqVilPqHQwXs4e9Tf63rrCgl58BcO4w==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
