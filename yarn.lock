@@ -2569,10 +2569,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.40.0":
-  version "2.40.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.40.0.tgz#1d11035f108fb8ba0ee610d5bd98e5e9a74b0782"
-  integrity sha512-VU8hG78j2u++TN7tzRYQ7Mswwu9+Yc+UWJBvYG1bTFi6v/TXXq1j0ODfPQIY99GxpeELJs0nAYOoo30tjeS5Eg==
+"@pulumi/azure-native@2.41.0":
+  version "2.41.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.41.0.tgz#da44bb7f835921690a40978089b0f2a8bb4e2a2a"
+  integrity sha512-MekMRp+ee3dpmFfUInEIKC1UAQjwmJurxpz5MgbgQVTxwdgHVd242XVVpsaEEzY9zsfh1PLmYQh+MhJ0Sfr5Ww==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3651,10 +3651,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.12.11", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6", "@types/node@~20.12.8":
-  version "20.12.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.11.tgz#c4ef00d3507000d17690643278a60dc55a9dc9be"
-  integrity sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==
+"@types/node@*", "@types/node@20.12.12", "@types/node@>=13.7.0", "@types/node@^20.10.6", "@types/node@^20.5.6", "@types/node@~20.12.8":
+  version "20.12.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.12.tgz#7cbecdf902085cec634fdb362172dfe12b8f2050"
+  integrity sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -6442,10 +6442,10 @@ eslint-plugin-jsx-a11y@^6.7.1:
     object.entries "^1.1.7"
     object.fromentries "^2.0.7"
 
-eslint-plugin-n@17.6.0:
-  version "17.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.6.0.tgz#891b7239ac2e58d80a8ed636addc9de4108e66d1"
-  integrity sha512-Y73o88ROwbCtVCCmZjYlYcPYkOG7mIzxxVK1XFRSa2epbKWtAPsmYpAD0pqxg/ZwlcWxMDceQPKHYQi4VIHz7w==
+eslint-plugin-n@17.7.0:
+  version "17.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.7.0.tgz#90b4f777cefb9bf0d91dafa94347961c4e8a072c"
+  integrity sha512-4Jg4ZKVE4VjHig2caBqPHYNW5na84RVufUuipFLJbgM/G57O6FdpUKJbHakCDJb/yjQuyqVzYWRtU3HNYaZUwg==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
     enhanced-resolve "^5.15.0"
