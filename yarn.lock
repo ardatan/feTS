@@ -15,10 +15,10 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@azure/functions@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.4.0.tgz#5d08308c3633263bf9eeacb92c42d6d098efe274"
-  integrity sha512-debidWolFTsfapsK53ftzLtXJc3dbYYPc9UqJoEm1GAj1lS7jFMARQnbfTQPDqBIhuJxLZ9D8WVvhIEV7Hifzw==
+"@azure/functions@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.5.0.tgz#7aea7b0b4f2ae86dcc4d1663909e846ea2cca066"
+  integrity sha512-WNCiOHMQEZpezxgThD3o2McKEjUEljtQBvdw4X4oE5714eTw76h33kIj0660ZJGEnxYSx4dx18oAbg5kLMs9iQ==
   dependencies:
     cookie "^0.6.0"
     long "^4.0.0"
