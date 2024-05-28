@@ -13463,10 +13463,10 @@ swagger-client@^3.28.1:
     ramda-adjunct "^5.0.0"
     traverse "=0.6.8"
 
-swagger-ui-react@^5.0.0:
-  version "5.17.12"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.17.12.tgz#8cb847f2907c71974a174de37a6f05677e8cc543"
-  integrity sha512-qkDBOx9c3v1m8LyUgyc+Idz8UXLmz7RMDYX0Xlry0kwBQYxkw6AXfQ1bemgkna1sRQCvASmucdm2TYAdx6nlaA==
+swagger-ui-react@^5.17.14:
+  version "5.17.14"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.17.14.tgz#3301bd92f3446f9136597fb5d70360290f92006d"
+  integrity sha512-mCXerZrbcn4ftPYifUF0+iKIRTHoVCv0HcJc/sXl9nCe3oeWdsjmOWVqKabzzAkAa0NwsbKNJFv2UL/Ivnf6VQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.5"
     "@braintree/sanitize-url" "=7.0.2"
