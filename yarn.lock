@@ -3956,13 +3956,13 @@
   resolved "https://registry.yarnpkg.com/@typescript/ata/-/ata-0.9.5.tgz#ef021b727fbdd5e58a03b2bc793a9b90019df4b1"
   integrity sha512-VLDJhyVVHiDsYSgq0+P21NUHkaY47T2MvJXbvA24+hHxfbHkjKMb508VkOw0k0JoH3RNuXw90WTYMX/nhd4D0A==
 
-"@typescript/sandbox@^0.1.0":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.3.tgz#6c9bcfafce4f6c07c52b5699875130bfe2d98bc3"
-  integrity sha512-52R1Z9kZnjpQoZtcs34s+J0WXTU6ltz1m/2W2QzLoQfgNs33JBawg5rouP+OQegZjDDiKd3KPVQPUC+uULOxGA==
+"@typescript/sandbox@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.4.tgz#73626d9ac329a4c3d196889e87e19d463f1cae3e"
+  integrity sha512-90DSGvNgfSF+N2IDehOH+ZL/1uekFuzFN0+0DtGKmuhUmYq3kHqrjPhx1iJ0f/H0JFHveQfKkmryEwfb+IIaDw==
   dependencies:
     "@typescript/ata" "0.9.5"
-    "@typescript/vfs" "1.5.1"
+    "@typescript/vfs" "1.5.2"
     lz-string "^1.5.0"
 
 "@typescript/vfs@1.5.0":
@@ -3972,10 +3972,10 @@
   dependencies:
     debug "^4.1.1"
 
-"@typescript/vfs@1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.5.1.tgz#a0af2878f06ae46658d51580a9825b907a1a51e2"
-  integrity sha512-yaTdEeMCc31H6wMIqMbf69n89xGQyYQr9hmPMmB4K5LonbefYuV+f9AR2Iuh6itm1+NLes8+BZf4il30BBR5Mw==
+"@typescript/vfs@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.5.2.tgz#d97bfb68905acfb1b9758e400475821bc5b33d4f"
+  integrity sha512-RDp35jQj3/T5hiV8XQm6PDReqDoI8XI/dricpksgZ3LBlp4JUsL6AtKBXCOw5sdvvjrCtIrHONbVJz5row+IfQ==
   dependencies:
     debug "^4.1.1"
 
