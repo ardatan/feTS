@@ -11773,7 +11773,7 @@ prettier-plugin-sh@^0.14.0:
     mvdan-sh "^0.10.1"
     sh-syntax "^0.4.1"
 
-prettier-plugin-tailwindcss@^0.6.0:
+prettier-plugin-tailwindcss@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.6.2.tgz#1143ac515b97bc9c04ec2d19a1a1db42b36f198c"
   integrity sha512-eFefm4cg+1c2B57+H274Qm//CTWBdtQN9ansl0YTP/8TC8x3bugCTQSS/e4FC5Ctl9djhTzsbcMrZ7x2/abIow==
@@ -14051,7 +14051,6 @@ typescript@5.4.5, typescript@^5.0.0:
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version "20.43.0"
-  uid "1977b5039938ad863d42fc4958d48c17e5a1fa06"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/1977b5039938ad863d42fc4958d48c17e5a1fa06"
 
 ufo@^1.4.0, ufo@^1.5.3:
