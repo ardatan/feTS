@@ -8,3 +8,4 @@ examples/todolist/src/saved_openapi.ts
 packages/fets/src/swagger-ui-html.ts
 out/
 pnpm-lock.yaml
+website/src/components/index-page.tsx
