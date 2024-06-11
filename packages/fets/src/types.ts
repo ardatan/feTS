@@ -378,7 +378,7 @@ export type RouteSchemas = {
     headers?: ObjectSchemaWithPrimitiveProperties;
     params?: ObjectSchemaWithPrimitiveProperties;
     query?: ObjectSchema;
-    json?: ObjectSchema;
+    json?: JSONSchema;
     formData?: ObjectSchema;
   };
   responses?: StatusCodeMap<JSONSchema>;
