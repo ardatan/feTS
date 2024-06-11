@@ -11,8 +11,8 @@ import type {
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
-import { ClientTypedResponsePromise } from './client/clientResponse.js';
-import { ClientRequestInit } from './client/types.js';
+import type { ClientTypedResponsePromise } from './client/clientResponse.js';
+import type { ClientRequestInit } from './client/types.js';
 import type { SwaggerUIOpts } from './plugins/openapi.js';
 import type {
   HTTPMethod,
@@ -359,13 +359,27 @@ export type RouterPlugin<
   onRouteHandle?: OnRouteHandleHook<TServerContext, TComponents>;
 };
 
+type ObjectSchemaWithPrimitiveProperties = JSONSchema & {
+  type: 'object';
+  properties: Record<
+    string,
+    {
+      type: 'string' | 'number' | 'integer' | 'boolean' | 'null';
+    }
+  >;
+};
+
+type ObjectSchema = JSONSchema & {
+  type: 'object';
+};
+
 export type RouteSchemas = {
   request?: {
-    headers?: JSONSchema;
-    params?: JSONSchema;
-    query?: JSONSchema;
+    headers?: ObjectSchemaWithPrimitiveProperties;
+    params?: ObjectSchemaWithPrimitiveProperties;
+    query?: ObjectSchema;
     json?: JSONSchema;
-    formData?: JSONSchema;
+    formData?: ObjectSchema;
   };
   responses?: StatusCodeMap<JSONSchema>;
 };
