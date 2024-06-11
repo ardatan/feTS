@@ -67,13 +67,7 @@
       }
     }
   ],
-  "ignorePatterns": [
-    "packages/load/tests/loaders/schema",
-    "scripts",
-    "e2e",
-    "benchmark",
-    "next-env.d.ts"
-  ],
+  "ignorePatterns": ["dist", "node_modules", "scripts", "e2e", "benchmark", "next-env.d.ts"],
   "globals": {
     "BigInt": true
   }

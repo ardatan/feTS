@@ -10,11 +10,11 @@
   ],
   "scripts": {
     "build": "bob build",
-    "ci:lint": "eslint --ext .ts . --output-file eslint_report.json --format json",
+    "ci:lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext .ts . --output-file eslint_report.json --format json",
     "esm:check": "bob check",
     "generate-landing-page": "node ./packages/fets/scripts/generate-landing-page.cjs",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
-    "lint": "eslint --ignore-path .gitignore --ext ts,tsx .",
+    "lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext ts,tsx .",
     "postinstall": "patch-package && husky install",
     "prebuild": "yarn generate-swagger-ui && yarn generate-landing-page",
     "prerelease": "yarn build",
@@ -44,7 +44,7 @@
     "babel-jest": "29.7.0",
     "bob-the-bundler": "7.0.1",
     "cross-env": "7.0.3",
-    "eslint": "8.57.0",
+    "eslint": "9.4.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.29.1",
@@ -67,7 +67,7 @@
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
-      "eslint --fix"
+      "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --fix"
     ],
     "**/*.{ts,tsx,graphql,yml,md,mdx,js,json,html}": [
       "prettier --write"
