@@ -242,8 +242,10 @@ export type OASModel<
     : never;
 
 // Later suggest using json-machete
-export type FixJSONSchema<T> = FixAdditionalPropertiesForAllOf<
-  FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
+export type FixJSONSchema<T> = RemoveExclusiveMinimumAndMaximum<
+  FixAdditionalPropertiesForAllOf<
+    FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
+  >
 >;
 
 type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
@@ -268,6 +270,14 @@ type FixExtraRequiredFields<T> = T extends {
   ? Omit<T, 'required'> & {
       required: Call<Tuples.Filter<B.Extends<keyof T['properties']>>, T['required']>;
     }
+  : T;
+
+// Currently boolean values for those two are not supported
+type RemoveExclusiveMinimumAndMaximum<T> = T extends {
+  exclusiveMinimum?: boolean;
+  exclusiveMaximum?: boolean;
+}
+  ? Omit<T, 'exclusiveMinimum' | 'exclusiveMaximum'>
   : T;
 
 export type OASRequestParams<
