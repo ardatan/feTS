@@ -1,31 +1,47 @@
 # example-zod
 
+## 0.0.66
+
+### Patch Changes
+
+- Updated dependencies
+  [[`61889ce`](https://github.com/ardatan/feTS/commit/61889ce020504389f210ef9fc2369881067f08a1),
+  [`b33d572`](https://github.com/ardatan/feTS/commit/b33d572217054b0683b673d8f50dbd0259640282)]:
+  - fets@0.8.1
+
 ## 0.0.65
 
 ### Patch Changes
 
-- Updated dependencies [[`4f9c219`](https://github.com/ardatan/feTS/commit/4f9c219e7dc459ce9863a3c923adf084354e6318)]:
+- Updated dependencies
+  [[`4f9c219`](https://github.com/ardatan/feTS/commit/4f9c219e7dc459ce9863a3c923adf084354e6318)]:
   - fets@0.8.0
 
 ## 0.0.64
 
 ### Patch Changes
 
-- Updated dependencies [[`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a)]:
+- Updated dependencies
+  [[`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a)]:
   - fets@0.7.2
 
 ## 0.0.63
 
 ### Patch Changes
 
-- Updated dependencies [[`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d)]:
+- Updated dependencies
+  [[`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d)]:
   - fets@0.7.1
 
 ## 0.0.62
 
 ### Patch Changes
 
-- Updated dependencies [[`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a), [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1), [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288), [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)]:
+- Updated dependencies
+  [[`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a),
+  [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1),
+  [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288),
+  [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)]:
   - fets@0.7.0
 
 ## 0.0.61
