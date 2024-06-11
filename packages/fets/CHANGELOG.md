@@ -1,41 +1,74 @@
 # fets
 
+## 0.8.1
+
+### Patch Changes
+
+- [#696](https://github.com/ardatan/feTS/pull/696)
+  [`61889ce`](https://github.com/ardatan/feTS/commit/61889ce020504389f210ef9fc2369881067f08a1)
+  Thanks [@ardatan](https://github.com/ardatan)! - More strict on request parameters typing
+
+- [#1609](https://github.com/ardatan/feTS/pull/1609)
+  [`b33d572`](https://github.com/ardatan/feTS/commit/b33d572217054b0683b673d8f50dbd0259640282)
+  Thanks [@ardatan](https://github.com/ardatan)! - Support `exclusiveMinimum` or `exclusiveMaximum`
+  as booleans instead of numbers only
+
 ## 0.8.0
 
 ### Minor Changes
 
-- [#1313](https://github.com/ardatan/feTS/pull/1313) [`4f9c219`](https://github.com/ardatan/feTS/commit/4f9c219e7dc459ce9863a3c923adf084354e6318) Thanks [@colonel-sanders](https://github.com/colonel-sanders)! - Support for multipart fields other than string or file
+- [#1313](https://github.com/ardatan/feTS/pull/1313)
+  [`4f9c219`](https://github.com/ardatan/feTS/commit/4f9c219e7dc459ce9863a3c923adf084354e6318)
+  Thanks [@colonel-sanders](https://github.com/colonel-sanders)! - Support for multipart fields
+  other than string or file
 
 ## 0.7.2
 
 ### Patch Changes
 
-- [#1238](https://github.com/ardatan/feTS/pull/1238) [`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a) Thanks [@renovate](https://github.com/apps/renovate)! - Support the latest TS version
+- [#1238](https://github.com/ardatan/feTS/pull/1238)
+  [`f780f5e`](https://github.com/ardatan/feTS/commit/f780f5e781aeda7d158f4906a738e98de0052d6a)
+  Thanks [@renovate](https://github.com/apps/renovate)! - Support the latest TS version
 
 ## 0.7.1
 
 ### Patch Changes
 
-- [`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d) Thanks [@ardatan](https://github.com/ardatan)! - Use the same EMPTY_OBJECT for proxies
+- [`fc3654e`](https://github.com/ardatan/feTS/commit/fc3654e15c5b55927366e8d1ee803f690ec5a50d)
+  Thanks [@ardatan](https://github.com/ardatan)! - Use the same EMPTY_OBJECT for proxies
 
 ## 0.7.0
 
 ### Minor Changes
 
-- [#977](https://github.com/ardatan/feTS/pull/977) [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288) Thanks [@renovate](https://github.com/apps/renovate)! - Update typebox
+- [#977](https://github.com/ardatan/feTS/pull/977)
+  [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)
+  Thanks [@renovate](https://github.com/apps/renovate)! - Update typebox
 
 ### Patch Changes
 
-- [#915](https://github.com/ardatan/feTS/pull/915) [`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+- [#915](https://github.com/ardatan/feTS/pull/915)
+  [`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
 
-  - Updated dependency [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from `^0.31.23`, in `dependencies`)
+  - Updated dependency
+    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0)
+    (from `^0.31.23`, in `dependencies`)
 
-- [#967](https://github.com/ardatan/feTS/pull/967) [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+- [#967](https://github.com/ardatan/feTS/pull/967)
+  [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
 
-  - Updated dependency [`json-schema-to-ts@^3.0.0` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/3.0.0) (from `^2.9.1`, in `dependencies`)
+  - Updated dependency
+    [`json-schema-to-ts@^3.0.0` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/3.0.0) (from
+    `^2.9.1`, in `dependencies`)
 
-- [#977](https://github.com/ardatan/feTS/pull/977) [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288) Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-  - Updated dependency [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from `^0.31.23`, in `dependencies`)
+- [#977](https://github.com/ardatan/feTS/pull/977)
+  [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+  - Updated dependency
+    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0)
+    (from `^0.31.23`, in `dependencies`)
 
 ## 0.6.8
 
@@ -279,9 +312,9 @@
   Then feTS should take the `default` response as the successful response.
 
   ```ts
-  const response = await client["/user"].post({
-    json: { name: "John" },
-  });
+  const response = await client['/user'].post({
+    json: { name: 'John' }
+  })
 
   if (!res.ok) {
     // 400 should be here
@@ -312,11 +345,11 @@
   feTS shouldn't take both `json` and `formData` required;
 
   ```ts
-  client["/user"].post({
+  client['/user'].post({
     // Both shouldn't be required because only one of them is enough.
-    json: { name: "John" },
-    formData: { name: "John" },
-  });
+    json: { name: 'John' },
+    formData: { name: 'John' }
+  })
   ```
 
 - [#363](https://github.com/ardatan/feTS/pull/363)
