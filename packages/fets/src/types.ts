@@ -11,8 +11,8 @@ import type {
   ServerAdapterPlugin,
   ServerAdapterRequestHandler,
 } from '@whatwg-node/server';
-import { ClientTypedResponsePromise } from './client/clientResponse.js';
-import { ClientRequestInit } from './client/types.js';
+import type { ClientTypedResponsePromise } from './client/clientResponse.js';
+import type { ClientRequestInit } from './client/types.js';
 import type { SwaggerUIOpts } from './plugins/openapi.js';
 import type {
   HTTPMethod,
@@ -364,7 +364,7 @@ type ObjectSchemaWithPrimitiveProperties = JSONSchema & {
   properties: Record<
     string,
     {
-      type: 'string' | 'number' | 'boolean';
+      type: 'string' | 'number' | 'integer' | 'boolean' | 'null';
     }
   >;
 };
