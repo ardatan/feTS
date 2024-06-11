@@ -369,13 +369,17 @@ type ObjectSchemaWithPrimitiveProperties = JSONSchema & {
   >;
 };
 
+type ObjectSchema = JSONSchema & {
+  type: 'object';
+};
+
 export type RouteSchemas = {
   request?: {
     headers?: ObjectSchemaWithPrimitiveProperties;
     params?: ObjectSchemaWithPrimitiveProperties;
-    query?: ObjectSchemaWithPrimitiveProperties;
-    json?: ObjectSchemaWithPrimitiveProperties;
-    formData?: ObjectSchemaWithPrimitiveProperties;
+    query?: ObjectSchema;
+    json?: ObjectSchema;
+    formData?: ObjectSchema;
   };
   responses?: StatusCodeMap<JSONSchema>;
 };

@@ -227,26 +227,6 @@ if (res.ok) {
   });
 }
 
-// only accept TypeObject with string keys and values for request params schema
-// eslint-disable-next-line no-lone-blocks
-{
-  // @ts-expect-error this should only accept objects with string values
-  createRouter().route({
-    path: '/foo',
-    method: 'POST',
-    schemas: {
-      request: {
-        query: Type.Object({
-          authorization: Type.Object({}),
-        }),
-      },
-    },
-    async handler() {
-      return Response.json({});
-    },
-  });
-}
-
 // handler should match responses
 // eslint-disable-next-line no-lone-blocks
 {
