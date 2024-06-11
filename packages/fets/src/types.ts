@@ -359,13 +359,23 @@ export type RouterPlugin<
   onRouteHandle?: OnRouteHandleHook<TServerContext, TComponents>;
 };
 
+type ObjectSchemaWithPrimitiveProperties = JSONSchema & {
+  type: 'object';
+  properties: Record<
+    string,
+    {
+      type: 'string' | 'number' | 'boolean';
+    }
+  >;
+};
+
 export type RouteSchemas = {
   request?: {
-    headers?: JSONSchema;
-    params?: JSONSchema;
-    query?: JSONSchema;
-    json?: JSONSchema;
-    formData?: JSONSchema;
+    headers?: ObjectSchemaWithPrimitiveProperties;
+    params?: ObjectSchemaWithPrimitiveProperties;
+    query?: ObjectSchemaWithPrimitiveProperties;
+    json?: ObjectSchemaWithPrimitiveProperties;
+    formData?: ObjectSchemaWithPrimitiveProperties;
   };
   responses?: StatusCodeMap<JSONSchema>;
 };
