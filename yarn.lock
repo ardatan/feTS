@@ -4709,9 +4709,9 @@ builtin-modules@3.0.0:
   integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.12.tgz#004f708adb774f21ca67e4aeabdabb2acf0d42af"
-  integrity sha512-DIM2C9qCECwhck9nLsCDeTv943VmGMCkwX3KljjprSRDXaK2CSiUDVGbUit80Er38ukgxuESJgYPAys4FsNCdg==
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.13.tgz#23ea8f46228975293d449c134926fb1e6775fac1"
+  integrity sha512-G/TqF0SsMQGLr4g7K3B2BK8BrPEA1EqCNwxZbyRdj5M4t54zvwyaqvRJOW34kuPqc2IvNNalRU3swc8B4oc4FA==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
