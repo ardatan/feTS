@@ -1325,10 +1325,10 @@
     human-id "^1.0.2"
     prettier "^2.7.1"
 
-"@cloudflare/kv-asset-handler@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.3.2.tgz#06437b75664729823ac9033b89f06a3b078e4f55"
-  integrity sha512-EeEjMobfuJrwoctj7FA1y1KEbM0+Q1xSjobIEyie9k4haVEBB7vkDvsasw1pM3rO39mL2akxIAzLMUAtrMHZhA==
+"@cloudflare/kv-asset-handler@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.3.3.tgz#3c578996f3d00b60debee8178c41600f3b21bc0b"
+  integrity sha512-wpE+WiWW2kUNwNE0xyl4CtTAs+STjGtouHGiZPGRaisGB7eXXdbvfZdOrQJQVKgTxZiNAgVgmc7fj0sUmd8zyA==
   dependencies:
     mime "^3.0.0"
 
@@ -10362,10 +10362,10 @@ min-indent@^1.0.0:
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
-miniflare@3.20240610.0:
-  version "3.20240610.0"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240610.0.tgz#6efeb60f3ba2e658a3e0395538010228fac0e719"
-  integrity sha512-J6aXmkII5gcq+kC4TurxKiR4rC++apPST/K8P/YjqoQQgrJ+NRPacBhf6iVh8R3ujnXYXaq+Ae+gm+LM0XHK/w==
+miniflare@3.20240610.1:
+  version "3.20240610.1"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240610.1.tgz#8d7d7f8d74c8b416ac1753333b8a680fb37b706e"
+  integrity sha512-ZkfSpBmX3nJW00yYhvF2kGvjb6f77TOimRR6+2GQvsArbwo6e0iYqLGM9aB/cnJzgFjLMvOv1qj4756iynSxJQ==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "^8.8.0"
@@ -10374,11 +10374,11 @@ miniflare@3.20240610.0:
     exit-hook "^2.2.1"
     glob-to-regexp "^0.4.1"
     stoppable "^1.1.0"
-    undici "^5.28.2"
+    undici "^5.28.4"
     workerd "1.20240610.1"
-    ws "^8.11.0"
+    ws "^8.14.2"
     youch "^3.2.2"
-    zod "^3.20.6"
+    zod "^3.22.3"
 
 minim@~0.23.8:
   version "0.23.8"
@@ -13046,7 +13046,7 @@ source-map-support@^0.5.12, source-map-support@^0.5.6, source-map-support@~0.5.2
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map@0.6.1, source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0:
+source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
@@ -14062,7 +14062,7 @@ undici-types@~5.26.4:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
-undici@^5.13.0, undici@^5.28.2:
+undici@^5.13.0, undici@^5.28.4:
   version "5.28.4"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.28.4.tgz#6b280408edb6a1a604a9b20340f45b422e373068"
   integrity sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==
@@ -14671,24 +14671,24 @@ workerd@1.20240610.1:
     "@cloudflare/workerd-linux-arm64" "1.20240610.1"
     "@cloudflare/workerd-windows-64" "1.20240610.1"
 
-wrangler@3.60.3:
-  version "3.60.3"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.60.3.tgz#1b2ebd2214e10e42a143e47b425480cbe7b7be21"
-  integrity sha512-a6zn/KFnYaYp3nxJR/aP0TeaBvJDkrrfI89KoxUtx28H7zpya/5/VLu3CxQ3PRspEojJGF0s6f3/pddRy3F+BQ==
+wrangler@3.61.0:
+  version "3.61.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.61.0.tgz#a2426bef0d0cb497cbe817b558eecbd803e5563c"
+  integrity sha512-feVAp0986x9xL3Dc1zin0ZVXKaqzp7eZur7iPLnpEwjG1Xy4dkVEZ5a1LET94Iyejt1P+EX5lgGcz63H7EfzUw==
   dependencies:
-    "@cloudflare/kv-asset-handler" "0.3.2"
+    "@cloudflare/kv-asset-handler" "0.3.3"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
     "@esbuild-plugins/node-modules-polyfill" "^0.2.2"
     blake3-wasm "^2.1.5"
     chokidar "^3.5.3"
     esbuild "0.17.19"
-    miniflare "3.20240610.0"
+    miniflare "3.20240610.1"
     nanoid "^3.3.3"
     path-to-regexp "^6.2.0"
     resolve "^1.22.8"
     resolve.exports "^2.0.2"
     selfsigned "^2.0.1"
-    source-map "0.6.1"
+    source-map "^0.6.1"
     unenv "npm:unenv-nightly@1.10.0-1717606461.a117952"
     xxhash-wasm "^1.0.1"
   optionalDependencies:
@@ -14765,7 +14765,7 @@ ws@^7.3.1:
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.10.tgz#58b5c20dc281633f6c19113f39b349bd8bd558d9"
   integrity sha512-+dbF1tHwZpXcbOJdVOkzLDxZP1ailvSxM6ZweXTegylPny803bFhA+vqBYw4s31NSAk4S2Qz+AKXK9a4wkdjcQ==
 
-ws@^8.11.0:
+ws@^8.14.2:
   version "8.17.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.17.1.tgz#9293da530bb548febc95371d90f9c878727d919b"
   integrity sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ==
@@ -14922,7 +14922,7 @@ zod-validation-error@^1.5.0:
   resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-1.5.0.tgz#2b355007a1c3b7fb04fa476bfad4e7b3fd5491e3"
   integrity sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==
 
-zod@^3.20.2, zod@^3.20.6, zod@^3.22.3, zod@^3.22.4:
+zod@^3.20.2, zod@^3.22.3, zod@^3.22.4:
   version "3.23.8"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.23.8.tgz#e37b957b5d52079769fb8097099b592f0ef4067d"
   integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==
