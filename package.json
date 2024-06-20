@@ -59,7 +59,7 @@
     "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "0.6.5",
     "ts-jest": "29.1.5",
-    "typescript": "5.4.5"
+    "typescript": "5.5.2"
   },
   "resolutions": {
     "@pulumi/pulumi": "3.120.0",
