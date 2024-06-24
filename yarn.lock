@@ -4022,10 +4022,10 @@
     fast-querystring "^1.1.1"
     tslib "^2.3.1"
 
-"@whatwg-node/server@^0.9.15":
-  version "0.9.35"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.35.tgz#88259e2c5de0ddbc86349057decbbc97ebc27d21"
-  integrity sha512-Y0bLQx48p9w5En/YJAF349F1/jZ5DHTa5CbzxuNt7Lkpcp29e1vGln11t1t2FHl/tlHUPK/CTHiIfh2LGhqosA==
+"@whatwg-node/server@^0.9.36":
+  version "0.9.36"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.36.tgz#69524c6d4254e62777adf7ec7a7eea2f7f6c9314"
+  integrity sha512-KT9qKLmbuWSuFv0Vg4JyK2vN2+vSuQPeEa25xpndYFROAIZntYe7e2BlWAk9l7IrgnV+M4bCVhjrAwwRsaCeiA==
   dependencies:
     "@whatwg-node/fetch" "^0.9.17"
     tslib "^2.3.1"
