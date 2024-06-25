@@ -3615,10 +3615,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.51.0":
-  version "0.51.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.51.0.tgz#04c92a5ca8e8b463a197866b129c2d5a220e9a12"
-  integrity sha512-xelcvFGPI4VYrV5ozADmRuFQBKmDqDRzxfHVuCDD1/firZiSQvTP0pntxHuYUSkRyL8I83kvABXUlnLYNT2VuA==
+"@types/k6@0.51.1":
+  version "0.51.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.51.1.tgz#1919fc8f0889dab0d742a9f3b6ecb16031d6ebe1"
+  integrity sha512-0V5Xl4ld0QU7GM8dsHqE5yEpRwysB+/vZGh/NZp4MQCruuRaUYVGziE/A6VaqbK38de8ZPfDNTKCTMoDRHrpDg==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
