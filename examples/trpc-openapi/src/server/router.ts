@@ -80,7 +80,7 @@ const authRouter = t.router({
     .output(
       z.object({
         user: z.object({
-          id: z.string().crypto.randomUUID(),
+          id: z.string().uuid(),
           email: z.string().email(),
           name: z.string().min(3),
         }),
@@ -167,7 +167,7 @@ const usersRouter = t.router({
       z.object({
         users: z.array(
           z.object({
-            id: z.string().crypto.randomUUID(),
+            id: z.string().uuid(),
             email: z.string().email(),
             name: z.string(),
           }),
@@ -194,13 +194,13 @@ const usersRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().crypto.randomUUID(),
+        id: z.string().uuid(),
       }),
     )
     .output(
       z.object({
         user: z.object({
-          id: z.string().crypto.randomUUID(),
+          id: z.string().uuid(),
           email: z.string().email(),
           name: z.string(),
         }),
@@ -232,16 +232,16 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        userId: z.string().crypto.randomUUID().optional(),
+        userId: z.string().uuid().optional(),
       }),
     )
     .output(
       z.object({
         posts: z.array(
           z.object({
-            id: z.string().crypto.randomUUID(),
+            id: z.string().uuid(),
             content: z.string(),
-            userId: z.string().crypto.randomUUID(),
+            userId: z.string().uuid(),
           }),
         ),
       }),
@@ -268,15 +268,15 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().crypto.randomUUID(),
+        id: z.string().uuid(),
       }),
     )
     .output(
       z.object({
         post: z.object({
-          id: z.string().crypto.randomUUID(),
+          id: z.string().uuid(),
           content: z.string(),
-          userId: z.string().crypto.randomUUID(),
+          userId: z.string().uuid(),
         }),
       }),
     )
@@ -310,9 +310,9 @@ const postsRouter = t.router({
     .output(
       z.object({
         post: z.object({
-          id: z.string().crypto.randomUUID(),
+          id: z.string().uuid(),
           content: z.string(),
-          userId: z.string().crypto.randomUUID(),
+          userId: z.string().uuid(),
         }),
       }),
     )
@@ -339,16 +339,16 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().crypto.randomUUID(),
+        id: z.string().uuid(),
         content: z.string().min(1),
       }),
     )
     .output(
       z.object({
         post: z.object({
-          id: z.string().crypto.randomUUID(),
+          id: z.string().uuid(),
           content: z.string(),
-          userId: z.string().crypto.randomUUID(),
+          userId: z.string().uuid(),
         }),
       }),
     )
@@ -384,7 +384,7 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().crypto.randomUUID(),
+        id: z.string().uuid(),
       }),
     )
     .output(z.null())
