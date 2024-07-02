@@ -2,11 +2,12 @@ import { createServer } from 'http';
 import { createRouter, Response, RouterRequest, Type } from 'fets';
 import { App } from 'uWebSockets.js';
 
-async function handler(request: RouterRequest) {
-  const body = await request.json();
-  return Response.json({
-    message: `Hello, ${body.name}!`,
-  });
+function handler(request: RouterRequest) {
+  return request.json().then(body =>
+    Response.json({
+      message: `Hello, ${body.name}!`,
+    }),
+  );
 }
 
 let readyCount = 0;

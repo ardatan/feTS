@@ -1,12 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { OpenApiMeta } from 'trpc-openapi';
-import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
 import { initTRPC, TRPCError } from '@trpc/server';
 import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 import { database, Post, User } from './database';
 
-const jwtSecret = uuid();
+const jwtSecret = crypto.randomUUID();
 
 export type Context = {
   user: User | null;
@@ -27,7 +26,7 @@ const t = initTRPC
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const createContext = async ({ req, res }: CreateNextContextOptions): Promise<Context> => {
-  const requestId = uuid();
+  const requestId = crypto.randomUUID();
   res.setHeader('x-request-id', requestId);
 
   let user: User | null = null;
@@ -81,7 +80,7 @@ const authRouter = t.router({
     .output(
       z.object({
         user: z.object({
-          id: z.string().uuid(),
+          id: z.string().crypto.randomUUID(),
           email: z.string().email(),
           name: z.string().min(3),
         }),
@@ -98,7 +97,7 @@ const authRouter = t.router({
       }
 
       user = {
-        id: uuid(),
+        id: crypto.randomUUID(),
         email: input.email,
         passcode: input.passcode,
         name: input.name,
@@ -168,7 +167,7 @@ const usersRouter = t.router({
       z.object({
         users: z.array(
           z.object({
-            id: z.string().uuid(),
+            id: z.string().crypto.randomUUID(),
             email: z.string().email(),
             name: z.string(),
           }),
@@ -195,13 +194,13 @@ const usersRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().uuid(),
+        id: z.string().crypto.randomUUID(),
       }),
     )
     .output(
       z.object({
         user: z.object({
-          id: z.string().uuid(),
+          id: z.string().crypto.randomUUID(),
           email: z.string().email(),
           name: z.string(),
         }),
@@ -233,16 +232,16 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        userId: z.string().uuid().optional(),
+        userId: z.string().crypto.randomUUID().optional(),
       }),
     )
     .output(
       z.object({
         posts: z.array(
           z.object({
-            id: z.string().uuid(),
+            id: z.string().crypto.randomUUID(),
             content: z.string(),
-            userId: z.string().uuid(),
+            userId: z.string().crypto.randomUUID(),
           }),
         ),
       }),
@@ -269,15 +268,15 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().uuid(),
+        id: z.string().crypto.randomUUID(),
       }),
     )
     .output(
       z.object({
         post: z.object({
-          id: z.string().uuid(),
+          id: z.string().crypto.randomUUID(),
           content: z.string(),
-          userId: z.string().uuid(),
+          userId: z.string().crypto.randomUUID(),
         }),
       }),
     )
@@ -311,15 +310,15 @@ const postsRouter = t.router({
     .output(
       z.object({
         post: z.object({
-          id: z.string().uuid(),
+          id: z.string().crypto.randomUUID(),
           content: z.string(),
-          userId: z.string().uuid(),
+          userId: z.string().crypto.randomUUID(),
         }),
       }),
     )
     .mutation(({ input, ctx }) => {
       const post: Post = {
-        id: uuid(),
+        id: crypto.randomUUID(),
         content: input.content,
         userId: ctx.user.id,
       };
@@ -340,16 +339,16 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().uuid(),
+        id: z.string().crypto.randomUUID(),
         content: z.string().min(1),
       }),
     )
     .output(
       z.object({
         post: z.object({
-          id: z.string().uuid(),
+          id: z.string().crypto.randomUUID(),
           content: z.string(),
-          userId: z.string().uuid(),
+          userId: z.string().crypto.randomUUID(),
         }),
       }),
     )
@@ -385,7 +384,7 @@ const postsRouter = t.router({
     })
     .input(
       z.object({
-        id: z.string().uuid(),
+        id: z.string().crypto.randomUUID(),
       }),
     )
     .output(z.null())
