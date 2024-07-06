@@ -20,7 +20,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.4.2",
-    "@types/node": "20.14.9",
+    "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@typescript/sandbox": "^0.1.0",
     "monaco-editor": "0.50.0",
