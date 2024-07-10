@@ -2603,10 +2603,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.49.0":
-  version "2.49.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.49.0.tgz#ba138de5e4f8a794a6a7f55ff80a363bbce3eb61"
-  integrity sha512-7Lsk3E59Fte6aCSBhCzgnl6xPFVOWFZn5yp/vrwhFqM3VBXSLUT8n3x2xjzMjQRi1yAoybNU+x8IigqB/L6I8A==
+"@pulumi/azure-native@2.49.1":
+  version "2.49.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.49.1.tgz#adfa3d6dd28318c4f542131b11932485d080fb45"
+  integrity sha512-IrPefZLbbxmKa9/DXKC9ZX7niSEy6/GXXvqABr5Dmbgc7PDV4lNV0rvtLcWLRyMX8f0cEjV3abtUNzbZAnLZzg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -4341,6 +4341,11 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.8.6.tgz#2c9c157cf1739d67561c56ba896e6948f6b93731"
   integrity sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==
 
+async@^3.2.3:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.5.tgz#ebd52a8fdaf7a2289a24df399f8d8485c8a46b66"
+  integrity sha512-baNZyqaaLhyLVKm/DlvdW051MSgO6b8eVfIezl9E5PqWxFgzLm/wQntEW4zOytVburDEr0JlALEpdOFwvErLsg==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -4835,7 +4840,7 @@ chalk@^2.1.0, chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.2:
+chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -6018,6 +6023,13 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
+ejs@^3.0.0:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.1.10.tgz#69ab8358b14e896f80cc39e62087b88500c3ac3b"
+  integrity sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==
+  dependencies:
+    jake "^10.8.5"
+
 electron-to-chromium@^1.4.796:
   version "1.4.818"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.818.tgz#7762c8bfd15a07c3833b7f5deed990e9e5a4c24f"
@@ -6946,6 +6958,13 @@ file-loader@^4.2.0:
   dependencies:
     loader-utils "^1.2.3"
     schema-utils "^2.5.0"
+
+filelist@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/filelist/-/filelist-1.0.4.tgz#f78978a1e944775ff9e62e744424f215e58352b5"
+  integrity sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==
+  dependencies:
+    minimatch "^5.0.1"
 
 fill-range@^7.1.1:
   version "7.1.1"
@@ -8339,6 +8358,16 @@ jackspeak@^2.3.5:
     "@isaacs/cliui" "^8.0.2"
   optionalDependencies:
     "@pkgjs/parseargs" "^0.11.0"
+
+jake@^10.8.5:
+  version "10.9.1"
+  resolved "https://registry.yarnpkg.com/jake/-/jake-10.9.1.tgz#8dc96b7fcc41cb19aa502af506da4e1d56f5e62b"
+  integrity sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==
+  dependencies:
+    async "^3.2.3"
+    chalk "^4.0.2"
+    filelist "^1.0.4"
+    minimatch "^3.1.2"
 
 jest-changed-files@^29.7.0:
   version "29.7.0"
@@ -10308,6 +10337,13 @@ minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
   dependencies:
     brace-expansion "^1.1.7"
+
+minimatch@^5.0.1:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
+  integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
+  dependencies:
+    brace-expansion "^2.0.1"
 
 minimatch@^7.4.3:
   version "7.4.6"
@@ -13633,12 +13669,13 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-ts-jest@29.2.0:
-  version "29.2.0"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.2.0.tgz#e1a0e624d8dbed4303debf0d8e063b4403d15c40"
-  integrity sha512-eFmkE9MG0+oT6nqSOcUwL+2UUmK2IvhhUV8hFDsCHnc++v2WCCbQQZh5vvjsa8sgOY/g9T0325hmkEmi6rninA==
+ts-jest@29.2.1:
+  version "29.2.1"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.2.1.tgz#9a460bb27446d141c48a17cf24f060dbe9b58254"
+  integrity sha512-7obwtH5gw0b0XZi0wmprCSvGSvHliMBI47lPnU47vmbxWS6B+v1X94yWFo1f1vt9k/he+gttsrXjkxmgY41XNQ==
   dependencies:
     bs-logger "0.x"
+    ejs "^3.0.0"
     fast-json-stable-stringify "2.x"
     jest-util "^29.0.0"
     json5 "^2.2.3"
