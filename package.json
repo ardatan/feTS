@@ -58,11 +58,11 @@
     "patch-package": "8.0.0",
     "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "0.6.5",
-    "ts-jest": "29.2.1",
+    "ts-jest": "29.2.2",
     "typescript": "5.5.3"
   },
   "resolutions": {
-    "@pulumi/pulumi": "3.122.0",
+    "@pulumi/pulumi": "3.123.0",
     "next": "14.2.5"
   },
   "lint-staged": {
