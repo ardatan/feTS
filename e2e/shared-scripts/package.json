@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@pulumi/pulumi": "3.122.0",
+    "@pulumi/pulumi": "3.123.0",
     "@types/node": "20.14.10"
   }
 }
