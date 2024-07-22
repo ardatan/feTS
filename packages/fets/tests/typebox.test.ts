@@ -113,7 +113,7 @@ describe('TypeBox', () => {
     expect(resultJson).toMatchObject({
       errors: [
         {
-          message: 'Required property',
+          message: 'Expected required property',
           name: 'headers',
           path: '/authorization',
         },
@@ -268,7 +268,7 @@ describe('TypeBox', () => {
     expect(resultJson).toMatchObject({
       errors: [
         {
-          message: 'Required property',
+          message: 'Expected required property',
           name: 'query',
           path: '/name',
         },

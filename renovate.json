@@ -18,7 +18,8 @@
         "^@theguild/",
         "@graphql-inspector/core",
         "next",
-        "tailwindcss"
+        "tailwindcss",
+        "husky"
       ],
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
