@@ -19,5 +19,5 @@ jobs:
       releaseScript: release
       nodeVersion: 20
     secrets:
-      githubToken: ${{ secrets.GITHUB_TOKEN }}
+      githubToken: ${{ secrets.GUILD_BOT_TOKEN }}
       npmToken: ${{ secrets.NODE_AUTH_TOKEN }}
