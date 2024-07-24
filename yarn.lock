@@ -2604,10 +2604,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.45.2":
-  version "6.45.2"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.45.2.tgz#6eaa03b823abd4d4f12bb93b9335e3d4a27e2605"
-  integrity sha512-SH1/0dcPtCn6Eiqp+CzTUE8lko5JioTSqW/S7c3t3xlpzPbyMo69NUFuUKMGH7aLAalBAKW5ImiDOiRpY3z0DQ==
+"@pulumi/aws@6.46.0":
+  version "6.46.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.46.0.tgz#e6db67f750d9a7c910793b18bc826fdba5e450f0"
+  integrity sha512-6epHo9bOFXLe3dScog10vF+nmoyLSGrs+D5m7ZRtty5dUgDfaBfc31GO1EqoeBwDqxaat5BkgveuoDPECgcwDg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -4055,12 +4055,12 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.36"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.36.tgz#69524c6d4254e62777adf7ec7a7eea2f7f6c9314"
-  integrity sha512-KT9qKLmbuWSuFv0Vg4JyK2vN2+vSuQPeEa25xpndYFROAIZntYe7e2BlWAk9l7IrgnV+M4bCVhjrAwwRsaCeiA==
+  version "0.9.38"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.38.tgz#47a608b1cb04757da86be178a08a759f0d8a4758"
+  integrity sha512-b56uD1p6IjLivYmB1iBzUT/rmTxdSidiEFbozPg+gLeAcBAzwIC8xg33MDeGKvXTXUh/gLG83/TAHuC6hPwZmw==
   dependencies:
     "@whatwg-node/fetch" "^0.9.17"
-    tslib "^2.3.1"
+    tslib "^2.6.3"
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
