@@ -22,6 +22,10 @@ jobs:
       ${{ (github.event.pull_request.head.repo.full_name == github.repository ||
       github.event.inputs.onDemand == 'yes') && github.event.pull_request.title != 'Upcoming Release
       Changes' }}
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
     uses: the-guild-org/shared-config/.github/workflows/release-snapshot.yml@main
     with:
       npmTag: alpha
