@@ -4035,18 +4035,18 @@
   resolved "https://registry.yarnpkg.com/@whatwg-node/events/-/events-0.1.1.tgz#0ca718508249419587e130da26d40e29d99b5356"
   integrity sha512-AyQEn5hIPV7Ze+xFoXVU3QTHXVbWPrzaOkxtENMPMuNL6VVHrp4hHfDt9nrQpjO7BgvuM95dMtkycX5M/DZR3w==
 
-"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.17", "@whatwg-node/fetch@^0.9.4":
-  version "0.9.18"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.18.tgz#ecf7483fd55d42093c8d8678403facac6fde1c58"
-  integrity sha512-hqoz6StCW+AjV/3N+vg0s1ah82ptdVUb9nH2ttj3UbySOXUvytWw2yqy8c1cKzyRk6mDD00G47qS3fZI9/gMjg==
+"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.19", "@whatwg-node/fetch@^0.9.4":
+  version "0.9.19"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.19.tgz#4ef9336558dc076ae833d329cd15b70402851cf2"
+  integrity sha512-J+zopRcUVOhkiQYlHpxOEZuOgZtqW9xMaNQFDjESm9vRcyATms+E2/p2mZiVQGllPqWflkA3SzoJC1MxV4Pf9g==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.5.7"
+    "@whatwg-node/node-fetch" "^0.5.16"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.5.7":
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.12.tgz#abbafc8ebfa2a165a34997c768bf238bcab3ac94"
-  integrity sha512-3wBgVdAOlS5jnITT6fbzQPfRs+rgYhyjwEeALlXfgg/0GvokNK5rPuh60iraS/x5UQXNcHSI3Vb+37B9RPSjrA==
+"@whatwg-node/node-fetch@^0.5.16":
+  version "0.5.16"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.16.tgz#68669bd59265015af64fcc7c0f233f9ae03878a7"
+  integrity sha512-BmwxxGZTI8IDSiocYyb2sWMlHpa4Jq2NZ4BOuvmODgL2pqjgcFfLBuEnpX2xLscQHmmTnk+gKh0EShfRAGn3Pw==
   dependencies:
     "@kamilkisiela/fast-url-parser" "^1.1.4"
     "@whatwg-node/events" "^0.1.0"
@@ -4055,11 +4055,11 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.43"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.43.tgz#c29a64122b565c7ae96f5d3f24de34fb93ea5171"
-  integrity sha512-NXh0u6WT5E9qD0zA4Uh0U5sL0/Bx6WMjZAN+wXveqB3ciE+0xjfFEap2JbVEJq1o4am7mSg9WP2AuY3VmeiCYQ==
+  version "0.9.44"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.44.tgz#a4ebf4c66cb8e7b6c2040ed7b79940258c218aab"
+  integrity sha512-Gmnr598EOl0Y3TCTeAS3PhX8Bj/Np3JoAfED1clln/5nw/cUaYuAUW/0kL7OubKaSCYFB3FKkhHu91VR9Y/LuQ==
   dependencies:
-    "@whatwg-node/fetch" "^0.9.17"
+    "@whatwg-node/fetch" "^0.9.19"
     tslib "^2.6.3"
 
 "@yarnpkg/lockfile@^1.1.0":
@@ -6476,18 +6476,18 @@ eslint-plugin-jsx-a11y@^6.7.1:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.0"
 
-eslint-plugin-n@17.9.0:
-  version "17.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.9.0.tgz#91b43d4e10a35e455bfac2c64671f9cecc396590"
-  integrity sha512-CPSaXDXdrT4nsrOrO4mT4VB6FMUkoySRkHWuuJJHVqsIEjIeZgMY1H7AzSwPbDScikBmLN82KeM1u7ixV7PzGg==
+eslint-plugin-n@17.10.0:
+  version "17.10.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.10.0.tgz#625785a51830510c5f4bb87624db5d1c103d2e3a"
+  integrity sha512-NmrSdEid+ch9SBVuqbsK5CUiEZGtMK32KSI+arWahZbFF0nvX1oEJrWiFOWmhkWFKW9Hqor0g3qPh4AvkvWwlA==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
     enhanced-resolve "^5.17.0"
     eslint-plugin-es-x "^7.5.0"
     get-tsconfig "^4.7.0"
-    globals "^15.0.0"
+    globals "^15.8.0"
     ignore "^5.2.4"
-    minimatch "^9.0.0"
+    minimatch "^9.0.5"
     semver "^7.5.3"
 
 eslint-plugin-promise@7.0.0:
@@ -7359,7 +7359,7 @@ globals@^14.0.0:
   resolved "https://registry.yarnpkg.com/globals/-/globals-14.0.0.tgz#898d7413c29babcf6bafe56fcadded858ada724e"
   integrity sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==
 
-globals@^15.0.0:
+globals@^15.8.0:
   version "15.8.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-15.8.0.tgz#e64bb47b619dd8cbf32b3c1a0a61714e33cbbb41"
   integrity sha512-VZAJ4cewHTExBWDHR6yptdIBlx9YSSZuwojj9Nt5mBRXQzrKakDsVKQ1J63sklLvzAJm0X5+RpO4i3Y2hcOnFw==
@@ -10392,7 +10392,7 @@ minimatch@^7.4.3:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimatch@^9.0.0, minimatch@^9.0.1, minimatch@^9.0.4:
+minimatch@^9.0.0, minimatch@^9.0.1, minimatch@^9.0.4, minimatch@^9.0.5:
   version "9.0.5"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.5.tgz#d74f9dd6b57d83d8e98cfb82133b03978bc929e5"
   integrity sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==
