@@ -3972,17 +3972,17 @@
     "@typescript-eslint/types" "7.2.0"
     eslint-visitor-keys "^3.4.1"
 
-"@typescript/ata@0.9.6":
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/@typescript/ata/-/ata-0.9.6.tgz#0a65fa6b4e79f3df53d1bf060c7b6cb3ece06266"
-  integrity sha512-Kj3dmkIRAZ4YRp4hMgEYQ3PghSRO13oUtmhesun5AC9YT/EzZtLbvXBPiqu5clHEHE/chJ2lc3KUsZY1zwMqPg==
+"@typescript/ata@0.9.7":
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/@typescript/ata/-/ata-0.9.7.tgz#a91a5bb036f261aacb4b56d918f3cd312a873d71"
+  integrity sha512-CZx57/XGBKhYZ3ifchbERgUl9J6C7W3XC96ibM7axr7C32mG5dXTyrVAS3ZY88Jxlkvx4AZyZtDJyUuseHQkcQ==
 
 "@typescript/sandbox@^0.1.0":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.6.tgz#b4e162ce1be6d2154b2f2030aa5ad3a454d484e3"
-  integrity sha512-xd9c8+V32awTIrxeVkjATQc5URz4Enfqfj0yiTcNZtmQQ7genUU9a69fcboIsiZO3MUUbkUF6FJCAHcXBtH9Qw==
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.7.tgz#2fcd3e44c06889e075b281520f98cd8c343ef012"
+  integrity sha512-WOS9ZJJJiIh7DSjnZnROnfZ9lG7MGeBBf7r+6EpciSr+U5mQEX4E4tk50JP3NY159v4xEBAB8E+XgbtkL3++DQ==
   dependencies:
-    "@typescript/ata" "0.9.6"
+    "@typescript/ata" "0.9.7"
     "@typescript/vfs" "1.6.0"
     lz-string "^1.5.0"
 
