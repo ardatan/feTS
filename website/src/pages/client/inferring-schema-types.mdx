@@ -19,7 +19,7 @@ type User = OASModel<NormalizeOAS<typeof oas>, 'User'>
 To infer request body parameters from an OpenAPI document, utilize the `OASRequestBody` type:
 
 ```ts filename="user-request-parameters.ts"
-import type { NormalizeOAS, OASRequestParameters } from 'fets'
+import type { NormalizeOAS, OASRequestParams } from 'fets'
 import type oas from './openapi'
 
 type AddUserInput = OASRequestParams<NormalizeOAS<typeof oas>, '/user', 'POST'>
