@@ -13917,9 +13917,9 @@ typescript@5.5.4, typescript@^5.5.2:
   integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
-  version "20.44.0"
-  uid "8fa05571bf6ea95be8966ad313d9d39453e381ae"
-  resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/8fa05571bf6ea95be8966ad313d9d39453e381ae"
+  version "20.47.0"
+  uid "6f4b450fc642abba540535f0755c990b42a16026"
+  resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/6f4b450fc642abba540535f0755c990b42a16026"
 
 ufo@^1.5.3:
   version "1.5.4"
