@@ -1,5 +1,16 @@
 # fets
 
+## 0.8.2
+
+### Patch Changes
+
+- [#1791](https://github.com/ardatan/feTS/pull/1791)
+  [`0f49090`](https://github.com/ardatan/feTS/commit/0f49090d7c677ab834a281e3c616c10a3ea611d1)
+  Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
+  - Updated dependency
+    [`@sinclair/typebox@^0.33.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.33.0)
+    (from `^0.32.0`, in `dependencies`)
+
 ## 0.8.1
 
 ### Patch Changes
