@@ -2591,10 +2591,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.48.0":
-  version "6.48.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.48.0.tgz#88943ebd25679caa59ea53aaf97df4beb00278e3"
-  integrity sha512-Y+raJupp7mtMmDC6C1yDiapE6cPbkH/T+wVovePBKtwggipJ33ezZtZ8n95CseiN9ii9fo5jX0iLIEaOpv5/fw==
+"@pulumi/aws@6.49.0":
+  version "6.49.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.49.0.tgz#5781327478daac9456080d49a474ce9c0195cdc0"
+  integrity sha512-Xj/rf0dmcykCxBtf1rNk6OWVSnCXDb5bl6T2/FIzmnDRETc/Tnhk5m7GsSmZe7a3l00IMbvodBre+FIxikimKg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2632,10 +2632,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.128.0", "@pulumi/pulumi@^3.0.0":
-  version "3.128.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.128.0.tgz#cb44cb904e9be1e36c7697215c2f91d4e58c0031"
-  integrity sha512-Xqe5uYp1RpDihK3VbdBFR4q1h+ICg/2Xgg1d7aYWmPqBCIUG4jWddLS0REQO60EsgKBNarXhLeQSmaWXLgiq9w==
+"@pulumi/pulumi@3.129.0", "@pulumi/pulumi@^3.0.0":
+  version "3.129.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.129.0.tgz#540b9b065e33c27a92eab86daef36a407621a518"
+  integrity sha512-kjdO81GzEBwFHTYBUg/nz63RLuJ2T4SwObTKBgrfLsyYiPxvTaWdS7Y/N5ww6d4GgnmRNr/dh5mb1LuhlL41fQ==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
