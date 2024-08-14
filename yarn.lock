@@ -3689,12 +3689,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@22.2.0", "@types/node@>=13.7.0", "@types/node@^22.0.0":
-  version "22.2.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.2.0.tgz#7cf046a99f0ba4d628ad3088cb21f790df9b0c5b"
-  integrity sha512-bm6EG6/pCpkxDf/0gDNDdtDILMOHgaQBVOJGdwsqClnxA3xL6jtMv76rLBc006RVMWbmaf0xbmom4Z/5o2nRkQ==
+"@types/node@*", "@types/node@22.3.0", "@types/node@>=13.7.0", "@types/node@^22.0.0":
+  version "22.3.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.3.0.tgz#7f8da0e2b72c27c4f9bd3cb5ef805209d04d4f9e"
+  integrity sha512-nrWpWVaDZuaVc5X84xJ0vNrLvomM205oQyLsRt7OHNZbSHslcWsvgFR7O7hire2ZonjLrWBbedmotmIlJDVd6g==
   dependencies:
-    undici-types "~6.13.0"
+    undici-types "~6.18.2"
 
 "@types/node@^12.7.1":
   version "12.20.55"
@@ -4703,9 +4703,9 @@ builtin-modules@3.0.0:
   integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.23.tgz#8958882f91810fe76c7e0e6443ded136813d4aab"
-  integrity sha512-0MxVB5V8Zl98IMiDhhxzYEFyK7TpjPEXf/5A3R/RrYvYG3WXOFWhH61ITdWi7o4Iyvjq21qLwQDi6okzichAyA==
+  version "1.1.24"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.24.tgz#406ece69f5b762d8467a74d618eecee05aaead81"
+  integrity sha512-UNEcYawHWOVw9GYQdOgjJvTQduYlPckmRMqpBqfkWpUzeK2CZfEP/JOYBH6SMypyfkNg/Zsqf0olN6vMrSPg3w==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
@@ -13951,10 +13951,10 @@ undici-types@~5.26.4:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
-undici-types@~6.13.0:
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.13.0.tgz#e3e79220ab8c81ed1496b5812471afd7cf075ea5"
-  integrity sha512-xtFJHudx8S2DSoujjMd1WeWvn7KKWFRESZTMeL1RptAYERu29D6jphMjjY+vn96jvN3kVPDNxU/E13VTaXj6jg==
+undici-types@~6.18.2:
+  version "6.18.2"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.18.2.tgz#8b678cf939d4fc9ec56be3c68ed69c619dee28b0"
+  integrity sha512-5ruQbENj95yDYJNS3TvcaxPMshV7aizdv/hWYjGIKoANWKjhWNBsr2YEuYZKodQulB1b8l7ILOuDQep3afowQQ==
 
 undici@^5.13.0, undici@^5.28.4:
   version "5.28.4"
