@@ -1,5 +1,13 @@
 # fets
 
+## 0.8.3
+
+### Patch Changes
+
+- [#1824](https://github.com/ardatan/feTS/pull/1824)
+  [`047ecec`](https://github.com/ardatan/feTS/commit/047ececffe2e60d84e7c942181f342034d5fe5f2)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix nested circular references
+
 ## 0.8.2
 
 ### Patch Changes
