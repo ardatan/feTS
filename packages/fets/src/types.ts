@@ -159,6 +159,20 @@ type RangedJSONSchema<T extends { minimum: number; maximum: number }> = T extend
 } ? MIN extends number ? MAX extends number ? IntRange<MIN, MAX> : never : never : never;
 */
 
+export type Circular<TJSONSchema extends JSONSchema> = TJSONSchema extends {
+  properties: { [key: string]: JSONSchema };
+}
+  ? TJSONSchema extends PropertyValue<TJSONSchema, Property<TJSONSchema>>
+    ? true
+    : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+  : false;
+
+export type Property<TJSONSchema extends JSONSchema> = keyof TJSONSchema['properties'];
+export type PropertyValue<
+  TJSONSchema extends JSONSchema,
+  TProperty extends keyof TJSONSchema['properties'],
+> = TJSONSchema['properties'][TProperty];
+
 export type FromSchema<T> =
   /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends {
     static: infer U;
@@ -168,9 +182,8 @@ export type FromSchema<T> =
       ? FromSchemaOriginal<
           T,
           {
-            deserialize: T extends T['properties'][keyof T['properties']]
-              ? false
-              : [
+            deserialize: Circular<T> extends false
+              ? [
                   {
                     pattern: {
                       type: 'string';
@@ -192,7 +205,8 @@ export type FromSchema<T> =
                     };
                     output: bigint | number;
                   },
-                ];
+                ]
+              : false;
           }
         >
       : never;

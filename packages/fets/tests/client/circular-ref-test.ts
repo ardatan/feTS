@@ -1,6 +1,7 @@
 import {
   createClient,
   OASJSONResponseSchema,
+  OASModel,
   OASOutput,
   type FromSchema,
   type NormalizeOAS,
@@ -72,3 +73,14 @@ if (response.ok) {
 } else {
   console.log(response.status);
 }
+
+type NodeA = OASModel<NormalizedOAS, 'Node'>;
+const nodeA = {} as NodeA;
+const numberA = nodeA.child?.child?.child?.child?.number;
+type NumberA = typeof numberA;
+let numberAVar: NumberA;
+numberAVar = 2;
+// @ts-expect-error - numberAVar is a number
+numberAVar = 'a';
+
+console.log(numberAVar);
