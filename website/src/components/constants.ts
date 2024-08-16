@@ -20,7 +20,7 @@ if (!response.ok) {
 
 const successRes = await response.json()
 
-console.log('User created with ID: ', successRes.user.name)
+console.log('User created with ID: ', successRes.user.id)
 
 export const oas = {
   openapi: '3.0.3',
