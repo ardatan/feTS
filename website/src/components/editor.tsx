@@ -98,7 +98,7 @@ export function Editor() {
 
         setTimeout(() => {
           // https://github.com/microsoft/monaco-editor/issues/2052#issuecomment-689786705
-          editor.setPosition(new monaco.Position(7, 7));
+          editor.setPosition(new monaco.Position(20, 7));
           editor.getAction('editor.action.showHover')!.run();
           loadingElement.remove();
           monacoEl.classList.remove('opacity-0');
