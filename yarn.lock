@@ -2610,10 +2610,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.56.0":
-  version "2.56.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.56.0.tgz#fdcf4d00f098b1c42b28eee9cf446ee9015496bf"
-  integrity sha512-xmLYAehU5UjlajDk3SctJrsiSof0ypYhu5Be/zJLYSxSfYh2h/3mTFnJPEmEBaVaAt6vGbcW0AzT35PbvqVtCw==
+"@pulumi/azure-native@2.57.0":
+  version "2.57.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.57.0.tgz#756e9db5833d37d5aad2ce539bdf2b9b04f271e5"
+  integrity sha512-LSqDUzT6/k3A+6zC4Nch4q6s9USDYjIMGhRYrVSotKQjffNsGKzgnYaKMC5Fl9OD8xn+vsEtJfGJhW9M0kktzw==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -14549,10 +14549,10 @@ workerd@1.20240806.0:
     "@cloudflare/workerd-linux-arm64" "1.20240806.0"
     "@cloudflare/workerd-windows-64" "1.20240806.0"
 
-wrangler@3.72.0:
-  version "3.72.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.72.0.tgz#27c2863e6dfb89f7f849b0644e96a988f1b63415"
-  integrity sha512-9sryHTCtCj48vUC5y/M3Dsx02U1bT6mK9E41TXBCpSJgWh8UvWG/xgmu2dY93Mqj9aJIvK/kwwIBRlNFRwF7Hw==
+wrangler@3.72.1:
+  version "3.72.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.72.1.tgz#239b9f8cab66fc5517f317d666633f2f927aad08"
+  integrity sha512-0UrkDpBJb1KHP6msGF+k14+2CFoF9jFKMKGEPfr6yflCduKVas9qA2ExKiRF5un9PKDY79cszuwvVUtir2NfLg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.2.0"
