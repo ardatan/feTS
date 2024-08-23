@@ -3,11 +3,9 @@ import tailwindConfig, { Config } from '@theguild/tailwind-config';
 export default {
   ...tailwindConfig,
   theme: {
-    // @ts-expect-error false positive?
     ...tailwindConfig.theme,
     extend: {
       colors: {
-        // @ts-expect-error false positive?
         ...tailwindConfig.theme.extend.colors,
         dark: '#0b0d11',
         // gray name conflicts with @theguild/components

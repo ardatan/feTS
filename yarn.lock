@@ -2591,10 +2591,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.50.0":
-  version "6.50.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.50.0.tgz#203e7f07849b761e9a7d06d80450156574402327"
-  integrity sha512-v+Dit+WCN6qXviByTvCSbnD+CNkSeti8vYVdqRkOKt82oxs3XhIoIZPs/AdILxR7226mf/0FK3rnBeBt28eITg==
+"@pulumi/aws@6.50.1":
+  version "6.50.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.50.1.tgz#7b4f29131dbee9d8bcdbb6e536535e80211ab7b2"
+  integrity sha512-PzU8DnOsLCFgqeV7eFSrmcyqos2ilsuuRNbGLxP9pP1dXhsBvXoLFVyLNdTuI+zDG58fOmC2c7KsXXuyo3vjvg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2610,10 +2610,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.57.1":
-  version "2.57.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.57.1.tgz#e3672cfd2403d16b7d1b3c3762155f2137be8b80"
-  integrity sha512-vwQcfrkatqaBDq8HXAnPrRXrhNH3jqwqMg7UP/f/K68+o0Om/DvLs+9GCKOAP+oJYUx6iZxsQ5bBau7L/tv/Wg==
+"@pulumi/azure-native@2.58.0":
+  version "2.58.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.58.0.tgz#c35e1f1259eb724d04b99dc711236bc06fe43840"
+  integrity sha512-vfW9VW/M28E8N8C+gypmMMTYAtFwcI7ReXfjwhva+OVbRGoumaW5hP0sxkfdMaqE+hWD0KNqWes9x0108DVy2A==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3629,10 +3629,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.53.0":
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.53.0.tgz#2bba27db67a40bc0b6392cf3753f51cd2495c28b"
-  integrity sha512-5gvPxn4I7b08AS0UZPjYALg4rg4rslSNVfHPiZ1ta0EEwsJOd+uKMkvwGkQOKy0a/8HAfthxD61Qci1kXcJOjg==
+"@types/k6@0.53.1":
+  version "0.53.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.53.1.tgz#51a8cbdfcf1278ed601c87c6d7d2e9cf15f0fd73"
+  integrity sha512-Mm1+7kESDNssyBiMV+5MVAJKwpJbj1Y3X1YkCDlaiPbjuc8DeaPtQFBv3pnip/0ZjM9P/P/aDNvd4BvQT0lQDg==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
@@ -10484,10 +10484,10 @@ module-details-from-path@^1.0.3:
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.3.tgz#114c949673e2a8a35e9d35788527aa37b679da2b"
   integrity sha512-ySViT69/76t8VhE1xXHK6Ch4NcDd26gx0MzKXLO+F7NOtnqH68d9zF94nT8ZWSxXh8ELOERsnJO/sWt1xZYw5A==
 
-monaco-editor@0.50.0:
-  version "0.50.0"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.50.0.tgz#44e62b124c8aed224e1d310bbbe6ffd6d5122413"
-  integrity sha512-8CclLCmrRRh+sul7C08BmPBP3P8wVWfBHomsTcndxg5NRCEPfu/mc2AGU8k37ajjDVXcXFc12ORAMUkmk+lkFA==
+monaco-editor@0.51.0:
+  version "0.51.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.51.0.tgz#922a6103f6742b5a62fbb097276c5a6619d879db"
+  integrity sha512-xaGwVV1fq343cM7aOYB6lVE4Ugf0UyimdD/x5PWcWBMKENwectaEu77FAN7c5sFiyumqeJdX1RPTh1ocioyDjw==
 
 mri@^1.1.0, mri@^1.2.0:
   version "1.2.0"
