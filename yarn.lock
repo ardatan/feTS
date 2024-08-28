@@ -3420,10 +3420,10 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/aws-lambda@8.10.144":
-  version "8.10.144"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.144.tgz#4c9dfed39a41bf92eea0b8ad7bb087dcc0b5864b"
-  integrity sha512-zRN25EUlALZsDlFfFCFEkQYXWj2WWu69pDBTycrsoFE+cS0XEs8vpFlSrq/L8OoJsrMW12LZtpvDHIGwGkQ2yg==
+"@types/aws-lambda@8.10.145":
+  version "8.10.145"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.145.tgz#b2d31a987f4888e5553ff1819f57cafa475594d9"
+  integrity sha512-dtByW6WiFk5W5Jfgz1VM+YPA21xMXTuSFoLYIDY0L44jDLLflVPtZkYuu3/YxpGcvjzKFBZLU+GyKjR0HOYtyw==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
@@ -3689,10 +3689,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@22.5.0", "@types/node@>=13.7.0", "@types/node@^22.0.0":
-  version "22.5.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.0.tgz#10f01fe9465166b4cab72e75f60d8b99d019f958"
-  integrity sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==
+"@types/node@*", "@types/node@22.5.1", "@types/node@>=13.7.0", "@types/node@^22.0.0":
+  version "22.5.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.5.1.tgz#de01dce265f6b99ed32b295962045d10b5b99560"
+  integrity sha512-KkHsxej0j9IW1KKOOAA/XBA0z08UFSrRQHErzEfA3Vgq57eXIMYboIlHJuYIfd+lwCQjtKqUu3UnmKbtUc9yRw==
   dependencies:
     undici-types "~6.19.2"
 
