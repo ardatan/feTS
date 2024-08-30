@@ -1338,10 +1338,10 @@
   resolved "https://registry.yarnpkg.com/@cloudflare/workerd-windows-64/-/workerd-windows-64-1.20240821.1.tgz#256d61b5dd327f2b86fa4a522fe977f97aa188a2"
   integrity sha512-keC97QPArs6LWbPejQM7/Y8Jy8QqyaZow4/ZdsGo+QjlOLiZRDpAenfZx3CBUoWwEeFwQTl2FLO+8hV1SWFFYw==
 
-"@cloudflare/workers-shared@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@cloudflare/workers-shared/-/workers-shared-0.4.0.tgz#27b982a9a09150950fef63012dead6f5d2f55f84"
-  integrity sha512-XAFOldVQsbxQ7mjbqX2q1dNIgcLbKSytk41pwuZTn9e0p7OeTpFTosJef8uwosL6CcOAHqcW1f1HJxyjwmtGxw==
+"@cloudflare/workers-shared@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@cloudflare/workers-shared/-/workers-shared-0.4.1.tgz#49a1c89ae2f96cdf2c7ac2d1c5bf38d039947617"
+  integrity sha512-nYh4r8JwOOjYIdH2zub++CmIKlkYFlpxI1nBHimoiHcytJXD/b7ldJ21TtfzUZMCgI78mxVlymMHA/ReaOxKlA==
 
 "@corex/deepmerge@^4.0.43":
   version "4.0.43"
@@ -3737,10 +3737,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.3.4", "@types/react@^18.2.38":
-  version "18.3.4"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.4.tgz#dfdd534a1d081307144c00e325c06e00312c93a3"
-  integrity sha512-J7W30FTdfCxDDjmfRM+/JqLHBIyl7xUIp9kwK637FGmY7+mkSFSe6L4jpZzhj5QMfLssSDP4/i75AKkrdC7/Jw==
+"@types/react@*", "@types/react@18.3.5", "@types/react@^18.2.38":
+  version "18.3.5"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.5.tgz#5f524c2ad2089c0ff372bbdabc77ca2c4dbadf8f"
+  integrity sha512-WeqMfGJLGuLCqHGYRGHxnKrXcTitc6L/nBUWfWPcTarG3t9PsquqUMuVeXZeca+mglY4Vo5GZjCi0A3Or2lnxA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -13928,7 +13928,7 @@ typescript@5.5.4, typescript@^5.5.2:
   uid "51ae1d1fd92dff77cbbdc7c431021f85578da1a6"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/51ae1d1fd92dff77cbbdc7c431021f85578da1a6"
 
-ufo@^1.5.3:
+ufo@^1.5.3, ufo@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.5.4.tgz#16d6949674ca0c9e0fbbae1fa20a71d7b1ded754"
   integrity sha512-UsUk3byDzKd04EyoZ7U4DOlxQaD14JUKQl6/P7wiX4FNvUfm3XL246n9W5AmqwW5RSFJ27NAuM0iLscAOYUiGQ==
@@ -13976,17 +13976,15 @@ unenv@^1.9.0:
     node-fetch-native "^1.6.4"
     pathe "^1.1.2"
 
-"unenv@npm:unenv-nightly@1.10.0-1717606461.a117952":
-  version "1.10.0-1717606461.a117952"
-  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-1.10.0-1717606461.a117952.tgz#ff0b97e1e159f84be747271e1d55263b4b3eae7e"
-  integrity sha512-u3TfBX02WzbHTpaEfWEKwDijDSFAHcgXkayUZ+MVDrjhLFvgAJzFGTSTmwlEhwWi2exyRQey23ah9wELMM6etg==
+"unenv@npm:unenv-nightly@2.0.0-1724863496.70db6f1":
+  version "2.0.0-1724863496.70db6f1"
+  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-2.0.0-1724863496.70db6f1.tgz#6aba0f79b9e3238fc88d3e16e3acd66067dced44"
+  integrity sha512-r+VIl1gnsI4WQxluruSQhy8alpAf1AsLRLm4sEKp3otCyTIVD6I6wHEYzeQnwsyWgaD4+3BD4A/eqrgOpdTzhw==
   dependencies:
-    consola "^3.2.3"
     defu "^6.1.4"
-    mime "^3.0.0"
-    node-fetch-native "^1.6.4"
+    ohash "^1.1.3"
     pathe "^1.1.2"
-    ufo "^1.5.3"
+    ufo "^1.5.4"
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"
@@ -14549,13 +14547,13 @@ workerd@1.20240821.1:
     "@cloudflare/workerd-linux-arm64" "1.20240821.1"
     "@cloudflare/workerd-windows-64" "1.20240821.1"
 
-wrangler@3.72.3:
-  version "3.72.3"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.72.3.tgz#e958a77a9a125ff6f72f87493502078547c3ca31"
-  integrity sha512-EBlJGOcwanbzFkiJkRB47WKhvevh1AZK0ty0MyD0gptsgWnAxBfmFGiBuzOuRXbvH45ZrFrTqgi8c67EwcV1nA==
+wrangler@3.73.0:
+  version "3.73.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.73.0.tgz#129f7dc97ce7202477349c2025bd37216152c387"
+  integrity sha512-VrdDR2OpvsCQp+r5Of3rDP1W64cNN/LHLVx1roULOlPS8PZiv7rUYgkwhdCQ61+HICAaeSxWYIzkL5+B9+8W3g==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
-    "@cloudflare/workers-shared" "0.4.0"
+    "@cloudflare/workers-shared" "0.4.1"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
     "@esbuild-plugins/node-modules-polyfill" "^0.2.2"
     blake3-wasm "^2.1.5"
@@ -14569,7 +14567,7 @@ wrangler@3.72.3:
     resolve.exports "^2.0.2"
     selfsigned "^2.0.1"
     source-map "^0.6.1"
-    unenv "npm:unenv-nightly@1.10.0-1717606461.a117952"
+    unenv "npm:unenv-nightly@2.0.0-1724863496.70db6f1"
     workerd "1.20240821.1"
     xxhash-wasm "^1.0.1"
   optionalDependencies:
