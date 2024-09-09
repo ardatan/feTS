@@ -2615,10 +2615,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.59.0":
-  version "2.59.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.59.0.tgz#3b9854ed24820caf99183e895ec8a58c2c39af78"
-  integrity sha512-4iMuIS9fvGmDE/06By2QBMEcFbh+qJZXOIGGnPHQhlZcoJrpyoRjAanB5ljklk/nTaK9w2mzWf8tN9FcFpYr3g==
+"@pulumi/azure-native@2.60.0":
+  version "2.60.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.60.0.tgz#b530387b84f677730fb409d8175d5ee1e74a864a"
+  integrity sha512-iYt8MkZwO1eSNuNAMk6zg4JbP7kk+sjkAXXH3+sqV4nSVa1C+ilgLJfDvEzNS2h5fmm/u3tAAUqukIwCuhH7tg==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -4465,7 +4465,7 @@ axe-core@^4.10.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.0.tgz#d9e56ab0147278272739a000880196cdfe113b59"
   integrity sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==
 
-axios@^1.4.0, axios@^1.6.1:
+axios@^1.4.0, axios@^1.7.4:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
   integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
@@ -8817,7 +8817,7 @@ jmespath@0.16.0:
   resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.16.0.tgz#b15b0a85dfd4d930d43e69ed605943c802785076"
   integrity sha512-9FzQjJ7MATs1tSpnco1K6ayiYE3figslrXA72G2HQ/n76RzvYlofyi5QM+iX4YRs/pu3yzxlVQSST23+dMDknw==
 
-joi@^17.11.0:
+joi@^17.13.3:
   version "17.13.3"
   resolved "https://registry.yarnpkg.com/joi/-/joi-17.13.3.tgz#0f5cc1169c999b30d344366d384b12d92558bcec"
   integrity sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==
@@ -13104,10 +13104,10 @@ stacktracey@^2.1.8:
     as-table "^1.0.36"
     get-source "^2.0.12"
 
-start-server-and-test@2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.6.tgz#06f30f0ae00aa38c6fcfe98fb428c3f5b556a003"
-  integrity sha512-r6XGRjCcNIOnoaDtbOPxbvY23OscL5cIm2HmzTMfRE8/c0+vIDEaupnSbdJmAe6DpNuXaiRkxQ1W7VifyC+aAA==
+start-server-and-test@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.7.tgz#d88135fafc441ab25c129f73ee39008be05c15e6"
+  integrity sha512-tsOG1QbXKcRmrhCT0SrmmTex+uTjrb0SG8iF9XFmw1Cu8vPbVhER8zR4xkm5LAt1BarM/Dk7Jkfts+h8Rxfb2w==
   dependencies:
     arg "^5.0.2"
     bluebird "3.7.2"
@@ -13116,7 +13116,7 @@ start-server-and-test@2.0.6:
     execa "5.1.1"
     lazy-ass "1.6.0"
     ps-tree "1.2.0"
-    wait-on "7.2.0"
+    wait-on "8.0.0"
 
 statuses@2.0.1:
   version "2.0.1"
@@ -14394,13 +14394,13 @@ vfile@^6.0.0:
     "@types/unist" "^3.0.0"
     vfile-message "^4.0.0"
 
-wait-on@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-7.2.0.tgz#d76b20ed3fc1e2bebc051fae5c1ff93be7892928"
-  integrity sha512-wCQcHkRazgjG5XoAq9jbTMLpNIjoSlZslrJ2+N9MxDsGEv1HnFoVjOCexL0ESva7Y9cu350j+DWADdk54s4AFQ==
+wait-on@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-8.0.0.tgz#82e3f334db01cf37beef0d11639d66333b027f03"
+  integrity sha512-fNE5SXinLr2Bt7cJvjvLg2PcXfqznlqRvtE3f8AqYdRZ9BhE+XpsCp1mwQbRoO7s1q7uhAuCw0Ro3mG/KdZjEw==
   dependencies:
-    axios "^1.6.1"
-    joi "^17.11.0"
+    axios "^1.7.4"
+    joi "^17.13.3"
     lodash "^4.17.21"
     minimist "^1.2.8"
     rxjs "^7.8.1"
