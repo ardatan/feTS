@@ -2596,10 +2596,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.51.0":
-  version "6.51.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.51.0.tgz#b360dd60ed32d8456dab71f62900a6eaed31e016"
-  integrity sha512-t2aduFqp8CVZ5axGbBGwKZUjMb8y3YC1iVLgaW5wh/eHW2AYEgz9u+weqkte5c43v16QIfV15bXBy6j/fkVQOg==
+"@pulumi/aws@6.51.1":
+  version "6.51.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.51.1.tgz#070120cee76fd3b55d865868e658ac0db861391b"
+  integrity sha512-rsOcRkt5/yDUs8e1QohowNEwM1OHf0eRyD/vp2n0w6TBoKZUzPpIwPic8LF3ysWfa2GmB2ylxQ+lSQ5813Ut0w==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2615,10 +2615,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.60.0":
-  version "2.60.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.60.0.tgz#b530387b84f677730fb409d8175d5ee1e74a864a"
-  integrity sha512-iYt8MkZwO1eSNuNAMk6zg4JbP7kk+sjkAXXH3+sqV4nSVa1C+ilgLJfDvEzNS2h5fmm/u3tAAUqukIwCuhH7tg==
+"@pulumi/azure-native@2.60.1":
+  version "2.60.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.60.1.tgz#9cf0116c7a23a479cf50417863a017d217ef8afc"
+  integrity sha512-fu5xuCH5DUyDW2vdOZZ8M4CqdlcZSr7JuGlhbRTfxNxGxpNAcTAg/DSmf8d+ICmsw54zYsYSB359qd8gGrgboA==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2637,10 +2637,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.131.0", "@pulumi/pulumi@^3.0.0":
-  version "3.131.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.131.0.tgz#6233e5ee5e72907b99415b32be6a9ebf9041f096"
-  integrity sha512-QNtQeav3dkU0mRdMe2TVvkBmIGkBevVvbD7/bt0fJlGoX/onzv5tysqi1GWCkXsq0FKtBtGYNpVD6wH0cqMN6g==
+"@pulumi/pulumi@3.132.0", "@pulumi/pulumi@^3.0.0":
+  version "3.132.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.132.0.tgz#d1cf60037c3fa1cd343b7b3a3cb97a2291747f9a"
+  integrity sha512-ntsEo17gALvRdkfKMFrf7EEWrfPHPuRHG/96ziVSItYHofwMLtMk2f7BoRqOSYq3B08wHRkz6J15IUrT9l9wuQ==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -2778,9 +2778,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.9"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.9.tgz#b98894c6ea4d2b635d368259b9ea9c05c5d5a6c9"
-  integrity sha512-agK7y8hO5Gz4Thu5kxTtLiZudNRflR1rTwmnWW5skxMd/+aqQ9XQene8HyyBsiajs5HV6ZQ/pCd3IKsqIfu4Kw==
+  version "0.33.10"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.10.tgz#0f651b89124150419915484aa8d6e91342dedddc"
+  integrity sha512-gUOpbHRWwYGzWI6qb+ffHFUdGRYL+yZk01dpC6JzIiRCwHeJKyVrki3Mtn6idscTWlwi4RoWbLhTzW0vUxpl8A==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -6872,9 +6872,9 @@ exponential-backoff@^3.1.1:
   integrity sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==
 
 express@^4.18.2:
-  version "4.20.0"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.20.0.tgz#f1d08e591fcec770c07be4767af8eb9bcfd67c48"
-  integrity sha512-pLdae7I6QqShF5PnNTCVn4hI91Dx0Grkn2+IAsMTgMIKuQVte2dN9PeGSSAME2FR8anOhVA62QDIUaWVfEXVLw==
+  version "4.21.0"
+  resolved "https://registry.yarnpkg.com/express/-/express-4.21.0.tgz#d57cb706d49623d4ac27833f1cbc466b668eb915"
+  integrity sha512-VqcNGcj/Id5ZT1LZ/cfihi3ttTn+NJmkli2eZADigjq29qTlWi/hAQ43t/VLPq8+UX06FCEx3ByOYet6ZFblng==
   dependencies:
     accepts "~1.3.8"
     array-flatten "1.1.1"
@@ -6888,7 +6888,7 @@ express@^4.18.2:
     encodeurl "~2.0.0"
     escape-html "~1.0.3"
     etag "~1.8.1"
-    finalhandler "1.2.0"
+    finalhandler "1.3.1"
     fresh "0.5.2"
     http-errors "2.0.0"
     merge-descriptors "1.0.3"
@@ -6897,11 +6897,11 @@ express@^4.18.2:
     parseurl "~1.3.3"
     path-to-regexp "0.1.10"
     proxy-addr "~2.0.7"
-    qs "6.11.0"
+    qs "6.13.0"
     range-parser "~1.2.1"
     safe-buffer "5.2.1"
     send "0.19.0"
-    serve-static "1.16.0"
+    serve-static "1.16.2"
     setprototypeof "1.2.0"
     statuses "2.0.1"
     type-is "~1.6.18"
@@ -7039,13 +7039,13 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-finalhandler@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.2.0.tgz#7d23fe5731b207b4640e4fcd00aec1f9207a7b32"
-  integrity sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==
+finalhandler@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.3.1.tgz#0c575f1d1d324ddd1da35ad7ece3df7d19088019"
+  integrity sha512-6BN9trH7bp3qvnrRyzsBz+g3lZxTNZTbVO2EV1CS0WIcDbawYVdYvGflME/9QP0h0pYlCDBCTjYa9nZzMDpyxQ==
   dependencies:
     debug "2.6.9"
-    encodeurl "~1.0.2"
+    encodeurl "~2.0.0"
     escape-html "~1.0.3"
     on-finished "2.4.1"
     parseurl "~1.3.3"
@@ -11944,13 +11944,6 @@ pure-rand@^6.0.0:
   resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-6.1.0.tgz#d173cf23258231976ccbdb05247c9787957604f2"
   integrity sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==
 
-qs@6.11.0:
-  version "6.11.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
-  integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
-  dependencies:
-    side-channel "^1.0.4"
-
 qs@6.13.0, qs@^6.11.2, qs@^6.5.2:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.13.0.tgz#6ca3bd58439f7e245655798997787b0d88a51906"
@@ -12734,25 +12727,6 @@ semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.3.8, semver@^7.5.2, semve
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.3.tgz#980f7b5550bc175fb4dc09403085627f9eb33143"
   integrity sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==
 
-send@0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/send/-/send-0.18.0.tgz#670167cc654b05f5aa4a767f9113bb371bc706be"
-  integrity sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==
-  dependencies:
-    debug "2.6.9"
-    depd "2.0.0"
-    destroy "1.2.0"
-    encodeurl "~1.0.2"
-    escape-html "~1.0.3"
-    etag "~1.8.1"
-    fresh "0.5.2"
-    http-errors "2.0.0"
-    mime "1.6.0"
-    ms "2.1.3"
-    on-finished "2.4.1"
-    range-parser "~1.2.1"
-    statuses "2.0.1"
-
 send@0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/send/-/send-0.19.0.tgz#bbc5a388c8ea6c048967049dbeac0e4a3f09d7f8"
@@ -12779,15 +12753,15 @@ serialize-error@^8.1.0:
   dependencies:
     type-fest "^0.20.2"
 
-serve-static@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.16.0.tgz#2bf4ed49f8af311b519c46f272bf6ac3baf38a92"
-  integrity sha512-pDLK8zwl2eKaYrs8mrPZBJua4hMplRWJ1tIFksVC3FtBEBnl8dxgeHtsaMS8DhS9i4fLObaon6ABoc4/hQGdPA==
+serve-static@1.16.2:
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.16.2.tgz#b6a5343da47f6bdd2673848bf45754941e803296"
+  integrity sha512-VqpjJZKadQB/PEbEwvFdO43Ax5dFBZ2UECszz8bQ7pi7wt//PWe1P6MN7eCnjsatYtBT6EuiClbjSWP2WrIoTw==
   dependencies:
-    encodeurl "~1.0.2"
+    encodeurl "~2.0.0"
     escape-html "~1.0.3"
     parseurl "~1.3.3"
-    send "0.18.0"
+    send "0.19.0"
 
 set-function-length@^1.2.1:
   version "1.2.2"
