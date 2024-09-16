@@ -2599,10 +2599,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.51.1":
-  version "6.51.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.51.1.tgz#070120cee76fd3b55d865868e658ac0db861391b"
-  integrity sha512-rsOcRkt5/yDUs8e1QohowNEwM1OHf0eRyD/vp2n0w6TBoKZUzPpIwPic8LF3ysWfa2GmB2ylxQ+lSQ5813Ut0w==
+"@pulumi/aws@6.52.0":
+  version "6.52.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.52.0.tgz#84e924147f43f2a77599ad202615d07086d9e4de"
+  integrity sha512-Q1XHHk9y5YDQ8PkYa3tDnh6173goQCMUNhJKG4A0u87M4oa68Erbo5wgX4x7pbJ0Z4QixVX2eELJGwsy+6+dAw==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
     builtin-modules "3.0.0"
@@ -2618,10 +2618,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.60.1":
-  version "2.60.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.60.1.tgz#9cf0116c7a23a479cf50417863a017d217ef8afc"
-  integrity sha512-fu5xuCH5DUyDW2vdOZZ8M4CqdlcZSr7JuGlhbRTfxNxGxpNAcTAg/DSmf8d+ICmsw54zYsYSB359qd8gGrgboA==
+"@pulumi/azure-native@2.61.0":
+  version "2.61.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.61.0.tgz#628dbea223f65efaa0c8081fa4fc4e52dfa690cf"
+  integrity sha512-9ecMANgcVuHxK/O4PPf7mugTlmsKW87q8cLIuWJbNZntsqPbO/y4ixWxwretVGqn2Kq+GMbThOy9Wsm/yaldUQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3671,9 +3671,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/jsonwebtoken@^9.0.1":
-  version "9.0.6"
-  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-9.0.6.tgz#d1af3544d99ad992fb6681bbe60676e06b032bd3"
-  integrity sha512-/5hndP5dCjloafCXns6SZyESp3Ldq7YjH3zwzwczYnjxIT0Fqzk5ROSYVGfFyczIue7IUEj8hkvLbPoLQ18vQw==
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-9.0.7.tgz#e49b96c2b29356ed462e9708fc73b833014727d2"
+  integrity sha512-ugo316mmTYBl2g81zDFnZ7cfxlut3o+/EQdaP7J8QN2kY6lJ22hmQYCK5EHcJHbrW+dkCGSCPgbG8JtYj6qSrg==
   dependencies:
     "@types/node" "*"
 
@@ -3785,10 +3785,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.3.5", "@types/react@^18.2.38":
-  version "18.3.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.5.tgz#5f524c2ad2089c0ff372bbdabc77ca2c4dbadf8f"
-  integrity sha512-WeqMfGJLGuLCqHGYRGHxnKrXcTitc6L/nBUWfWPcTarG3t9PsquqUMuVeXZeca+mglY4Vo5GZjCi0A3Or2lnxA==
+"@types/react@*", "@types/react@18.3.6", "@types/react@^18.2.38":
+  version "18.3.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.6.tgz#1cb5895c5ea0d99d8bc7d659e42f72713cbd3942"
+  integrity sha512-CnGaRYNu2iZlkGXGrOYtdg5mLK8neySj0woZ4e2wF/eli2E6Sazmq5X+Nrj6OBrrFVQfJWTUFeqAzoRhWQXYvg==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -10429,10 +10429,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@3.20240909.1:
-  version "3.20240909.1"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240909.1.tgz#74f5a607c9e4ce4e3025b245bdf4564b901ea045"
-  integrity sha512-tdzJFApHmqFYlpjfpqBDnsE6dHUDLHejBrNgXftLfTf/ni5NySgXKnuntCCMdRtnTpjUKmkHiusGrBCf9b1rnA==
+miniflare@3.20240909.2:
+  version "3.20240909.2"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240909.2.tgz#f274f49df5f399bb65dd4280abcb42de82b9fd09"
+  integrity sha512-rZe7d0GkP02DnsgLD6qT+0K3O1azWCbDQIeHyH7WHJeyfkGPONS8U5FeNJEmus05z+2F6jcMI/Gc/Irc+UFTAA==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "^8.8.0"
@@ -11442,7 +11442,7 @@ path-to-regexp@0.1.10:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.10.tgz#67e9108c5c0551b9e5326064387de4763c4d5f8b"
   integrity sha512-7lf7qcQidTku0Gu3YDPc8DJ1q7OOucfa/BSsIwjuh56VU7katFvuM8hULfkwB3Fns/rsVF7PwPKVw1sl5KQS9w==
 
-path-to-regexp@^6.2.0:
+path-to-regexp@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.3.0.tgz#2b6a26a337737a8e1416f9272ed0766b1c0389f4"
   integrity sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==
@@ -14632,10 +14632,10 @@ workerd@1.20240909.0:
     "@cloudflare/workerd-linux-arm64" "1.20240909.0"
     "@cloudflare/workerd-windows-64" "1.20240909.0"
 
-wrangler@3.78.2:
-  version "3.78.2"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.2.tgz#68be2d778f5b2be2adcc1304da0c81de34a2a1a0"
-  integrity sha512-PL7GchswGrNm2OvdSw5yG3ZAqNjpaQIO++p8E1TaCi63DSyssKFYeYqTvfFshsQPP2u1dox5JFXtLc6IE/m1xw==
+wrangler@3.78.3:
+  version "3.78.3"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.3.tgz#43fd577696e2f9f9a0ee71958928c55ce91d375c"
+  integrity sha512-IRQ0HCmaVGeQVsW+4kqJfYuA1uBIAtjSCu8/aLRBXzdpiQ+0VSSj/uQ54wBRS08n4twFXTLiPAsYiNVF1aHyyA==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.5.3"
@@ -14645,9 +14645,9 @@ wrangler@3.78.2:
     chokidar "^3.5.3"
     date-fns "^3.6.0"
     esbuild "0.17.19"
-    miniflare "3.20240909.1"
+    miniflare "3.20240909.2"
     nanoid "^3.3.3"
-    path-to-regexp "^6.2.0"
+    path-to-regexp "^6.3.0"
     resolve "^1.22.8"
     resolve.exports "^2.0.2"
     selfsigned "^2.0.1"
