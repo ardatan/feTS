@@ -2810,9 +2810,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.11"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.11.tgz#c416bc2a2d50e22a52ca9b3b0ef585a0eb724dd8"
-  integrity sha512-2+0JxGh5HK1KX660phgcfxw161/TV3n0koonoQ8u65gTeZFHdWI5ujPaGaQmXXtVC6rwEWwPtOoQ8ihyZwt3eg==
+  version "0.33.12"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.12.tgz#1feac782bc50dc02733ad3d63964035dd3fe8ba7"
+  integrity sha512-d5KrXIdPolLp8VpGpZAQvEz8ioVtFlUQSyCIS2sEBi7FKhceIB7nj9BlNfqqvp5wmOfg8v8bP1rAvYYkjz21/Q==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4699,9 +4699,9 @@ builtin-modules@3.0.0:
   integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
-  version "1.1.27"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.27.tgz#53cbc56d412157fbaf0ba30328208494a6f52cc6"
-  integrity sha512-rHXAiIDefeMS/fleNM1rRDYqolJGNRdch3+AuCRwcZWaqTa1vjGBNsahH/HVV7Y82frllYhJomCVSEiHzLzkgg==
+  version "1.1.28"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.28.tgz#4bb032ce88db3b810c68cc47bd4f81e2d6516fc6"
+  integrity sha512-XiWHzHZIxkgssHSUwJVrkUDHvwhHzE9mrFUMXZ3BKqNiGzL0n/fB/XUQZibcHjg0SvW/Tt5WUNeKmiM9njuy/w==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
@@ -10343,10 +10343,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@3.20240909.2:
-  version "3.20240909.2"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240909.2.tgz#f274f49df5f399bb65dd4280abcb42de82b9fd09"
-  integrity sha512-rZe7d0GkP02DnsgLD6qT+0K3O1azWCbDQIeHyH7WHJeyfkGPONS8U5FeNJEmus05z+2F6jcMI/Gc/Irc+UFTAA==
+miniflare@3.20240909.3:
+  version "3.20240909.3"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-3.20240909.3.tgz#0ced51f0e62fb0a865ff5730f25ab8df5dfd60a5"
+  integrity sha512-HsWMexA4m0Ti8wTjqRdg50otufgoQ/I/rL3AHxf3dI/TN8zJC/5aMApqspW6I88Lzm24C+SRKnW0nm465PStIw==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "^8.8.0"
@@ -13977,10 +13977,10 @@ unenv@^1.9.0:
     node-fetch-native "^1.6.4"
     pathe "^1.1.2"
 
-"unenv@npm:unenv-nightly@2.0.0-1724863496.70db6f1":
-  version "2.0.0-1724863496.70db6f1"
-  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-2.0.0-1724863496.70db6f1.tgz#6aba0f79b9e3238fc88d3e16e3acd66067dced44"
-  integrity sha512-r+VIl1gnsI4WQxluruSQhy8alpAf1AsLRLm4sEKp3otCyTIVD6I6wHEYzeQnwsyWgaD4+3BD4A/eqrgOpdTzhw==
+"unenv@npm:unenv-nightly@2.0.0-1726478054.1e87097":
+  version "2.0.0-1726478054.1e87097"
+  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-2.0.0-1726478054.1e87097.tgz#3dd65753f4a8d717be56f02ecbac9bdbfa8243eb"
+  integrity sha512-uZso8dCkGlJzWQqkyjOA5L4aUqNJl9E9oKRm03V/d+URrg6rFMJwBonlX9AAq538NxwJpPnCX0gAz0IfTxsbFQ==
   dependencies:
     defu "^6.1.4"
     ohash "^1.1.3"
@@ -14539,10 +14539,10 @@ workerd@1.20240909.0:
     "@cloudflare/workerd-linux-arm64" "1.20240909.0"
     "@cloudflare/workerd-windows-64" "1.20240909.0"
 
-wrangler@3.78.4:
-  version "3.78.4"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.4.tgz#7628dd736cef367e9961184602769c4253d4563b"
-  integrity sha512-tIzfqg9yLk1mCxD2jwczN24vVK1W5CQ+xDCBZPxI24qWyGH5nE0n5xMnS6eknXNw0bhKaHCN7bzfxpE3DP4lPg==
+wrangler@3.78.5:
+  version "3.78.5"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.5.tgz#0727ed417bc05c498a1a593072b73360e00117fa"
+  integrity sha512-EqCQOuuxHCBHLSjWw7kWT/1PDSw38XUhSxPC3VnDcL7F6TukVBfHHyLFO4NYGTDDoH+G8KVK1bL1q8LXY2Rcbg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.5.3"
@@ -14552,14 +14552,14 @@ wrangler@3.78.4:
     chokidar "^3.5.3"
     date-fns "^3.6.0"
     esbuild "0.17.19"
-    miniflare "3.20240909.2"
+    miniflare "3.20240909.3"
     nanoid "^3.3.3"
     path-to-regexp "^6.3.0"
     resolve "^1.22.8"
     resolve.exports "^2.0.2"
     selfsigned "^2.0.1"
     source-map "^0.6.1"
-    unenv "npm:unenv-nightly@2.0.0-1724863496.70db6f1"
+    unenv "npm:unenv-nightly@2.0.0-1726478054.1e87097"
     workerd "1.20240909.0"
     xxhash-wasm "^1.0.1"
   optionalDependencies:
