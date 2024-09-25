@@ -5721,11 +5721,6 @@ dataloader@^1.4.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
   integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
 
-date-fns@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
-  integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
-
 dayjs@^1.11.7:
   version "1.11.13"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.13.tgz#92430b0139055c3ebb60150aa13e860a4b5a366c"
@@ -14548,10 +14543,10 @@ workerd@1.20240909.0:
     "@cloudflare/workerd-linux-arm64" "1.20240909.0"
     "@cloudflare/workerd-windows-64" "1.20240909.0"
 
-wrangler@3.78.8:
-  version "3.78.8"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.8.tgz#f232df9246d283b585c875379ad5165380cd8307"
-  integrity sha512-tnJ++KY0EeQKa7Pm5Zxl1Cnf1QcmlLit2CohCpTEFHSgCzwzwViuxFL8JQvVKj8Qb65ouBNbfPZnlqrEyGpbew==
+wrangler@3.78.9:
+  version "3.78.9"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.9.tgz#ff10d9ae37778c32d0cb5a0e7f47e0ff2dd4d97e"
+  integrity sha512-4Z+KBai+xVU59EN8eyDyRXh+f0om3zKwIf2x9YZa9NCuw3bLF77n7wSoghjInTTYfPrKhsZqkPwlcDfVt/yK7g==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.5.4"
@@ -14559,7 +14554,6 @@ wrangler@3.78.8:
     "@esbuild-plugins/node-modules-polyfill" "^0.2.2"
     blake3-wasm "^2.1.5"
     chokidar "^3.5.3"
-    date-fns "^3.6.0"
     esbuild "0.17.19"
     miniflare "3.20240909.5"
     nanoid "^3.3.3"
