@@ -2623,10 +2623,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.63.0":
-  version "2.63.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.63.0.tgz#45622575f2c13cef5c4745da2a283ead5817260c"
-  integrity sha512-DDQ5N88JLd4vZGx8myXzuYr+tJT+T6MR0fBpfgTi1wHzIY+OyMUcjTWavLC+1kNHjauPm9r9S+jkEE4iHw+nZg==
+"@pulumi/azure-native@2.64.0":
+  version "2.64.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.64.0.tgz#4d96799103847291d22c4e9e347ce68ca140b307"
+  integrity sha512-wSsU9cULNyP82Uff31FCe85fxqKwVYGB/nWZTrhGs+37XWkIvtoFUwO4czizSgcGTkJoheGlWGJPKn+MsQxoAQ==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -3683,10 +3683,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.53.2":
-  version "0.53.2"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.53.2.tgz#71e74ceb5223d16b0ccb3831103fe1225d0242de"
-  integrity sha512-TxFJbeSfD/RfQe+GeMbpdwiOOySRTj3vfHvcA4yoLQ3wvGPjyppCqmyKXgktf3535T+YAc41bB7GkhuCPRmfUg==
+"@types/k6@0.54.0":
+  version "0.54.0"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.54.0.tgz#da3d185b580f48847faf86a448481fc019c966cc"
+  integrity sha512-ZgsqDQs0dtu9RVxN/315MQOZ3BSrdL85HleMZckcLPrmaE5gtGse02/2EuAIQEtYqNDmqcTrOnoxvptUHIoBYw==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
