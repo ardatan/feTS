@@ -2194,10 +2194,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.5.7.tgz#5006f4460a7fa598a03e1c2aa4e59e45c71082d3"
   integrity sha512-uVuRqoj28Ys/AI/5gVEgRAISd0KWI0HRjOO1CTpNgmX3ZsHb5mdn14Y59yk0IxizXdo7ZjsI2S7qbWnO+GNBcA==
 
-"@next/eslint-plugin-next@14.2.13":
-  version "14.2.13"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-14.2.13.tgz#af433f20273d67a6c9c4f840b799977fc101fe52"
-  integrity sha512-z8Mk0VljxhIzsSiZUSdt3wp+t2lKd+jk5a9Jsvh3zDGkItgDMfjv/ZbET6HsxEl/fSihVoHGsXV6VLyDH0lfTQ==
+"@next/eslint-plugin-next@14.2.14":
+  version "14.2.14"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-14.2.14.tgz#091581faecd7f2c434b2ba85dbe935d743d542a2"
+  integrity sha512-kV+OsZ56xhj0rnTn6HegyTGkoa16Mxjrpk7pjWumyB2P8JVQb8S9qtkjy/ye0GnTr4JWtWG4x/2qN40lKZ3iVQ==
   dependencies:
     glob "10.3.10"
 
@@ -6358,12 +6358,12 @@ eslint-compat-utils@^0.5.1:
   dependencies:
     semver "^7.5.4"
 
-eslint-config-next@14.2.13:
-  version "14.2.13"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-14.2.13.tgz#9e3e3b86e8929f05837a6e9f2aee4f93cd6a1056"
-  integrity sha512-aro1EKAoyYchnO/3Tlo91hnNBO7QO7qnv/79MAFC+4Jq8TdUVKQlht5d2F+YjrePjdpOvfL+mV9JPfyYNwkk1g==
+eslint-config-next@14.2.14:
+  version "14.2.14"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-14.2.14.tgz#b2b5dedadd4afe20e2103b0ec44eb2f1d211fc63"
+  integrity sha512-TXwyjGICAlWC9O0OufS3koTsBKQH8l1xt3SY/aDuvtKHIwjTHplJKWVb1WOEX0OsDaxGbFXmfD2EY1sNfG0Y/w==
   dependencies:
-    "@next/eslint-plugin-next" "14.2.13"
+    "@next/eslint-plugin-next" "14.2.14"
     "@rushstack/eslint-patch" "^1.3.3"
     "@typescript-eslint/eslint-plugin" "^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0"
     "@typescript-eslint/parser" "^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0"
