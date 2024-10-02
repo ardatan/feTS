@@ -2623,10 +2623,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.64.1":
-  version "2.64.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.64.1.tgz#3b84b1382fb162faf4539e42c7eb7a8e06f7286a"
-  integrity sha512-BwsGD4P8VVi4fHWbV9QB9GCIMJPQ7X015kY/ZMxR5svg1+KJ+veueJgdzj/wcUpp1U5fyDXjB6dCABfnrZuhcg==
+"@pulumi/azure-native@2.64.2":
+  version "2.64.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.64.2.tgz#b7b590e0c09a466eb9e462f7ab4f0c144932803e"
+  integrity sha512-KXsJCOY46907606ipBWQ8kXAtgWJBQWcfla6mCDA2+N+xLi5GcsnMUwiCa5hv5oP+xaKQ7XKJb/xaNzz/ulq7w==
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
@@ -2645,10 +2645,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.134.1", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.42.0":
-  version "3.134.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.134.1.tgz#4de3ab192b55419fd2cb2f1c59adc8ee382c7fa7"
-  integrity sha512-uXUldyEsYbEXkqE3nPfgABnfgnXjQv3YkzkiigeOBzTF2+7rQe7C/9nMnMJHs4k5XMW5183t7bYMU/W4qUUVcA==
+"@pulumi/pulumi@3.135.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.42.0":
+  version "3.135.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.135.0.tgz#07d7dddd8e6b2a8c4eb951e2603c36e2a6750bd9"
+  integrity sha512-RYsv44UECC8MHtTEGWS6olVFmI9ad8iEySm9xmgoOk8Au6Lulf4phf1HiXEV8+vR9+3Lmtt4pYYdKrRvf4TfhQ==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -14543,10 +14543,10 @@ workerd@1.20240925.0:
     "@cloudflare/workerd-linux-arm64" "1.20240925.0"
     "@cloudflare/workerd-windows-64" "1.20240925.0"
 
-wrangler@3.78.12:
-  version "3.78.12"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.78.12.tgz#c3d7b605856b904ab7cce54afc223286b8454935"
-  integrity sha512-a/xk/N04IvOGk9J+BLkiFg42GDyPS+0BiJimbrHsbX+CDr8Iqq3HNMEyQld+6zbmq01u/gmc8S7GKVR9vDx4+g==
+wrangler@3.79.0:
+  version "3.79.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.79.0.tgz#c23b08ba06bff752b650a567a7fcbe03e4036914"
+  integrity sha512-29wzQWc5qNKtD3bSyAEX11j/U5IIk8xy2/ZJ4wljJlS5ppff8qGqI+LtlLmqjqTSeQqFLb87xRkms0YFUgNLXg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.5.4"
