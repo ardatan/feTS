@@ -14543,10 +14543,10 @@ workerd@1.20240925.0:
     "@cloudflare/workerd-linux-arm64" "1.20240925.0"
     "@cloudflare/workerd-windows-64" "1.20240925.0"
 
-wrangler@3.80.1:
-  version "3.80.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.80.1.tgz#48695422d4ec7d3c21b322ebb5387ceadcf4db4b"
-  integrity sha512-5pBZpzrGpfAtIzF3iBXfZZ9DoP8OjwfIUYjYmddfkmoe6fSyY5r/+IFP56fb/biK5q6FV5HxUnonDiuNyJKnug==
+wrangler@3.80.2:
+  version "3.80.2"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.80.2.tgz#990f05912cf29fd917946ada70e50f2017348907"
+  integrity sha512-WSMDXoNcg+DjZ4i0RMJpz2TKrCbTtsxNsQAwyYg7LRZlfmTZQZOPbHWhATVa4fCsNL6eElN050fMHOW9MptM9g==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.5.4"
