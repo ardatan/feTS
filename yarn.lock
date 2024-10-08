@@ -2610,10 +2610,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.54.2":
-  version "6.54.2"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.54.2.tgz#c3ffb023300d3f2801c5fdfd58ce760b16a758cb"
-  integrity sha512-AEx9k+bxqZ3HjBo3jhUpZuApILWaTOh8Zya7UYVNEI5NlS5rTj/xufl/ihgQ7uC1POjK/F2av1HXePJUHPUhvg==
+"@pulumi/aws@6.55.0":
+  version "6.55.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.55.0.tgz#e358678533edfb6a80c729d08847e8c0118e15a5"
+  integrity sha512-7VRhe72xPJqJHciPP1vDDz1ZCM10UTHv9jDsHYlzL1Tk0+1hBpqH4kNENlJ8icO3vGm3NXImKTB1vkvNk3mBlg==
   dependencies:
     "@pulumi/pulumi" "^3.42.0"
     builtin-modules "3.0.0"
@@ -2651,10 +2651,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.135.1", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.42.0":
-  version "3.135.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.135.1.tgz#8b52cc40298bc9b028f734908417ee720ff0ae58"
-  integrity sha512-uSAewnD7KgkR0oEzfBlbYbLVJ3qEOXA/Q/NU127DXSOvZi//AMd7MHrIxMd2DIFQnho3cjgtc12r+XZCjkePJQ==
+"@pulumi/pulumi@3.136.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.42.0":
+  version "3.136.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.136.0.tgz#52bf15335abadbd9a40b07a7ad7d745b7ba89650"
+  integrity sha512-8RWX7yoxxDXZxXhJyfKrKpetSuSJzIirW16vF4naKoqF0aUDYE+6gGUrFttEfikGxaEXie4YT1UFnwuCGbXhTw==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -3749,10 +3749,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@22.7.4", "@types/node@>=13.7.0", "@types/node@^22.0.0":
-  version "22.7.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.4.tgz#e35d6f48dca3255ce44256ddc05dee1c23353fcc"
-  integrity sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==
+"@types/node@*", "@types/node@22.7.5", "@types/node@>=13.7.0", "@types/node@^22.0.0":
+  version "22.7.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.5.tgz#cfde981727a7ab3611a481510b473ae54442b92b"
+  integrity sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==
   dependencies:
     undici-types "~6.19.2"
 
