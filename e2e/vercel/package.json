@@ -14,7 +14,7 @@
     "@e2e/shared-scripts": "0.0.0",
     "@e2e/shared-server": "0.0.91",
     "encoding": "0.1.13",
-    "next": "14.2.14",
+    "next": "14.2.15",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -23,7 +23,7 @@
     "@types/react": "18.3.11",
     "esbuild": "0.24.0",
     "eslint": "9.12.0",
-    "eslint-config-next": "14.2.14",
+    "eslint-config-next": "14.2.15",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.5.4"
