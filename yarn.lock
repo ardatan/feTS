@@ -2629,10 +2629,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.65.1":
-  version "2.65.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.65.1.tgz#8a4990bcb300959799170bbe3d41aaf95af9b1e2"
-  integrity sha512-/hMEeimBv4Dk/JXHiWvvyrCphTXYgcpAFUkJtphBlP6ncKZZN/6D7XNBDnSWtL28DPCttdeA2YyBMkgAa7f73A==
+"@pulumi/azure-native@2.66.0":
+  version "2.66.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.66.0.tgz#cb89116eab637866860bb9baf1fedb5fb776a6d4"
+  integrity sha512-Bv1btkWHQtGTypBtoBPHLlT3tdg045dvlK8G+it6v2wFJ8npemOZiGPnfTBTfFv9KPfAMHwl999aiAlHROzw3A==
   dependencies:
     "@pulumi/pulumi" "^3.42.0"
 
@@ -6483,10 +6483,10 @@ eslint-plugin-jsx-a11y@^6.7.1:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.0"
 
-eslint-plugin-n@17.10.3:
-  version "17.10.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.10.3.tgz#6c8bae69b4d3354fe25c3c844afb3f83b83a3942"
-  integrity sha512-ySZBfKe49nQZWR1yFaA0v/GsH6Fgp8ah6XV0WDz6CN8WO0ek4McMzb7A2xnf4DCYV43frjCygvb9f/wx7UUxRw==
+eslint-plugin-n@17.11.1:
+  version "17.11.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.11.1.tgz#c5eeabef598e20751b4dcf31b64e69eb3ee9ae6b"
+  integrity sha512-93IUD82N6tIEgjztVI/l3ElHtC2wTa9boJHrD8iN+NyDxjxz/daZUZKfkedjBZNdg6EqDk4irybUsiPwDqXAEA==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
     enhanced-resolve "^5.17.0"
