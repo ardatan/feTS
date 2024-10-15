@@ -2569,12 +2569,12 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.55.0":
-  version "6.55.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.55.0.tgz#e358678533edfb6a80c729d08847e8c0118e15a5"
-  integrity sha512-7VRhe72xPJqJHciPP1vDDz1ZCM10UTHv9jDsHYlzL1Tk0+1hBpqH4kNENlJ8icO3vGm3NXImKTB1vkvNk3mBlg==
+"@pulumi/aws@6.56.0":
+  version "6.56.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.56.0.tgz#bd6ab6c3326d7fbe29dcc077a9a0b5c2bbccd5db"
+  integrity sha512-7Huxe+hREqybvVM3wiA8j0aaqg0SZIiz8lHXsX/H45FWiBwMRcwLZoCqt76uVsxAu6EaCxc4LmmsYDcDgPEszA==
   dependencies:
-    "@pulumi/pulumi" "^3.42.0"
+    "@pulumi/pulumi" "^3.136.0"
     builtin-modules "3.0.0"
     mime "^2.0.0"
     resolve "^1.7.1"
@@ -2610,7 +2610,7 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.136.1", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.42.0":
+"@pulumi/pulumi@3.136.1", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.136.0", "@pulumi/pulumi@^3.42.0":
   version "3.136.1"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.136.1.tgz#1ef187cdb3f3b4abf119ae6088e76edb20947ed4"
   integrity sha512-bO+AVYKyf4dFDVSbBRoCiwAVE0JhugwAEv5FmWit+VHE3f9eoy1qrw7t5DmGmAiL2cGCwTpvVEIf4y1N7360ZA==
@@ -13773,9 +13773,9 @@ tsconfig@^7.0.0:
     strip-json-comments "^2.0.0"
 
 tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0, tslib@^2.6.2, tslib@^2.6.3:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.7.0.tgz#d9b40c5c40ab59e8738f297df3087bf1a2690c01"
-  integrity sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.0.tgz#d124c86c3c05a40a91e6fdea4021bd31d377971b"
+  integrity sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==
 
 tuf-js@^2.2.1:
   version "2.2.1"
