@@ -1,5 +1,3 @@
-[![GraphQLConf 2024 Banner: September 10-12, San Francisco. Hosted by the GraphQL Foundation](https://github.com/user-attachments/assets/bdb8cd5d-5186-4ece-b06b-b00a499b7868)](https://graphql.org/conf/2024/?utm_source=github&utm_medium=fets&utm_campaign=readme)
-
 <div align="center">
   <h3>feTS</h3>
   <h5>Fetch API ❤️ TypeScript</h5>
