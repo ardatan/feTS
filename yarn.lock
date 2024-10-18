@@ -2674,10 +2674,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.56.0":
-  version "6.56.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.56.0.tgz#bd6ab6c3326d7fbe29dcc077a9a0b5c2bbccd5db"
-  integrity sha512-7Huxe+hREqybvVM3wiA8j0aaqg0SZIiz8lHXsX/H45FWiBwMRcwLZoCqt76uVsxAu6EaCxc4LmmsYDcDgPEszA==
+"@pulumi/aws@6.56.1":
+  version "6.56.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.56.1.tgz#528692aff97ecc554fad68872d6a5699ff4cbec3"
+  integrity sha512-fnYs39xUPjT0cipdl28Eiw7B5ZLlHyXBd8lV7dOedKCrrfDLr/nwsh6FMPgj5nUDklR3RAzMFPUW37gMaznPoA==
   dependencies:
     "@pulumi/pulumi" "^3.136.0"
     builtin-modules "3.0.0"
@@ -2715,10 +2715,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.136.1", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.136.0":
-  version "3.136.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.136.1.tgz#1ef187cdb3f3b4abf119ae6088e76edb20947ed4"
-  integrity sha512-bO+AVYKyf4dFDVSbBRoCiwAVE0JhugwAEv5FmWit+VHE3f9eoy1qrw7t5DmGmAiL2cGCwTpvVEIf4y1N7360ZA==
+"@pulumi/pulumi@3.137.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.136.0":
+  version "3.137.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.137.0.tgz#670636d20eb85880854a49623947d6ea23099742"
+  integrity sha512-YgvcPKxuE3X1Yi93W2qZuM43nELT1FEvz7J5IK1hAJPo+v9m2oAh5Vag1lNDPjM0+y7WDfFe0ODI+2way3quRw==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -4936,9 +4936,9 @@ builtin-modules@3.0.0:
   integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.30.tgz#45ca22303aa1ff02b93e45c1d6ba43617497ed43"
-  integrity sha512-mGh7NLisOXskBU62DxLS+/nwmLlCYHYAkCzdo4DZ9+fzrpP41hAdOqaN4DO6tQfenHb4pYb0/shw29k4/6I2yQ==
+  version "1.1.31"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.31.tgz#897821d02e8c353b2891d0ea7e67a818f5dc6d37"
+  integrity sha512-SPk7OnejMg4TbUXlZbuCh8COC4Ace74gjzBK6Q7VNtqToqIEs8ucv7/U/2zo1LSkPiKuo2RFoOBjQT/IzH36EA==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
