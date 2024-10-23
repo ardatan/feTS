@@ -3891,10 +3891,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@29.5.13":
-  version "29.5.13"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.13.tgz#8bc571659f401e6a719a7bf0dbcb8b78c71a8adc"
-  integrity sha512-wd+MVEZCHt23V0/L642O5APvspWply/rGY5BcW4SUETo2UzPU3Z26qr8jC2qxpimI2jjx9h7+2cj2FwIr01bXg==
+"@types/jest@29.5.14":
+  version "29.5.14"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.14.tgz#2b910912fa1d6856cadcd0c1f95af7df1d6049e5"
+  integrity sha512-ZN+4sdnLUbo8EVvVc2ao0GFW6oVrQRPn4K2lglySj7APvSrgzxHiNNK99us4WDMi57xxA2yggblIAMNhXOotLQ==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -3974,10 +3974,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@22.7.8", "@types/node@>=13.7.0", "@types/node@^22.0.0":
-  version "22.7.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.8.tgz#a1dbf0dc5f71bdd2642fc89caef65d58747ce825"
-  integrity sha512-a922jJy31vqR5sk+kAdIENJjHblqcZ4RmERviFsER4WJcEONqxKcjNOlk0q7OUfrF5sddT+vng070cdfMlrPLg==
+"@types/node@*", "@types/node@22.7.9", "@types/node@>=13.7.0", "@types/node@^22.0.0":
+  version "22.7.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.9.tgz#2bf2797b5e84702d8262ea2cf843c3c3c880d0e9"
+  integrity sha512-jrTfRC7FM6nChvU7X2KqcrgquofrWLFDeYC1hKfwNWomVvrn7JIksqf344WN2X/y8xrgqBd2dJATZV4GbatBfg==
   dependencies:
     undici-types "~6.19.2"
 
@@ -4022,10 +4022,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.3.11", "@types/react@^18.2.38":
-  version "18.3.11"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.11.tgz#9d530601ff843ee0d7030d4227ea4360236bd537"
-  integrity sha512-r6QZ069rFTjrEYgFdOck1gK7FLVsgJE7tTz0pQBczlBNUhBNk0MQH4UbnFSwjpQLMkLzgqvBBa+qGpLje16eTQ==
+"@types/react@*", "@types/react@18.3.12", "@types/react@^18.2.38":
+  version "18.3.12"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.12.tgz#99419f182ccd69151813b7ee24b792fe08774f60"
+  integrity sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
