@@ -4590,18 +4590,18 @@
   dependencies:
     tslib "^2.3.1"
 
-"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.22", "@whatwg-node/fetch@^0.9.4":
-  version "0.9.22"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.22.tgz#391000e8b9191364d93583477865c02a56e1eaed"
-  integrity sha512-+RIBffgoaRlWV9cKV6wAX71sbeoU2APOI3G13ZRMkabYHwkvDMeZDTyxJcsMXA5CpieJ7NFXF9Xyu72jwvdzqA==
+"@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.23", "@whatwg-node/fetch@^0.9.4":
+  version "0.9.23"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.23.tgz#eeb953f5fbf6b83ba944cc71a0eef59d8164b01d"
+  integrity sha512-7xlqWel9JsmxahJnYVUj/LLxWcnA93DR4c9xlw3U814jWTiYalryiH1qToik1hOxweKKRLi4haXHM5ycRksPBA==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.5.27"
+    "@whatwg-node/node-fetch" "^0.6.0"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.5.27":
-  version "0.5.27"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.27.tgz#e6e1448029c5fe58eae25a6f8c740434504077f5"
-  integrity sha512-0OaMj5W4fzWimRSFq07qFiWfquaUMNB+695GwE76LYKVuah+jwCdzSgsIOtwPkiyJ35w0XGhXmJPiIJCdLwopg==
+"@whatwg-node/node-fetch@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.6.0.tgz#9f6903319ff041eb6fadeba9009662bc64ab1707"
+  integrity sha512-tcZAhrpx6oVlkEsRngeTEEE7I5/QdLjeEz4IlekabGaESP7+Dkm/6a9KcF1KdCBB7mO9PXtBkwCuTCt8+UPg8Q==
   dependencies:
     "@kamilkisiela/fast-url-parser" "^1.1.4"
     busboy "^1.6.0"
@@ -4609,11 +4609,11 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.9.15":
-  version "0.9.50"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.50.tgz#7098890bb674477aa4a4be5ecfd10f22857b65fa"
-  integrity sha512-7Vd8k6iu+ps8bkZT+Y/wPm42EDh8KojAL+APKa79mntgkyPtdq0r1//CO+0eYqQBz6HGrDxHRT4KChSOy4jGIw==
+  version "0.9.52"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.52.tgz#58d0ce7a2fdba4d57ff3132201e44e173e0b71bb"
+  integrity sha512-RSX9FcoXrjmMu7dkBWbd5bNE7qsVSHCupk5A5iuZkoF+XWDvnp1TDbSGLARnsKKwln1Sem4koLkz/tj5b8Q7bg==
   dependencies:
-    "@whatwg-node/fetch" "^0.9.22"
+    "@whatwg-node/fetch" "^0.9.23"
     tslib "^2.6.3"
 
 "@yarnpkg/lockfile@^1.1.0":
