@@ -3193,9 +3193,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.17"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.17.tgz#603475bb1fb343deb82a4ce85e6adf177a65739b"
-  integrity sha512-75232GRx3wp3P7NP+yc4nRK3XUAnaQShxTAzapgmQrgs0QvSq0/mOJGoZXRpH15cFCKyys+4laCPbBselqJ5Ag==
+  version "0.33.18"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.18.tgz#c74dc86a10a150f4fb195c8b28fb83128754f62d"
+  integrity sha512-DcxnW2yy08Gfkd7Igm9ccGpLwxrSpV/+svYjy8XAxc4nvj0YJVuVEXpUu+qmqV9Hb/UrJRrdMCPeYb9M+Ria4g==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
