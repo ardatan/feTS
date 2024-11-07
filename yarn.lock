@@ -2794,10 +2794,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.57.0":
-  version "6.57.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.57.0.tgz#3f41e2645f3ff0d41c2952b5bef0532d7b5a7b09"
-  integrity sha512-cFwb7EbbfWntByGuyNmQAZaTXyJu1Wxcuw8aWsBS5xF/C/28iYUooRFXWT37sjYbFtYqTDYGG+LSsg+WKl1yHw==
+"@pulumi/aws@6.58.0":
+  version "6.58.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.58.0.tgz#3287e558b63a9ef9253c704d7e181f8917ca45d9"
+  integrity sha512-nP8kdpcHsu/RO8P9LGCaJ06KnGKt6fpvNZE7IUfkHdZ9ErYu4kCx+eX/mo/QAexeOmOmdt3Oa7BLhACQRb3M8Q==
   dependencies:
     "@pulumi/pulumi" "^3.136.0"
     builtin-modules "3.0.0"
@@ -2813,10 +2813,10 @@
     "@types/aws-lambda" "8.10.93"
     mime "^2.0.0"
 
-"@pulumi/azure-native@2.69.0":
-  version "2.69.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.69.0.tgz#e047b32d3120d88271a8a72aa76879f971179e6f"
-  integrity sha512-/m/PWjPbimpDn9mxdFXlNG+KF0Yp4C6NYcjYeFuvMBMcmR2UQkeyyGtK6RDfvoNKGeT4qnNMlu5ye+VVLqR5gQ==
+"@pulumi/azure-native@2.70.0":
+  version "2.70.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/azure-native/-/azure-native-2.70.0.tgz#df0b51661c51cf0dd633d349ac6724dbe355abac"
+  integrity sha512-eQqspHJs9uZ/OxrI7/b2ulWj9k8ybO3sd8cdShRjP5+MOOdScU5gpiTsvnco+tF0I4Foql6C1dNSfL7tvcf9ZQ==
   dependencies:
     "@pulumi/pulumi" "^3.136.0"
 
@@ -2835,10 +2835,10 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.137.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.136.0":
-  version "3.137.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.137.0.tgz#670636d20eb85880854a49623947d6ea23099742"
-  integrity sha512-YgvcPKxuE3X1Yi93W2qZuM43nELT1FEvz7J5IK1hAJPo+v9m2oAh5Vag1lNDPjM0+y7WDfFe0ODI+2way3quRw==
+"@pulumi/pulumi@3.138.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.136.0":
+  version "3.138.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.138.0.tgz#71ec3379ae1451ea3b824389a8347a38e7cc2308"
+  integrity sha512-LcQTYwVecIpoA9Dnbq31+3IuOT4QYsGmCbXO0+wJLFlXBxBEoeq4Rft16shxM01n3EXJnTo4w5/pLetoAz0pYg==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -3068,10 +3068,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.10.4.tgz#427d5549943a9c6fce808e39ea64dbe60d4047f1"
   integrity sha512-WJgX9nzTqknM393q1QJDJmoW28kUfEnybeTfVNcNAPnIx210RXm2DiXiHzfNPJNIUUb1tJnz/l4QGtJ30PgWmA==
 
-"@scarf/scarf@=1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-1.3.0.tgz#f8c75560d0dace4452dee1e31995e6396e61f3ee"
-  integrity sha512-lHKK8M5CTcpFj2hZDB3wIjb0KAbEOgDmiJGDv1WBRfQgRm/a8/XMEkG/N1iM01xgbUDsPQwi42D+dFo1XPAKew==
+"@scarf/scarf@=1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-1.4.0.tgz#3bbb984085dbd6d982494538b523be1ce6562972"
+  integrity sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==
 
 "@shikijs/core@1.22.2":
   version "1.22.2"
@@ -3193,9 +3193,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.19"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.19.tgz#215ea9aee0612b3dc2a45fade10cf6bf1ad43a4b"
-  integrity sha512-vcnWVOoa+HROcI+3FTyibfo+Sw0KytEpJf1Cm78l4Fn3w0pqHG6tx6+HCBs7eYOUhSUtwVTMzh0tzU7gom9Zpg==
+  version "0.33.21"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.21.tgz#651191b5cc13c27ae0cb2150f3af5255597a9961"
+  integrity sha512-1wU0VNSZQt13BmJvxYhHRVwDBnG8y5qrcyi3DnmEQzvfeRycUNneQSd6quyxrNbspM1pV/m4r4udO6o1tCuXjg==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -7067,10 +7067,10 @@ eslint-plugin-jsx-a11y@^6.10.0:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.1"
 
-eslint-plugin-n@17.13.0:
-  version "17.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.13.0.tgz#63d95c98866fafc67ad90143d43d3abd87f9219d"
-  integrity sha512-7xEJgZPKe2FNtyWA1aWtHzG0Etnd8jzA2NjurITPs7yhNkxFjaruJFHE3n0ac/U5ataZ24rlbVoSAXfN7770XA==
+eslint-plugin-n@17.13.1:
+  version "17.13.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.13.1.tgz#3178c87989ad23417d22c5f66a13ecb1e9c5245e"
+  integrity sha512-97qzhk1z3DdSJNCqT45EslwCu5+LB9GDadSyBItgKUfGsXAmN/aa7LRQ0ZxHffUxUzvgbTPJL27/pE9ZQWHy7A==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.1"
     enhanced-resolve "^5.17.1"
@@ -13924,13 +13924,13 @@ svgo@^3.0.2, svgo@^3.3.2:
     csso "^5.0.5"
     picocolors "^1.0.0"
 
-swagger-client@^3.30.1:
-  version "3.30.1"
-  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.30.1.tgz#1c4053f4c6ee810aab34db3e5922cd20a48b2cf1"
-  integrity sha512-3V/wZ6s6nkIG+rfkODzfO/0pjV3/x0aZxovocvC6seOz/TN2LctS0Cu6oW1zMUgcNbwpdybjWUTikCbhlB7EEw==
+swagger-client@^3.31.0:
+  version "3.31.0"
+  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.31.0.tgz#3c2f00aa6ba5183bbb15b2c42221410ded662766"
+  integrity sha512-hVYift5XB8nOgNJVl6cbNtVTVPT2Fdx2wCOcIvuAFcyq0Mwe6+70ezoZ5WfiaIAzzwWfq72jyaLeg8TViGNSmw==
   dependencies:
     "@babel/runtime-corejs3" "^7.22.15"
-    "@scarf/scarf" "=1.3.0"
+    "@scarf/scarf" "=1.4.0"
     "@swagger-api/apidom-core" ">=1.0.0-alpha.9 <1.0.0-beta.0"
     "@swagger-api/apidom-error" ">=1.0.0-alpha.9 <1.0.0-beta.0"
     "@swagger-api/apidom-json-pointer" ">=1.0.0-alpha.9 <1.0.0-beta.0"
@@ -13949,13 +13949,13 @@ swagger-client@^3.30.1:
     ramda-adjunct "^5.0.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.18.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.18.1.tgz#51b5d757934faa30a8ef0950ff3f0e6ce9a1d591"
-  integrity sha512-g3RkgvbMav9D173q8GUHa+P9sfEBYIliBuwbRGmC7fnDp0w5WQ2ATM79V2ukyWAj8RSPQro+KADrHwvk3tARbg==
+  version "5.18.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.18.2.tgz#732aa8475e9540a071539b95456de4ff02829402"
+  integrity sha512-vpW7AmkRYdz578iq7C5WrPsg6reBgRzj5xL/fIYR6KTfvY3lvBchpzegFaqg09LWDoL3U2MZvIgOS/1Q9kSJ9g==
   dependencies:
     "@babel/runtime-corejs3" "^7.24.7"
     "@braintree/sanitize-url" "=7.0.4"
-    "@scarf/scarf" "=1.3.0"
+    "@scarf/scarf" "=1.4.0"
     base64-js "^1.5.1"
     classnames "^2.5.1"
     css.escape "1.5.1"
@@ -13982,7 +13982,7 @@ swagger-ui-react@^5.0.0:
     reselect "^5.1.1"
     serialize-error "^8.1.0"
     sha.js "^2.4.11"
-    swagger-client "^3.30.1"
+    swagger-client "^3.31.0"
     url-parse "^1.5.10"
     xml "=1.0.1"
     xml-but-prettier "^1.0.1"
