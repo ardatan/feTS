@@ -1592,7 +1592,7 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.24.0.tgz#168ab1c7e1c318b922637fad8f339d48b01e1244"
   integrity sha512-7IAFPrjSQIJrGsK6flwg7NFmwBoSTyF3rl7If0hNUFQU4ilTsEPL6GuMuU9BfIWVVGuRnuIidkSMC+c0Otu8IA==
 
-"@eslint-community/eslint-utils@^4.1.2", "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
+"@eslint-community/eslint-utils@^4.1.2", "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0", "@eslint-community/eslint-utils@^4.4.1":
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.4.1.tgz#d1145bf2c20132d6400495d6df4bf59362fd9d56"
   integrity sha512-s3O3waFUrMV8P/XaF/+ZTp1X9XBZW1a4B97ZnjQF2KYWaFD2A8KyFBsrsfSjEmjn3RGWAIuvlneuZm3CUK3jbA==
@@ -3193,9 +3193,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.18"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.18.tgz#c74dc86a10a150f4fb195c8b28fb83128754f62d"
-  integrity sha512-DcxnW2yy08Gfkd7Igm9ccGpLwxrSpV/+svYjy8XAxc4nvj0YJVuVEXpUu+qmqV9Hb/UrJRrdMCPeYb9M+Ria4g==
+  version "0.33.19"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.19.tgz#215ea9aee0612b3dc2a45fade10cf6bf1ad43a4b"
+  integrity sha512-vcnWVOoa+HROcI+3FTyibfo+Sw0KytEpJf1Cm78l4Fn3w0pqHG6tx6+HCBs7eYOUhSUtwVTMzh0tzU7gom9Zpg==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -7067,12 +7067,12 @@ eslint-plugin-jsx-a11y@^6.10.0:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.1"
 
-eslint-plugin-n@17.12.0:
-  version "17.12.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.12.0.tgz#a6518a2806a21801ac4d532d23c1ac7f8d49ee49"
-  integrity sha512-zNAtz/erDn0v78bIY3MASSQlyaarV4IOTvP5ldHsqblRFrXriikB6ghkDTkHjUad+nMRrIbOy9euod2azjRfBg==
+eslint-plugin-n@17.13.0:
+  version "17.13.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.13.0.tgz#63d95c98866fafc67ad90143d43d3abd87f9219d"
+  integrity sha512-7xEJgZPKe2FNtyWA1aWtHzG0Etnd8jzA2NjurITPs7yhNkxFjaruJFHE3n0ac/U5ataZ24rlbVoSAXfN7770XA==
   dependencies:
-    "@eslint-community/eslint-utils" "^4.4.0"
+    "@eslint-community/eslint-utils" "^4.4.1"
     enhanced-resolve "^5.17.1"
     eslint-plugin-es-x "^7.8.0"
     get-tsconfig "^4.8.1"
@@ -15094,10 +15094,10 @@ workerd@1.20241022.0:
     "@cloudflare/workerd-linux-arm64" "1.20241022.0"
     "@cloudflare/workerd-windows-64" "1.20241022.0"
 
-wrangler@3.84.1:
-  version "3.84.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.84.1.tgz#4a21c476bbf40dd0da4766c0c0a7d74408ee91f2"
-  integrity sha512-w27/QpIk2qz6aMIVi9T8cDcXMvh/RXjcL+vf4o5J2GpQAE4U7wTCNHyaY9H3oTJWRN97KqCAEbiHBNtTKoUJEw==
+wrangler@3.85.0:
+  version "3.85.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.85.0.tgz#def6e562158b56257aa716f1ed8b1c5293128359"
+  integrity sha512-r5YCWUaF4ApLnloNE6jHHgRYdFzYHoajTlC1tns42UzQ2Ls63VAqD3b0cxOqzDUfmlSb3skpmu0B0Ssi3QWPAg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.7.0"
