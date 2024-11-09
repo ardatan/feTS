@@ -3192,9 +3192,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.33.0":
-  version "0.33.21"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.21.tgz#651191b5cc13c27ae0cb2150f3af5255597a9961"
-  integrity sha512-1wU0VNSZQt13BmJvxYhHRVwDBnG8y5qrcyi3DnmEQzvfeRycUNneQSd6quyxrNbspM1pV/m4r4udO6o1tCuXjg==
+  version "0.33.22"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.33.22.tgz#3339d85172509095a8384cb4b44834a7c9309d86"
+  integrity sha512-auUj4k+f4pyrIVf4GW5UKquSZFHJWri06QgARy9C0t9ZTjJLIuNIrr1yl9bWcJWJ1Gz1vOvYN1D+QPaIlNMVkQ==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4595,17 +4595,17 @@
     tslib "^2.3.1"
 
 "@whatwg-node/fetch@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.0.tgz#cf081e1b14ac6fdf6c480e01a40b45a59fb6ee48"
-  integrity sha512-LyVqYBdlEZI986zOoW9v3ImriVftX9VUTnqeCYhebHVDewgLs3UpI9IFd/sVjJdoOScxLJ7JHWv8EiL4Ihfk9w==
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.1.tgz#ca08b2b9928a465f6e562d6cc460840340c15d14"
+  integrity sha512-gmPOLrsjSZWEZlr9Oe5+wWFBq3CG6fN13rGlM91Jsj/vZ95G9CCvrORGBAxMXy0AJGiC83aYiHXn3JzTzXQmbA==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.7.0"
+    "@whatwg-node/node-fetch" "^0.7.1"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.0.tgz#19673318472a69723bd865fc8043c2ec88c38c73"
-  integrity sha512-vicJNpnFUoAnw1XGJkmWvs8atKexrhKFumdopAQgveARCCpFesFB7M/keLKDK4wCT+X5f3Gal3IexsBh/oRQqw==
+"@whatwg-node/node-fetch@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.1.tgz#2f0f009a44d61f5ad9151ec0b5bfbbf0683a41ff"
+  integrity sha512-+IVKtQhHnaOS39ErbdeQUh+pVKqCJxO0OokBxCo7SNtTHOZB2Tb+YN+YWwp4WizXwTWy85tsEv1AAprugpxNmg==
   dependencies:
     "@kamilkisiela/fast-url-parser" "^1.1.4"
     busboy "^1.6.0"
