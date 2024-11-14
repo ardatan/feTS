@@ -19,7 +19,8 @@
         "@graphql-inspector/core",
         "next",
         "tailwindcss",
-        "husky"
+        "husky",
+        "@pulumi/*"
       ],
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
