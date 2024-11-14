@@ -4611,10 +4611,10 @@
     fast-querystring "^1.1.1"
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.9.53":
-  version "0.9.54"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.54.tgz#031e31c6a92bb9a29a7c987a19ad534aa2d540bc"
-  integrity sha512-AFwts1RNnnPwpGnbCqyb7fwaE3ROBgkIstpmtXqb2YklFIlQ97Y1rabzeoyKoQqQxX89nMRmfsLAwPzfCpV9pw==
+"@whatwg-node/server@^0.9.55":
+  version "0.9.55"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.55.tgz#2ff56b42d3a7bfbf79399dcc5be0b53cdd3da064"
+  integrity sha512-FW04dJZfgBGaGoHQosCTeSOXKksCVzMLMV5YZPMpUfEmkH8VeDjCIMguvw2cKgrjnLjwQ1J3irLg2eNQbLxLNg==
   dependencies:
     "@whatwg-node/fetch" "^0.10.0"
     tslib "^2.6.3"
