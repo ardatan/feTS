@@ -1,6 +1,6 @@
 {
   "name": "@fets/benchmark",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "type": "module",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "test": "start-server-and-test start http://127.0.0.1:4000/ping loadtest"
   },
   "dependencies": {
-    "fets": "0.8.3"
+    "fets": "0.8.4"
   },
   "devDependencies": {
     "@types/k6": "0.54.2",

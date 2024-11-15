@@ -1,5 +1,13 @@
 # example-soccer-stats
 
+## 0.0.29
+
+### Patch Changes
+
+- Updated dependencies
+  [[`6eeda76`](https://github.com/ardatan/feTS/commit/6eeda761e437660fd54353d1e3986e36c1ebd152)]:
+  - fets@0.8.4
+
 ## 0.0.28
 
 ### Patch Changes
