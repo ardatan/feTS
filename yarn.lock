@@ -4265,10 +4265,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/k6@0.54.1":
-  version "0.54.1"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.54.1.tgz#8767bddd51b8bb1a451d5af14baf14c7dcd977c4"
-  integrity sha512-ezTMhuWr3TZIMOqAv51/4rD5T4FE1pSryrh5BCgxsniuqxbi5jQ3YEiOlO9C1+LvJcliC2byyd2Cw6cnUY7CLg==
+"@types/k6@0.54.2":
+  version "0.54.2"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.54.2.tgz#944d6e20881d0fed3123742654ec8a12e175ea49"
+  integrity sha512-B5LPxeQm97JnUTpoKNE1UX9jFp+JiJCAXgZOa2P7aChxVoPQXKfWMzK+739xHq3lPkKj1aV+HeOxkP56g/oWBg==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
@@ -5491,7 +5491,7 @@ chevrotain@~11.0.3:
     "@chevrotain/utils" "11.0.3"
     lodash-es "4.17.21"
 
-chokidar@^3.5.1, chokidar@^3.5.3, chokidar@^3.6.0:
+chokidar@^3.5.1, chokidar@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.6.0.tgz#197c6cc669ef2a8dc5e7b4d97ee4e092c3eb0d5b"
   integrity sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
@@ -5505,6 +5505,13 @@ chokidar@^3.5.1, chokidar@^3.5.3, chokidar@^3.6.0:
     readdirp "~3.6.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+chokidar@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-4.0.1.tgz#4a6dff66798fb0f72a94f616abbd7e1a19f31d41"
+  integrity sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==
+  dependencies:
+    readdirp "^4.0.1"
 
 chownr@^1.1.1:
   version "1.1.4"
@@ -7066,10 +7073,10 @@ eslint-plugin-jsx-a11y@^6.10.0:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.1"
 
-eslint-plugin-n@17.13.1:
-  version "17.13.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.13.1.tgz#3178c87989ad23417d22c5f66a13ecb1e9c5245e"
-  integrity sha512-97qzhk1z3DdSJNCqT45EslwCu5+LB9GDadSyBItgKUfGsXAmN/aa7LRQ0ZxHffUxUzvgbTPJL27/pE9ZQWHy7A==
+eslint-plugin-n@17.13.2:
+  version "17.13.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.13.2.tgz#6d1532e68de196189540271bb7188234b8b086c8"
+  integrity sha512-MhBAKkT01h8cOXcTBTlpuR7bxH5OBUNpUXefsvwSVEy46cY4m/Kzr2osUCQvA3zJFD6KuCeNNDv0+HDuWk/OcA==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.1"
     enhanced-resolve "^5.17.1"
@@ -12578,6 +12585,11 @@ readable-stream@^3.1.1, readable-stream@^3.4.0:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
+readdirp@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-4.0.2.tgz#388fccb8b75665da3abffe2d8f8ed59fe74c230a"
+  integrity sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==
+
 readdirp@~3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.6.0.tgz#74a370bd857116e245b29cc97340cd431a02a6c7"
@@ -15096,17 +15108,17 @@ workerd@1.20241106.1:
     "@cloudflare/workerd-linux-arm64" "1.20241106.1"
     "@cloudflare/workerd-windows-64" "1.20241106.1"
 
-wrangler@3.86.1:
-  version "3.86.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.86.1.tgz#69b1599397d7e26d2e5a41ddce5c385f73b2e6eb"
-  integrity sha512-ujN74lPQCQRsMcvf48WLLZUqOqUbJJzt5+Xm5T3tGrpRJLW+dTB0ffvT/e2DBBvHZ7R52ZzZdm1akyLPsZmZ9Q==
+wrangler@3.87.0:
+  version "3.87.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.87.0.tgz#3dbd47583f6ba74adf6b622fa61f24a345558ee9"
+  integrity sha512-BExktnSLeGgG+uxgnr4h9eZ5nefdpTVcTHR+gEIWRvqk07XL04nJwpPYAOIPKPpB7E2tMdDJgNLGQN/CY6e1xQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.7.1"
     "@esbuild-plugins/node-globals-polyfill" "^0.2.3"
     "@esbuild-plugins/node-modules-polyfill" "^0.2.2"
     blake3-wasm "^2.1.5"
-    chokidar "^3.5.3"
+    chokidar "^4.0.1"
     date-fns "^4.1.0"
     esbuild "0.17.19"
     itty-time "^1.0.6"
