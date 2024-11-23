@@ -3192,9 +3192,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.34.0":
-  version "0.34.7"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.7.tgz#5ca5dd8a26445272de23b5ca9bee80af2e2b75e1"
-  integrity sha512-DUwBGDigO05iE79KzvYj/5qlrX4ZV2ccDN8SAMwqIr37xQTEoaKY2w3PD3pVzkhV9lGaJlyE0YMWC94HuAnftw==
+  version "0.34.8"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.8.tgz#648d058a18d7b008b4b72a2fd2eac9590ec46dd6"
+  integrity sha512-PuVkV/MmJOsjem7FIlmuPhd2Owvq4v+ZVvN6wxWuT1NduGDzz2jlc4xIvPQSUE0yS13BRaYOVNq9rnIOkucGVA==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4318,10 +4318,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@22.9.2", "@types/node@>=13.7.0", "@types/node@^22.0.0":
-  version "22.9.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.2.tgz#51e58f2bf29cc38f529dacbb0eafca890464138e"
-  integrity sha512-wwuxAVEbsRvDD9x7buvAl7DyQ7Oj+va/d/Veug7higYzp9MF0CINbfWTBgDFMpcVwcdUiYuNmX2KfnvY3N70mw==
+"@types/node@*", "@types/node@22.9.3", "@types/node@>=13.7.0", "@types/node@^22.0.0":
+  version "22.9.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.3.tgz#08f3d64b3bc6d74b162d36f60213e8a6704ef2b4"
+  integrity sha512-F3u1fs/fce3FFk+DAxbxc78DF8x0cY09RRL8GnXLmkJ1jvx3TtPdWoTT5/NiYfI5ASqXBmfqJi9dZ3gxMx4lzw==
   dependencies:
     undici-types "~6.19.8"
 
