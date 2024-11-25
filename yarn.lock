@@ -4593,6 +4593,13 @@
   dependencies:
     tslib "^2.3.1"
 
+"@whatwg-node/disposablestack@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/disposablestack/-/disposablestack-0.0.5.tgz#cd646b1ef60a36972e018ab21f412a3539c6deec"
+  integrity sha512-9lXugdknoIequO4OYvIjhygvfSEgnO8oASLqLelnDhkRjgBZhc39shC3QSlZuyDO9bgYSIVa2cHAiN+St3ty4w==
+  dependencies:
+    tslib "^2.6.3"
+
 "@whatwg-node/fetch@^0.10.0":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.1.tgz#ca08b2b9928a465f6e562d6cc460840340c15d14"
@@ -4611,11 +4618,12 @@
     fast-querystring "^1.1.1"
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.9.55":
-  version "0.9.56"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.56.tgz#db439b55f197a77464ebb91918280d08cf0ab112"
-  integrity sha512-qHvoug7dTStxDvJKhivO4V/+3Ac+RrMYPwSJ1Sqbq3qbDB0s8xRtlRU+jciOvUJrQQDzcQZJ736yLiKayWscsQ==
+"@whatwg-node/server@^0.9.59":
+  version "0.9.59"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.59.tgz#bab1bfe88d651115ee0a5a510d2690db9de9f456"
+  integrity sha512-JWezqxopft8x4YDnP2pAg/xTTtuoX7Ypdc9wyrZAtLn/h45NtSyGoXD88RM+FkGApZIFYKGFs/iB4/fEEcpcTA==
   dependencies:
+    "@whatwg-node/disposablestack" "^0.0.5"
     "@whatwg-node/fetch" "^0.10.0"
     tslib "^2.6.3"
 
