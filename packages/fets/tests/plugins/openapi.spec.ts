@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createRouter, Response } from 'fets';
 
 describe('OpenAPI spec', () => {
@@ -14,6 +16,6 @@ describe('OpenAPI spec', () => {
     });
     const res = await router.fetch('/api/openapi.json');
     const oas = await res.json();
-    expect(oas.servers[0].url).toBe('/api');
+    assert.strictEqual(oas.servers[0].url, '/api');
   });
 });

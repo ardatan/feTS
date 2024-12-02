@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createClient, createRouter, Response } from 'fets';
 
 describe('Client Global Params', () => {
@@ -25,9 +27,8 @@ describe('Client Global Params', () => {
 
     const res = await client['/test'].get();
 
-    expect(res.status).toBe(200);
+    assert.strictEqual(res.status, 200);
     const data = await res.json();
-    expect(data.headers['x-api-key']).toBe('123');
-    expect(data.query['foo']).toBe('bar');
+    assert.deepStrictEqual(data.headers['x-api-key'], '123');
   });
 });

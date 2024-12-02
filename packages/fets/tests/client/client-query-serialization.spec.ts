@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createClient, type NormalizeOAS } from 'fets';
 import { Request, Response } from '@whatwg-node/fetch';
 import type clientQuerySerializationOAS from './fixtures/example-client-query-serialization-oas';
@@ -29,14 +31,14 @@ describe('Client', () => {
       });
 
       const resJson = await response.json();
-
-      expect(resJson.url).toBe(
+      assert.deepEqual(
+        resJson.url,
         'https://postman-echo.com/get?shallow=foo&deep%5Bkey1%5D=bar&deep%5Bkey2%5D=baz&array=qux&array=quux',
       );
     });
     it('lazily handles json', async () => {
       const resJson = await client['/get'].get().json();
-      expect(resJson.url).toBe('https://postman-echo.com/get');
+      assert.strictEqual(resJson.url, 'https://postman-echo.com/get');
     });
   });
 });

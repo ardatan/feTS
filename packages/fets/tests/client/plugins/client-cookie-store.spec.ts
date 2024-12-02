@@ -1,7 +1,8 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { createClient, useClientCookieStore } from 'fets';
 import { CookieStore } from '@whatwg-node/cookie-store';
 import { Headers, Response } from '@whatwg-node/fetch';
-import { createClient } from '../../../src/client/createClient';
-import { useClientCookieStore } from '../../../src/client/plugins/useClientCookieStore';
 
 describe('useClientCookieStore', () => {
   it('should work', async () => {
@@ -21,8 +22,8 @@ describe('useClientCookieStore', () => {
       plugins: [useClientCookieStore(cookieStore)],
     });
     await client['/test'].get();
-    expect(receivedCookie).toBe('foo=bar');
+    assert.strictEqual(receivedCookie, 'foo=bar');
     const responseCookie = await cookieStore.get('test');
-    expect(responseCookie?.value).toBe('1');
+    assert.strictEqual(responseCookie?.value, '1');
   });
 });

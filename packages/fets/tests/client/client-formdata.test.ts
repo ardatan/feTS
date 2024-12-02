@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createClient, type NormalizeOAS } from 'fets';
 import { File, Request, Response } from '@whatwg-node/fetch';
 import type clientFormDataOAS from './fixtures/example-formdata';
@@ -16,15 +18,19 @@ describe('Client', () => {
       },
     });
     it('handles formdata with non-string values', async () => {
+      const blob = new File(['foo'], 'foo.txt');
       const response = await client['/post'].post({
         formData: {
-          blob: new File(['foo'], 'foo.txt'),
+          blob,
           boolean: true,
           number: 42,
         },
       });
       const resJson = await response.json();
-      expect(resJson.formdata).toMatchObject({
+      assert.deepStrictEqual(resJson.formdata, {
+        blob: {
+          ...blob,
+        },
         boolean: 'true',
         number: '42',
       });

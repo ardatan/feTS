@@ -1,5 +1,7 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { createRouter } from 'fets';
 import { HTTPError } from '@whatwg-node/server';
-import { createRouter } from '../src/createRouter';
 
 describe('Error Handling', () => {
   it('does not leak internal errors', async () => {
@@ -11,9 +13,9 @@ describe('Error Handling', () => {
       },
     });
     const response = await router.fetch('http://localhost:3000/test');
-    expect(response.status).toBe(500);
+    assert.strictEqual(response.status, 500);
     const result = await response.text();
-    expect(result).toBe('');
+    assert.strictEqual(result, '');
   });
   it('handles HTTPError', async () => {
     const router = createRouter({}).route({
@@ -33,11 +35,11 @@ describe('Error Handling', () => {
       },
     });
     const response = await router.fetch('http://localhost:3000/test');
-    expect(response.status).toBe(412);
+    assert.strictEqual(response.status, 412);
     const result = await response.json();
-    expect(result).toMatchObject({
+    assert.deepStrictEqual(result, {
       extra: 'data',
     });
-    expect(response.headers.get('x-foo')).toBe('bar');
+    assert.strictEqual(response.headers.get('x-foo'), 'bar');
   });
 });

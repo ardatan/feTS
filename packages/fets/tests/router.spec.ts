@@ -1,4 +1,6 @@
-import { createRouter, Response, Type } from '../src/index.js';
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { createRouter, Response, Type } from 'fets';
 
 describe('Router', () => {
   it('should have parsedUrl in Request object', async () => {
@@ -12,7 +14,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/greetings/John');
     const json = await response.json();
-    expect(json.message).toBe('Hello /greetings/John!');
+    assert.strictEqual(json.message, 'Hello /greetings/John!');
   });
   it('should process parameters in the path', async () => {
     const router = createRouter().route({
@@ -25,7 +27,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/greetings/John');
     const json = await response.json();
-    expect(json.message).toBe('Hello John!');
+    assert.strictEqual(json.message, 'Hello John!');
   });
   it('should decode parameters in the path', async () => {
     const router = createRouter().route({
@@ -38,7 +40,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/greetings/John%20Doe');
     const json = await response.json();
-    expect(json.message).toBe('Hello John Doe!');
+    assert.strictEqual(json.message, 'Hello John Doe!');
   });
   it('should process query parameters', async () => {
     const router = createRouter().route({
@@ -51,7 +53,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/greetings?name=John');
     const json = await response.json();
-    expect(json.message).toBe('Hello John!');
+    assert.strictEqual(json.message, 'Hello John!');
   });
 
   it('can pull route params from the basepath as well', async () => {
@@ -65,7 +67,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/api/greetings/John');
     const json = await response.json();
-    expect(json.message).toBe('Hello John!');
+    assert.strictEqual(json.message, 'Hello John!');
   });
 
   it('can handle nested routers', async () => {
@@ -88,9 +90,9 @@ describe('Router', () => {
       handler: nested,
     });
     const response = await router.fetch('/api/greetings/John');
-    expect(response.status).toBe(200);
+    assert.strictEqual(response.status, 200);
     const json = await response.json();
-    expect(json.message).toBe('Hello John!');
+    assert.strictEqual(json.message, 'Hello John!');
   });
 
   it('can get query params', async () => {
@@ -106,7 +108,9 @@ describe('Router', () => {
     });
     const response = await router.fetch('https://foo.com/foo?cat=dog&foo=bar&foo=baz&missing=');
     const json = await response.json();
-    expect(json).toMatchObject({ cat: 'dog', foo: ['bar', 'baz'], missing: '' });
+    assert.strictEqual(json.cat, 'dog');
+    assert.deepStrictEqual(json.foo, ['bar', 'baz']);
+    assert.strictEqual(json.missing, '');
   });
   it('supports "/" with base', async () => {
     const router = createRouter({
@@ -121,7 +125,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/api');
     const json = await response.json();
-    expect(json.message).toBe('Hello Root!');
+    assert.strictEqual(json.message, 'Hello Root!');
   });
   it('supports "/" without base', async () => {
     const router = createRouter().route({
@@ -134,7 +138,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('');
     const json = await response.json();
-    expect(json.message).toBe('Hello Root!');
+    assert.strictEqual(json.message, 'Hello Root!');
   });
   it('supports "/" in the base', async () => {
     const router = createRouter({
@@ -149,7 +153,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('/greetings');
     const json = await response.json();
-    expect(json.message).toBe('Hello World!');
+    assert.strictEqual(json.message, 'Hello World!');
   });
   it('supports "/" both in the base and in the route', async () => {
     const router = createRouter({
@@ -164,7 +168,7 @@ describe('Router', () => {
     });
     const response = await router.fetch('');
     const json = await response.json();
-    expect(json.message).toBe('Hello World!');
+    assert.strictEqual(json.message, 'Hello World!');
   });
   it('handles POST bodies', async () => {
     const router = createRouter().route({
@@ -182,7 +186,7 @@ describe('Router', () => {
       body: JSON.stringify({ name: 'John' }),
     });
     const json = await response.json();
-    expect(json.message).toBe('Hello John!');
+    assert.strictEqual(json.message, 'Hello John!');
   });
   it('nested query parameters', async () => {
     const schema = Type.Object({
@@ -205,6 +209,6 @@ describe('Router', () => {
     });
     const response = await router.fetch('/nested_qs?foo[bar]=baz');
     const json = await response.json();
-    expect(json).toEqual({ foo: { bar: 'baz' } });
+    assert.deepStrictEqual(json, { foo: { bar: 'baz' } });
   });
 });

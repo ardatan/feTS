@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createClient, type NormalizeOAS } from 'fets';
 import type clientQuerySerializationOAS from './client/fixtures/example-client-query-serialization-oas';
 
@@ -9,8 +11,8 @@ describe('Client Abort', () => {
       endpoint: 'https://postman-echo.com',
     });
 
-    await expect(client['/get'].get({ signal: AbortSignal.timeout(1) })).rejects.toThrow(
-      'The operation was aborted',
-    );
+    const abortError = new Error('The operation was aborted');
+    abortError.name = 'AbortError';
+    await assert.rejects(client['/get'].get({ signal: AbortSignal.timeout(1) }), abortError);
   });
 });

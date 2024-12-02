@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { createClient, createRouter, Response } from 'fets';
 import { File } from '@whatwg-node/fetch';
 
@@ -57,8 +59,8 @@ describe('File Uploads', () => {
         file,
       },
     });
-    expect(response.status).toEqual(200);
-    expect(await response.json()).toEqual({
+    assert.strictEqual(response.status, 200);
+    assert.deepStrictEqual(await response.json(), {
       name: 'hello.txt',
       size: 5,
       text: 'hello',

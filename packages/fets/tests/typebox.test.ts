@@ -1,6 +1,7 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { createRouter, registerFormats, Response, Type } from 'fets';
 import { File, FormData } from '@whatwg-node/fetch';
-import { createRouter, Response, Type } from '../src/index.js';
-import { registerFormats } from '../src/plugins/formats.js';
 
 describe('TypeBox', () => {
   const router = createRouter({}).route({
@@ -56,9 +57,11 @@ describe('TypeBox', () => {
     });
 
     const resultJson = await response.json();
-    expect(resultJson).toMatchObject({
+    assert.strictEqual(response.status, 400);
+    assert.deepStrictEqual(resultJson, {
       errors: [
         {
+          errors: [],
           name: 'headers',
           message: "Expected string to match '^Bearer .+$'",
           value: 'Basic 123',
@@ -66,7 +69,6 @@ describe('TypeBox', () => {
         },
       ],
     });
-    expect(response.status).toBe(400);
   });
   it('should return errors correctly for form data request', async () => {
     const formData = new FormData();
@@ -80,21 +82,24 @@ describe('TypeBox', () => {
       },
     });
     const resultJson = await response.json();
-    expect(resultJson).toMatchObject({
+    assert.deepStrictEqual(resultJson, {
       errors: [
         {
+          errors: [],
           message: 'Expected string length less or equal to 10',
           name: 'formData',
           path: '/file',
           value: 'Hello World!',
         },
         {
+          errors: [],
           message: "Unknown format 'binary'",
           name: 'formData',
           path: '/file',
           value: 'Hello World!',
         },
         {
+          errors: [],
           message: 'Expected string length greater or equal to 10',
           name: 'formData',
           path: '/description',
@@ -102,22 +107,24 @@ describe('TypeBox', () => {
         },
       ],
     });
-    expect(response.status).toBe(400);
+    assert.strictEqual(response.status, 400);
   });
   it('should handle empty responses', async () => {
     const response = await router.fetch('http://localhost:3000/test', {
       method: 'POST',
     });
-    expect(response.status).toBe(400);
+    assert.strictEqual(response.status, 400);
     const resultJson = await response.json();
-    expect(resultJson).toMatchObject({
+    assert.deepStrictEqual(resultJson, {
       errors: [
         {
+          errors: [],
           message: 'Expected required property',
           name: 'headers',
           path: '/authorization',
         },
         {
+          errors: [],
           message: 'Expected string',
           name: 'headers',
           path: '/authorization',
@@ -151,7 +158,7 @@ describe('TypeBox', () => {
       }),
     });
 
-    expect(response.status).toEqual(400);
+    assert.strictEqual(response.status, 400);
   });
   it('skips validating with non typebox schemas', async () => {
     const router = createRouter().route({
@@ -184,7 +191,7 @@ describe('TypeBox', () => {
       }),
     });
 
-    expect(response.status).toEqual(200);
+    assert.strictEqual(response.status, 200);
   });
   it('validates the string formats', async () => {
     registerFormats();
@@ -215,12 +222,13 @@ describe('TypeBox', () => {
       }),
     });
 
-    expect(response.status).toEqual(400);
+    assert.strictEqual(response.status, 400);
 
     const resultJson = await response.json();
-    expect(resultJson).toMatchObject({
+    assert.deepStrictEqual(resultJson, {
       errors: [
         {
+          errors: [],
           message: "Expected string to match 'uuid' format",
           name: 'json',
           path: '/id',
@@ -237,7 +245,7 @@ describe('TypeBox', () => {
     });
 
     const validResultJson = await validResponse.json();
-    expect(validResultJson).toMatchObject({
+    assert.deepStrictEqual(validResultJson, {
       message: 'Hello 123e4567-e89b-12d3-a456-426614174000!',
     });
   });
@@ -262,17 +270,19 @@ describe('TypeBox', () => {
 
     const response = await router.fetch('/hello');
 
-    expect(response.status).toEqual(400);
+    assert.strictEqual(response.status, 400);
 
     const resultJson = await response.json();
-    expect(resultJson).toMatchObject({
+    assert.deepStrictEqual(resultJson, {
       errors: [
         {
+          errors: [],
           message: 'Expected required property',
           name: 'query',
           path: '/name',
         },
         {
+          errors: [],
           message: 'Expected string',
           name: 'query',
           path: '/name',
@@ -282,11 +292,11 @@ describe('TypeBox', () => {
 
     const validResponse = await router.fetch('/hello?name=world');
 
-    expect(validResponse.status).toEqual(200);
-
     const validResultJson = await validResponse.json();
-    expect(validResultJson).toMatchObject({
+    assert.deepStrictEqual(validResultJson, {
       message: 'Hello world!',
     });
+
+    assert.strictEqual(validResponse.status, 200);
   });
 });

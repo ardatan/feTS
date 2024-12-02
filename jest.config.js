@@ -17,9 +17,12 @@ module.exports = {
   restoreMocks: true,
   reporters: ['default'],
   modulePathIgnorePatterns: ['dist', 'test-assets', 'test-files', 'fixtures', 'bun', '.bob'],
-  moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
-    prefix: `${ROOT_DIR}/`,
-  }),
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(tsconfig.compilerOptions.paths, {
+      prefix: `${ROOT_DIR}/`,
+    }),
+    'node:test': '<rootDir>/nodetest-jest.js',
+  },
   transformIgnorePatterns: [`node_modules/(?!(${ESM_PACKAGES.join('|')})/)`],
   transform: {
     '^.+\\.mjs?$': 'babel-jest',
