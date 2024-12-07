@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
-    "@theguild/tailwind-config": "0.5.0",
+    "@theguild/tailwind-config": "0.6.1",
     "@types/node": "22.10.1",
     "@types/react": "19.0.1",
     "@typescript/sandbox": "^0.1.0",
