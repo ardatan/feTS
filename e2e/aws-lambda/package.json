@@ -19,6 +19,6 @@
     "esbuild": "0.24.0",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.5.4"
+    "typescript": "5.7.2"
   }
 }
