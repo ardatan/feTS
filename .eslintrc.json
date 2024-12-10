@@ -42,6 +42,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "default-param-last": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
