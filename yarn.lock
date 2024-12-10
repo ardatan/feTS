@@ -4599,9 +4599,9 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.9.55":
-  version "0.9.60"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.60.tgz#3bae2aa7304a4d8c18a0c5d064aa3735cbad0ea7"
-  integrity sha512-JH3eK3aGnBwTT2qQwFrmx6RPXxsjrk99kDWOM98H1aayFMV70nsHIltmyuKRnPmf/avuVRe53bkiu2wsc5Eykw==
+  version "0.9.61"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.61.tgz#96e69085a0fdac5ad8b52938726131beaa091f99"
+  integrity sha512-MKMs5U2ySnsjV2RaFZM9xszbA6CeRFczVf3iITb2xpHtbBJx4G1HPt09SedFloJ3xiJxbguoBzAQnv6DZEoAWA==
   dependencies:
     "@whatwg-node/disposablestack" "^0.0.5"
     "@whatwg-node/fetch" "^0.10.0"
@@ -14668,10 +14668,10 @@ workerd@1.20241205.0:
     "@cloudflare/workerd-linux-arm64" "1.20241205.0"
     "@cloudflare/workerd-windows-64" "1.20241205.0"
 
-wrangler@3.94.0:
-  version "3.94.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.94.0.tgz#308f1d1d84cb9a268aec13154576a8f12d387a9e"
-  integrity sha512-4yw8FKp6SI6WQkALnRlWYjehmgliaaMroLLnymWS9qHndjqrZIPZ16trrhl1HvAEDov/rIg0jZ4nxo5n6K0a/Q==
+wrangler@3.95.0:
+  version "3.95.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.95.0.tgz#920af5dba125263ab58f4bf9affc01bf425f0dda"
+  integrity sha512-3w5852i3FNyDz421K2Qk4v5L8jjwegO5O8E1+VAQmjnm82HFNxpIRUBq0bmM7CTLvOPI/Jjcmj/eAWjQBL7QYg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/workers-shared" "0.11.0"
