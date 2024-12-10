@@ -3,7 +3,8 @@
   "compilerOptions": {
     "sourceMap": false,
     "inlineSourceMap": false,
-    "incremental": false
+    "incremental": false,
+    "declaration": true
   },
   "exclude": [
     "**/test/*.ts",
