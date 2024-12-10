@@ -2376,10 +2376,10 @@
     "@napi-rs/simple-git-win32-arm64-msvc" "0.1.19"
     "@napi-rs/simple-git-win32-x64-msvc" "0.1.19"
 
-"@next/bundle-analyzer@15.0.3":
-  version "15.0.3"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-15.0.3.tgz#58615521d2ae649687d0c7592b9d11a2aa92c19b"
-  integrity sha512-x7ZNvpoQPO0C5ZG//qVp21Qs3v6+C8LBJmdu9DKj4/NmjlnwoQ7dqRZ/nKZcwVhkFT7BHf+Qd5FaeHq9IDJvDQ==
+"@next/bundle-analyzer@15.0.4":
+  version "15.0.4"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-15.0.4.tgz#0bd2690f41679dbe3d85e0380539de3900514bad"
+  integrity sha512-0If3/mxqUWYC0lAdV5cChGA1Xs1BENjaLyJkdqpI2df86HqprcDZagiB2IU1xc5ph7xZHRdi5mT2cY7VkyibTQ==
   dependencies:
     webpack-bundle-analyzer "4.10.1"
 
@@ -3746,19 +3746,19 @@
   resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.10.9.tgz#55710c92b311fdaa8d8c66682a0dbdd684bc77c4"
   integrity sha512-kBknKOKzmeR7lN+vSadaKWXaLS0SZZG+oqpQ/k80Q6g9REn6zRHS/ZYdrIzHnpHgy/eWs00SujveUN/GJT2qTw==
 
-"@theguild/components@^7.3.2":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-7.3.2.tgz#a2673de1d45acf58223df81ae0bea4fb7e6d0e4d"
-  integrity sha512-BeZJlxFK9s/RV/LkZzk+NUGVhXzmr9v/FDVq5B2EbpbagY7OfF0vdh1ZCWhf+hj5zvOhEyL0fmftHbtN5v30sQ==
+"@theguild/components@^7.3.3":
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/@theguild/components/-/components-7.3.3.tgz#0c0731e246a0e7a2eff2f760e7f0d2d6789af199"
+  integrity sha512-/DafpemXMV8wGLGhvdX1Is+uSoK8oK2Nl0sg70N3uA5XaRhtJKUF63i37zHRfdWVBsSYMNceLKd+w3tneD3FlA==
   dependencies:
     "@giscus/react" "3.0.0"
-    "@next/bundle-analyzer" "15.0.3"
+    "@next/bundle-analyzer" "15.0.4"
     "@radix-ui/react-navigation-menu" "^1.2.0"
     clsx "2.1.1"
     fuzzy "0.1.3"
     next-videos "1.5.0"
-    nextra "3.2.4"
-    nextra-theme-docs "3.2.4"
+    nextra "3.2.5"
+    nextra-theme-docs "3.2.5"
     react-paginate "8.2.0"
     react-player "2.16.0"
     remark-mdx-disable-explicit-jsx "0.1.0"
@@ -10947,10 +10947,10 @@ nextjs-cors@^2.1.2:
   dependencies:
     cors "^2.8.5"
 
-nextra-theme-docs@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.2.4.tgz#40b0b136df9fbfc067c707816290549128bc8160"
-  integrity sha512-3fg7zMHInuvSDURRJjh6UrbdqkK8uLs8RNriY38kVukWLvaVP2f6mmVJKIYqxVv6qAKWEzDLTr4dlJCY81eXuQ==
+nextra-theme-docs@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.2.5.tgz#10f4f8cbc3d1a2f210389aae5a98d909f81ea606"
+  integrity sha512-eF0j1VNNS1rFjZOfYqlrXISaCU3+MhZ9hhXY+TUydRlfELrFWpGzrpW6MiL7hq4JvUR7OBtHHs8+A+8AYcETBQ==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -10960,10 +10960,10 @@ nextra-theme-docs@3.2.4:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.2.4.tgz#21831ba3ebacf32c4c1da522e5c474dbf225fc53"
-  integrity sha512-xvQuPVtRoJTz4ynIbEkxYkEtviIX699lt4coij2IMmafYrBNaD0Ofj93jIz7VngYxyT9f4gWSiwqNgoIlnbsjQ==
+nextra@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.2.5.tgz#d3bd2635095b6962a2b805a3b5fa91f20a299110"
+  integrity sha512-n665DRpI/brjHXM83G5LdlbYA2nOtjaLcWJs7mZS3gkuRDmEXpJj4XJ860xrhkYZW2iYoUMu32zzhPuFByU7VA==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"
