@@ -142,10 +142,12 @@ export function createRouterBase(
           for (const onRouteHandleHook of onRouteHandleHooks) {
             onRouteHandleHook({
               route,
-              request: request as TypedRequest,
+              // @ts-expect-error - We know it's a TypedRequest
+              request,
             });
           }
-          const handlerResult$ = route.handler(request as TypedRequest, context);
+          // @ts-expect-error - We know it's a TypedRequest
+          const handlerResult$ = route.handler(request, context);
           if (isPromise(handlerResult$)) {
             return handlerResult$.then(handlerResult => {
               if (handlerResult) {
@@ -190,10 +192,12 @@ export function createRouterBase(
               for (const onRouteHandleHook of onRouteHandleHooks) {
                 onRouteHandleHook({
                   route,
-                  request: request as TypedRequest,
+                  // @ts-expect-error - We know it's a TypedRequest
+                  request,
                 });
               }
-              return route.handler(request as TypedRequest, context);
+              // @ts-expect-error - We know it's a TypedRequest
+              return route.handler(request, context);
             }
           },
         );
