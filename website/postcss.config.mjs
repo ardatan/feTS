@@ -1,5 +1,6 @@
-import postCssConfig from '@theguild/tailwind-config/postcss.config';
-
-export default postCssConfig;
-
-
+export default {
+  plugins: {
+    'postcss-import': {},
+    tailwindcss: {},
+  },
+};
