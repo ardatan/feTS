@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@types/k6": "0.54.2",
-    "start-server-and-test": "2.0.8"
+    "start-server-and-test": "2.0.9"
   }
 }
