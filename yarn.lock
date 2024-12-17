@@ -4585,10 +4585,10 @@
     fast-querystring "^1.1.1"
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.9.55":
-  version "0.9.63"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.63.tgz#53801ff951a8f0c30da8d3fa4eb9b07b3d37a587"
-  integrity sha512-rHBN2murCcuuhQru/AQjA13lA9SzQAH9k8ENy4iZrAmY+C0yFYPud3HiFgPUgzR1B2KYUpIYKwC1UAUlkzASOQ==
+"@whatwg-node/server@^0.9.64":
+  version "0.9.64"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.64.tgz#81d865de414d291c4d9e9319ab62e26c90c6aaf3"
+  integrity sha512-4HSOWOjFvPLY7F6zqs/kbSBHInHIxd50xnwtp3NXUrI+d92iOBLHKm9aIULwAn2ABPcnfXb55VQwb4bEV3g6KA==
   dependencies:
     "@whatwg-node/disposablestack" "^0.0.5"
     "@whatwg-node/fetch" "^0.10.0"
