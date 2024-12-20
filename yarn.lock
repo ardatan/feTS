@@ -5209,9 +5209,9 @@ builtin-modules@3.0.0:
   integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
-  version "1.1.40"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.40.tgz#1c3270dce45bf79f81ae1ff2195abae24958f741"
-  integrity sha512-yVXBZ1/ATZJD5FvfhDydw45ED8DlmTflumPKj56p5/GLjYiHBZkirzad6MU6MSZKgZ4o1/Ks5lL/Jgg/fRXBSQ==
+  version "1.1.41"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.41.tgz#a37c8f3e26abfaf84c70842786b224d8f0a5b6bc"
+  integrity sha512-9etKiNC37Ll0Hs+4LpDDhCBXaR5M+o9/i0cR3NfTht0ciDhKh6TmVNZ5XaNoarsLL/VnG3kZm09OXrwM5hXgOg==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
@@ -6936,10 +6936,10 @@ eslint-plugin-jsx-a11y@^6.10.0:
     safe-regex-test "^1.0.3"
     string.prototype.includes "^2.0.1"
 
-eslint-plugin-n@17.15.0:
-  version "17.15.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.15.0.tgz#c6ab639a7d7761085cff05313753413d898b087e"
-  integrity sha512-xF3zJkOfLlFOm5TvmqmsnA9/fO+/z2pYs0dkuKXKN/ymS6UB1yEcaoIkqxLKQ9Dw/WmLX/Tdh6/5ZS5azVixFQ==
+eslint-plugin-n@17.15.1:
+  version "17.15.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.15.1.tgz#2129bbc7b11466c3bfec57876a15aadfad3a83f2"
+  integrity sha512-KFw7x02hZZkBdbZEFQduRGH4VkIH4MW97ClsbAM4Y4E6KguBJWGfWG1P4HEIpZk2bkoWf0bojpnjNAhYQP8beA==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.1"
     enhanced-resolve "^5.17.1"
