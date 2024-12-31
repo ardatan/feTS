@@ -2775,15 +2775,13 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.66.1":
-  version "6.66.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.66.1.tgz#21789c287c5f6fb1852d7e36330b925fec38ed8e"
-  integrity sha512-/qE/cM1X4RmNn9BDhg3ypK+us4MraxXbvvwrspyqaQixJDFlbOSF2H7cprRK7HcfoCBJaNrViacfendyxQ8zBQ==
+"@pulumi/aws@6.66.2":
+  version "6.66.2"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.66.2.tgz#cf140268393c3985e22131539fc2b4536724c320"
+  integrity sha512-jO5L4JcjYriqXBGYH9LVb+GjawHUJvkWvLtb5nXxIKpkykEO1LyWVZdR4ngFcT7Hlw99Tg1ms4ut7LdETPCuUw==
   dependencies:
     "@pulumi/pulumi" "^3.142.0"
-    builtin-modules "3.0.0"
     mime "^2.0.0"
-    resolve "^1.7.1"
 
 "@pulumi/awsx@0.40.1":
   version "0.40.1"
@@ -5202,11 +5200,6 @@ buffer@4.9.2:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
     isarray "^1.0.0"
-
-builtin-modules@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-3.0.0.tgz#1e587d44b006620d90286cc7a9238bbc6129cab1"
-  integrity sha512-hMIeU4K2ilbXV6Uv93ZZ0Avg/M91RaKXucQ+4me2Do1txxBDyDZWCBa5bJSLqoNTRpXTLwEzIk1KmloenDDjhg==
 
 bun-types@^1.0.17:
   version "1.1.42"
@@ -12642,7 +12635,7 @@ resolve.exports@^2.0.0:
   resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-2.0.3.tgz#41955e6f1b4013b7586f873749a635dea07ebe3f"
   integrity sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==
 
-resolve@^1.0.0, resolve@^1.1.7, resolve@^1.14.2, resolve@^1.20.0, resolve@^1.22.4, resolve@^1.22.8, resolve@^1.7.1:
+resolve@^1.0.0, resolve@^1.1.7, resolve@^1.14.2, resolve@^1.20.0, resolve@^1.22.4, resolve@^1.22.8:
   version "1.22.10"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.10.tgz#b663e83ffb09bbf2386944736baae803029b8b39"
   integrity sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==
