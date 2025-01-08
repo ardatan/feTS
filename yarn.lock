@@ -5215,10 +5215,10 @@ buffer@4.9.2:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-bun-types@^1.0.17:
-  version "1.1.42"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.42.tgz#104788d923b011fd162132c5ff6cc727c93d403d"
-  integrity sha512-beMbnFqWbbBQHll/bn3phSwmoOQmnX2nt8NI9iOQKFbgR5Z6rlH3YuaMdlid8vp5XGct3/W4QVQBmhoOEoe4nw==
+bun-types@^1.1.43:
+  version "1.1.43"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.43.tgz#f189d2fdffb7b879c8a2883454c9475e546e2218"
+  integrity sha512-W0wCtVH+bwFp7p3Zgs03CqxEDmXxEvmmUM/FBKgWIv9T8gyeotvIjIbHzuDScc2DphhRNtr7hJLCR5PspYL5qw==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
