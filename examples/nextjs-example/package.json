@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/node": "22.10.5",
-    "@types/react": "19.0.5",
+    "@types/react": "19.0.6",
     "@types/react-dom": "19.0.3",
     "fets": "0.8.4",
     "next": "15.1.4",
