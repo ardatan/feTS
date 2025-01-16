@@ -1274,6 +1274,11 @@
   dependencies:
     mime "^3.0.0"
 
+"@cloudflare/unenv-preset@1.x":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-1.0.0.tgz#c24d1d54a22e2fa5d38a2df29061a95ad3855c2f"
+  integrity sha512-rnihjY4xUsBmlqp0eM2tQXm+40aj3C7WhdH4eGHkLaoBKr3+LwuENByYm5mf65WEeA5NE6BolTnjkiJUts3RuA==
+
 "@cloudflare/workerd-darwin-64@1.20241230.0":
   version "1.20241230.0"
   resolved "https://registry.yarnpkg.com/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20241230.0.tgz#ed5a40791f0efa85cf4f0c6fb103182f7be7231c"
@@ -14128,10 +14133,10 @@ unenv@^1.10.0:
     node-fetch-native "^1.6.4"
     pathe "^1.1.2"
 
-"unenv@npm:unenv-nightly@2.0.0-20241218-183400-5d6aec3":
-  version "2.0.0-20241218-183400-5d6aec3"
-  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-2.0.0-20241218-183400-5d6aec3.tgz#d7582bc247832b9a06edd68e048467bf0bc8538e"
-  integrity sha512-7Xpi29CJRbOV1/IrC03DawMJ0hloklDLq/cigSe+J2jkcC+iDres2Cy0r4ltj5f0x7DqsaGaB4/dLuCPPFZnZA==
+"unenv@npm:unenv-nightly@2.0.0-20250109-100802-88ad671":
+  version "2.0.0-20250109-100802-88ad671"
+  resolved "https://registry.yarnpkg.com/unenv-nightly/-/unenv-nightly-2.0.0-20250109-100802-88ad671.tgz#97437fc4e7b2472cbc4a42312d9aadc3a4f8b874"
+  integrity sha512-Uij6gODNNNNsNBoDlnaMvZI99I6YlVJLRfYH8AOLMlbFrW7k2w872v9VLuIdch2vF8QBeSC4EftIh5sG4ibzdA==
   dependencies:
     defu "^6.1.4"
     mlly "^1.7.3"
@@ -14706,19 +14711,20 @@ workerd@1.20241230.0:
     "@cloudflare/workerd-linux-arm64" "1.20241230.0"
     "@cloudflare/workerd-windows-64" "1.20241230.0"
 
-wrangler@3.102.0:
-  version "3.102.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.102.0.tgz#555dd1f967de2e2af2878dae1d57407678944a64"
-  integrity sha512-Za4DstbS3+/hu+///K/4dFFeV6XbPBAGp7NCnVajchxRTwEPTdbO5eezH0HLJPMHK6G/0yIzyhlEMnyg4YzHAA==
+wrangler@3.103.0:
+  version "3.103.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.103.0.tgz#f8be651de836d18651dc77c8b1de351188509be1"
+  integrity sha512-DK1wLHwiELI5jmHolf7ZCWji+CkSgSZdD/ccrCtDWr5r9vJSb6gpPG9Dc7E68Z/yMFub9+r2XuwKLHEABMLZWw==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
+    "@cloudflare/unenv-preset" "1.x"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
     "@esbuild-plugins/node-modules-polyfill" "0.2.2"
     blake3-wasm "2.1.5"
     esbuild "0.17.19"
     miniflare "3.20241230.2"
     path-to-regexp "6.3.0"
-    unenv "npm:unenv-nightly@2.0.0-20241218-183400-5d6aec3"
+    unenv "npm:unenv-nightly@2.0.0-20250109-100802-88ad671"
     workerd "1.20241230.0"
   optionalDependencies:
     fsevents "~2.3.2"
