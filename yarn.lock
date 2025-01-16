@@ -1274,11 +1274,6 @@
   dependencies:
     mime "^3.0.0"
 
-"@cloudflare/unenv-preset@1.x":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-1.0.0.tgz#c24d1d54a22e2fa5d38a2df29061a95ad3855c2f"
-  integrity sha512-rnihjY4xUsBmlqp0eM2tQXm+40aj3C7WhdH4eGHkLaoBKr3+LwuENByYm5mf65WEeA5NE6BolTnjkiJUts3RuA==
-
 "@cloudflare/workerd-darwin-64@1.20241230.0":
   version "1.20241230.0"
   resolved "https://registry.yarnpkg.com/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20241230.0.tgz#ed5a40791f0efa85cf4f0c6fb103182f7be7231c"
@@ -14711,13 +14706,12 @@ workerd@1.20241230.0:
     "@cloudflare/workerd-linux-arm64" "1.20241230.0"
     "@cloudflare/workerd-windows-64" "1.20241230.0"
 
-wrangler@3.103.0:
-  version "3.103.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.103.0.tgz#f8be651de836d18651dc77c8b1de351188509be1"
-  integrity sha512-DK1wLHwiELI5jmHolf7ZCWji+CkSgSZdD/ccrCtDWr5r9vJSb6gpPG9Dc7E68Z/yMFub9+r2XuwKLHEABMLZWw==
+wrangler@3.103.1:
+  version "3.103.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.103.1.tgz#4beeee8807cdf5e19c1be231713d38db6270b76c"
+  integrity sha512-IuPXxRY5IZ081m6TeL1UY4X1lUH873MbndT4Tn9A5qN5ePzxTvyOM3pUil76bV+2rXk/TiZyt9fYykrKQ4g6Xg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
-    "@cloudflare/unenv-preset" "1.x"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
     "@esbuild-plugins/node-modules-polyfill" "0.2.2"
     blake3-wasm "2.1.5"
