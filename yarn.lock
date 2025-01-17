@@ -5210,9 +5210,9 @@ buffer@4.9.2:
     isarray "^1.0.0"
 
 bun-types@^1.0.17:
-  version "1.1.44"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.44.tgz#7826a4368641d52f30ae76685bb5e6a60338176f"
-  integrity sha512-jtcekoZeSINgEcHSISzhR13w/cyE+Fankw2Cpl4c0fN3lRmKVAX0i9ay4FyK4lOxUK1HG4HkuIlrPvXKz4Y7sw==
+  version "1.1.45"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.1.45.tgz#761d498744d8e31d1d98fe0ca9c00402ff28ffeb"
+  integrity sha512-8NT3BYwkyO8nzTG1k+q86VEvucw7s5W1fjRIGs0Y6/XNbTZn+mHEU39LFnuDLj4UmGCMpWCQtXUhLd6cko49Ww==
   dependencies:
     "@types/node" "~20.12.8"
     "@types/ws" "~8.5.10"
@@ -14706,10 +14706,10 @@ workerd@1.20241230.0:
     "@cloudflare/workerd-linux-arm64" "1.20241230.0"
     "@cloudflare/workerd-windows-64" "1.20241230.0"
 
-wrangler@3.103.1:
-  version "3.103.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.103.1.tgz#4beeee8807cdf5e19c1be231713d38db6270b76c"
-  integrity sha512-IuPXxRY5IZ081m6TeL1UY4X1lUH873MbndT4Tn9A5qN5ePzxTvyOM3pUil76bV+2rXk/TiZyt9fYykrKQ4g6Xg==
+wrangler@3.103.2:
+  version "3.103.2"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.103.2.tgz#941b45a7ff3aa7cd112c8babd4d75f7ff08b618f"
+  integrity sha512-eYcnubPhPBU1QMZYTam+vfCLpaQx+x1EWA6nFbLhid1eqNDAk1dNwNlbo+ZryrOHDEX3XlOxn2Z3Fx8vVv3hKw==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
