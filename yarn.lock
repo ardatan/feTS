@@ -14721,10 +14721,10 @@ workerd@1.20250129.0:
     "@cloudflare/workerd-linux-arm64" "1.20250129.0"
     "@cloudflare/workerd-windows-64" "1.20250129.0"
 
-wrangler@3.107.1:
-  version "3.107.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.107.1.tgz#05b6e76df4e24dcb0991e91644f5d35ff9500f7b"
-  integrity sha512-K0hWD0nE+G/7EnZ1FEDvoWhWqilG88LITlm8QdRW6UUn1rY5zLVXq4tUBTx6TmvOV+Vvfp12uI8fcGgpRZq2Qw==
+wrangler@3.107.2:
+  version "3.107.2"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.107.2.tgz#d62eb604aa9586760e47d4be61d18dabe71ee5a9"
+  integrity sha512-YOSfx0pETj18qcBD4aLvHjlcoV1sCVxYm9En8YphymW5rlTYD0Lc4MR3kzN1AGiWCjJ/ydrvA7eZuF/zPBotiw==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
@@ -14733,7 +14733,6 @@ wrangler@3.107.1:
     esbuild "0.17.19"
     miniflare "3.20250129.0"
     path-to-regexp "6.3.0"
-    sharp "^0.33.5"
     unenv "2.0.0-rc.1"
     workerd "1.20250129.0"
   optionalDependencies:
