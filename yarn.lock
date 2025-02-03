@@ -4568,18 +4568,18 @@
   integrity sha512-CZx57/XGBKhYZ3ifchbERgUl9J6C7W3XC96ibM7axr7C32mG5dXTyrVAS3ZY88Jxlkvx4AZyZtDJyUuseHQkcQ==
 
 "@typescript/sandbox@^0.1.0":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.7.tgz#2fcd3e44c06889e075b281520f98cd8c343ef012"
-  integrity sha512-WOS9ZJJJiIh7DSjnZnROnfZ9lG7MGeBBf7r+6EpciSr+U5mQEX4E4tk50JP3NY159v4xEBAB8E+XgbtkL3++DQ==
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@typescript/sandbox/-/sandbox-0.1.8.tgz#53306c6181e20025cd63a1027391ed610ac2db97"
+  integrity sha512-MCsnqwfCa+GMxcQaBLTAB/DAJXkJfj7OTJXQHDtGdacnTsqcbo1iNHH3HZCcnQsJRSPwE/IJae4NbgkuFVPc3Q==
   dependencies:
     "@typescript/ata" "0.9.7"
-    "@typescript/vfs" "1.6.0"
+    "@typescript/vfs" "1.6.1"
     lz-string "^1.5.0"
 
-"@typescript/vfs@1.6.0", "@typescript/vfs@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.6.0.tgz#9c90d8c43f7ac53cc77d5959e5c4c9b639f0959e"
-  integrity sha512-hvJUjNVeBMp77qPINuUvYXj4FyWeeMMKZkxEATEU3hqBAQ7qdTBCUFT7Sp0Zu0faeEtFf+ldXxMEDr/bk73ISg==
+"@typescript/vfs@1.6.1", "@typescript/vfs@^1.6.0":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.6.1.tgz#fe7087d5a43715754f7ea9bf6e0b905176c9eebd"
+  integrity sha512-JwoxboBh7Oz1v38tPbkrZ62ZXNHAk9bJ7c9x0eI5zBfBnBYGhURdbnh7Z4smN/MV48Y5OCcZb58n972UtbazsA==
   dependencies:
     debug "^4.1.1"
 
