@@ -14,6 +14,7 @@ import type {
 import type { ClientTypedResponsePromise } from './client/clientResponse.js';
 import type { ClientRequestInit } from './client/types.js';
 import type { SwaggerUIOpts } from './plugins/openapi.js';
+import { LazySerializedResponse } from './Response.js';
 import type {
   HTTPMethod,
   StatusCode,
@@ -364,6 +365,16 @@ export type OnRouteHookPayload<TServerContext> = {
 
 export type OnRouterInitHook<TServerContext> = (router: Router<TServerContext, any, any>) => void;
 
+export type OnSerializeResponsePayload<TServerContext> = {
+  request: TypedRequest;
+  path: string;
+  serverContext: TServerContext;
+  lazyResponse: LazySerializedResponse;
+};
+export type OnSerializeResponseHook<TServerContext> = (
+  payload: OnSerializeResponsePayload<TServerContext>,
+) => void;
+
 export type RouterPlugin<
   TServerContext,
   TComponents extends RouterComponentsBase,
@@ -371,6 +382,7 @@ export type RouterPlugin<
   onRouterInit?: OnRouterInitHook<TServerContext>;
   onRoute?: OnRouteHook<TServerContext>;
   onRouteHandle?: OnRouteHandleHook<TServerContext, TComponents>;
+  onSerializeResponse?: OnSerializeResponseHook<TServerContext>;
 };
 
 type ObjectSchemaWithPrimitiveProperties = JSONSchema & {

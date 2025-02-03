@@ -9304,6 +9304,11 @@ jsesc@^3.0.2, jsesc@~3.0.2:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-3.0.2.tgz#bb8b09a6597ba426425f2e4a07245c3d00b9343e"
   integrity sha512-xKqzzWXDttJuOcawBt4KnKHHIf5oQ/Cxax+0PWFG+DFDgHNAdi+TXECADI+RYiFUMmx8792xsMbbgXj4CwnP4g==
 
+json-accelerator@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/json-accelerator/-/json-accelerator-0.0.1.tgz#12132221048e6439d0f79ace1bf4a0086382b830"
+  integrity sha512-Z7FXIx2bnyD+z1+gkt9s8cZGfcApC0y6E4O/n0lOpd8pe99w9b9iNZrv+AlBwSE/WfwlGSHBFNFYnoZrNqzd5g==
+
 json-buffer@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.1.tgz#9338802a30d3b6605fbe0613e094008ca8c05a13"
@@ -14097,7 +14102,6 @@ typescript@5.7.3, typescript@^5.5.2:
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version "20.51.0"
-  uid "6609a88ffa9a16ac5158046761356ce03250a0df"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/6609a88ffa9a16ac5158046761356ce03250a0df"
 
 ufo@^1.5.4:

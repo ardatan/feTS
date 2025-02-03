@@ -6,11 +6,13 @@ import { useDefineRoutes } from './plugins/define-routes.js';
 import { useOpenAPI } from './plugins/openapi.js';
 import { useTypeBox } from './plugins/typebox.js';
 import { EMPTY_OBJECT } from './plugins/utils.js';
+import { isLazySerializedResponse } from './Response.js';
 import { HTTPMethod, TypedRequest, TypedResponse } from './typed-fetch.js';
 import type {
   OnRouteHandleHook,
   OnRouteHook,
   OnRouterInitHook,
+  OnSerializeResponseHook,
   OpenAPIDocument,
   OpenAPIInfo,
   Router,
@@ -18,6 +20,7 @@ import type {
   RouterComponentsBase,
   RouterOptions,
   RouterPlugin,
+  RouterRequest,
   RouterSDK,
   RouteSchemas,
   RouteWithSchemasOpts,
@@ -44,6 +47,7 @@ export function createRouterBase(
   const __onRouterInitHooks: OnRouterInitHook<any>[] = [];
   const onRouteHooks: OnRouteHook<any>[] = [];
   const onRouteHandleHooks: OnRouteHandleHook<any, RouterComponentsBase>[] = [];
+  const onSerializeResponseHooks: OnSerializeResponseHook<any>[] = [];
   for (const plugin of plugins) {
     if (plugin.onRouterInit) {
       __onRouterInitHooks.push(plugin.onRouterInit);
@@ -53,6 +57,9 @@ export function createRouterBase(
     }
     if (plugin.onRouteHandle) {
       onRouteHandleHooks.push(plugin.onRouteHandle);
+    }
+    if (plugin.onSerializeResponse) {
+      onSerializeResponseHooks.push(plugin.onSerializeResponse);
     }
   }
   const routeByPatternByMethod = new Map<
@@ -104,6 +111,36 @@ export function createRouterBase(
     return undefined as any;
   }
 
+  interface ProcessHandlerResultOpts {
+    routerRequest: RouterRequest;
+    context: any;
+    path: string;
+  }
+
+  function processHandlerResult(
+    handlerResult: TypedResponse | Response | undefined,
+    opts: ProcessHandlerResultOpts,
+  ) {
+    if (handlerResult) {
+      if (isLazySerializedResponse(handlerResult)) {
+        const onSerializeResponseHookPayload = {
+          request: opts.routerRequest,
+          path: opts.path,
+          lazyResponse: handlerResult,
+          serverContext: opts.context,
+        };
+        for (const onSerializeResponseHook of onSerializeResponseHooks) {
+          onSerializeResponseHook(onSerializeResponseHookPayload);
+        }
+        return (
+          handlerResult.actualResponse ||
+          fetchAPI.Response.json(handlerResult.jsonObj, handlerResult.init)
+        );
+      }
+      return handlerResult;
+    }
+  }
+
   return {
     openAPIDocument,
     handle(request: Request, context: any) {
@@ -151,18 +188,27 @@ export function createRouterBase(
           if (isPromise(handlerResult$)) {
             return handlerResult$.then(handlerResult => {
               if (handlerResult) {
-                return handlerResult as Response;
+                return processHandlerResult(handlerResult, {
+                  routerRequest: request as any,
+                  context,
+                  path: route.path,
+                });
               }
               return handleUnhandledRoute(request.url);
             });
           }
           if (handlerResult$) {
-            return handlerResult$ as Response;
+            return processHandlerResult(handlerResult$, {
+              routerRequest: request as any,
+              context,
+              path: route.path,
+            });
           }
         }
       }
       const methodPatternMaps = routeByPatternByMethod.get(request.method as HTTPMethod);
       if (methodPatternMaps) {
+        let path: string;
         const patternHandlerResult$ = asyncIterationUntilReturn(
           methodPatternMaps.entries(),
           ([pattern, route]) => {
@@ -196,6 +242,7 @@ export function createRouterBase(
                   request,
                 });
               }
+              path = route.path;
               // @ts-expect-error - We know it's a TypedRequest
               return route.handler(request, context);
             }
@@ -204,13 +251,21 @@ export function createRouterBase(
         if (isPromise(patternHandlerResult$)) {
           return patternHandlerResult$.then(patternHandlerResult => {
             if (patternHandlerResult) {
-              return patternHandlerResult as Response;
+              return processHandlerResult(patternHandlerResult, {
+                routerRequest: request as any,
+                context,
+                path,
+              });
             }
             return handleUnhandledRoute(request.url);
           });
         }
         if (patternHandlerResult$) {
-          return patternHandlerResult$ as Response;
+          return processHandlerResult(patternHandlerResult$, {
+            routerRequest: request as any,
+            context,
+            path: path!,
+          });
         }
       }
       return handleUnhandledRoute(request.url);
