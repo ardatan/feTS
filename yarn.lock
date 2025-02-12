@@ -14726,10 +14726,10 @@ workerd@1.20250204.0:
     "@cloudflare/workerd-linux-arm64" "1.20250204.0"
     "@cloudflare/workerd-windows-64" "1.20250204.0"
 
-wrangler@3.108.0:
-  version "3.108.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.108.0.tgz#18ab34fa386859e9ded30467f4443b9bb4b8c424"
-  integrity sha512-w8J0VtDqn8F94qw+HnxFbri7MMdT/to5/w1QHAjR//tIHkilKAUFNaEF3GDEJREvUG3iHuawrH2p5ATTHnFc/Q==
+wrangler@3.108.1:
+  version "3.108.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.108.1.tgz#8c0d375d3890c74e4cba058ba87167b1afed0480"
+  integrity sha512-SuiMv/ys52Cu7r6CVRXJT/GvneXHoB0ef5nGBWghSWyHxUSIm4KavGO6F/hTphn+WmSpHYQt3xNl5hdxk6rJlA==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
@@ -14929,9 +14929,9 @@ zod@3.22.3:
   integrity sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==
 
 zod@^3.20.2, zod@^3.22.3, zod@^3.22.4:
-  version "3.24.1"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.24.1.tgz#27445c912738c8ad1e9de1bea0359fa44d9d35ee"
-  integrity sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==
+  version "3.24.2"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.24.2.tgz#8efa74126287c675e92f46871cfc8d15c34372b3"
+  integrity sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==
 
 zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
