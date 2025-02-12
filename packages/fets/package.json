@@ -34,7 +34,7 @@
   },
   "typings": "dist/typings/index.d.ts",
   "dependencies": {
-    "@sinclair/typebox": "^0.34.0",
+    "@sinclair/typebox": "^0.34.20",
     "@whatwg-node/cookie-store": "^0.2.0",
     "@whatwg-node/fetch": "^0.10.0",
     "@whatwg-node/server": "^0.9.55",
