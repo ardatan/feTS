@@ -3185,9 +3185,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.34.0":
-  version "0.34.20"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.20.tgz#6e85e541da87fcb615fc1c482a47647adcf83024"
-  integrity sha512-rVNFD9dFMzZgnuv0LZHZHIjS3R5nSOWIQaxP7GrcgsA3yf/tCH5xZ7zJkxWCee4EXfiTuQWbtcBcQMsd4AiCzg==
+  version "0.34.21"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.21.tgz#844457696596bc2f9c26618a46b905b742b4d0f7"
+  integrity sha512-G+7YVIZalo+N+h7KapWBxRH2at9yO4yIHq49PkQLTQQkPTM0ZYaPOfPDpeNv/ukWjm8a1GdnO3yDC7bietT23A==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4348,10 +4348,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@*", "@types/node@22.13.1", "@types/node@>=13.7.0", "@types/node@^22.10.3":
-  version "22.13.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.1.tgz#a2a3fefbdeb7ba6b89f40371842162fac0934f33"
-  integrity sha512-jK8uzQlrvXqEU91UxiK5J7pKHyzgnI1Qnl0QDHIgVGuolJhRb9EEl28Cj9b3rGR8B2lhFCtvIm5os8lFnO/1Ew==
+"@types/node@*", "@types/node@22.13.2", "@types/node@>=13.7.0", "@types/node@^22.10.3":
+  version "22.13.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.2.tgz#6f401c5ccadac75354f5652128e9fcc3b0cf23b7"
+  integrity sha512-Z+r8y3XL9ZpI2EY52YYygAFmo2/oWfNSj4BCpAXE2McAexDk8VcnBMGC9Djn9gTKt4d2T/hhXqmPzo4hfIXtTg==
   dependencies:
     undici-types "~6.20.0"
 
