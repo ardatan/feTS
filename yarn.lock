@@ -4602,30 +4602,30 @@
   dependencies:
     tslib "^2.6.3"
 
-"@whatwg-node/fetch@^0.10.0", "@whatwg-node/fetch@^0.10.4":
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.4.tgz#c661a63e658706688357852bf76c2b1c93cdf844"
-  integrity sha512-rCycAF+bNJFuyY2w9JdMOaIc/VIwnBFG+skXfKaF/I9u91LpQD7qMrI6ZiKByIiQFttwsAUDLtFGBHeZ6UHC3Q==
+"@whatwg-node/fetch@^0.10.0", "@whatwg-node/fetch@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.5.tgz#8537e50d32bac0f2e9cecff206588ca41d836df5"
+  integrity sha512-+yFJU3hmXPAHJULwx0VzCIsvr/H0lvbPvbOH3areOH3NAuCxCwaJsQ8w6/MwwMcvEWIynSsmAxoyaH04KeosPg==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.7.10"
+    "@whatwg-node/node-fetch" "^0.7.11"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.7.10":
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.10.tgz#cae8cd6e10fb614cd064c307ddfd1f6704b35294"
-  integrity sha512-Wibb7IQyMNhNc4GBepKWWDdAYyduU5UY2NOtiQMPZnUn7tMBJKugVIrGBBTZp5OqxtM+tccSO/LzNTH0S4c0qw==
+"@whatwg-node/node-fetch@^0.7.11":
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.11.tgz#e77cd697287cc53f7c906b91dd9359560546d8f7"
+  integrity sha512-UQXJyaFxThqE/br5aiey+pJgRSq+YHH01cHs7rCJ7HQcuuCMpMhrLmCvT1sTJeDQmMljQGESs1P6vmEEptPR5w==
   dependencies:
     "@whatwg-node/disposablestack" "^0.0.5"
     busboy "^1.6.0"
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.9.55":
-  version "0.9.68"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.68.tgz#44910b58587d0a7c2a09075258335a3b5edc4001"
-  integrity sha512-0Ibl8Q6pUrO36g5xllshsccYVzsaybZqyQ+vAqewWtIeHCmkB0dpyzmux/xcOO5C+mLPy12g4yaNHsBRTJ0YOw==
+  version "0.9.69"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.69.tgz#ed1755ce8e12b4711c1bbae0dc46341dd1e3876c"
+  integrity sha512-zXqJrC7gM4fdxD/W2v7H+x5/6jveHlso5sfNs3dLpgGnXLbto5hH4i+J009U3YBLw4Y3Pximkv4Y7UYV49UWqg==
   dependencies:
     "@whatwg-node/disposablestack" "^0.0.5"
-    "@whatwg-node/fetch" "^0.10.4"
+    "@whatwg-node/fetch" "^0.10.5"
     tslib "^2.6.3"
 
 "@yarnpkg/lockfile@^1.1.0":
@@ -14725,10 +14725,10 @@ workerd@1.20250214.0:
     "@cloudflare/workerd-linux-arm64" "1.20250214.0"
     "@cloudflare/workerd-windows-64" "1.20250214.0"
 
-wrangler@3.109.2:
-  version "3.109.2"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.109.2.tgz#e792c32b9656b71f9fec33b95f4de6fe0bb53fd8"
-  integrity sha512-CT8izugPBth5o1o4gLNcQrDkHKSX2Jthy6gkyhaWiy2pFrx+536NMn/atWilLA1t1uhIgddEI5BXDNudIkPPHA==
+wrangler@3.109.3:
+  version "3.109.3"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.109.3.tgz#4ed118bc9ef868c8576d946e0b2d7e25360e071a"
+  integrity sha512-T+SfFYEbkWDzf8WRR1JzaVKPH7wAzyciRIua8qszT+UqPqFNb6M5beCHHK/de7Zk5z6W5lvLly9SHToC11maDQ==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@esbuild-plugins/node-globals-polyfill" "0.2.3"
