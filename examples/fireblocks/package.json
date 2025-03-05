@@ -1,6 +1,6 @@
 {
   "name": "example-clickhouse",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "An example app uses ClickHouse Cloud API",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "22.13.9",
-    "fets": "0.8.4",
+    "fets": "0.8.5",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typescript": "^5.5.2"
