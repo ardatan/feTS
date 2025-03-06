@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-8.1.1.tgz#95b1947d292a9a2efffba2081796dcaa05ecedfb"
   integrity sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==
 
-"@azure/functions@4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.6.1.tgz#e1e1167ea4b2e29d411b0fef4e4ab300ba488cbf"
-  integrity sha512-Py2Az29yk+A21vHES/rL6iU3ptKB+vVz3sGTjm0jSPFjG4kPbhFLi5vFI7YkCPMGeoD4WMIjHqTAeXvnFrBUBA==
+"@azure/functions@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.7.0.tgz#572039654da41857f83da78296f60f8de9d8f55a"
+  integrity sha512-y1caGX6LYrA7msAckQVb/quFOhWHSPiGzWfIML17t0ee2ydpinJTBF+Sti+URfLAH63dtmXJR4meraZkhhK9tw==
   dependencies:
     cookie "^0.7.0"
     long "^4.0.0"
@@ -1328,10 +1328,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@envelop/instruments@1.0.0":
+"@envelop/instrumentation@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/instruments/-/instruments-1.0.0.tgz#7e36926b6212048258ce1939bcf5a52e2a5dbe4d"
-  integrity sha512-f4lHoti7QgUIluIGTM0mG9Wf9/w6zc1mosYmyFkrApeHSP2PIUC6a8fMoqkdk6pgVOps39kLdIhOPF8pIKS8/A==
+  resolved "https://registry.yarnpkg.com/@envelop/instrumentation/-/instrumentation-1.0.0.tgz#43268392e065d8ba975cacbdf4fc297dfe3e11e5"
+  integrity sha512-cxgkB66RQB95H3X27jlnxCRNTmPuSTgmBAq6/4n2Dtv4hsk4yz8FadA1ggmd0uZzvKqWD6CR+WFgTjhDqg7eyw==
   dependencies:
     "@whatwg-node/promise-helpers" "^1.2.1"
     tslib "^2.5.0"
@@ -4643,11 +4643,11 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.0.tgz#a4f91a588dd2c543a76b20fefb05283419122655"
-  integrity sha512-o+FrEtUgozt6d2Dw4WB5t8I4gx6wAmhsznYcg6UAOy1FUutJcs4+KCLKhUv/L2bt+A9On9jPAtLtrvj3hAj+iQ==
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.1.tgz#db8d60feac545c0ecc00ea74c1a479d3b224e4e3"
+  integrity sha512-SKZjZAhQe8o34pDHUDFn5PV5Otq/gaj/A6AlQ6Sa4+A12YBO0znKKwfoCwGxv/BSRRx0zUqLdI8fZ0ui+EyUlw==
   dependencies:
-    "@envelop/instruments" "1.0.0"
+    "@envelop/instrumentation" "^1.0.0"
     "@whatwg-node/disposablestack" "^0.0.6"
     "@whatwg-node/fetch" "^0.10.5"
     "@whatwg-node/promise-helpers" "^1.2.3"
@@ -14757,10 +14757,10 @@ workerd@1.20250224.0:
     "@cloudflare/workerd-linux-arm64" "1.20250224.0"
     "@cloudflare/workerd-windows-64" "1.20250224.0"
 
-wrangler@3.113.0:
-  version "3.113.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.113.0.tgz#86e2007cda73e11c6b9864bc3a415ec42a17ba9e"
-  integrity sha512-Fr7sxO9kNFoN12AZLdwkQEnHN7pf1FziOfmEZsQIvyyMJTQC0HMWWS9LEsMdxJf0X9okoRMXLPfE9wtz1C1SIg==
+wrangler@3.114.0:
+  version "3.114.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.114.0.tgz#7080819f3929e22b8fb375481767039ec5b1b30e"
+  integrity sha512-cY0HxgU5yuc24tE1Y4KD2n9UzYYEx+9lSL7p/Sqj18SgDfwyiMPY/FryXQAPYLuD/S+dxArRQyeEkFSokIr75Q==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/unenv-preset" "2.0.0"
