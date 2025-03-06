@@ -14757,10 +14757,10 @@ workerd@1.20250224.0:
     "@cloudflare/workerd-linux-arm64" "1.20250224.0"
     "@cloudflare/workerd-windows-64" "1.20250224.0"
 
-wrangler@3.113.0:
-  version "3.113.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.113.0.tgz#86e2007cda73e11c6b9864bc3a415ec42a17ba9e"
-  integrity sha512-Fr7sxO9kNFoN12AZLdwkQEnHN7pf1FziOfmEZsQIvyyMJTQC0HMWWS9LEsMdxJf0X9okoRMXLPfE9wtz1C1SIg==
+wrangler@3.114.0:
+  version "3.114.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-3.114.0.tgz#7080819f3929e22b8fb375481767039ec5b1b30e"
+  integrity sha512-cY0HxgU5yuc24tE1Y4KD2n9UzYYEx+9lSL7p/Sqj18SgDfwyiMPY/FryXQAPYLuD/S+dxArRQyeEkFSokIr75Q==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.3.4"
     "@cloudflare/unenv-preset" "2.0.0"
