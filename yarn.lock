@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-8.1.1.tgz#95b1947d292a9a2efffba2081796dcaa05ecedfb"
   integrity sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==
 
-"@azure/functions@4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.6.1.tgz#e1e1167ea4b2e29d411b0fef4e4ab300ba488cbf"
-  integrity sha512-Py2Az29yk+A21vHES/rL6iU3ptKB+vVz3sGTjm0jSPFjG4kPbhFLi5vFI7YkCPMGeoD4WMIjHqTAeXvnFrBUBA==
+"@azure/functions@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@azure/functions/-/functions-4.7.0.tgz#572039654da41857f83da78296f60f8de9d8f55a"
+  integrity sha512-y1caGX6LYrA7msAckQVb/quFOhWHSPiGzWfIML17t0ee2ydpinJTBF+Sti+URfLAH63dtmXJR4meraZkhhK9tw==
   dependencies:
     cookie "^0.7.0"
     long "^4.0.0"
