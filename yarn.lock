@@ -3203,9 +3203,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.34.0":
-  version "0.34.29"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.29.tgz#7eaf1201484bf3e9aa87f943fdfa8bf0248c5c10"
-  integrity sha512-xTzI0LlHZ0eahKuN+2R+yJbEIUyV/ZSdtqvR3sHukgN56nvCW1tz+Yr6fQ6/7+WJ34AhaU9ZmYcHXv8xgj2Lvg==
+  version "0.34.30"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.30.tgz#a5f3b127a0ae14e03103f689f744befc429b10cb"
+  integrity sha512-gFB3BiqjDxEoadW0zn+xyMVb7cLxPCoblVn2C/BKpI41WPYi2d6fwHAlynPNZ5O/Q4WEiujdnJzVtvG/Jc2CBQ==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -5274,9 +5274,9 @@ buffer@4.9.2:
     isarray "^1.0.0"
 
 bun-types@^1.0.17:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.4.tgz#8cfd807e6b69f577351075a5068687d6bcf767b9"
-  integrity sha512-nDPymR207ZZEoWD4AavvEaa/KZe/qlrbMSchqpQwovPZCKc7pwMoENjEtHgMKaAjJhy+x6vfqSBA1QU3bJgs0Q==
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.5.tgz#1e090315033036fbd2eeae89adfd3327c3cc56f7"
+  integrity sha512-3oO6LVGGRRKI4kHINx5PIdIgnLRb7l/SprhzqXapmoYkFl5m4j6EvALvbDVuuBFaamB46Ap6HCUxIXNLCGy+tg==
   dependencies:
     "@types/node" "*"
     "@types/ws" "~8.5.10"
