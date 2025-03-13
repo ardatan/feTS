@@ -83,7 +83,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
         value: env('AZURE_SUBSCRIPTION_ID'),
       });
       await stack.setConfig('azure-native:location', {
-        value: 'eastus',
+        value: 'westus',
       });
     },
     program: async () => {
