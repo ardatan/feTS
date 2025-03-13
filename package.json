@@ -64,7 +64,10 @@
   },
   "resolutions": {
     "@pulumi/pulumi": "3.154.0",
-    "next": "15.2.1"
+    "cookie": "0.7.1",
+    "esbuild": "0.25.1",
+    "next": "15.2.1",
+    "prismjs": "1.30.0"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
