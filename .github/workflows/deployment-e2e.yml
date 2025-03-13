@@ -85,3 +85,10 @@ jobs:
         env:
           # General
           COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
+      - name: Ensure Deletion
+        run: yarn e2e
+        if: ${{ always() }}
+        working-directory: e2e/${{ matrix.plan }}
+        env:
+          COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
+          ENSURE_DELETION: 1
