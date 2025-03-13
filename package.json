@@ -66,7 +66,7 @@
     "@pulumi/pulumi": "3.154.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.1",
-    "next": "15.2.1",
+    "next": "15.2.2",
     "prismjs": "1.30.0"
   },
   "lint-staged": {
