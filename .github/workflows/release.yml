@@ -3,10 +3,6 @@ name: release
 env:
   NODE_OPTIONS: --max-old-space-size=4096
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   push:
     branches:

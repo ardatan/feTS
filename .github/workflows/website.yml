@@ -9,10 +9,6 @@ on:
       - master
 permissions: write-all
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   deployment:
     runs-on: ubuntu-latest

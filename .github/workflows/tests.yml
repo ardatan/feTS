@@ -13,10 +13,6 @@ env:
   NODE_OPTIONS: '--max-old-space-size=8192'
   CI: true
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   type-check:
     runs-on: ubuntu-latest
