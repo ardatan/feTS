@@ -38,12 +38,17 @@ jobs:
   e2e:
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         plan: ['aws-lambda', 'azure-function', 'cloudflare-workers', 'cloudflare-modules', 'deno']
         # TODO: Add vercel
     name: e2e / ${{ matrix.plan }}
 
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ matrix.plan }}
+      cancel-in-progress: false
 
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
