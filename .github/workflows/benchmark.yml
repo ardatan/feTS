@@ -1,4 +1,4 @@
-name: test
+name: benchmark
 on:
   pull_request:
     paths-ignore:
