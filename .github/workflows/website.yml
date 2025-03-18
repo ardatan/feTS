@@ -34,8 +34,8 @@ jobs:
           SITE_URL:
             ${{ github.ref == 'refs/heads/master' && 'https://the-guild.dev/openapi/fets' || '' }}
         with:
-          cloudflareApiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          cloudflareAccountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflareApiToken: ${{ secrets.WEBSITE_CF_API_TOKEN }}
+          cloudflareAccountId: ${{ secrets.WEBSITE_CF_ACCOUNT_ID }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: fets
           prId: ${{ github.event.pull_request.number }}
