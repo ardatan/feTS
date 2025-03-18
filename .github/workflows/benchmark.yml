@@ -5,7 +5,7 @@ on:
       - 'website/**'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-benchmark-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

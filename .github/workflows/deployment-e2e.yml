@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
 
     concurrency:
-      group: ${{ github.workflow }}-${{ matrix.plan }}
+      group: ${{ github.workflow }}-e2e-${{ matrix.plan }}
       cancel-in-progress: false
 
     if: github.event.pull_request.head.repo.full_name == github.repository

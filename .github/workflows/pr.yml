@@ -8,7 +8,7 @@ on:
       - 'website/**'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}=pr-${{ github.ref }}
   cancel-in-progress: true
 
 env:
