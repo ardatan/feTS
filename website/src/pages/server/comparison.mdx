@@ -30,20 +30,20 @@ you can manipulate the response after the handler resolves. In `itty-router`, yo
 router's `fetch` method to do that.
 
 ```ts
-import { Router } from "itty-router";
+import { Router } from 'itty-router'
 
-const router = Router();
+const router = Router()
 
-router.get("/hello", () => new Response("Hello World!"));
+router.get('/hello', () => new Response('Hello World!'))
 
 const wrappedFetch = (request: Request) => {
-  const response = await router.fetch(request);
+  const response = await router.fetch(request)
   // Do something with the response here
-  logResponse(response);
+  logResponse(response)
   // Manipulate the response here
-  response.headers.set("X-Hello", "World");
-  return response;
-};
+  response.headers.set('X-Hello', 'World')
+  return response
+}
 ```
 
 But in feTS;
