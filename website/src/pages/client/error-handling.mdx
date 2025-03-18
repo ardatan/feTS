@@ -14,26 +14,26 @@ the server will return a 404 status code. Here's how you can handle this:
 
 ```ts
 const response = await client['/pet/{id}']({
-    params: {
-        id: 1
-    }
- });
+  params: {
+    id: 1
+  }
+})
 
 if (response.status === 404) {
-    console.error('Pet not found');
-    return;
+  console.error('Pet not found')
+  return
 }
 
 // Or handle errors
 if (!response.ok) {
-    console.error('Something went wrong');
-    const errorResponse = await response.text();
-    console.log(errorResponse);
-    return;
+  console.error('Something went wrong')
+  const errorResponse = await response.text()
+  console.log(errorResponse)
+  return
 }
 
-const pet = await response.json();
-console.log(`Pet name is ${pet.name}`);
+const pet = await response.json()
+console.log(`Pet name is ${pet.name}`)
 ```
 
 ## Working with Validation Errors in feTS Server
@@ -42,25 +42,25 @@ When using [feTS Server](/server/quick-start), request validation errors are thr
 `ClientValidationError`. You can handle them as shown below:
 
 ```ts
-import { ClientValidationError } from 'fets';
+import { ClientValidationError } from 'fets'
 
 try {
-    const response = await client['/pet/:id']({
-        params: {
-            id: 1
-        }
-    });
-
-    if (response.status === 404) {
-        console.error('Pet not found');
-        return;
+  const response = await client['/pet/:id']({
+    params: {
+      id: 1
     }
+  })
 
-    const pet = await response.json();
-    console.log(`Pet name is ${pet.name}`);
+  if (response.status === 404) {
+    console.error('Pet not found')
+    return
+  }
+
+  const pet = await response.json()
+  console.log(`Pet name is ${pet.name}`)
 } catch (error) {
-    if (error instanceof ClientValidationError) {
-        console.error('Validation error', error.errors);
-    }
+  if (error instanceof ClientValidationError) {
+    console.error('Validation error', error.errors)
+  }
 }
 ```
