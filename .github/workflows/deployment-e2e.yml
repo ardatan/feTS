@@ -44,7 +44,7 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       - name: Use Node 18
         uses: actions/setup-node@master
@@ -57,7 +57,7 @@ jobs:
           deno-version: vx.x.x
 
       - name: Cache Node Modules
-        uses: actions/cache@v4
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
         id: node-modules-cache-deployment-e2e
         with:
           path: '**/node_modules'
@@ -71,7 +71,7 @@ jobs:
         run: yarn build
 
       - name: Install pulumi
-        uses: pulumi/setup-pulumi@v2
+        uses: pulumi/setup-pulumi@b374ceb6168550de27c6eba92e01c1a774040e11 # v2
 
       - name: Set outputs
         id: vars
