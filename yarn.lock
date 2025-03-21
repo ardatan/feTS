@@ -4619,10 +4619,10 @@
   dependencies:
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.10.0":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.1.tgz#db8d60feac545c0ecc00ea74c1a479d3b224e4e3"
-  integrity sha512-SKZjZAhQe8o34pDHUDFn5PV5Otq/gaj/A6AlQ6Sa4+A12YBO0znKKwfoCwGxv/BSRRx0zUqLdI8fZ0ui+EyUlw==
+"@whatwg-node/server@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.2.tgz#9f9fa2e5d1747eaab1ca9ecf4bb41951c47a1b92"
+  integrity sha512-PrqRhJgqCXNhfdhSN8XaVkuVnzhTQz0R17DZYTjgP5dXFQnrsNQnooBRTvdPFAjx5UmJ9fHPaNqRXm9Zc1b9lQ==
   dependencies:
     "@envelop/instrumentation" "^1.0.0"
     "@whatwg-node/disposablestack" "^0.0.6"
