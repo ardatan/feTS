@@ -4222,10 +4222,10 @@
     "@types/ms" "*"
     "@types/node" "*"
 
-"@types/k6@0.57.1":
-  version "0.57.1"
-  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-0.57.1.tgz#d32221f94e4e27198c2bdb327c7428d581ae18ce"
-  integrity sha512-S/p2RQAYUBXyYROkR2fgeON/LaxJ0YR+KIlnPQW/TOeLBXD7tX4RfDSWaIecuDTWKblmc6UwANyP0e5QDZPhMw==
+"@types/k6@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/k6/-/k6-1.0.1.tgz#bd0a777b199f51271c62c55ff5fcedbe9b57b2fa"
+  integrity sha512-C2VX1t9jj543L1RxyNuToXR2VZvmfOHCORDTBYUKctrbVbTpBRmb1IhMl5/ZHb851MIIrCzdG27HwewPPQ2E6Q==
 
 "@types/katex@^0.16.0":
   version "0.16.7"
