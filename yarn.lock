@@ -4620,9 +4620,9 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.10.0":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.2.tgz#9f9fa2e5d1747eaab1ca9ecf4bb41951c47a1b92"
-  integrity sha512-PrqRhJgqCXNhfdhSN8XaVkuVnzhTQz0R17DZYTjgP5dXFQnrsNQnooBRTvdPFAjx5UmJ9fHPaNqRXm9Zc1b9lQ==
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.3.tgz#d4943980b1e35b3ae413d43b1413ad509dd75a1f"
+  integrity sha512-2Dnfey57vWR+hDUMjPhNzJQc9z116BBzSQwR9eD0vhnzYmN2rJXuY0QuMaHDCCqEZRmFHg2bo8iJ+/1uHOlxpg==
   dependencies:
     "@envelop/instrumentation" "^1.0.0"
     "@whatwg-node/disposablestack" "^0.0.6"
@@ -5239,9 +5239,9 @@ buffer@4.9.2:
     isarray "^1.0.0"
 
 bun-types@^1.0.17:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.5.tgz#1e090315033036fbd2eeae89adfd3327c3cc56f7"
-  integrity sha512-3oO6LVGGRRKI4kHINx5PIdIgnLRb7l/SprhzqXapmoYkFl5m4j6EvALvbDVuuBFaamB46Ap6HCUxIXNLCGy+tg==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.6.tgz#6e89fa9009bc85ab60ca206383b7c9468260fca6"
+  integrity sha512-FbCKyr5KDiPULUzN/nm5oqQs9nXCHD8dVc64BArxJadCvbNzAI6lUWGh9fSJZWeDIRD38ikceBU8Kj/Uh+53oQ==
   dependencies:
     "@types/node" "*"
     "@types/ws" "~8.5.10"
