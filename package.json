@@ -65,7 +65,7 @@
   "resolutions": {
     "@pulumi/pulumi": "3.159.0",
     "cookie": "1.0.2",
-    "esbuild": "0.25.1",
+    "esbuild": "0.25.2",
     "next": "15.2.4",
     "prismjs": "1.30.0"
   },
