@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/node": "22.13.14",
+    "@types/node": "22.13.17",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "fets": "0.8.5",
