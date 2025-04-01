@@ -2729,7 +2729,7 @@
     "@pulumi/pulumi" "^3.0.0"
     semver "^5.4.0"
 
-"@pulumi/pulumi@3.159.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.142.0":
+"@pulumi/pulumi@3.159.0", "@pulumi/pulumi@3.160.0", "@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.142.0":
   version "3.159.0"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.159.0.tgz#82cf8e5e048f6526968a7eece361aa009d0feb83"
   integrity sha512-ochBFHh8ZePwDwxPKx1IBsDPZ4h2Q1HB7pfh8sKhP8OEpQD+TASLGT7fE015B5kjeHRlwCusyNSexKXDByl0FQ==
