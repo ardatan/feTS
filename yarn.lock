@@ -3104,9 +3104,9 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@sinclair/typebox@^0.34.0":
-  version "0.34.31"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.31.tgz#ad76cc648a61ee6c8d38d6357dcbc7748c935b68"
-  integrity sha512-qQ71T9DsITbX3dVCrcBERbs11YuSMg3wZPnT472JhqhWGPdiLgyvihJXU8m+ADJtJvRdjATIiACJD22dEknBrQ==
+  version "0.34.33"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.34.33.tgz#10ab3f1261ed9e754660250fad3e69cca1fa44b2"
+  integrity sha512-5HAV9exOMcXRUxo+9iYB5n09XxzCXnfy4VTNW4xnDv+FgjzAGY989C28BIdljKqmF+ZltUwujE3aossvcVtq6g==
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
@@ -4290,15 +4290,15 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@19.0.4", "@types/react-dom@^19.0.0":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
-  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
+"@types/react-dom@19.1.1", "@types/react-dom@^19.0.0":
+  version "19.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.1.tgz#a8d097b28247d1129cf56e74d1622c98978c04ed"
+  integrity sha512-jFf/woGTVTjUJsl2O7hcopJ1r0upqoq/vIOoCj0yLh3RIXxWcljlpuZ+vEBRXsymD1jhfeJrlyTy/S1UW+4y1w==
 
-"@types/react@*", "@types/react@19.0.12", "@types/react@^19.0.0":
-  version "19.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.12.tgz#338b3f7854adbb784be454b3a83053127af96bd3"
-  integrity sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==
+"@types/react@*", "@types/react@19.1.0", "@types/react@^19.0.0":
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.0.tgz#73c43ad9bc43496ca8184332b111e2aef63fc9da"
+  integrity sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==
   dependencies:
     csstype "^3.0.2"
 
@@ -13598,9 +13598,9 @@ swagger-client@^3.34.4:
     ramda-adjunct "^5.1.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.20.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.20.2.tgz#eb9f8de2e6c916661d8033d43119f6e105ab87da"
-  integrity sha512-6ifaFjT02yBv1kjEivIMWxQpI7r8O7D/oA8u1JiwhTkom0dOk85lTExao5Dj5ztS6dBg6i1zm+ILhH94fF9g8Q==
+  version "5.20.3"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.20.3.tgz#5b38260c734693f826f79f71f6f215851286756c"
+  integrity sha512-VLk7uvPxgSRPqwbxgJEjHwtExuSZREhbvxfw6vCKChSQcPYrCeerlnwm790l99zDgYbTIRXEfF5YyNxPwe2mhQ==
   dependencies:
     "@babel/runtime-corejs3" "^7.26.10"
     "@scarf/scarf" "=1.4.0"
