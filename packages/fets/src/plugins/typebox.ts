@@ -1,8 +1,10 @@
+import { createAccelerator } from 'json-accelerator';
 import { TypeGuard, type TSchema } from '@sinclair/typebox';
 import { TypeCompiler, ValueError, ValueErrorIterator } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
 import { HTTPError } from '@whatwg-node/server';
-import { RouterComponentsBase, RouterPlugin } from '../types.js';
+import { StatusCode } from '../typed-fetch.js';
+import { JSONSerializer, RouterComponentsBase, RouterPlugin, RouteSchemas } from '../types.js';
 import { getHeadersObj } from './utils.js';
 
 type ValidateFn = <T>(data: T) => ValueErrorIterator;
@@ -45,6 +47,8 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
     }
     return validateFn;
   }
+  const serializersByRequest = new WeakMap<Request, Map<number, JSONSerializer>>();
+  const serializerByStatusCode = new Map<RouteSchemas, Map<number, JSONSerializer>>();
   return {
     onRouteHandle({ route: { schemas }, request }) {
       if (schemas?.request?.headers && TypeGuard.IsSchema(schemas.request.headers)) {
@@ -174,6 +178,31 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
               return handleErrors();
             }),
         });
+      }
+      if (schemas?.responses) {
+        let serializers = serializerByStatusCode.get(schemas);
+        if (!serializers) {
+          serializers = new Map();
+          serializerByStatusCode.set(schemas, serializers);
+          for (const statusCodeStr in schemas.responses) {
+            const statusCodeNum = Number(statusCodeStr) as StatusCode;
+            const schema = schemas.responses[statusCodeNum];
+            if (TypeGuard.IsSchema(schema)) {
+              const accelerator = createAccelerator(schema);
+              serializers.set(statusCodeNum, accelerator);
+            }
+          }
+        }
+        serializersByRequest.set(request as any, serializers);
+      }
+    },
+    onSerializeResponse({ request, lazyResponse }) {
+      const serializers = serializersByRequest.get(request as any);
+      if (serializers) {
+        const serializer = serializers.get(lazyResponse.status);
+        if (serializer) {
+          lazyResponse.resolveWithSerializer(serializer);
+        }
       }
     },
   };
