@@ -22,7 +22,7 @@ feTS Server is a library that allows you to create a fully type-safe REST API.
 Use the following command to install feTS Server:
 
 ```sh npm2yarn
-npm i fets uWebSockets.js@uNetworking/uWebSockets.js#semver:^20
+npm i fets
 ```
 
 ## Creating Your First Route
@@ -32,8 +32,8 @@ The following example demonstrates how to create a route with feTS that returns 
 ```ts filename="greetings-router.ts"
 // The example code assumes that we're in a Node.js environment.
 // It's recommended to use `Response` from `fets` as the native one isn't type-safe.
+import { createServer } from 'node:http'
 import { createRouter, Response } from 'fets'
-import { App } from 'uWebSockets.js'
 
 // Creating a new router
 const router = createRouter()
@@ -64,20 +64,18 @@ const router = createRouter()
       })
     }
   })
-
-App()
-  .any('/*', router)
-  .listen(3000, () => {
-    console.info(`Server is listening on http://localhost:3000`)
-  })
+createServer(router).listen(3000, () => {
+  console.log('Swagger UI is available at http://localhost:3000/docs')
+})
 ```
 
 Test your API using [Swagger UI](https://swagger.io/tools/swagger-ui/), available at
 `http://localhost:3000/docs`.
 
 <Callout type="info">
-  If you prefer using `node:http` over `uWebSockets`, see [node:http integration
-  recipe](/server/integrations/node-http).
+  See `Integrations` section for more examples of how to use feTS with different HTTP servers. The
+  example above uses the built-in `node:http` server, but you can also use `uWebSockets` which is
+  faster than `node:http`. See [uWebSockets integration recipe](/server/integrations/uwebsockets).
 </Callout>
 
 ## The `.route` API
