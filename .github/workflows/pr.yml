@@ -23,9 +23,8 @@ jobs:
 
   alpha:
     if:
-      ${{ (github.event.pull_request.head.repo.full_name == github.repository ||
-      github.event.inputs.onDemand == 'yes') && github.event.pull_request.title != 'Upcoming Release
-      Changes' }}
+      ${{ github.event.pull_request.head.repo.fork != true && github.event.pull_request.title !=
+      'Upcoming Release Changes' }}
     permissions:
       contents: read
       id-token: write
