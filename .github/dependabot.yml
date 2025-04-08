@@ -9,15 +9,35 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
+    groups:
+      actions-deps:
+        patterns:
+          - '*'
   - package-ecosystem: 'github-actions' # See documentation for possible values
-    directory: '/' # Location of package manifests
-    schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm' # See documentation for possible values
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
     groups:
       actions-deps:
         patterns:
-          - "*"
+          - '*'
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
+    schedule:
+      interval: 'daily'
+    groups:
+      actions-deps:
+        IDENTIFIER: 'all-minor-patch'
+        patterns:
+          - '*'
+        exclude-patterns:
+          - '@changesets/*'
+          - 'typescript'
+          - '^@theguild/'
+          - 'next'
+          - 'tailwindcss'
+          - 'husky'
+          - '@pulumi/*'
+        update-types:
+          - 'minor'
+          - 'patch'
