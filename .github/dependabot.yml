@@ -27,7 +27,6 @@ updates:
       interval: 'daily'
     groups:
       actions-deps:
-        IDENTIFIER: 'all-minor-patch'
         patterns:
           - '*'
         exclude-patterns:
