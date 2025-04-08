@@ -77,12 +77,7 @@ export function Editor() {
         // Create a sandbox and embed it into the div #monaco-editor-embed
         const sandboxConfig: Parameters<SandboxFactory['createTypeScriptSandbox']>[0] = {
           text: code,
-          compilerOptions: {
-            lib: ['esnext', 'dom'],
-            skipLibCheck: true,
-            sourceMap: false,
-            disableSizeLimit: true,
-          },
+          compilerOptions: {},
           domID: monacoEl.id,
           monacoSettings: {
             automaticLayout: true,

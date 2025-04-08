@@ -14,12 +14,12 @@ const response = await client['/auth/register'].post({
 })
 
 if (!response.ok) {
-  // Just hold your mouse over "errorJson" then you will see the inherited type
+  // Just hold your mouse over "errorJson", see the definition
   const errorJson = await response.json();
   throw new Error(\`Failed to register: \${errorJson.message}\`);
 }
 
-// Just hold your mouse over "successRes" then you will see the inherited type
+// Just hold your mouse over "successRes", see the definition
 const successRes = await response.json()
 
 console.log('User created with ID: ', successRes.user.id)
