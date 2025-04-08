@@ -66,6 +66,7 @@
     "@pulumi/pulumi": "3.160.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.2",
+    "estree-util-value-to-estree": "3.3.3",
     "next": "15.2.4",
     "prismjs": "1.30.0"
   },
