@@ -4395,13 +4395,6 @@
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-10.0.0.tgz#e9c07fe50da0f53dc24970cca94d619ff03f6f6d"
   integrity sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==
 
-"@types/ws@*":
-  version "8.18.1"
-  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.18.1.tgz#48464e4bf2ddfd17db13d845467f6070ffea4aa9"
-  integrity sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==
-  dependencies:
-    "@types/node" "*"
-
 "@types/yargs-parser@*":
   version "21.0.3"
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-21.0.3.tgz#815e30b786d2e8f0dcd85fd5bcf5e1a04d008f15"
@@ -5257,14 +5250,6 @@ buffer@4.9.2:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
     isarray "^1.0.0"
-
-bun-types@^1.0.17:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/bun-types/-/bun-types-1.2.8.tgz#b6f373bac4054449a9d5150475b829f58c089f09"
-  integrity sha512-D5npfxKIGuYe9dTHLK1hi4XFmbMdKYoLrgyd25rrUyCrnyU4ljmQW7vDdonvibKeyU72mZuixIhQ2J+q6uM0Mg==
-  dependencies:
-    "@types/node" "*"
-    "@types/ws" "*"
 
 busboy@1.6.0, busboy@^1.6.0:
   version "1.6.0"
@@ -14124,7 +14109,6 @@ typescript@5.8.3, typescript@^5.5.2:
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version "20.51.0"
-  uid "6609a88ffa9a16ac5158046761356ce03250a0df"
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/6609a88ffa9a16ac5158046761356ce03250a0df"
 
 ufo@^1.5.4:

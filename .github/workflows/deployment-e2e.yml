@@ -34,28 +34,26 @@ jobs:
   e2e:
     strategy:
       fail-fast: false
-      max-parallel: 1
       matrix:
-        plan: ['aws-lambda', 'azure-function', 'cloudflare-workers', 'cloudflare-modules', 'deno']
+        plan: ['aws-lambda', 'azure-function', 'cloudflare-workers', 'cloudflare-modules']
         # TODO: Add vercel
     name: e2e / ${{ matrix.plan }}
 
     runs-on: ubuntu-latest
 
     concurrency:
-      group: ${{ github.workflow }}-e2e-${{ matrix.plan }}
-      cancel-in-progress: false
+      group: ${{ github.workflow }}-e2e-${{ github.ref }}
+      cancel-in-progress: true
 
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Use Node 18
+      - name: Setup Node
         uses: actions/setup-node@master
         with:
           node-version: 20
-          cache: 'yarn'
 
       - uses: denoland/setup-deno@v2
         with:

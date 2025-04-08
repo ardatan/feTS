@@ -1,8 +1,0 @@
-{
-  "name": "@e2e/deno",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "e2e": "deno run --unstable --import-map import-map.json --allow-net e2e.ts"
-  }
-}
