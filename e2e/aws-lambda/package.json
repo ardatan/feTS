@@ -14,7 +14,7 @@
     "@pulumi/aws": "6.76.0",
     "@pulumi/awsx": "0.40.1",
     "@pulumi/pulumi": "3.162.0",
-    "@types/aws-lambda": "8.10.148",
+    "@types/aws-lambda": "8.10.149",
     "esbuild": "0.25.2",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
