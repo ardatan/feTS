@@ -3809,10 +3809,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@types/aws-lambda@8.10.148":
-  version "8.10.148"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.148.tgz#3a31fc720670473c4d7de4b03d074e8bd97e36a3"
-  integrity sha512-JL+2cfkY9ODQeE06hOxSFNkafjNk4JRBgY837kpoq1GHDttq2U3BA9IzKOWxS4DLjKoymGB4i9uBrlCkjUl1yg==
+"@types/aws-lambda@8.10.149":
+  version "8.10.149"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.149.tgz#77c7bde809425546d03626e51bab8181bc5d24c9"
+  integrity sha512-NXSZIhfJjnXqJgtS7IwutqIF/SOy1Wz5Px4gUY1RWITp3AYTyuJS4xaXr/bIJY1v15XMzrJ5soGnPM+7uigZjA==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
