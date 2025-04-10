@@ -6927,10 +6927,10 @@ eslint-config-next@15.3.0:
     eslint-plugin-react "^7.37.0"
     eslint-plugin-react-hooks "^5.0.0"
 
-eslint-config-prettier@10.1.1:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.1.tgz#cf0ff6e5c4e7e15f129f1f1ce2a5ecba92dec132"
-  integrity sha512-4EQQr6wXwS+ZJSzaR5ZCrYgLxqvUjdXctaEtBqHcbkW944B1NQyO4qpdHQbXBONfwxXdkAY81HH4+LUfrg+zPw==
+eslint-config-prettier@10.1.2:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-10.1.2.tgz#31a4b393c40c4180202c27e829af43323bf85276"
+  integrity sha512-Epgp/EofAUeEpIdZkW60MHKvPyru1ruQJxPL+WIycnaPApuseK0Zpkrh/FwL9oIpQvIhJwV7ptOy0DWUjTlCiA==
 
 eslint-config-standard@17.1.0:
   version "17.1.0"
@@ -13744,9 +13744,9 @@ swagger-client@^3.34.4:
     ramda-adjunct "^5.1.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.20.7"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.20.7.tgz#3d82ad0b4f7e4d8db76838973151b2534025ad44"
-  integrity sha512-TmWWER0OKkwx/IC1G82AaU265oOpETZFt2KjYxvsGwRWB4cN0NYd85jVogd6tATS8YxbiUHfVpUUJp662CCljg==
+  version "5.20.8"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.20.8.tgz#f245e065602b948652873b6ba8620ae3fdb5ce93"
+  integrity sha512-bMEm4i0brXuSoXa5oHHZfees3eXVkZk1VwKZbfDOre3p63hoMFexA/IERycVamqsWxZzMqo954ApDlqeT8FN8A==
   dependencies:
     "@babel/runtime-corejs3" "^7.26.10"
     "@scarf/scarf" "=1.4.0"
