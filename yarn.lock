@@ -4387,10 +4387,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@*", "@types/node@22.15.0", "@types/node@>=13.7.0", "@types/node@^22.10.3":
-  version "22.15.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.0.tgz#5fcf430c079da64e96028b87cbffc218a02685db"
-  integrity sha512-99S8dWD2DkeE6PBaEDw+In3aar7hdoBvjyJMR6vaKBTzpvR0P00ClzJMOoVrj9D2+Sy/YCwACYHnBTpMhg1UCA==
+"@types/node@*", "@types/node@22.15.2", "@types/node@>=13.7.0", "@types/node@^22.10.3":
+  version "22.15.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.2.tgz#1db55aa64618ee93a58c8912f74beefe44aca905"
+  integrity sha512-uKXqKN9beGoMdBfcaTY1ecwz6ctxuJAcUlwE55938g0ZJ8lRxwAZqRz2AJ4pzpt5dHdTPMB863UZ0ESiFUcP7A==
   dependencies:
     undici-types "~6.21.0"
 
@@ -10772,10 +10772,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@4.20250424.0:
-  version "4.20250424.0"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250424.0.tgz#7b5c0c27b9eadea4e4949ca327f98e30e97fed72"
-  integrity sha512-eROPDAx4KCIFtfRyRV9d3FJaF94UjW57gRUZz7gk2wyyOuHYVVJnWWyWrZfvRqzd4WfoJLDZlczhlZ9aZgJ2cQ==
+miniflare@4.20250424.1:
+  version "4.20250424.1"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250424.1.tgz#ad45eee1a83033afbcc1346f82fae5448dd17883"
+  integrity sha512-CqBzp8DPO76DLRBSx5/1GM200B5SbfpkNA9n/IxFGY7n6YNc1ypPYy/J0tQqj7vOA62jyD/3kPVbUXxbPKe5SQ==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "8.14.0"
@@ -14889,16 +14889,16 @@ workerd@1.20250424.0:
     "@cloudflare/workerd-linux-arm64" "1.20250424.0"
     "@cloudflare/workerd-windows-64" "1.20250424.0"
 
-wrangler@4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.13.1.tgz#a1f298346882b187c7e04e06494e678c5c6b885a"
-  integrity sha512-ofF1QAoRYwmg/8ukoW6235ig2oGw187ETDN99ATIf+i0RZ+iYc+5ykzNxomY+T7fvRHKs+xh3at3LdFlwTdPQQ==
+wrangler@4.13.2:
+  version "4.13.2"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.13.2.tgz#9dd760c4a45c9f80465705c17e3cec7c1a320485"
+  integrity sha512-CryA3MRzjNceFVef78ymqhxXrIYQoYKQIPITvvd/Yn3SX4UAADZOOrztatNcgRAyXssjdGH4JRw7fKoSnOaOog==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.4.0"
     "@cloudflare/unenv-preset" "2.3.1"
     blake3-wasm "2.1.5"
     esbuild "0.25.2"
-    miniflare "4.20250424.0"
+    miniflare "4.20250424.1"
     path-to-regexp "6.3.0"
     unenv "2.0.0-rc.15"
     workerd "1.20250424.0"
