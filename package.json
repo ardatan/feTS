@@ -67,7 +67,7 @@
     "cookie": "1.0.2",
     "esbuild": "0.25.4",
     "estree-util-value-to-estree": "3.3.3",
-    "next": "15.3.1",
+    "next": "15.3.2",
     "prismjs": "1.30.0"
   },
   "lint-staged": {
