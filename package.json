@@ -63,7 +63,7 @@
     "typescript": "5.8.3"
   },
   "resolutions": {
-    "@pulumi/pulumi": "3.167.0",
+    "@pulumi/pulumi": "3.168.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.4",
     "estree-util-value-to-estree": "3.3.3",
