@@ -4,6 +4,6 @@
   "private": true,
   "dependencies": {
     "@pulumi/pulumi": "3.169.0",
-    "@types/node": "22.15.17"
+    "@types/node": "22.15.18"
   }
 }
