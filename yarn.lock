@@ -6375,10 +6375,10 @@ debounce@^1.2.1:
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
   integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
 
-debug@4, debug@4.4.0, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.3.5, debug@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.0.tgz#2b3f2aea2ffeb776477460267377dc8710faba8a"
-  integrity sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==
+debug@4, debug@4.4.1, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.3.5, debug@^4.4.0:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.1.tgz#e5a8bc6cbc4c6cd3e64308b0693a3d4fa550189b"
+  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
   dependencies:
     ms "^2.1.3"
 
@@ -10824,10 +10824,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@4.20250508.0:
-  version "4.20250508.0"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250508.0.tgz#aee71a5719702984594259da1016b1f852c2e7f4"
-  integrity sha512-NvA1W8l7CRSOoaxKoRUpE4YfkNlalekShcV96o9KqGctWd9wydUXAhg4q0KqkDS04CjMNRSKG2kSI3B2BsOxXA==
+miniflare@4.20250508.1:
+  version "4.20250508.1"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250508.1.tgz#09e564096b1aa968a9c4b0fb616db5ed8c1a5692"
+  integrity sha512-GvY2JZx0yH4sp5dTSx4yS/rHwHMztqnNWCjFnfXrsu+3x5UEYtjc0RMBdq4WfrIUdEaVl2dYdWk2fI4IE0teyA==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "8.14.0"
@@ -13498,15 +13498,15 @@ stacktracey@^2.1.8:
     as-table "^1.0.36"
     get-source "^2.0.12"
 
-start-server-and-test@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.11.tgz#e04da9206acc80960339c04171f82c3a4d0a568c"
-  integrity sha512-TN39gLzPhHAflxyOkE/oMfQGj+pj3JgF6qVicFH/JrXt7xXktidKXwqfRga+ve7lVA8+RgPZVc25VrEPRScaDw==
+start-server-and-test@2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.12.tgz#c6c977b7d566d9dcea105f9fdf5fc7a6dfa54d1b"
+  integrity sha512-U6QiS5qsz+DN5RfJJrkAXdooxMDnLZ+n5nR8kaX//ZH19SilF6b58Z3zM9zTfrNIkJepzauHo4RceSgvgUSX9w==
   dependencies:
     arg "^5.0.2"
     bluebird "3.7.2"
     check-more-types "2.24.0"
-    debug "4.4.0"
+    debug "4.4.1"
     execa "5.1.1"
     lazy-ass "1.6.0"
     ps-tree "1.2.0"
@@ -14945,16 +14945,16 @@ workerd@1.20250508.0:
     "@cloudflare/workerd-linux-arm64" "1.20250508.0"
     "@cloudflare/workerd-windows-64" "1.20250508.0"
 
-wrangler@4.15.0:
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.15.0.tgz#e53317080d9e326850bf8d34f11756e3442d76ca"
-  integrity sha512-1fCdp2BQ5OtoNQU63/tjLmikmHIB1Vjh2gCs6K+DPz0f1U9PpQusPkcDv0UVONtH82XSfZGNFHZ5s5jPzwHFjw==
+wrangler@4.15.1:
+  version "4.15.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.15.1.tgz#8be573731838f2ec18b1f8bfceb39cf85903db0a"
+  integrity sha512-dzCdGWJUqjZAeR6kmAF28iD19VyDfD9nP1JiAw9NNlG1pEVzaY4Pr6egYyQcGj98N7WTv/tXoCk1R/L3eU3iwg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.4.0"
     "@cloudflare/unenv-preset" "2.3.1"
     blake3-wasm "2.1.5"
     esbuild "0.25.4"
-    miniflare "4.20250508.0"
+    miniflare "4.20250508.1"
     path-to-regexp "6.3.0"
     unenv "2.0.0-rc.15"
     workerd "1.20250508.0"
