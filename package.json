@@ -45,7 +45,7 @@
     "babel-jest": "29.7.0",
     "bob-the-bundler": "7.0.1",
     "cross-env": "7.0.3",
-    "eslint": "9.26.0",
+    "eslint": "9.27.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.31.0",
@@ -59,7 +59,7 @@
     "patch-package": "8.0.0",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "ts-jest": "29.3.3",
+    "ts-jest": "29.3.4",
     "typescript": "5.8.3"
   },
   "resolutions": {
