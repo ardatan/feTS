@@ -22,7 +22,7 @@
     "@pulumi/pulumi": "3.170.0",
     "@types/react": "19.1.4",
     "esbuild": "0.25.4",
-    "eslint": "9.26.0",
+    "eslint": "9.27.0",
     "eslint-config-next": "15.3.2",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
