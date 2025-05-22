@@ -57,14 +57,15 @@ describe('TypeBox', () => {
 
     const resultJson = await response.json();
     expect(resultJson).toMatchObject({
-      errors: [
+      errors: expect.arrayContaining([
         {
+          errors: [],
           name: 'headers',
           message: "Expected string to match '^Bearer .+$'",
           value: 'Basic 123',
           path: '/authorization',
         },
-      ],
+      ]),
     });
     expect(response.status).toBe(400);
   });
