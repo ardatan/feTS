@@ -2816,10 +2816,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@pulumi/aws@6.81.0":
-  version "6.81.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.81.0.tgz#1b7f49da7d3778356341683a2665c4a3eecf2f74"
-  integrity sha512-DPQPyV1I1JxQJU7yRkvh5vKOceTw3BZm3H/e9Hh02w662vUCOhp/Koci/ZPyWWbfOKam35eUsGIPvdYsWJw/EQ==
+"@pulumi/aws@6.82.1":
+  version "6.82.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-6.82.1.tgz#105978b9c061e73723b6c4dc076ce66dbfd8aacb"
+  integrity sha512-/7rqrvkg2WbuUyojmtJm/AnNmR2SQD4keUuvUF4sNrh77L2CoCI1lD4LA/xMyIDebGH3+x73rM+J4fDhwYRvZw==
   dependencies:
     "@pulumi/pulumi" "^3.142.0"
     mime "^2.0.0"
