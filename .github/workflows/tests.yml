@@ -59,7 +59,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 5
-          command: yarn test --detectLeaks --detectOpenHandles --ci
+          command: yarn test --ci
 
   integration:
     name: integration / node ${{matrix.node-version}}
@@ -96,7 +96,7 @@ jobs:
       - name: Setup env
         uses: the-guild-org/shared-config/setup@main
         with:
-          nodeVersion: 20
+          nodeVersion: 24
       - name: Build Packages
         run: yarn build
       - name: Test ESM
@@ -141,7 +141,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 20
+          node-version: 24
 
       - uses: denoland/setup-deno@v2
         with:

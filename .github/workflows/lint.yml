@@ -19,7 +19,7 @@ jobs:
       - name: Setup env
         uses: the-guild-org/shared-config/setup@main
         with:
-          nodeVersion: 20
+          nodeVersion: 24
       - name: Prettier Check
         run: yarn prettier:check
   lint:
@@ -29,7 +29,5 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Setup env
         uses: the-guild-org/shared-config/setup@main
-        with:
-          nodeVersion: 20
       - name: ESLint
         run: yarn lint
