@@ -38,7 +38,7 @@
     "@changesets/cli": "2.29.5",
     "@theguild/prettier-config": "3.0.1",
     "@types/jest": "30.0.0",
-    "@types/node": "24.0.4",
+    "@types/node": "24.0.5",
     "@types/react-dom": "19.1.6",
     "@typescript-eslint/eslint-plugin": "8.35.0",
     "@typescript-eslint/parser": "8.35.0",
@@ -57,7 +57,7 @@
     "jest": "30.0.3",
     "lint-staged": "16.1.2",
     "patch-package": "8.0.0",
-    "prettier": "3.6.1",
+    "prettier": "3.6.2",
     "prettier-plugin-tailwindcss": "0.6.13",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
