@@ -4422,10 +4422,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@*", "@types/node@24.0.5", "@types/node@>=13.7.0", "@types/node@^24.0.3":
-  version "24.0.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.0.5.tgz#7bb47e203fd2da87615d47e7b7ed5018c1f41247"
-  integrity sha512-CXEG9E7GCTOZIre0WdDznmnhvF7xi7AmnP/zF496trmLiqlfdtxp9nPRgLVqfmJ8jgtcKcs0EcvOu2yDZSuvTg==
+"@types/node@*", "@types/node@24.0.6", "@types/node@>=13.7.0", "@types/node@^24.0.6":
+  version "24.0.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.0.6.tgz#d483f1407d022ef2a12118f7c02074ca218346c3"
+  integrity sha512-ZOyn+gOs749xU7ovp+Ibj0g1o3dFRqsfPnT22C2t5JzcRvgsEDpGawPbCISGKLudJk9Y0wiu9sYd6kUh0pc9TA==
   dependencies:
     undici-types "~7.8.0"
 
