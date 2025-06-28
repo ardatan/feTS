@@ -45,7 +45,7 @@
     "babel-jest": "30.0.2",
     "bob-the-bundler": "7.0.1",
     "cross-env": "7.0.3",
-    "eslint": "9.29.0",
+    "eslint": "9.30.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.32.0",
