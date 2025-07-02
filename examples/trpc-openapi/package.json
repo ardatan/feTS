@@ -16,13 +16,13 @@
     "nextjs-cors": "^2.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "swagger-ui-react": "^5.0.0",
+    "swagger-ui-react": "^5.26.0",
     "trpc-openapi": "^1.1.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",
-    "@types/node": "^24.0.3",
+    "@types/node": "^24.0.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/swagger-ui-react": "^5.18.0",
