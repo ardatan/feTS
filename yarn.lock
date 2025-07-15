@@ -2895,12 +2895,12 @@
   dependencies:
     "@pulumi/pulumi" "^3.142.0"
 
-"@pulumi/cloudflare@4.16.0":
-  version "4.16.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/cloudflare/-/cloudflare-4.16.0.tgz#a49db37a7f7707bc402253631c103f547ffbe9ad"
-  integrity sha512-cwdB70bLeKL/VNIqqOD5fpHQcocVmpHuiHH589eR+QUfbLa4f+M8yA/TTCcxx2AFFctTqO5wgVuC+faL8xZmWQ==
+"@pulumi/cloudflare@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@pulumi/cloudflare/-/cloudflare-6.4.0.tgz#6bb8c40ea3eafda01f0aeeddee9e00084cf8952a"
+  integrity sha512-IBOC/Rc4vBsutFvLWMP7/s7cUFlDXYVZb0AnDiLTu02lSiIYWNlv5Zhot+L2RzE5kT3WK1FurACKXHg/feTAKg==
   dependencies:
-    "@pulumi/pulumi" "^3.0.0"
+    "@pulumi/pulumi" "^3.142.0"
 
 "@pulumi/docker@^3.0.0":
   version "3.6.1"
