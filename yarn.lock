@@ -4012,10 +4012,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@types/aws-lambda@8.10.151":
-  version "8.10.151"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.151.tgz#c3c7cb1b71b0f5a4eec3c55bf2fc237894bbd4ed"
-  integrity sha512-jmDKSxDD+RXH2N94Pd2UA5a1YEfrXBn7joNVzIAsb6XiOipIcm5QVH69KuLy9JTGCKlHihK19Lp2xK5nw9iITg==
+"@types/aws-lambda@8.10.152":
+  version "8.10.152"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.152.tgz#f68424a8175f0a54a2a941e65b76c3f51f3bd89d"
+  integrity sha512-soT/c2gYBnT5ygwiHPmd9a1bftj462NWVk2tKCc1PYHSIacB2UwbTS2zYG4jzag1mRDuzg/OjtxQjQ2NKRB6Rw==
 
 "@types/aws-lambda@8.10.93":
   version "8.10.93"
