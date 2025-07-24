@@ -15189,9 +15189,9 @@ zod@3.22.3, zod@^3.20.2, zod@^3.22.3:
   integrity sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==
 
 zod@^4.0.0, zod@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-4.0.5.tgz#b47825f318e7884d94bcd6f5385a1de805ccfb1c"
-  integrity sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA==
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-4.0.7.tgz#2891a84b330da2e87210c3bd7f8bdb945015d458"
+  integrity sha512-AKvYUuvqmyRf21eNxjuO++WPrQHhWg8i/4POzBLL//qVhcxA6gOptSDxXKM2S+uh8FtPV3MU/QZKOxqwsRV5kg==
 
 zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
