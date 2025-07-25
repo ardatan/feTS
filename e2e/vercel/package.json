@@ -19,7 +19,7 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@pulumi/pulumi": "3.185.0",
+    "@pulumi/pulumi": "3.186.0",
     "@types/react": "19.1.8",
     "esbuild": "0.25.8",
     "eslint": "9.31.0",
