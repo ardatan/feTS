@@ -4842,10 +4842,10 @@
     "@whatwg-node/node-fetch" "^0.7.22"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.7.22":
-  version "0.7.22"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.22.tgz#9f56970ce0abd2a2680e5d22cff0ea871eeb4f85"
-  integrity sha512-h4GGjGF2vH3kGJ/fEOeg9Xfu4ncoyRwFcjGIxr/5dTBgZNVwq888byIsZ+XXRDJnNnRlzVVVQDcqrZpY2yctGA==
+"@whatwg-node/node-fetch@0.7.23-alpha-20250725224534-bbeeaa7718aa0727bc87514020a30777a0675fe6", "@whatwg-node/node-fetch@^0.7.22":
+  version "0.7.23-alpha-20250725224534-bbeeaa7718aa0727bc87514020a30777a0675fe6"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.23-alpha-20250725224534-bbeeaa7718aa0727bc87514020a30777a0675fe6.tgz#19b83379b31fc23f09956780aac98860bc217ac1"
+  integrity sha512-mYZt/DFUHOae5jDTmiQVZLWDenypPaA4MEGeSfI4VfAHiPhNv+WRttkquremz+LPj3S6cwdsM6YwMWZ9kDIiJw==
   dependencies:
     "@fastify/busboy" "^3.1.1"
     "@whatwg-node/disposablestack" "^0.0.6"
