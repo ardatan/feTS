@@ -1287,10 +1287,10 @@
   dependencies:
     mime "^3.0.0"
 
-"@cloudflare/unenv-preset@2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.3.3.tgz#d586da084aabbca91be04f4592d18655e932bd11"
-  integrity sha512-/M3MEcj3V2WHIRSW1eAQBPRJ6JnGQHc6JKMAPLkDb7pLs3m6X9ES/+K3ceGqxI6TKeF32AWAi7ls0AYzVxCP0A==
+"@cloudflare/unenv-preset@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.4.1.tgz#e7ebe96d9dae322f439961812a08aec11377a32e"
+  integrity sha512-70mk5GPv+ozJ5XcIhFpq4ps7HvQYu+As7vwasUy9LcBadsTcWA2iFis/7aFJmQehfKerDwVOHfMYpgTTC+u24Q==
 
 "@cloudflare/workerd-darwin-64@1.20250712.0":
   version "1.20250712.0"
@@ -6655,10 +6655,10 @@ dot-case@^3.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
 
-dotenv@17.2.0:
-  version "17.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-17.2.0.tgz#e19678fdabcf86d4bfdb6764a758d7d44efbb6a2"
-  integrity sha512-Q4sgBT60gzd0BB0lSyYD3xM4YxrXA9y4uBDof1JNYGzOXrQdQ6yX+7XIAqoFOGQFOTK1D3Hts5OllpxMDZFONQ==
+dotenv@17.2.1:
+  version "17.2.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-17.2.1.tgz#6f32e10faf014883515538dc922a0fb8765d9b32"
+  integrity sha512-kQhDYKZecqnM0fCnzI5eIv5L4cAe/iRI+HqMbO/hbRdTAeXDG+M9FjipUxNfbARuEg4iHIbhnhs78BCHNbSxEQ==
 
 dotenv@^8.1.0:
   version "8.6.0"
@@ -10867,10 +10867,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@4.20250712.1:
-  version "4.20250712.1"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250712.1.tgz#fad7676565776e9b7379b4b1f631ba42730fed4d"
-  integrity sha512-46gB3FGPOsy+EpFGufjhr8agYycO/55d6l0y7hNJ13NcTVwrObMg/0HmI3pC5yQj0974IVXzBgUfDBMAX6thow==
+miniflare@4.20250712.2:
+  version "4.20250712.2"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250712.2.tgz#7e9e8d6a805417334c4e13735c51682080d398a8"
+  integrity sha512-cZ8WyQBwqfjYLjd61fDR4/j0nAVbjB3Wxbun/brL9S5FAi4RlTR0LyMTKsIVA0s+nL4Pg9VjVMki4M/Jk2cz+Q==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "8.14.0"
@@ -14991,16 +14991,16 @@ workerd@1.20250712.0:
     "@cloudflare/workerd-linux-arm64" "1.20250712.0"
     "@cloudflare/workerd-windows-64" "1.20250712.0"
 
-wrangler@4.25.1:
-  version "4.25.1"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.25.1.tgz#ef41fe925542e7ed1f2d94d858fe49adf92be3d1"
-  integrity sha512-4Tlg+jmqxCX3xFm+Nz1b4jHHY9iOu1EyJ17SSCCJ6MGp+FCGtXgr+CynT94+MP0v/qKQUkMKjoeJ5FNDunZ9cA==
+wrangler@4.26.0:
+  version "4.26.0"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.26.0.tgz#a9b1f39ff03a4a9d954aabcc5e833ea2c98f2a58"
+  integrity sha512-EXuwyWlgYQZv6GJlyE0lVGk9hHqASssuECECT1XC5aIijTwNLQhsj/TOZ0hKSFlMbVr1E+OAdevAxd0kaF4ovA==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.4.0"
-    "@cloudflare/unenv-preset" "2.3.3"
+    "@cloudflare/unenv-preset" "2.4.1"
     blake3-wasm "2.1.5"
     esbuild "0.25.4"
-    miniflare "4.20250712.1"
+    miniflare "4.20250712.2"
     path-to-regexp "6.3.0"
     unenv "2.0.0-rc.17"
     workerd "1.20250712.0"
@@ -15189,9 +15189,9 @@ zod@3.22.3, zod@^3.20.2, zod@^3.22.3:
   integrity sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==
 
 zod@^4.0.0, zod@^4.0.5:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-4.0.8.tgz#2de943e1f88fc7f5ec727e912e3c221051c82ddf"
-  integrity sha512-+MSh9cZU9r3QKlHqrgHMTSr3QwMGv4PLfR0M4N/sYWV5/x67HgXEhIGObdBkpnX8G78pTgWnIrBL2lZcNJOtfg==
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-4.0.10.tgz#b609ee8807c1fe6a9d8beec2be51220cc7a8f0ca"
+  integrity sha512-3vB+UU3/VmLL2lvwcY/4RV2i9z/YU0DTV/tDuYjrwmx5WeJ7hwy+rGEEx8glHp6Yxw7ibRbKSaIFBgReRPe5KA==
 
 zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
