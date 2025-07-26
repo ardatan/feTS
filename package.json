@@ -45,7 +45,7 @@
     "babel-jest": "30.0.5",
     "bob-the-bundler": "7.0.1",
     "cross-env": "7.0.3",
-    "eslint": "9.32.0",
+    "eslint": "9.31.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.32.0",
@@ -64,6 +64,7 @@
   },
   "resolutions": {
     "@pulumi/pulumi": "3.186.0",
+    "@whatwg-node/node-fetch": "0.7.23-alpha-20250726003115-27dea3e7c5dae7285bf9c837cce54f387e269df2",
     "cookie": "1.0.2",
     "esbuild": "0.25.8",
     "estree-util-value-to-estree": "3.4.0",
