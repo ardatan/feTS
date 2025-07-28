@@ -64,7 +64,8 @@
   },
   "resolutions": {
     "@pulumi/pulumi": "3.186.0",
-    "@whatwg-node/node-fetch": "0.7.23-alpha-20250726003115-27dea3e7c5dae7285bf9c837cce54f387e269df2",
+    "@whatwg-node/node-fetch": "0.7.23-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f",
+    "@whatwg-node/server": "0.10.11-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f",
     "cookie": "1.0.2",
     "esbuild": "0.25.8",
     "estree-util-value-to-estree": "3.4.0",

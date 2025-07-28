@@ -4847,10 +4847,10 @@
     "@whatwg-node/node-fetch" "^0.7.22"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@0.7.23-alpha-20250726003115-27dea3e7c5dae7285bf9c837cce54f387e269df2", "@whatwg-node/node-fetch@^0.7.22":
-  version "0.7.23-alpha-20250726003115-27dea3e7c5dae7285bf9c837cce54f387e269df2"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.23-alpha-20250726003115-27dea3e7c5dae7285bf9c837cce54f387e269df2.tgz#37e3697101480f3975670ebe395de6381ef7539f"
-  integrity sha512-jkN+D1yKteQPvdSBrcFwOioPtBUk6w3bzNpFGxauMHG1tCrttg+fJLRORZlkm2Q+jkUIOuytPA46DuTYFUJkfA==
+"@whatwg-node/node-fetch@0.7.23-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f", "@whatwg-node/node-fetch@^0.7.22":
+  version "0.7.23-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.23-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f.tgz#85d07e3ff1ff7f13be5645008ad087694391a489"
+  integrity sha512-eQvT9nCEoHoQ4jDYY0e/hzmGJUCvpT0b0y76WVrnKBaNxlPD5qT8bl65Rbig6BEiekyF42lZYE3svmGe5sANYg==
   dependencies:
     "@fastify/busboy" "^3.1.1"
     "@whatwg-node/disposablestack" "^0.0.6"
@@ -4864,10 +4864,10 @@
   dependencies:
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.10.0":
-  version "0.10.10"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.10.tgz#6aadb16fe1950e0597fda43decdc51bb904cc50a"
-  integrity sha512-GwpdMgUmwIp0jGjP535YtViP/nnmETAyHpGPWPZKdX++Qht/tSLbGXgFUMSsQvEACmZAR1lAPNu2CnYL1HpBgg==
+"@whatwg-node/server@0.10.11-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f", "@whatwg-node/server@^0.10.0":
+  version "0.10.11-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.11-alpha-20250728110808-0981fe0c7ca2a9d25448c612ffa87274110a432f.tgz#ce78e533859685598ee92715521527a43e245c13"
+  integrity sha512-D9tX1kixMzi38TOwvbti3dJr4fFbFma62q10YKyXZ0qr6xMUhz6sIzl2tTEJp9aVvqwrugu4ERGy+CnFK7Ijww==
   dependencies:
     "@envelop/instrumentation" "^1.0.0"
     "@whatwg-node/disposablestack" "^0.0.6"
