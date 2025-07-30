@@ -4853,10 +4853,10 @@
     "@whatwg-node/node-fetch" "^0.7.22"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.7.22":
-  version "0.7.23"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.23.tgz#d579f3aa1713b4125cd79676625a3d116c7d73e1"
-  integrity sha512-irRAL+SrSlpegGrNekr+VM8xnJmOu7HeGqf2l8eKWKybtwQ9mQ+RjbIZHAFlq0Xqz17mg4tVIaL1C0U6VcZVqg==
+"@whatwg-node/node-fetch@0.7.25-alpha-20250730140253-899e500946f54513ea71cd1804e5d068bcf55c57", "@whatwg-node/node-fetch@^0.7.22":
+  version "0.7.25-alpha-20250730140253-899e500946f54513ea71cd1804e5d068bcf55c57"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.25-alpha-20250730140253-899e500946f54513ea71cd1804e5d068bcf55c57.tgz#e750f109263ce3afe38f88691cc863a4572e9c6d"
+  integrity sha512-9lVjQmuARAKl6Ivkharid+ou5n9IdAogwek6ZFc6mwXLX8rMGjpoAh0abOwdWhB6QhbAlj2lCvSRDqMwU0apzQ==
   dependencies:
     "@fastify/busboy" "^3.1.1"
     "@whatwg-node/disposablestack" "^0.0.6"
@@ -14375,7 +14375,6 @@ typescript@5.9.2, typescript@^5.5.2:
 
 "uWebSockets.js@uNetworking/uWebSockets.js#semver:^20":
   version "20.52.0"
-  uid cfc9a40d8132a34881813cec3d5f8e3a185b3ce3
   resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/cfc9a40d8132a34881813cec3d5f8e3a185b3ce3"
 
 ufo@^1.5.4, ufo@^1.6.1:
