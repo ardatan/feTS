@@ -4845,18 +4845,18 @@
     "@whatwg-node/promise-helpers" "^1.0.0"
     tslib "^2.6.3"
 
-"@whatwg-node/fetch@^0.10.0", "@whatwg-node/fetch@^0.10.8":
-  version "0.10.9"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.9.tgz#ac7b5fe966c7df0f124695a40dce8fc63ea97f07"
-  integrity sha512-2TaXKmjy53cybNtaAtzbPOzwIPkjXbzvZcimnaJxQwYXKSC8iYnWoZOyT4+CFt8w0KDieg5J5dIMNzUrW/UZ5g==
+"@whatwg-node/fetch@^0.10.0", "@whatwg-node/fetch@^0.10.10":
+  version "0.10.10"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.10.tgz#2b3397bc114b3f6dbda34bd1f205e45216abd10f"
+  integrity sha512-watz4i/Vv4HpoJ+GranJ7HH75Pf+OkPQ63NoVmru6Srgc8VezTArB00i/oQlnn0KWh14gM42F22Qcc9SU9mo/w==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.7.22"
+    "@whatwg-node/node-fetch" "^0.7.25"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.7.22":
-  version "0.7.23"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.23.tgz#d579f3aa1713b4125cd79676625a3d116c7d73e1"
-  integrity sha512-irRAL+SrSlpegGrNekr+VM8xnJmOu7HeGqf2l8eKWKybtwQ9mQ+RjbIZHAFlq0Xqz17mg4tVIaL1C0U6VcZVqg==
+"@whatwg-node/node-fetch@^0.7.25":
+  version "0.7.25"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.25.tgz#8da0af32f389eeeebf935af5fbcce7bbd2bbc774"
+  integrity sha512-szCTESNJV+Xd56zU6ShOi/JWROxE9IwCic8o5D9z5QECZloas6Ez5tUuKqXTAdu6fHFx1t6C+5gwj8smzOLjtg==
   dependencies:
     "@fastify/busboy" "^3.1.1"
     "@whatwg-node/disposablestack" "^0.0.6"
@@ -4871,13 +4871,13 @@
     tslib "^2.6.3"
 
 "@whatwg-node/server@^0.10.0":
-  version "0.10.11"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.11.tgz#96914371936f7254bf4aa5211e116938bb610c49"
-  integrity sha512-WkwcgL54LCR6oJB6tAD5lhpvrgvVUSoM216Y+GlcZJU3+25G2lO4FWKSWRAPgeUX5eoYgBoZ2VBF2biHGtTeSQ==
+  version "0.10.12"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.10.12.tgz#1561e1b31021ca6a53bd36524a2d8f1608af425c"
+  integrity sha512-MQIvvQyPvKGna586MzXhgwnEbGtbm7QtOgJ/KPd/tC70M/jbhd1xHdIQQbh3okBw+MrDF/EvaC2vB5oRC7QdlQ==
   dependencies:
     "@envelop/instrumentation" "^1.0.0"
     "@whatwg-node/disposablestack" "^0.0.6"
-    "@whatwg-node/fetch" "^0.10.8"
+    "@whatwg-node/fetch" "^0.10.10"
     "@whatwg-node/promise-helpers" "^1.3.2"
     tslib "^2.6.3"
 
