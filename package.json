@@ -65,8 +65,8 @@
   "resolutions": {
     "@pulumi/pulumi": "3.187.0",
     "@whatwg-node/fetch": "0.10.9",
-    "@whatwg-node/node-fetch": "0.7.23",
-    "@whatwg-node/server": "0.9.55",
+    "@whatwg-node/node-fetch": "0.7.7",
+    "@whatwg-node/server": "0.10.11",
     "cookie": "1.0.2",
     "esbuild": "0.25.8",
     "estree-util-value-to-estree": "3.4.0",
