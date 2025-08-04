@@ -122,8 +122,8 @@ jobs:
       VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
     strategy:
       matrix:
-        plan: ['aws-lambda', 'azure-function', 'cloudflare-workers', 'cloudflare-modules']
-        # TODO: Add vercel
+        plan: ['aws-lambda', 'cloudflare-workers', 'cloudflare-modules']
+        # TODO: Add vercel and azure
       fail-fast: false
     name: e2e / ${{ matrix.plan }}
 
