@@ -3974,9 +3974,9 @@
     node-gyp-build "^4.8.4"
 
 "@trpc/server@^11.0.0":
-  version "11.4.3"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-11.4.3.tgz#669a964c85a0feab45da51e3ad03f63668dba525"
-  integrity sha512-wnWq3wiLlMOlYkaIZz+qbuYA5udPTLS4GVVRyFkr6aT83xpdCHyVtURT+u4hSoIrOXQM9OPCNXSXsAujWZDdaw==
+  version "11.4.4"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-11.4.4.tgz#847455e43ec236e163f0a34d95237d140618dfb7"
+  integrity sha512-VkJb2xnb4rCynuwlCvgPBh5aM+Dco6fBBIo6lWAdJJRYVwtyE5bxNZBgUvRRz/cFSEAy0vmzLxF7aABDJfK5Rg==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
