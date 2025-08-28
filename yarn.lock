@@ -1287,10 +1287,10 @@
   dependencies:
     mime "^3.0.0"
 
-"@cloudflare/unenv-preset@2.6.3":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.6.3.tgz#e542f4776c475d223eb2dee420e52bd3b472d10a"
-  integrity sha512-Bj3i0kHAKFh/fViM8RT5ToV7w5Q8bGUR6yw4R0pkNktn559rmBMNf0+hkRmX8BmVH4WTo1Ye79zjkCxnmNt4+g==
+"@cloudflare/unenv-preset@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@cloudflare/unenv-preset/-/unenv-preset-2.7.0.tgz#4c2b6a653911107bcf69fabb5597e8fa44d561bc"
+  integrity sha512-0JbEj+KTCQ4nTIWg2q8Bou+fPxzG6/zwU5O/w6Cld6WEjLl+716foT+2bjg48h09hMtjTKkJdAh1m4LybBKGCg==
 
 "@cloudflare/workerd-darwin-64@1.20250823.0":
   version "1.20250823.0"
@@ -4506,10 +4506,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.7.tgz#50ae4353eaaddc04044279812f52c8c65857dbcb"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@19.1.8", "@types/react-dom@^19.0.0":
-  version "19.1.8"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.8.tgz#6cad88ec938beb2626df7c4cb97b15d9f66a05a9"
-  integrity sha512-xG7xaBMJCpcK0RpN8jDbAACQo54ycO6h4dSSmgv8+fu6ZIAdANkx/WsawASUjVXYfy+J9AbUpRMNNEsXCDfDBQ==
+"@types/react-dom@19.1.9", "@types/react-dom@^19.0.0":
+  version "19.1.9"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.9.tgz#5ab695fce1e804184767932365ae6569c11b4b4b"
+  integrity sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==
 
 "@types/react@*", "@types/react@19.1.12", "@types/react@^19.0.0":
   version "19.1.12"
@@ -10858,10 +10858,10 @@ mimic-response@^3.1.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
   integrity sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==
 
-miniflare@4.20250823.0:
-  version "4.20250823.0"
-  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250823.0.tgz#fddac3edd58da1aae4eb57f8b394f1cab97dfd5d"
-  integrity sha512-ofQRQ6rb/5P4nsz/J+xptdrN4zvYUm0wuezbKfaxbAGiIVTsM1vd+Pta5MtZwdQ6BKLM9tKMtU0rnbTzy3wntQ==
+miniflare@4.20250823.1:
+  version "4.20250823.1"
+  resolved "https://registry.yarnpkg.com/miniflare/-/miniflare-4.20250823.1.tgz#827c8defdefd882c03f270a9c1106ad2e3376881"
+  integrity sha512-qjbF69XXyHXk4R//q0a9MLraKE9MLKZ/94k6jKcfouJ0g+se7VyMzCBryeWA534+ZAlNM4Ay5gqYr1v3Wk6ctQ==
   dependencies:
     "@cspotcode/source-map-support" "0.8.1"
     acorn "8.14.0"
@@ -13126,7 +13126,7 @@ sh-syntax@^0.4.2:
   dependencies:
     tslib "^2.6.2"
 
-sha.js@^2.4.11:
+sha.js@^2.4.12:
   version "2.4.12"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.12.tgz#eb8b568bf383dfd1867a32c3f2b74eb52bdbf23f"
   integrity sha512-8LzC5+bvI45BjpfXU8V5fdU2mfeKiQe1D1gIMn7XUlF3OTUrpdJpPPH4EMAnF0DsHHdSZqCdSss5qCmJKuiO3w==
@@ -13817,9 +13817,9 @@ swagger-client@^3.35.5:
     ramda-adjunct "^5.1.0"
 
 swagger-ui-react@^5.0.0:
-  version "5.27.1"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.27.1.tgz#315b59970c33933a5f62ca0f702789741dcedc7c"
-  integrity sha512-wwDoavIeJI/Pwiavn32FMJ5dfptz0BAOKjSrj7EdU22QdP3gdk9+MZHdzzjxWURmVj0kc0XoQfsFgjln0toJaw==
+  version "5.28.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-5.28.0.tgz#26ee19f285587c47fd970094c3031defa3a0f325"
+  integrity sha512-zQoBUosRhRJZL5EZgYUkGfSH4vbqIFs49tgJBj7SeuZN+RXtV+maDFslA/RpHVwrFpN6Qiq7YhwGJi6gtLY69A==
   dependencies:
     "@babel/runtime-corejs3" "^7.27.1"
     "@scarf/scarf" "=1.4.0"
@@ -13848,7 +13848,7 @@ swagger-ui-react@^5.0.0:
     remarkable "^2.0.1"
     reselect "^5.1.1"
     serialize-error "^8.1.0"
-    sha.js "^2.4.11"
+    sha.js "^2.4.12"
     swagger-client "^3.35.5"
     url-parse "^1.5.10"
     xml "=1.0.1"
@@ -14986,16 +14986,16 @@ workerd@1.20250823.0:
     "@cloudflare/workerd-linux-arm64" "1.20250823.0"
     "@cloudflare/workerd-windows-64" "1.20250823.0"
 
-wrangler@4.33.0:
-  version "4.33.0"
-  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.33.0.tgz#de7e680003fc42d1881132d1d96d55dd92963582"
-  integrity sha512-LIVnW/VePLMca8Y4pKz4ycXc8yPfXwJJnOnpq65fRTh9lR4UAuqHvSNW4Vx4JJI3ZniRZXIM8pb+tSntd5161w==
+wrangler@4.33.1:
+  version "4.33.1"
+  resolved "https://registry.yarnpkg.com/wrangler/-/wrangler-4.33.1.tgz#b8c7c6d06f4ec32d7437abf335dfad6746abc535"
+  integrity sha512-8x/3Tbt+/raBMm0+vRyAHSGu2kF1QjeiSrx47apgPk/AzSBcXI9YuUUdGrKnozMYZlEbOxdBQOMyuRRDTyNmOg==
   dependencies:
     "@cloudflare/kv-asset-handler" "0.4.0"
-    "@cloudflare/unenv-preset" "2.6.3"
+    "@cloudflare/unenv-preset" "2.7.0"
     blake3-wasm "2.1.5"
     esbuild "0.25.4"
-    miniflare "4.20250823.0"
+    miniflare "4.20250823.1"
     path-to-regexp "6.3.0"
     unenv "2.0.0-rc.19"
     workerd "1.20250823.0"
