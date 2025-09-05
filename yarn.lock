@@ -13499,10 +13499,10 @@ stack-utils@^2.0.6:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-start-server-and-test@2.0.13:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.0.13.tgz#d8eec8d690172205e39495e41fd523c692d82996"
-  integrity sha512-G42GCIUjBv/nDoK+QsO+nBdX2Cg3DSAKhSic2DN0GLlK4Q+63TkOeN1cV9PHZKnVOzDKGNVZGCREjpvAIAOdiQ==
+start-server-and-test@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-2.1.0.tgz#e16790fbd540a6db4431c77ab5ae0eff7bd7c671"
+  integrity sha512-yJg/GR9z7+8qxhZqDPmCEKbU/BO/zpyXUZGLmY1Nv4rmJJDC89NnzIEUWXEG4e1J4MRFoDF50eJK8bGHKrSdlg==
   dependencies:
     arg "^5.0.2"
     bluebird "3.7.2"
