@@ -4,7 +4,7 @@
   "description": "An example app uses Fireblocks API",
   "private": true,
   "scripts": {
-    "prepare": "ts-node scripts/download-oas.ts",
+    "download-oas": "ts-node scripts/download-oas.ts",
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
