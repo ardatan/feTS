@@ -25,13 +25,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: the-guild-org/shared-config/setup@main
+      - uses: the-guild-org/shared-config/setup@v1
         name: setup env
         with:
-          nodeVersion: 24
-          packageManager: yarn
+          node-version-file: .node-version
 
-      - uses: the-guild-org/shared-config/website-cf@main
+      - uses: the-guild-org/shared-config/website-cf@v1
         name: build and deploy website
         env:
           NEXT_BASE_PATH: ${{ github.ref == 'refs/heads/master' && '/openapi/fets' || '' }}
@@ -44,5 +43,5 @@ jobs:
           projectName: fets
           prId: ${{ github.event.pull_request.number }}
           websiteDirectory: ./
-          buildScript: cd website && yarn build
+          buildScript: cd website && bun run build
           artifactDir: website/out

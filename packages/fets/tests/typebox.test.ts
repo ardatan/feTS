@@ -145,7 +145,7 @@ describe('TypeBox', () => {
       },
     });
 
-    const response = await router.fetch('/lol', {
+    const response = await router.fetch('http://localhost:3000/lol', {
       method: 'POST',
       body: JSON.stringify({
         name: 'kek',
@@ -178,7 +178,7 @@ describe('TypeBox', () => {
       },
     });
 
-    const response = await router.fetch('/lol', {
+    const response = await router.fetch('http://localhost:3000/lol', {
       method: 'POST',
       body: JSON.stringify({
         name: 'kek',
@@ -209,7 +209,7 @@ describe('TypeBox', () => {
       },
     });
 
-    const response = await router.fetch('/hello', {
+    const response = await router.fetch('http://localhost:3000/hello', {
       method: 'POST',
       body: JSON.stringify({
         id: '123',
@@ -230,7 +230,7 @@ describe('TypeBox', () => {
       ],
     });
 
-    const validResponse = await router.fetch('/hello', {
+    const validResponse = await router.fetch('http://localhost:3000/hello', {
       method: 'POST',
       body: JSON.stringify({
         id: '123e4567-e89b-12d3-a456-426614174000',
@@ -261,7 +261,7 @@ describe('TypeBox', () => {
       },
     });
 
-    const response = await router.fetch('/hello');
+    const response = await router.fetch('http://localhost:3000/hello');
 
     expect(response.status).toEqual(400);
 
@@ -281,7 +281,7 @@ describe('TypeBox', () => {
       ],
     });
 
-    const validResponse = await router.fetch('/hello?name=world');
+    const validResponse = await router.fetch('http://localhost:3000/hello?name=world');
 
     expect(validResponse.status).toEqual(200);
 

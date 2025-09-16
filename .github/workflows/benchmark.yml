@@ -16,13 +16,12 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
-          packageManager: yarn
+          node-version-file: .node-version
 
       - name: Build Packages
-        run: yarn build
+        run: bun run build
 
       - name: Setup K6
         run: |
@@ -33,7 +32,7 @@ jobs:
       - name: Start Benchmark
         working-directory: ./benchmark
         run: |
-          yarn test
+          bun run test
         env:
           NODE_NO_WARNINGS: true
           NODE_ENV: production

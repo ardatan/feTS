@@ -17,19 +17,19 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
+          node-version-file: .node-version
       - name: Prettier Check
-        run: yarn prettier:check
+        run: bun run prettier:check
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
+          node-version-file: .node-version
       - name: ESLint
-        run: yarn lint
+        run: bun run lint

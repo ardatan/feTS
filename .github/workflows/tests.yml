@@ -24,11 +24,11 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
+          node-version-file: .node-version
       - name: Type Check
-        run: yarn ts:check
+        run: bun run ts:check
   unit:
     name: unit / node ${{matrix.node-version}}
     runs-on: ubuntu-latest
@@ -40,9 +40,9 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}
       - name: Cache Jest
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
@@ -55,7 +55,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 5
-          command: yarn test --ci
+          command: bun run test --ci
 
   integration:
     name: integration / node ${{matrix.node-version}}
@@ -68,9 +68,9 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}
       - name: Cache Jest
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
@@ -79,9 +79,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
       - name: Build Packages
-        run: yarn build
+        run: bun run build
       - name: Test
-        run: yarn test:integration --ci
+        run: bun run test:integration --ci
         env:
           CI: true
   esm:
@@ -90,13 +90,13 @@ jobs:
       - name: Checkout Master
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
+          node-version-file: .node-version
       - name: Build Packages
-        run: yarn build
+        run: bun run build
       - name: Test ESM
-        run: yarn esm:check
+        run: bun run esm:check
 
   e2e:
     env:
@@ -134,28 +134,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
-      - name: Setup Node
-        uses: actions/setup-node@master
-        with:
-          node-version: 24
-
       - uses: denoland/setup-deno@v2
         with:
           deno-version: vx.x.x
 
-      - name: Cache Node Modules
-        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
-        id: node-modules-cache-deployment-e2e
+      - name: Setup env
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          path: '**/node_modules'
-          key: ${{runner.os}}-18-node-modules-${{hashFiles('yarn.lock')}}-${{hashFiles('patches/**/*')}}
-          restore-keys: |
-            ${{runner.os}}-18-node-modules-${{hashFiles('yarn.lock')}}-${{hashFiles('patches/**/*')}}
-      - name: Install Dependencies using Yarn
-        run: yarn install --ignore-engines --frozen-lockfile --immutable
+          node-version-file: .node-version
 
       - name: Build Packages
-        run: yarn build
+        run: bun run build
 
       - name: Install pulumi
         uses: pulumi/setup-pulumi@b374ceb6168550de27c6eba92e01c1a774040e11 # v2
@@ -167,13 +156,13 @@ jobs:
           echo "::set-output name=docker_host::$(docker context inspect --format '{{.Endpoints.docker.Host}}')"
 
       - name: Provision & Test
-        run: yarn e2e
+        run: bun run e2e
         working-directory: e2e/${{ matrix.plan }}
         env:
           # General
           COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
       - name: Ensure Deletion
-        run: yarn e2e
+        run: bun run e2e
         if: ${{ always() }}
         working-directory: e2e/${{ matrix.plan }}
         env:

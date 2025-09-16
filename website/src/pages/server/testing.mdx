@@ -22,7 +22,7 @@ The `router.fetch` is compliant with the
 ```ts
 import { router } from './router'
 
-const response = await router.fetch('/todo', {
+const response = await router.fetch('http://localhost:3000/todo', {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json'

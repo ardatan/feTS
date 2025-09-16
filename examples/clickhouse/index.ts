@@ -6,12 +6,17 @@ const clickhouseClient = createClient<NormalizeOAS<typeof clickhouseOas>>({
 });
 
 async function main() {
-  const res = await clickhouseClient['/v1/organizations/:organizationId/services/:serviceId'].get({
-    params: {
-      organizationId: 'orgId',
-      serviceId: 'svcId',
+  const res = await clickhouseClient['/v1/organizations/{organizationId}/services/{serviceId}'].get(
+    {
+      params: {
+        organizationId: 'orgId',
+        serviceId: 'svcId',
+      },
+      headers: {
+        Authorization: 'Basic {token}',
+      },
     },
-  });
+  );
   if (!res.ok) {
     const errBody = await res.json();
     throw new Error(`Request failed: ${errBody.error} : ${errBody.status}`);

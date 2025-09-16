@@ -12,6 +12,7 @@ describe('Client Global Params', () => {
         }),
     });
     const client = createClient<typeof router>({
+      endpoint: 'http://localhost:3000',
       fetchFn: router.fetch,
       globalParams: {
         headers: {

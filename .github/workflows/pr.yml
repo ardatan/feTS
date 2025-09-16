@@ -16,7 +16,7 @@ env:
 
 jobs:
   dependencies:
-    uses: the-guild-org/shared-config/.github/workflows/changesets-dependencies.yaml@main
+    uses: the-guild-org/shared-config/.github/workflows/changesets-dependencies.yaml@v1
     if: ${{ github.event.pull_request.title != 'Upcoming Release Changes' }}
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -29,11 +29,11 @@ jobs:
       contents: read
       id-token: write
       pull-requests: write
-    uses: the-guild-org/shared-config/.github/workflows/release-snapshot.yml@main
+    uses: the-guild-org/shared-config/.github/workflows/release-snapshot.yml@v1
     with:
       npmTag: alpha
       buildScript: build
-      nodeVersion: 24
+      node-version-file: .node-version
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
       npmToken: ${{ secrets.NODE_AUTH_TOKEN }}
@@ -42,11 +42,11 @@ jobs:
     if:
       ${{ github.event.pull_request.head.repo.full_name == github.repository &&
       github.event.pull_request.title == 'Upcoming Release Changes' }}
-    uses: the-guild-org/shared-config/.github/workflows/release-snapshot.yml@main
+    uses: the-guild-org/shared-config/.github/workflows/release-snapshot.yml@v1
     with:
       npmTag: rc
       buildScript: build
-      nodeVersion: 24
+      node-version-file: .node-version
       restoreDeletedChangesets: true
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
