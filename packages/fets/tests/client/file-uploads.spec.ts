@@ -49,7 +49,9 @@ describe('File Uploads', () => {
     },
   });
   const client = createClient<typeof router>({
-    endpoint: 'http://localhost:3000', fetchFn: router.fetch });
+    endpoint: 'http://localhost:3000',
+    fetchFn: router.fetch,
+  });
 
   it('should upload file', async () => {
     const file = new File(['hello'], 'hello.txt', { type: 'text/plain' });

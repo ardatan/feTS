@@ -8,7 +8,7 @@ describe('Client Abort', () => {
     const client = createClient<NormalizedOAS>({
       endpoint: 'https://postman-echo.com',
     });
-    
+
     try {
       await client['/get'].get({ signal: AbortSignal.timeout(1) });
       throw new Error('The request should have been aborted');
