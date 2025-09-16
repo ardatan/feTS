@@ -14,9 +14,6 @@ async function main() {
       },
       instructionSet: [],
     },
-    headers: {
-      Authorization: `Bearer ${process.env.FIREBLOCKS_API_KEY}`,
-    },
   });
 
   if (!res.ok) {

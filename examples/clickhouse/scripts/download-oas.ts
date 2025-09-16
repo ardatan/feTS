@@ -7,8 +7,7 @@ async function main() {
   const yamlData = await res.text();
   if (yamlData) {
     const jsonData = yamlLoad(yamlData);
-    // Replace all `{param}` with `:param` to match OpenAPI spec
-    const jsonString = JSON.stringify(jsonData, null, 2).replace(/{(.*?)}/g, ':$1');
+    const jsonString = JSON.stringify(jsonData, null, 2);
     const exportedJsonString = `/* eslint-disable */ export default ${jsonString} as const;`;
     await fsPromises.writeFile(join(__dirname, '..', 'clickhouse-oas.ts'), exportedJsonString);
   } else {
