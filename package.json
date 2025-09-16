@@ -18,6 +18,7 @@
     "lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext ts,tsx .",
     "postinstall": "patch-package",
     "prebuild": "bun run generate-swagger-ui && bun run generate-landing-page",
+    "precommit": "echo 'Running pre-commit hooks' && bun run lint-staged || exit 0",
     "prerelease": "bun run build",
     "prerelease-canary": "bun run build",
     "pretest": "bun run generate-swagger-ui && bun run generate-landing-page",

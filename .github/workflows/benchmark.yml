@@ -16,10 +16,9 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Setup env
-        uses: the-guild-org/shared-config/setup@main
+        uses: the-guild-org/shared-config/setup@v1
         with:
-          nodeVersion: 24
-          packageManager: yarn
+          node-version-file: .node-version
 
       - name: Build Packages
         run: bun run build
