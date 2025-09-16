@@ -19,7 +19,7 @@
     "zod": "^4.0.14"
   },
   "devDependencies": {
-    "@img/sharp-libvips-linux-x64": "1.2.0",
+    "@img/sharp-libvips-linux-x64": "1.2.2",
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.6.3",
     "@types/node": "24.5.0",
