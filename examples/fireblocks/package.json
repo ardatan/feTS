@@ -4,7 +4,7 @@
   "description": "An example app uses ClickHouse Cloud API",
   "private": true,
   "scripts": {
-    "download-oas": "ts-node scripts/download-oas.ts",
+    "prepare": "ts-node scripts/download-oas.ts",
     "start": "ts-node-dev index.ts"
   },
   "dependencies": {
