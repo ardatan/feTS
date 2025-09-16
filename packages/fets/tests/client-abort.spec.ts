@@ -8,9 +8,16 @@ describe('Client Abort', () => {
     const client = createClient<NormalizedOAS>({
       endpoint: 'https://postman-echo.com',
     });
-
-    await expect(client['/get'].get({ signal: AbortSignal.timeout(1) })).rejects.toThrow(
-      'The operation was aborted',
-    );
+    
+    try {
+      await client['/get'].get({ signal: AbortSignal.timeout(1) });
+      throw new Error('The request should have been aborted');
+    } catch (e: any) {
+      if (e instanceof Error) {
+        expect(e.name).toBe('TimeoutError');
+      } else {
+        expect(e.name).toBe('AbortError');
+      }
+    }
   });
 });

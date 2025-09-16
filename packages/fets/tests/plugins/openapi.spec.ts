@@ -12,7 +12,7 @@ describe('OpenAPI spec', () => {
           message: `Hello World!`,
         }),
     });
-    const res = await router.fetch('/api/openapi.json');
+    const res = await router.fetch('http://localhost:3000/api/openapi.json');
     const oas = await res.json();
     expect(oas.servers[0].url).toBe('/api');
   });

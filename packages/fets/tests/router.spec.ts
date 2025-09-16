@@ -10,7 +10,7 @@ describe('Router', () => {
           message: `Hello ${request.parsedUrl.pathname}!`,
         }),
     });
-    const response = await router.fetch('/greetings/John');
+    const response = await router.fetch('http://localhost:3000/greetings/John');
     const json = await response.json();
     expect(json.message).toBe('Hello /greetings/John!');
   });
@@ -23,7 +23,7 @@ describe('Router', () => {
           message: `Hello ${request.params.name}!`,
         }),
     });
-    const response = await router.fetch('/greetings/John');
+    const response = await router.fetch('http://localhost:3000/greetings/John');
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
   });
@@ -36,7 +36,7 @@ describe('Router', () => {
           message: `Hello ${request.params.name}!`,
         }),
     });
-    const response = await router.fetch('/greetings/John%20Doe');
+    const response = await router.fetch('http://localhost:3000/greetings/John%20Doe');
     const json = await response.json();
     expect(json.message).toBe('Hello John Doe!');
   });
@@ -49,7 +49,7 @@ describe('Router', () => {
           message: `Hello ${request.query.name}!`,
         }),
     });
-    const response = await router.fetch('/greetings?name=John');
+    const response = await router.fetch('http://localhost:3000/greetings?name=John');
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
   });
@@ -63,7 +63,7 @@ describe('Router', () => {
           message: `Hello ${request.params.name}!`,
         }),
     });
-    const response = await router.fetch('/api/greetings/John');
+    const response = await router.fetch('http://localhost:3000/api/greetings/John');
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
   });
@@ -87,7 +87,7 @@ describe('Router', () => {
       // @ts-expect-error TODO
       handler: nested,
     });
-    const response = await router.fetch('/api/greetings/John');
+    const response = await router.fetch('http://localhost:3000/api/greetings/John');
     expect(response.status).toBe(200);
     const json = await response.json();
     expect(json.message).toBe('Hello John!');
@@ -119,7 +119,7 @@ describe('Router', () => {
           message: `Hello Root!`,
         }),
     });
-    const response = await router.fetch('/api');
+    const response = await router.fetch('http://localhost:3000/api');
     const json = await response.json();
     expect(json.message).toBe('Hello Root!');
   });
@@ -132,7 +132,7 @@ describe('Router', () => {
           message: `Hello Root!`,
         }),
     });
-    const response = await router.fetch('');
+    const response = await router.fetch('http://localhost:3000');
     const json = await response.json();
     expect(json.message).toBe('Hello Root!');
   });
@@ -147,7 +147,7 @@ describe('Router', () => {
           message: `Hello World!`,
         }),
     });
-    const response = await router.fetch('/greetings');
+    const response = await router.fetch('http://localhost:3000/greetings');
     const json = await response.json();
     expect(json.message).toBe('Hello World!');
   });
@@ -162,7 +162,7 @@ describe('Router', () => {
           message: `Hello World!`,
         }),
     });
-    const response = await router.fetch('');
+    const response = await router.fetch('http://localhost:3000');
     const json = await response.json();
     expect(json.message).toBe('Hello World!');
   });
@@ -177,7 +177,7 @@ describe('Router', () => {
         });
       },
     });
-    const response = await router.fetch('/greetings', {
+    const response = await router.fetch('http://localhost:3000/greetings', {
       method: 'POST',
       body: JSON.stringify({ name: 'John' }),
     });
@@ -203,7 +203,7 @@ describe('Router', () => {
       },
       handler: request => Response.json(request.query),
     });
-    const response = await router.fetch('/nested_qs?foo[bar]=baz');
+    const response = await router.fetch('http://localhost:3000/nested_qs?foo[bar]=baz');
     const json = await response.json();
     expect(json).toEqual({ foo: { bar: 'baz' } });
   });

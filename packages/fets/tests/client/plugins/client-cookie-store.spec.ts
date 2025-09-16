@@ -8,6 +8,7 @@ describe('useClientCookieStore', () => {
     const cookieStore = new CookieStore('foo=bar');
     let receivedCookie = '';
     const client = createClient<any>({
+      endpoint: 'http://localhost:3000',
       async fetchFn(_, init) {
         const headers = new Headers(init?.headers);
         receivedCookie = headers.get('cookie') ?? '';

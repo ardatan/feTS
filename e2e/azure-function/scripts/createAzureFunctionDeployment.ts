@@ -62,7 +62,7 @@ export function createAzureFunctionDeployment(): DeploymentConfiguration<{
 
       // Build and bundle the worker
       console.info('\t\tℹ️ Bundling the Azure Function....');
-      await execPromise('yarn build', {
+      await execPromise('bun run build', {
         cwd: join(__dirname, '..'),
       });
     },

@@ -21,7 +21,7 @@ jobs:
         with:
           nodeVersion: 24
       - name: Prettier Check
-        run: yarn prettier:check
+        run: bun run prettier:check
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -32,4 +32,4 @@ jobs:
         with:
           nodeVersion: 24
       - name: ESLint
-        run: yarn lint
+        run: bun run lint

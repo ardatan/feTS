@@ -28,7 +28,7 @@ jobs:
         with:
           nodeVersion: 24
       - name: Type Check
-        run: yarn ts:check
+        run: bun run ts:check
   unit:
     name: unit / node ${{matrix.node-version}}
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 5
-          command: yarn test --ci
+          command: bun run test --ci
 
   integration:
     name: integration / node ${{matrix.node-version}}
@@ -79,9 +79,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
       - name: Build Packages
-        run: yarn build
+        run: bun run build
       - name: Test
-        run: yarn test:integration --ci
+        run: bun run test:integration --ci
         env:
           CI: true
   esm:
@@ -94,9 +94,9 @@ jobs:
         with:
           nodeVersion: 24
       - name: Build Packages
-        run: yarn build
+        run: bun run build
       - name: Test ESM
-        run: yarn esm:check
+        run: bun run esm:check
 
   e2e:
     env:
@@ -152,10 +152,10 @@ jobs:
           restore-keys: |
             ${{runner.os}}-18-node-modules-${{hashFiles('yarn.lock')}}-${{hashFiles('patches/**/*')}}
       - name: Install Dependencies using Yarn
-        run: yarn install --ignore-engines --frozen-lockfile --immutable
+        run: bun run install --ignore-engines --frozen-lockfile --immutable
 
       - name: Build Packages
-        run: yarn build
+        run: bun run build
 
       - name: Install pulumi
         uses: pulumi/setup-pulumi@b374ceb6168550de27c6eba92e01c1a774040e11 # v2
@@ -167,13 +167,13 @@ jobs:
           echo "::set-output name=docker_host::$(docker context inspect --format '{{.Endpoints.docker.Host}}')"
 
       - name: Provision & Test
-        run: yarn e2e
+        run: bun run e2e
         working-directory: e2e/${{ matrix.plan }}
         env:
           # General
           COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
       - name: Ensure Deletion
-        run: yarn e2e
+        run: bun run e2e
         if: ${{ always() }}
         working-directory: e2e/${{ matrix.plan }}
         env:
