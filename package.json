@@ -26,9 +26,8 @@
     "prettier": "bun run prettier:check --write",
     "prettier:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
-    "test": "bun test packages",
+    "test": "jest --detectOpenHandles --detectLeaks",
     "test:integration": "cross-env \"INTEGRATION_TEST=true\" jest --detectOpenHandles --no-watchman",
-    "test:leaks": "jest --detectOpenHandles --detectLeaks",
     "ts:check": "tsc --noEmit"
   },
   "devDependencies": {
