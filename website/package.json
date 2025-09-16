@@ -22,7 +22,7 @@
     "@img/sharp-libvips-linux-x64": "1.2.0",
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.6.3",
-    "@types/node": "24.5.0",
+    "@types/node": "24.5.1",
     "@types/react": "19.1.13",
     "@typescript/sandbox": "^0.1.0",
     "monaco-editor": "0.53.0",
