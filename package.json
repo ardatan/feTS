@@ -64,7 +64,7 @@
     "typescript": "5.9.2"
   },
   "overrides": {
-    "@pulumi/pulumi": "3.196.0",
+    "@pulumi/pulumi": "3.197.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.9",
     "estree-util-value-to-estree": "3.4.0",
