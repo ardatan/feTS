@@ -89,7 +89,7 @@
         "@e2e/shared-scripts": "0.0.0",
       },
       "devDependencies": {
-        "@pulumi/cloudflare": "4.16.0",
+        "@pulumi/cloudflare": "6.9.1",
         "@pulumi/pulumi": "3.197.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -104,7 +104,7 @@
         "@e2e/shared-scripts": "0.0.0",
       },
       "devDependencies": {
-        "@pulumi/cloudflare": "4.16.0",
+        "@pulumi/cloudflare": "6.9.1",
         "@pulumi/pulumi": "3.197.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -1090,7 +1090,7 @@
 
     "@pulumi/azure-native": ["@pulumi/azure-native@3.8.0", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-emIoAW5gl2i0S03XRdEiX25GcUxjwH/0HZha8Jaz8YO58rlm+tr5MR6+DSgj0Fy71rcODt+SE/4p+6/ElEmkuw=="],
 
-    "@pulumi/cloudflare": ["@pulumi/cloudflare@4.16.0", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0" } }, "sha512-cwdB70bLeKL/VNIqqOD5fpHQcocVmpHuiHH589eR+QUfbLa4f+M8yA/TTCcxx2AFFctTqO5wgVuC+faL8xZmWQ=="],
+    "@pulumi/cloudflare": ["@pulumi/cloudflare@6.9.1", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-DpZXRXhRyRat8BQxPIBO+V/opFjqktXA0tMrKBmZIo8QgjB5cDnrjvUWv5DrZRtHldE9Z3gTLT2T3OxgkD+f3g=="],
 
     "@pulumi/docker": ["@pulumi/docker@3.6.1", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0", "semver": "^5.4.0" } }, "sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now=="],
 
