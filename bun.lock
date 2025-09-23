@@ -45,7 +45,7 @@
         "fets": "0.8.5",
       },
       "devDependencies": {
-        "@types/k6": "1.2.0",
+        "@types/k6": "1.3.0",
         "start-server-and-test": "2.1.2",
       },
     },
@@ -347,12 +347,12 @@
   },
   "overrides": {
     "@pulumi/pulumi": "3.197.0",
-    "cookie": "1.0.2",
     "esbuild": "0.25.10",
-    "estree-util-value-to-estree": "3.4.0",
-    "next": "15.5.4",
-    "prismjs": "1.30.0",
     "tmp": "0.2.5",
+    "next": "15.5.4",
+    "cookie": "1.0.2",
+    "prismjs": "1.30.0",
+    "estree-util-value-to-estree": "3.4.0",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -1443,7 +1443,7 @@
 
     "@types/jsonwebtoken": ["@types/jsonwebtoken@9.0.10", "", { "dependencies": { "@types/ms": "*", "@types/node": "*" } }, "sha512-asx5hIG9Qmf/1oStypjanR7iKTv0gXQ1Ov/jfrX6kS/EO0OFni8orbmGCn0672NHR3kXHwpAwR+B368ZGN/2rA=="],
 
-    "@types/k6": ["@types/k6@1.2.0", "", {}, "sha512-7F/vjekOUCzFi5AY+yYBOL38iEtN9EXufdKOAMFkJsdLryJ3/bB/W9jppED1FO5o7zeaPf8M46ardYPD8xgy/w=="],
+    "@types/k6": ["@types/k6@1.3.0", "", {}, "sha512-YmxKxib8oyJJXeQXHOPtEra7tFNkjy2z7Pim9uqm+rUDX6Myt54BoFsKhZMC+x26DQMrPOJMaMsmzZKfuhGfNg=="],
 
     "@types/katex": ["@types/katex@0.16.7", "", {}, "sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ=="],
 
