@@ -16,7 +16,7 @@
     "generate-landing-page": "node ./packages/fets/scripts/generate-landing-page.cjs",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
     "lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext ts,tsx .",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && rimraf node_modules/next/sharp",
     "prebuild": "bun run generate-swagger-ui && bun run generate-landing-page",
     "precommit": "echo 'Running pre-commit hooks' && bun run lint-staged || exit 0",
     "prerelease": "bun run build",
@@ -60,6 +60,7 @@
     "patch-package": "8.0.0",
     "prettier": "3.6.2",
     "prettier-plugin-tailwindcss": "0.6.14",
+    "rimraf": "6.0.1",
     "ts-jest": "29.4.4",
     "typescript": "5.9.2"
   },
