@@ -23,7 +23,7 @@
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.6.3",
     "@types/node": "24.5.2",
-    "@types/react": "19.1.13",
+    "@types/react": "19.1.14",
     "@typescript/sandbox": "^0.1.0",
     "monaco-editor": "0.53.0",
     "postcss-import": "16.1.1",
