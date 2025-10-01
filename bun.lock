@@ -35,7 +35,7 @@
         "prettier-plugin-tailwindcss": "0.6.14",
         "rimraf": "6.0.1",
         "ts-jest": "29.4.4",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
     "benchmark": {
@@ -64,7 +64,7 @@
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
     "e2e/azure-function": {
@@ -80,7 +80,7 @@
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
     "e2e/cloudflare-modules": {
@@ -94,7 +94,7 @@
         "@pulumi/pulumi": "3.198.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
         "wrangler": "4.40.3",
       },
     },
@@ -109,7 +109,7 @@
         "@pulumi/pulumi": "3.198.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
         "wrangler": "4.40.3",
       },
     },
@@ -147,7 +147,7 @@
         "eslint-config-next": "15.5.4",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
     "examples/auth-example": {
@@ -213,7 +213,7 @@
         "next": "15.5.4",
         "react": "19.1.1",
         "react-dom": "19.1.1",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
     "examples/soccer-stats": {
@@ -341,18 +341,18 @@
         "postcss-lightningcss": "1.0.2",
         "sharp": "0.34.4",
         "tailwindcss": "3.4.17",
-        "typescript": "5.9.2",
+        "typescript": "5.9.3",
       },
     },
   },
   "overrides": {
     "@pulumi/pulumi": "3.198.0",
-    "esbuild": "0.25.10",
-    "tmp": "0.2.5",
-    "next": "15.5.4",
     "cookie": "1.0.2",
-    "prismjs": "1.30.0",
+    "esbuild": "0.25.10",
     "estree-util-value-to-estree": "3.4.0",
+    "next": "15.5.4",
+    "prismjs": "1.30.0",
+    "tmp": "0.2.5",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -4069,7 +4069,7 @@
 
     "types-ramda": ["types-ramda@0.30.1", "", { "dependencies": { "ts-toolbelt": "^9.6.0" } }, "sha512-1HTsf5/QVRmLzcGfldPFvkVsAdi1db1BBKzi7iW3KBUlOICg/nKnFS+jGqDJS3YD8VsWbAh7JiHeBvbsw8RPxA=="],
 
-    "typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
+    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
     "uWebSockets.js": ["uWebSockets.js@github:uNetworking/uWebSockets.js#cfc9a40", {}, "uNetworking-uWebSockets.js-cfc9a40"],
 
@@ -4669,6 +4669,12 @@
 
     "estree-util-to-js/source-map": ["source-map@0.7.6", "", {}, "sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ=="],
 
+    "example-auth/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
+
+    "example-soccer-stats/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
+
+    "example-typebox/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
+
     "execa/signal-exit": ["signal-exit@3.0.7", "", {}, "sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ=="],
 
     "expand-brackets/debug": ["debug@2.6.9", "", { "dependencies": { "ms": "2.0.0" } }, "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="],
@@ -5174,6 +5180,10 @@
     "to-object-path/kind-of": ["kind-of@3.2.2", "", { "dependencies": { "is-buffer": "^1.1.5" } }, "sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ=="],
 
     "to-regex/extend-shallow": ["extend-shallow@3.0.2", "", { "dependencies": { "assign-symbols": "^1.0.0", "is-extendable": "^1.0.1" } }, "sha512-BwY5b5Ql4+qZoefgMj2NUmx+tehVTH/Kf4k1ZEtOHNFcm2wSxMRo992l6X3TIgni2eZVTZ85xMOjF31fwZAj6Q=="],
+
+    "todolist/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
+
+    "trpc-openapi-example/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
 
     "ts-declaration-location/picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
 
