@@ -1,1 +1,1 @@
-bun run precommit
+bunx precommit
