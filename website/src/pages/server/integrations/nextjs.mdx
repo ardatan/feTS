@@ -48,6 +48,7 @@ set to `/api`.
 ```tsx filename = pages/index.tsx
 import { createClient } from 'fets'
 import type router from './api/[...slug]/router'
+import { useEffect, useState } from 'react'
 
 const client = createClient<typeof router>({
   endpoint: '/api'
