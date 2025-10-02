@@ -59,7 +59,7 @@
       "devDependencies": {
         "@pulumi/aws": "6.83.0",
         "@pulumi/awsx": "0.40.1",
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "@types/aws-lambda": "8.10.153",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
@@ -76,7 +76,7 @@
       },
       "devDependencies": {
         "@pulumi/azure-native": "3.8.0",
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -91,7 +91,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -106,7 +106,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -117,7 +117,7 @@
       "name": "@e2e/shared-scripts",
       "version": "0.0.0",
       "dependencies": {
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "@types/node": "24.6.1",
       },
     },
@@ -140,7 +140,7 @@
         "react-dom": "19.1.1",
       },
       "devDependencies": {
-        "@pulumi/pulumi": "3.198.0",
+        "@pulumi/pulumi": "3.199.0",
         "@types/react": "19.1.17",
         "esbuild": "0.25.10",
         "eslint": "9.36.0",
@@ -346,7 +346,7 @@
     },
   },
   "overrides": {
-    "@pulumi/pulumi": "3.198.0",
+    "@pulumi/pulumi": "3.199.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.10",
     "estree-util-value-to-estree": "3.4.0",
@@ -1099,7 +1099,7 @@
 
     "@pulumi/docker": ["@pulumi/docker@3.6.1", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0", "semver": "^5.4.0" } }, "sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now=="],
 
-    "@pulumi/pulumi": ["@pulumi/pulumi@3.198.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-VpyMyIt5Y624VRc6cTXR3Y2nqvpVCQWhSURbTgZKauOmliYvF1OfDyLnlOoTyG4zgVVJBs/ARIuBZwsUwdSQ6g=="],
+    "@pulumi/pulumi": ["@pulumi/pulumi@3.199.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-iAnOUfcGcaQyDr8IONDkWhf+UczzOlNATmOZdcDDI7P45uoGFSCPMdUzQSvKt1o0qx5DXu4H2/BZwM1dG5e4bA=="],
 
     "@radix-ui/primitive": ["@radix-ui/primitive@1.1.3", "", {}, "sha512-JTF99U/6XIjCBo0wqkU5sK10glYe27MRRsfwoiq5zzOEZLHU3A3KCMa5X/azekYRCJ0HlwI0crAXS/5dEHTzDg=="],
 
@@ -5174,14 +5174,6 @@
     "to-object-path/kind-of": ["kind-of@3.2.2", "", { "dependencies": { "is-buffer": "^1.1.5" } }, "sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ=="],
 
     "to-regex/extend-shallow": ["extend-shallow@3.0.2", "", { "dependencies": { "assign-symbols": "^1.0.0", "is-extendable": "^1.0.1" } }, "sha512-BwY5b5Ql4+qZoefgMj2NUmx+tehVTH/Kf4k1ZEtOHNFcm2wSxMRo992l6X3TIgni2eZVTZ85xMOjF31fwZAj6Q=="],
-
-    "trpc-openapi-example/@types/node": ["@types/node@24.6.0", "", { "dependencies": { "undici-types": "~7.13.0" } }, "sha512-F1CBxgqwOMc4GKJ7eY22hWhBVQuMYTtqI8L0FcszYcpYX0fzfDGpez22Xau8Mgm7O9fI+zA/TYIdq3tGWfweBA=="],
-
-    "trpc-openapi-example/@types/react": ["@types/react@19.1.16", "", { "dependencies": { "csstype": "^3.0.2" } }, "sha512-WBM/nDbEZmDUORKnh5i1bTnAz6vTohUf9b8esSMu+b24+srbaxa04UbJgWx78CVfNXA20sNu0odEIluZDFdCog=="],
-
-    "trpc-openapi-example/@types/react-dom": ["@types/react-dom@19.1.9", "", { "peerDependencies": { "@types/react": "^19.0.0" } }, "sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ=="],
-
-    "trpc-openapi-example/typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
 
     "ts-declaration-location/picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
 
