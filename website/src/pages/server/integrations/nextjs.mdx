@@ -46,6 +46,7 @@ server side as a `type`, then you can create a client with the router type with 
 set to `/api`.
 
 ```tsx filename = pages/index.tsx
+import { useEffect, useState } from 'react'
 import { createClient } from 'fets'
 import type router from './api/[...slug]/router'
 

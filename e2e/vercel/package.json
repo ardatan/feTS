@@ -15,12 +15,12 @@
     "@e2e/shared-server": "0.0.93",
     "encoding": "0.1.13",
     "next": "15.5.4",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
     "@pulumi/pulumi": "3.199.0",
-    "@types/react": "19.1.17",
+    "@types/react": "19.2.0",
     "esbuild": "0.25.10",
     "eslint": "9.36.0",
     "eslint-config-next": "15.5.4",
