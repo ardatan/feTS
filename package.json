@@ -16,7 +16,7 @@
     "generate-landing-page": "node ./packages/fets/scripts/generate-landing-page.cjs",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
     "lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext ts,tsx .",
-    "postinstall": "patch-package && rimraf node_modules/next/sharp",
+    "postinstall": "patch-package && rimraf node_modules/next/sharp && rimraf node_modules/@giscus/react/node_modules/react",
     "prebuild": "bun run generate-swagger-ui && bun run generate-landing-page",
     "precommit": "bunx lint-staged",
     "prerelease": "bun run build",
@@ -72,6 +72,8 @@
     "estree-util-value-to-estree": "3.4.0",
     "next": "15.5.4",
     "prismjs": "1.30.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tmp": "0.2.5"
   },
   "lint-staged": {
