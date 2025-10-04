@@ -91,7 +91,7 @@
         "@e2e/shared-scripts": "0.0.0",
       },
       "devDependencies": {
-        "@pulumi/cloudflare": "4.16.0",
+        "@pulumi/cloudflare": "6.10.0",
         "@pulumi/pulumi": "3.200.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -106,7 +106,7 @@
         "@e2e/shared-scripts": "0.0.0",
       },
       "devDependencies": {
-        "@pulumi/cloudflare": "4.16.0",
+        "@pulumi/cloudflare": "6.10.0",
         "@pulumi/pulumi": "3.200.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -348,14 +348,14 @@
   },
   "overrides": {
     "@pulumi/pulumi": "3.200.0",
-    "cookie": "1.0.2",
     "esbuild": "0.25.10",
-    "estree-util-value-to-estree": "3.4.0",
+    "tmp": "0.2.5",
     "next": "15.5.4",
-    "prismjs": "1.30.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "tmp": "0.2.5",
+    "cookie": "1.0.2",
+    "prismjs": "1.30.0",
+    "estree-util-value-to-estree": "3.4.0",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -1098,7 +1098,7 @@
 
     "@pulumi/azure-native": ["@pulumi/azure-native@3.8.0", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-emIoAW5gl2i0S03XRdEiX25GcUxjwH/0HZha8Jaz8YO58rlm+tr5MR6+DSgj0Fy71rcODt+SE/4p+6/ElEmkuw=="],
 
-    "@pulumi/cloudflare": ["@pulumi/cloudflare@4.16.0", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0" } }, "sha512-cwdB70bLeKL/VNIqqOD5fpHQcocVmpHuiHH589eR+QUfbLa4f+M8yA/TTCcxx2AFFctTqO5wgVuC+faL8xZmWQ=="],
+    "@pulumi/cloudflare": ["@pulumi/cloudflare@6.10.0", "", { "dependencies": { "@pulumi/pulumi": "^3.142.0" } }, "sha512-f+yPn05Ys4ZTuukZ0S+pYE5CORYK8eiv13jq8qCUd/7XPr18EkqkeiEmmnNaWM07ksoxS8fLq+swYYOxn+VZmw=="],
 
     "@pulumi/docker": ["@pulumi/docker@3.6.1", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0", "semver": "^5.4.0" } }, "sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now=="],
 
