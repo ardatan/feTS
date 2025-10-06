@@ -25,7 +25,7 @@
     "@types/node": "24.7.0",
     "@types/react": "19.2.0",
     "@typescript/sandbox": "^0.1.0",
-    "monaco-editor": "0.53.0",
+    "monaco-editor": "0.54.0",
     "postcss-import": "16.1.1",
     "postcss-lightningcss": "1.0.2",
     "sharp": "0.34.4",
