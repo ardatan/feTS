@@ -60,7 +60,7 @@
       "devDependencies": {
         "@pulumi/aws": "6.83.0",
         "@pulumi/awsx": "0.40.1",
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "@types/aws-lambda": "8.10.155",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
@@ -77,7 +77,7 @@
       },
       "devDependencies": {
         "@pulumi/azure-native": "3.8.0",
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -92,7 +92,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -107,7 +107,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -118,7 +118,7 @@
       "name": "@e2e/shared-scripts",
       "version": "0.0.0",
       "dependencies": {
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "@types/node": "24.7.0",
       },
     },
@@ -141,7 +141,7 @@
         "react-dom": "19.2.0",
       },
       "devDependencies": {
-        "@pulumi/pulumi": "3.200.0",
+        "@pulumi/pulumi": "3.201.0",
         "@types/react": "19.2.0",
         "esbuild": "0.25.10",
         "eslint": "9.37.0",
@@ -347,7 +347,7 @@
     },
   },
   "overrides": {
-    "@pulumi/pulumi": "3.200.0",
+    "@pulumi/pulumi": "3.201.0",
     "cookie": "1.0.2",
     "esbuild": "0.25.10",
     "estree-util-value-to-estree": "3.4.0",
@@ -1102,7 +1102,7 @@
 
     "@pulumi/docker": ["@pulumi/docker@3.6.1", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0", "semver": "^5.4.0" } }, "sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now=="],
 
-    "@pulumi/pulumi": ["@pulumi/pulumi@3.200.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-DnSGAo2AEnGIcuT70FYw++431eHn8jSPIscD1uQ8wRdYG3KIse0tSzyfAQTHwdZ1hqjjpdFMVYF5ZGZkLhd19g=="],
+    "@pulumi/pulumi": ["@pulumi/pulumi@3.201.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-iLg3Z9lCxJ15N/3rfsPPW5J6NdzH4TcM5uz8v6q179C0SOCAMPHGnxovOpZldB5k689jT9alrw80gvL2VprD0g=="],
 
     "@radix-ui/primitive": ["@radix-ui/primitive@1.1.3", "", {}, "sha512-JTF99U/6XIjCBo0wqkU5sK10glYe27MRRsfwoiq5zzOEZLHU3A3KCMa5X/azekYRCJ0HlwI0crAXS/5dEHTzDg=="],
 
@@ -5014,8 +5014,6 @@
 
     "trpc-openapi/zod": ["zod@3.25.76", "", {}, "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="],
 
-    "trpc-openapi-example/@types/node": ["@types/node@24.6.2", "", { "dependencies": { "undici-types": "~7.13.0" } }, "sha512-d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang=="],
-
     "ts-declaration-location/picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
 
     "ts-jest/semver": ["semver@7.7.2", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA=="],
@@ -5463,8 +5461,6 @@
     "to-object-path/kind-of/is-buffer": ["is-buffer@1.1.6", "", {}, "sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w=="],
 
     "to-regex/extend-shallow/is-extendable": ["is-extendable@1.0.1", "", { "dependencies": { "is-plain-object": "^2.0.4" } }, "sha512-arnXMxT1hhoKo9k1LZdmlNyJdDDfy2v0fXjFlmok4+i8ul/6WlbVge9bhM74OpNPQPMGUToDtz+KXa1PneJxOA=="],
-
-    "trpc-openapi-example/@types/node/undici-types": ["undici-types@7.13.0", "", {}, "sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ=="],
 
     "ts-node-dev/rimraf/glob": ["glob@7.2.3", "", { "dependencies": { "fs.realpath": "^1.0.0", "inflight": "^1.0.4", "inherits": "2", "minimatch": "^3.1.1", "once": "^1.3.0", "path-is-absolute": "^1.0.0" } }, "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="],
 
