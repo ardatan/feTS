@@ -16,7 +16,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.0.1",
-    "zod": "^4.1.11"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@img/sharp-libvips-linux-x64": "1.2.3",
