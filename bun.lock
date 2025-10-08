@@ -333,7 +333,7 @@
       "devDependencies": {
         "@img/sharp-libvips-linux-x64": "1.2.3",
         "@svgr/webpack": "^8.0.1",
-        "@theguild/tailwind-config": "0.6.3",
+        "@theguild/tailwind-config": "0.6.4",
         "@types/node": "24.7.0",
         "@types/react": "19.2.2",
         "@typescript/sandbox": "^0.1.0",
@@ -1310,7 +1310,7 @@
 
     "@theguild/remark-npm2yarn": ["@theguild/remark-npm2yarn@0.3.3", "", { "dependencies": { "npm-to-yarn": "^3.0.0", "unist-util-visit": "^5.0.0" } }, "sha512-ma6DvR03gdbvwqfKx1omqhg9May/VYGdMHvTzB4VuxkyS7KzfZ/lzrj43hmcsggpMje0x7SADA/pcMph0ejRnA=="],
 
-    "@theguild/tailwind-config": ["@theguild/tailwind-config@0.6.3", "", { "dependencies": { "@tailwindcss/container-queries": "^0.1.1" }, "peerDependencies": { "postcss-import": "^16.1.0", "postcss-lightningcss": "^1.0.1", "tailwindcss": "^3.4.14" } }, "sha512-kmHHBnGRPiFtyBNuWCuKdC+kymh16OuFTD+R/Yb3yo+mNFJlOzGYdcu2ay6g1M+9+OlwSffifD2Zo97AZUwaSg=="],
+    "@theguild/tailwind-config": ["@theguild/tailwind-config@0.6.4", "", { "dependencies": { "@tailwindcss/container-queries": "^0.1.1" }, "peerDependencies": { "postcss-import": "^16.1.0", "postcss-lightningcss": "^1.0.1", "tailwindcss": "^3.4.14" } }, "sha512-7zscZk+L9x0Z8tMQGtVBC+1usAJ6Nz7hJYCmKzwXyMA4paXr/ghCeMArF9hkIkBp/GH+gKpR+ERaHwmqmvqfVg=="],
 
     "@tree-sitter-grammars/tree-sitter-yaml": ["@tree-sitter-grammars/tree-sitter-yaml@0.7.1", "", { "dependencies": { "node-addon-api": "^8.3.1", "node-gyp-build": "^4.8.4" }, "peerDependencies": { "tree-sitter": "^0.22.4" }, "optionalPeers": ["tree-sitter"] }, "sha512-AynBwkIoQCTgjDR33bDUp9Mqq+YTco0is3n5hRApMqG9of/6A4eQsfC1/uSEeHSUyMQSYawcAWamsexnVpIP4Q=="],
 
@@ -4437,6 +4437,8 @@
     "@swagger-api/apidom-parser-adapter-yaml-1-2/tree-sitter": ["tree-sitter@0.22.4", "", { "dependencies": { "node-addon-api": "^8.3.0", "node-gyp-build": "^4.8.4" } }, "sha512-usbHZP9/oxNsUY65MQUsduGRqDHQOou1cagUSwjhoSYAmSahjQDAVsh9s+SlZkn8X8+O1FULRGwHu7AFP3kjzg=="],
 
     "@swagger-api/apidom-reference/minimatch": ["minimatch@7.4.6", "", { "dependencies": { "brace-expansion": "^2.0.1" } }, "sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw=="],
+
+    "@theguild/components/@theguild/tailwind-config": ["@theguild/tailwind-config@0.6.3", "", { "dependencies": { "@tailwindcss/container-queries": "^0.1.1" }, "peerDependencies": { "postcss-import": "^16.1.0", "postcss-lightningcss": "^1.0.1", "tailwindcss": "^3.4.14" } }, "sha512-kmHHBnGRPiFtyBNuWCuKdC+kymh16OuFTD+R/Yb3yo+mNFJlOzGYdcu2ay6g1M+9+OlwSffifD2Zo97AZUwaSg=="],
 
     "@theguild/components/semver": ["semver@7.7.2", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA=="],
 
