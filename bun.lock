@@ -60,7 +60,7 @@
       "devDependencies": {
         "@pulumi/aws": "6.83.0",
         "@pulumi/awsx": "0.40.1",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/aws-lambda": "8.10.155",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
@@ -77,7 +77,7 @@
       },
       "devDependencies": {
         "@pulumi/azure-native": "3.8.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -92,7 +92,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -107,7 +107,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -118,7 +118,7 @@
       "name": "@e2e/shared-scripts",
       "version": "0.0.0",
       "dependencies": {
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/node": "24.7.1",
       },
     },
@@ -141,7 +141,7 @@
         "react-dom": "19.2.0",
       },
       "devDependencies": {
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/react": "19.2.2",
         "esbuild": "0.25.10",
         "eslint": "9.37.0",
@@ -347,15 +347,15 @@
     },
   },
   "overrides": {
-    "@pulumi/pulumi": "3.201.0",
+    "@pulumi/pulumi": "3.202.0",
+    "cookie": "1.0.2",
     "esbuild": "0.25.10",
-    "tmp": "0.2.5",
+    "estree-util-value-to-estree": "3.4.0",
     "next": "15.5.4",
+    "prismjs": "1.30.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "cookie": "1.0.2",
-    "prismjs": "1.30.0",
-    "estree-util-value-to-estree": "3.4.0",
+    "tmp": "0.2.5",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -1102,7 +1102,7 @@
 
     "@pulumi/docker": ["@pulumi/docker@3.6.1", "", { "dependencies": { "@pulumi/pulumi": "^3.0.0", "semver": "^5.4.0" } }, "sha512-BZME50QkT556v+LvmTXPT8ssB2xxNkp9+msB5xYFEnUnWcdGAx5yUysQw70RJCb+U0GbkJSbxtlgMJgOQf/now=="],
 
-    "@pulumi/pulumi": ["@pulumi/pulumi@3.201.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-iLg3Z9lCxJ15N/3rfsPPW5J6NdzH4TcM5uz8v6q179C0SOCAMPHGnxovOpZldB5k689jT9alrw80gvL2VprD0g=="],
+    "@pulumi/pulumi": ["@pulumi/pulumi@3.202.0", "", { "dependencies": { "@grpc/grpc-js": "^1.10.1", "@logdna/tail-file": "^2.0.6", "@npmcli/arborist": "^7.3.1", "@opentelemetry/api": "^1.9", "@opentelemetry/exporter-zipkin": "^1.28", "@opentelemetry/instrumentation": "^0.55", "@opentelemetry/instrumentation-grpc": "^0.55", "@opentelemetry/resources": "^1.28", "@opentelemetry/sdk-trace-base": "^1.28", "@opentelemetry/sdk-trace-node": "^1.28", "@types/google-protobuf": "^3.15.5", "@types/semver": "^7.5.6", "@types/tmp": "^0.2.6", "execa": "^5.1.0", "fdir": "^6.1.1", "google-protobuf": "^3.21.4", "got": "^11.8.6", "ini": "^2.0.0", "js-yaml": "^3.14.0", "minimist": "^1.2.6", "normalize-package-data": "^6.0.0", "picomatch": "^3.0.1", "pkg-dir": "^7.0.0", "require-from-string": "^2.0.1", "semver": "^7.5.2", "source-map-support": "^0.5.6", "tmp": "^0.2.4", "upath": "^1.1.0" }, "peerDependencies": { "ts-node": ">= 7.0.1 < 12", "typescript": ">= 3.8.3 < 6" }, "optionalPeers": ["ts-node", "typescript"] }, "sha512-Vxpo6K4dpHb4ldxxp1IvG3lzIIthmd5dWguLySqbz7MmEksHPvbgSzk2I2v8SJKGjluozQASYpgW+1myUIZjGA=="],
 
     "@radix-ui/primitive": ["@radix-ui/primitive@1.1.3", "", {}, "sha512-JTF99U/6XIjCBo0wqkU5sK10glYe27MRRsfwoiq5zzOEZLHU3A3KCMa5X/azekYRCJ0HlwI0crAXS/5dEHTzDg=="],
 
@@ -4428,7 +4428,7 @@
 
     "@pulumi/pulumi/js-yaml": ["js-yaml@3.14.1", "", { "dependencies": { "argparse": "^1.0.7", "esprima": "^4.0.0" }, "bin": { "js-yaml": "bin/js-yaml.js" } }, "sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g=="],
 
-    "@pulumi/pulumi/semver": ["semver@7.7.2", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA=="],
+    "@pulumi/pulumi/semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
 
     "@shikijs/core/@types/hast": ["@types/hast@3.0.4", "", { "dependencies": { "@types/unist": "*" } }, "sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ=="],
 
