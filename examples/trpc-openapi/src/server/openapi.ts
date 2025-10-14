@@ -1,7 +1,7 @@
 import { generateOpenApiDocument } from 'trpc-openapi';
 import { appRouter } from './router';
 
-// Generate OpenAPI schema document
+// @ts-ignore - Generate OpenAPI schema document
 export const openApiDocument = generateOpenApiDocument(appRouter, {
   title: 'Example CRUD API',
   description: 'OpenAPI compliant REST API built using tRPC with Next.js',
