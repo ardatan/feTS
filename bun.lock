@@ -61,7 +61,7 @@
       "devDependencies": {
         "@pulumi/aws": "6.83.0",
         "@pulumi/awsx": "0.40.1",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/aws-lambda": "8.10.155",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
@@ -78,7 +78,7 @@
       },
       "devDependencies": {
         "@pulumi/azure-native": "3.8.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "esbuild": "0.25.10",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
@@ -93,7 +93,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -108,7 +108,7 @@
       },
       "devDependencies": {
         "@pulumi/cloudflare": "4.16.0",
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "ts-node": "10.9.2",
         "tsconfig-paths": "4.2.0",
         "typescript": "5.9.3",
@@ -119,7 +119,7 @@
       "name": "@e2e/shared-scripts",
       "version": "0.0.0",
       "dependencies": {
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/node": "24.7.1",
       },
     },
@@ -142,7 +142,7 @@
         "react-dom": "19.2.0",
       },
       "devDependencies": {
-        "@pulumi/pulumi": "3.201.0",
+        "@pulumi/pulumi": "3.202.0",
         "@types/react": "19.2.2",
         "esbuild": "0.25.10",
         "eslint": "9.37.0",
@@ -349,14 +349,14 @@
   },
   "overrides": {
     "@pulumi/pulumi": "3.201.0",
-    "cookie": "1.0.2",
     "esbuild": "0.25.10",
-    "estree-util-value-to-estree": "3.4.0",
+    "tmp": "0.2.5",
     "next": "15.5.4",
-    "prismjs": "1.30.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "tmp": "0.2.5",
+    "cookie": "1.0.2",
+    "prismjs": "1.30.0",
+    "estree-util-value-to-estree": "3.4.0",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
