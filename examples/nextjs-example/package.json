@@ -9,9 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/node": "24.7.1",
+    "@types/node": "24.7.2",
     "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
+    "@types/react-dom": "19.2.2",
     "fets": "0.8.5",
     "next": "15.5.4",
     "react": "19.2.0",
