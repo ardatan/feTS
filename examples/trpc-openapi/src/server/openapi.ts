@@ -1,6 +1,7 @@
 import { generateOpenApiDocument } from 'trpc-openapi';
 import { appRouter } from './router';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore - Generate OpenAPI schema document
 export const openApiDocument = generateOpenApiDocument(appRouter, {
   title: 'Example CRUD API',

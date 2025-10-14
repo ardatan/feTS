@@ -5,7 +5,6 @@
   },
   "extends": [
     "eslint:recommended",
-    "standard",
     "plugin:@typescript-eslint/recommended",
     // "plugin:tailwindcss/recommended",
     "prettier"
@@ -43,12 +42,6 @@
     "default-param-last": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-empty-object-type": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
-      }
-    ],
     // conflicts with official prettier-plugin-tailwindcss and tailwind v3
     "tailwindcss/classnames-order": "off"
   },
@@ -63,8 +56,7 @@
         "jest": true
       },
       "rules": {
-        "@typescript-eslint/no-unused-vars": "off",
-        "import/no-extraneous-dependencies": "off"
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ],
