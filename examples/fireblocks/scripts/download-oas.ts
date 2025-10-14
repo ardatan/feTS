@@ -1,6 +1,7 @@
 import { promises as fsPromises } from 'node:fs';
 import { join } from 'node:path';
 import { load as yamlLoad } from 'js-yaml';
+import { fetch } from '@whatwg-node/fetch';
 
 async function main() {
   const res = await fetch('https://docs.fireblocks.com/api/v1/swagger.yaml');

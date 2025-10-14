@@ -43,5 +43,5 @@ jobs:
           projectName: fets
           prId: ${{ github.event.pull_request.number }}
           websiteDirectory: ./
-          buildScript: cd website && bun run build
+          buildScript: cd website && npm run build
           artifactDir: website/out

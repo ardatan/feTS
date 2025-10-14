@@ -23,7 +23,7 @@ export function createAwsLambdaDeployment(): DeploymentConfiguration<{
 
       // Build and bundle the worker
       console.info('\t\tℹ️ Build the AWS Lambda Function....');
-      await execPromise('bun run build', {
+      await execPromise('npm run build', {
         cwd: join(__dirname, '..'),
       });
     },

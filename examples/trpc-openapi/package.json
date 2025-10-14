@@ -26,7 +26,6 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/swagger-ui-react": "^5.18.0",
-    "@types/uuid": "^11.0.0",
     "typescript": "^5.5.2"
   }
 }
