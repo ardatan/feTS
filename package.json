@@ -70,9 +70,12 @@
   },
   "overrides": {
     "@pulumi/pulumi": "3.201.0",
+    "braces": "3.0.3",
     "cookie": "1.0.2",
+    "dompurify": "3.2.4",
     "esbuild": "0.25.10",
     "estree-util-value-to-estree": "3.4.0",
+    "micromatch": "4.0.8",
     "next": "15.5.4",
     "prismjs": "1.30.0",
     "react": "19.2.0",

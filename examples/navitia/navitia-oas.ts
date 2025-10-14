@@ -61114,6 +61114,98 @@
         }
       }
     },
+    "Line": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "code": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "text_color": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "physical_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalMode"
+          }
+        },
+        "commercial_mode": {
+          "$ref": "#/definitions/CommercialMode"
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Route"
+          }
+        },
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "opening_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "closing_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "geojson": {
+          "$ref": "#/definitions/MultiLineStringSchema"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "line_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineGroup"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "code",
+        "links"
+      ]
+    },
     "Pagination": {
       "type": "object",
       "properties": {
@@ -61268,98 +61360,6 @@
       },
       "required": [
         "id"
-      ]
-    },
-    "Line": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "code": {
-          "type": "string"
-        },
-        "color": {
-          "type": "string"
-        },
-        "text_color": {
-          "type": "string"
-        },
-        "comments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Comment"
-          }
-        },
-        "comment": {
-          "type": "string"
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "physical_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhysicalMode"
-          }
-        },
-        "commercial_mode": {
-          "$ref": "#/definitions/CommercialMode"
-        },
-        "routes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Route"
-          }
-        },
-        "network": {
-          "$ref": "#/definitions/Network"
-        },
-        "opening_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "closing_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Property"
-          }
-        },
-        "geojson": {
-          "$ref": "#/definitions/MultiLineStringSchema"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "line_groups": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LineGroup"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "code",
-        "links"
       ]
     },
     "Code": {
@@ -61541,6 +61541,14 @@
         },
         "impacted_rail_section": {
           "$ref": "#/definitions/ImpactedSection"
+        }
+      }
+    },
+    "FareZone": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
         }
       }
     },
@@ -61818,23 +61826,6 @@
         "name"
       ]
     },
-    "Trip": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
     "Property": {
       "type": "object",
       "properties": {
@@ -61843,6 +61834,27 @@
         },
         "value": {
           "type": "string"
+        }
+      }
+    },
+    "MultiLineStringSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "float"
+              }
+            }
+          }
         }
       }
     },
@@ -61890,59 +61902,6 @@
           "type": "string"
         }
       }
-    },
-    "Poi": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "label": {
-          "type": "string"
-        },
-        "administrative_regions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Admin"
-          }
-        },
-        "poi_type": {
-          "$ref": "#/definitions/PoiType"
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "address": {
-          "$ref": "#/definitions/Address"
-        },
-        "stands": {
-          "$ref": "#/definitions/Stands"
-        },
-        "car_park": {
-          "$ref": "#/definitions/CarPark"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
     },
     "ImpactedStop": {
       "type": "object",
@@ -62017,34 +61976,108 @@
         }
       }
     },
-    "MultiLineStringSchema": {
+    "EquipmentDetails": {
       "type": "object",
       "properties": {
-        "type": {
+        "id": {
           "type": "string"
         },
-        "coordinates": {
+        "name": {
+          "type": "string"
+        },
+        "embedded_type": {
+          "type": "string",
+          "enum": [
+            "escalator",
+            "elevator"
+          ]
+        },
+        "current_availability": {
+          "$ref": "#/definitions/CurrentAvailability"
+        }
+      }
+    },
+    "Period": {
+      "type": "object",
+      "properties": {
+        "begin": {
+          "format": "navitia-date-time",
+          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "end": {
+          "format": "navitia-date-time",
+          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationPattern": {
+      "type": "object",
+      "properties": {
+        "week_pattern": {
+          "$ref": "#/definitions/WeekPattern"
+        },
+        "application_period": {
+          "$ref": "#/definitions/PeriodDate"
+        },
+        "time_slots": {
           "type": "array",
           "items": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "number",
-                "format": "float"
-              }
-            }
+            "$ref": "#/definitions/PeriodTime"
           }
         }
       }
     },
-    "FareZone": {
+    "PathWay": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
         "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "access_point": {
+          "$ref": "#/definitions/AccessPoint"
+        },
+        "is_entrance": {
+          "type": "boolean"
+        },
+        "is_exit": {
+          "type": "boolean"
+        },
+        "length": {
+          "type": "integer"
+        },
+        "traversal_time": {
+          "type": "integer"
+        },
+        "pathway_mode": {
+          "type": "integer"
+        },
+        "stair_count": {
+          "type": "integer"
+        },
+        "max_slope": {
+          "type": "integer"
+        },
+        "min_width": {
+          "type": "integer"
+        },
+        "signposted_as": {
+          "type": "string"
+        },
+        "reversed_signposted_as": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
     },
     "Place": {
       "type": "object",
@@ -62117,65 +62150,7 @@
         "embedded_type"
       ]
     },
-    "Stands": {
-      "type": "object",
-      "properties": {
-        "available_places": {
-          "type": "integer"
-        },
-        "available_bikes": {
-          "type": "integer"
-        },
-        "total_stands": {
-          "type": "integer"
-        },
-        "status": {
-          "type": "string",
-          "enum": [
-            "unavailable",
-            "closed",
-            "open"
-          ]
-        }
-      }
-    },
-    "EquipmentDetails": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "embedded_type": {
-          "type": "string",
-          "enum": [
-            "escalator",
-            "elevator"
-          ]
-        },
-        "current_availability": {
-          "$ref": "#/definitions/CurrentAvailability"
-        }
-      }
-    },
-    "Period": {
-      "type": "object",
-      "properties": {
-        "begin": {
-          "format": "navitia-date-time",
-          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "end": {
-          "format": "navitia-date-time",
-          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        }
-      }
-    },
-    "PoiType": {
+    "Poi": {
       "type": "object",
       "properties": {
         "id": {
@@ -62185,72 +62160,50 @@
         "name": {
           "type": "string",
           "description": "Name of the object"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "CarPark": {
-      "type": "object",
-      "properties": {
-        "available": {
-          "type": "integer"
         },
-        "occupied": {
-          "type": "integer"
+        "coord": {
+          "$ref": "#/definitions/Coord"
         },
-        "available_PRM": {
-          "type": "integer"
-        },
-        "occupied_PRM": {
-          "type": "integer"
-        },
-        "total_places": {
-          "type": "integer"
-        },
-        "available_ridesharing": {
-          "type": "integer"
-        },
-        "occupied_ridesharing": {
-          "type": "integer"
-        },
-        "available_electric_vehicle": {
-          "type": "integer"
-        },
-        "occupied_electric_vehicle": {
-          "type": "integer"
-        },
-        "state": {
-          "type": "string"
-        },
-        "availability": {
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "availability"
-      ]
-    },
-    "ApplicationPattern": {
-      "type": "object",
-      "properties": {
-        "week_pattern": {
-          "$ref": "#/definitions/WeekPattern"
-        },
-        "application_period": {
-          "$ref": "#/definitions/PeriodDate"
-        },
-        "time_slots": {
+        "links": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PeriodTime"
+            "$ref": "#/definitions/LinkSchema"
           }
+        },
+        "label": {
+          "type": "string"
+        },
+        "administrative_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        },
+        "poi_type": {
+          "$ref": "#/definitions/PoiType"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "stands": {
+          "$ref": "#/definitions/Stands"
+        },
+        "car_park": {
+          "$ref": "#/definitions/CarPark"
         }
-      }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
     },
-    "PathWay": {
+    "Trip": {
       "type": "object",
       "properties": {
         "id": {
@@ -62260,45 +62213,38 @@
         "name": {
           "type": "string",
           "description": "Name of the object"
-        },
-        "access_point": {
-          "$ref": "#/definitions/AccessPoint"
-        },
-        "is_entrance": {
-          "type": "boolean"
-        },
-        "is_exit": {
-          "type": "boolean"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "traversal_time": {
-          "type": "integer"
-        },
-        "pathway_mode": {
-          "type": "integer"
-        },
-        "stair_count": {
-          "type": "integer"
-        },
-        "max_slope": {
-          "type": "integer"
-        },
-        "min_width": {
-          "type": "integer"
-        },
-        "signposted_as": {
-          "type": "string"
-        },
-        "reversed_signposted_as": {
-          "type": "string"
         }
       },
       "required": [
         "id",
         "name"
       ]
+    },
+    "WeekPattern": {
+      "type": "object",
+      "properties": {
+        "monday": {
+          "type": "boolean"
+        },
+        "tuesday": {
+          "type": "boolean"
+        },
+        "wednesday": {
+          "type": "boolean"
+        },
+        "thursday": {
+          "type": "boolean"
+        },
+        "friday": {
+          "type": "boolean"
+        },
+        "saturday": {
+          "type": "boolean"
+        },
+        "sunday": {
+          "type": "boolean"
+        }
+      }
     },
     "CurrentAvailability": {
       "type": "object",
@@ -62325,63 +62271,6 @@
         },
         "effect": {
           "$ref": "#/definitions/Effect"
-        }
-      }
-    },
-    "AccessPoint": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "access_point_code": {
-          "type": "string"
-        },
-        "embedded_type": {
-          "type": "string",
-          "enum": [
-            "pt_access_point",
-            "poi_access_point"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "embedded_type"
-      ]
-    },
-    "WeekPattern": {
-      "type": "object",
-      "properties": {
-        "monday": {
-          "type": "boolean"
-        },
-        "tuesday": {
-          "type": "boolean"
-        },
-        "wednesday": {
-          "type": "boolean"
-        },
-        "thursday": {
-          "type": "boolean"
-        },
-        "friday": {
-          "type": "boolean"
-        },
-        "saturday": {
-          "type": "boolean"
-        },
-        "sunday": {
-          "type": "boolean"
         }
       }
     },
@@ -62428,6 +62317,117 @@
       "properties": {
         "label": {
           "type": "string"
+        }
+      }
+    },
+    "CarPark": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "integer"
+        },
+        "occupied": {
+          "type": "integer"
+        },
+        "available_PRM": {
+          "type": "integer"
+        },
+        "occupied_PRM": {
+          "type": "integer"
+        },
+        "total_places": {
+          "type": "integer"
+        },
+        "available_ridesharing": {
+          "type": "integer"
+        },
+        "occupied_ridesharing": {
+          "type": "integer"
+        },
+        "available_electric_vehicle": {
+          "type": "integer"
+        },
+        "occupied_electric_vehicle": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "availability": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "availability"
+      ]
+    },
+    "PoiType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "AccessPoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "coord": {
+          "$ref": "#/definitions/Coord"
+        },
+        "access_point_code": {
+          "type": "string"
+        },
+        "embedded_type": {
+          "type": "string",
+          "enum": [
+            "pt_access_point",
+            "poi_access_point"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "embedded_type"
+      ]
+    },
+    "Stands": {
+      "type": "object",
+      "properties": {
+        "available_places": {
+          "type": "integer"
+        },
+        "available_bikes": {
+          "type": "integer"
+        },
+        "total_stands": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "unavailable",
+            "closed",
+            "open"
+          ]
         }
       }
     },
@@ -63253,50 +63253,6 @@
         "source_id"
       ]
     },
-    "StreetInformation": {
-      "type": "object",
-      "properties": {
-        "geojson_offset": {
-          "type": "integer"
-        },
-        "cycle_path_type": {
-          "type": "string"
-        },
-        "length": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
-    "SectionGeoJsonSchema": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "properties": {
-              "length": {
-                "type": "number",
-                "format": "integer"
-              }
-            }
-          }
-        },
-        "coordinates": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "number",
-              "format": "float"
-            }
-          }
-        }
-      }
-    },
     "IndividualInformation": {
       "type": "object",
       "properties": {
@@ -63321,14 +63277,6 @@
         "alias"
       ]
     },
-    "LowEmissionZone": {
-      "type": "object",
-      "properties": {
-        "on_path": {
-          "type": "boolean"
-        }
-      }
-    },
     "SeatsDescription": {
       "type": "object",
       "properties": {
@@ -63337,6 +63285,14 @@
         },
         "available": {
           "type": "integer"
+        }
+      }
+    },
+    "LowEmissionZone": {
+      "type": "object",
+      "properties": {
+        "on_path": {
+          "type": "boolean"
         }
       }
     },
@@ -63442,6 +63398,35 @@
       "required": [
         "links"
       ]
+    },
+    "SectionGeoJsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "length": {
+                "type": "number",
+                "format": "integer"
+              }
+            }
+          }
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      }
     },
     "Exception": {
       "type": "object",
@@ -63617,6 +63602,21 @@
         "equipments"
       ]
     },
+    "StreetInformation": {
+      "type": "object",
+      "properties": {
+        "geojson_offset": {
+          "type": "integer"
+        },
+        "cycle_path_type": {
+          "type": "string"
+        },
+        "length": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
     "BookingRule": {
       "type": "object",
       "properties": {
@@ -63790,6 +63790,17 @@
         "lines"
       ]
     },
+    "LineHeadersSchema": {
+      "type": "object",
+      "properties": {
+        "cell_lat": {
+          "$ref": "#/definitions/CellLatSchema"
+        }
+      },
+      "required": [
+        "cell_lat"
+      ]
+    },
     "LinesSchema": {
       "type": "object",
       "properties": {
@@ -63807,34 +63818,6 @@
         "cell_lon"
       ]
     },
-    "CellLonSchema": {
-      "type": "object",
-      "properties": {
-        "center_lon": {
-          "type": "number",
-          "format": "float"
-        },
-        "max_lon": {
-          "type": "number",
-          "format": "float"
-        },
-        "min_lon": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
-    "LineHeadersSchema": {
-      "type": "object",
-      "properties": {
-        "cell_lat": {
-          "$ref": "#/definitions/CellLatSchema"
-        }
-      },
-      "required": [
-        "cell_lat"
-      ]
-    },
     "CellLatSchema": {
       "type": "object",
       "properties": {
@@ -63847,6 +63830,23 @@
           "format": "float"
         },
         "center_lat": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "CellLonSchema": {
+      "type": "object",
+      "properties": {
+        "center_lon": {
+          "type": "number",
+          "format": "float"
+        },
+        "max_lon": {
+          "type": "number",
+          "format": "float"
+        },
+        "min_lon": {
           "type": "number",
           "format": "float"
         }
