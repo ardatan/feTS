@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-279135",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-299828",
       "email": "support@clickhouse.com"
     }
   },
@@ -3574,6 +3574,203 @@
         ]
       }
     },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/settings": {
+      "get": {
+        "summary": "Get ClickPipe settings",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the advanced settings for the specified ClickPipe.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service that owns the ClickPipe.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickPipeId",
+            "description": "ID of the ClickPipe to get settings for.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickPipeSettingsGetResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickPipes"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update ClickPipe settings",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the advanced settings for the specified ClickPipe. Send key-value pairs where values can be strings, numbers, or booleans.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service that owns the ClickPipe.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickPipeId",
+            "description": "ID of the ClickPipe to update settings for.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClickPipeSettingsPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickPipeSettingsGetResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickPipes"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/scaling": {
       "patch": {
         "summary": "Scaling ClickPipe",
@@ -4625,6 +4822,11 @@
             "enum": [
               "PLAIN"
             ]
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificates to validate the schema registry's certificate.",
+            "nullable": true,
+            "type": "string"
           }
         }
       },
@@ -4653,6 +4855,11 @@
             "enum": [
               "PLAIN"
             ]
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificates to validate the schema registry's certificate.",
+            "nullable": true,
+            "type": "string"
           },
           "credentials": {
             "$ref": "#/components/schemas/ClickPipeKafkaSchemaRegistryCredentials"
@@ -5070,6 +5277,7 @@
             "type": "string",
             "enum": [
               "JSONEachRow",
+              "JSONAsObject",
               "CSV",
               "CSVWithNames",
               "Parquet",
@@ -5107,6 +5315,12 @@
             "description": "If set to true, the pipe will continuously read new files from the source. If set to false, the pipe will read the files only once. New files have to be uploaded lexically order.",
             "nullable": true,
             "type": "boolean"
+          },
+          "queueUrl": {
+            "description": "SQS queue URL for event-based continuous ingestion. When provided, files are ingested based on S3 event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
+            "nullable": true,
+            "type": "string",
+            "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
             "description": "Authentication method. CONNECTION_STRING is for Azure Blob Storage. IAM_ROLE and IAM_USER are for AWS S3/GCS/DigitalOcean. If not provided, no authentication is used.",
@@ -5161,6 +5375,7 @@
             "type": "string",
             "enum": [
               "JSONEachRow",
+              "JSONAsObject",
               "CSV",
               "CSVWithNames",
               "Parquet",
@@ -5198,6 +5413,12 @@
             "description": "If set to true, the pipe will continuously read new files from the source. If set to false, the pipe will read the files only once. New files have to be uploaded lexically order.",
             "nullable": true,
             "type": "boolean"
+          },
+          "queueUrl": {
+            "description": "SQS queue URL for event-based continuous ingestion. When provided, files are ingested based on S3 event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
+            "nullable": true,
+            "type": "string",
+            "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
             "description": "Authentication method. CONNECTION_STRING is for Azure Blob Storage. IAM_ROLE and IAM_USER are for AWS S3/GCS/DigitalOcean. If not provided, no authentication is used.",
@@ -5331,6 +5552,10 @@
           "snapshotNumberOfParallelTables": {
             "description": "Number of parallel tables to snapshot.",
             "type": "number"
+          },
+          "enableFailoverSlots": {
+            "description": "Enable failover for created replication slot. Requires a replication slot to NOT be set.",
+            "type": "boolean"
           }
         }
       },
@@ -5527,7 +5752,8 @@
           },
           "concurrency": {
             "description": "Desired number of concurrency. Only for S3 pipes. If set to 0, concurrency is auto-scaled based on the cluster memory.",
-            "type": "integer"
+            "type": "integer",
+            "deprecated": true
           },
           "replicaCpuMillicores": {
             "description": "CPU in millicores for each replica. Only for streaming pipes.",
@@ -5594,11 +5820,26 @@
       "ClickPipeDestinationTableEngine": {
         "properties": {
           "type": {
-            "description": "Engine type of the destination table. Currently MergeTree is the only supported engine.",
+            "description": "Engine type of the destination table.",
             "type": "string",
             "enum": [
-              "MergeTree"
+              "MergeTree",
+              "ReplacingMergeTree",
+              "SummingMergeTree",
+              "Null"
             ]
+          },
+          "versionColumnId": {
+            "description": "Column name to use as version for ReplacingMergeTree engine.",
+            "nullable": true,
+            "type": "string"
+          },
+          "columnIds": {
+            "type": "array",
+            "description": "Column names to sum for SummingMergeTree engine.",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -5662,6 +5903,102 @@
           }
         }
       },
+      "ClickPipeSettings": {
+        "properties": {
+          "streaming_max_insert_wait_ms": {
+            "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 500,
+            "maximum": 60000,
+            "example": 5000
+          },
+          "object_storage_concurrency": {
+            "description": "Object storage concurrency. Number of concurrent file processing threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 35,
+            "example": 1
+          },
+          "object_storage_polling_interval_ms": {
+            "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 3600000,
+            "example": 30000
+          },
+          "object_storage_max_insert_bytes": {
+            "description": "Max insert bytes. Number of bytes to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 10485760,
+            "maximum": 53687091200,
+            "example": 10737418240
+          },
+          "object_storage_max_file_count": {
+            "description": "Max file count. Maximum number of files to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "example": 100
+          },
+          "clickhouse_max_threads": {
+            "description": "Max threads. Maximum number of concurrent threads for file processing",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 64,
+            "example": 8
+          },
+          "clickhouse_max_insert_threads": {
+            "description": "Max insert threads. Maximum number of concurrent insert threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16,
+            "example": 1
+          },
+          "clickhouse_min_insert_block_size_bytes": {
+            "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10737418240,
+            "example": 1073741824
+          },
+          "clickhouse_max_download_threads": {
+            "description": "Max download threads. Maximum number of concurrent download threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 32,
+            "example": 4
+          },
+          "clickhouse_parallel_distributed_insert_select": {
+            "description": "Parallel distributed insert select. Parallel distributed insert select setting",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2,
+            "example": 2
+          },
+          "object_storage_use_cluster_function": {
+            "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
+            "nullable": true,
+            "type": "boolean",
+            "example": true
+          },
+          "clickhouse_parallel_view_processing": {
+            "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
       "ClickPipe": {
         "properties": {
           "id": {
@@ -5697,6 +6034,9 @@
             "items": {
               "$ref": "#/components/schemas/ClickPipeFieldMapping"
             }
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeSettings"
           },
           "createdAt": {
             "description": "Creation date of the ClickPipe.",
@@ -5839,6 +6179,198 @@
             "maximum": 96,
             "multipleOf": 4,
             "example": 8
+          }
+        }
+      },
+      "ClickPipeSettingsGetResponse": {
+        "properties": {
+          "streaming_max_insert_wait_ms": {
+            "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 500,
+            "maximum": 60000,
+            "example": 5000
+          },
+          "object_storage_concurrency": {
+            "description": "Object storage concurrency. Number of concurrent file processing threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 35,
+            "example": 1
+          },
+          "object_storage_polling_interval_ms": {
+            "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 3600000,
+            "example": 30000
+          },
+          "object_storage_max_insert_bytes": {
+            "description": "Max insert bytes. Number of bytes to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 10485760,
+            "maximum": 53687091200,
+            "example": 10737418240
+          },
+          "object_storage_max_file_count": {
+            "description": "Max file count. Maximum number of files to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "example": 100
+          },
+          "clickhouse_max_threads": {
+            "description": "Max threads. Maximum number of concurrent threads for file processing",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 64,
+            "example": 8
+          },
+          "clickhouse_max_insert_threads": {
+            "description": "Max insert threads. Maximum number of concurrent insert threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16,
+            "example": 1
+          },
+          "clickhouse_min_insert_block_size_bytes": {
+            "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10737418240,
+            "example": 1073741824
+          },
+          "clickhouse_max_download_threads": {
+            "description": "Max download threads. Maximum number of concurrent download threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 32,
+            "example": 4
+          },
+          "clickhouse_parallel_distributed_insert_select": {
+            "description": "Parallel distributed insert select. Parallel distributed insert select setting",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2,
+            "example": 2
+          },
+          "object_storage_use_cluster_function": {
+            "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
+            "nullable": true,
+            "type": "boolean",
+            "example": true
+          },
+          "clickhouse_parallel_view_processing": {
+            "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "ClickPipeSettingsPutRequest": {
+        "properties": {
+          "streaming_max_insert_wait_ms": {
+            "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 500,
+            "maximum": 60000,
+            "example": 5000
+          },
+          "object_storage_concurrency": {
+            "description": "Object storage concurrency. Number of concurrent file processing threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 35,
+            "example": 1
+          },
+          "object_storage_polling_interval_ms": {
+            "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 3600000,
+            "example": 30000
+          },
+          "object_storage_max_insert_bytes": {
+            "description": "Max insert bytes. Number of bytes to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 10485760,
+            "maximum": 53687091200,
+            "example": 10737418240
+          },
+          "object_storage_max_file_count": {
+            "description": "Max file count. Maximum number of files to process in a single insert batch",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "example": 100
+          },
+          "clickhouse_max_threads": {
+            "description": "Max threads. Maximum number of concurrent threads for file processing",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 64,
+            "example": 8
+          },
+          "clickhouse_max_insert_threads": {
+            "description": "Max insert threads. Maximum number of concurrent insert threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16,
+            "example": 1
+          },
+          "clickhouse_min_insert_block_size_bytes": {
+            "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10737418240,
+            "example": 1073741824
+          },
+          "clickhouse_max_download_threads": {
+            "description": "Max download threads. Maximum number of concurrent download threads",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 32,
+            "example": 4
+          },
+          "clickhouse_parallel_distributed_insert_select": {
+            "description": "Parallel distributed insert select. Parallel distributed insert select setting",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2,
+            "example": 2
+          },
+          "object_storage_use_cluster_function": {
+            "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
+            "nullable": true,
+            "type": "boolean",
+            "example": true
+          },
+          "clickhouse_parallel_view_processing": {
+            "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
           }
         }
       },
@@ -6281,6 +6813,10 @@
             "description": "Cost of data transfer in ClickHouse Credits (CHCs). Applies to clickpipe entities.",
             "type": "number"
           },
+          "initialLoadCHC": {
+            "description": "Cost of initial load and resyncs in ClickHouse Credits (CHCs). Applies to clickpipe entities.",
+            "type": "number"
+          },
           "publicDataTransferCHC": {
             "description": "Cost of data transfer in ClickHouse Credits (CHCs). Applies to service entities.",
             "type": "number"
@@ -6601,6 +7137,9 @@
               "organization_member_delete",
               "organization_member_update_role",
               "organization_member_update_mfa_method",
+              "user_login",
+              "user_login_failed",
+              "user_logout",
               "key_create",
               "key_delete",
               "openapi_key_update",
@@ -6626,6 +7165,7 @@
               "service_export_from_organization",
               "service_maintenance_start",
               "service_maintenance_end",
+              "service_update_core_dump",
               "backup_delete"
             ]
           },
@@ -6657,6 +7197,10 @@
           },
           "serviceId": {
             "description": "Scope of the activity: service ID this activity is related to.",
+            "type": "string"
+          },
+          "userAgent": {
+            "description": "User agent of the actor",
             "type": "string"
           }
         }
@@ -8148,6 +8692,9 @@
           },
           "scaling": {
             "$ref": "#/components/schemas/ClickPipeScaling"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeSettings"
           }
         }
       },
@@ -8180,6 +8727,14 @@
             "items": {
               "$ref": "#/components/schemas/ClickPipeFieldMapping"
             }
+          },
+          "settings": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeSettings"
+              }
+            ],
+            "nullable": true
           }
         }
       },

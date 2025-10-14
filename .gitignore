@@ -51,7 +51,7 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# bun Integrity file
+# yarn Integrity file
 .yarn-integrity
 
 # dotenv environment variables file
@@ -73,7 +73,6 @@ junit.xml
 
 *.tgz
 
-package-lock.json
 yarn.lock
 
 eslint_report.json

@@ -28,7 +28,7 @@ jobs:
         with:
           node-version-file: .node-version
       - name: Type Check
-        run: bun run ts:check
+        run: npm run ts:check
   unit:
     name: unit / node ${{matrix.node-version}}
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 5
-          command: bun run test --ci
+          command: npm run test --ci
 
   integration:
     name: integration / node ${{matrix.node-version}}
@@ -79,9 +79,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{matrix.node-version}}-jest-
       - name: Build Packages
-        run: bun run build
+        run: npm run build
       - name: Test
-        run: bun run test:integration --ci
+        run: npm run test:integration --ci
         env:
           CI: true
   esm:
@@ -94,9 +94,9 @@ jobs:
         with:
           node-version-file: .node-version
       - name: Build Packages
-        run: bun run build
+        run: npm run build
       - name: Test ESM
-        run: bun run esm:check
+        run: npm run esm:check
 
   e2e:
     env:
@@ -144,7 +144,7 @@ jobs:
           node-version-file: .node-version
 
       - name: Build Packages
-        run: bun run build
+        run: npm run build
 
       - name: Install pulumi
         uses: pulumi/setup-pulumi@b374ceb6168550de27c6eba92e01c1a774040e11 # v2
@@ -156,13 +156,13 @@ jobs:
           echo "::set-output name=docker_host::$(docker context inspect --format '{{.Endpoints.docker.Host}}')"
 
       - name: Provision & Test
-        run: bun run e2e
+        run: npm run e2e
         working-directory: e2e/${{ matrix.plan }}
         env:
           # General
           COMMIT_ID: ${{ steps.vars.outputs.sha_short }}
       - name: Ensure Deletion
-        run: bun run e2e
+        run: npm run e2e
         if: ${{ always() }}
         working-directory: e2e/${{ matrix.plan }}
         env:

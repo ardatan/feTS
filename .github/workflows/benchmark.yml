@@ -21,7 +21,7 @@ jobs:
           node-version-file: .node-version
 
       - name: Build Packages
-        run: bun run build
+        run: npm run build
 
       - name: Setup K6
         run: |
@@ -32,7 +32,7 @@ jobs:
       - name: Start Benchmark
         working-directory: ./benchmark
         run: |
-          bun run test
+          npm run test
         env:
           NODE_NO_WARNINGS: true
           NODE_ENV: production

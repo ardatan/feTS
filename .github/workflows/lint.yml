@@ -21,7 +21,7 @@ jobs:
         with:
           node-version-file: .node-version
       - name: Prettier Check
-        run: bun run prettier:check
+        run: npm run prettier:check
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -32,4 +32,4 @@ jobs:
         with:
           node-version-file: .node-version
       - name: ESLint
-        run: bun run lint
+        run: npm run lint
