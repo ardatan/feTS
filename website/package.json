@@ -24,7 +24,7 @@
     "@theguild/tailwind-config": "0.6.4",
     "@types/node": "24.9.1",
     "@types/react": "19.2.2",
-    "@typescript/sandbox": "^0.1.0",
+    "@typescript/sandbox": "^0.1.10",
     "dompurify": "3.3.0",
     "estree-util-value-to-estree": "3.5.0",
     "monaco-editor": "0.54.0",
