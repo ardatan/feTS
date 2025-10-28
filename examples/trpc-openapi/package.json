@@ -9,20 +9,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "@trpc/server": "^11.6.0",
+    "@trpc/server": "^11.7.1",
     "fets": "^0.8.0",
     "jsonwebtoken": "^9.0.0",
     "next": "^15.2.2",
     "nextjs-cors": "^2.1.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "swagger-ui-react": "^5.29.5",
+    "swagger-ui-react": "^5.30.0",
     "trpc-openapi": "^1.1.2",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",
-    "@types/node": "^24.0.3",
+    "@types/node": "^24.9.2",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/swagger-ui-react": "^5.18.0",
