@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-299828",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-299966",
       "email": "support@clickhouse.com"
     }
   },
@@ -5280,6 +5280,8 @@
               "JSONAsObject",
               "CSV",
               "CSVWithNames",
+              "TabSeparated",
+              "TabSeparatedWithNames",
               "Parquet",
               "Avro"
             ]
@@ -5378,6 +5380,8 @@
               "JSONAsObject",
               "CSV",
               "CSVWithNames",
+              "TabSeparated",
+              "TabSeparatedWithNames",
               "Parquet",
               "Avro"
             ]
