@@ -61196,179 +61196,6 @@
         }
       }
     },
-    "Line": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "code": {
-          "type": "string"
-        },
-        "color": {
-          "type": "string"
-        },
-        "text_color": {
-          "type": "string"
-        },
-        "comments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Comment"
-          }
-        },
-        "comment": {
-          "type": "string"
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "physical_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhysicalMode"
-          }
-        },
-        "commercial_mode": {
-          "$ref": "#/definitions/CommercialMode"
-        },
-        "routes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Route"
-          }
-        },
-        "network": {
-          "$ref": "#/definitions/Network"
-        },
-        "opening_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "closing_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Property"
-          }
-        },
-        "geojson": {
-          "$ref": "#/definitions/MultiLineStringSchema"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "line_groups": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LineGroup"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "code",
-        "links"
-      ]
-    },
-    "StopArea": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "comments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Comment"
-          }
-        },
-        "comment": {
-          "type": "string"
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "timezone": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string",
-          "description": "\nLabel of the stop area. The name is directly taken from the data whereas the label is\n something we compute for better traveler information. If you don't know what to display, display the label.\n"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "commercial_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommercialMode"
-          }
-        },
-        "physical_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhysicalMode"
-          }
-        },
-        "administrative_regions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Admin",
-            "description": "Administrative regions of the stop area in which is the stop area"
-          }
-        },
-        "stop_points": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StopPoint",
-            "description": "Stop points contained in this stop area"
-          }
-        },
-        "lines": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Line"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "links"
-      ]
-    },
     "PathWay": {
       "type": "object",
       "properties": {
@@ -61418,17 +61245,6 @@
         "id",
         "name"
       ]
-    },
-    "Comment": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
     },
     "Pagination": {
       "type": "object",
@@ -61586,17 +61402,6 @@
         "id"
       ]
     },
-    "Code": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
     "Severity": {
       "type": "object",
       "properties": {
@@ -61656,6 +61461,87 @@
         }
       }
     },
+    "StopArea": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "description": "\nLabel of the stop area. The name is directly taken from the data whereas the label is\n something we compute for better traveler information. If you don't know what to display, display the label.\n"
+        },
+        "coord": {
+          "$ref": "#/definitions/Coord"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "commercial_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommercialMode"
+          }
+        },
+        "physical_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalMode"
+          }
+        },
+        "administrative_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin",
+            "description": "Administrative regions of the stop area in which is the stop area"
+          }
+        },
+        "stop_points": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StopPoint",
+            "description": "Stop points contained in this stop area"
+          }
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Line"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "links"
+      ]
+    },
     "Error": {
       "type": "object",
       "properties": {
@@ -61709,35 +61595,6 @@
         },
         "effect": {
           "$ref": "#/definitions/Effect"
-        }
-      }
-    },
-    "MultiLineStringSchema": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "coordinates": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "number",
-                "format": "float"
-              }
-            }
-          }
-        }
-      }
-    },
-    "FareZone": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
         }
       }
     },
@@ -61814,6 +61671,115 @@
         "embedded_type"
       ]
     },
+    "Trip": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Line": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "code": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "text_color": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "physical_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalMode"
+          }
+        },
+        "commercial_mode": {
+          "$ref": "#/definitions/CommercialMode"
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Route"
+          }
+        },
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "opening_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "closing_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "geojson": {
+          "$ref": "#/definitions/MultiLineStringSchema"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "line_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineGroup"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "code",
+        "links"
+      ]
+    },
     "Route": {
       "type": "object",
       "properties": {
@@ -61881,6 +61847,17 @@
         "links"
       ]
     },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
     "Channel": {
       "type": "object",
       "properties": {
@@ -61919,6 +61896,17 @@
         "name"
       ]
     },
+    "Code": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
     "Period": {
       "type": "object",
       "properties": {
@@ -61946,6 +61934,31 @@
       "type": "object",
       "properties": {
         "label": {
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationPattern": {
+      "type": "object",
+      "properties": {
+        "week_pattern": {
+          "$ref": "#/definitions/WeekPattern"
+        },
+        "application_period": {
+          "$ref": "#/definitions/PeriodDate"
+        },
+        "time_slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PeriodTime"
+          }
+        }
+      }
+    },
+    "FareZone": {
+      "type": "object",
+      "properties": {
+        "name": {
           "type": "string"
         }
       }
@@ -61980,24 +61993,28 @@
         "links"
       ]
     },
-    "ApplicationPattern": {
+    "MultiLineStringSchema": {
       "type": "object",
       "properties": {
-        "week_pattern": {
-          "$ref": "#/definitions/WeekPattern"
+        "type": {
+          "type": "string"
         },
-        "application_period": {
-          "$ref": "#/definitions/PeriodDate"
-        },
-        "time_slots": {
+        "coordinates": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PeriodTime"
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "float"
+              }
+            }
           }
         }
       }
     },
-    "Trip": {
+    "Poi": {
       "type": "object",
       "properties": {
         "id": {
@@ -62007,6 +62024,42 @@
         "name": {
           "type": "string",
           "description": "Name of the object"
+        },
+        "coord": {
+          "$ref": "#/definitions/Coord"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "administrative_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        },
+        "poi_type": {
+          "$ref": "#/definitions/PoiType"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "stands": {
+          "$ref": "#/definitions/Stands"
+        },
+        "car_park": {
+          "$ref": "#/definitions/CarPark"
         }
       },
       "required": [
@@ -62270,59 +62323,6 @@
           "type": "boolean"
         }
       }
-    },
-    "Poi": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "label": {
-          "type": "string"
-        },
-        "administrative_regions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Admin"
-          }
-        },
-        "poi_type": {
-          "$ref": "#/definitions/PoiType"
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "address": {
-          "$ref": "#/definitions/Address"
-        },
-        "stands": {
-          "$ref": "#/definitions/Stands"
-        },
-        "car_park": {
-          "$ref": "#/definitions/CarPark"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
     },
     "PeriodDate": {
       "type": "object",
@@ -63334,6 +63334,35 @@
         }
       }
     },
+    "SectionGeoJsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "length": {
+                "type": "number",
+                "format": "integer"
+              }
+            }
+          }
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      }
+    },
     "Ticket": {
       "type": "object",
       "properties": {
@@ -63384,35 +63413,6 @@
         "length": {
           "type": "number",
           "format": "float"
-        }
-      }
-    },
-    "SectionGeoJsonSchema": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "properties": {
-              "length": {
-                "type": "number",
-                "format": "integer"
-              }
-            }
-          }
-        },
-        "coordinates": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "number",
-              "format": "float"
-            }
-          }
         }
       }
     },
@@ -63793,17 +63793,6 @@
         "lines"
       ]
     },
-    "LineHeadersSchema": {
-      "type": "object",
-      "properties": {
-        "cell_lat": {
-          "$ref": "#/definitions/CellLatSchema"
-        }
-      },
-      "required": [
-        "cell_lat"
-      ]
-    },
     "LinesSchema": {
       "type": "object",
       "properties": {
@@ -63821,23 +63810,6 @@
         "cell_lon"
       ]
     },
-    "CellLatSchema": {
-      "type": "object",
-      "properties": {
-        "min_lat": {
-          "type": "number",
-          "format": "float"
-        },
-        "max_lat": {
-          "type": "number",
-          "format": "float"
-        },
-        "center_lat": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
     "CellLonSchema": {
       "type": "object",
       "properties": {
@@ -63850,6 +63822,34 @@
           "format": "float"
         },
         "min_lon": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "LineHeadersSchema": {
+      "type": "object",
+      "properties": {
+        "cell_lat": {
+          "$ref": "#/definitions/CellLatSchema"
+        }
+      },
+      "required": [
+        "cell_lat"
+      ]
+    },
+    "CellLatSchema": {
+      "type": "object",
+      "properties": {
+        "min_lat": {
+          "type": "number",
+          "format": "float"
+        },
+        "max_lat": {
+          "type": "number",
+          "format": "float"
+        },
+        "center_lat": {
           "type": "number",
           "format": "float"
         }
