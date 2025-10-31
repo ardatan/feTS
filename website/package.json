@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "next build && next-sitemap --config ./next-sitemap.config.js",
-    "dev": "next",
-    "start": "next start"
+    "build": "next build --webpack && next-sitemap --config ./next-sitemap.config.js",
+    "dev": "next dev --webpack",
+    "start": "next start --webpack"
   },
   "dependencies": {
     "@theguild/components": "^7.3.3",
@@ -16,6 +16,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.0.1",
+    "scheduler": "^0.27.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
