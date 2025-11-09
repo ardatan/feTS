@@ -70,7 +70,7 @@
     "braces": "3.0.3",
     "cookie": "1.0.2",
     "dompurify": "3.3.0",
-    "esbuild": "0.25.12",
+    "esbuild": "0.26.0",
     "estree-util-value-to-estree": "3.5.0",
     "micromatch": "4.0.8",
     "next": "16.0.1",
