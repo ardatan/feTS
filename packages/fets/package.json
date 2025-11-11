@@ -36,8 +36,8 @@
   "dependencies": {
     "@sinclair/typebox": "^0.34.0",
     "@whatwg-node/cookie-store": "^0.2.0",
-    "@whatwg-node/fetch": "^0.10.12",
-    "@whatwg-node/server": "^0.10.15",
+    "@whatwg-node/fetch": "^0.10.13",
+    "@whatwg-node/server": "^0.10.17",
     "hotscript": "^1.0.11",
     "json-schema-to-ts": "^3.0.0",
     "qs": "^6.13.1",
