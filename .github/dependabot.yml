@@ -39,6 +39,7 @@ updates:
           - 'husky'
           - '@pulumi/*'
           - '@img/sharp-libvips-linux-x64'
+          - 'sharp'
         update-types:
           - 'minor'
           - 'patch'
