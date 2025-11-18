@@ -20,10 +20,10 @@
   },
   "devDependencies": {
     "@pulumi/pulumi": "3.207.0",
-    "@types/react": "19.2.5",
+    "@types/react": "19.2.6",
     "esbuild": "0.27.0",
     "eslint": "9.39.1",
-    "eslint-config-next": "16.0.1",
+    "eslint-config-next": "16.0.3",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.9.3"
