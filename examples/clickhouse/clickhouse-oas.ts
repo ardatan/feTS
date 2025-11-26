@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-299966",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-312084",
       "email": "support@clickhouse.com"
     }
   },
@@ -765,7 +765,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/serviceQueryEndpoint": {
       "get": {
         "summary": "Get the service query endpoint for a given instance",
-        "description": "This is an experimental feature. Please contact support to enable it.",
+        "description": "Get the configuration for the service query endpoint that allows executing queries via API.",
         "parameters": [
           {
             "in": "path",
@@ -842,7 +842,7 @@
       },
       "delete": {
         "summary": "Delete the service query endpoint for a given instance",
-        "description": "This is an experimental feature. Please contact support to enable it.",
+        "description": "Removes the service query endpoint.",
         "parameters": [
           {
             "in": "path",
@@ -916,7 +916,7 @@
       },
       "post": {
         "summary": "Upsert the service query endpoint for a given instance",
-        "description": "This is an experimental feature. Please contact support to enable it.",
+        "description": "Create the service query endpoint that allows executing queries via API.",
         "parameters": [
           {
             "in": "path",
@@ -1848,6 +1848,355 @@
         },
         "tags": [
           "Backup"
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/backupBucket": {
+      "get": {
+        "summary": "Get service backup bucket",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the service backup bucket.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/BackupBucket"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Backup"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create service backup bucket",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create service backup bucket. Requires ADMIN auth key role.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the requested service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BackupBucketPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/BackupBucket"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Backup"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update service backup bucket",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update service backup bucket. Requires ADMIN auth key role. The secrets of the specified bucket provider are always required",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the requested service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BackupBucketPatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/BackupBucket"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Backup"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete service backup bucket",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete service backup bucket. Requires ADMIN auth key role.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the requested service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Backup"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
         ]
       }
     },
@@ -6442,12 +6791,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -6456,10 +6807,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           },
           "state": {
@@ -6475,6 +6828,7 @@
               "running",
               "stopped",
               "terminated",
+              "softdeleted",
               "degraded",
               "failed",
               "idle"
@@ -6777,12 +7131,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -6791,10 +7147,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           }
         }
@@ -6927,12 +7285,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -6941,10 +7301,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           }
         }
@@ -6973,12 +7335,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -6987,10 +7351,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           },
           "cloudProvider": {
@@ -7068,12 +7434,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -7082,10 +7450,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           }
         }
@@ -7961,12 +8331,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -7975,10 +8347,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           },
           "tier": {
@@ -8246,12 +8620,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -8260,10 +8636,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           },
           "state": {
@@ -8279,6 +8657,7 @@
               "running",
               "stopped",
               "terminated",
+              "softdeleted",
               "degraded",
               "failed",
               "idle"
@@ -8814,12 +9193,14 @@
             "type": "string",
             "enum": [
               "ap-northeast-1",
+              "ap-northeast-2",
               "ap-south-1",
               "ap-southeast-1",
               "ap-southeast-2",
               "eu-central-1",
               "eu-west-1",
               "eu-west-2",
+              "il-central-1",
               "me-central-1",
               "us-east-1",
               "us-east-2",
@@ -8828,10 +9209,12 @@
               "us-central1",
               "europe-west4",
               "asia-southeast1",
+              "asia-northeast1",
               "eastus",
               "eastus2",
               "westus3",
-              "germanywestcentral"
+              "germanywestcentral",
+              "centralus"
             ]
           },
           "accountId": {
