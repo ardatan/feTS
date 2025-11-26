@@ -692,10 +692,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -973,10 +973,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -1246,10 +1246,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -1519,10 +1519,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -1784,10 +1784,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -2066,10 +2066,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -2340,10 +2340,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -2614,10 +2614,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -2880,10 +2880,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -3161,10 +3161,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -3434,10 +3434,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -3707,10 +3707,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -3972,10 +3972,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -4254,10 +4254,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -4528,10 +4528,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -4802,10 +4802,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -5068,10 +5068,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -5349,10 +5349,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -5622,10 +5622,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -5895,10 +5895,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -6160,10 +6160,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -6442,10 +6442,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -6716,10 +6716,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -6990,10 +6990,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -7256,10 +7256,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -7530,10 +7530,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -7796,10 +7796,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -8062,10 +8062,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -8320,10 +8320,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -8595,10 +8595,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -8862,10 +8862,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -9129,10 +9129,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -9388,10 +9388,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -9662,10 +9662,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -9928,10 +9928,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -10194,10 +10194,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -10452,10 +10452,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -10727,10 +10727,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -10994,10 +10994,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -11261,10 +11261,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -11520,10 +11520,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -11794,10 +11794,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -12060,10 +12060,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -12326,10 +12326,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -12584,10 +12584,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -12859,10 +12859,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -13126,10 +13126,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -13393,10 +13393,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -13652,10 +13652,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -13933,10 +13933,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -14206,10 +14206,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -14479,10 +14479,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -14744,10 +14744,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -15026,10 +15026,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -15300,10 +15300,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -15574,10 +15574,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -15840,10 +15840,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -16121,10 +16121,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -16394,10 +16394,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -16667,10 +16667,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -16932,10 +16932,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -17214,10 +17214,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -17488,10 +17488,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -17762,10 +17762,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -18028,10 +18028,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -18309,10 +18309,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -18582,10 +18582,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -18855,10 +18855,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -19120,10 +19120,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -19402,10 +19402,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -19676,10 +19676,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -19950,10 +19950,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -21728,10 +21728,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -22002,10 +22002,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -22268,10 +22268,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -22534,10 +22534,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -22792,10 +22792,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -23067,10 +23067,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -23334,10 +23334,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -23601,10 +23601,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -23860,10 +23860,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -24134,10 +24134,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -24400,10 +24400,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -24666,10 +24666,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -24924,10 +24924,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -25199,10 +25199,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -25466,10 +25466,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -25733,10 +25733,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -25992,10 +25992,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -26298,10 +26298,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -26596,10 +26596,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -26894,10 +26894,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -27184,10 +27184,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -27491,10 +27491,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -27790,10 +27790,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -28089,10 +28089,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -28380,10 +28380,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -28654,10 +28654,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -28920,10 +28920,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -29186,10 +29186,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -29444,10 +29444,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -29719,10 +29719,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -29986,10 +29986,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -30253,10 +30253,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -30512,10 +30512,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -30786,10 +30786,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -31052,10 +31052,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -31318,10 +31318,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -31576,10 +31576,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -31851,10 +31851,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -32118,10 +32118,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -32385,10 +32385,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -32638,10 +32638,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -32913,10 +32913,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -33180,10 +33180,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -33447,10 +33447,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -33706,10 +33706,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -33982,10 +33982,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -34250,10 +34250,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -34518,10 +34518,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -34784,10 +34784,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -35058,10 +35058,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -35324,10 +35324,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -35590,10 +35590,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -35848,10 +35848,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -36123,10 +36123,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -36390,10 +36390,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -36657,10 +36657,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -36916,10 +36916,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -37190,10 +37190,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -37456,10 +37456,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -37722,10 +37722,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -37980,10 +37980,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -38255,10 +38255,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -38522,10 +38522,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -38789,10 +38789,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -39048,10 +39048,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -39322,10 +39322,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -39588,10 +39588,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -39854,10 +39854,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -40112,10 +40112,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -40387,10 +40387,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -40654,10 +40654,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -40921,10 +40921,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -41180,10 +41180,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -41437,10 +41437,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -41694,10 +41694,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -41951,10 +41951,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -42208,10 +42208,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -42465,10 +42465,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -42722,10 +42722,10 @@
             "type": "string",
             "default": "all",
             "enum": [
-              "scheduled",
               "zonal",
               "all",
-              "with_stops"
+              "with_stops",
+              "scheduled"
             ]
           },
           {
@@ -45344,13 +45344,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -45364,13 +45364,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -45381,8 +45381,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -45617,13 +45617,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -45780,37 +45780,9 @@
             "default": "True"
           },
           {
-            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_car_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_ridesharing_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_bike_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_taxi_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_car_no_park_direct_path_duration",
+            "name": "max_walking_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -45822,9 +45794,37 @@
             "type": "integer"
           },
           {
-            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_walking_direct_path_duration",
+            "name": "max_taxi_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_no_park_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_bike_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_ridesharing_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -46013,13 +46013,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -46033,13 +46033,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -46050,8 +46050,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -46286,13 +46286,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -46449,37 +46449,9 @@
             "default": "True"
           },
           {
-            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_car_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_ridesharing_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_bike_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_taxi_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_car_no_park_direct_path_duration",
+            "name": "max_walking_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -46491,9 +46463,37 @@
             "type": "integer"
           },
           {
-            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_walking_direct_path_duration",
+            "name": "max_taxi_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_no_park_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_bike_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_ridesharing_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -46674,13 +46674,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -46694,13 +46694,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -46711,8 +46711,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -46947,13 +46947,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47110,37 +47110,9 @@
             "default": "True"
           },
           {
-            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_car_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_ridesharing_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_bike_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_taxi_direct_path_duration",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
-            "in": "query",
-            "name": "max_car_no_park_direct_path_duration",
+            "name": "max_walking_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -47152,9 +47124,37 @@
             "type": "integer"
           },
           {
-            "description": "limit duration of direct path in walking, used ONLY in distributed scenario",
+            "description": "limit duration of direct path in taxi, used ONLY in distributed scenario",
             "in": "query",
-            "name": "max_walking_direct_path_duration",
+            "name": "max_taxi_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in car_no_park, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_car_no_park_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in bike, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_bike_direct_path_duration",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "limit duration of direct path in ridesharing, used ONLY in distributed scenario",
+            "in": "query",
+            "name": "max_ridesharing_direct_path_duration",
             "required": false,
             "type": "integer"
           },
@@ -47297,13 +47297,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47317,13 +47317,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47334,8 +47334,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -47570,13 +47570,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47799,13 +47799,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47819,13 +47819,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -47836,8 +47836,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -48072,13 +48072,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48293,13 +48293,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48313,13 +48313,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48330,8 +48330,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -48566,13 +48566,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48784,13 +48784,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48804,13 +48804,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -48821,8 +48821,8 @@
             "required": false,
             "type": "string",
             "enum": [
-              "park_and_ride",
               "on_street",
+              "park_and_ride",
               "none"
             ]
           },
@@ -49057,13 +49057,13 @@
             "items": {
               "type": "string",
               "enum": [
-                "car",
-                "ridesharing",
-                "bike",
-                "taxi",
-                "car_no_park",
+                "walking",
                 "bss",
-                "walking"
+                "taxi",
+                "car",
+                "car_no_park",
+                "bike",
+                "ridesharing"
               ]
             }
           },
@@ -60821,6 +60821,17 @@
         }
       }
     },
+    "CO2": {
+      "type": "object",
+      "properties": {
+        "co2_emission": {
+          "$ref": "#/definitions/Amount"
+        },
+        "air_pollutants": {
+          "$ref": "#/definitions/AirPollutants"
+        }
+      }
+    },
     "Coverage": {
       "type": "object",
       "properties": {
@@ -60865,6 +60876,17 @@
         "shape"
       ]
     },
+    "AirPollutants": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string"
+        },
+        "values": {
+          "$ref": "#/definitions/PollutantValue"
+        }
+      }
+    },
     "CoverageError": {
       "type": "object",
       "properties": {
@@ -60873,17 +60895,6 @@
         },
         "value": {
           "type": "string"
-        }
-      }
-    },
-    "CO2": {
-      "type": "object",
-      "properties": {
-        "co2_emission": {
-          "$ref": "#/definitions/Amount"
-        },
-        "air_pollutants": {
-          "$ref": "#/definitions/AirPollutants"
         }
       }
     },
@@ -60896,17 +60907,6 @@
         },
         "unit": {
           "type": "string"
-        }
-      }
-    },
-    "AirPollutants": {
-      "type": "object",
-      "properties": {
-        "unit": {
-          "type": "string"
-        },
-        "values": {
-          "$ref": "#/definitions/PollutantValue"
         }
       }
     },
@@ -60974,6 +60974,21 @@
         "house_number"
       ]
     },
+    "Coord": {
+      "type": "object",
+      "properties": {
+        "lon": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lon",
+        "lat"
+      ]
+    },
     "Admin": {
       "type": "object",
       "properties": {
@@ -61007,22 +61022,7 @@
         "zip_code"
       ]
     },
-    "Coord": {
-      "type": "object",
-      "properties": {
-        "lon": {
-          "type": "string"
-        },
-        "lat": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "lon",
-        "lat"
-      ]
-    },
-    "StopPoint": {
+    "StopArea": {
       "type": "object",
       "properties": {
         "id": {
@@ -61048,8 +61048,12 @@
             "$ref": "#/definitions/Code"
           }
         },
-        "label": {
+        "timezone": {
           "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "description": "\nLabel of the stop area. The name is directly taken from the data whereas the label is\n something we compute for better traveler information. If you don't know what to display, display the label.\n"
         },
         "coord": {
           "$ref": "#/definitions/Coord"
@@ -61075,43 +61079,15 @@
         "administrative_regions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Admin"
+            "$ref": "#/definitions/Admin",
+            "description": "Administrative regions of the stop area in which is the stop area"
           }
         },
-        "stop_area": {
-          "$ref": "#/definitions/StopArea"
-        },
-        "equipments": {
+        "stop_points": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "has_wheelchair_accessibility",
-              "has_bike_accepted",
-              "has_air_conditioned",
-              "has_visual_announcement",
-              "has_audible_announcement",
-              "has_appropriate_escort",
-              "has_appropriate_signage",
-              "has_school_vehicle",
-              "has_wheelchair_boarding",
-              "has_sheltered",
-              "has_elevator",
-              "has_escalator",
-              "has_bike_depot"
-            ]
-          }
-        },
-        "address": {
-          "$ref": "#/definitions/Address"
-        },
-        "fare_zone": {
-          "$ref": "#/definitions/FareZone"
-        },
-        "equipment_details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EquipmentDetails"
+            "$ref": "#/definitions/StopPoint",
+            "description": "Stop points contained in this stop area"
           }
         },
         "lines": {
@@ -61119,42 +61095,15 @@
           "items": {
             "$ref": "#/definitions/Line"
           }
-        },
-        "access_points": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PathWay"
-          }
-        },
-        "platform_code": {
-          "type": "string"
         }
       },
       "required": [
         "id",
         "name",
-        "links",
-        "equipments"
+        "links"
       ]
     },
-    "CommercialMode": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "PhysicalMode": {
+    "Line": {
       "type": "object",
       "properties": {
         "id": {
@@ -61165,91 +61114,94 @@
           "type": "string",
           "description": "Name of the object"
         },
-        "co2_emission_rate": {
-          "$ref": "#/definitions/CO2EmissionRate",
-          "description": "co2 emission rate"
+        "code": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "text_color": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "physical_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalMode"
+          }
+        },
+        "commercial_mode": {
+          "$ref": "#/definitions/CommercialMode"
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Route"
+          }
+        },
+        "network": {
+          "$ref": "#/definitions/Network"
+        },
+        "opening_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "closing_time": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "geojson": {
+          "$ref": "#/definitions/MultiLineStringSchema"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "line_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineGroup"
+          }
         }
       },
       "required": [
         "id",
-        "name"
+        "name",
+        "code",
+        "links"
       ]
     },
-    "EquipmentDetails": {
+    "Comment": {
       "type": "object",
       "properties": {
-        "id": {
+        "value": {
           "type": "string"
         },
-        "name": {
-          "type": "string"
-        },
-        "embedded_type": {
-          "type": "string",
-          "enum": [
-            "escalator",
-            "elevator"
-          ]
-        },
-        "current_availability": {
-          "$ref": "#/definitions/CurrentAvailability"
-        }
-      }
-    },
-    "PathWay": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "access_point": {
-          "$ref": "#/definitions/AccessPoint"
-        },
-        "is_entrance": {
-          "type": "boolean"
-        },
-        "is_exit": {
-          "type": "boolean"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "traversal_time": {
-          "type": "integer"
-        },
-        "pathway_mode": {
-          "type": "integer"
-        },
-        "stair_count": {
-          "type": "integer"
-        },
-        "max_slope": {
-          "type": "integer"
-        },
-        "min_width": {
-          "type": "integer"
-        },
-        "signposted_as": {
-          "type": "string"
-        },
-        "reversed_signposted_as": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "FareZone": {
-      "type": "object",
-      "properties": {
-        "name": {
+        "type": {
           "type": "string"
         }
       }
@@ -61410,97 +61362,16 @@
         "id"
       ]
     },
-    "Line": {
+    "Code": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "code": {
+        "type": {
           "type": "string"
         },
-        "color": {
+        "value": {
           "type": "string"
-        },
-        "text_color": {
-          "type": "string"
-        },
-        "comments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Comment"
-          }
-        },
-        "comment": {
-          "type": "string"
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "physical_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhysicalMode"
-          }
-        },
-        "commercial_mode": {
-          "$ref": "#/definitions/CommercialMode"
-        },
-        "routes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Route"
-          }
-        },
-        "network": {
-          "$ref": "#/definitions/Network"
-        },
-        "opening_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "closing_time": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Property"
-          }
-        },
-        "geojson": {
-          "$ref": "#/definitions/MultiLineStringSchema"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "line_groups": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LineGroup"
-          }
         }
-      },
-      "required": [
-        "id",
-        "name",
-        "code",
-        "links"
-      ]
+      }
     },
     "Severity": {
       "type": "object",
@@ -61529,6 +61400,121 @@
           "type": "integer"
         }
       }
+    },
+    "StopPoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "coord": {
+          "$ref": "#/definitions/Coord"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "commercial_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommercialMode"
+          }
+        },
+        "physical_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalMode"
+          }
+        },
+        "administrative_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        },
+        "stop_area": {
+          "$ref": "#/definitions/StopArea"
+        },
+        "equipments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "has_wheelchair_accessibility",
+              "has_bike_accepted",
+              "has_air_conditioned",
+              "has_visual_announcement",
+              "has_audible_announcement",
+              "has_appropriate_escort",
+              "has_appropriate_signage",
+              "has_school_vehicle",
+              "has_wheelchair_boarding",
+              "has_sheltered",
+              "has_elevator",
+              "has_escalator",
+              "has_bike_depot"
+            ]
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "fare_zone": {
+          "$ref": "#/definitions/FareZone"
+        },
+        "equipment_details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EquipmentDetails"
+          }
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Line"
+          }
+        },
+        "access_points": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PathWay"
+          }
+        },
+        "platform_code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "links",
+        "equipments"
+      ]
     },
     "Message": {
       "type": "object",
@@ -61561,86 +61547,13 @@
         }
       }
     },
-    "StopArea": {
+    "FareZone": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
         "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "comments": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Comment"
-          }
-        },
-        "comment": {
           "type": "string"
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "timezone": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string",
-          "description": "\nLabel of the stop area. The name is directly taken from the data whereas the label is\n something we compute for better traveler information. If you don't know what to display, display the label.\n"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "commercial_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommercialMode"
-          }
-        },
-        "physical_modes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PhysicalMode"
-          }
-        },
-        "administrative_regions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Admin",
-            "description": "Administrative regions of the stop area in which is the stop area"
-          }
-        },
-        "stop_points": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StopPoint",
-            "description": "Stop points contained in this stop area"
-          }
-        },
-        "lines": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Line"
-          }
         }
-      },
-      "required": [
-        "id",
-        "name",
-        "links"
-      ]
+      }
     },
     "Error": {
       "type": "object",
@@ -61670,55 +61583,43 @@
         }
       }
     },
-    "Comment": {
+    "CommercialMode": {
       "type": "object",
       "properties": {
-        "value": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "CurrentAvailability": {
-      "type": "object",
-      "properties": {
-        "status": {
+        "id": {
           "type": "string",
-          "enum": [
-            "unknown",
-            "available",
-            "unavailable"
-          ]
+          "description": "Identifier of the object"
         },
-        "periods": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Period"
-          }
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "cause": {
-          "$ref": "#/definitions/Cause"
-        },
-        "effect": {
-          "$ref": "#/definitions/Effect"
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
         }
-      }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
     },
-    "Code": {
+    "PhysicalMode": {
       "type": "object",
       "properties": {
-        "type": {
-          "type": "string"
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
         },
-        "value": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "co2_emission_rate": {
+          "$ref": "#/definitions/CO2EmissionRate",
+          "description": "co2 emission rate"
         }
-      }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
     },
     "PtObject": {
       "type": "object",
@@ -61860,162 +61761,6 @@
         "links"
       ]
     },
-    "Channel": {
-      "type": "object",
-      "properties": {
-        "content_type": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "types": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "web",
-              "sms",
-              "email",
-              "mobile",
-              "notification",
-              "twitter",
-              "facebook",
-              "unknown_type",
-              "title",
-              "beacon",
-              "pids"
-            ]
-          }
-        }
-      },
-      "required": [
-        "content_type",
-        "id",
-        "name"
-      ]
-    },
-    "Period": {
-      "type": "object",
-      "properties": {
-        "begin": {
-          "format": "navitia-date-time",
-          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "end": {
-          "format": "navitia-date-time",
-          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        }
-      }
-    },
-    "Cause": {
-      "type": "object",
-      "properties": {
-        "label": {
-          "type": "string"
-        }
-      }
-    },
-    "Effect": {
-      "type": "object",
-      "properties": {
-        "label": {
-          "type": "string"
-        }
-      }
-    },
-    "Poi": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        },
-        "coord": {
-          "$ref": "#/definitions/Coord"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        },
-        "label": {
-          "type": "string"
-        },
-        "administrative_regions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Admin"
-          }
-        },
-        "poi_type": {
-          "$ref": "#/definitions/PoiType"
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "address": {
-          "$ref": "#/definitions/Address"
-        },
-        "stands": {
-          "$ref": "#/definitions/Stands"
-        },
-        "car_park": {
-          "$ref": "#/definitions/CarPark"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "PoiType": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "ApplicationPattern": {
-      "type": "object",
-      "properties": {
-        "week_pattern": {
-          "$ref": "#/definitions/WeekPattern"
-        },
-        "application_period": {
-          "$ref": "#/definitions/PeriodDate"
-        },
-        "time_slots": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PeriodTime"
-          }
-        }
-      }
-    },
     "MultiLineStringSchema": {
       "type": "object",
       "properties": {
@@ -62065,6 +61810,61 @@
         "id",
         "name",
         "links"
+      ]
+    },
+    "Trip": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Channel": {
+      "type": "object",
+      "properties": {
+        "content_type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "web",
+              "sms",
+              "email",
+              "mobile",
+              "notification",
+              "twitter",
+              "facebook",
+              "unknown_type",
+              "title",
+              "beacon",
+              "pids"
+            ]
+          }
+        }
+      },
+      "required": [
+        "content_type",
+        "id",
+        "name"
       ]
     },
     "Property": {
@@ -62196,7 +61996,110 @@
         }
       }
     },
-    "AccessPoint": {
+    "EquipmentDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "embedded_type": {
+          "type": "string",
+          "enum": [
+            "escalator",
+            "elevator"
+          ]
+        },
+        "current_availability": {
+          "$ref": "#/definitions/CurrentAvailability"
+        }
+      }
+    },
+    "Period": {
+      "type": "object",
+      "properties": {
+        "begin": {
+          "format": "navitia-date-time",
+          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "end": {
+          "format": "navitia-date-time",
+          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationPattern": {
+      "type": "object",
+      "properties": {
+        "week_pattern": {
+          "$ref": "#/definitions/WeekPattern"
+        },
+        "application_period": {
+          "$ref": "#/definitions/PeriodDate"
+        },
+        "time_slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PeriodTime"
+          }
+        }
+      }
+    },
+    "PathWay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "access_point": {
+          "$ref": "#/definitions/AccessPoint"
+        },
+        "is_entrance": {
+          "type": "boolean"
+        },
+        "is_exit": {
+          "type": "boolean"
+        },
+        "length": {
+          "type": "integer"
+        },
+        "traversal_time": {
+          "type": "integer"
+        },
+        "pathway_mode": {
+          "type": "integer"
+        },
+        "stair_count": {
+          "type": "integer"
+        },
+        "max_slope": {
+          "type": "integer"
+        },
+        "min_width": {
+          "type": "integer"
+        },
+        "signposted_as": {
+          "type": "string"
+        },
+        "reversed_signposted_as": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Poi": {
       "type": "object",
       "properties": {
         "id": {
@@ -62210,21 +62113,43 @@
         "coord": {
           "$ref": "#/definitions/Coord"
         },
-        "access_point_code": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        },
+        "label": {
           "type": "string"
         },
-        "embedded_type": {
-          "type": "string",
-          "enum": [
-            "pt_access_point",
-            "poi_access_point"
-          ]
+        "administrative_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        },
+        "poi_type": {
+          "$ref": "#/definitions/PoiType"
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "stands": {
+          "$ref": "#/definitions/Stands"
+        },
+        "car_park": {
+          "$ref": "#/definitions/CarPark"
         }
       },
       "required": [
         "id",
-        "name",
-        "embedded_type"
+        "name"
       ]
     },
     "Place": {
@@ -62298,79 +62223,6 @@
         "embedded_type"
       ]
     },
-    "WeekPattern": {
-      "type": "object",
-      "properties": {
-        "monday": {
-          "type": "boolean"
-        },
-        "tuesday": {
-          "type": "boolean"
-        },
-        "wednesday": {
-          "type": "boolean"
-        },
-        "thursday": {
-          "type": "boolean"
-        },
-        "friday": {
-          "type": "boolean"
-        },
-        "saturday": {
-          "type": "boolean"
-        },
-        "sunday": {
-          "type": "boolean"
-        }
-      }
-    },
-    "PeriodDate": {
-      "type": "object",
-      "properties": {
-        "begin": {
-          "format": "navitia-date",
-          "pattern": "\\d{4}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "end": {
-          "format": "navitia-date",
-          "pattern": "\\d{4}\\d{2}\\d{2}",
-          "type": "string"
-        }
-      }
-    },
-    "Trip": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Identifier of the object"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the object"
-        }
-      },
-      "required": [
-        "id",
-        "name"
-      ]
-    },
-    "PeriodTime": {
-      "type": "object",
-      "properties": {
-        "begin": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        },
-        "end": {
-          "format": "navitia-time",
-          "pattern": "\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        }
-      }
-    },
     "CarPark": {
       "type": "object",
       "properties": {
@@ -62410,6 +62262,154 @@
       },
       "required": [
         "availability"
+      ]
+    },
+    "WeekPattern": {
+      "type": "object",
+      "properties": {
+        "monday": {
+          "type": "boolean"
+        },
+        "tuesday": {
+          "type": "boolean"
+        },
+        "wednesday": {
+          "type": "boolean"
+        },
+        "thursday": {
+          "type": "boolean"
+        },
+        "friday": {
+          "type": "boolean"
+        },
+        "saturday": {
+          "type": "boolean"
+        },
+        "sunday": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CurrentAvailability": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "available",
+            "unavailable"
+          ]
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Period"
+          }
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "cause": {
+          "$ref": "#/definitions/Cause"
+        },
+        "effect": {
+          "$ref": "#/definitions/Effect"
+        }
+      }
+    },
+    "PeriodDate": {
+      "type": "object",
+      "properties": {
+        "begin": {
+          "format": "navitia-date",
+          "pattern": "\\d{4}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "end": {
+          "format": "navitia-date",
+          "pattern": "\\d{4}\\d{2}\\d{2}",
+          "type": "string"
+        }
+      }
+    },
+    "PeriodTime": {
+      "type": "object",
+      "properties": {
+        "begin": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        },
+        "end": {
+          "format": "navitia-time",
+          "pattern": "\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        }
+      }
+    },
+    "Cause": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "Effect": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "PoiType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "AccessPoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "coord": {
+          "$ref": "#/definitions/Coord"
+        },
+        "access_point_code": {
+          "type": "string"
+        },
+        "embedded_type": {
+          "type": "string",
+          "enum": [
+            "pt_access_point",
+            "poi_access_point"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "embedded_type"
       ]
     },
     "Stands": {
@@ -62919,122 +62919,6 @@
         "fare"
       ]
     },
-    "Exception": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "date": {
-          "format": "navitia-date-time",
-          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "LowEmissionZone": {
-      "type": "object",
-      "properties": {
-        "on_path": {
-          "type": "boolean"
-        }
-      }
-    },
-    "Durations": {
-      "type": "object",
-      "properties": {
-        "total": {
-          "type": "integer",
-          "description": "Total duration of the journey (seconds)"
-        },
-        "walking": {
-          "type": "integer",
-          "description": "Total walking duration of the journey (seconds)"
-        },
-        "bike": {
-          "type": "integer",
-          "description": "Total duration by bike of the journey (seconds)"
-        },
-        "car": {
-          "type": "integer",
-          "description": "Total duration by car of the journey (seconds)"
-        },
-        "ridesharing": {
-          "type": "integer",
-          "description": "Total duration by ridesharing of the journey (seconds)"
-        },
-        "taxi": {
-          "type": "integer",
-          "description": "Total duration by taxi of the journey (seconds)"
-        }
-      },
-      "required": [
-        "total",
-        "walking",
-        "bike",
-        "car",
-        "ridesharing",
-        "taxi"
-      ]
-    },
-    "Distances": {
-      "type": "object",
-      "properties": {
-        "walking": {
-          "type": "integer",
-          "description": "Total walking distance of the journey (meters)"
-        },
-        "bike": {
-          "type": "integer",
-          "description": "Total distance by bike of the journey (meters)"
-        },
-        "car": {
-          "type": "integer",
-          "description": "Total distance by car of the journey (meters)"
-        },
-        "ridesharing": {
-          "type": "integer",
-          "description": "Total distance by ridesharing of the journey (meters)"
-        },
-        "taxi": {
-          "type": "integer",
-          "description": "Total distance by taxi of the journey (meters)"
-        }
-      },
-      "required": [
-        "walking",
-        "bike",
-        "car",
-        "ridesharing",
-        "taxi"
-      ]
-    },
-    "Fare": {
-      "type": "object",
-      "properties": {
-        "found": {
-          "type": "boolean"
-        },
-        "total": {
-          "$ref": "#/definitions/Cost"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LinkSchema"
-          }
-        }
-      },
-      "required": [
-        "links"
-      ]
-    },
     "Section": {
       "type": "object",
       "properties": {
@@ -63227,41 +63111,6 @@
         "links"
       ]
     },
-    "Path": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "duration": {
-          "type": "integer"
-        },
-        "direction": {
-          "type": "integer"
-        },
-        "instruction": {
-          "type": "string"
-        },
-        "instruction_start_coordinate": {
-          "$ref": "#/definitions/Coord"
-        },
-        "via_uri": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "length",
-        "name",
-        "duration",
-        "direction"
-      ]
-    },
     "JourneyDebug": {
       "type": "object",
       "properties": {
@@ -63295,6 +63144,70 @@
         "min_waiting_duration",
         "nb_vj_extentions",
         "nb_sections"
+      ]
+    },
+    "SectionGeoJsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "length": {
+                "type": "number",
+                "format": "integer"
+              }
+            }
+          }
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        }
+      }
+    },
+    "Path": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "length": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "direction": {
+          "type": "integer"
+        },
+        "instruction": {
+          "type": "string"
+        },
+        "instruction_start_coordinate": {
+          "$ref": "#/definitions/Coord"
+        },
+        "via_uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "length",
+        "name",
+        "duration",
+        "direction"
       ]
     },
     "RidesharingInformation": {
@@ -63372,101 +63285,6 @@
         "source_id"
       ]
     },
-    "StreetInformation": {
-      "type": "object",
-      "properties": {
-        "geojson_offset": {
-          "type": "integer"
-        },
-        "cycle_path_type": {
-          "type": "string"
-        },
-        "length": {
-          "type": "number",
-          "format": "float"
-        }
-      }
-    },
-    "BookingRule": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "info_url": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "phone_number": {
-          "type": "string"
-        },
-        "booking_url": {
-          "type": "string"
-        },
-        "applies_on": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "from",
-              "to"
-            ]
-          }
-        }
-      },
-      "required": [
-        "name",
-        "info_url",
-        "message",
-        "phone_number",
-        "booking_url"
-      ]
-    },
-    "SectionGeoJsonSchema": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "properties": {
-          "type": "array",
-          "items": {
-            "properties": {
-              "length": {
-                "type": "number",
-                "format": "integer"
-              }
-            }
-          }
-        },
-        "coordinates": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "number",
-              "format": "float"
-            }
-          }
-        }
-      }
-    },
-    "Cost": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
-        "currency": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "value"
-      ]
-    },
     "IndividualInformation": {
       "type": "object",
       "properties": {
@@ -63501,6 +63319,136 @@
           "type": "integer"
         }
       }
+    },
+    "LowEmissionZone": {
+      "type": "object",
+      "properties": {
+        "on_path": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Durations": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total duration of the journey (seconds)"
+        },
+        "walking": {
+          "type": "integer",
+          "description": "Total walking duration of the journey (seconds)"
+        },
+        "bike": {
+          "type": "integer",
+          "description": "Total duration by bike of the journey (seconds)"
+        },
+        "car": {
+          "type": "integer",
+          "description": "Total duration by car of the journey (seconds)"
+        },
+        "ridesharing": {
+          "type": "integer",
+          "description": "Total duration by ridesharing of the journey (seconds)"
+        },
+        "taxi": {
+          "type": "integer",
+          "description": "Total duration by taxi of the journey (seconds)"
+        }
+      },
+      "required": [
+        "total",
+        "walking",
+        "bike",
+        "car",
+        "ridesharing",
+        "taxi"
+      ]
+    },
+    "Cost": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "Distances": {
+      "type": "object",
+      "properties": {
+        "walking": {
+          "type": "integer",
+          "description": "Total walking distance of the journey (meters)"
+        },
+        "bike": {
+          "type": "integer",
+          "description": "Total distance by bike of the journey (meters)"
+        },
+        "car": {
+          "type": "integer",
+          "description": "Total distance by car of the journey (meters)"
+        },
+        "ridesharing": {
+          "type": "integer",
+          "description": "Total distance by ridesharing of the journey (meters)"
+        },
+        "taxi": {
+          "type": "integer",
+          "description": "Total distance by taxi of the journey (meters)"
+        }
+      },
+      "required": [
+        "walking",
+        "bike",
+        "car",
+        "ridesharing",
+        "taxi"
+      ]
+    },
+    "Fare": {
+      "type": "object",
+      "properties": {
+        "found": {
+          "type": "boolean"
+        },
+        "total": {
+          "$ref": "#/definitions/Cost"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LinkSchema"
+          }
+        }
+      },
+      "required": [
+        "links"
+      ]
+    },
+    "Exception": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "date": {
+          "format": "navitia-date-time",
+          "pattern": "\\d{4}\\d{2}\\d{2}T\\d{2}\\d{2}\\d{2}",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
     },
     "StopDateTime": {
       "type": "object",
@@ -63657,6 +63605,58 @@
         "equipments"
       ]
     },
+    "StreetInformation": {
+      "type": "object",
+      "properties": {
+        "geojson_offset": {
+          "type": "integer"
+        },
+        "cycle_path_type": {
+          "type": "string"
+        },
+        "length": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "BookingRule": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "info_url": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "booking_url": {
+          "type": "string"
+        },
+        "applies_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "from",
+              "to"
+            ]
+          }
+        }
+      },
+      "required": [
+        "name",
+        "info_url",
+        "message",
+        "phone_number",
+        "booking_url"
+      ]
+    },
     "IndividualRating": {
       "type": "object",
       "properties": {
@@ -63810,17 +63810,6 @@
         "cell_lon"
       ]
     },
-    "LineHeadersSchema": {
-      "type": "object",
-      "properties": {
-        "cell_lat": {
-          "$ref": "#/definitions/CellLatSchema"
-        }
-      },
-      "required": [
-        "cell_lat"
-      ]
-    },
     "CellLonSchema": {
       "type": "object",
       "properties": {
@@ -63837,6 +63826,17 @@
           "format": "float"
         }
       }
+    },
+    "LineHeadersSchema": {
+      "type": "object",
+      "properties": {
+        "cell_lat": {
+          "$ref": "#/definitions/CellLatSchema"
+        }
+      },
+      "required": [
+        "cell_lat"
+      ]
     },
     "CellLatSchema": {
       "type": "object",
@@ -64391,7 +64391,7 @@
   },
   "info": {
     "title": "navitia",
-    "version": "v15.97.0",
+    "version": "v15.98.0",
     "description": "\n    navitia.io is the open API for building cool stuff with mobility data. It provides the following services\n\n    * journeys computation\n    * line schedules\n    * next departures\n    * exploration of public transport data / search places\n    * and sexy things such as isochrones\n\n    navitia is a HATEOAS API that returns JSON formated results\n    ",
     "contact": {
       "name": "Navitia",
