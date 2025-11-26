@@ -67,7 +67,7 @@
     "typescript": "5.9.3"
   },
   "overrides": {
-    "@pulumi/pulumi": "3.208.0",
+    "@pulumi/pulumi": "3.209.0",
     "braces": "3.0.3",
     "cookie": "1.1.1",
     "dompurify": "3.3.0",
