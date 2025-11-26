@@ -47,7 +47,7 @@
     "ansi-styles": "6.2.3",
     "babel-jest": "30.2.0",
     "bob-the-bundler": "7.0.1",
-    "cookie": "1.1.0",
+    "cookie": "1.1.1",
     "cross-env": "10.1.0",
     "eslint": "9.39.1",
     "eslint-config-prettier": "10.1.8",
@@ -69,7 +69,7 @@
   "overrides": {
     "@pulumi/pulumi": "3.208.0",
     "braces": "3.0.3",
-    "cookie": "1.1.0",
+    "cookie": "1.1.1",
     "dompurify": "3.3.0",
     "esbuild": "0.27.0",
     "estree-util-value-to-estree": "3.5.0",
