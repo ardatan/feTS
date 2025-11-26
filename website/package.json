@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "next build && next-sitemap --config ./next-sitemap.config.js",
+    "build": "next build --webpack && next-sitemap --config ./next-sitemap.config.js",
     "dev": "next dev",
     "start": "next start"
   },
