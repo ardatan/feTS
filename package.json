@@ -23,7 +23,7 @@
     "prerelease-canary": "npm run build",
     "pretest": "npm run generate-swagger-ui && npm run generate-landing-page",
     "prets:check": "npm run generate-swagger-ui && npm run generate-landing-page",
-    "prettier": "npm run prettier:check --write",
+    "prettier": "npm run prettier:check -- --write",
     "prettier:check": "npx prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
     "test": "jest --detectOpenHandles --detectLeaks",
