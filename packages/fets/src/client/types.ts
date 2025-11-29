@@ -152,8 +152,9 @@ export type OASParamObj<
           : unknown;
     };
 
-interface OASParamToRequestParam<TParameters extends { in: string; required?: boolean }[]>
-  extends Fn {
+interface OASParamToRequestParam<
+  TParameters extends { in: string; required?: boolean }[],
+> extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
     ? // If there is any required parameter for this parameter type, make that parameter type required
       TParameters extends [{ in: TParamType; required?: true }]

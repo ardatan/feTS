@@ -92,8 +92,9 @@ export type OpenAPIDocument = {
   components?: unknown;
 };
 
-export interface RouterOpenAPIOptions<TComponents extends RouterComponentsBase>
-  extends OpenAPIDocument {
+export interface RouterOpenAPIOptions<
+  TComponents extends RouterComponentsBase,
+> extends OpenAPIDocument {
   endpoint?: string | false;
   components?: TComponents;
   includeValidationErrors?: boolean;
@@ -103,8 +104,10 @@ export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
   endpoint?: string | false;
 }
 
-export interface RouterOptions<TServerContext, TComponents extends RouterComponentsBase>
-  extends ServerAdapterOptions<TServerContext> {
+export interface RouterOptions<
+  TServerContext,
+  TComponents extends RouterComponentsBase,
+> extends ServerAdapterOptions<TServerContext> {
   base?: string;
   plugins?: RouterPlugin<TServerContext, TComponents>[];
 
