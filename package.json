@@ -70,6 +70,7 @@
     "@pulumi/pulumi": "3.215.0",
     "braces": "3.0.3",
     "cookie": "1.1.1",
+    "diff": "8.0.3",
     "dompurify": "3.3.1",
     "esbuild": "0.27.2",
     "estree-util-value-to-estree": "3.5.0",

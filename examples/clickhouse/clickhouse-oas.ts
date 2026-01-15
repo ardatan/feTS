@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-312084",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-326044",
       "email": "support@clickhouse.com"
     }
   },
@@ -19,6 +19,7 @@
       "get": {
         "summary": "Get list of available organizations",
         "description": "Returns a list with a single organization associated with the API key in the request.",
+        "operationId": "organizationGetList",
         "parameters": [],
         "responses": {
           "200": {
@@ -80,6 +81,7 @@
       "get": {
         "summary": "Get organization details",
         "description": "Returns details of a single organization. In order to get the details, the auth key must belong to the organization.",
+        "operationId": "organizationGet",
         "parameters": [
           {
             "in": "path",
@@ -147,6 +149,7 @@
       "patch": {
         "summary": "Update organization details",
         "description": "Updates organization fields. Requires ADMIN auth key role.",
+        "operationId": "organizationUpdate",
         "parameters": [
           {
             "in": "path",
@@ -225,6 +228,7 @@
       "get": {
         "summary": "Get organization metrics",
         "description": "Returns prometheus metrics for all services in an organization.",
+        "operationId": "organizationPrometheusGet",
         "parameters": [
           {
             "in": "path",
@@ -288,6 +292,7 @@
       "get": {
         "summary": "List of organization services",
         "description": "Returns a list of all services in the organization.",
+        "operationId": "instanceGetList",
         "parameters": [
           {
             "in": "path",
@@ -370,6 +375,7 @@
       "post": {
         "summary": "Create new service",
         "description": "Creates a new service in the organization, and returns the current service state and a password to access the service. The service is started asynchronously.",
+        "operationId": "instanceCreate",
         "parameters": [
           {
             "in": "path",
@@ -448,6 +454,7 @@
       "get": {
         "summary": "Get service details",
         "description": "Returns a service that belongs to the organization",
+        "operationId": "instanceGet",
         "parameters": [
           {
             "in": "path",
@@ -525,6 +532,7 @@
       "patch": {
         "summary": "Update service basic details",
         "description": "Updates basic service details like service name or IP access list.",
+        "operationId": "instanceUpdate",
         "parameters": [
           {
             "in": "path",
@@ -611,6 +619,7 @@
       "delete": {
         "summary": "Delete service",
         "description": "Deletes the service. The service must be in stopped state and is deleted asynchronously after this method call.",
+        "operationId": "instanceDelete",
         "parameters": [
           {
             "in": "path",
@@ -687,6 +696,7 @@
       "get": {
         "summary": "Get private endpoint configuration",
         "description": "Information required to set up a private endpoint",
+        "operationId": "instancePrivateEndpointConfigGet",
         "parameters": [
           {
             "in": "path",
@@ -766,6 +776,7 @@
       "get": {
         "summary": "Get the service query endpoint for a given instance",
         "description": "Get the configuration for the service query endpoint that allows executing queries via API.",
+        "operationId": "instanceQueryEndpointGet",
         "parameters": [
           {
             "in": "path",
@@ -843,6 +854,7 @@
       "delete": {
         "summary": "Delete the service query endpoint for a given instance",
         "description": "Removes the service query endpoint.",
+        "operationId": "instanceQueryEndpointDelete",
         "parameters": [
           {
             "in": "path",
@@ -917,6 +929,7 @@
       "post": {
         "summary": "Upsert the service query endpoint for a given instance",
         "description": "Create the service query endpoint that allows executing queries via API.",
+        "operationId": "instanceQueryEndpointUpsert",
         "parameters": [
           {
             "in": "path",
@@ -1005,6 +1018,7 @@
       "patch": {
         "summary": "Update service state",
         "description": "Starts or stop service",
+        "operationId": "instanceStateUpdate",
         "parameters": [
           {
             "in": "path",
@@ -1093,6 +1107,7 @@
       "patch": {
         "summary": "Update service auto scaling settings",
         "description": "Updates minimum and maximum total memory limits and idle mode scaling behavior for the service. The memory settings are available only for \"production\" services and must be a multiple of 12 starting from 24GB. Please contact support to enable adjustment of numReplicas.",
+        "operationId": "instanceScalingUpdate",
         "parameters": [
           {
             "in": "path",
@@ -1182,6 +1197,7 @@
       "patch": {
         "summary": "Update service auto scaling settings",
         "description": "Updates minimum and maximum memory limits per replica and idle mode scaling behavior for the service. The memory settings are available only for \"production\" services and must be a multiple of 4 starting from 8GB. Please contact support to enable adjustment of numReplicas.",
+        "operationId": "instanceReplicaScalingUpdate",
         "parameters": [
           {
             "in": "path",
@@ -1270,6 +1286,7 @@
       "patch": {
         "summary": "Update service password",
         "description": "Sets a new password for the service",
+        "operationId": "instancePasswordUpdate",
         "parameters": [
           {
             "in": "path",
@@ -1358,6 +1375,7 @@
       "post": {
         "summary": "Create a private endpoint",
         "description": "Create a new private endpoint. The private endpoint will be associated with this service and organization",
+        "operationId": "instancePrivateEndpointCreate",
         "parameters": [
           {
             "in": "path",
@@ -1446,6 +1464,7 @@
       "get": {
         "summary": "Get service metrics",
         "description": "Returns prometheus metrics for a service.",
+        "operationId": "instancePrometheusGet",
         "parameters": [
           {
             "in": "path",
@@ -1519,6 +1538,7 @@
       "get": {
         "summary": "List of service backups",
         "description": "Returns a list of all backups for the service. The most recent backups comes first in the list.",
+        "operationId": "backupGetList",
         "parameters": [
           {
             "in": "path",
@@ -1601,6 +1621,7 @@
       "get": {
         "summary": "Get backup details",
         "description": "Returns a single backup info.",
+        "operationId": "backupGet",
         "parameters": [
           {
             "in": "path",
@@ -1690,6 +1711,7 @@
       "get": {
         "summary": "Get service backup configuration",
         "description": "Returns the service backup configuration.",
+        "operationId": "backupConfigurationGet",
         "parameters": [
           {
             "in": "path",
@@ -1767,6 +1789,7 @@
       "patch": {
         "summary": "Update service backup configuration",
         "description": "Updates service backup configuration. Requires ADMIN auth key role. Setting the properties with null value, will reset the properties to theirs default values.",
+        "operationId": "backupConfigurationUpdate",
         "parameters": [
           {
             "in": "path",
@@ -1855,6 +1878,7 @@
       "get": {
         "summary": "Get service backup bucket",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the service backup bucket.",
+        "operationId": "backupBucketGet",
         "parameters": [
           {
             "in": "path",
@@ -1938,6 +1962,7 @@
       "post": {
         "summary": "Create service backup bucket",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create service backup bucket. Requires ADMIN auth key role.",
+        "operationId": "backupBucketCreate",
         "parameters": [
           {
             "in": "path",
@@ -2030,6 +2055,7 @@
       "patch": {
         "summary": "Update service backup bucket",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update service backup bucket. Requires ADMIN auth key role. The secrets of the specified bucket provider are always required",
+        "operationId": "backupBucketUpdate",
         "parameters": [
           {
             "in": "path",
@@ -2122,6 +2148,7 @@
       "delete": {
         "summary": "Delete service backup bucket",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete service backup bucket. Requires ADMIN auth key role.",
+        "operationId": "backupBucketDelete",
         "parameters": [
           {
             "in": "path",
@@ -2204,6 +2231,7 @@
       "get": {
         "summary": "Get list of all keys",
         "description": "Returns a list of all keys in the organization.",
+        "operationId": "openapiKeyGetList",
         "parameters": [
           {
             "in": "path",
@@ -2274,6 +2302,7 @@
       "post": {
         "summary": "Create key",
         "description": "Creates new API key.",
+        "operationId": "openapiKeyCreate",
         "parameters": [
           {
             "in": "path",
@@ -2352,6 +2381,7 @@
       "get": {
         "summary": "Get key details",
         "description": "Returns a single key details.",
+        "operationId": "openapiKeyGet",
         "parameters": [
           {
             "in": "path",
@@ -2429,6 +2459,7 @@
       "patch": {
         "summary": "Update key",
         "description": "Updates API key properties.",
+        "operationId": "openapiKeyUpdate",
         "parameters": [
           {
             "in": "path",
@@ -2515,6 +2546,7 @@
       "delete": {
         "summary": "Delete key",
         "description": "Deletes API key. Only a key not used to authenticate the active request can be deleted.",
+        "operationId": "openapiKeyDelete",
         "parameters": [
           {
             "in": "path",
@@ -2591,6 +2623,7 @@
       "get": {
         "summary": "List organization members",
         "description": "Returns a list of all members in the organization.",
+        "operationId": "memberGetList",
         "parameters": [
           {
             "in": "path",
@@ -2663,6 +2696,7 @@
       "get": {
         "summary": "Get member details",
         "description": "Returns a single organization member details.",
+        "operationId": "memberGet",
         "parameters": [
           {
             "in": "path",
@@ -2740,6 +2774,7 @@
       "patch": {
         "summary": "Update organization member",
         "description": "Updates organization member role.",
+        "operationId": "memberUpdate",
         "parameters": [
           {
             "in": "path",
@@ -2826,6 +2861,7 @@
       "delete": {
         "summary": "Remove an organization member",
         "description": "Removes a user from the organization",
+        "operationId": "memberDelete",
         "parameters": [
           {
             "in": "path",
@@ -2902,6 +2938,7 @@
       "get": {
         "summary": "List all invitations",
         "description": "Returns list of all organization invitations.",
+        "operationId": "invitationGetList",
         "parameters": [
           {
             "in": "path",
@@ -2972,6 +3009,7 @@
       "post": {
         "summary": "Create an invitation",
         "description": "Creates organization invitation.",
+        "operationId": "invitationCreate",
         "parameters": [
           {
             "in": "path",
@@ -3050,6 +3088,7 @@
       "get": {
         "summary": "Get invitation details",
         "description": "Returns details for a single organization invitation.",
+        "operationId": "invitationGet",
         "parameters": [
           {
             "in": "path",
@@ -3127,6 +3166,7 @@
       "delete": {
         "summary": "Delete organization invitation",
         "description": "Deletes a single organization invitation.",
+        "operationId": "invitationDelete",
         "parameters": [
           {
             "in": "path",
@@ -3203,6 +3243,7 @@
       "get": {
         "summary": "List of organization activities",
         "description": "Returns a list of all organization activities.",
+        "operationId": "activityGetList",
         "parameters": [
           {
             "in": "path",
@@ -3293,6 +3334,7 @@
       "get": {
         "summary": "Organization activity",
         "description": "Returns a single organization activity by ID.",
+        "operationId": "activityGet",
         "parameters": [
           {
             "in": "path",
@@ -3371,6 +3413,7 @@
       "get": {
         "summary": "Get organization usage costs",
         "description": "Returns a grand total and a list of daily, per-entity organization usage cost records for the organization in the queried time period (maximum 31 days). All days in both the request and the response are evaluated based on the UTC timezone.",
+        "operationId": "usageCostGet",
         "parameters": [
           {
             "in": "path",
@@ -3401,6 +3444,18 @@
               "format": "date-time"
             },
             "required": true
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "Filter criteria to apply when retrieving the usage cost report. Currently, only filtering by resource tags is supported.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": "filter=tag:Environment=Production&filter=tag:Department=Engineering&filter=tag:isActive"
           }
         ],
         "responses": {
@@ -3460,6 +3515,7 @@
       "get": {
         "summary": "List ClickPipes",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a list of ClickPipes.",
+        "operationId": "clickPipeGetList",
         "parameters": [
           {
             "in": "path",
@@ -3546,6 +3602,7 @@
       "post": {
         "summary": "Create ClickPipe",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create a new ClickPipe.",
+        "operationId": "clickPipeCreate",
         "parameters": [
           {
             "in": "path",
@@ -3640,6 +3697,7 @@
       "get": {
         "summary": "Get ClickPipe",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the specified ClickPipe.",
+        "operationId": "clickPipeGet",
         "parameters": [
           {
             "in": "path",
@@ -3733,6 +3791,7 @@
       "patch": {
         "summary": "Update ClickPipe",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the specified ClickPipe.",
+        "operationId": "clickPipeUpdate",
         "parameters": [
           {
             "in": "path",
@@ -3835,6 +3894,7 @@
       "delete": {
         "summary": "Delete ClickPipe",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete the specified ClickPipe.",
+        "operationId": "clickPipeDelete",
         "parameters": [
           {
             "in": "path",
@@ -3927,6 +3987,7 @@
       "get": {
         "summary": "Get ClickPipe settings",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the advanced settings for the specified ClickPipe.",
+        "operationId": "clickPipeSettingsGet",
         "parameters": [
           {
             "in": "path",
@@ -4020,6 +4081,7 @@
       "put": {
         "summary": "Update ClickPipe settings",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the advanced settings for the specified ClickPipe. Send key-value pairs where values can be strings, numbers, or booleans.",
+        "operationId": "clickPipeSettingsUpdate",
         "parameters": [
           {
             "in": "path",
@@ -4124,6 +4186,7 @@
       "patch": {
         "summary": "Scaling ClickPipe",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Change scaling settings for the specified ClickPipe.",
+        "operationId": "clickPipeScalingUpdate",
         "parameters": [
           {
             "in": "path",
@@ -4228,6 +4291,7 @@
       "patch": {
         "summary": "Update ClickPipe state",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Start, stop or resync ClickPipe. Stopping a ClickPipe will stop the ingestion process from any state. Starting is allowed for ClickPipes in the \"Stopped\" state or with a \"Failed\" state. Resyncing is only for Postgres pipes and can be done from any state.",
+        "operationId": "clickPipeStateUpdate",
         "parameters": [
           {
             "in": "path",
@@ -4332,6 +4396,7 @@
       "get": {
         "summary": "Get CDC ClickPipes scaling",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Get scaling settings for DB ClickPipes.\n\nThe infrastructure is shared between all DB ClickPipes in the service, both for initial load and CDC. For billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit.\n\n**This endpoint becomes available once at least one DB ClickPipe was provisioned.**",
+        "operationId": "clickPipeCdcScalingGet",
         "parameters": [
           {
             "in": "path",
@@ -4415,6 +4480,7 @@
       "patch": {
         "summary": "Update CDC ClickPipes scaling",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update scaling settings for DB ClickPipes.\n\nThe infrastructure is shared between all DB ClickPipes in the service, both for initial load and CDC. Scaling settings may take a few minutes to fully propagate.\n\nFor billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit. If your organization tier changes, DB ClickPipes will be [rescaled](https://clickhouse.com/docs/cloud/manage/billing/overview#compute) appropriately.\n\n**This endpoint becomes available once at least one DB ClickPipe was provisioned.**",
+        "operationId": "clickPipeCdcScalingUpdate",
         "parameters": [
           {
             "in": "path",
@@ -4509,6 +4575,7 @@
       "get": {
         "summary": "Get private endpoint configuration for region within cloud provider for an organization",
         "description": "Deprecated. Please follow [documentation](https://clickhouse.com/docs/manage/security/aws-privatelink#add-endpoint-id-to-services-allow-list) for the updated process.",
+        "operationId": "organizationPrivateEndpointConfigGetList",
         "parameters": [
           {
             "in": "path",
@@ -4597,6 +4664,7 @@
       "post": {
         "summary": "Create BYOC Infrastructure",
         "description": "Create a new BYOC Infrastructure in the organization. Returns the configuration of the newly created infrastructure",
+        "operationId": "organizationByocInfrastructureCreate",
         "parameters": [
           {
             "in": "path",
@@ -4675,6 +4743,7 @@
       "delete": {
         "summary": "Remove a BYOC infrastructure",
         "description": "Removes a BYOC Infrastructure from the organization",
+        "operationId": "organizationByocInfrastructureDelete",
         "parameters": [
           {
             "in": "path",
@@ -4745,12 +4814,100 @@
         "tags": [
           "Organization"
         ]
+      },
+      "patch": {
+        "summary": "Update BYOC Infrastructure",
+        "description": "Update configuration of the BYOC infrastructure. Returns the modified infrastructure",
+        "operationId": "organizationByocInfrastructureUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "byocInfrastructureId",
+            "description": "ID of the requested BYOC Infrastructure",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ByocInfrastructurePatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ByocConfig"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Organization"
+        ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipesReversePrivateEndpoints": {
       "get": {
         "summary": "List reverse private endpoints",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a list of reverse private endpoints for the specified service.",
+        "operationId": "clickPipeReversePrivateEndpointGetList",
         "parameters": [
           {
             "in": "path",
@@ -4837,6 +4994,7 @@
       "post": {
         "summary": "Create reverse private endpoint",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create a new reverse private endpoint.",
+        "operationId": "clickPipeReversePrivateEndpointCreate",
         "parameters": [
           {
             "in": "path",
@@ -4931,6 +5089,7 @@
       "get": {
         "summary": "Get reverse private endpoint",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the reverse private endpoint with the specified ID.",
+        "operationId": "clickPipeReversePrivateEndpointGet",
         "parameters": [
           {
             "in": "path",
@@ -5024,6 +5183,7 @@
       "delete": {
         "summary": "Delete reverse private endpoint",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete the reverse private endpoint with the specified ID.",
+        "operationId": "clickPipeReversePrivateEndpointDelete",
         "parameters": [
           {
             "in": "path",
@@ -5135,6 +5295,14 @@
           },
           "secretKey": {
             "description": "IAM secret key.",
+            "type": "string"
+          }
+        }
+      },
+      "ServiceAccount": {
+        "properties": {
+          "serviceAccountFile": {
+            "description": "Google Cloud service account JSON key file content, base64 encoded.",
             "type": "string"
           }
         }
@@ -5909,6 +6077,10 @@
           "enableFailoverSlots": {
             "description": "Enable failover for created replication slot. Requires a replication slot to NOT be set.",
             "type": "boolean"
+          },
+          "deleteOnMerge": {
+            "description": "Create tables with deletion on merge behaviour on ClickHouse",
+            "type": "boolean"
           }
         }
       },
@@ -5923,6 +6095,11 @@
             "description": "Number of rows to pull in each batch.",
             "nullable": true,
             "type": "number"
+          },
+          "deleteOnMerge": {
+            "description": "Create tables with deletion on merge behaviour on ClickHouse",
+            "nullable": true,
+            "type": "boolean"
           }
         }
       },
@@ -6097,6 +6274,115 @@
           }
         }
       },
+      "ClickPipeBigQueryPipeSettings": {
+        "properties": {
+          "replicationMode": {
+            "description": "Replication mode. BigQuery only supports snapshot mode.",
+            "type": "string",
+            "enum": [
+              "snapshot"
+            ]
+          },
+          "allowNullableColumns": {
+            "description": "Allow nullable columns in the destination table.",
+            "type": "boolean"
+          },
+          "initialLoadParallelism": {
+            "description": "Number of parallel workers during initial load.",
+            "type": "number"
+          },
+          "snapshotNumRowsPerPartition": {
+            "description": "Number of rows to snapshot per partition.",
+            "type": "number"
+          },
+          "snapshotNumberOfParallelTables": {
+            "description": "Number of parallel tables to snapshot.",
+            "type": "number"
+          }
+        }
+      },
+      "ClickPipeBigQueryPipeTableMapping": {
+        "properties": {
+          "sourceDatasetName": {
+            "description": "Source BigQuery dataset name.",
+            "type": "string"
+          },
+          "sourceTable": {
+            "description": "Source table name.",
+            "type": "string"
+          },
+          "targetTable": {
+            "description": "Target ClickHouse table name.",
+            "type": "string"
+          },
+          "excludedColumns": {
+            "type": "array",
+            "description": "Columns to exclude from the target table.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "useCustomSortingKey": {
+            "description": "Whether to use a custom sorting key for the target table.",
+            "type": "boolean"
+          },
+          "sortingKeys": {
+            "type": "array",
+            "description": "Ordered list of columns to use as sorting key for the target table.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tableEngine": {
+            "description": "Table engine to use for the target table.",
+            "type": "string",
+            "enum": [
+              "MergeTree",
+              "ReplacingMergeTree",
+              "Null"
+            ]
+          }
+        }
+      },
+      "ClickPipeBigQuerySource": {
+        "properties": {
+          "snapshotStagingPath": {
+            "description": "GCS bucket path for staging snapshot data (e.g., gs://my-bucket/staging/). Data will be automatically cleaned up after initial load.",
+            "type": "string"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeBigQueryPipeSettings"
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "Table mappings for BigQuery pipe.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeBigQueryPipeTableMapping"
+            }
+          }
+        }
+      },
+      "ClickPipeMutateBigQuerySource": {
+        "properties": {
+          "snapshotStagingPath": {
+            "description": "GCS bucket path for staging snapshot data (e.g., gs://my-bucket/staging/). Data will be automatically cleaned up after initial load.",
+            "type": "string"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeBigQueryPipeSettings"
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "Table mappings for BigQuery pipe.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeBigQueryPipeTableMapping"
+            }
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/ServiceAccount"
+          }
+        }
+      },
       "ClickPipeScaling": {
         "properties": {
           "replicas": {
@@ -6152,6 +6438,14 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePostgresSource"
+              }
+            ],
+            "nullable": true
+          },
+          "bigquery": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeBigQuerySource"
               }
             ],
             "nullable": true
@@ -6429,6 +6723,14 @@
           },
           "postgres": {
             "$ref": "#/components/schemas/ClickPipeMutatePostgresSource"
+          },
+          "bigquery": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeMutateBigQuerySource"
+              }
+            ],
+            "nullable": true
           },
           "validateSamples": {
             "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
@@ -6727,6 +7029,19 @@
           }
         }
       },
+      "ResourceTagsV1": {
+        "properties": {
+          "key": {
+            "description": "Tag key. Must be alphanumeric with dashes, underscores and dots.",
+            "type": "string"
+          },
+          "value": {
+            "description": "Tag value. Must be alphanumeric with dashes, underscores and dots.",
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      },
       "ServiceEndpoint": {
         "properties": {
           "protocol": {
@@ -6822,6 +7137,7 @@
               "starting",
               "stopping",
               "terminating",
+              "softdeleting",
               "awaking",
               "partially_running",
               "provisioning",
@@ -6846,7 +7162,7 @@
             }
           },
           "tier": {
-            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
+            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Use `minReplicaMemoryGb`, `maxReplicaMemoryGb`, and `numReplicas` instead. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
             "type": "string",
             "enum": [
               "development",
@@ -6864,7 +7180,7 @@
             "deprecated": true
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -6873,7 +7189,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -7010,6 +7326,13 @@
               "hipaa",
               "pci"
             ]
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags associated with the service.",
+            "items": {
+              "$ref": "#/components/schemas/ResourceTagsV1"
+            }
           }
         }
       },
@@ -7085,6 +7408,24 @@
             "description": "Elements to remove. Executed before \"add\" part is processed.",
             "items": {
               "$ref": "#/components/schemas/IpAccessListEntry"
+            }
+          }
+        }
+      },
+      "InstanceTagsPatch": {
+        "properties": {
+          "add": {
+            "type": "array",
+            "description": "Elements to add. Executed after \"remove\" part is processed.",
+            "items": {
+              "$ref": "#/components/schemas/ResourceTagsV1"
+            }
+          },
+          "remove": {
+            "type": "array",
+            "description": "Elements to remove. Executed before \"add\" part is processed.",
+            "items": {
+              "$ref": "#/components/schemas/ResourceTagsV1"
             }
           }
         }
@@ -7367,6 +7708,10 @@
               "aws",
               "azure"
             ]
+          },
+          "displayName": {
+            "description": "Human readable name for infrastructure",
+            "type": "string"
           }
         }
       },
@@ -7464,7 +7809,7 @@
         "properties": {
           "add": {
             "type": "array",
-            "description": "Elements to add. Executed after \"remove\" part is processed. Please use the `Update Service Basic Details` endpoint instead to modify the private endpoints.",
+            "description": "DEPRECATED. Elements to add. Executed after \"remove\" part is processed. Please use the `Update Service Basic Details` endpoint with the `privateEndpointIds` field instead to modify the private endpoints.",
             "items": {
               "$ref": "#/components/schemas/OrganizationPatchPrivateEndpoint"
             },
@@ -8356,7 +8701,7 @@
             ]
           },
           "tier": {
-            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
+            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Use `minReplicaMemoryGb`, `maxReplicaMemoryGb`, and `numReplicas` instead. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
             "type": "string",
             "enum": [
               "development",
@@ -8381,7 +8726,7 @@
             }
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8390,7 +8735,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8452,7 +8797,7 @@
           },
           "privateEndpointIds": {
             "type": "array",
-            "description": "To associate the service with private endpoints, first create the service, then use the `Update Service Basic Details` endpoint to modify private endpoints.",
+            "description": "DEPRECATED. To associate the service with private endpoints, first create the service, then use the `Update Service Basic Details` endpoint with the `privateEndpointIds` field to modify private endpoints.",
             "items": {
               "type": "string"
             },
@@ -8509,6 +8854,13 @@
               "hipaa",
               "pci"
             ]
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags associated with the service.",
+            "items": {
+              "$ref": "#/components/schemas/ResourceTagsV1"
+            }
           }
         }
       },
@@ -8543,6 +8895,13 @@
           "transparentDataEncryptionKeyId": {
             "description": "The id of the key to rotate",
             "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags associated with the service.",
+            "items": {
+              "$ref": "#/components/schemas/InstanceTagsPatch"
+            }
           }
         }
       },
@@ -8561,7 +8920,7 @@
       "ServiceScalingPatchRequest": {
         "properties": {
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8570,7 +8929,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8651,6 +9010,7 @@
               "starting",
               "stopping",
               "terminating",
+              "softdeleting",
               "awaking",
               "partially_running",
               "provisioning",
@@ -8675,7 +9035,7 @@
             }
           },
           "tier": {
-            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
+            "description": "DEPRECATED for BASIC, SCALE and ENTERPRISE organization tiers. Use `minReplicaMemoryGb`, `maxReplicaMemoryGb`, and `numReplicas` instead. Tier of the service: 'development', 'production', 'dedicated_high_mem', 'dedicated_high_cpu', 'dedicated_standard', 'dedicated_standard_n2d_standard_4', 'dedicated_standard_n2d_standard_8', 'dedicated_standard_n2d_standard_32', 'dedicated_standard_n2d_standard_128', 'dedicated_standard_n2d_standard_32_16SSD', 'dedicated_standard_n2d_standard_64_24SSD'. Production services scale, Development are fixed size. Azure services don't support Development tier",
             "type": "string",
             "enum": [
               "development",
@@ -8693,7 +9053,7 @@
             "deprecated": true
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8702,7 +9062,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -8839,6 +9199,13 @@
               "hipaa",
               "pci"
             ]
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags associated with the service.",
+            "items": {
+              "$ref": "#/components/schemas/ResourceTagsV1"
+            }
           }
         }
       },
@@ -9135,7 +9502,8 @@
             "nullable": true,
             "type": "integer",
             "minimum": 0,
-            "maximum": 34
+            "maximum": 34,
+            "deprecated": true
           },
           "replicaCpuMillicores": {
             "description": "CPU in millicores for each replica. Use to scale streaming pipes.",
@@ -9238,6 +9606,18 @@
           },
           "vpcCidrRange": {
             "description": "CIDR range for VPC",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Human readable name for infrastructure",
+            "type": "string"
+          }
+        }
+      },
+      "ByocInfrastructurePatchRequest": {
+        "properties": {
+          "displayName": {
+            "description": "Human readable name for infrastructure object",
             "type": "string"
           }
         }
