@@ -25,7 +25,7 @@
     "@img/sharp-libvips-linux-x64": "1.2.3",
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.6.4",
-    "@types/node": "25.0.8",
+    "@types/node": "25.0.9",
     "@types/react": "19.2.8",
     "@typescript/sandbox": "^0.1.0",
     "dompurify": "3.3.1",
