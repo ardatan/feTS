@@ -168,7 +168,9 @@ export type Circular<TJSONSchema extends JSONSchema> = TJSONSchema extends {
   ? TJSONSchema extends PropertyValue<TJSONSchema, Property<TJSONSchema>>
     ? true
     : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
-  : false;
+  : TJSONSchema extends { items: JSONSchema }
+    ? true
+    : false;
 
 export type Property<TJSONSchema extends JSONSchema> = keyof TJSONSchema['properties'];
 export type PropertyValue<
