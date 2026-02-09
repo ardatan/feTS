@@ -76,7 +76,7 @@
     "estree-util-value-to-estree": "3.5.0",
     "js-yaml": "4.1.1",
     "micromatch": "4.0.8",
-    "next": "15.5.12",
+    "next": "16.1.6",
     "prismjs": "1.30.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
