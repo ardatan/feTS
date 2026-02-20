@@ -49,7 +49,7 @@
     "bob-the-bundler": "7.0.1",
     "cookie": "1.1.1",
     "cross-env": "10.1.0",
-    "eslint": "9.39.3",
+    "eslint": "10.0.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-n": "17.24.0",
