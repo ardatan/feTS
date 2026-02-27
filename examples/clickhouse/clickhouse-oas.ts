@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-326044",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-530492",
       "email": "support@clickhouse.com"
     }
   },
@@ -51,7 +51,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -65,6 +65,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -121,7 +152,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -135,6 +166,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -198,7 +260,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -212,6 +274,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -262,7 +355,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -276,6 +369,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -347,7 +471,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -361,6 +485,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -424,7 +579,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -438,6 +593,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -504,7 +690,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -518,6 +704,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -591,7 +808,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -605,6 +822,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -666,7 +914,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -680,6 +928,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -746,7 +1025,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -760,6 +1039,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -826,7 +1136,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -840,6 +1150,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -901,7 +1242,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -915,6 +1256,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -988,7 +1360,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1002,6 +1374,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1077,7 +1480,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1091,6 +1494,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1166,7 +1600,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1180,6 +1614,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1256,7 +1721,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1270,6 +1735,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1345,7 +1841,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1359,6 +1855,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1434,7 +1961,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1448,6 +1975,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1508,7 +2066,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1522,6 +2080,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1591,7 +2180,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1605,6 +2194,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1681,7 +2301,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1695,6 +2315,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1761,7 +2412,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1775,6 +2426,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1848,7 +2530,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1862,6 +2544,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -1928,7 +2641,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1942,6 +2655,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2021,7 +2765,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2035,6 +2779,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2114,7 +2889,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2128,6 +2903,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2195,7 +3001,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2209,6 +3015,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2274,7 +3111,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2288,6 +3125,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2351,7 +3219,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2365,6 +3233,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2431,7 +3330,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2445,6 +3344,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2518,7 +3448,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2532,6 +3462,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2593,7 +3554,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2607,6 +3568,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2666,7 +3658,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2680,6 +3672,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2746,7 +3769,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2760,6 +3783,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2833,7 +3887,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2847,6 +3901,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2908,7 +3993,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2922,6 +4007,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -2981,7 +4097,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2995,6 +4111,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3058,7 +4205,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3072,6 +4219,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3138,7 +4316,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3152,6 +4330,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3213,7 +4422,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3227,6 +4436,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3304,7 +4544,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3318,6 +4558,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3383,7 +4654,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3397,6 +4668,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3485,7 +4787,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3499,6 +4801,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3568,7 +4901,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3582,6 +4915,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3661,7 +5025,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3675,6 +5039,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3757,7 +5152,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3771,6 +5166,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3860,7 +5286,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3874,6 +5300,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -3951,7 +5408,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3965,6 +5422,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4047,7 +5535,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4061,6 +5549,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4150,7 +5669,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4164,6 +5683,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4184,8 +5734,8 @@
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/scaling": {
       "patch": {
-        "summary": "Scaling ClickPipe",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Change scaling settings for the specified ClickPipe.",
+        "summary": "Update ClickPipe scaling",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Change scaling settings for the specified ClickPipe. This endpoint supports Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob).\n\n**Note:** For database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery), use the [Update CDC ClickPipes scaling](#tag/ClickPipes/operation/clickPipeCdcScalingUpdate) endpoint instead.",
         "operationId": "clickPipeScalingUpdate",
         "parameters": [
           {
@@ -4255,7 +5805,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4269,6 +5819,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4360,7 +5941,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4374,6 +5955,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4395,7 +6007,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipesCdcScaling": {
       "get": {
         "summary": "Get CDC ClickPipes scaling",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Get scaling settings for DB ClickPipes.\n\nThe infrastructure is shared between all DB ClickPipes in the service, both for initial load and CDC. For billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit.\n\n**This endpoint becomes available once at least one DB ClickPipe was provisioned.**",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Get scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. For billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
         "operationId": "clickPipeCdcScalingGet",
         "parameters": [
           {
@@ -4446,7 +6058,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4460,6 +6072,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4479,7 +6122,7 @@
       },
       "patch": {
         "summary": "Update CDC ClickPipes scaling",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update scaling settings for DB ClickPipes.\n\nThe infrastructure is shared between all DB ClickPipes in the service, both for initial load and CDC. Scaling settings may take a few minutes to fully propagate.\n\nFor billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit. If your organization tier changes, DB ClickPipes will be [rescaled](https://clickhouse.com/docs/cloud/manage/billing/overview#compute) appropriately.\n\n**This endpoint becomes available once at least one DB ClickPipe was provisioned.**",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. Scaling settings may take a few minutes to fully propagate.\n\nFor billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit. If your organization tier changes, database ClickPipes will be [rescaled](https://clickhouse.com/docs/cloud/manage/billing/overview#compute) appropriately.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
         "operationId": "clickPipeCdcScalingUpdate",
         "parameters": [
           {
@@ -4539,7 +6182,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4553,6 +6196,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4562,6 +6236,1374 @@
         },
         "tags": [
           "ClickPipes"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/dashboards": {
+      "get": {
+        "summary": "ClickStack: List Dashboards",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a list of all dashboards for the authenticated team",
+        "operationId": "clickStackListDashboards",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClickStackDashboardResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "post": {
+        "summary": "ClickStack: Create Dashboard",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Creates a new dashboard",
+        "operationId": "clickStackCreateDashboard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClickStackCreateDashboardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackDashboardResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/dashboards/{clickStackDashboardId}": {
+      "get": {
+        "summary": "ClickStack: Get Dashboard",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a specific dashboard by ID",
+        "operationId": "clickStackGetDashboard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackDashboardId",
+            "description": "ClickStack Dashboard ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackDashboardResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "put": {
+        "summary": "ClickStack: Update Dashboard",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Updates an existing dashboard",
+        "operationId": "clickStackUpdateDashboard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackDashboardId",
+            "description": "ClickStack Dashboard ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClickStackUpdateDashboardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackDashboardResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "ClickStack: Delete Dashboard",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Deletes a dashboard",
+        "operationId": "clickStackDeleteDashboard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackDashboardId",
+            "description": "ClickStack Dashboard ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/alerts": {
+      "get": {
+        "summary": "ClickStack: List Alerts",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a list of all alerts for the authenticated team",
+        "operationId": "clickStackListAlerts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClickStackAlertResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "post": {
+        "summary": "ClickStack: Create Alert",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Creates a new alert",
+        "operationId": "clickStackCreateAlert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClickStackCreateAlertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackAlertResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/sources": {
+      "get": {
+        "summary": "ClickStack: List Sources",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a list of all sources for the authenticated team",
+        "operationId": "clickStackListSources",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClickStackSource"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/alerts/{clickStackAlertId}": {
+      "get": {
+        "summary": "ClickStack: Get Alert",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a specific alert by ID",
+        "operationId": "clickStackGetAlert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackAlertId",
+            "description": "ClickStack Alert ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackAlertResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "put": {
+        "summary": "ClickStack: Update Alert",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Updates an existing alert",
+        "operationId": "clickStackUpdateAlert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackAlertId",
+            "description": "ClickStack Alert ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClickStackUpdateAlertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ClickStackAlertResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "ClickStack: Delete Alert",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Deletes an alert",
+        "operationId": "clickStackDeleteAlert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "clickStackAlertId",
+            "description": "ClickStack Alert ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
         ],
         "x-badges": [
           {
@@ -4633,7 +7675,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4647,6 +7689,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4713,7 +7786,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4727,6 +7800,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4790,7 +7894,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4804,6 +7908,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4877,7 +8012,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4891,6 +8026,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -4960,7 +8126,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4974,6 +8140,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -5053,7 +8250,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5067,6 +8264,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -5149,7 +8377,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5163,6 +8391,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -5240,7 +8499,7 @@
             }
           },
           "400": {
-            "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5254,6 +8513,37 @@
                     "error": {
                       "type": "string",
                       "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "INTERNAL_ERROR": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
                     }
                   }
                 }
@@ -5278,12 +8568,15 @@
       "PLAIN": {
         "properties": {
           "username": {
-            "description": "Username.",
-            "type": "string"
+            "description": "Database username.",
+            "type": "string",
+            "example": "postgres_user"
           },
           "password": {
-            "description": "Password.",
-            "type": "string"
+            "description": "Database password.",
+            "type": "string",
+            "format": "password",
+            "example": "your_secure_password"
           }
         }
       },
@@ -5786,7 +9079,9 @@
               "s3",
               "gcs",
               "dospaces",
-              "azureblobstorage"
+              "azureblobstorage",
+              "cloudflarer2",
+              "ovhobjectstorage"
             ]
           },
           "format": {
@@ -5836,19 +9131,20 @@
             "type": "boolean"
           },
           "queueUrl": {
-            "description": "SQS queue URL for event-based continuous ingestion. When provided, files are ingested based on S3 event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
+            "description": "Queue URL for event-based continuous ingestion. For S3, provide an SQS queue URL. For GCS, provide a Pub/Sub subscription (e.g. projects/{project}/subscriptions/{name}). When provided, files are ingested based on event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
             "nullable": true,
             "type": "string",
             "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
-            "description": "Authentication method. CONNECTION_STRING is for Azure Blob Storage. IAM_ROLE and IAM_USER are for AWS S3/GCS/DigitalOcean. If not provided, no authentication is used.",
+            "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
             "nullable": true,
             "type": "string",
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
-              "CONNECTION_STRING"
+              "CONNECTION_STRING",
+              "SERVICE_ACCOUNT"
             ]
           },
           "iamRole": {
@@ -5886,7 +9182,9 @@
               "s3",
               "gcs",
               "dospaces",
-              "azureblobstorage"
+              "azureblobstorage",
+              "cloudflarer2",
+              "ovhobjectstorage"
             ]
           },
           "format": {
@@ -5936,19 +9234,20 @@
             "type": "boolean"
           },
           "queueUrl": {
-            "description": "SQS queue URL for event-based continuous ingestion. When provided, files are ingested based on S3 event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
+            "description": "Queue URL for event-based continuous ingestion. For S3, provide an SQS queue URL. For GCS, provide a Pub/Sub subscription (e.g. projects/{project}/subscriptions/{name}). When provided, files are ingested based on event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
             "nullable": true,
             "type": "string",
             "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
-            "description": "Authentication method. CONNECTION_STRING is for Azure Blob Storage. IAM_ROLE and IAM_USER are for AWS S3/GCS/DigitalOcean. If not provided, no authentication is used.",
+            "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
             "nullable": true,
             "type": "string",
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
-              "CONNECTION_STRING"
+              "CONNECTION_STRING",
+              "SERVICE_ACCOUNT"
             ]
           },
           "iamRole": {
@@ -5982,19 +9281,25 @@
               }
             ],
             "nullable": true
+          },
+          "serviceAccountKey": {
+            "description": "Base64-encoded GCP service account JSON key. Required when authentication is SERVICE_ACCOUNT.",
+            "nullable": true,
+            "type": "string"
           }
         }
       },
       "ClickPipePatchObjectStorageSource": {
         "properties": {
           "authentication": {
-            "description": "Authentication method. CONNECTION_STRING is for Azure Blob Storage. IAM_ROLE and IAM_USER are for AWS S3/GCS/DigitalOcean. If not provided, no authentication is used.",
+            "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
             "nullable": true,
             "type": "string",
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
-              "CONNECTION_STRING"
+              "CONNECTION_STRING",
+              "SERVICE_ACCOUNT"
             ]
           },
           "iamRole": {
@@ -6028,173 +9333,249 @@
               }
             ],
             "nullable": true
+          },
+          "serviceAccountKey": {
+            "description": "Base64-encoded GCP service account JSON key. Required when authentication is SERVICE_ACCOUNT.",
+            "nullable": true,
+            "type": "string"
           }
         }
       },
       "ClickPipePostgresPipeSettings": {
         "properties": {
           "syncIntervalSeconds": {
-            "description": "Interval in seconds to sync data from Postgres.",
-            "type": "number"
+            "description": "Interval in seconds to sync data from Postgres during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
           },
           "pullBatchSize": {
-            "description": "Number of rows to pull in each batch.",
-            "type": "number"
+            "description": "Number of rows to pull in each batch during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1000
           },
           "publicationName": {
-            "description": "Publication name to use for replication.",
-            "type": "string"
+            "description": "PostgreSQL publication name to use for CDC replication. If not provided, ClickPipes will create one automatically.",
+            "type": "string",
+            "example": "clickpipes_publication"
           },
           "replicationMode": {
-            "description": "Replication mode to use for the pipe.",
+            "description": "Replication mode: \"cdc\" (change data capture with initial snapshot), \"snapshot\" (one-time snapshot only), or \"cdc_only\" (CDC without initial snapshot).",
             "type": "string",
             "enum": [
               "cdc",
               "snapshot",
               "cdc_only"
-            ]
+            ],
+            "example": "cdc"
           },
           "replicationSlotName": {
-            "description": "Replication slot name to use for replication.",
-            "type": "string"
+            "description": "PostgreSQL replication slot name. Only valid for \"cdc_only\" mode. For \"cdc\" mode, ClickPipes creates the slot automatically.",
+            "type": "string",
+            "example": "clickpipes_slot"
           },
           "allowNullableColumns": {
-            "description": "Allow nullable columns in the destination table.",
-            "type": "boolean"
+            "description": "Preserve nullability from Postgres in the destination ClickHouse table. When true, columns without NOT NULL constraints are created as Nullable(...). When false, all columns are non-nullable and NULL values are replaced with the default value for the type. Note: Nullable types have performance overhead in ClickHouse.",
+            "type": "boolean",
+            "example": false
           },
           "initialLoadParallelism": {
-            "description": "Number of parallel tables to sync during initial load.",
-            "type": "number"
+            "description": "Number of parallel workers to use per table in the initial snapshot phase.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
           },
           "snapshotNumRowsPerPartition": {
-            "description": "Number of rows to snapshot per partition.",
-            "type": "number"
+            "description": "Number of rows per partition during the snapshot phase.",
+            "type": "integer",
+            "minimum": 1000,
+            "example": 100000
           },
           "snapshotNumberOfParallelTables": {
-            "description": "Number of parallel tables to snapshot.",
-            "type": "number"
+            "description": "Number of tables to snapshot in parallel during the initial load phase.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
           },
           "enableFailoverSlots": {
-            "description": "Enable failover for created replication slot. Requires a replication slot to NOT be set.",
-            "type": "boolean"
+            "description": "Enable failover support for the replication slot on PG17 and newer. Only applicable when ClickPipes creates the replication slot (i.e., replicationSlotName is NOT provided).",
+            "type": "boolean",
+            "example": false
           },
           "deleteOnMerge": {
-            "description": "Create tables with deletion on merge behaviour on ClickHouse",
-            "type": "boolean"
+            "description": "Enable hard delete behavior in ReplacingMergeTree for PostgreSQL DELETE operations.",
+            "type": "boolean",
+            "example": false
           }
         }
       },
       "ClickPipePatchPostgresPipeSettings": {
         "properties": {
           "syncIntervalSeconds": {
-            "description": "Interval in seconds to sync data from Postgres.",
+            "description": "Interval in seconds to sync data from Postgres during CDC replication.",
             "nullable": true,
-            "type": "number"
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
           },
           "pullBatchSize": {
-            "description": "Number of rows to pull in each batch.",
+            "description": "Number of rows to pull in each batch during CDC replication.",
             "nullable": true,
-            "type": "number"
+            "type": "integer",
+            "minimum": 1,
+            "example": 1000
           },
           "deleteOnMerge": {
-            "description": "Create tables with deletion on merge behaviour on ClickHouse",
+            "description": "Enable hard delete behavior in ReplacingMergeTree for PostgreSQL DELETE operations.",
             "nullable": true,
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           }
         }
       },
       "ClickPipePostgresPipeTableMapping": {
         "properties": {
           "sourceSchemaName": {
-            "description": "Source schema name.",
-            "type": "string"
+            "description": "PostgreSQL source schema name.",
+            "type": "string",
+            "example": "public"
           },
           "sourceTable": {
-            "description": "Source table name.",
-            "type": "string"
+            "description": "PostgreSQL source table name.",
+            "type": "string",
+            "example": "users"
           },
           "targetTable": {
-            "description": "Target table name.",
-            "type": "string"
+            "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_schema_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
+            "type": "string",
+            "example": "public_users"
           },
           "excludedColumns": {
             "type": "array",
-            "description": "Columns to exclude from the target table.",
+            "description": "List of column names to exclude from replication. Column names must be unique within this list.",
             "items": {
               "type": "string"
             }
           },
           "useCustomSortingKey": {
-            "description": "Whether to use a custom sorting key for the target table.",
-            "type": "boolean"
+            "description": "Whether to use a custom sorting key. If true, sortingKeys must be provided. If false or omitted, the default sorting key is the PostgreSQL primary key.",
+            "type": "boolean",
+            "example": false
           },
           "sortingKeys": {
             "type": "array",
-            "description": "Ordered list of columns to use as sorting key for the target table.",
+            "description": "Ordered list of column names to use as the sorting (ORDER BY) key in ClickHouse. Only used when useCustomSortingKey is true. Column names must be unique within this list.",
             "items": {
               "type": "string"
             }
           },
           "tableEngine": {
-            "description": "Table engine to use for the target table.",
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
             "type": "string",
             "enum": [
               "MergeTree",
               "ReplacingMergeTree",
               "Null"
-            ]
+            ],
+            "example": "ReplacingMergeTree"
+          },
+          "partitionKey": {
+            "description": "Custom partitioning column used for parallel snapshotting. Only beneficial for PostgreSQL 13 (no benefit for PG14+, which supports indexed ctid scans). Must be an indexed column of type: `smallint`, `integer`, `bigint`, `timestamp without time zone`, or `timestamp with time zone`. Unrelated to ClickHouse partitioning.",
+            "type": "string",
+            "example": "id"
           }
         }
       },
       "ClickPipePatchPostgresPipeRemoveTableMapping": {
         "properties": {
           "sourceSchemaName": {
-            "description": "Source schema name.",
+            "description": "PostgreSQL source schema name.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "example": "public"
           },
           "sourceTable": {
-            "description": "Source table name.",
+            "description": "PostgreSQL source table name.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "example": "users"
           },
           "targetTable": {
-            "description": "Target table name.",
+            "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_schema_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "example": "public_users"
           },
           "tableEngine": {
-            "description": "Table engine to use for the target table.",
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
             "nullable": true,
             "type": "string",
             "enum": [
               "MergeTree",
               "ReplacingMergeTree",
               "Null"
-            ]
+            ],
+            "example": "ReplacingMergeTree"
+          },
+          "partitionKey": {
+            "description": "Custom partitioning column used for parallel snapshotting. Only beneficial for PostgreSQL 13 (no benefit for PG14+, which supports indexed ctid scans). Must be an indexed column of type: `smallint`, `integer`, `bigint`, `timestamp without time zone`, or `timestamp with time zone`. Unrelated to ClickHouse partitioning.",
+            "nullable": true,
+            "type": "string",
+            "example": "id"
           }
         }
       },
       "ClickPipePostgresSource": {
         "properties": {
           "host": {
-            "description": "Host of the Postgres instance to connect to.",
-            "type": "string"
+            "description": "PostgreSQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
+            "type": "string",
+            "format": "hostname",
+            "example": "my-postgres-server.example.com"
           },
           "port": {
-            "description": "Port of the Postgres instance to connect to.",
-            "type": "number"
+            "description": "PostgreSQL server port.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 5432
           },
           "database": {
-            "description": "Database of the Postgres instance to connect to.",
-            "type": "string"
+            "description": "PostgreSQL database name to replicate from.",
+            "type": "string",
+            "example": "production_db"
+          },
+          "authentication": {
+            "description": "Authentication method for Postgres connection.",
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
+            ],
+            "example": "IAM_ROLE"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "my-postgres-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the Postgres server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
           },
           "settings": {
             "$ref": "#/components/schemas/ClickPipePostgresPipeSettings"
           },
           "tableMappings": {
             "type": "array",
-            "description": "Table mappings for Postgres pipe.",
+            "description": "List of table mappings defining which PostgreSQL tables to replicate and how they map to ClickHouse tables.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePostgresPipeTableMapping"
             }
@@ -6203,71 +9584,130 @@
       },
       "ClickPipeMutatePostgresSource": {
         "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
           "host": {
-            "description": "Host of the Postgres instance to connect to.",
-            "type": "string"
+            "description": "PostgreSQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
+            "type": "string",
+            "format": "hostname",
+            "example": "my-postgres-server.example.com"
           },
           "port": {
-            "description": "Port of the Postgres instance to connect to.",
-            "type": "number"
+            "description": "PostgreSQL server port.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 5432
           },
           "database": {
-            "description": "Database of the Postgres instance to connect to.",
-            "type": "string"
+            "description": "PostgreSQL database name to replicate from.",
+            "type": "string",
+            "example": "production_db"
           },
           "settings": {
             "$ref": "#/components/schemas/ClickPipePostgresPipeSettings"
           },
+          "authentication": {
+            "description": "Authentication method for Postgres connection.",
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
+            ],
+            "example": "IAM_ROLE"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "my-postgres-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the Postgres server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
           "tableMappings": {
             "type": "array",
-            "description": "Table mappings for Postgres pipe.",
+            "description": "List of table mappings defining which PostgreSQL tables to replicate and how they map to ClickHouse tables.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePostgresPipeTableMapping"
             }
-          },
-          "credentials": {
-            "$ref": "#/components/schemas/PLAIN"
           }
         }
       },
       "ClickPipePatchPostgresSource": {
         "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
           "host": {
-            "description": "Host of the Postgres instance to connect to.",
+            "description": "PostgreSQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "format": "hostname",
+            "example": "my-postgres-server.example.com"
           },
           "port": {
-            "description": "Port of the Postgres instance to connect to.",
+            "description": "PostgreSQL server port.",
             "nullable": true,
-            "type": "number"
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 5432
           },
           "database": {
-            "description": "Database of the Postgres instance to connect to.",
+            "description": "PostgreSQL database name to replicate from.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "example": "production_db"
           },
-          "credentials": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/PLAIN"
-              }
+          "authentication": {
+            "description": "Authentication method for Postgres connection.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
             ],
-            "nullable": true
+            "example": "IAM_ROLE"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "nullable": true,
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "nullable": true,
+            "type": "string",
+            "example": "my-postgres-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the Postgres server certificate.",
+            "nullable": true,
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
           },
           "settings": {
             "$ref": "#/components/schemas/ClickPipePatchPostgresPipeSettings"
           },
           "tableMappingsToAdd": {
             "type": "array",
-            "description": "Table mappings to add to Postgres pipe.",
+            "description": "Table mappings to add to the pipe. Can be an empty array if no tables are being added.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePostgresPipeTableMapping"
             }
           },
           "tableMappingsToRemove": {
             "type": "array",
-            "description": "Table mappings to remove from Postgres pipe.",
+            "description": "Table mappings to remove from the pipe. Only sourceSchemaName, sourceTable, and targetTable are required for removal.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePatchPostgresPipeRemoveTableMapping"
             }
@@ -6387,7 +9827,9 @@
         "properties": {
           "replicas": {
             "description": "Desired number of replicas. Only for scalable pipes.",
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 40
           },
           "concurrency": {
             "description": "Desired number of concurrency. Only for S3 pipes. If set to 0, concurrency is auto-scaled based on the cluster memory.",
@@ -6660,11 +10102,29 @@
           },
           "name": {
             "description": "Name of the ClickPipe.",
-            "type": "string"
+            "type": "string",
+            "example": "my_postgres_pipe"
           },
           "state": {
-            "description": "Current state of the ClickPipe.",
-            "type": "string"
+            "description": "Current lifecycle state of the ClickPipe. For database pipes: \"Provisioning\" (initial setup), \"Setup\" (configuring replication), \"Snapshot\" (initial data load), \"Running\" (actively replicating), \"Pausing\" (transitioning to paused state), \"Paused\" (temporarily paused), \"Modifying\" (applying configuration updates), \"Resync\" (swapping resync tables with original tables), \"Failed\" (error occurred), \"Unknown\". For streaming/object storage pipes (Kafka, Kinesis, S3): \"Unknown\" (initial state), \"Provisioning\" (setting up resources), \"Running\" (actively ingesting data), \"Stopping\" (transitioning to stopped state), \"Stopped\" (manually stopped, can be restarted), \"Completed\" (batch ingestion finished for object storage), \"Failed\" (error occurred, pipe stopped), \"InternalError\" (internal system error).",
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Provisioning",
+              "Running",
+              "Stopping",
+              "Stopped",
+              "Failed",
+              "Completed",
+              "InternalError",
+              "Setup",
+              "Snapshot",
+              "Paused",
+              "Pausing",
+              "Modifying",
+              "Resync"
+            ],
+            "example": "Running"
           },
           "scaling": {
             "$ref": "#/components/schemas/ClickPipeScaling"
@@ -6686,12 +10146,14 @@
             "$ref": "#/components/schemas/ClickPipeSettings"
           },
           "createdAt": {
-            "description": "Creation date of the ClickPipe.",
-            "type": "string"
+            "description": "Creation timestamp of the ClickPipe in ISO 8601 format.",
+            "type": "string",
+            "format": "date-time"
           },
           "updatedAt": {
-            "description": "Last update date of the ClickPipe.",
-            "type": "string"
+            "description": "Last update timestamp of the ClickPipe in ISO 8601 format.",
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -7201,15 +10663,15 @@
             "description": "Minimum total memory of each replica during auto-scaling in Gb. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 356* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
+            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 236* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 120
           },
@@ -7304,11 +10766,7 @@
               "v1-highmem-s",
               "v1-highmem-m",
               "v1-highmem-l",
-              "v1-highmem-xl",
-              "v1-highcpu-s",
-              "v1-highcpu-m",
-              "v1-highcpu-l",
-              "v1-highcpu-xl"
+              "v1-highmem-xl"
             ]
           },
           "transparentDataEncryptionKeyId": {
@@ -7333,6 +10791,10 @@
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
             }
+          },
+          "enableCoreDumps": {
+            "description": "True if the service's underline infra is enabled for collecting core dumps. This is an experimental feature",
+            "type": "boolean"
           }
         }
       },
@@ -7744,6 +11206,10 @@
             "items": {
               "$ref": "#/components/schemas/ByocConfig"
             }
+          },
+          "enableCoreDumps": {
+            "description": "Whether crash reports (core dumps) collection is enabled for services in the organization. When disabled at the organization level, individual services cannot enable crash reports.",
+            "type": "boolean"
           }
         }
       },
@@ -7820,6 +11286,191 @@
             "description": "Elements to remove. Executed before \"add\" part is processed.",
             "items": {
               "$ref": "#/components/schemas/OrganizationPatchPrivateEndpoint"
+            }
+          }
+        }
+      },
+      "RBACPolicyTags": {
+        "properties": {
+          "grants": {
+            "type": "array",
+            "description": "Optional list of database grants (e.g., database names)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "roleV2": {
+            "description": "Optional SQL console role type",
+            "type": "string",
+            "enum": [
+              "sql-console-readonly",
+              "sql-console-admin"
+            ]
+          }
+        }
+      },
+      "RBACPolicy": {
+        "properties": {
+          "id": {
+            "description": "Unique policy identifier",
+            "type": "string"
+          },
+          "roleId": {
+            "description": "ID of the role this policy belongs to",
+            "type": "string"
+          },
+          "tenantId": {
+            "description": "Tenant resource ID (e.g., organization/uuid)",
+            "type": "string"
+          },
+          "allowDeny": {
+            "description": "Whether this policy allows or denies access",
+            "type": "string",
+            "enum": [
+              "ALLOW",
+              "DENY"
+            ]
+          },
+          "permissions": {
+            "type": "array",
+            "description": "List of permissions granted or denied by this policy",
+            "items": {
+              "type": "string"
+            }
+          },
+          "resources": {
+            "type": "array",
+            "description": "List of resource IDs this policy applies to (e.g., instance/uuid, instance/*)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "$ref": "#/components/schemas/RBACPolicyTags"
+          }
+        }
+      },
+      "RBACRole": {
+        "properties": {
+          "id": {
+            "description": "Unique role identifier",
+            "type": "string"
+          },
+          "tenantId": {
+            "description": "Tenant resource ID (e.g., organization/uuid)",
+            "type": "string"
+          },
+          "ownerId": {
+            "description": "Owner resource ID (e.g., organization/uuid)",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the role",
+            "type": "string"
+          },
+          "type": {
+            "description": "Whether this is a system role or a custom role",
+            "type": "string",
+            "enum": [
+              "system",
+              "custom"
+            ]
+          },
+          "actors": {
+            "type": "array",
+            "description": "List of actor resource IDs assigned to this role (e.g., user/uuid, apiKey/uuid)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "policies": {
+            "type": "array",
+            "description": "List of policies associated with this role",
+            "items": {
+              "$ref": "#/components/schemas/RBACPolicy"
+            }
+          },
+          "createdAt": {
+            "description": "Timestamp when the role was created. ISO-8601.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "description": "Timestamp when the role was last updated. ISO-8601.",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "RBACPolicyCreateRequest": {
+        "properties": {
+          "allowDeny": {
+            "description": "Whether this policy allows or denies access",
+            "type": "string",
+            "enum": [
+              "ALLOW",
+              "DENY"
+            ]
+          },
+          "permissions": {
+            "type": "array",
+            "description": "List of permissions to grant or deny (e.g., [\"control-plane:organization:view\"])",
+            "items": {
+              "type": "string"
+            }
+          },
+          "resources": {
+            "type": "array",
+            "description": "List of resource IDs this policy applies to (e.g., [\"instance/uuid\", \"instance/*\"])",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "$ref": "#/components/schemas/RBACPolicyTags"
+          }
+        }
+      },
+      "RoleCreateRequest": {
+        "properties": {
+          "name": {
+            "description": "Name of the role",
+            "type": "string"
+          },
+          "actors": {
+            "type": "array",
+            "description": "List of actor resource IDs to assign to this role (e.g., [\"user/uuid\", \"apiKey/uuid\"])",
+            "items": {
+              "type": "string"
+            }
+          },
+          "policies": {
+            "type": "array",
+            "description": "List of policies to create for this role",
+            "items": {
+              "$ref": "#/components/schemas/RBACPolicyCreateRequest"
+            }
+          }
+        }
+      },
+      "RoleUpdateRequest": {
+        "properties": {
+          "name": {
+            "description": "New name for the role",
+            "type": "string"
+          },
+          "actors": {
+            "type": "array",
+            "description": "New list of actor resource IDs (replaces existing actors)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "policies": {
+            "type": "array",
+            "description": "New list of policies (replaces existing policies)",
+            "items": {
+              "$ref": "#/components/schemas/RBACPolicyCreateRequest"
             }
           }
         }
@@ -7921,6 +11572,27 @@
           "userAgent": {
             "description": "User agent of the actor",
             "type": "string"
+          },
+          "targetKeyId": {
+            "description": "For 'openapi_key_update' activities: the ID of the API key that was updated.",
+            "type": "string"
+          },
+          "keyUpdateType": {
+            "description": "For 'openapi_key_update' activities: the type of update that was performed.",
+            "type": "string",
+            "enum": [
+              "created",
+              "deleted",
+              "name-changed",
+              "role-changed",
+              "state-changed",
+              "date-changed",
+              "ip-access-list-changed",
+              "org-role-changed",
+              "default-service-role-changed",
+              "service-role-changed",
+              "roles-v2-changed"
+            ]
           }
         }
       },
@@ -8470,6 +12142,2112 @@
           }
         }
       },
+      "ClickStackAlertSilenced": {
+        "properties": {
+          "by": {
+            "description": "User ID who silenced the alert.",
+            "nullable": true,
+            "type": "string"
+          },
+          "at": {
+            "description": "Silence start timestamp.",
+            "type": "string"
+          },
+          "until": {
+            "description": "Silence end timestamp.",
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackAlertChannelEmail": {
+        "properties": {
+          "type": {
+            "description": "Channel type.",
+            "type": "string",
+            "enum": [
+              "webhook",
+              "email"
+            ]
+          },
+          "emailRecipients": {
+            "type": "array",
+            "description": "Email recipients for email alerts.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "emailRecipients"
+        ]
+      },
+      "ClickStackAlertChannelWebhook": {
+        "properties": {
+          "type": {
+            "description": "Channel type.",
+            "type": "string",
+            "enum": [
+              "webhook",
+              "email"
+            ]
+          },
+          "webhookId": {
+            "description": "Webhook destination ID.",
+            "type": "string"
+          },
+          "webhookService": {
+            "description": "Webhook service type (e.g., slack_api).",
+            "nullable": true,
+            "type": "string"
+          },
+          "slackChannelId": {
+            "description": "Slack channel ID for Slack webhooks.",
+            "nullable": true,
+            "type": "string"
+          },
+          "severity": {
+            "description": "Severity label used by PagerDuty API webhooks.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "critical",
+              "error",
+              "warning",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "webhookId"
+        ]
+      },
+      "ClickStackAlertChannel": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackAlertChannelEmail"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackAlertChannelWebhook"
+          }
+        ]
+      },
+      "ClickStackAlert": {
+        "properties": {
+          "dashboardId": {
+            "description": "Dashboard ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "tileId": {
+            "description": "Tile ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedSearchId": {
+            "description": "Saved search ID for saved_search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "groupBy": {
+            "description": "Group-by key for saved search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "threshold": {
+            "description": "Threshold value for triggering the alert.",
+            "type": "number"
+          },
+          "interval": {
+            "description": "Evaluation interval.",
+            "type": "string",
+            "enum": [
+              "1m",
+              "5m",
+              "15m",
+              "30m",
+              "1h",
+              "6h",
+              "12h",
+              "1d"
+            ]
+          },
+          "source": {
+            "description": "Alert source type.",
+            "type": "string",
+            "enum": [
+              "saved_search",
+              "tile"
+            ]
+          },
+          "thresholdType": {
+            "description": "Threshold comparison direction.",
+            "type": "string",
+            "enum": [
+              "above",
+              "below"
+            ]
+          },
+          "channel": {
+            "$ref": "#/components/schemas/ClickStackAlertChannel"
+          },
+          "name": {
+            "description": "Human-friendly alert name.",
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "description": "Alert message template.",
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackAlertResponse": {
+        "properties": {
+          "dashboardId": {
+            "description": "Dashboard ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "tileId": {
+            "description": "Tile ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedSearchId": {
+            "description": "Saved search ID for saved_search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "groupBy": {
+            "description": "Group-by key for saved search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "threshold": {
+            "description": "Threshold value for triggering the alert.",
+            "type": "number"
+          },
+          "interval": {
+            "description": "Evaluation interval.",
+            "type": "string",
+            "enum": [
+              "1m",
+              "5m",
+              "15m",
+              "30m",
+              "1h",
+              "6h",
+              "12h",
+              "1d"
+            ]
+          },
+          "source": {
+            "description": "Alert source type.",
+            "type": "string",
+            "enum": [
+              "saved_search",
+              "tile"
+            ]
+          },
+          "thresholdType": {
+            "description": "Threshold comparison direction.",
+            "type": "string",
+            "enum": [
+              "above",
+              "below"
+            ]
+          },
+          "channel": {
+            "$ref": "#/components/schemas/ClickStackAlertChannel"
+          },
+          "name": {
+            "description": "Human-friendly alert name.",
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "description": "Alert message template.",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique alert identifier.",
+            "type": "string"
+          },
+          "state": {
+            "description": "Current alert state.",
+            "type": "string",
+            "enum": [
+              "ALERT",
+              "OK",
+              "INSUFFICIENT_DATA",
+              "DISABLED"
+            ]
+          },
+          "teamId": {
+            "description": "Team identifier.",
+            "type": "string"
+          },
+          "silenced": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickStackAlertSilenced"
+              }
+            ],
+            "nullable": true
+          },
+          "createdAt": {
+            "description": "Creation timestamp.",
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp.",
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackCreateAlertRequest": {
+        "properties": {
+          "dashboardId": {
+            "description": "Dashboard ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "tileId": {
+            "description": "Tile ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedSearchId": {
+            "description": "Saved search ID for saved_search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "groupBy": {
+            "description": "Group-by key for saved search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "threshold": {
+            "description": "Threshold value for triggering the alert.",
+            "type": "number"
+          },
+          "interval": {
+            "description": "Evaluation interval.",
+            "type": "string",
+            "enum": [
+              "1m",
+              "5m",
+              "15m",
+              "30m",
+              "1h",
+              "6h",
+              "12h",
+              "1d"
+            ]
+          },
+          "source": {
+            "description": "Alert source type.",
+            "type": "string",
+            "enum": [
+              "saved_search",
+              "tile"
+            ]
+          },
+          "thresholdType": {
+            "description": "Threshold comparison direction.",
+            "type": "string",
+            "enum": [
+              "above",
+              "below"
+            ]
+          },
+          "channel": {
+            "$ref": "#/components/schemas/ClickStackAlertChannel"
+          },
+          "name": {
+            "description": "Human-friendly alert name.",
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "description": "Alert message template.",
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackUpdateAlertRequest": {
+        "properties": {
+          "dashboardId": {
+            "description": "Dashboard ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "tileId": {
+            "description": "Tile ID for tile-based alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedSearchId": {
+            "description": "Saved search ID for saved_search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "groupBy": {
+            "description": "Group-by key for saved search alerts.",
+            "nullable": true,
+            "type": "string"
+          },
+          "threshold": {
+            "description": "Threshold value for triggering the alert.",
+            "type": "number"
+          },
+          "interval": {
+            "description": "Evaluation interval.",
+            "type": "string",
+            "enum": [
+              "1m",
+              "5m",
+              "15m",
+              "30m",
+              "1h",
+              "6h",
+              "12h",
+              "1d"
+            ]
+          },
+          "source": {
+            "description": "Alert source type.",
+            "type": "string",
+            "enum": [
+              "saved_search",
+              "tile"
+            ]
+          },
+          "thresholdType": {
+            "description": "Threshold comparison direction.",
+            "type": "string",
+            "enum": [
+              "above",
+              "below"
+            ]
+          },
+          "channel": {
+            "$ref": "#/components/schemas/ClickStackAlertChannel"
+          },
+          "name": {
+            "description": "Human-friendly alert name.",
+            "nullable": true,
+            "type": "string"
+          },
+          "message": {
+            "description": "Alert message template.",
+            "nullable": true,
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackNumberFormat": {
+        "properties": {
+          "output": {
+            "description": "Output format type (currency, percent, byte, time, number).",
+            "type": "string",
+            "enum": [
+              "currency",
+              "percent",
+              "byte",
+              "time",
+              "number"
+            ]
+          },
+          "mantissa": {
+            "description": "Number of decimal places.",
+            "type": "integer"
+          },
+          "thousandSeparated": {
+            "description": "Whether to use thousand separators.",
+            "type": "boolean"
+          },
+          "average": {
+            "description": "Whether to show as average.",
+            "type": "boolean"
+          },
+          "decimalBytes": {
+            "description": "Use decimal bytes (1000) vs binary bytes (1024).",
+            "type": "boolean"
+          },
+          "factor": {
+            "description": "Multiplication factor.",
+            "type": "number"
+          },
+          "currencySymbol": {
+            "description": "Currency symbol for currency format.",
+            "type": "string"
+          },
+          "unit": {
+            "description": "Custom unit label.",
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackTimeChartSeries": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "time"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query",
+            "type": "string"
+          },
+          "aggFn": {
+            "description": "Aggregation function to apply to the field or metric value",
+            "type": "string",
+            "enum": [
+              "avg",
+              "count",
+              "count_distinct",
+              "last_value",
+              "max",
+              "min",
+              "quantile",
+              "sum",
+              "any",
+              "none"
+            ]
+          },
+          "level": {
+            "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
+            "type": "number"
+          },
+          "field": {
+            "description": "Field/property name to aggregate (required for most aggregation functions except count)",
+            "type": "string"
+          },
+          "alias": {
+            "description": "Display name for the series in the chart",
+            "type": "string"
+          },
+          "where": {
+            "description": "Filter query for the data (syntax depends on whereLanguage)",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "groupBy": {
+            "type": "array",
+            "description": "Fields to group results by (creates separate series for each group)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "metricDataType": {
+            "description": "Metric data type for metrics data sources.",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          },
+          "metricName": {
+            "description": "Metric name for metrics data sources",
+            "type": "string"
+          },
+          "displayType": {
+            "description": "Visual representation type for the time series",
+            "type": "string",
+            "enum": [
+              "stacked_bar",
+              "line"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "sourceId",
+          "aggFn",
+          "where",
+          "groupBy"
+        ]
+      },
+      "ClickStackTableChartSeries": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "table"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query",
+            "type": "string"
+          },
+          "aggFn": {
+            "description": "Aggregation function to apply to the field or metric value",
+            "type": "string",
+            "enum": [
+              "avg",
+              "count",
+              "count_distinct",
+              "last_value",
+              "max",
+              "min",
+              "quantile",
+              "sum",
+              "any",
+              "none"
+            ]
+          },
+          "level": {
+            "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
+            "type": "number"
+          },
+          "field": {
+            "description": "",
+            "type": "string"
+          },
+          "alias": {
+            "description": "",
+            "type": "string"
+          },
+          "where": {
+            "description": "",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "groupBy": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sortOrder": {
+            "description": "Sort order for table rows",
+            "type": "string",
+            "enum": [
+              "desc",
+              "asc"
+            ]
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "metricDataType": {
+            "description": "Metric data type for metrics data sources",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          },
+          "metricName": {
+            "description": "Metric name for metrics data sources",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "sourceId",
+          "aggFn",
+          "where",
+          "groupBy"
+        ]
+      },
+      "ClickStackNumberChartSeries": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "number"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query",
+            "type": "string"
+          },
+          "aggFn": {
+            "description": "Aggregation function to apply to the field or metric value",
+            "type": "string",
+            "enum": [
+              "avg",
+              "count",
+              "count_distinct",
+              "last_value",
+              "max",
+              "min",
+              "quantile",
+              "sum",
+              "any",
+              "none"
+            ]
+          },
+          "level": {
+            "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
+            "type": "number"
+          },
+          "field": {
+            "description": "",
+            "type": "string"
+          },
+          "alias": {
+            "description": "",
+            "type": "string"
+          },
+          "where": {
+            "description": "",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "metricDataType": {
+            "description": "Metric data type for metrics data sources.",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          },
+          "metricName": {
+            "description": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "sourceId",
+          "aggFn",
+          "where"
+        ]
+      },
+      "ClickStackSearchChartSeries": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "search"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query",
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "description": "List of field names to display in the search results table",
+            "items": {
+              "type": "string"
+            }
+          },
+          "where": {
+            "description": "Filter query for the data (syntax depends on whereLanguage)",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "sourceId",
+          "fields",
+          "where"
+        ]
+      },
+      "ClickStackMarkdownChartSeries": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "markdown"
+            ]
+          },
+          "content": {
+            "description": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ]
+      },
+      "ClickStackDashboardChartSeries": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackTimeChartSeries"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackTableChartSeries"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackNumberChartSeries"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackSearchChartSeries"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackMarkdownChartSeries"
+          }
+        ]
+      },
+      "ClickStackSelectItem": {
+        "properties": {
+          "aggFn": {
+            "description": "Aggregation function to apply. \"count\" does not require a valueExpression; \"quantile\" requires a level field indicating the desired percentile (e.g., 0.95).",
+            "type": "string",
+            "enum": [
+              "avg",
+              "count",
+              "count_distinct",
+              "last_value",
+              "max",
+              "min",
+              "quantile",
+              "sum",
+              "any",
+              "none"
+            ]
+          },
+          "valueExpression": {
+            "description": "Expression for the column or value to aggregate. Must be omitted when aggFn is \"count\"; required for all other aggFn values.",
+            "type": "string"
+          },
+          "alias": {
+            "description": "Display alias for this select item in chart legends.",
+            "type": "string"
+          },
+          "level": {
+            "description": "Percentile level; only valid when aggFn is \"quantile\".",
+            "type": "number",
+            "enum": [
+              "0.5",
+              "0.9",
+              "0.95",
+              "0.99"
+            ]
+          },
+          "where": {
+            "description": "SQL or Lucene filter condition applied before aggregation.",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "metricName": {
+            "description": "Name of the metric to aggregate; only applicable when the source is a metrics source.",
+            "type": "string"
+          },
+          "metricType": {
+            "description": "Metric type; only applicable when the source is a metrics source.",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          },
+          "periodAggFn": {
+            "description": "Optional period aggregation function for Gauge metrics (e.g., compute the delta over the period).",
+            "type": "string",
+            "enum": [
+              "delta"
+            ]
+          }
+        },
+        "required": [
+          "aggFn"
+        ]
+      },
+      "ClickStackLineChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "line"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "type": "array",
+            "description": "One or more aggregated values to plot. When asRatio is true, exactly two select items are required.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSelectItem"
+            }
+          },
+          "groupBy": {
+            "description": "Field expression to group results by (creates separate lines per group value).",
+            "type": "string"
+          },
+          "asRatio": {
+            "description": "Plot select[0] / select[1] as a ratio. Requires exactly two select items.",
+            "type": "boolean"
+          },
+          "alignDateRangeToGranularity": {
+            "description": "Expand date range boundaries to the query granularity interval.",
+            "type": "boolean"
+          },
+          "fillNulls": {
+            "description": "Fill missing time buckets with zero instead of leaving gaps.",
+            "type": "boolean"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "compareToPreviousPeriod": {
+            "description": "Overlay the equivalent previous time period for comparison.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackBarChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "stacked_bar"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "type": "array",
+            "description": "One or more aggregated values to plot. When asRatio is true, exactly two select items are required.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSelectItem"
+            }
+          },
+          "groupBy": {
+            "description": "Field expression to group results by (creates separate bars segments per group value).",
+            "type": "string"
+          },
+          "asRatio": {
+            "description": "Plot select[0] / select[1] as a ratio. Requires exactly two select items.",
+            "type": "boolean"
+          },
+          "alignDateRangeToGranularity": {
+            "description": "Align the date range boundaries to the query granularity interval.",
+            "type": "boolean"
+          },
+          "fillNulls": {
+            "description": "Fill missing time buckets with zero instead of leaving gaps.",
+            "type": "boolean"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackTableChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "table"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "type": "array",
+            "description": "One or more aggregated values to display as table columns. When asRatio is true, exactly two select items are required.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSelectItem"
+            }
+          },
+          "groupBy": {
+            "description": "Field expression to group results by (one row per group value).",
+            "type": "string"
+          },
+          "having": {
+            "description": "Post-aggregation SQL HAVING condition.",
+            "type": "string"
+          },
+          "orderBy": {
+            "description": "SQL ORDER BY expression for sorting table rows.",
+            "type": "string"
+          },
+          "asRatio": {
+            "description": "Display select[0] / select[1] as a ratio. Requires exactly two select items.",
+            "type": "boolean"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackNumberChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "number"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "type": "array",
+            "description": "Exactly one aggregated value to display as a single number.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSelectItem"
+            }
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackPieChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "pie"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "type": "array",
+            "description": "Exactly one aggregated value used to size each pie slice.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSelectItem"
+            }
+          },
+          "groupBy": {
+            "description": "Field expression to group results by (one slice per group value).",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackSearchChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "search"
+            ]
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string"
+          },
+          "select": {
+            "description": "Comma-separated list of expressions to display.",
+            "type": "string"
+          },
+          "where": {
+            "description": "Filter condition for the search (syntax depends on whereLanguage).",
+            "type": "string"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select",
+          "whereLanguage"
+        ]
+      },
+      "ClickStackMarkdownChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "markdown"
+            ]
+          },
+          "markdown": {
+            "description": "Markdown content to render inside the tile.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayType"
+        ]
+      },
+      "ClickStackTileConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackLineChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackBarChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackTableChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackNumberChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackPieChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackSearchChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackMarkdownChartConfig"
+          }
+        ]
+      },
+      "ClickStackTileBase": {
+        "properties": {
+          "name": {
+            "description": "Display name for the tile",
+            "type": "string"
+          },
+          "x": {
+            "description": "Horizontal position in the grid (0-based)",
+            "type": "integer"
+          },
+          "y": {
+            "description": "Vertical position in the grid (0-based)",
+            "type": "integer"
+          },
+          "w": {
+            "description": "Width in grid units",
+            "type": "integer"
+          },
+          "h": {
+            "description": "Height in grid units",
+            "type": "integer"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ClickStackTileConfig"
+          }
+        },
+        "required": [
+          "name",
+          "x",
+          "y",
+          "w",
+          "h"
+        ]
+      },
+      "ClickStackTileOutput": {
+        "properties": {
+          "name": {
+            "description": "Display name for the tile",
+            "type": "string"
+          },
+          "x": {
+            "description": "Horizontal position in the grid (0-based)",
+            "type": "integer"
+          },
+          "y": {
+            "description": "Vertical position in the grid (0-based)",
+            "type": "integer"
+          },
+          "w": {
+            "description": "Width in grid units",
+            "type": "integer"
+          },
+          "h": {
+            "description": "Height in grid units",
+            "type": "integer"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ClickStackTileConfig"
+          },
+          "id": {
+            "description": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "x",
+          "y",
+          "w",
+          "h",
+          "id"
+        ]
+      },
+      "ClickStackTileInput": {
+        "properties": {
+          "name": {
+            "description": "Display name for the tile",
+            "type": "string"
+          },
+          "x": {
+            "description": "Horizontal position in the grid (0-based)",
+            "type": "integer"
+          },
+          "y": {
+            "description": "Vertical position in the grid (0-based)",
+            "type": "integer"
+          },
+          "w": {
+            "description": "Width in grid units",
+            "type": "integer"
+          },
+          "h": {
+            "description": "Height in grid units",
+            "type": "integer"
+          },
+          "config": {
+            "$ref": "#/components/schemas/ClickStackTileConfig"
+          },
+          "id": {
+            "description": "Optional tile ID. Omit to generate a new ID.",
+            "type": "string"
+          },
+          "asRatio": {
+            "description": "Display two series as a ratio (series[0] / series[1]). Only applicable when providing \"series\". Deprecated in favor of \"config.asRatio\".",
+            "type": "boolean",
+            "deprecated": true
+          },
+          "series": {
+            "type": "array",
+            "description": "Data series to display in this tile (all must be the same type). Deprecated; use \"config\" instead.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackDashboardChartSeries"
+            },
+            "deprecated": true
+          }
+        },
+        "required": [
+          "name",
+          "x",
+          "y",
+          "w",
+          "h"
+        ]
+      },
+      "ClickStackFilterInput": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "QUERY_EXPRESSION"
+            ]
+          },
+          "name": {
+            "description": "Display name for the dashboard filter key",
+            "type": "string"
+          },
+          "expression": {
+            "description": "Key expression used when applying this dashboard filter key",
+            "type": "string"
+          },
+          "sourceId": {
+            "description": "Source ID this dashboard filter key applies to",
+            "type": "string"
+          },
+          "sourceMetricType": {
+            "description": "Metric type when source is metrics",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "expression",
+          "sourceId"
+        ]
+      },
+      "ClickStackFilter": {
+        "properties": {
+          "type": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "QUERY_EXPRESSION"
+            ]
+          },
+          "name": {
+            "description": "Display name for the dashboard filter key",
+            "type": "string"
+          },
+          "expression": {
+            "description": "Key expression used when applying this dashboard filter key",
+            "type": "string"
+          },
+          "sourceId": {
+            "description": "Source ID this dashboard filter key applies to",
+            "type": "string"
+          },
+          "sourceMetricType": {
+            "description": "Metric type when source is metrics",
+            "type": "string",
+            "enum": [
+              "sum",
+              "gauge",
+              "histogram",
+              "summary",
+              "exponential histogram"
+            ]
+          },
+          "id": {
+            "description": "Unique dashboard filter key ID",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "expression",
+          "sourceId",
+          "id"
+        ]
+      },
+      "ClickStackDashboard": {
+        "properties": {
+          "id": {
+            "description": "Dashboard ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Dashboard name",
+            "type": "string"
+          },
+          "tiles": {
+            "type": "array",
+            "description": "List of tiles/charts in the dashboard",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackTileOutput"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags for organizing and filtering dashboards",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filters": {
+            "type": "array",
+            "description": "Dashboard filter keys added to the dashboard and applied to all tiles",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackFilter"
+            }
+          }
+        }
+      },
+      "ClickStackCreateDashboardRequest": {
+        "properties": {
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "tiles": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackTileInput"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filters": {
+            "type": "array",
+            "description": "Dashboard filter keys to add to the dashboard and apply across all tiles",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackFilterInput"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "tiles"
+        ]
+      },
+      "ClickStackUpdateDashboardRequest": {
+        "properties": {
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "tiles": {
+            "type": "array",
+            "description": "Full list of tiles for the dashboard. Existing tiles are matched by ID; tiles with an ID that does not match an existing tile will be assigned a new generated ID.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackTileInput"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filters": {
+            "type": "array",
+            "description": "Dashboard filter keys on the dashboard, applied across all tiles",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackFilter"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "tiles"
+        ]
+      },
+      "ClickStackDashboardResponse": {
+        "properties": {
+          "id": {
+            "description": "Dashboard ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Dashboard name",
+            "type": "string"
+          },
+          "tiles": {
+            "type": "array",
+            "description": "List of tiles/charts in the dashboard",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackTileOutput"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags for organizing and filtering dashboards",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filters": {
+            "type": "array",
+            "description": "Dashboard filter keys added to the dashboard and applied to all tiles",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackFilter"
+            }
+          }
+        }
+      },
+      "ClickStackQuerySetting": {
+        "properties": {
+          "setting": {
+            "description": "ClickHouse setting name",
+            "type": "string"
+          },
+          "value": {
+            "description": "Setting value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "setting",
+          "value"
+        ]
+      },
+      "ClickStackSourceFrom": {
+        "properties": {
+          "databaseName": {
+            "description": "ClickHouse database name",
+            "type": "string"
+          },
+          "tableName": {
+            "description": "ClickHouse table name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "databaseName",
+          "tableName"
+        ]
+      },
+      "ClickStackMetricSourceFrom": {
+        "properties": {
+          "databaseName": {
+            "description": "ClickHouse database name",
+            "type": "string"
+          },
+          "tableName": {
+            "description": "ClickHouse table name",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "databaseName"
+        ]
+      },
+      "ClickStackMetricTables": {
+        "properties": {
+          "gauge": {
+            "description": "Table containing gauge metrics data",
+            "type": "string"
+          },
+          "histogram": {
+            "description": "Table containing histogram metrics data",
+            "type": "string"
+          },
+          "sum": {
+            "description": "Table containing sum metrics data",
+            "type": "string"
+          },
+          "summary": {
+            "description": "Table containing summary metrics data. Note - not yet fully supported by HyperDX",
+            "type": "string"
+          },
+          "exponential histogram": {
+            "description": "Table containing exponential histogram metrics data. Note - not yet fully supported by HyperDX",
+            "type": "string"
+          }
+        }
+      },
+      "ClickStackHighlightedAttributeExpression": {
+        "properties": {
+          "sqlExpression": {
+            "description": "SQL expression for the attribute",
+            "type": "string"
+          },
+          "luceneExpression": {
+            "description": "An optional, Lucene version of the sqlExpression expression. If provided, it is used when searching for this attribute value.",
+            "nullable": true,
+            "type": "string"
+          },
+          "alias": {
+            "description": "Optional alias for the attribute",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "sqlExpression"
+        ]
+      },
+      "ClickStackAggregatedColumn": {
+        "properties": {
+          "sourceColumn": {
+            "description": "Source column name",
+            "nullable": true,
+            "type": "string"
+          },
+          "aggFn": {
+            "description": "Aggregation function (e.g., count, sum, avg)",
+            "type": "string"
+          },
+          "mvColumn": {
+            "description": "Materialized view column name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "aggFn",
+          "mvColumn"
+        ]
+      },
+      "ClickStackMaterializedView": {
+        "properties": {
+          "databaseName": {
+            "description": "Database name for the materialized view",
+            "type": "string"
+          },
+          "tableName": {
+            "description": "Table name for the materialized view",
+            "type": "string"
+          },
+          "dimensionColumns": {
+            "description": "Columns which are not pre-aggregated in the materialized view and can be used for filtering and grouping.",
+            "type": "string"
+          },
+          "minGranularity": {
+            "description": "The granularity of the timestamp column",
+            "type": "string",
+            "enum": [
+              "1s",
+              "15s",
+              "30s",
+              "1m",
+              "5m",
+              "15m",
+              "30m",
+              "1h",
+              "2h",
+              "6h",
+              "12h",
+              "1d",
+              "2d",
+              "7d",
+              "30d"
+            ]
+          },
+          "minDate": {
+            "description": "(Optional) The earliest date and time for which the materialized view contains data. If not provided, then HyperDX will assume that the materialized view contains data for all dates for which the source table contains data.",
+            "nullable": true,
+            "type": "string"
+          },
+          "timestampColumn": {
+            "description": "Timestamp column name",
+            "type": "string"
+          },
+          "aggregatedColumns": {
+            "type": "array",
+            "description": "Columns which are pre-aggregated by the materialized view",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackAggregatedColumn"
+            }
+          }
+        },
+        "required": [
+          "databaseName",
+          "tableName",
+          "dimensionColumns",
+          "minGranularity",
+          "timestampColumn",
+          "aggregatedColumns"
+        ]
+      },
+      "ClickStackLogSource": {
+        "properties": {
+          "id": {
+            "description": "",
+            "type": "string"
+          },
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "kind": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "log"
+            ]
+          },
+          "connection": {
+            "description": "",
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/ClickStackSourceFrom"
+          },
+          "querySettings": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackQuerySetting"
+            }
+          },
+          "defaultTableSelectExpression": {
+            "description": "Default columns selected in search results (this can be customized per search later)",
+            "type": "string"
+          },
+          "timestampValueExpression": {
+            "description": "DateTime column or expression that is part of your table's primary key.",
+            "type": "string"
+          },
+          "serviceNameExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "severityTextExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "bodyExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "eventAttributesExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "resourceAttributesExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "displayedTimestampValueExpression": {
+            "description": "This DateTime column is used to display and order search results.",
+            "nullable": true,
+            "type": "string"
+          },
+          "metricSourceId": {
+            "description": "HyperDX Source for metrics associated with logs. Optional",
+            "nullable": true,
+            "type": "string"
+          },
+          "traceSourceId": {
+            "description": "HyperDX Source for traces associated with logs. Optional",
+            "nullable": true,
+            "type": "string"
+          },
+          "traceIdExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "spanIdExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "implicitColumnExpression": {
+            "description": "Column used for full text search if no property is specified in a Lucene-based search. Typically the message body of a log.",
+            "nullable": true,
+            "type": "string"
+          },
+          "highlightedTraceAttributeExpressions": {
+            "type": "array",
+            "description": "Expressions defining trace-level attributes which are displayed in the trace view for the selected trace.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackHighlightedAttributeExpression"
+            }
+          },
+          "highlightedRowAttributeExpressions": {
+            "type": "array",
+            "description": "Expressions defining row-level attributes which are displayed in the row side panel for the selected row.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackHighlightedAttributeExpression"
+            }
+          },
+          "materializedViews": {
+            "type": "array",
+            "description": "Configure materialized views for query optimization. These pre-aggregated views can significantly improve query performance on aggregation queries.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackMaterializedView"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "connection",
+          "from",
+          "defaultTableSelectExpression",
+          "timestampValueExpression"
+        ]
+      },
+      "ClickStackTraceSource": {
+        "properties": {
+          "id": {
+            "description": "",
+            "type": "string"
+          },
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "kind": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "trace"
+            ]
+          },
+          "connection": {
+            "description": "",
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/ClickStackSourceFrom"
+          },
+          "querySettings": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackQuerySetting"
+            }
+          },
+          "defaultTableSelectExpression": {
+            "description": "Default columns selected in search results (this can be customized per search later)",
+            "nullable": true,
+            "type": "string"
+          },
+          "timestampValueExpression": {
+            "description": "DateTime column or expression defines the start of the span",
+            "type": "string"
+          },
+          "durationExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "durationPrecision": {
+            "description": "",
+            "type": "integer"
+          },
+          "traceIdExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "spanIdExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "parentSpanIdExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "spanNameExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "spanKindExpression": {
+            "description": "",
+            "type": "string"
+          },
+          "logSourceId": {
+            "description": "HyperDX Source for logs associated with traces. Optional",
+            "nullable": true,
+            "type": "string"
+          },
+          "sessionSourceId": {
+            "description": "HyperDX Source for sessions associated with traces. Optional",
+            "nullable": true,
+            "type": "string"
+          },
+          "metricSourceId": {
+            "description": "HyperDX Source for metrics associated with traces. Optional",
+            "nullable": true,
+            "type": "string"
+          },
+          "statusCodeExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "statusMessageExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "serviceNameExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "resourceAttributesExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "eventAttributesExpression": {
+            "description": "",
+            "nullable": true,
+            "type": "string"
+          },
+          "spanEventsValueExpression": {
+            "description": "Expression to extract span events. Used to capture events associated with spans. Expected to be Nested ( Timestamp DateTime64(9), Name LowCardinality(String), Attributes Map(LowCardinality(String), String)",
+            "nullable": true,
+            "type": "string"
+          },
+          "implicitColumnExpression": {
+            "description": "Column used for full text search if no property is specified in a Lucene-based search. Typically the message body of a log.",
+            "nullable": true,
+            "type": "string"
+          },
+          "highlightedTraceAttributeExpressions": {
+            "type": "array",
+            "description": "Expressions defining trace-level attributes which are displayed in the trace view for the selected trace.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackHighlightedAttributeExpression"
+            }
+          },
+          "highlightedRowAttributeExpressions": {
+            "type": "array",
+            "description": "Expressions defining row-level attributes which are displayed in the row side panel for the selected row",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackHighlightedAttributeExpression"
+            }
+          },
+          "materializedViews": {
+            "type": "array",
+            "description": "Configure materialized views for query optimization. These pre-aggregated views can significantly improve query performance on aggregation queries.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackMaterializedView"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "connection",
+          "from",
+          "timestampValueExpression",
+          "durationExpression",
+          "durationPrecision",
+          "traceIdExpression",
+          "spanIdExpression",
+          "parentSpanIdExpression",
+          "spanNameExpression",
+          "spanKindExpression"
+        ]
+      },
+      "ClickStackMetricSource": {
+        "properties": {
+          "id": {
+            "description": "",
+            "type": "string"
+          },
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "kind": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "metric"
+            ]
+          },
+          "connection": {
+            "description": "",
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/ClickStackMetricSourceFrom"
+          },
+          "querySettings": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackQuerySetting"
+            }
+          },
+          "metricTables": {
+            "$ref": "#/components/schemas/ClickStackMetricTables"
+          },
+          "timestampValueExpression": {
+            "description": "DateTime column or expression that is part of your table's primary key.",
+            "type": "string"
+          },
+          "resourceAttributesExpression": {
+            "description": "Column containing resource attributes for metrics",
+            "type": "string"
+          },
+          "logSourceId": {
+            "description": "HyperDX Source for logs associated with metrics. Optional",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "connection",
+          "from",
+          "metricTables",
+          "timestampValueExpression",
+          "resourceAttributesExpression"
+        ]
+      },
+      "ClickStackSessionSource": {
+        "properties": {
+          "id": {
+            "description": "",
+            "type": "string"
+          },
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "kind": {
+            "description": "",
+            "type": "string",
+            "enum": [
+              "session"
+            ]
+          },
+          "connection": {
+            "description": "",
+            "type": "string"
+          },
+          "from": {
+            "$ref": "#/components/schemas/ClickStackSourceFrom"
+          },
+          "querySettings": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackQuerySetting"
+            }
+          },
+          "timestampValueExpression": {
+            "description": "DateTime column or expression that is part of your table's primary key.",
+            "nullable": true,
+            "type": "string"
+          },
+          "traceSourceId": {
+            "description": "HyperDX Source for traces associated with sessions.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "connection",
+          "from",
+          "traceSourceId"
+        ]
+      },
+      "ClickStackSource": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackLogSource"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackTraceSource"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackMetricSource"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackSessionSource"
+          }
+        ]
+      },
+      "AssignedRole": {
+        "properties": {
+          "roleId": {
+            "description": "Unique identifier of the role",
+            "type": "string",
+            "format": "uuid"
+          },
+          "roleName": {
+            "description": "Human-readable name of the role",
+            "type": "string"
+          },
+          "roleType": {
+            "description": "Type of role: system (predefined) or custom (organization-defined)",
+            "type": "string",
+            "enum": [
+              "system",
+              "custom"
+            ]
+          }
+        }
+      },
       "Member": {
         "properties": {
           "userId": {
@@ -8486,29 +14264,38 @@
             "format": "email"
           },
           "role": {
-            "description": "Role of the member in the organization.",
+            "description": "DEPRECATED. Use `assignedRoles` instead. Role of the member in the organization. For organizations that have migrated to custom roles, this field is frozen at the pre-migration value and does not reflect current role assignments.",
             "type": "string",
             "enum": [
               "admin",
               "developer"
-            ]
+            ],
+            "deprecated": true
           },
           "joinedAt": {
             "description": "Timestamp the member joined the organization. ISO-8601.",
             "type": "string",
             "format": "date-time"
+          },
+          "assignedRoles": {
+            "type": "array",
+            "description": "Custom roles and System roles assigned to this member",
+            "items": {
+              "$ref": "#/components/schemas/AssignedRole"
+            }
           }
         }
       },
       "Invitation": {
         "properties": {
           "role": {
-            "description": "Role of the member in the organization.",
+            "description": "DEPRECATED. Use `assignedRoles` instead. Role of the invited user in the organization. For organizations that have migrated to custom roles, this field is frozen at the pre-migration value and does not reflect the role assignment that will be applied.",
             "type": "string",
             "enum": [
               "admin",
               "developer"
-            ]
+            ],
+            "deprecated": true
           },
           "id": {
             "description": "Unique invitation ID.",
@@ -8529,6 +14316,13 @@
             "description": "Timestamp the invitation expires. ISO-8601.",
             "type": "string",
             "format": "date-time"
+          },
+          "assignedRoles": {
+            "type": "array",
+            "description": "Custom roles and System roles that will be assigned to the user when they accept the invitation",
+            "items": {
+              "$ref": "#/components/schemas/AssignedRole"
+            }
           }
         }
       },
@@ -8553,7 +14347,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "List of roles assigned to the key. Contains at least 1 element.",
+            "description": "DEPRECATED. Use `assignedRoles` instead. List of roles assigned to the key. For organizations that have migrated to custom roles, this field is frozen at the pre-migration value and does not reflect current role assignments.",
             "items": {
               "type": "string",
               "enum": [
@@ -8561,6 +14355,14 @@
                 "developer",
                 "query_endpoints"
               ]
+            },
+            "deprecated": true
+          },
+          "assignedRoles": {
+            "type": "array",
+            "description": "Custom roles and System roles assigned to this API key",
+            "items": {
+              "$ref": "#/components/schemas/AssignedRole"
             }
           },
           "keySuffix": {
@@ -8616,6 +14418,10 @@
           },
           "privateEndpoints": {
             "$ref": "#/components/schemas/OrganizationPrivateEndpointsPatch"
+          },
+          "enableCoreDumps": {
+            "description": "Whether crash reports (core dumps) collection is enabled for services in the organization. When disabled at the organization level, individual services cannot enable crash reports.",
+            "type": "boolean"
           }
         }
       },
@@ -8747,15 +14553,15 @@
             "description": "Minimum total memory of each replica during auto-scaling in Gb. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 356* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
+            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 236* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 120
           },
@@ -8840,11 +14646,7 @@
               "v1-highmem-s",
               "v1-highmem-m",
               "v1-highmem-l",
-              "v1-highmem-xl",
-              "v1-highcpu-s",
-              "v1-highcpu-m",
-              "v1-highcpu-l",
-              "v1-highcpu-xl"
+              "v1-highmem-xl"
             ]
           },
           "complianceType": {
@@ -8861,6 +14663,10 @@
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
             }
+          },
+          "enableCoreDumps": {
+            "description": "Enables the underlying infra for collecting core dumps. Default is enabled.",
+            "type": "boolean"
           }
         }
       },
@@ -8902,6 +14708,10 @@
             "items": {
               "$ref": "#/components/schemas/InstanceTagsPatch"
             }
+          },
+          "enableCoreDumps": {
+            "description": "If true, the underlying infra is enabled for collecting core dumps.",
+            "type": "boolean"
           }
         }
       },
@@ -9074,15 +14884,15 @@
             "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 236 for paid services.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 120
           },
@@ -9177,11 +14987,7 @@
               "v1-highmem-s",
               "v1-highmem-m",
               "v1-highmem-l",
-              "v1-highmem-xl",
-              "v1-highcpu-s",
-              "v1-highcpu-m",
-              "v1-highcpu-l",
-              "v1-highcpu-xl"
+              "v1-highmem-xl"
             ]
           },
           "transparentDataEncryptionKeyId": {
@@ -9206,6 +15012,10 @@
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
             }
+          },
+          "enableCoreDumps": {
+            "description": "True if the service's underline infra is enabled for collecting core dumps. This is an experimental feature",
+            "type": "boolean"
           }
         }
       },
@@ -9215,15 +15025,15 @@
             "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 236 for paid services.",
             "type": "number",
             "minimum": 8,
-            "maximum": 356,
+            "maximum": 236,
             "multipleOf": 4,
             "example": 120
           },
@@ -9332,7 +15142,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "List of roles assigned to the key. Contains at least 1 element.",
+            "description": "DEPRECATED. Use `assignedRoleIds` instead. List of roles assigned to the key. Contains at least 1 element.",
             "items": {
               "type": "string",
               "enum": [
@@ -9340,6 +15150,15 @@
                 "developer",
                 "query_endpoints"
               ]
+            },
+            "deprecated": true
+          },
+          "assignedRoleIds": {
+            "type": "array",
+            "description": "Array of role UUIDs to assign to the API key",
+            "items": {
+              "type": "string",
+              "format": "uuid"
             }
           },
           "ipAccessList": {
@@ -9359,7 +15178,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "List of roles assigned to the key. Contains at least 1 element.",
+            "description": "DEPRECATED. Use `assignedRoleIds` instead. List of roles assigned to the key.",
             "items": {
               "type": "string",
               "enum": [
@@ -9367,6 +15186,15 @@
                 "developer",
                 "query_endpoints"
               ]
+            },
+            "deprecated": true
+          },
+          "assignedRoleIds": {
+            "type": "array",
+            "description": "Array of role UUIDs to assign to the API key",
+            "items": {
+              "type": "string",
+              "format": "uuid"
             }
           },
           "expireAt": {
@@ -9395,12 +15223,20 @@
       "MemberPatchRequest": {
         "properties": {
           "role": {
-            "description": "Role of the member in the organization.",
+            "description": "DEPRECATED. Use `assignedRoleIds` instead. Role of the member in the organization.",
             "type": "string",
             "enum": [
               "admin",
               "developer"
-            ]
+            ],
+            "deprecated": true
+          },
+          "assignedRoleIds": {
+            "type": "array",
+            "description": "List of role IDs to assign to the member",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -9412,12 +15248,20 @@
             "format": "email"
           },
           "role": {
-            "description": "Role of the member in the organization.",
+            "description": "DEPRECATED. Use `assignedRoleIds` instead. Role to assign to the invited user in the organization.",
             "type": "string",
             "enum": [
               "admin",
               "developer"
-            ]
+            ],
+            "deprecated": true
+          },
+          "assignedRoleIds": {
+            "type": "array",
+            "description": "List of role IDs to assign to the invited user when they accept the invitation",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -9495,7 +15339,7 @@
             "nullable": true,
             "type": "integer",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 40
           },
           "concurrency": {
             "description": "Number of concurrency to scale to. Use to scale S3 pipes.",
@@ -9647,6 +15491,9 @@
       "name": "Billing"
     },
     {
+      "name": "Role Management"
+    },
+    {
       "name": "Service"
     },
     {
@@ -9660,6 +15507,9 @@
     },
     {
       "name": "ClickPipes"
+    },
+    {
+      "name": "ClickStack"
     }
   ],
   "x-tagGroups": [
@@ -9668,7 +15518,8 @@
       "tags": [
         "Organization",
         "Billing",
-        "User management"
+        "User management",
+        "Role Management"
       ]
     },
     {
@@ -9694,6 +15545,12 @@
       "name": "ClickPipes",
       "tags": [
         "ClickPipes"
+      ]
+    },
+    {
+      "name": "ClickStack",
+      "tags": [
+        "ClickStack"
       ]
     }
   ]
