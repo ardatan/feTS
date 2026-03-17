@@ -12,12 +12,12 @@ import type treeOAS from './fixtures/example-circular-ref-oas';
 type NormalizedOAS = NormalizeOAS<typeof treeOAS>;
 
 // So it does handle circular reference actually
-type SchemaInOAS =
+type TreeSchemaInOAS =
   NormalizedOAS['paths']['/tree']['get']['responses']['200']['content']['application/json']['schema'];
 
-type Test = FromSchema<SchemaInOAS>;
+type TreeTest = FromSchema<TreeSchemaInOAS>;
 
-const a: Test = {
+const a: TreeTest = {
   number: 1,
   child: {
     number: 2,
@@ -33,9 +33,9 @@ if (a.child?.child?.child) {
   a.child.child.child.number = 1;
 }
 
-type Test2 = FromSchema<OASJSONResponseSchema<NormalizedOAS, '/tree', 'get', '200'>>;
+type TreeTest2 = FromSchema<OASJSONResponseSchema<NormalizedOAS, '/tree', 'get', '200'>>;
 
-const b: Test2 = {
+const b: TreeTest2 = {
   number: 1,
   child: {
     number: 2,
@@ -45,9 +45,9 @@ const b: Test2 = {
   },
 };
 
-type Test3 = OASOutput<NormalizedOAS, '/tree', 'get', '200'>;
+type TreeTest3 = OASOutput<NormalizedOAS, '/tree', 'get', '200'>;
 
-const c: Test3 = {
+const c: TreeTest3 = {
   number: 1,
   child: {
     number: 2,
@@ -55,6 +55,57 @@ const c: Test3 = {
       return c;
     },
   },
+};
+
+type TreeListSchemaInOAS =
+  NormalizedOAS['paths']['/tree-list']['get']['responses']['200']['content']['application/json']['schema'];
+
+type TreeListTest = FromSchema<TreeListSchemaInOAS>;
+
+const d: TreeListTest = {
+  number: 1,
+  children: [
+    {
+      number: 2,
+      get children() {
+        return [d];
+      },
+    },
+  ],
+};
+
+if (d.children?.[0].children?.[0]?.children?.[0].number) {
+  // @ts-expect-error number is a number
+  d.children[0].children[0].children[0].number = 'a';
+  d.children[0].children[0].children[0].number = 1;
+}
+
+type TreeListTest2 = FromSchema<OASJSONResponseSchema<NormalizedOAS, '/tree-list', 'get', '200'>>;
+
+const e: TreeListTest2 = {
+  number: 1,
+  children: [
+    {
+      number: 2,
+      get children() {
+        return [e];
+      },
+    },
+  ],
+};
+
+type TreeListTest3 = OASOutput<NormalizedOAS, '/tree-list', 'get', '200'>;
+
+const f: TreeListTest3 = {
+  number: 1,
+  children: [
+    {
+      number: 2,
+      get children() {
+        return [f];
+      },
+    },
+  ],
 };
 
 const client = createClient<NormalizedOAS>({});
