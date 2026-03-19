@@ -9,6 +9,12 @@ import {
   RouterPlugin,
 } from '../types.js';
 
+const OPTIONAL_KIND = Symbol.for('TypeBox.Optional');
+
+function isOptionalSchema(schema: any): boolean {
+  return schema[OPTIONAL_KIND] === 'Optional';
+}
+
 export interface SwaggerUIOpts {
   spec?: OpenAPIDocument;
   dom_id?: string;
@@ -194,7 +200,7 @@ export function useOpenAPI<TServerContext, TComponents extends RouterComponentsB
           isRequestValidated = true;
           const requestJsonSchema = schemas.request.json;
           const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
-          requestBody.required = true;
+          requestBody.required = !isOptionalSchema(requestJsonSchema);
           const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
           requestBodyContent['application/json'] = {
             schema: requestJsonSchema,
@@ -202,10 +208,10 @@ export function useOpenAPI<TServerContext, TComponents extends RouterComponentsB
         }
         if (schemas.request?.formData) {
           isRequestValidated = true;
-          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
-          requestBody.required = true;
-          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
           const requestFormDataSchema = schemas.request.formData;
+          const requestBody = (operation.requestBody = (operation.requestBody || {}) as any);
+          requestBody.required = !isOptionalSchema(requestFormDataSchema);
+          const requestBodyContent = (requestBody.content = (requestBody.content || {}) as any);
           requestBodyContent['multipart/form-data'] = {
             schema: requestFormDataSchema,
           };
