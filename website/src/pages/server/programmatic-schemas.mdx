@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Building Schemas Programmatically with TypeBox
 
 Instead of using JSON Schemas, you have the option to define your schemas using
@@ -5,6 +7,8 @@ Instead of using JSON Schemas, you have the option to define your schemas using
 
 ## Example
 
+<Tabs items={['TypeBox', 'JSON Schema']}>
+<Tabs.Tab>
 ```typescript
 import { createRouter, Response, Type } from 'fets'
 
@@ -42,6 +46,55 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```typescript
+import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({
+  path: '/user/:id',
+  method: 'POST',
+  schemas: {
+    request: {
+      headers: {
+        type: 'object',
+        properties: {
+          authorization: { type: 'string', pattern: 'Bearer .+' }
+        },
+        additionalProperties: false,
+        required: ['authorization']
+      },
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', format: 'uuid' }
+        },
+        additionalProperties: false,
+        required: ['id']
+      }
+    }
+  },
+  // Response type will be automatically inferred from the handler's return type
+  handler: request => {
+    if (request.params.id !== EXPECTED_UUID) {
+      return Response.json(
+        {
+          message: 'User not found'
+        },
+        {
+          status: 404
+        }
+      )
+    }
+    return Response.json({
+      id: request.params.id,
+      name: 'John Doe'
+    })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ## Why not Zod?
 

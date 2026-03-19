@@ -1,4 +1,4 @@
-import { Callout } from '@theguild/components'
+import { Callout, Tabs } from '@theguild/components'
 
 # Quickstart
 
@@ -29,6 +29,8 @@ npm i fets
 
 The following example demonstrates how to create a route with feTS that returns a greeting message:
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts filename="greetings-router.ts"
 // The example code assumes that we're in a Node.js environment.
 // It's recommended to use `Response` from `fets` as the native one isn't type-safe.
@@ -68,6 +70,42 @@ createServer(router).listen(3000, () => {
   console.log('Swagger UI is available at http://localhost:3000/docs')
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts filename="greetings-router.ts"
+// The example code assumes that we're in a Node.js environment.
+// It's recommended to use `Response` from `fets` as the native one isn't type-safe.
+import { createServer } from 'node:http'
+import { createRouter, Response, Type } from 'fets'
+
+// Creating a new router
+const router = createRouter()
+  // Use `.route` method to create a new /greetings route
+  .route({
+    path: '/greetings',
+    method: 'GET',
+    // Defining the response schema
+    schemas: {
+      responses: {
+        // The status code
+        200: Type.Object({
+          message: Type.String()
+        })
+      }
+    },
+    handler() {
+      // If the status code is not specified, it defaults to 200
+      return Response.json({
+        message: 'Hello from feTS!'
+      })
+    }
+  })
+createServer(router).listen(3000, () => {
+  console.log('Swagger UI is available at http://localhost:3000/docs')
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 Test your API using [Swagger UI](https://swagger.io/tools/swagger-ui/), available at
 `http://localhost:3000/docs`.

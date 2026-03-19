@@ -1,4 +1,4 @@
-import { Callout } from '@theguild/components'
+import { Callout, Tabs } from '@theguild/components'
 
 # Type-Safety & Validation
 
@@ -41,6 +41,8 @@ parameters, and URL parameters.
 You can describe the shape of the headers using `schemas.request.headers` property. This is useful
 for validating API keys or authorization headers.
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -69,7 +71,35 @@ const router = createRouter().route({
     return Response.json({ message: 'ok' })
   }
 })
-````
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'POST',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      headers: Type.Object({
+        'x-api-key': Type.String()
+      })
+    }
+  },
+  handler: async request => {
+    // This part is fully typed
+    const apiKey = request.headers.get('x-api-key')
+    // Would result in TypeScript compilation fail
+    const wrongHeaderName = request.headers.get('x-api-key-wrong')
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ### Path Parameters
 
@@ -78,6 +108,8 @@ const router = createRouter().route({
 By default, feTS already extracts and validates path parameters defined in the path. So unless you
 have some specific format for parameters, you don't need to define schemas for path parameters..
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -87,15 +119,6 @@ const router = createRouter().route({
   // Define the request body schema
   schemas: {
     request: {
-      // This is not needed since feTS already extracts and validates path parameters
-      params: {
-        type: 'object',
-        properties: {
-          id: { type: 'string' }
-        },
-        additionalProperties: false,
-        required: ['id']
-      }
       // Unless it is `uuid` or some specific format
       params: {
         type: 'object',
@@ -115,12 +138,41 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/todos/:id',
+  // Define the request body schema
+  schemas: {
+    request: {
+      // Unless it is `uuid` or some specific format
+      params: Type.Object({
+        id: Type.String({ format: 'uuid' })
+      })
+    }
+  },
+  handler: async request => {
+    // This part is fully typed
+    const { id } = request.params
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ### Query Parameters
 
 Similar, for query parameters like `/todos?limit=10&offset=0`, we can use `schemas.request.query` to
 define the schema:
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -151,11 +203,42 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      query: Type.Object({
+        limit: Type.Number(),
+        offset: Type.Optional(Type.Number())
+      })
+    }
+  },
+  handler: async request => {
+    // This part is fully typed
+    const { limit, offset } = request.query
+    // You can also use `URLSearchParams` API
+    const limit = request.parsedURL.searchParams.get('limit')
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ### JSON Body
 
 We can also specify the JSON body schema by using `schemas.request.json` property:
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -184,6 +267,33 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'POST',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      json: Type.Object({
+        title: Type.String(),
+        completed: Type.Optional(Type.Boolean())
+      })
+    }
+  },
+  handler: async request => {
+    // This part is fully typed
+    const { title, completed } = await request.json()
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ### Form Data / File Uploads
 
@@ -194,6 +304,8 @@ We use `type: string` and `format: binary` to define a `File` object. The `maxLe
 `minLength` of JSON Schema can be used to limit the file size.
 [Learn more in the OpenAPI docs](https://swagger.io/docs/specification/describing-request-body/file-upload/).
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -227,6 +339,39 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'POST',
+  path: '/upload-image',
+  // Define the request body schema
+  schemas: {
+    request: {
+      formData: Type.Object({
+        title: Type.String(),
+        completed: Type.Optional(Type.Boolean()),
+        image: Type.Optional(
+          Type.String({
+            format: 'binary',
+            maxLength: 1024 * 1024 * 5 // 5MB
+          })
+        )
+      })
+    }
+  },
+  handler: async request => {
+    // This part is fully typed
+    const { title, completed, file } = await request.formData()
+    // ...
+    return Response.json({ message: 'ok' })
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
 
 ## Response (optional)
 
@@ -243,6 +388,8 @@ define the status codes.
 
 Example:
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -303,3 +450,51 @@ const router = createRouter().route({
   }
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/todos',
+  // Define the request body schema
+  schemas: {
+    request: {
+      headers: Type.Object({
+        'x-api-key': Type.String()
+      })
+    },
+    responses: {
+      200: Type.Array(
+        Type.Object({
+          id: Type.String(),
+          title: Type.String(),
+          completed: Type.Boolean()
+        })
+      ),
+      401: Type.Object({
+        message: Type.String()
+      })
+    }
+  },
+  handler: async request => {
+    const apiKey = request.headers.get('x-api-key')
+    if (!apiKey) {
+      return Response.json(
+        { message: 'API key is required' },
+        {
+          status: 401
+        }
+      )
+    }
+    const todos = await getTodos({
+      apiKey
+    })
+    // This part is fully typed
+    return Response.json(todos)
+  }
+})
+```
+</Tabs.Tab>
+</Tabs>
