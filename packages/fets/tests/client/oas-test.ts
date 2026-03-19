@@ -90,3 +90,17 @@ console.log(uploadJson.description);
 console.log(uploadJson.type);
 console.log(uploadJson.size);
 console.log(uploadJson.lastModified);
+
+// Test that query is required (not optional) when there's a required query param alongside an optional header param
+// See: https://github.com/ardatan/feTS/issues/XXX
+type PackageParams = Parameters<typeof client['/package']['get']>[0];
+// query must be required (not optional) because PackageDetailId has required: true
+type AssertQueryRequired = PackageParams extends { query: { PackageDetailId: number | bigint } }
+  ? true
+  : false;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _assertQueryRequired: AssertQueryRequired = true;
+void _assertQueryRequired;
+// query must NOT be callable without passing the required query param
+// @ts-expect-error - query is required and must contain PackageDetailId
+client['/package'].get({});
