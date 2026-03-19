@@ -188,9 +188,10 @@ export function createClient({
               for (const pathParamKey in paramsBody) {
                 const value = paramsBody[pathParamKey];
                 if (value) {
+                  const encodedValue = encodeURIComponent(value);
                   path = path
-                    .replace(`{${pathParamKey}}`, value)
-                    .replace(`:${pathParamKey}`, value);
+                    .replace(`{${pathParamKey}}`, encodedValue)
+                    .replace(`:${pathParamKey}`, encodedValue);
                 }
               }
             }
