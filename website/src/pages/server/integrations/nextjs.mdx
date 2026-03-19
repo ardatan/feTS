@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Integration with Next.js
 
 [Next.js](https://nextjs.org) is a web framework that allows you to build websites very quickly and
@@ -18,6 +20,37 @@ We recommend to use feTS as a main middleware for your API routes. In this case,
 `route.ts` file under `app/api/[...slug]` directory. Since your base route is `/api`, you should
 configure `base`. Then you can create a router and export it as `GET` and `POST` methods.
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
+```ts filename=app/api/[...slug]/route.ts
+import { createRouter, Response } from 'fets'
+
+export const router = createRouter({
+  base: '/api'
+}).route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string'
+          }
+        },
+        required: ['message'],
+        additionalProperties: false
+      }
+    }
+  },
+  handler: () => Response.json({ message: 'Hello World!' })
+})
+
+export { router as GET, router as POST }
+```
+</Tabs.Tab>
+<Tabs.Tab>
 ```ts filename=app/api/[...slug]/route.ts
 import { createRouter, Response, Type } from 'fets'
 
@@ -38,6 +71,9 @@ export const router = createRouter({
 
 export { router as GET, router as POST }
 ```
+</Tabs.Tab>
+</Tabs>
+
 
 ## Type-safe client usage
 

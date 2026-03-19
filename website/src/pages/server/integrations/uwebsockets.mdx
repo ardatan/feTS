@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Integration with µWebSockets
 
 [µWebSockets.js is an HTTP/WebSocket server for Node.js.](https://github.com/uNetworking/uWebSockets.js/)
@@ -10,6 +12,8 @@ npm i fets uWebSockets.js@uNetworking/uWebSockets.js#semver:^20
 
 ## Example
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts filename="index.ts"
 import { createRouter, Response } from 'fets'
 import { App, HttpRequest, HttpResponse } from 'uWebSockets.js'
@@ -45,3 +49,35 @@ App()
     console.log(`Swagger UI is running on http://localhost:3000/docs`)
   })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts filename="index.ts"
+import { createRouter, Response, Type } from 'fets'
+import { App, HttpRequest, HttpResponse } from 'uWebSockets.js'
+
+interface ServerContext {
+  req: HttpRequest
+  res: HttpResponse
+}
+
+const router = createRouter<ServerContext>().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: Type.Object({
+        message: Type.String()
+      })
+    }
+  },
+  handler: () => Response.json({ message: 'Hello World!' })
+})
+
+App()
+  .any('/*', router)
+  .listen(3000, () => {
+    console.log(`Swagger UI is running on http://localhost:3000/docs`)
+  })
+```
+</Tabs.Tab>
+</Tabs>

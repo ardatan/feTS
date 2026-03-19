@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Node HTTP
 
 Node.js is the most popular JavaScript runtime environment, and feTS supports it fully as well with
@@ -13,6 +15,8 @@ npm i fets
 
 ## Example
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createServer } from 'node:http'
 import { createRouter, Response } from 'fets'
@@ -37,3 +41,28 @@ createServer(router).listen(3000, () => {
   console.log('Swagger UI is available at http://localhost:3000/docs')
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createServer } from 'node:http'
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: Type.Object({
+        hello: Type.String()
+      })
+    }
+  },
+  handler: () => Response.json({ hello: 'world' })
+})
+
+createServer(router).listen(3000, () => {
+  console.log('Swagger UI is available at http://localhost:3000/docs')
+})
+```
+</Tabs.Tab>
+</Tabs>
