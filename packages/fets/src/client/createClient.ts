@@ -200,7 +200,7 @@ export function createClient({
 
             const requestInit: RequestInit & { headers: Record<string, string> } = {
               ...requestInitByUser,
-              method,
+              method: method.toUpperCase(),
               headers,
             };
 

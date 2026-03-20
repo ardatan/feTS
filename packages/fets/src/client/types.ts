@@ -255,14 +255,22 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
     }
   : T;
 
-type FixMissingTypeObject<T> = T extends { properties: any } ? T & { type: 'object' } : T;
+type FixMissingTypeObject<T> = T extends { type: any; properties: any }
+  ? T
+  : T extends { properties: any }
+    ? T & { type: 'object' }
+    : T;
 
 type FixMissingAdditionalProperties<T> = T extends {
   type: 'object';
   properties: any;
 }
   ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
-  : T;
+  : T extends { type: readonly (infer TType)[]; properties: any }
+    ? 'object' extends TType
+      ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
+      : T
+    : T;
 
 type FixExtraRequiredFields<T> = T extends {
   properties: Record<string, any>;
