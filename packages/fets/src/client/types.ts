@@ -473,6 +473,20 @@ export interface ClientOptions {
   globalParams?: ClientRequestParams;
 }
 
+type ServerVariableType<TVarName extends string, TVariables> =
+  TVariables extends Record<string, unknown>
+    ? TVarName extends keyof TVariables
+      ? TVariables[TVarName] extends { enum: readonly (infer TEnum extends string)[] }
+        ? TEnum
+        : string
+      : string
+    : string;
+
+type ResolveServerUrl<TUrl extends string, TVariables> =
+  TUrl extends `${infer Before}{${infer VarName}}${infer After}`
+    ? `${Before}${ServerVariableType<VarName, TVariables>}${ResolveServerUrl<After, TVariables>}`
+    : TUrl;
+
 export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit<
   ClientOptions,
   'endpoint'
@@ -489,7 +503,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
         endpoint: TEndpoint;
       }
     : TOAS extends {
-          servers: { url: infer TEndpoint extends string }[];
+          servers: { url: infer TEndpoint extends string; variables?: infer TVariables }[];
         }
       ? {
           /**
@@ -497,7 +511,7 @@ export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit
            *
            * @see https://swagger.io/docs/specification/api-host-and-base-path/
            */
-          endpoint: TEndpoint;
+          endpoint: ResolveServerUrl<TEndpoint, TVariables>;
         }
       : TOAS extends {
             host: infer THost extends string;
