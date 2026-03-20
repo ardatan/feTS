@@ -93,7 +93,7 @@ console.log(uploadJson.lastModified);
 
 // Test that query is required (not optional) when there's a required query param alongside an optional header param
 // See: https://github.com/ardatan/feTS/issues/XXX
-type PackageParams = Parameters<typeof client['/package']['get']>[0];
+type PackageParams = Parameters<(typeof client)['/package']['get']>[0];
 // query must be required (not optional) because PackageDetailId has required: true
 type AssertQueryRequired = PackageParams extends { query: { PackageDetailId: number | bigint } }
   ? true
