@@ -167,11 +167,13 @@ export type Circular<TJSONSchema extends JSONSchema> = TJSONSchema extends {
 }
   ? TJSONSchema extends PropertyValue<TJSONSchema, Property<TJSONSchema>>
     ? true
-    : [ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>>] extends [never]
-      ? Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
-      : ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>> extends TJSONSchema
-        ? true
-        : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+    : [Extract<PropertyValue<TJSONSchema, Property<TJSONSchema>>, { $id: string }>] extends [never]
+      ? [ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>>] extends [never]
+        ? Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+        : ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>> extends TJSONSchema
+          ? true
+          : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+      : true
   : false;
 
 export type Property<TJSONSchema extends JSONSchema> = keyof TJSONSchema['properties'];
