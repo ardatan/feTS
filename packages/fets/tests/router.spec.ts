@@ -299,5 +299,20 @@ describe('Router', () => {
       const helloResponse = await mainRouter.fetch('http://localhost:3000/sub/hello');
       expect(helloResponse.status).toBe(200);
     });
+
+    it('handles transitive use() - router merged into another merged router', async () => {
+      const deepRouter = createRouter<any, {}>({ landingPage: false }).route({
+        path: '/deep',
+        method: 'GET',
+        handler: () => Response.json({ level: 'deep' }),
+      });
+      const midRouter = createRouter<any, {}>({ landingPage: false }).use('/mid', deepRouter);
+      const topRouter = createRouter<any, {}>({ landingPage: false }).use('/top', midRouter);
+
+      const response = await topRouter.fetch('http://localhost:3000/top/mid/deep');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json).toEqual({ level: 'deep' });
+    });
   });
 });

@@ -3,6 +3,7 @@ export default {
   'type-safety-and-validation': 'Type-Safety & Validation',
   'error-handling': 'Error Handling',
   'programmatic-schemas': 'Programmatic Schemas with TypeBox',
+  'router-composition': 'Router Composition',
   testing: 'Testing',
   cors: 'CORS',
   cookies: 'Cookies',
