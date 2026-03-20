@@ -1,5 +1,5 @@
-import { createClient, type NormalizeOAS } from 'fets';
 import { Request, Response } from '@whatwg-node/fetch';
+import { createClient, type NormalizeOAS } from 'fets';
 import type exampleOAS from './fixtures/example-oas';
 
 type NormalizedOAS = NormalizeOAS<typeof exampleOAS>;
@@ -23,7 +23,7 @@ describe('Client path parameter encoding', () => {
         id: 'hello world',
       },
     });
-    const resJson = await response.json();
+    const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe('https://example.com/todo/hello%20world');
   });
 
@@ -33,7 +33,7 @@ describe('Client path parameter encoding', () => {
         id: 'foo/bar',
       },
     });
-    const resJson = await response.json();
+    const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe('https://example.com/todo/foo%2Fbar');
   });
 
@@ -43,7 +43,7 @@ describe('Client path parameter encoding', () => {
         id: 'id?evil=true',
       },
     });
-    const resJson = await response.json();
+    const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe('https://example.com/todo/id%3Fevil%3Dtrue');
   });
 
@@ -53,7 +53,7 @@ describe('Client path parameter encoding', () => {
         id: 'abc123',
       },
     });
-    const resJson = await response.json();
+    const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe('https://example.com/todo/abc123');
   });
 
@@ -63,7 +63,7 @@ describe('Client path parameter encoding', () => {
         id: '日本語',
       },
     });
-    const resJson = await response.json();
+    const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe(
       'https://example.com/todo/%E6%97%A5%E6%9C%AC%E8%AA%9E',
     );
