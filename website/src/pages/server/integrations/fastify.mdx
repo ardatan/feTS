@@ -20,34 +20,12 @@ import { createRouter, Response } from 'fets'
 
 const app = fastify()
 
-const router = createRouter().route({
-  method: 'GET',
-  path: '/greetings',
-  schemas: {
-    responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
-    }
-  },
-  handler: () => Response.json({ message: 'Hello World!' })
-})
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'],
+additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello World!' }) })
 
-app.route({
-  method: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  url: '/*',
-  async handler(req, reply) {
-    const response = await router.handleNodeRequest(req, {
-      req,
-      reply
-    })
+app.route({ method: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], url: '/\*', async handler(req, reply)
+{ const response = await router.handleNodeRequest(req, { req, reply })
 
     if (response === undefined) {
       void reply.status(404).send('Not found.')
@@ -61,11 +39,12 @@ app.route({
     void reply.status(response.status)
 
     void reply.send(response.body)
-  }
-})
+
+} })
 
 app.listen(4000)
-```
+
+````
 </Tabs.Tab>
 <Tabs.Tab>
 ```ts
@@ -112,6 +91,7 @@ app.route({
 })
 
 app.listen(4000)
-```
+````
+
 </Tabs.Tab>
 </Tabs>

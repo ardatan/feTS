@@ -19,50 +19,22 @@ npm i fets @azure/functions
 import { createRouter, Response } from 'fets'
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 
-const router = createRouter<Context>().route({
-  method: 'GET',
-  path: '/greetings',
-  schemas: {
-    responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
-    }
-  },
-  handler: () => Response.json({ message: 'Hello World!' })
-})
+const router = createRouter<Context>().route({ method: 'GET', path: '/greetings', schemas: {
+responses: { 200: { type: 'object', properties: { message: { type: 'string' } }, required:
+['message'], additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello
+World!' }) })
 
-const httpTrigger: AzureFunction = async function (
-  context: Context,
-  req: HttpRequest
-): Promise<void> {
-  const response = await router.fetch(req.url, {
-    method: req.method?.toString(),
-    body: req.rawBody,
-    headers: req.headers
-  })
+const httpTrigger: AzureFunction = async function ( context: Context, req: HttpRequest ):
+Promise<void> { const response = await router.fetch(req.url, { method: req.method?.toString(), body:
+req.rawBody, headers: req.headers })
 
-  const headersObj = {}
-  response.headers.forEach((value, key) => {
-    headersObj[key] = value
-  })
+const headersObj = {} response.headers.forEach((value, key) => { headersObj[key] = value })
 
-  const responseText = await response.text()
+const responseText = await response.text()
 
-  context.res = {
-    status: response.status,
-    body: responseText,
-    headers: headersObj
-  }
-}
-```
+context.res = { status: response.status, body: responseText, headers: headersObj } }
+
+````
 </Tabs.Tab>
 <Tabs.Tab>
 ```ts
@@ -105,6 +77,7 @@ const httpTrigger: AzureFunction = async function (
     headers: headersObj
   }
 }
-```
+````
+
 </Tabs.Tab>
 </Tabs>

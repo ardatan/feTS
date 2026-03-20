@@ -19,29 +19,10 @@ npm i fets
 import { createRouter, Response } from 'fets'
 import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda'
 
-const router = createRouter<{
-  event: APIGatewayEvent
-  lambdaContext: Context
-}>()
-    .route({
-        method: 'GET',
-        path: '/greetings',
-        schemas: {
-            responses: {
-                200: {
-                    type: 'object',
-                    properties: {
-                        message: {
-                            type: 'string'
-                        }
-                    },
-          required: ['message'],
-          additionalProperties: false
-                }
-            }
-        } ,
-        handler: () => Response.json({ message: 'Hello World!' })
-    })
+const router = createRouter<{ event: APIGatewayEvent lambdaContext: Context }>() .route({ method:
+'GET', path: '/greetings', schemas: { responses: { 200: { type: 'object', properties: { message: {
+type: 'string' } }, required: ['message'], additionalProperties: false } } } , handler: () =>
+Response.json({ message: 'Hello World!' }) })
 
 export async function handler(
   event: APIGatewayEvent,
@@ -63,20 +44,14 @@ export async function handler(
     }
   )
 
-  const responseHeaders: Record<string, string> = {}
+const responseHeaders: Record<string, string> = {}
 
-  response.headers.forEach((value, name) => {
-    responseHeaders[name] = value
-  })
+response.headers.forEach((value, name) => { responseHeaders[name] = value })
 
-  return {
-    statusCode: response.status,
-    headers: responseHeaders,
-    body: await response.text(),
-    isBase64Encoded: false
-  }
-}
-```
+return { statusCode: response.status, headers: responseHeaders, body: await response.text(),
+isBase64Encoded: false } }
+
+````
 </Tabs.Tab>
 <Tabs.Tab>
 ```ts filename="fets.ts"
@@ -133,6 +108,7 @@ export async function handler(
     isBase64Encoded: false
   }
 }
-```
+````
+
 </Tabs.Tab>
 </Tabs>

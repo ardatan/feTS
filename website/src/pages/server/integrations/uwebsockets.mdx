@@ -18,37 +18,17 @@ npm i fets uWebSockets.js@uNetworking/uWebSockets.js#semver:^20
 import { createRouter, Response } from 'fets'
 import { App, HttpRequest, HttpResponse } from 'uWebSockets.js'
 
-interface ServerContext {
-  req: HttpRequest
-  res: HttpResponse
-}
+interface ServerContext { req: HttpRequest res: HttpResponse }
 
-const router = createRouter<ServerContext>().route({
-  method: 'GET',
-  path: '/greetings',
-  schemas: {
-    responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
-    }
-  },
-  handler: () => Response.json({ message: 'Hello World!' })
-})
+const router = createRouter<ServerContext>().route({ method: 'GET', path: '/greetings', schemas: {
+responses: { 200: { type: 'object', properties: { message: { type: 'string' } }, required:
+['message'], additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello
+World!' }) })
 
-App()
-  .any('/*', router)
-  .listen(3000, () => {
-    console.log(`Swagger UI is running on http://localhost:3000/docs`)
-  })
-```
+App() .any('/\*', router) .listen(3000, () => {
+console.log(`Swagger UI is running on http://localhost:3000/docs`) })
+
+````
 </Tabs.Tab>
 <Tabs.Tab>
 ```ts filename="index.ts"
@@ -78,6 +58,7 @@ App()
   .listen(3000, () => {
     console.log(`Swagger UI is running on http://localhost:3000/docs`)
   })
-```
+````
+
 </Tabs.Tab>
 </Tabs>

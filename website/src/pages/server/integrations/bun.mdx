@@ -22,29 +22,14 @@ The following code is a simple example of how to use feTS with Bun.
 ```ts
 import { createRouter, Response } from 'fets'
 
-const router = createRouter().route({
-  method: 'GET',
-  path: '/greetings',
-  schemas: {
-    responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
-    }
-  },
-  handler: () => Response.json({ message: 'Hello World!' })
-})
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'],
+additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello World!' }) })
 
 const server = Bun.serve(router)
 console.info(`Swagger UI is available at http://localhost:${server.port}/docs`)
-```
+
+````
 </Tabs.Tab>
 <Tabs.Tab>
 ```ts
@@ -65,6 +50,7 @@ const router = createRouter().route({
 
 const server = Bun.serve(router)
 console.info(`Swagger UI is available at http://localhost:${server.port}/docs`)
-```
+````
+
 </Tabs.Tab>
 </Tabs>
