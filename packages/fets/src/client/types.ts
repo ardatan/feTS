@@ -157,16 +157,16 @@ interface OASParamToRequestParam<
 > extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
     ? // If there is any required parameter for this parameter type, make that parameter type required
-      TParameters extends [{ in: TParamType; required?: true }]
+      Extract<TParameters[number], { in: TParamType; required: true }> extends never
       ? {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
-            : never]: OASParamObj<this['arg0']>;
+            : never]?: OASParamObj<this['arg0']>;
         }
       : {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
-            : never]?: OASParamObj<this['arg0']>;
+            : never]: OASParamObj<this['arg0']>;
         }
     : {};
 }
@@ -255,14 +255,22 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
     }
   : T;
 
-type FixMissingTypeObject<T> = T extends { properties: any } ? T & { type: 'object' } : T;
+type FixMissingTypeObject<T> = T extends { type: any; properties: any }
+  ? T
+  : T extends { properties: any }
+    ? T & { type: 'object' }
+    : T;
 
 type FixMissingAdditionalProperties<T> = T extends {
   type: 'object';
   properties: any;
 }
   ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
-  : T;
+  : T extends { type: readonly (infer TType)[]; properties: any }
+    ? 'object' extends TType
+      ? Omit<T, 'additionalProperties'> & { additionalProperties: false }
+      : T
+    : T;
 
 type FixExtraRequiredFields<T> = T extends {
   properties: Record<string, any>;

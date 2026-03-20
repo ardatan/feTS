@@ -179,6 +179,48 @@ export default {
         },
       },
     },
+    '/package': {
+      get: {
+        description: 'Get a package',
+        parameters: [
+          {
+            name: 'PackageDetailId',
+            in: 'query',
+            required: true,
+            schema: {
+              type: 'integer',
+              format: 'int64',
+            },
+          },
+          {
+            name: 'X-LANGUAGE',
+            in: 'header',
+            required: false,
+            schema: {
+              type: 'string',
+              default: 'en',
+            },
+          },
+        ],
+        responses: {
+          '200': {
+            description: '',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    id: { type: 'integer' },
+                  },
+                  required: ['id'],
+                  additionalProperties: false,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     '/upload': {
       post: {
         description: 'Upload a file',
