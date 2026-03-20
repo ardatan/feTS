@@ -157,16 +157,16 @@ interface OASParamToRequestParam<
 > extends Fn {
   return: this['arg0'] extends { name: string; in: infer TParamType }
     ? // If there is any required parameter for this parameter type, make that parameter type required
-      TParameters extends [{ in: TParamType; required?: true }]
+      Extract<TParameters[number], { in: TParamType; required: true }> extends never
       ? {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
-            : never]: OASParamObj<this['arg0']>;
+            : never]?: OASParamObj<this['arg0']>;
         }
       : {
           [TKey in TParamType extends keyof OASParamPropMap
             ? OASParamPropMap[TParamType]
-            : never]?: OASParamObj<this['arg0']>;
+            : never]: OASParamObj<this['arg0']>;
         }
     : {};
 }
