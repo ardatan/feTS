@@ -26,6 +26,7 @@
     "prettier": "npm run prettier:check -- --write",
     "prettier:check": "npx prettier --ignore-path .gitignore --ignore-path .prettierignore --check .",
     "release": "changeset publish",
+    "version": "changeset version",
     "test": "jest --detectOpenHandles --detectLeaks",
     "test:integration": "cross-env \"INTEGRATION_TEST=true\" jest --detectOpenHandles --no-watchman",
     "ts:check": "tsc --noEmit"
