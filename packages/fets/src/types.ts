@@ -167,7 +167,11 @@ export type Circular<TJSONSchema extends JSONSchema> = TJSONSchema extends {
 }
   ? TJSONSchema extends PropertyValue<TJSONSchema, Property<TJSONSchema>>
     ? true
-    : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+    : [ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>>] extends [never]
+      ? Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
+      : ArrayItemValue<PropertyValue<TJSONSchema, Property<TJSONSchema>>> extends TJSONSchema
+        ? true
+        : Circular<PropertyValue<TJSONSchema, Property<TJSONSchema>>>
   : false;
 
 export type Property<TJSONSchema extends JSONSchema> = keyof TJSONSchema['properties'];
@@ -175,6 +179,11 @@ export type PropertyValue<
   TJSONSchema extends JSONSchema,
   TProperty extends keyof TJSONSchema['properties'],
 > = TJSONSchema['properties'][TProperty];
+export type ArrayItemValue<TJSONSchema extends JSONSchema> = TJSONSchema extends {
+  items: infer TItems extends JSONSchema;
+}
+  ? TItems
+  : never;
 
 export type FromSchema<T> =
   /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends {
