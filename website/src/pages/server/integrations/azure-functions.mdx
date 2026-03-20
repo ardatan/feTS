@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Integration with Azure Functions
 
 Azure Functions is a serverless environment that supports JavaScript. feTS is platform agnostic and
@@ -11,8 +13,32 @@ npm i fets @azure/functions
 
 ## Usage
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
+import { AzureFunction, Context, HttpRequest } from '@azure/functions'
+
+const router = createRouter<Context>().route({ method: 'GET', path: '/greetings', schemas: {
+responses: { 200: { type: 'object', properties: { message: { type: 'string' } }, required:
+['message'], additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello
+World!' }) })
+
+const httpTrigger: AzureFunction = async function ( context: Context, req: HttpRequest ):
+Promise<void> { const response = await router.fetch(req.url, { method: req.method?.toString(), body:
+req.rawBody, headers: req.headers })
+
+const headersObj = {} response.headers.forEach((value, key) => { headersObj[key] = value })
+
+const responseText = await response.text()
+
+context.res = { status: response.status, body: responseText, headers: headersObj } }
+
+````
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
 import { AzureFunction, Context, HttpRequest } from '@azure/functions'
 
 const router = createRouter<Context>().route({
@@ -20,16 +46,9 @@ const router = createRouter<Context>().route({
   path: '/greetings',
   schemas: {
     responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
+      200: Type.Object({
+        message: Type.String()
+      })
     }
   },
   handler: () => Response.json({ message: 'Hello World!' })
@@ -58,4 +77,7 @@ const httpTrigger: AzureFunction = async function (
     headers: headersObj
   }
 }
-```
+````
+
+</Tabs.Tab>
+</Tabs>

@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Cloudflare Workers
 
 [Cloudflare Workers](https://developers.cloudflare.com/workers) provides a serverless execution
@@ -19,61 +21,73 @@ You can use feTS as an event listener for the
 [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) in
 Cloudflare Workers.
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
+
+const router = createRouter<FetchEvent>().route({ method: 'GET', path: '/greetings', schemas: {
+responses: { 200: { type: 'object', properties: { message: { type: 'string' } }, required:
+['message'], additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello
+World!' }) })
+
+self.addEventListener('fetch', router)
+
+````
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
 
 const router = createRouter<FetchEvent>().route({
   method: 'GET',
   path: '/greetings',
   schemas: {
     responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
+      200: Type.Object({
+        message: Type.String()
+      })
     }
   },
   handler: () => Response.json({ message: 'Hello World!' })
 })
 
 self.addEventListener('fetch', router)
-```
+````
+
+</Tabs.Tab>
+</Tabs>
 
 ## Example with Module Workers API
 
 You can use feTS with Module Workers. See the difference
 [here](https://developers.cloudflare.com/workers/learning/migrating-to-module-workers/).
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
-const router = createRouter().route({
-  method: 'GET',
-  path: '/greetings',
-  schemas: {
-    responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
-    }
-  },
-  handler: () => Response.json({ message: 'Hello World!' })
-})
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'],
+additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello World!' }) })
 
 export default {
   fetch: router.fetch
 }
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: Type.Object({ message: Type.String() }) } }, handler: () => Response.json({ message: 'Hello
+World!' }) })
+
+export default {
+  fetch: router.fetch
+}
+```
+</Tabs.Tab>
+</Tabs>

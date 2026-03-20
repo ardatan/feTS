@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Integration with Bun
 
 feTS provides you a cross-platform HTTP Server. So you can easily integrate it into any platform
@@ -15,24 +17,32 @@ npm i fets
 
 The following code is a simple example of how to use feTS with Bun.
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
+
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'],
+additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello World!' }) })
+
+const server = Bun.serve(router)
+console.info(`Swagger UI is available at http://localhost:${server.port}/docs`)
+
+````
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
 
 const router = createRouter().route({
   method: 'GET',
   path: '/greetings',
   schemas: {
     responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
+      200: Type.Object({
+        message: Type.String()
+      })
     }
   },
   handler: () => Response.json({ message: 'Hello World!' })
@@ -40,4 +50,7 @@ const router = createRouter().route({
 
 const server = Bun.serve(router)
 console.info(`Swagger UI is available at http://localhost:${server.port}/docs`)
-```
+````
+
+</Tabs.Tab>
+</Tabs>

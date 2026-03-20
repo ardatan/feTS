@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Google Cloud Functions
 
 [Google Cloud Functions](https://cloud.google.com/functions/) is a hosted serverless platform
@@ -12,6 +14,8 @@ npm i fets
 
 ## Usage
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts
 import { createRouter, Response } from 'fets'
 
@@ -35,3 +39,23 @@ export const api = createRouter().route({
   handler: () => Response.json({ message: 'Hello World!' })
 })
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts
+import { createRouter, Response, Type } from 'fets'
+
+export const api = createRouter().route({
+  method: 'GET',
+  path: '/greetings',
+  schemas: {
+    responses: {
+      200: Type.Object({
+        message: Type.String()
+      })
+    }
+  },
+  handler: () => Response.json({ message: 'Hello World!' })
+})
+```
+</Tabs.Tab>
+</Tabs>
