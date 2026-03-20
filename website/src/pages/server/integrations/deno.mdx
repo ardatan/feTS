@@ -1,3 +1,5 @@
+import { Tabs } from '@theguild/components'
+
 # Integration with Deno
 
 [Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust](https://deno.land/).
@@ -10,31 +12,41 @@ We will use `fets` which has an agnostic HTTP handler using
 
 Create a `deno-fets.ts` file:
 
+<Tabs items={['JSON Schema', 'TypeBox']}>
+<Tabs.Tab>
 ```ts filename="deno-fets.ts"
 import { createRouter, Response } from 'npm:fets'
+
+const router = createRouter().route({ method: 'GET', path: '/greetings', schemas: { responses: {
+200: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'],
+additionalProperties: false } } }, handler: () => Response.json({ message: 'Hello World!' }) })
+
+Deno.serve(router)
+
+````
+</Tabs.Tab>
+<Tabs.Tab>
+```ts filename="deno-fets.ts"
+import { createRouter, Response, Type } from 'npm:fets'
 
 const router = createRouter().route({
   method: 'GET',
   path: '/greetings',
   schemas: {
     responses: {
-      200: {
-        type: 'object',
-        properties: {
-          message: {
-            type: 'string'
-          }
-        },
-        required: ['message'],
-        additionalProperties: false
-      }
+      200: Type.Object({
+        message: Type.String()
+      })
     }
   },
   handler: () => Response.json({ message: 'Hello World!' })
 })
 
 Deno.serve(router)
-```
+````
+
+</Tabs.Tab>
+</Tabs>
 
 And run it:
 
