@@ -1,5 +1,5 @@
-import { Request, Response } from '@whatwg-node/fetch';
 import { createClient, type NormalizeOAS } from 'fets';
+import { Request, Response } from '@whatwg-node/fetch';
 import type exampleOAS from './fixtures/example-oas';
 
 type NormalizedOAS = NormalizeOAS<typeof exampleOAS>;
