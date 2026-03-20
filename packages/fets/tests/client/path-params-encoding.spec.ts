@@ -64,8 +64,6 @@ describe('Client path parameter encoding', () => {
       },
     });
     const resJson = (await response.json()) as { url: string };
-    expect(resJson.url).toBe(
-      'https://example.com/todo/%E6%97%A5%E6%9C%AC%E8%AA%9E',
-    );
+    expect(resJson.url).toBe('https://example.com/todo/%E6%97%A5%E6%9C%AC%E8%AA%9E');
   });
 });
