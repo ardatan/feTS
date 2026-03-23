@@ -207,4 +207,112 @@ describe('Router', () => {
     const json = await response.json();
     expect(json).toEqual({ foo: { bar: 'baz' } });
   });
+
+  describe('use() - router merging', () => {
+    it('merges a sub-router without prefix', async () => {
+      const usersRouter = createRouter<any, {}>().route({
+        path: '/users',
+        method: 'GET',
+        handler: () => Response.json({ users: ['alice', 'bob'] }),
+      });
+      const mainRouter = createRouter<any, {}>().use(usersRouter);
+      const response = await mainRouter.fetch('http://localhost:3000/users');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json.users).toEqual(['alice', 'bob']);
+    });
+
+    it('merges a sub-router with a prefix', async () => {
+      const usersRouter = createRouter<any, {}>().route({
+        path: '/users',
+        method: 'GET',
+        handler: () => Response.json({ users: ['alice', 'bob'] }),
+      });
+      const mainRouter = createRouter<any, {}>().use('/api', usersRouter);
+      const response = await mainRouter.fetch('http://localhost:3000/api/users');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json.users).toEqual(['alice', 'bob']);
+    });
+
+    it('merges a sub-router that has its own base path', async () => {
+      const usersRouter = createRouter<any, {}>({ base: '/users' }).route({
+        path: '/:id',
+        method: 'GET',
+        handler: request => Response.json({ id: request.params.id }),
+      });
+      const mainRouter = createRouter<any, {}>().use(usersRouter);
+      const response = await mainRouter.fetch('http://localhost:3000/users/42');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json.id).toBe('42');
+    });
+
+    it('merges multiple sub-routers', async () => {
+      const usersRouter = createRouter<any, {}>().route({
+        path: '/users',
+        method: 'GET',
+        handler: () => Response.json({ resource: 'users' }),
+      });
+      const postsRouter = createRouter<any, {}>().route({
+        path: '/posts',
+        method: 'GET',
+        handler: () => Response.json({ resource: 'posts' }),
+      });
+      const mainRouter = createRouter<any, {}>().use(usersRouter).use(postsRouter);
+      const usersResponse = await mainRouter.fetch('http://localhost:3000/users');
+      expect(usersResponse.status).toBe(200);
+      expect(await usersResponse.json()).toEqual({ resource: 'users' });
+      const postsResponse = await mainRouter.fetch('http://localhost:3000/posts');
+      expect(postsResponse.status).toBe(200);
+      expect(await postsResponse.json()).toEqual({ resource: 'posts' });
+    });
+
+    it('merges sub-router with prefix and route params', async () => {
+      const itemsRouter = createRouter<any, {}>().route({
+        path: '/:id',
+        method: 'GET',
+        handler: request => Response.json({ id: request.params.id }),
+      });
+      const mainRouter = createRouter<any, {}>().use('/items', itemsRouter);
+      const response = await mainRouter.fetch('http://localhost:3000/items/99');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json.id).toBe('99');
+    });
+
+    it('does not register sub-router internal routes in merged router', async () => {
+      const subRouter = createRouter<any, {}>({
+        openAPI: { endpoint: '/openapi.json' },
+      }).route({
+        path: '/hello',
+        method: 'GET',
+        handler: () => Response.json({ hello: 'world' }),
+      });
+      const mainRouter = createRouter<any, {}>().use('/sub', subRouter);
+      // The sub-router's internal /openapi.json should NOT be re-registered in the merged router
+      const mergedPaths = mainRouter.__routes.map((r: any) => r.path);
+      expect(mergedPaths).not.toContain('/sub/openapi.json');
+      // The user-defined route should be in __routes with the prefix applied
+      expect(mergedPaths).toContain('/sub/hello');
+      // The merged route should be accessible
+      const helloResponse = await mainRouter.fetch('http://localhost:3000/sub/hello');
+      expect(helloResponse.status).toBe(200);
+    });
+
+    it('handles transitive use() - router merged into another merged router', async () => {
+      const deepRouter = createRouter<any, {}>({ landingPage: false }).route({
+        path: '/deep',
+        method: 'GET',
+        handler: () => Response.json({ level: 'deep' }),
+      });
+      const midRouter = createRouter<any, {}>({ landingPage: false }).use('/mid', deepRouter);
+      const topRouter = createRouter<any, {}>({ landingPage: false }).use('/top', midRouter);
+
+      const response = await topRouter.fetch('http://localhost:3000/top/mid/deep');
+      expect(response.status).toBe(200);
+      const json = await response.json();
+      expect(json).toEqual({ level: 'deep' });
+    });
+  });
 });

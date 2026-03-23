@@ -85,6 +85,15 @@ export function createRouterBase(
       >
     >
   >();
+  const __routes: RouteWithSchemasOpts<
+    any,
+    RouterComponentsBase,
+    RouteSchemas,
+    HTTPMethod,
+    string,
+    TypedRequest,
+    TypedResponse
+  >[] = [];
 
   function handleUnhandledRoute(requestPath: string) {
     if (landingPage) {
@@ -226,6 +235,9 @@ export function createRouterBase(
         TypedResponse
       >,
     ) {
+      if (!route.internal) {
+        __routes.push(route);
+      }
       for (const onRouteHook of onRouteHooks) {
         onRouteHook({
           basePath,
@@ -238,8 +250,30 @@ export function createRouterBase(
       }
       return this as any;
     },
+    use(
+      prefixOrSubRouter: string | Router<any, any, any>,
+      subRouter?: Router<any, any, any>,
+    ) {
+      let prefix = '';
+      let actualSubRouter: Router<any, any, any>;
+      if (typeof prefixOrSubRouter === 'string') {
+        prefix = prefixOrSubRouter === '/' ? '' : prefixOrSubRouter;
+        actualSubRouter = subRouter!;
+      } else {
+        actualSubRouter = prefixOrSubRouter;
+      }
+      const subBase = actualSubRouter.__base === '/' ? '' : actualSubRouter.__base;
+      for (const subRoute of actualSubRouter.__routes) {
+        const subPath = subRoute.path === '/' ? '' : subRoute.path;
+        const newPath = `${prefix}${subBase}${subPath}` || '/';
+        this.route({ ...subRoute, path: newPath });
+      }
+      return this as any;
+    },
     __client: {},
     __onRouterInitHooks,
+    __routes,
+    __base: basePath,
   };
 }
 

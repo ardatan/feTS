@@ -285,8 +285,42 @@ export interface RouterBaseObject<
     TComponents,
     TRouterSDK & RouterSDK<TPath, TTypedRequest, TTypedResponse>
   >;
+  use<
+    TSubServerContext,
+    TSubComponents extends RouterComponentsBase,
+    TSubRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
+  >(
+    subRouter: Router<TSubServerContext, TSubComponents, TSubRouterSDK>,
+  ): Router<TServerContext, TComponents, TRouterSDK & TSubRouterSDK>;
+  use<
+    const TPrefix extends string,
+    TSubServerContext,
+    TSubComponents extends RouterComponentsBase,
+    TSubRouterSDK extends RouterSDK<string, TypedRequest, TypedResponse>,
+  >(
+    prefix: TPrefix,
+    subRouter: Router<TSubServerContext, TSubComponents, TSubRouterSDK>,
+  ): Router<
+    TServerContext,
+    TComponents,
+    TRouterSDK & {
+      [TKey in keyof TSubRouterSDK as TKey extends string
+        ? `${TPrefix}${TKey}`
+        : TKey]: TSubRouterSDK[TKey];
+    }
+  >;
   __client: TRouterSDK;
   __onRouterInitHooks: OnRouterInitHook<TServerContext>[];
+  __routes: RouteWithSchemasOpts<
+    any,
+    RouterComponentsBase,
+    RouteSchemas,
+    HTTPMethod,
+    string,
+    TypedRequest,
+    TypedResponse
+  >[];
+  __base: string;
 }
 
 export type Router<
