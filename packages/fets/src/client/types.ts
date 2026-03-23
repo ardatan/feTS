@@ -501,10 +501,12 @@ type ServerVariableType<TVarName extends string, TVariables> =
       : string
     : string;
 
-type ResolveServerUrl<TUrl extends string, TVariables> =
-  TUrl extends `${infer Before}{${infer VarName}}${infer After}`
-    ? `${Before}${ServerVariableType<VarName, TVariables>}${ResolveServerUrl<After, TVariables>}`
-    : TUrl;
+type ResolveServerUrl<
+  TUrl extends string,
+  TVariables,
+> = TUrl extends `${infer Before}{${infer VarName}}${infer After}`
+  ? `${Before}${ServerVariableType<VarName, TVariables>}${ResolveServerUrl<After, TVariables>}`
+  : TUrl;
 
 export type ClientOptionsWithStrictEndpoint<TOAS extends OpenAPIDocument> = Omit<
   ClientOptions,

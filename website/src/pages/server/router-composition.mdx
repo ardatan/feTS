@@ -42,12 +42,10 @@ export const usersRouter = createRouter()
 ```ts filename="app.ts"
 import { createServer } from 'node:http'
 import { createRouter } from 'fets'
-import { usersRouter } from './users-router'
 import { postsRouter } from './posts-router'
+import { usersRouter } from './users-router'
 
-const app = createRouter()
-  .use(usersRouter)
-  .use(postsRouter)
+const app = createRouter().use(usersRouter).use(postsRouter)
 
 createServer(app).listen(3000)
 ```
@@ -78,10 +76,9 @@ import { createServer } from 'node:http'
 import { createRouter } from 'fets'
 import { usersRouter } from './users-router'
 
-const app = createRouter()
-  .use('/users', usersRouter)
-  // GET /users     → usersRouter's '/' handler
-  // GET /users/:id → usersRouter's '/:id' handler
+const app = createRouter().use('/users', usersRouter)
+// GET /users     → usersRouter's '/' handler
+// GET /users/:id → usersRouter's '/:id' handler
 
 createServer(app).listen(3000)
 ```
@@ -94,12 +91,11 @@ merging:
 ```ts filename="users-router.ts"
 import { createRouter, Response } from 'fets'
 
-export const usersRouter = createRouter({ base: '/users' })
-  .route({
-    path: '/:id',
-    method: 'GET',
-    handler: request => Response.json({ id: request.params.id })
-  })
+export const usersRouter = createRouter({ base: '/users' }).route({
+  path: '/:id',
+  method: 'GET',
+  handler: request => Response.json({ id: request.params.id })
+})
 ```
 
 ```ts filename="app.ts"
@@ -118,22 +114,19 @@ Routers can be composed transitively — a merged router can itself be merged in
 import { createRouter, Response } from 'fets'
 
 // Deepest level
-const itemsRouter = createRouter()
-  .route({
-    path: '/:id',
-    method: 'GET',
-    handler: request => Response.json({ id: request.params.id })
-  })
+const itemsRouter = createRouter().route({
+  path: '/:id',
+  method: 'GET',
+  handler: request => Response.json({ id: request.params.id })
+})
 
 // Mid level
-const apiRouter = createRouter()
-  .use('/items', itemsRouter)
-  // /items/:id is now registered
+const apiRouter = createRouter().use('/items', itemsRouter)
+// /items/:id is now registered
 
 // Top level
-const app = createRouter()
-  .use('/api', apiRouter)
-  // GET /api/items/:id → itemsRouter's '/:id' handler
+const app = createRouter().use('/api', apiRouter)
+// GET /api/items/:id → itemsRouter's '/:id' handler
 ```
 
 ## Full Example
@@ -143,58 +136,54 @@ Here is a complete example showing how to organise a larger API using router com
 ```ts filename="users-router.ts"
 import { createRouter, Response } from 'fets'
 
-export const usersRouter = createRouter()
-  .route({
-    path: '/users',
-    method: 'GET',
-    schemas: {
-      responses: {
-        200: {
-          type: 'object',
-          properties: {
-            users: { type: 'array', items: { type: 'string' } }
-          },
-          required: ['users'],
-          additionalProperties: false
-        }
+export const usersRouter = createRouter().route({
+  path: '/users',
+  method: 'GET',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          users: { type: 'array', items: { type: 'string' } }
+        },
+        required: ['users'],
+        additionalProperties: false
       }
-    },
-    handler: () => Response.json({ users: ['alice', 'bob'] })
-  })
+    }
+  },
+  handler: () => Response.json({ users: ['alice', 'bob'] })
+})
 ```
 
 ```ts filename="posts-router.ts"
 import { createRouter, Response } from 'fets'
 
-export const postsRouter = createRouter()
-  .route({
-    path: '/posts',
-    method: 'GET',
-    schemas: {
-      responses: {
-        200: {
-          type: 'object',
-          properties: {
-            posts: { type: 'array', items: { type: 'string' } }
-          },
-          required: ['posts'],
-          additionalProperties: false
-        }
+export const postsRouter = createRouter().route({
+  path: '/posts',
+  method: 'GET',
+  schemas: {
+    responses: {
+      200: {
+        type: 'object',
+        properties: {
+          posts: { type: 'array', items: { type: 'string' } }
+        },
+        required: ['posts'],
+        additionalProperties: false
       }
-    },
-    handler: () => Response.json({ posts: ['hello world', 'feTS is great'] })
-  })
+    }
+  },
+  handler: () => Response.json({ posts: ['hello world', 'feTS is great'] })
+})
 ```
 
 ```ts filename="app.ts"
 import { createServer } from 'node:http'
 import { createRouter } from 'fets'
-import { usersRouter } from './users-router'
 import { postsRouter } from './posts-router'
+import { usersRouter } from './users-router'
 
-const app = createRouter()
-  .use(usersRouter)
-  .use(postsRouter)
+const app = createRouter().use(usersRouter).use(postsRouter)
 
 createServer(app).listen(3000, () => {
   console.log('Swagger UI is available at http://localhost:3000/docs')

@@ -250,10 +250,7 @@ export function createRouterBase(
       }
       return this as any;
     },
-    use(
-      prefixOrSubRouter: string | Router<any, any, any>,
-      subRouter?: Router<any, any, any>,
-    ) {
+    use(prefixOrSubRouter: string | Router<any, any, any>, subRouter?: Router<any, any, any>) {
       let prefix = '';
       let actualSubRouter: Router<any, any, any>;
       if (typeof prefixOrSubRouter === 'string') {

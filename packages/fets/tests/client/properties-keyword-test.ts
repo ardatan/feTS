@@ -3,7 +3,10 @@ import type propertiesKeywordOas from './fixtures/example-properties-keyword-oas
 
 // Test that OASModel works when a schema has a property named "properties"
 // See: https://github.com/ardatan/feTS/issues/XXX
-type CheckDeviceResponse = OASModel<NormalizeOAS<typeof propertiesKeywordOas>, 'CheckDeviceResponse'>;
+type CheckDeviceResponse = OASModel<
+  NormalizeOAS<typeof propertiesKeywordOas>,
+  'CheckDeviceResponse'
+>;
 
 // expiryDate should be typed as string (date-time format)
 declare const response: CheckDeviceResponse;
