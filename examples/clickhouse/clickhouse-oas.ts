@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-530492",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-610521",
       "email": "support@clickhouse.com"
     }
   },
@@ -76,7 +76,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -177,7 +177,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -285,7 +285,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -380,7 +380,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -496,7 +496,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -604,7 +604,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -715,7 +715,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -833,7 +833,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -939,7 +939,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1050,7 +1050,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1161,7 +1161,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1267,7 +1267,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1385,7 +1385,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1505,7 +1505,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1625,7 +1625,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1746,7 +1746,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1866,7 +1866,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -1986,7 +1986,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2091,7 +2091,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2205,7 +2205,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2326,7 +2326,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2437,7 +2437,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2555,7 +2555,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2666,7 +2666,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2790,7 +2790,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -2914,7 +2914,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3026,7 +3026,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3136,7 +3136,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3244,7 +3244,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3355,7 +3355,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3473,7 +3473,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3579,7 +3579,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3683,7 +3683,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3794,7 +3794,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -3912,7 +3912,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4018,7 +4018,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4122,7 +4122,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4230,7 +4230,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4341,7 +4341,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4447,7 +4447,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4569,7 +4569,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4679,7 +4679,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4812,7 +4812,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -4926,7 +4926,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5050,7 +5050,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5177,7 +5177,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5311,7 +5311,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5433,7 +5433,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5527,7 +5527,7 @@
                       "format": "uuid"
                     },
                     "result": {
-                      "$ref": "#/components/schemas/ClickPipeSettingsGetResponse"
+                      "$ref": "#/components/schemas/ClickPipeSettings"
                     }
                   }
                 }
@@ -5560,7 +5560,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5661,7 +5661,7 @@
                       "format": "uuid"
                     },
                     "result": {
-                      "$ref": "#/components/schemas/ClickPipeSettingsGetResponse"
+                      "$ref": "#/components/schemas/ClickPipeSettings"
                     }
                   }
                 }
@@ -5694,7 +5694,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5830,7 +5830,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -5871,7 +5871,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/state": {
       "patch": {
         "summary": "Update ClickPipe state",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Start, stop or resync ClickPipe. Stopping a ClickPipe will stop the ingestion process from any state. Starting is allowed for ClickPipes in the \"Stopped\" state or with a \"Failed\" state. Resyncing is only for Postgres pipes and can be done from any state.",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Start, stop or resync ClickPipe. Stopping a ClickPipe will stop the ingestion process from any state. Starting is allowed for ClickPipes in the \"Stopped\" state or with a \"Failed\" state. Resyncing is only for Postgres and MySQL pipes and can be done from any state.",
         "operationId": "clickPipeStateUpdate",
         "parameters": [
           {
@@ -5966,7 +5966,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6083,7 +6083,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6207,7 +6207,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6327,7 +6327,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6451,7 +6451,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6577,7 +6577,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6710,7 +6710,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6831,7 +6831,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -6951,7 +6951,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7075,7 +7075,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7195,7 +7195,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7321,7 +7321,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7454,7 +7454,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7575,7 +7575,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7604,6 +7604,705 @@
         },
         "tags": [
           "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickstack/webhooks": {
+      "get": {
+        "summary": "ClickStack: List Webhooks",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Retrieves a list of all webhooks for the authenticated team",
+        "operationId": "clickStackListWebhooks",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the ClickStack service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ClickStackWebhook"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickStack"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres": {
+      "post": {
+        "summary": "Create new Postgres service",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Creates a new Postgres service in the organization and returns it. The service is started asynchronously.",
+        "operationId": "postgresServiceCreate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that will own the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServicePostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/Postgres Service"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}": {
+      "get": {
+        "summary": "Get PostgreSQL service details",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a Postgres service that belongs to the organization",
+        "operationId": "postgresServiceGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/Postgres Service"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete a PostgreSQL service",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Deletes a Postgres service that belongs to the organization",
+        "operationId": "postgresServiceDelete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update a PostgreSQL service",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update a Postgres service that belongs to the organization",
+        "operationId": "postgresServicePatch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServicePatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/Postgres Service"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/ca-certificates": {
+      "get": {
+        "summary": "Get Postgres CA certs",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Download CA certificates for a PostgreSQL service",
+        "operationId": "postgresServiceCertsGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "headers": {
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string",
+                  "example": "attachment; filename=\"postgres-ca-certificate.pem\""
+                }
+              }
+            },
+            "content": {
+              "application/x-pem-file": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
         ],
         "x-badges": [
           {
@@ -7700,7 +8399,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7811,7 +8510,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -7919,7 +8618,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8037,7 +8736,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8151,7 +8850,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8275,7 +8974,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8402,7 +9101,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8524,7 +9223,7 @@
               }
             }
           },
-          "INTERNAL_ERROR": {
+          "500": {
             "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
             "content": {
               "application/json": {
@@ -8693,6 +9392,7 @@
               "kafka",
               "redpanda",
               "msk",
+              "gcmk",
               "confluent",
               "warpstream",
               "azureeventhub",
@@ -8723,7 +9423,7 @@
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "type": "string",
             "enum": [
               "PLAIN",
@@ -8779,6 +9479,7 @@
               "kafka",
               "redpanda",
               "msk",
+              "gcmk",
               "confluent",
               "warpstream",
               "azureeventhub",
@@ -8809,7 +9510,7 @@
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "type": "string",
             "enum": [
               "PLAIN",
@@ -8874,7 +9575,7 @@
       "ClickPipePatchKafkaSource": {
         "properties": {
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "nullable": true,
             "type": "string",
             "enum": [
@@ -9114,6 +9815,7 @@
             "nullable": true,
             "type": "string",
             "enum": [
+              "none",
               "gzip",
               "gz",
               "brotli",
@@ -9217,6 +9919,7 @@
             "nullable": true,
             "type": "string",
             "enum": [
+              "none",
               "gzip",
               "gz",
               "brotli",
@@ -9425,12 +10128,6 @@
             "type": "integer",
             "minimum": 1,
             "example": 1000
-          },
-          "deleteOnMerge": {
-            "description": "Enable hard delete behavior in ReplacingMergeTree for PostgreSQL DELETE operations.",
-            "nullable": true,
-            "type": "boolean",
-            "example": false
           }
         }
       },
@@ -9528,6 +10225,24 @@
       },
       "ClickPipePostgresSource": {
         "properties": {
+          "type": {
+            "description": "Type of the Postgres source. Defaults to \"postgres\" if not specified.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "postgres",
+              "supabase",
+              "neon",
+              "alloydb",
+              "planetscale",
+              "rdspostgres",
+              "aurorapostgres",
+              "cloudsqlpostgres",
+              "azurepostgres",
+              "crunchybridge",
+              "tigerdata"
+            ]
+          },
           "host": {
             "description": "PostgreSQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
             "type": "string",
@@ -9584,6 +10299,24 @@
       },
       "ClickPipeMutatePostgresSource": {
         "properties": {
+          "type": {
+            "description": "Type of the Postgres source. Defaults to \"postgres\" if not specified.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "postgres",
+              "supabase",
+              "neon",
+              "alloydb",
+              "planetscale",
+              "rdspostgres",
+              "aurorapostgres",
+              "cloudsqlpostgres",
+              "azurepostgres",
+              "crunchybridge",
+              "tigerdata"
+            ]
+          },
           "credentials": {
             "$ref": "#/components/schemas/PLAIN"
           },
@@ -9667,22 +10400,6 @@
             "type": "string",
             "example": "production_db"
           },
-          "authentication": {
-            "description": "Authentication method for Postgres connection.",
-            "nullable": true,
-            "type": "string",
-            "enum": [
-              "basic",
-              "IAM_ROLE"
-            ],
-            "example": "IAM_ROLE"
-          },
-          "iamRole": {
-            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
-            "nullable": true,
-            "type": "string",
-            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
-          },
           "tlsHost": {
             "description": "TLS/SSL host for secure connections.",
             "nullable": true,
@@ -9713,6 +10430,450 @@
             }
           }
         }
+      },
+      "ClickPipeMySQLPipeSettings": {
+        "properties": {
+          "syncIntervalSeconds": {
+            "description": "Interval in seconds to sync data from MySQL during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
+          },
+          "pullBatchSize": {
+            "description": "Number of rows to pull in each batch during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1000
+          },
+          "replicationMode": {
+            "description": "Replication mode: \"cdc\" (change data capture with initial snapshot), \"snapshot\" (one-time snapshot only), or \"cdc_only\" (CDC without initial snapshot).",
+            "type": "string",
+            "enum": [
+              "cdc",
+              "snapshot",
+              "cdc_only"
+            ],
+            "example": "cdc"
+          },
+          "replicationMechanism": {
+            "description": "MySQL replication mechanism: \"AUTO\" (automatically detect), \"GTID\" (Global Transaction Identifier), or \"FILE_POS\" (binary log file and position). Defaults to AUTO if not specified.",
+            "type": "string",
+            "enum": [
+              "AUTO",
+              "GTID",
+              "FILE_POS"
+            ],
+            "example": "AUTO"
+          },
+          "useCompression": {
+            "description": "Enable compression for the MySQL connection.",
+            "type": "boolean",
+            "example": false
+          },
+          "allowNullableColumns": {
+            "description": "Preserve nullability from MySQL in the destination ClickHouse table. When true, columns without NOT NULL constraints are created as Nullable(...). When false, all columns are non-nullable and NULL values are replaced with the default value for the type. Note: Nullable types have performance overhead in ClickHouse.",
+            "type": "boolean",
+            "example": false
+          },
+          "initialLoadParallelism": {
+            "description": "Number of parallel workers to use per table in the initial snapshot phase.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
+          },
+          "snapshotNumRowsPerPartition": {
+            "description": "Number of rows per partition during the snapshot phase.",
+            "type": "integer",
+            "minimum": 1000,
+            "example": 100000
+          },
+          "snapshotNumberOfParallelTables": {
+            "description": "Number of tables to snapshot in parallel during the initial load phase.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
+          },
+          "deleteOnMerge": {
+            "description": "Enable hard delete behavior in ReplacingMergeTree for MySQL DELETE operations.",
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": [
+          "replicationMode"
+        ]
+      },
+      "ClickPipePatchMySQLPipeSettings": {
+        "properties": {
+          "syncIntervalSeconds": {
+            "description": "Interval in seconds to sync data from MySQL during CDC replication.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
+          },
+          "pullBatchSize": {
+            "description": "Number of rows to pull in each batch during CDC replication.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "example": 1000
+          },
+          "useCompression": {
+            "description": "Enable compression for the MySQL connection.",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "ClickPipeMySQLPipeTableMapping": {
+        "properties": {
+          "sourceSchemaName": {
+            "description": "MySQL source database name.",
+            "type": "string",
+            "example": "my_database"
+          },
+          "sourceTable": {
+            "description": "MySQL source table name.",
+            "type": "string",
+            "example": "users"
+          },
+          "targetTable": {
+            "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_database_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
+            "type": "string",
+            "example": "my_database_users"
+          },
+          "excludedColumns": {
+            "type": "array",
+            "description": "List of column names to exclude from replication. Column names must be unique within this list.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "useCustomSortingKey": {
+            "description": "Whether to use a custom sorting key. If true, sortingKeys must be provided. If false or omitted, the default sorting key is the MySQL primary key.",
+            "type": "boolean",
+            "example": false
+          },
+          "sortingKeys": {
+            "type": "array",
+            "description": "Ordered list of column names to use as the sorting (ORDER BY) key in ClickHouse. Only used when useCustomSortingKey is true. Column names must be unique within this list.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tableEngine": {
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
+            "type": "string",
+            "enum": [
+              "MergeTree",
+              "ReplacingMergeTree",
+              "Null"
+            ],
+            "example": "ReplacingMergeTree"
+          },
+          "partitionKey": {
+            "description": "Custom partitioning column used for parallel snapshotting. Must be an indexed column of an integer, date, datetime or timestamp type. Unrelated to ClickHouse partitioning.",
+            "type": "string",
+            "example": "id"
+          }
+        },
+        "required": [
+          "sourceSchemaName",
+          "sourceTable",
+          "targetTable"
+        ]
+      },
+      "ClickPipePatchMySQLPipeRemoveTableMapping": {
+        "properties": {
+          "sourceSchemaName": {
+            "description": "MySQL source database name.",
+            "nullable": true,
+            "type": "string",
+            "example": "my_database"
+          },
+          "sourceTable": {
+            "description": "MySQL source table name.",
+            "nullable": true,
+            "type": "string",
+            "example": "users"
+          },
+          "targetTable": {
+            "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_database_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
+            "nullable": true,
+            "type": "string",
+            "example": "my_database_users"
+          },
+          "tableEngine": {
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "MergeTree",
+              "ReplacingMergeTree",
+              "Null"
+            ],
+            "example": "ReplacingMergeTree"
+          },
+          "partitionKey": {
+            "description": "Custom partitioning column used for parallel snapshotting. Must be an indexed column of an integer, date, datetime or timestamp type. Unrelated to ClickHouse partitioning.",
+            "nullable": true,
+            "type": "string",
+            "example": "id"
+          }
+        },
+        "required": [
+          "sourceSchemaName",
+          "sourceTable",
+          "targetTable"
+        ]
+      },
+      "ClickPipeMySQLSource": {
+        "properties": {
+          "type": {
+            "description": "Type of the MySQL source. Defaults to \"mysql\" if not specified.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "mysql",
+              "rdsmysql",
+              "auroramysql",
+              "planetscalevitess",
+              "mariadb",
+              "rdsmariadb"
+            ]
+          },
+          "host": {
+            "description": "MySQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
+            "type": "string",
+            "format": "hostname",
+            "example": "my-mysql-server.example.com"
+          },
+          "port": {
+            "description": "MySQL server port.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 3306
+          },
+          "authentication": {
+            "description": "Authentication method for MySQL connection.",
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
+            ],
+            "example": "basic"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "my-mysql-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MySQL server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MySQL connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MySQL connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeMySQLPipeSettings"
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "List of table mappings defining which MySQL tables to replicate and how they map to ClickHouse tables.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMySQLPipeTableMapping"
+            }
+          }
+        },
+        "required": [
+          "host",
+          "port",
+          "settings",
+          "tableMappings"
+        ]
+      },
+      "ClickPipeMutateMySQLSource": {
+        "properties": {
+          "type": {
+            "description": "Type of the MySQL source. Defaults to \"mysql\" if not specified.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "mysql",
+              "rdsmysql",
+              "auroramysql",
+              "planetscalevitess",
+              "mariadb",
+              "rdsmariadb"
+            ]
+          },
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
+          "host": {
+            "description": "MySQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
+            "type": "string",
+            "format": "hostname",
+            "example": "my-mysql-server.example.com"
+          },
+          "port": {
+            "description": "MySQL server port.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 3306
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeMySQLPipeSettings"
+          },
+          "authentication": {
+            "description": "Authentication method for MySQL connection.",
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
+            ],
+            "example": "basic"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "my-mysql-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MySQL server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MySQL connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MySQL connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "List of table mappings defining which MySQL tables to replicate and how they map to ClickHouse tables.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMySQLPipeTableMapping"
+            }
+          }
+        },
+        "required": [
+          "host",
+          "port",
+          "settings",
+          "tableMappings"
+        ]
+      },
+      "ClickPipePatchMySQLSource": {
+        "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
+          "host": {
+            "description": "MySQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
+            "nullable": true,
+            "type": "string",
+            "format": "hostname",
+            "example": "my-mysql-server.example.com"
+          },
+          "port": {
+            "description": "MySQL server port.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65535,
+            "example": 3306
+          },
+          "authentication": {
+            "description": "Authentication method for MySQL connection.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "basic",
+              "IAM_ROLE"
+            ],
+            "example": "basic"
+          },
+          "iamRole": {
+            "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
+            "nullable": true,
+            "type": "string",
+            "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "nullable": true,
+            "type": "string",
+            "example": "my-mysql-server.example.com"
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MySQL server certificate.",
+            "nullable": true,
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MySQL connection. Use with caution in production environments.",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MySQL connection. Use with caution in production environments.",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipePatchMySQLPipeSettings"
+          },
+          "tableMappingsToAdd": {
+            "type": "array",
+            "description": "Table mappings to add to the pipe. Can be an empty array if no tables are being added.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMySQLPipeTableMapping"
+            }
+          },
+          "tableMappingsToRemove": {
+            "type": "array",
+            "description": "Table mappings to remove from the pipe. Only sourceSchemaName, sourceTable, and targetTable are required for removal.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipePatchMySQLPipeRemoveTableMapping"
+            }
+          }
+        },
+        "required": [
+          "host",
+          "port"
+        ]
       },
       "ClickPipeBigQueryPipeSettings": {
         "properties": {
@@ -9823,6 +10984,317 @@
           }
         }
       },
+      "ClickPipeMongoDBPipeSettings": {
+        "properties": {
+          "syncIntervalSeconds": {
+            "description": "Interval in seconds to sync data from MongoDB during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
+          },
+          "pullBatchSize": {
+            "description": "Number of rows to pull in each batch during CDC replication.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 100000
+          },
+          "replicationMode": {
+            "description": "Replication mode: \"cdc\" (change data capture with initial snapshot), \"snapshot\" (one-time snapshot only), or \"cdc_only\" (CDC without initial snapshot).",
+            "type": "string",
+            "enum": [
+              "cdc",
+              "snapshot",
+              "cdc_only"
+            ],
+            "example": "cdc"
+          },
+          "snapshotNumRowsPerPartition": {
+            "description": "Number of rows per partition during the snapshot phase.",
+            "type": "integer",
+            "minimum": 1000,
+            "example": 100000
+          },
+          "snapshotNumberOfParallelTables": {
+            "description": "Number of collections to snapshot in parallel during the initial load phase.",
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
+          },
+          "deleteOnMerge": {
+            "description": "Enable hard delete behavior in ReplacingMergeTree for MongoDB DELETE operations.",
+            "type": "boolean",
+            "example": false
+          },
+          "useJsonNativeFormat": {
+            "description": "Store JSON values in native ClickHouse JSON format. When disabled, JSON data is stored as String.",
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "required": [
+          "replicationMode"
+        ]
+      },
+      "ClickPipePatchMongoDBPipeSettings": {
+        "properties": {
+          "syncIntervalSeconds": {
+            "description": "Interval in seconds to sync data from MongoDB during CDC replication.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "example": 60
+          },
+          "pullBatchSize": {
+            "description": "Number of rows to pull in each batch during CDC replication.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1,
+            "example": 100000
+          }
+        }
+      },
+      "ClickPipeMongoDBPipeTableMapping": {
+        "properties": {
+          "sourceDatabaseName": {
+            "description": "MongoDB source database name.",
+            "type": "string",
+            "example": "mydb"
+          },
+          "sourceCollection": {
+            "description": "MongoDB source collection name.",
+            "type": "string",
+            "example": "users"
+          },
+          "targetTable": {
+            "description": "ClickHouse target table name. The table will be created automatically if it does not exist.",
+            "type": "string",
+            "example": "mydb_users"
+          },
+          "tableEngine": {
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
+            "type": "string",
+            "enum": [
+              "MergeTree",
+              "ReplacingMergeTree",
+              "Null"
+            ],
+            "example": "ReplacingMergeTree"
+          }
+        },
+        "required": [
+          "sourceDatabaseName",
+          "sourceCollection",
+          "targetTable"
+        ]
+      },
+      "ClickPipePatchMongoDBPipeRemoveTableMapping": {
+        "properties": {
+          "sourceDatabaseName": {
+            "description": "MongoDB source database name.",
+            "nullable": true,
+            "type": "string",
+            "example": "mydb"
+          },
+          "sourceCollection": {
+            "description": "MongoDB source collection name.",
+            "nullable": true,
+            "type": "string",
+            "example": "users"
+          },
+          "targetTable": {
+            "description": "ClickHouse target table name. The table will be created automatically if it does not exist.",
+            "nullable": true,
+            "type": "string",
+            "example": "mydb_users"
+          },
+          "tableEngine": {
+            "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "MergeTree",
+              "ReplacingMergeTree",
+              "Null"
+            ],
+            "example": "ReplacingMergeTree"
+          }
+        },
+        "required": [
+          "sourceDatabaseName",
+          "sourceCollection",
+          "targetTable"
+        ]
+      },
+      "ClickPipeMongoDBSource": {
+        "properties": {
+          "uri": {
+            "description": "MongoDB connection URI. Supports both standard URIs (mongodb://...) and SRV URIs (mongodb+srv://...).",
+            "type": "string",
+            "example": "mongodb+srv://cluster0.example.mongodb.net/mydb"
+          },
+          "readPreference": {
+            "description": "MongoDB read preference for replica set reads.",
+            "type": "string",
+            "enum": [
+              "primary",
+              "primaryPreferred",
+              "secondary",
+              "secondaryPreferred",
+              "nearest"
+            ],
+            "example": "secondaryPreferred"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "cluster0.example.mongodb.net"
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MongoDB connection. Defaults to false (TLS enabled).",
+            "type": "boolean",
+            "example": false
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeMongoDBPipeSettings"
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "List of collection mappings defining which MongoDB collections to replicate and how they map to ClickHouse tables.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMongoDBPipeTableMapping"
+            }
+          }
+        },
+        "required": [
+          "uri",
+          "readPreference"
+        ]
+      },
+      "ClickPipeMutateMongoDBSource": {
+        "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
+          "uri": {
+            "description": "MongoDB connection URI. Supports both standard URIs (mongodb://...) and SRV URIs (mongodb+srv://...).",
+            "type": "string",
+            "example": "mongodb+srv://cluster0.example.mongodb.net/mydb"
+          },
+          "readPreference": {
+            "description": "MongoDB read preference for replica set reads.",
+            "type": "string",
+            "enum": [
+              "primary",
+              "primaryPreferred",
+              "secondary",
+              "secondaryPreferred",
+              "nearest"
+            ],
+            "example": "secondaryPreferred"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "type": "string",
+            "example": "cluster0.example.mongodb.net"
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MongoDB connection. Defaults to false (TLS enabled).",
+            "type": "boolean",
+            "example": false
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipeMongoDBPipeSettings"
+          },
+          "tableMappings": {
+            "type": "array",
+            "description": "List of collection mappings defining which MongoDB collections to replicate and how they map to ClickHouse tables.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMongoDBPipeTableMapping"
+            }
+          }
+        },
+        "required": [
+          "uri",
+          "readPreference",
+          "settings",
+          "tableMappings"
+        ]
+      },
+      "ClickPipePatchMongoDBSource": {
+        "properties": {
+          "credentials": {
+            "$ref": "#/components/schemas/PLAIN"
+          },
+          "uri": {
+            "description": "MongoDB connection URI. Supports both standard URIs (mongodb://...) and SRV URIs (mongodb+srv://...).",
+            "nullable": true,
+            "type": "string",
+            "example": "mongodb+srv://cluster0.example.mongodb.net/mydb"
+          },
+          "readPreference": {
+            "description": "MongoDB read preference for replica set reads.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "primary",
+              "primaryPreferred",
+              "secondary",
+              "secondaryPreferred",
+              "nearest"
+            ],
+            "example": "secondaryPreferred"
+          },
+          "tlsHost": {
+            "description": "TLS/SSL host for secure connections.",
+            "nullable": true,
+            "type": "string",
+            "example": "cluster0.example.mongodb.net"
+          },
+          "disableTls": {
+            "description": "Disable TLS for the MongoDB connection. Defaults to false (TLS enabled).",
+            "nullable": true,
+            "type": "boolean",
+            "example": false
+          },
+          "caCertificate": {
+            "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
+            "nullable": true,
+            "type": "string",
+            "example": "-----BEGIN CERTIFICATE-----\n..."
+          },
+          "settings": {
+            "$ref": "#/components/schemas/ClickPipePatchMongoDBPipeSettings"
+          },
+          "tableMappingsToAdd": {
+            "type": "array",
+            "description": "Collection mappings to add to the pipe. Can be an empty array if no collections are being added.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipeMongoDBPipeTableMapping"
+            }
+          },
+          "tableMappingsToRemove": {
+            "type": "array",
+            "description": "Collection mappings to remove from the pipe. Only sourceDatabaseName, sourceCollection, and targetTable are required for removal.",
+            "items": {
+              "$ref": "#/components/schemas/ClickPipePatchMongoDBPipeRemoveTableMapping"
+            }
+          }
+        },
+        "required": [
+          "uri",
+          "readPreference"
+        ]
+      },
       "ClickPipeScaling": {
         "properties": {
           "replicas": {
@@ -9884,10 +11356,26 @@
             ],
             "nullable": true
           },
+          "mysql": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeMySQLSource"
+              }
+            ],
+            "nullable": true
+          },
           "bigquery": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeBigQuerySource"
+              }
+            ],
+            "nullable": true
+          },
+          "mongodb": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeMongoDBSource"
               }
             ],
             "nullable": true
@@ -9961,11 +11449,11 @@
             "type": "string"
           },
           "table": {
-            "description": "Destination table. Required field for all pipe types except Postgres.",
+            "description": "Destination table. Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "type": "string"
           },
           "managedTable": {
-            "description": "Is the table managed by ClickPipes? Required field for all pipe types except Postgres.",
+            "description": "Is the table managed by ClickPipes? Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "type": "boolean"
           },
           "tableDefinition": {
@@ -9973,7 +11461,7 @@
           },
           "columns": {
             "type": "array",
-            "description": "Columns of the destination table. Required field for all pipe types except Postgres.",
+            "description": "Columns of the destination table. Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "items": {
               "$ref": "#/components/schemas/ClickPipeDestinationColumn"
             }
@@ -10103,7 +11591,9 @@
           "name": {
             "description": "Name of the ClickPipe.",
             "type": "string",
-            "example": "my_postgres_pipe"
+            "example": "my_postgres_pipe",
+            "maxLength": 255,
+            "minLength": 1
           },
           "state": {
             "description": "Current lifecycle state of the ClickPipe. For database pipes: \"Provisioning\" (initial setup), \"Setup\" (configuring replication), \"Snapshot\" (initial data load), \"Running\" (actively replicating), \"Pausing\" (transitioning to paused state), \"Paused\" (temporarily paused), \"Modifying\" (applying configuration updates), \"Resync\" (swapping resync tables with original tables), \"Failed\" (error occurred), \"Unknown\". For streaming/object storage pipes (Kafka, Kinesis, S3): \"Unknown\" (initial state), \"Provisioning\" (setting up resources), \"Running\" (actively ingesting data), \"Stopping\" (transitioning to stopped state), \"Stopped\" (manually stopped, can be restarted), \"Completed\" (batch ingestion finished for object storage), \"Failed\" (error occurred, pipe stopped), \"InternalError\" (internal system error).",
@@ -10186,6 +11676,14 @@
           "postgres": {
             "$ref": "#/components/schemas/ClickPipeMutatePostgresSource"
           },
+          "mysql": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeMutateMySQLSource"
+              }
+            ],
+            "nullable": true
+          },
           "bigquery": {
             "oneOf": [
               {
@@ -10194,8 +11692,16 @@
             ],
             "nullable": true
           },
+          "mongodb": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipeMutateMongoDBSource"
+              }
+            ],
+            "nullable": true
+          },
           "validateSamples": {
-            "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
+            "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres or MySQL pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
             "type": "boolean"
           }
         }
@@ -10229,8 +11735,24 @@
           "postgres": {
             "$ref": "#/components/schemas/ClickPipePatchPostgresSource"
           },
+          "mysql": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipePatchMySQLSource"
+              }
+            ],
+            "nullable": true
+          },
+          "mongodb": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipePatchMongoDBSource"
+              }
+            ],
+            "nullable": true
+          },
           "validateSamples": {
-            "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
+            "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres or MySQL pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
             "type": "boolean"
           }
         }
@@ -10242,11 +11764,11 @@
             "type": "string"
           },
           "table": {
-            "description": "Destination table. Required field for all pipe types except Postgres.",
+            "description": "Destination table. Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "type": "string"
           },
           "managedTable": {
-            "description": "Is the table managed by ClickPipes? Required field for all pipe types except Postgres.",
+            "description": "Is the table managed by ClickPipes? Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "type": "boolean"
           },
           "tableDefinition": {
@@ -10254,7 +11776,7 @@
           },
           "columns": {
             "type": "array",
-            "description": "Columns of the destination table. Required field for all pipe types except Postgres.",
+            "description": "Columns of the destination table. Required field for all pipe types except database pipes (Postgres, MySQL, BigQuery).",
             "items": {
               "$ref": "#/components/schemas/ClickPipeDestinationColumn"
             }
@@ -10296,102 +11818,6 @@
             "maximum": 96,
             "multipleOf": 4,
             "example": 8
-          }
-        }
-      },
-      "ClickPipeSettingsGetResponse": {
-        "properties": {
-          "streaming_max_insert_wait_ms": {
-            "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 500,
-            "maximum": 60000,
-            "example": 5000
-          },
-          "object_storage_concurrency": {
-            "description": "Object storage concurrency. Number of concurrent file processing threads",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 35,
-            "example": 1
-          },
-          "object_storage_polling_interval_ms": {
-            "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 100,
-            "maximum": 3600000,
-            "example": 30000
-          },
-          "object_storage_max_insert_bytes": {
-            "description": "Max insert bytes. Number of bytes to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 10485760,
-            "maximum": 53687091200,
-            "example": 10737418240
-          },
-          "object_storage_max_file_count": {
-            "description": "Max file count. Maximum number of files to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 10000,
-            "example": 100
-          },
-          "clickhouse_max_threads": {
-            "description": "Max threads. Maximum number of concurrent threads for file processing",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 64,
-            "example": 8
-          },
-          "clickhouse_max_insert_threads": {
-            "description": "Max insert threads. Maximum number of concurrent insert threads",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 16,
-            "example": 1
-          },
-          "clickhouse_min_insert_block_size_bytes": {
-            "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 10737418240,
-            "example": 1073741824
-          },
-          "clickhouse_max_download_threads": {
-            "description": "Max download threads. Maximum number of concurrent download threads",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 32,
-            "example": 4
-          },
-          "clickhouse_parallel_distributed_insert_select": {
-            "description": "Parallel distributed insert select. Parallel distributed insert select setting",
-            "nullable": true,
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 2,
-            "example": 2
-          },
-          "object_storage_use_cluster_function": {
-            "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
-            "nullable": true,
-            "type": "boolean",
-            "example": true
-          },
-          "clickhouse_parallel_view_processing": {
-            "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
-            "nullable": true,
-            "type": "boolean",
-            "example": false
           }
         }
       },
@@ -10576,7 +12002,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -10663,15 +12088,15 @@
             "description": "Minimum total memory of each replica during auto-scaling in Gb. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 236* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
+            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 356* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 120
           },
@@ -10942,7 +12367,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -11096,7 +12520,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -11146,7 +12569,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -11253,7 +12675,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -11429,7 +12850,12 @@
           "tags": {
             "$ref": "#/components/schemas/RBACPolicyTags"
           }
-        }
+        },
+        "required": [
+          "allowDeny",
+          "permissions",
+          "resources"
+        ]
       },
       "RoleCreateRequest": {
         "properties": {
@@ -11451,7 +12877,12 @@
               "$ref": "#/components/schemas/RBACPolicyCreateRequest"
             }
           }
-        }
+        },
+        "required": [
+          "name",
+          "actors",
+          "policies"
+        ]
       },
       "RoleUpdateRequest": {
         "properties": {
@@ -11517,6 +12948,8 @@
               "service_start",
               "service_stop",
               "service_awaken",
+              "service_idle",
+              "service_running",
               "service_partially_running",
               "service_delete",
               "service_update_name",
@@ -12151,18 +13584,20 @@
           },
           "at": {
             "description": "Silence start timestamp.",
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "until": {
             "description": "Silence end timestamp.",
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
       "ClickStackAlertChannelEmail": {
         "properties": {
           "type": {
-            "description": "Channel type.",
+            "description": "Channel type. Must be \"email\" for email alerts.",
             "type": "string",
             "enum": [
               "webhook",
@@ -12185,7 +13620,7 @@
       "ClickStackAlertChannelWebhook": {
         "properties": {
           "type": {
-            "description": "Channel type.",
+            "description": "Channel type. Must be \"webhook\" for webhook alerts.",
             "type": "string",
             "enum": [
               "webhook",
@@ -12233,77 +13668,6 @@
           }
         ]
       },
-      "ClickStackAlert": {
-        "properties": {
-          "dashboardId": {
-            "description": "Dashboard ID for tile-based alerts.",
-            "nullable": true,
-            "type": "string"
-          },
-          "tileId": {
-            "description": "Tile ID for tile-based alerts.",
-            "nullable": true,
-            "type": "string"
-          },
-          "savedSearchId": {
-            "description": "Saved search ID for saved_search alerts.",
-            "nullable": true,
-            "type": "string"
-          },
-          "groupBy": {
-            "description": "Group-by key for saved search alerts.",
-            "nullable": true,
-            "type": "string"
-          },
-          "threshold": {
-            "description": "Threshold value for triggering the alert.",
-            "type": "number"
-          },
-          "interval": {
-            "description": "Evaluation interval.",
-            "type": "string",
-            "enum": [
-              "1m",
-              "5m",
-              "15m",
-              "30m",
-              "1h",
-              "6h",
-              "12h",
-              "1d"
-            ]
-          },
-          "source": {
-            "description": "Alert source type.",
-            "type": "string",
-            "enum": [
-              "saved_search",
-              "tile"
-            ]
-          },
-          "thresholdType": {
-            "description": "Threshold comparison direction.",
-            "type": "string",
-            "enum": [
-              "above",
-              "below"
-            ]
-          },
-          "channel": {
-            "$ref": "#/components/schemas/ClickStackAlertChannel"
-          },
-          "name": {
-            "description": "Human-friendly alert name.",
-            "nullable": true,
-            "type": "string"
-          },
-          "message": {
-            "description": "Alert message template.",
-            "nullable": true,
-            "type": "string"
-          }
-        }
-      },
       "ClickStackAlertResponse": {
         "properties": {
           "dashboardId": {
@@ -12312,7 +13676,7 @@
             "type": "string"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts.",
+            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
             "nullable": true,
             "type": "string"
           },
@@ -12331,7 +13695,7 @@
             "type": "number"
           },
           "interval": {
-            "description": "Evaluation interval.",
+            "description": "Evaluation interval for the alert.",
             "type": "string",
             "enum": [
               "1m",
@@ -12344,8 +13708,19 @@
               "1d"
             ]
           },
+          "scheduleOffsetMinutes": {
+            "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
+            "nullable": true,
+            "type": "integer"
+          },
+          "scheduleStartAt": {
+            "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
+            "nullable": true,
+            "type": "string",
+            "format": "date-time"
+          },
           "source": {
-            "description": "Alert source type.",
+            "description": "Alert source type (tile-based or saved search).",
             "type": "string",
             "enum": [
               "saved_search",
@@ -12402,12 +13777,14 @@
           "createdAt": {
             "description": "Creation timestamp.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "updatedAt": {
             "description": "Last update timestamp.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -12419,7 +13796,7 @@
             "type": "string"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts.",
+            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
             "nullable": true,
             "type": "string"
           },
@@ -12438,7 +13815,7 @@
             "type": "number"
           },
           "interval": {
-            "description": "Evaluation interval.",
+            "description": "Evaluation interval for the alert.",
             "type": "string",
             "enum": [
               "1m",
@@ -12451,8 +13828,19 @@
               "1d"
             ]
           },
+          "scheduleOffsetMinutes": {
+            "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
+            "nullable": true,
+            "type": "integer"
+          },
+          "scheduleStartAt": {
+            "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
+            "nullable": true,
+            "type": "string",
+            "format": "date-time"
+          },
           "source": {
-            "description": "Alert source type.",
+            "description": "Alert source type (tile-based or saved search).",
             "type": "string",
             "enum": [
               "saved_search",
@@ -12490,7 +13878,7 @@
             "type": "string"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts.",
+            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
             "nullable": true,
             "type": "string"
           },
@@ -12509,7 +13897,7 @@
             "type": "number"
           },
           "interval": {
-            "description": "Evaluation interval.",
+            "description": "Evaluation interval for the alert.",
             "type": "string",
             "enum": [
               "1m",
@@ -12522,8 +13910,19 @@
               "1d"
             ]
           },
+          "scheduleOffsetMinutes": {
+            "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
+            "nullable": true,
+            "type": "integer"
+          },
+          "scheduleStartAt": {
+            "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
+            "nullable": true,
+            "type": "string",
+            "format": "date-time"
+          },
           "source": {
-            "description": "Alert source type.",
+            "description": "Alert source type (tile-based or saved search).",
             "type": "string",
             "enum": [
               "saved_search",
@@ -12553,10 +13952,28 @@
           }
         }
       },
+      "ClickStackSavedFilterValue": {
+        "properties": {
+          "type": {
+            "description": "Filter type. Currently only \"sql\" is supported.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "condition": {
+            "description": "SQL filter condition. For example use expressions in the form \"column IN ('value')\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "condition"
+        ]
+      },
       "ClickStackNumberFormat": {
         "properties": {
           "output": {
-            "description": "Output format type (currency, percent, byte, time, number).",
+            "description": "Output format applied to the number.",
             "type": "string",
             "enum": [
               "currency",
@@ -12599,7 +14016,7 @@
       "ClickStackTimeChartSeries": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Series type discriminator. Must be \"time\" for time-series charts.",
             "type": "string",
             "enum": [
               "time"
@@ -12630,7 +14047,7 @@
             "type": "number"
           },
           "field": {
-            "description": "Field/property name to aggregate (required for most aggregation functions except count)",
+            "description": "Column or expression to aggregate (required for most aggregation functions except count)",
             "type": "string"
           },
           "alias": {
@@ -12660,7 +14077,7 @@
             "$ref": "#/components/schemas/ClickStackNumberFormat"
           },
           "metricDataType": {
-            "description": "Metric data type for metrics data sources.",
+            "description": "Metric data type, only for metrics data sources.",
             "type": "string",
             "enum": [
               "sum",
@@ -12688,13 +14105,14 @@
           "sourceId",
           "aggFn",
           "where",
+          "whereLanguage",
           "groupBy"
         ]
       },
       "ClickStackTableChartSeries": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Series type discriminator. Must be \"table\" for table charts.",
             "type": "string",
             "enum": [
               "table"
@@ -12725,19 +14143,19 @@
             "type": "number"
           },
           "field": {
-            "description": "",
+            "description": "Column or expression to aggregate (required for most aggregation functions except count)",
             "type": "string"
           },
           "alias": {
-            "description": "",
+            "description": "Display name for the series",
             "type": "string"
           },
           "where": {
-            "description": "",
+            "description": "Filter query for the data (syntax depends on whereLanguage)",
             "type": "string"
           },
           "whereLanguage": {
-            "description": "Query language for the where clause.",
+            "description": "Query language for the where clause",
             "type": "string",
             "enum": [
               "sql",
@@ -12746,7 +14164,7 @@
           },
           "groupBy": {
             "type": "array",
-            "description": "",
+            "description": "Fields to group results by (creates separate rows for each group)",
             "items": {
               "type": "string"
             }
@@ -12763,7 +14181,7 @@
             "$ref": "#/components/schemas/ClickStackNumberFormat"
           },
           "metricDataType": {
-            "description": "Metric data type for metrics data sources",
+            "description": "Metric data type, only for metrics data sources.",
             "type": "string",
             "enum": [
               "sum",
@@ -12783,13 +14201,14 @@
           "sourceId",
           "aggFn",
           "where",
+          "whereLanguage",
           "groupBy"
         ]
       },
       "ClickStackNumberChartSeries": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Series type discriminator. Must be \"number\" for single-value number charts.",
             "type": "string",
             "enum": [
               "number"
@@ -12820,19 +14239,19 @@
             "type": "number"
           },
           "field": {
-            "description": "",
+            "description": "Column or expression to aggregate (required for most aggregation functions except count)",
             "type": "string"
           },
           "alias": {
-            "description": "",
+            "description": "Display name for the series in the chart",
             "type": "string"
           },
           "where": {
-            "description": "",
+            "description": "Filter query for the data (syntax depends on whereLanguage)",
             "type": "string"
           },
           "whereLanguage": {
-            "description": "Query language for the where clause.",
+            "description": "Query language for the where clause",
             "type": "string",
             "enum": [
               "sql",
@@ -12843,7 +14262,7 @@
             "$ref": "#/components/schemas/ClickStackNumberFormat"
           },
           "metricDataType": {
-            "description": "Metric data type for metrics data sources.",
+            "description": "Metric data type, only for metrics data sources.",
             "type": "string",
             "enum": [
               "sum",
@@ -12854,7 +14273,7 @@
             ]
           },
           "metricName": {
-            "description": "",
+            "description": "Metric name for metrics data sources.",
             "type": "string"
           }
         },
@@ -12862,13 +14281,14 @@
           "type",
           "sourceId",
           "aggFn",
-          "where"
+          "where",
+          "whereLanguage"
         ]
       },
       "ClickStackSearchChartSeries": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Series type discriminator. Must be \"search\" for search/log viewer charts.",
             "type": "string",
             "enum": [
               "search"
@@ -12902,20 +14322,21 @@
           "type",
           "sourceId",
           "fields",
-          "where"
+          "where",
+          "whereLanguage"
         ]
       },
       "ClickStackMarkdownChartSeries": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Series type discriminator. Must be \"markdown\" for markdown text widgets.",
             "type": "string",
             "enum": [
               "markdown"
             ]
           },
           "content": {
-            "description": "",
+            "description": "Markdown content to render inside the widget.",
             "type": "string"
           }
         },
@@ -13018,10 +14439,10 @@
           "aggFn"
         ]
       },
-      "ClickStackLineChartConfig": {
+      "ClickStackLineBuilderChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"line\" for line charts.",
             "type": "string",
             "enum": [
               "line"
@@ -13068,10 +14489,10 @@
           "select"
         ]
       },
-      "ClickStackBarChartConfig": {
+      "ClickStackBarBuilderChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"stacked_bar\" for stacked-bar charts.",
             "type": "string",
             "enum": [
               "stacked_bar"
@@ -13114,10 +14535,10 @@
           "select"
         ]
       },
-      "ClickStackTableChartConfig": {
+      "ClickStackTableBuilderChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"table\" for table charts.",
             "type": "string",
             "enum": [
               "table"
@@ -13160,10 +14581,10 @@
           "select"
         ]
       },
-      "ClickStackNumberChartConfig": {
+      "ClickStackNumberBuilderChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"number\" for single big-number charts.",
             "type": "string",
             "enum": [
               "number"
@@ -13190,10 +14611,10 @@
           "select"
         ]
       },
-      "ClickStackPieChartConfig": {
+      "ClickStackPieBuilderChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"pie\" for pie charts.",
             "type": "string",
             "enum": [
               "pie"
@@ -13227,7 +14648,7 @@
       "ClickStackSearchChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"search\" for search/log viewer tiles.",
             "type": "string",
             "enum": [
               "search"
@@ -13264,7 +14685,7 @@
       "ClickStackMarkdownChartConfig": {
         "properties": {
           "displayType": {
-            "description": "",
+            "description": "Display type discriminator. Must be \"markdown\" for markdown text tiles.",
             "type": "string",
             "enum": [
               "markdown"
@@ -13277,6 +14698,251 @@
         },
         "required": [
           "displayType"
+        ]
+      },
+      "ClickStackLineRawSqlChartConfig": {
+        "properties": {
+          "configType": {
+            "description": "Must be \"sql\" to use the Raw SQL chart config variant.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "connectionId": {
+            "description": "ID of the ClickHouse connection to execute the query against.",
+            "type": "string"
+          },
+          "sqlTemplate": {
+            "description": "SQL query template to execute. Supports HyperDX template variables.",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "displayType": {
+            "description": "Display as a line time-series chart.",
+            "type": "string",
+            "enum": [
+              "line"
+            ]
+          },
+          "compareToPreviousPeriod": {
+            "description": "Overlay the equivalent previous time period for comparison.",
+            "type": "boolean"
+          },
+          "fillNulls": {
+            "description": "Fill missing time buckets with zero instead of leaving gaps.",
+            "type": "boolean"
+          },
+          "alignDateRangeToGranularity": {
+            "description": "Expand date range boundaries to the query granularity interval.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "configType",
+          "connectionId",
+          "sqlTemplate",
+          "displayType"
+        ]
+      },
+      "ClickStackBarRawSqlChartConfig": {
+        "properties": {
+          "configType": {
+            "description": "Must be \"sql\" to use the Raw SQL chart config variant.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "connectionId": {
+            "description": "ID of the ClickHouse connection to execute the query against.",
+            "type": "string"
+          },
+          "sqlTemplate": {
+            "description": "SQL query template to execute. Supports HyperDX template variables.",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "displayType": {
+            "description": "Display as a stacked-bar time-series chart.",
+            "type": "string",
+            "enum": [
+              "stacked_bar"
+            ]
+          },
+          "fillNulls": {
+            "description": "Fill missing time buckets with zero instead of leaving gaps.",
+            "type": "boolean"
+          },
+          "alignDateRangeToGranularity": {
+            "description": "Expand date range boundaries to the query granularity interval.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "configType",
+          "connectionId",
+          "sqlTemplate",
+          "displayType"
+        ]
+      },
+      "ClickStackTableRawSqlChartConfig": {
+        "properties": {
+          "configType": {
+            "description": "Must be \"sql\" to use the Raw SQL chart config variant.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "connectionId": {
+            "description": "ID of the ClickHouse connection to execute the query against.",
+            "type": "string"
+          },
+          "sqlTemplate": {
+            "description": "SQL query template to execute. Supports HyperDX template variables.",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "displayType": {
+            "description": "Display as a table chart.",
+            "type": "string",
+            "enum": [
+              "table"
+            ]
+          }
+        },
+        "required": [
+          "configType",
+          "connectionId",
+          "sqlTemplate",
+          "displayType"
+        ]
+      },
+      "ClickStackNumberRawSqlChartConfig": {
+        "properties": {
+          "configType": {
+            "description": "Must be \"sql\" to use the Raw SQL chart config variant.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "connectionId": {
+            "description": "ID of the ClickHouse connection to execute the query against.",
+            "type": "string"
+          },
+          "sqlTemplate": {
+            "description": "SQL query template to execute. Supports HyperDX template variables.",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "displayType": {
+            "description": "Display as a single big-number chart.",
+            "type": "string",
+            "enum": [
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "configType",
+          "connectionId",
+          "sqlTemplate",
+          "displayType"
+        ]
+      },
+      "ClickStackPieRawSqlChartConfig": {
+        "properties": {
+          "configType": {
+            "description": "Must be \"sql\" to use the Raw SQL chart config variant.",
+            "type": "string",
+            "enum": [
+              "sql"
+            ]
+          },
+          "connectionId": {
+            "description": "ID of the ClickHouse connection to execute the query against.",
+            "type": "string"
+          },
+          "sqlTemplate": {
+            "description": "SQL query template to execute. Supports HyperDX template variables.",
+            "type": "string"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "displayType": {
+            "description": "Display as a pie chart.",
+            "type": "string",
+            "enum": [
+              "pie"
+            ]
+          }
+        },
+        "required": [
+          "configType",
+          "connectionId",
+          "sqlTemplate",
+          "displayType"
+        ]
+      },
+      "ClickStackLineChartConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackLineBuilderChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackLineRawSqlChartConfig"
+          }
+        ]
+      },
+      "ClickStackBarChartConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackBarBuilderChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackBarRawSqlChartConfig"
+          }
+        ]
+      },
+      "ClickStackTableChartConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackTableBuilderChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackTableRawSqlChartConfig"
+          }
+        ]
+      },
+      "ClickStackNumberChartConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackNumberBuilderChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackNumberRawSqlChartConfig"
+          }
+        ]
+      },
+      "ClickStackPieChartConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackPieBuilderChartConfig"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackPieRawSqlChartConfig"
+          }
         ]
       },
       "ClickStackTileConfig": {
@@ -13302,40 +14968,6 @@
           {
             "$ref": "#/components/schemas/ClickStackMarkdownChartConfig"
           }
-        ]
-      },
-      "ClickStackTileBase": {
-        "properties": {
-          "name": {
-            "description": "Display name for the tile",
-            "type": "string"
-          },
-          "x": {
-            "description": "Horizontal position in the grid (0-based)",
-            "type": "integer"
-          },
-          "y": {
-            "description": "Vertical position in the grid (0-based)",
-            "type": "integer"
-          },
-          "w": {
-            "description": "Width in grid units",
-            "type": "integer"
-          },
-          "h": {
-            "description": "Height in grid units",
-            "type": "integer"
-          },
-          "config": {
-            "$ref": "#/components/schemas/ClickStackTileConfig"
-          }
-        },
-        "required": [
-          "name",
-          "x",
-          "y",
-          "w",
-          "h"
         ]
       },
       "ClickStackTileOutput": {
@@ -13364,7 +14996,7 @@
             "$ref": "#/components/schemas/ClickStackTileConfig"
           },
           "id": {
-            "description": "",
+            "description": "Unique tile ID assigned by the server.",
             "type": "string"
           }
         },
@@ -13431,7 +15063,7 @@
       "ClickStackFilterInput": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Filter type. Must be \"QUERY_EXPRESSION\".",
             "type": "string",
             "enum": [
               "QUERY_EXPRESSION"
@@ -13471,7 +15103,7 @@
       "ClickStackFilter": {
         "properties": {
           "type": {
-            "description": "",
+            "description": "Filter type. Must be \"QUERY_EXPRESSION\".",
             "type": "string",
             "enum": [
               "QUERY_EXPRESSION"
@@ -13513,55 +15145,22 @@
           "id"
         ]
       },
-      "ClickStackDashboard": {
-        "properties": {
-          "id": {
-            "description": "Dashboard ID",
-            "type": "string"
-          },
-          "name": {
-            "description": "Dashboard name",
-            "type": "string"
-          },
-          "tiles": {
-            "type": "array",
-            "description": "List of tiles/charts in the dashboard",
-            "items": {
-              "$ref": "#/components/schemas/ClickStackTileOutput"
-            }
-          },
-          "tags": {
-            "type": "array",
-            "description": "Tags for organizing and filtering dashboards",
-            "items": {
-              "type": "string"
-            }
-          },
-          "filters": {
-            "type": "array",
-            "description": "Dashboard filter keys added to the dashboard and applied to all tiles",
-            "items": {
-              "$ref": "#/components/schemas/ClickStackFilter"
-            }
-          }
-        }
-      },
       "ClickStackCreateDashboardRequest": {
         "properties": {
           "name": {
-            "description": "",
+            "description": "Dashboard name.",
             "type": "string"
           },
           "tiles": {
             "type": "array",
-            "description": "",
+            "description": "List of tiles/charts to include in the dashboard.",
             "items": {
               "$ref": "#/components/schemas/ClickStackTileInput"
             }
           },
           "tags": {
             "type": "array",
-            "description": "",
+            "description": "Tags for organizing and filtering dashboards.",
             "items": {
               "type": "string"
             }
@@ -13571,6 +15170,27 @@
             "description": "Dashboard filter keys to add to the dashboard and apply across all tiles",
             "items": {
               "$ref": "#/components/schemas/ClickStackFilterInput"
+            }
+          },
+          "savedQuery": {
+            "description": "Optional default dashboard query to persist on the dashboard.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedQueryLanguage": {
+            "description": "Query language used by savedQuery.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "savedFilterValues": {
+            "type": "array",
+            "description": "Optional default dashboard filter values to persist on the dashboard.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSavedFilterValue"
             }
           }
         },
@@ -13582,7 +15202,7 @@
       "ClickStackUpdateDashboardRequest": {
         "properties": {
           "name": {
-            "description": "",
+            "description": "Dashboard name.",
             "type": "string"
           },
           "tiles": {
@@ -13594,7 +15214,7 @@
           },
           "tags": {
             "type": "array",
-            "description": "",
+            "description": "Tags for organizing and filtering dashboards.",
             "items": {
               "type": "string"
             }
@@ -13604,6 +15224,27 @@
             "description": "Dashboard filter keys on the dashboard, applied across all tiles",
             "items": {
               "$ref": "#/components/schemas/ClickStackFilter"
+            }
+          },
+          "savedQuery": {
+            "description": "Optional default dashboard query to persist on the dashboard.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedQueryLanguage": {
+            "description": "Query language used by savedQuery.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "savedFilterValues": {
+            "type": "array",
+            "description": "Optional default dashboard filter values to persist on the dashboard.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSavedFilterValue"
             }
           }
         },
@@ -13641,6 +15282,27 @@
             "description": "Dashboard filter keys added to the dashboard and applied to all tiles",
             "items": {
               "$ref": "#/components/schemas/ClickStackFilter"
+            }
+          },
+          "savedQuery": {
+            "description": "Optional default dashboard query restored when loading the dashboard.",
+            "nullable": true,
+            "type": "string"
+          },
+          "savedQueryLanguage": {
+            "description": "Query language used by savedQuery.",
+            "nullable": true,
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "savedFilterValues": {
+            "type": "array",
+            "description": "Optional default dashboard filter values restored when loading the dashboard.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackSavedFilterValue"
             }
           }
         }
@@ -13797,7 +15459,8 @@
           "minDate": {
             "description": "(Optional) The earliest date and time for which the materialized view contains data. If not provided, then HyperDX will assume that the materialized view contains data for all dates for which the source table contains data.",
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "timestampColumn": {
             "description": "Timestamp column name",
@@ -13823,22 +15486,22 @@
       "ClickStackLogSource": {
         "properties": {
           "id": {
-            "description": "",
+            "description": "Unique source ID.",
             "type": "string"
           },
           "name": {
-            "description": "",
+            "description": "Display name for the source.",
             "type": "string"
           },
           "kind": {
-            "description": "",
+            "description": "Source kind discriminator. Must be \"log\" for log sources.",
             "type": "string",
             "enum": [
               "log"
             ]
           },
           "connection": {
-            "description": "",
+            "description": "ID of the ClickHouse connection used by this source.",
             "type": "string"
           },
           "from": {
@@ -13846,7 +15509,7 @@
           },
           "querySettings": {
             "type": "array",
-            "description": "",
+            "description": "Optional ClickHouse query settings applied when querying this source.",
             "items": {
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
@@ -13860,27 +15523,27 @@
             "type": "string"
           },
           "serviceNameExpression": {
-            "description": "",
+            "description": "Expression to extract the service name from log rows.",
             "nullable": true,
             "type": "string"
           },
           "severityTextExpression": {
-            "description": "",
+            "description": "Expression to extract the severity/log level text.",
             "nullable": true,
             "type": "string"
           },
           "bodyExpression": {
-            "description": "",
+            "description": "Expression to extract the log message body.",
             "nullable": true,
             "type": "string"
           },
           "eventAttributesExpression": {
-            "description": "",
+            "description": "Expression to extract event-level attributes.",
             "nullable": true,
             "type": "string"
           },
           "resourceAttributesExpression": {
-            "description": "",
+            "description": "Expression to extract resource-level attributes.",
             "nullable": true,
             "type": "string"
           },
@@ -13900,12 +15563,12 @@
             "type": "string"
           },
           "traceIdExpression": {
-            "description": "",
+            "description": "Expression to extract the trace ID for correlating logs with traces.",
             "nullable": true,
             "type": "string"
           },
           "spanIdExpression": {
-            "description": "",
+            "description": "Expression to extract the span ID for correlating logs with traces.",
             "nullable": true,
             "type": "string"
           },
@@ -13949,22 +15612,22 @@
       "ClickStackTraceSource": {
         "properties": {
           "id": {
-            "description": "",
+            "description": "Unique source ID.",
             "type": "string"
           },
           "name": {
-            "description": "",
+            "description": "Display name for the source.",
             "type": "string"
           },
           "kind": {
-            "description": "",
+            "description": "Source kind discriminator. Must be \"trace\" for trace sources.",
             "type": "string",
             "enum": [
               "trace"
             ]
           },
           "connection": {
-            "description": "",
+            "description": "ID of the ClickHouse connection used by this source.",
             "type": "string"
           },
           "from": {
@@ -13972,7 +15635,7 @@
           },
           "querySettings": {
             "type": "array",
-            "description": "",
+            "description": "Optional ClickHouse query settings applied when querying this source.",
             "items": {
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
@@ -13987,31 +15650,31 @@
             "type": "string"
           },
           "durationExpression": {
-            "description": "",
+            "description": "Expression to extract span duration.",
             "type": "string"
           },
           "durationPrecision": {
-            "description": "",
+            "description": "Number of decimal digits in the duration value (e.g., 3 for milliseconds, 6 for microseconds, 9 for nanoseconds).",
             "type": "integer"
           },
           "traceIdExpression": {
-            "description": "",
+            "description": "Expression to extract the trace ID.",
             "type": "string"
           },
           "spanIdExpression": {
-            "description": "",
+            "description": "Expression to extract the span ID.",
             "type": "string"
           },
           "parentSpanIdExpression": {
-            "description": "",
+            "description": "Expression to extract the parent span ID.",
             "type": "string"
           },
           "spanNameExpression": {
-            "description": "",
+            "description": "Expression to extract the span name.",
             "type": "string"
           },
           "spanKindExpression": {
-            "description": "",
+            "description": "Expression to extract the span kind (e.g., client, server, internal).",
             "type": "string"
           },
           "logSourceId": {
@@ -14030,27 +15693,27 @@
             "type": "string"
           },
           "statusCodeExpression": {
-            "description": "",
+            "description": "Expression to extract the span status code.",
             "nullable": true,
             "type": "string"
           },
           "statusMessageExpression": {
-            "description": "",
+            "description": "Expression to extract the span status message.",
             "nullable": true,
             "type": "string"
           },
           "serviceNameExpression": {
-            "description": "",
+            "description": "Expression to extract the service name from trace rows.",
             "nullable": true,
             "type": "string"
           },
           "resourceAttributesExpression": {
-            "description": "",
+            "description": "Expression to extract resource-level attributes.",
             "nullable": true,
             "type": "string"
           },
           "eventAttributesExpression": {
-            "description": "",
+            "description": "Expression to extract event-level attributes.",
             "nullable": true,
             "type": "string"
           },
@@ -14105,22 +15768,22 @@
       "ClickStackMetricSource": {
         "properties": {
           "id": {
-            "description": "",
+            "description": "Unique source ID.",
             "type": "string"
           },
           "name": {
-            "description": "",
+            "description": "Display name for the source.",
             "type": "string"
           },
           "kind": {
-            "description": "",
+            "description": "Source kind discriminator. Must be \"metric\" for metric sources.",
             "type": "string",
             "enum": [
               "metric"
             ]
           },
           "connection": {
-            "description": "",
+            "description": "ID of the ClickHouse connection used by this source.",
             "type": "string"
           },
           "from": {
@@ -14128,7 +15791,7 @@
           },
           "querySettings": {
             "type": "array",
-            "description": "",
+            "description": "Optional ClickHouse query settings applied when querying this source.",
             "items": {
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
@@ -14164,22 +15827,22 @@
       "ClickStackSessionSource": {
         "properties": {
           "id": {
-            "description": "",
+            "description": "Unique source ID.",
             "type": "string"
           },
           "name": {
-            "description": "",
+            "description": "Display name for the source.",
             "type": "string"
           },
           "kind": {
-            "description": "",
+            "description": "Source kind discriminator. Must be \"session\" for session sources.",
             "type": "string",
             "enum": [
               "session"
             ]
           },
           "connection": {
-            "description": "",
+            "description": "ID of the ClickHouse connection used by this source.",
             "type": "string"
           },
           "from": {
@@ -14187,7 +15850,7 @@
           },
           "querySettings": {
             "type": "array",
-            "description": "",
+            "description": "Optional ClickHouse query settings applied when querying this source.",
             "items": {
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
@@ -14224,6 +15887,249 @@
           },
           {
             "$ref": "#/components/schemas/ClickStackSessionSource"
+          }
+        ]
+      },
+      "ClickStackSlackWebhook": {
+        "properties": {
+          "id": {
+            "description": "Webhook ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Webhook name",
+            "type": "string"
+          },
+          "service": {
+            "description": "Webhook service type",
+            "type": "string",
+            "enum": [
+              "slack"
+            ]
+          },
+          "url": {
+            "description": "Slack incoming webhook URL",
+            "type": "string"
+          },
+          "description": {
+            "description": "Webhook description, shown in the UI",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "service",
+          "updatedAt",
+          "createdAt"
+        ]
+      },
+      "ClickStackIncidentIOWebhook": {
+        "properties": {
+          "id": {
+            "description": "Webhook ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Webhook name",
+            "type": "string"
+          },
+          "service": {
+            "description": "Webhook service type",
+            "type": "string",
+            "enum": [
+              "incidentio"
+            ]
+          },
+          "url": {
+            "description": "incident.io alert event HTTP source URL",
+            "type": "string"
+          },
+          "description": {
+            "description": "Webhook description, shown in the UI",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "service",
+          "updatedAt",
+          "createdAt"
+        ]
+      },
+      "ClickStackGenericWebhook": {
+        "properties": {
+          "id": {
+            "description": "Webhook ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Webhook name",
+            "type": "string"
+          },
+          "service": {
+            "description": "Webhook service type",
+            "type": "string",
+            "enum": [
+              "generic"
+            ]
+          },
+          "url": {
+            "description": "Webhook destination URL",
+            "type": "string"
+          },
+          "description": {
+            "description": "Webhook description, shown in the UI",
+            "type": "string"
+          },
+          "body": {
+            "description": "Optional request body template",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "service",
+          "updatedAt",
+          "createdAt"
+        ]
+      },
+      "ClickStackSlackAPIWebhook": {
+        "properties": {
+          "id": {
+            "description": "Webhook ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Webhook name",
+            "type": "string"
+          },
+          "service": {
+            "description": "Webhook service type",
+            "type": "string",
+            "enum": [
+              "slack_api"
+            ]
+          },
+          "url": {
+            "description": "Slack API endpoint URL",
+            "type": "string"
+          },
+          "description": {
+            "description": "Webhook description, shown in the UI",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "service",
+          "updatedAt",
+          "createdAt"
+        ]
+      },
+      "ClickStackPagerDutyAPIWebhook": {
+        "properties": {
+          "id": {
+            "description": "Webhook ID",
+            "type": "string"
+          },
+          "name": {
+            "description": "Webhook name",
+            "type": "string"
+          },
+          "service": {
+            "description": "Webhook service type",
+            "type": "string",
+            "enum": [
+              "pagerduty_api"
+            ]
+          },
+          "url": {
+            "description": "PagerDuty Events API endpoint URL",
+            "type": "string"
+          },
+          "description": {
+            "description": "Webhook description, shown in the UI",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "service",
+          "updatedAt",
+          "createdAt"
+        ]
+      },
+      "ClickStackWebhook": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackSlackWebhook"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackIncidentIOWebhook"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackGenericWebhook"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackSlackAPIWebhook"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackPagerDutyAPIWebhook"
           }
         ]
       },
@@ -14410,6 +16316,412 @@
           }
         }
       },
+      "pgConfig": {
+        "type": "object",
+        "title": "Postgres Configuration",
+        "description": "Postgres [runtime configuration](https://www.postgresql.org/docs/current/runtime-config.html) configuration.",
+        "additionalProperties": {
+          "type": "string",
+          "description": "Any Postgres configuration parameter."
+        },
+        "minProperties": 1,
+        "maxProperties": 64,
+        "maxLength": 4096,
+        "example": {
+          "max_client_conn": "100"
+        },
+        "default": {
+          "wal_level": "logical",
+          "hot_standby_feedback": "on",
+          "sync_replication_slots": "on"
+        }
+      },
+      "pgBouncerConfig": {
+        "type": "object",
+        "title": "PgBouncer Configuration",
+        "description": "PgBouncer [runtime configuration](https://www.pgbouncer.org/config.html) configuration.",
+        "additionalProperties": {
+          "type": "string",
+          "description": "Any PgBouncer configuration parameter."
+        },
+        "minProperties": 1,
+        "maxProperties": 64,
+        "maxLength": 4096,
+        "example": {
+          "default_pool_size": "16"
+        }
+      },
+      "pgStorageSize": {
+        "type": "integer",
+        "title": "Storage Size",
+        "description": "The storage size, in GiB, which must be supported by the specified `size`."
+      },
+      "pgSize": {
+        "type": "string",
+        "title": "VM size",
+        "description": "The VM size for a Postgres service.",
+        "enum": [
+          "c6gd.medium",
+          "c6gd.large",
+          "c6gd.xlarge",
+          "c6gd.2xlarge",
+          "c6gd.4xlarge",
+          "c6gd.8xlarge",
+          "c6gd.12xlarge",
+          "c6gd.16xlarge",
+          "c6gd.metal",
+          "i7i.large",
+          "i7i.xlarge",
+          "i7i.2xlarge",
+          "i7i.4xlarge",
+          "i7i.8xlarge",
+          "i7i.12xlarge",
+          "i7i.16xlarge",
+          "i7i.24xlarge",
+          "i7i.metal-24xl",
+          "i7i.48xlarge",
+          "i7i.metal-48xl",
+          "i7ie.large",
+          "i7ie.xlarge",
+          "i7ie.2xlarge",
+          "i7ie.3xlarge",
+          "i7ie.6xlarge",
+          "i7ie.12xlarge",
+          "i7ie.18xlarge",
+          "i7ie.24xlarge",
+          "i7ie.metal-24xl",
+          "i7ie.48xlarge",
+          "i7ie.metal-48xl",
+          "i8g.large",
+          "i8g.xlarge",
+          "i8g.2xlarge",
+          "i8g.4xlarge",
+          "i8g.8xlarge",
+          "i8g.12xlarge",
+          "i8g.16xlarge",
+          "i8g.24xlarge",
+          "i8g.metal-24xl",
+          "i8g.48xlarge",
+          "i8ge.large",
+          "i8ge.xlarge",
+          "i8ge.2xlarge",
+          "i8ge.3xlarge",
+          "i8ge.6xlarge",
+          "i8ge.12xlarge",
+          "i8ge.18xlarge",
+          "i8ge.24xlarge",
+          "i8ge.metal-24xl",
+          "i8ge.48xlarge",
+          "i8ge.metal-48xl",
+          "m6a.large",
+          "m6a.xlarge",
+          "m6a.2xlarge",
+          "m6a.4xlarge",
+          "m6a.8xlarge",
+          "m6a.12xlarge",
+          "m6a.16xlarge",
+          "m6a.24xlarge",
+          "m6a.32xlarge",
+          "m6a.48xlarge",
+          "m6a.metal",
+          "m6gd.medium",
+          "m6gd.large",
+          "m6gd.xlarge",
+          "m6gd.2xlarge",
+          "m6gd.4xlarge",
+          "m6gd.8xlarge",
+          "m6gd.12xlarge",
+          "m6gd.16xlarge",
+          "m6gd.metal",
+          "m6id.large",
+          "m6id.xlarge",
+          "m6id.2xlarge",
+          "m6id.4xlarge",
+          "m6id.8xlarge",
+          "m6id.12xlarge",
+          "m6id.16xlarge",
+          "m6id.24xlarge",
+          "m6id.32xlarge",
+          "m6id.metal",
+          "m7a.medium",
+          "m7a.large",
+          "m7a.xlarge",
+          "m7a.2xlarge",
+          "m7a.4xlarge",
+          "m7a.8xlarge",
+          "m7a.12xlarge",
+          "m7a.16xlarge",
+          "m7a.24xlarge",
+          "m7a.32xlarge",
+          "m7a.48xlarge",
+          "m7a.metal-48xl",
+          "m7i.large",
+          "m7i.xlarge",
+          "m7i.2xlarge",
+          "m7i.4xlarge",
+          "m7i.8xlarge",
+          "m7i.12xlarge",
+          "m7i.16xlarge",
+          "m7i.24xlarge",
+          "m7i.metal-24xl",
+          "m7i.48xlarge",
+          "m7i.metal-48xl",
+          "m8gd.medium",
+          "m8gd.large",
+          "m8gd.xlarge",
+          "m8gd.2xlarge",
+          "m8gd.4xlarge",
+          "m8gd.8xlarge",
+          "m8gd.12xlarge",
+          "m8gd.16xlarge",
+          "m8gd.24xlarge",
+          "m8gd.metal-24xl",
+          "m8gd.48xlarge",
+          "m8gd.metal-48xl",
+          "r6gd.medium",
+          "r6gd.large",
+          "r6gd.xlarge",
+          "r6gd.2xlarge",
+          "r6gd.4xlarge",
+          "r6gd.8xlarge",
+          "r6gd.12xlarge",
+          "r6gd.16xlarge",
+          "r6gd.metal",
+          "r6id.large",
+          "r6id.xlarge",
+          "r6id.2xlarge",
+          "r6id.4xlarge",
+          "r6id.8xlarge",
+          "r6id.12xlarge",
+          "r6id.16xlarge",
+          "r6id.24xlarge",
+          "r6id.32xlarge",
+          "r6id.metal",
+          "r8gd.medium",
+          "r8gd.large",
+          "r8gd.xlarge",
+          "r8gd.2xlarge",
+          "r8gd.4xlarge",
+          "r8gd.8xlarge",
+          "r8gd.12xlarge",
+          "r8gd.16xlarge",
+          "r8gd.24xlarge",
+          "r8gd.metal-24xl",
+          "r8gd.48xlarge",
+          "r8gd.metal-48xl"
+        ]
+      },
+      "pgHaType": {
+        "type": "string",
+        "description": "Type of high availability: “none” for no replication, “async” for asynchronous replication to a single standby, and “sync” for synchronous replication to two standbys.",
+        "enum": [
+          "none",
+          "async",
+          "sync"
+        ]
+      },
+      "pgProvider": {
+        "type": "string",
+        "enum": [
+          "aws"
+        ],
+        "title": "Cloud provider",
+        "description": "The cloud provider for a Postgres service."
+      },
+      "pgRegion": {
+        "type": "string",
+        "title": "Service region",
+        "description": "The cloud region for a Postgres service."
+      },
+      "pgVersion": {
+        "type": "string",
+        "title": "Postgres major version",
+        "enum": [
+          "18",
+          "17",
+          "16"
+        ]
+      },
+      "pgTags": {
+        "type": "array",
+        "items": {
+          "$name": "ResourceTagsV1",
+          "key": {
+            "type": "string",
+            "text": "Tag key. Must be alphanumeric with dashes, underscores and dots."
+          },
+          "value": {
+            "type": "string",
+            "text": "Tag value. Must be alphanumeric with dashes, underscores and dots.",
+            "nullable": true
+          }
+        },
+        "title": "Postgres Tags",
+        "description": "Tags associated with the Postgres service."
+      },
+      "pgNameProperty": {
+        "type": "string",
+        "title": "Postgres Service Name",
+        "description": "Name of the Postgres service. Alphanumerical string with whitespaces up to 50 characters.",
+        "minimum": 1,
+        "maximum": 50
+      },
+      "Base Postgres Service": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/pgProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/pgRegion"
+          },
+          "postgresVersion": {
+            "$ref": "#/components/schemas/pgVersion"
+          },
+          "size": {
+            "$ref": "#/components/schemas/pgSize"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
+          },
+          "haType": {
+            "$ref": "#/components/schemas/pgHaType"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          }
+        }
+      },
+      "Postgres Service": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/pgProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/pgRegion"
+          },
+          "postgresVersion": {
+            "$ref": "#/components/schemas/pgVersion"
+          },
+          "size": {
+            "$ref": "#/components/schemas/pgSize"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
+          },
+          "haType": {
+            "$ref": "#/components/schemas/pgHaType"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          },
+          "id": {
+            "description": "Unique service ID.",
+            "type": "string",
+            "example": "pgywezf3pxnp0hqxaqfp786w2w"
+          },
+          "state": {
+            "description": "Current state of the service.",
+            "type": "string",
+            "enum": [
+              "creating",
+              "running",
+              "replaying_wal",
+              "restoring_backup",
+              "finalizing_restore",
+              "unavailable",
+              "deleting"
+            ]
+          },
+          "isPrimary": {
+            "description": "True if this service is the primary service in the data warehouse",
+            "type": "boolean"
+          },
+          "connectionString": {
+            "description": "Connection string to the Postgres service",
+            "type": "string"
+          },
+          "username": {
+            "description": "Username for the Postgres service",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password for the Postgres service",
+            "type": "string"
+          },
+          "hostname": {
+            "description": "Hostname for the Postgres service",
+            "type": "string"
+          }
+        }
+      },
+      "PostgresServicePostRequest": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/pgProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/pgRegion"
+          },
+          "postgresVersion": {
+            "$ref": "#/components/schemas/pgVersion"
+          },
+          "size": {
+            "$ref": "#/components/schemas/pgSize"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
+          },
+          "haType": {
+            "$ref": "#/components/schemas/pgHaType"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          },
+          "pgConfig": {
+            "$ref": "#/components/schemas/pgConfig"
+          },
+          "pgBouncerConfig": {
+            "$ref": "#/components/schemas/pgBouncerConfig"
+          }
+        }
+      },
+      "PostgresServicePatchRequest": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/pgProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/pgRegion"
+          },
+          "postgresVersion": {
+            "$ref": "#/components/schemas/pgVersion"
+          },
+          "size": {
+            "$ref": "#/components/schemas/pgSize"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
+          },
+          "haType": {
+            "$ref": "#/components/schemas/pgHaType"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          }
+        }
+      },
       "OrganizationPatchRequest": {
         "properties": {
           "name": {
@@ -14490,7 +16802,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -14553,15 +16864,15 @@
             "description": "Minimum total memory of each replica during auto-scaling in Gb. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 236* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
+            "description": "Maximum total memory of each replica during auto-scaling in Gb.  Must be a multiple of 4 and lower than or equal to 120* for non paid services or 356* for paid services.* - maximum replica size subject to cloud provider hardware availability in your selected region. ",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 120
           },
@@ -14718,11 +17029,12 @@
       "ServiceStatePatchRequest": {
         "properties": {
           "command": {
-            "description": "Command to change the state: 'start', 'stop'.",
+            "description": "Command to change the state: 'start', 'stop', 'awake'.",
             "type": "string",
             "enum": [
               "start",
-              "stop"
+              "stop",
+              "awake"
             ]
           }
         }
@@ -14797,7 +17109,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -14884,15 +17195,15 @@
             "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 236 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 120
           },
@@ -15025,15 +17336,15 @@
             "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 236 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
             "type": "number",
             "minimum": 8,
-            "maximum": 236,
+            "maximum": 356,
             "multipleOf": 4,
             "example": 120
           },
@@ -15413,7 +17724,6 @@
               "eu-west-1",
               "eu-west-2",
               "il-central-1",
-              "me-central-1",
               "us-east-1",
               "us-east-2",
               "us-west-2",
@@ -15510,6 +17820,9 @@
     },
     {
       "name": "ClickStack"
+    },
+    {
+      "name": "Postgres"
     }
   ],
   "x-tagGroups": [
@@ -15551,6 +17864,12 @@
       "name": "ClickStack",
       "tags": [
         "ClickStack"
+      ]
+    },
+    {
+      "name": "Postgres",
+      "tags": [
+        "Postgres"
       ]
     }
   ]

@@ -255,10 +255,29 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
     }
   : T;
 
+// Detects if a value looks like a JSON Schema object (rather than a properties mapping).
+// Used to avoid treating the "properties" mapping object itself as a JSON Schema when
+// a property happens to be named "properties".
+type LooksLikeSchemaObject<T> = T extends
+  | { type: JSONSchema7TypeName }
+  | { $ref: string }
+  | { enum: any }
+  | { const: any }
+  | { oneOf: any }
+  | { anyOf: any }
+  | { allOf: any }
+  | { not: any }
+  | { additionalProperties: any }
+  | { items: any }
+  ? true
+  : false;
+
 type FixMissingTypeObject<T> = T extends { type: any; properties: any }
   ? T
-  : T extends { properties: any }
-    ? T & { type: 'object' }
+  : T extends { properties: infer TProps }
+    ? LooksLikeSchemaObject<TProps> extends true
+      ? T
+      : T & { type: 'object' }
     : T;
 
 type FixMissingAdditionalProperties<T> = T extends {
