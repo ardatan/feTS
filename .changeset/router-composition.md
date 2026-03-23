@@ -1,5 +1,5 @@
 ---
-'fets': minor
+'fets': patch
 ---
 
 Add `use()` method for router composition and merging
