@@ -1,5 +1,208 @@
 # fets
 
+## 0.8.6
+
+### Patch Changes
+
+- [#3650](https://github.com/ardatan/feTS/pull/3650)
+  [`db80dbc`](https://github.com/ardatan/feTS/commit/db80dbc368f4cd78757403cea15c87f8f4448e05)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Allow optional request
+  bodies in OpenAPI spec by respecting TypeBox `Type.Optional` modifier
+
+  Previously, the OpenAPI plugin hardcoded `requestBody.required = true` for all JSON and formData
+  request bodies, making it impossible to declare optional bodies using `Type.Optional<...>` or
+  similar patterns from TypeBox.
+
+  The plugin now checks for the TypeBox `OptionalKind` symbol on the schema and sets
+  `requestBody.required` accordingly. Non-TypeBox schemas and non-optional schemas continue to
+  produce `required: true` (preserving backward compatibility), while schemas wrapped with
+  `Type.Optional(...)` correctly produce `required: false`.
+
+  ```typescript
+  router.route({
+    path: '/example',
+    method: 'POST',
+    schemas: {
+      request: {
+        json: Type.Optional(Type.Object({ name: Type.String() }))
+      }
+    },
+    handler: () => Response.json({ ok: true })
+  })
+  // → requestBody.required === false in the generated OpenAPI spec
+  ```
+
+- [#3662](https://github.com/ardatan/feTS/pull/3662)
+  [`8c5d3e0`](https://github.com/ardatan/feTS/commit/8c5d3e0bc136210de9649907e0b1156072fd89e2)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix "Type of property
+  circularly references itself" error with arrays of recursive objects
+
+  Schemas where a recursive type is referenced through an array property (e.g.
+  `children: { type: 'array', items: { $ref: '#/components/schemas/Node' } }`) previously triggered
+  TypeScript error TS2615 when used with `createClient` or the `OASModel` / `OASOutput` /
+  `OASJSONResponseSchema` helpers.
+
+  The root cause was in the `Circular<T>` type helper, which only detected self-references via
+  direct property values (`child: Node`) but not through array items (`children: Node[]`). After
+  `NormalizeOAS` resolves `$ref`s it injects a `$id` field onto resolved schemas, making array items
+  a _subtype_ of the parent rather than the identical type. The existing equality-based check
+  therefore returned `false` for the array case, allowing `json-schema-to-ts` to try to expand the
+  circular type and hit TS2615.
+
+  A new `ArrayItemValue<T>` helper extracts the `items` schema from an array-typed JSON schema. The
+  `Circular<T>` check now additionally tests whether any array-property's items extend the parent
+  schema, correctly identifying circular array references and disabling the problematic deserializer
+  expansion.
+
+  **Before (broken):**
+
+  ```typescript
+  // Node.children is an array of Node — triggered TS2615
+  const client = createClient<NormalizeOAS<typeof oas>>({})
+  await client['/tree'].get() // Error: Type of property 'children' circularly references itself
+  ```
+
+  **After (fixed):**
+
+  ```typescript
+  const client = createClient<NormalizeOAS<typeof oas>>({})
+  const res = await client['/tree'].get()
+  if (res.ok) {
+    const body = await res.json()
+    body.children?.[0]?.children?.[0]?.number // correctly typed as number | undefined
+  }
+  ```
+
+- [#3665](https://github.com/ardatan/feTS/pull/3665)
+  [`5fd3022`](https://github.com/ardatan/feTS/commit/5fd3022a078141c1050e2fc4d351f6aaff772815)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix "Type of property
+  circularly references itself" error for mutually-recursive schemas (e.g. Argo Workflows OpenAPI
+  spec)
+
+  Large OpenAPI specs such as Argo Workflows contain **mutually-recursive** schema references (e.g.
+  `Template → DAGTemplate → DAGTask → Template`). These schemas caused TypeScript error TS2615 when
+  used with `OASModel`, `OASOutput`, `OASJSONResponseSchema`, or `createClient`.
+
+  The root cause was in the `Circular<T>` type helper, which detected only:
+  1. Direct self-references (`child: Node` where `Node.child` resolves back to the same `Node` type)
+  2. Array self-references added in a previous fix (`children: Node[]`)
+
+  It did **not** detect indirect mutual recursion (Schema A → Schema B → Schema A), because the
+  recursive type check `Circular<PropertyValue<A>>` eventually calls `Circular<A>` again, causing
+  TypeScript to hit its recursion limit and silently fail, leaving the deserializer enabled and
+  triggering TS2615 inside `json-schema-to-ts`.
+
+  The fix extends `Circular<T>` to also return `true` when any property of the schema is a
+  **resolved `$ref`** — identified by the presence of a `$id` field that `NormalizeOAS` injects.
+  Such schemas were resolved from `$ref` entries in the original OpenAPI document and may
+  participate in complex circular reference chains. Disabling the deserializer expansion for these
+  schemas avoids the TS2615 error.
+
+  **Before (broken):**
+
+  ```typescript
+  // Template → DAGTemplate → DAGTask → Template caused TS2615
+  type NormalizedArgo = NormalizeOAS<typeof argoWorkflowsOAS>
+  type TemplateType = OASModel<NormalizedArgo, 'Template'> // Error: TS2615
+  const client = createClient<NormalizedArgo>({})
+  await client['/workflow'].get() // Error: TS2615
+  ```
+
+  **After (fixed):**
+
+  ```typescript
+  type NormalizedArgo = NormalizeOAS<typeof argoWorkflowsOAS>
+  type TemplateType = OASModel<NormalizedArgo, 'Template'> // Works!
+  const client = createClient<NormalizedArgo>({})
+  const res = await client['/workflow'].get() // Works!
+  if (res.ok) {
+    const body = await res.json()
+    body.dag?.tasks?.[0]?.name // correctly typed as string | undefined
+  }
+  ```
+
+- [#3652](https://github.com/ardatan/feTS/pull/3652)
+  [`4c0976b`](https://github.com/ardatan/feTS/commit/4c0976b6a2a8f9a23828e06100fc861677906098)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix object types with
+  array `type` (e.g. `["object", "null"]`) being inferred as `undefined`
+
+  OpenAPI 3.1 schemas that declare a nullable object using an array type such as
+  `"type": ["object", "null"]` were incorrectly inferred as `undefined` in the feTS client instead
+  of resolving to the correct union type (e.g.
+  `{ url: string; name: string; size: number } | null`).
+
+  The root cause was in the `FixJSONSchema` type pipeline:
+  - `FixMissingTypeObject` unconditionally added `& { type: 'object' }` to any schema with
+    `properties`, even when `type` was already set. For `type: ["object", "null"]` this produced
+    `{ type: ["object", "null"] } & { type: 'object' }` → `{ type: never }`, causing
+    `json-schema-to-ts` to yield `undefined`.
+  - `FixMissingAdditionalProperties` only matched `type: 'object'` (string literal), so schemas with
+    array types never received the required `additionalProperties: false` injection.
+
+  Both helpers have been updated to correctly handle array-style type declarations.
+
+- [#3649](https://github.com/ardatan/feTS/pull/3649)
+  [`bce414f`](https://github.com/ardatan/feTS/commit/bce414f1a1d45312de8f6927e09fd69b5cb2d9a7)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix client sending HTTP
+  methods in lowercase (e.g. `patch` instead of `PATCH`). The client now normalizes all HTTP methods
+  to uppercase before sending the request.
+
+- [#3653](https://github.com/ardatan/feTS/pull/3653)
+  [`742c313`](https://github.com/ardatan/feTS/commit/742c313e1900685125a024f415f8ecb4ae93d4a7)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Fix required query
+  parameters becoming optional when mixed with header parameters in the client type generation.
+  Previously, when an endpoint had both query and header parameters, required query parameters were
+  incorrectly typed as optional. The fix correctly checks whether any parameter of the specific type
+  (query or header) is marked as `required: true` instead of using a tuple check across all
+  parameter types.
+
+- [#3651](https://github.com/ardatan/feTS/pull/3651)
+  [`3d17b72`](https://github.com/ardatan/feTS/commit/3d17b726229a4c4a3c49b480c05cd3c9eaf77304)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - fix: apply
+  `encodeURIComponent` to URL path parameters in `createClient`
+
+  Previously, path parameters were substituted into the URL as-is, which could result in malformed
+  URLs when the parameter values contained characters such as spaces, slashes, question marks, or
+  non-ASCII characters.
+
+  For example, passing `{ id: 'hello world' }` to `/todo/{id}` would produce `/todo/hello world`
+  instead of `/todo/hello%20world`.
+
+  With this fix, all path parameter values are now passed through `encodeURIComponent` before being
+  substituted into the URL, ensuring that the generated request URL is always valid and correctly
+  encoded.
+
+- [#3654](https://github.com/ardatan/feTS/pull/3654)
+  [`a313e10`](https://github.com/ardatan/feTS/commit/a313e10783e9f05ae12f1d8f124057eb263d8eed)
+  Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Add `use()` method for
+  router composition and merging
+
+  Routers can now be composed together using the `.use()` method, allowing you to split routes
+  across multiple files and merge them into a parent router.
+
+  ```ts
+  // users-router.ts
+  const usersRouter = createRouter().route({
+    path: '/users',
+    method: 'GET',
+    handler: () => Response.json({ users: [] })
+  })
+
+  // app.ts
+  const app = createRouter()
+    .use(usersRouter) // merge at existing paths
+    .use('/api', anotherRouter) // merge under a prefix
+  ```
+
+  The `.use()` method supports:
+  - Merging a sub-router at its existing paths
+  - Merging with a path prefix
+  - Sub-routers with their own `base` option
+  - Transitive composition (a merged router can itself be merged)
+
+  Internal routes (e.g. OpenAPI schema endpoint, Swagger UI) from sub-routers are not propagated to
+  the parent router.
+
 ## 0.8.5
 
 ### Patch Changes
@@ -19,8 +222,8 @@
   [`6eeda76`](https://github.com/ardatan/feTS/commit/6eeda761e437660fd54353d1e3986e36c1ebd152)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
   - Updated dependency
-    [`@sinclair/typebox@^0.34.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.34.0)
-    (from `^0.33.0`, in `dependencies`)
+    [`@sinclair/typebox@^0.34.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.34.0) (from
+    `^0.33.0`, in `dependencies`)
 
 ## 0.8.3
 
@@ -38,8 +241,8 @@
   [`0f49090`](https://github.com/ardatan/feTS/commit/0f49090d7c677ab834a281e3c616c10a3ea611d1)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
   - Updated dependency
-    [`@sinclair/typebox@^0.33.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.33.0)
-    (from `^0.32.0`, in `dependencies`)
+    [`@sinclair/typebox@^0.33.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.33.0) (from
+    `^0.32.0`, in `dependencies`)
 
 ## 0.8.1
 
@@ -91,15 +294,13 @@
 - [#915](https://github.com/ardatan/feTS/pull/915)
   [`3be42d8`](https://github.com/ardatan/feTS/commit/3be42d8f812c96968a3107aea0c455687bc4930a)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
-    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0)
-    (from `^0.31.23`, in `dependencies`)
+    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from
+    `^0.31.23`, in `dependencies`)
 
 - [#967](https://github.com/ardatan/feTS/pull/967)
   [`98d2323`](https://github.com/ardatan/feTS/commit/98d2323c7e20551e99e8b79734ab1e3f7d33cca1)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
     [`json-schema-to-ts@^3.0.0` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/3.0.0) (from
     `^2.9.1`, in `dependencies`)
@@ -108,8 +309,8 @@
   [`5c993ef`](https://github.com/ardatan/feTS/commit/5c993efa9749889df314890d9c03410bcbb11288)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
   - Updated dependency
-    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0)
-    (from `^0.31.23`, in `dependencies`)
+    [`@sinclair/typebox@^0.32.0` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.32.0) (from
+    `^0.31.23`, in `dependencies`)
 
 ## 0.6.8
 
@@ -229,10 +430,9 @@
 - [#682](https://github.com/ardatan/feTS/pull/682)
   [`bf99477`](https://github.com/ardatan/feTS/commit/bf99477d36901795fe7e889d8dbba93a60ffe4c4)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
-
   - Added dependency
-    [`@sinclair/typebox@^0.31.18` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.31.18)
-    (to `dependencies`)
+    [`@sinclair/typebox@^0.31.18` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.31.18) (to
+    `dependencies`)
   - Removed dependency [`ajv@^8.12.0` ↗︎](https://www.npmjs.com/package/ajv/v/8.12.0) (from
     `dependencies`)
   - Removed dependency [`ajv-formats@^2.1.1` ↗︎](https://www.npmjs.com/package/ajv-formats/v/2.1.1)
@@ -476,15 +676,13 @@
 - [#316](https://github.com/ardatan/feTS/pull/316)
   [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
-
-  - Added dependency [`ts-toolbelt@^9.6.0` ↗︎](https://www.npmjs.com/package/ts-toolbelt/v/9.6.0)
-    (to `dependencies`)
+  - Added dependency [`ts-toolbelt@^9.6.0` ↗︎](https://www.npmjs.com/package/ts-toolbelt/v/9.6.0) (to
+    `dependencies`)
 
 - [#316](https://github.com/ardatan/feTS/pull/316)
   [`9f25175`](https://github.com/ardatan/feTS/commit/9f2517590baf06ca5e2e01c3db57299dae3bfca1)
   Thanks [@ardatan](https://github.com/ardatan)! - - Support `parameters` in the OpenAPI Path
   objects
-
   - Support dots in `components.schemas` names
 
 - [#309](https://github.com/ardatan/feTS/pull/309)
@@ -522,7 +720,6 @@
 - [#258](https://github.com/ardatan/feTS/pull/258)
   [`a28661e`](https://github.com/ardatan/feTS/commit/a28661e90b8adc6f9873cc6eaf21cbce99f0ad7e)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
     [`@whatwg-node/server@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.9.0)
     (from `^0.8.7`, in `dependencies`)
@@ -561,12 +758,10 @@
 - [#251](https://github.com/ardatan/feTS/pull/251)
   [`7979639`](https://github.com/ardatan/feTS/commit/79796391c0ca6508e7b869244a30f6b63175eb1e)
   Thanks [@ardatan](https://github.com/ardatan)! - Client;
-
   - No more optional for each request parameter object, make them required if they are in OAS
   - Now endpoint is required if OAS has `servers.url` in `createClient` options
 
   Server;
-
   - `requestBody` is now required in the generated OAS
 
 - [#251](https://github.com/ardatan/feTS/pull/251)
@@ -609,8 +804,8 @@
   [`49a7320`](https://github.com/ardatan/feTS/commit/49a7320c7bda3de82e4a51041973dbe5e60341fe)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3)
-    (from `^0.9.0`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.3) (from
+    `^0.9.0`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.6` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.6)
     (from `^0.8.1`, in `dependencies`)
@@ -642,13 +837,12 @@
 - [#177](https://github.com/ardatan/feTS/pull/177)
   [`4de0ce6`](https://github.com/ardatan/feTS/commit/4de0ce65bac8fc1b8a2619173dcf962f21cef06a)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
     [`@whatwg-node/cookie-store@^0.1.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/cookie-store/v/0.1.0)
     (from `^0.0.1`, in `dependencies`)
   - Updated dependency
-    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0)
-    (from `^0.8.2`, in `dependencies`)
+    [`@whatwg-node/fetch@^0.9.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/fetch/v/0.9.0) (from
+    `^0.8.2`, in `dependencies`)
   - Updated dependency
     [`@whatwg-node/server@^0.8.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.8.0)
     (from `^0.7.4`, in `dependencies`)
@@ -688,7 +882,6 @@
 
 - [`804c0b9`](https://github.com/ardatan/feTS/commit/804c0b9b07f3565b1d8ed8b2eb488e912dfcf6fd)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
-
   - Added dependency [`hotscript@^1.0.11` ↗︎](https://www.npmjs.com/package/hotscript/v/1.0.11) (to
     `dependencies`)
   - Removed dependency [`zod@^3.21.4` ↗︎](https://www.npmjs.com/package/zod/v/3.21.4) (from
@@ -697,10 +890,9 @@
 - [#133](https://github.com/ardatan/feTS/pull/133)
   [`9bf4ee2`](https://github.com/ardatan/feTS/commit/9bf4ee2cd27bae9565eb124de1a2b8a7d5903c27)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
-    [`zod-to-json-schema@3.20.5` ↗︎](https://www.npmjs.com/package/zod-to-json-schema/v/3.20.5)
-    (from `3.20.4`, in `dependencies`)
+    [`zod-to-json-schema@3.20.5` ↗︎](https://www.npmjs.com/package/zod-to-json-schema/v/3.20.5) (from
+    `3.20.4`, in `dependencies`)
 
 - [`804c0b9`](https://github.com/ardatan/feTS/commit/804c0b9b07f3565b1d8ed8b2eb488e912dfcf6fd)
   Thanks [@ardatan](https://github.com/ardatan)! - Handle $refs in all of the object types
@@ -770,7 +962,6 @@
 - [#41](https://github.com/ardatan/fets/pull/41)
   [`9b19754`](https://github.com/ardatan/fets/commit/9b19754f491a052a5fe5c0b6c5768e5f94988611)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
-
   - Added dependency [`zod@^3.21.4` ↗︎](https://www.npmjs.com/package/zod/v/3.21.4) (to
     `dependencies`)
   - Added dependency
@@ -800,7 +991,6 @@
 - [#15](https://github.com/ardatan/fets/pull/15)
   [`1a56d16`](https://github.com/ardatan/fets/commit/1a56d163ab057e0bb439e11cd5740c95e2573ad0)
   Thanks [@ardatan](https://github.com/ardatan)! - dependencies updates:
-
   - Updated dependency
     [`@ardatan/fast-json-stringify@^0.0.5` ↗︎](https://www.npmjs.com/package/@ardatan/fast-json-stringify/v/0.0.5)
     (from `^0.0.3`, in `dependencies`)
@@ -879,7 +1069,6 @@
 - [#392](https://github.com/ardatan/whatwg-node/pull/392)
   [`1ce8f0a`](https://github.com/ardatan/whatwg-node/commit/1ce8f0a615916b2a78dfd2b973f450c9d53f46c0)
   Thanks [@renovate](https://github.com/apps/renovate)! - dependencies updates:
-
   - Updated dependency
     [`json-schema-to-ts@2.7.2` ↗︎](https://www.npmjs.com/package/json-schema-to-ts/v/2.7.2) (from
     `2.6.2`, in `dependencies`)
