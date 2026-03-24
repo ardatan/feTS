@@ -29,7 +29,9 @@
     "paths": {
       "@e2e/*": ["e2e/*/src/index.ts"],
       "fets": ["packages/fets/src/index.ts"]
-    }
+    },
+    "ignoreDeprecations": "6.0",
+    "types": ["node"]
   },
   "include": ["packages", "e2e", "examples"],
   "exclude": ["**/node_modules", "**/test-files", "**/dist", "**/e2e", "**/benchmark"]
