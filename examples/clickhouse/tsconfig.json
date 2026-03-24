@@ -11,7 +11,8 @@
     "strict": true,
     "paths": {
       "fets": ["../../packages/fets/src/index.ts"]
-    }
+    },
+    "types": ["node"]
   },
   "files": ["index.ts"],
   "exclude": ["node_modules", "dist", "test"]
