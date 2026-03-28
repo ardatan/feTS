@@ -8,7 +8,7 @@
     "examples/*",
     "benchmark"
   ],
-  "packageManager": "npm@11.12.0",
+  "packageManager": "npm@11.12.1",
   "scripts": {
     "build": "bob build",
     "ci:lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext .ts . --output-file eslint_report.json --format json",
