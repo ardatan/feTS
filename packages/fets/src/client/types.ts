@@ -245,7 +245,9 @@ export type OASModel<
 // Later suggest using json-machete
 export type FixJSONSchema<T> = RemoveExclusiveMinimumAndMaximum<
   FixAdditionalPropertiesForAllOf<
-    FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
+    FixAnyOfOneOfRequiredFields<
+      FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
+    >
   >
 >;
 
@@ -254,6 +256,20 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
       allOf: Call<Tuples.Map<Objects.Omit<'additionalProperties'>>, T['allOf']>;
     }
   : T;
+
+// Strips 'required' from schemas that appear as items inside anyOf/oneOf.
+// This prevents TypeScript error TS2615 ("Type of property X circularly references itself
+// in mapped type") which occurs when json-schema-to-ts processes circular schemas with
+// required fields through anyOf/oneOf. The outer schema's required array is preserved.
+type FixAnyOfOneOfRequiredFields<T> = T extends { anyOf: any[] }
+  ? Omit<T, 'anyOf'> & {
+      anyOf: Call<Tuples.Map<Objects.Omit<'required'>>, T['anyOf']>;
+    }
+  : T extends { oneOf: any[] }
+    ? Omit<T, 'oneOf'> & {
+        oneOf: Call<Tuples.Map<Objects.Omit<'required'>>, T['oneOf']>;
+      }
+    : T;
 
 // Detects if a value looks like a JSON Schema object (rather than a properties mapping).
 // Used to avoid treating the "properties" mapping object itself as a JSON Schema when
