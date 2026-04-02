@@ -1,3 +1,4 @@
+// @ts-expect-error - CSS Types are missing
 import '@theguild/components/style.css';
 import { AppProps } from 'next/app';
 
