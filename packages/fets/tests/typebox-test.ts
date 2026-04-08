@@ -134,7 +134,7 @@ if (res.ok) {
 }
 
 // only accept TypeObject with string keys and values for request header schema
- 
+
 {
   // @ts-expect-error this should only accept objects
   createRouter().route({
@@ -152,7 +152,7 @@ if (res.ok) {
 }
 
 // only accept TypeObject with string keys and values for request header schema
- 
+
 {
   // @ts-expect-error this should only accept objects with string values
   createRouter().route({
@@ -172,7 +172,7 @@ if (res.ok) {
 }
 
 // only accept TypeObject with string keys and values for request params schema
- 
+
 {
   // @ts-expect-error this should only accept objects
   createRouter().route({
@@ -190,7 +190,7 @@ if (res.ok) {
 }
 
 // only accept TypeObject with string keys and values for request params schema
- 
+
 {
   // @ts-expect-error this should only accept objects with string values
   createRouter().route({
@@ -210,7 +210,7 @@ if (res.ok) {
 }
 
 // only accept TypeObject with string keys and values for request query schema
- 
+
 {
   // @ts-expect-error this should only accept objects
   createRouter().route({
@@ -228,7 +228,7 @@ if (res.ok) {
 }
 
 // handler should match responses
- 
+
 {
   createRouter().route({
     path: '/foo',

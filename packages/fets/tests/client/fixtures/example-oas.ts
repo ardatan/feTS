@@ -1,4 +1,3 @@
- 
 export default {
   openapi: '3.0.1',
   info: {

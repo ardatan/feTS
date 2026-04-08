@@ -1,4 +1,3 @@
- 
 export default {
   openapi: '3.0.3',
   servers: ['https://postman-echo.com'],

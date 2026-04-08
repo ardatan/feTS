@@ -1,11 +1,11 @@
-  export default {
-  "openapi": "3.0.1",
+/* eslint-disable */ export default {
+  "openapi": "3.1.2",
   "info": {
     "title": "OpenAPI spec for ClickHouse Cloud",
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-610521",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-683176",
       "email": "support@clickhouse.com"
     }
   },
@@ -4733,7 +4733,7 @@
             "description": "Start date for the report, e.g. 2024-12-19.",
             "schema": {
               "type": "string",
-              "format": "date-time"
+              "format": "date"
             },
             "required": true
           },
@@ -4743,7 +4743,7 @@
             "description": "End date (inclusive) for the report, e.g. 2024-12-20. This date cannot be more than 30 days after from_date (for a maximum queried period of 31 days).",
             "schema": {
               "type": "string",
-              "format": "date-time"
+              "format": "date"
             },
             "required": true
           },
@@ -7778,7 +7778,115 @@
                       "format": "uuid"
                     },
                     "result": {
-                      "$ref": "#/components/schemas/Postgres Service"
+                      "$ref": "#/components/schemas/PostgresService"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "get": {
+        "summary": "List of organization Postgres services",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a list of all Postgres services in the organization.",
+        "operationId": "postgresServiceGetList",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the services.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PostgresServiceListItem"
+                      }
                     }
                   }
                 }
@@ -7895,7 +8003,7 @@
                       "format": "uuid"
                     },
                     "result": {
-                      "$ref": "#/components/schemas/Postgres Service"
+                      "$ref": "#/components/schemas/PostgresService"
                     }
                   }
                 }
@@ -8131,7 +8239,7 @@
                       "format": "uuid"
                     },
                     "result": {
-                      "$ref": "#/components/schemas/Postgres Service"
+                      "$ref": "#/components/schemas/PostgresService"
                     }
                   }
                 }
@@ -8202,7 +8310,7 @@
         ]
       }
     },
-    "/v1/organizations/{organizationId}/postgres/{postgresId}/ca-certificates": {
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/caCertificates": {
       "get": {
         "summary": "Get Postgres CA certs",
         "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Download CA certificates for a PostgreSQL service",
@@ -8244,6 +8352,258 @@
               "application/x-pem-file": {
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/restoredService": {
+      "post": {
+        "summary": "Restore a Postgres service",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Restore a Postgres database from continuous backup, optionally at a specific point in time.",
+        "operationId": "postgresInstanceRestore",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServiceRestoreRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresService"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/password": {
+      "patch": {
+        "summary": "Update Postgres superuser password",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Sets a new password for a Postgres service's superuser account.",
+        "operationId": "postgresServiceSetPassword",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServiceSetPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresServicePasswordResource"
+                    }
+                  }
                 }
               }
             }
@@ -9312,8 +9672,10 @@
           },
           "timestamp": {
             "description": "A minute precision UTC timestamp to start from. Required for \"from_timestamp\" strategy.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "2021-01-01T00:00"
           }
         }
@@ -9334,8 +9696,10 @@
           },
           "caCertificate": {
             "description": "PEM encoded CA certificates to validate the schema registry's certificate.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
@@ -9367,8 +9731,10 @@
           },
           "caCertificate": {
             "description": "PEM encoded CA certificates to validate the schema registry's certificate.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "credentials": {
             "$ref": "#/components/schemas/ClickPipeKafkaSchemaRegistryCredentials"
@@ -9380,6 +9746,19 @@
           "connectionString": {
             "description": "Connection string for Azure EventHub source.",
             "type": "string"
+          }
+        }
+      },
+      "MutualTLS": {
+        "properties": {
+          "certificate": {
+            "description": "PEM encoded client certificate for mTLS authentication.",
+            "type": "string"
+          },
+          "privateKey": {
+            "description": "PEM encoded client private key for mTLS authentication.",
+            "type": "string",
+            "format": "password"
           }
         }
       },
@@ -9405,7 +9784,8 @@
             "enum": [
               "JSONEachRow",
               "Avro",
-              "AvroConfluent"
+              "AvroConfluent",
+              "Protobuf"
             ]
           },
           "brokers": {
@@ -9418,8 +9798,10 @@
           },
           "consumerGroup": {
             "description": "Consumer group of the Kafka source. If not provided \"clickpipes-<<ID>>\" will be used.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
@@ -9436,30 +9818,38 @@
           },
           "iamRole": {
             "description": "IAM role for the Kafka source. Use with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/kafka#iam",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "offset": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKafkaOffset"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "schemaRegistry": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKafkaSchemaRegistry"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "caCertificate": {
             "description": "PEM encoded CA certificates to validate the broker's certificate.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "reversePrivateEndpointIds": {
             "type": "array",
@@ -9492,7 +9882,8 @@
             "enum": [
               "JSONEachRow",
               "Avro",
-              "AvroConfluent"
+              "AvroConfluent",
+              "Protobuf"
             ]
           },
           "brokers": {
@@ -9505,8 +9896,10 @@
           },
           "consumerGroup": {
             "description": "Consumer group of the Kafka source. If not provided \"clickpipes-<<ID>>\" will be used.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
@@ -9523,30 +9916,38 @@
           },
           "iamRole": {
             "description": "IAM role for the Kafka source. Use with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/kafka#iam",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "offset": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKafkaOffset"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "schemaRegistry": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMutateKafkaSchemaRegistry"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "caCertificate": {
             "description": "PEM encoded CA certificates to validate the broker's certificate.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "reversePrivateEndpointIds": {
             "type": "array",
@@ -9556,8 +9957,7 @@
             }
           },
           "credentials": {
-            "description": "Credentials for Kafka source. Chose one of that is supported by the authentication method.",
-            "nullable": true,
+            "description": "Credentials for Kafka source. Choose one that is supported by the authentication method.",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/PLAIN"
@@ -9567,6 +9967,9 @@
               },
               {
                 "$ref": "#/components/schemas/AzureEventHub"
+              },
+              {
+                "$ref": "#/components/schemas/MutualTLS"
               }
             ]
           }
@@ -9576,8 +9979,10 @@
         "properties": {
           "authentication": {
             "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "PLAIN",
               "SCRAM-SHA-256",
@@ -9589,14 +9994,18 @@
           },
           "iamRole": {
             "description": "IAM role for the Kafka source. Use with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/kafka#iam",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "caCertificate": {
             "description": "PEM encoded CA certificates to validate the broker's certificate.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "reversePrivateEndpointIds": {
             "type": "array",
@@ -9606,8 +10015,7 @@
             }
           },
           "credentials": {
-            "description": "Credentials for Kafka source. Chose one of that is supported by the authentication method.",
-            "nullable": true,
+            "description": "Credentials for Kafka source. Choose one that is supported by the authentication method.",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/PLAIN"
@@ -9617,6 +10025,9 @@
               },
               {
                 "$ref": "#/components/schemas/AzureEventHub"
+              },
+              {
+                "$ref": "#/components/schemas/MutualTLS"
               }
             ]
           }
@@ -9645,8 +10056,10 @@
           },
           "useEnhancedFanOut": {
             "description": "Use enhanced fan-out for the Kinesis stream.",
-            "nullable": true,
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "iteratorType": {
             "description": "Type of iterator to use when reading from the Kinesis stream. If AT_TIMESTAMP is used, the timestamp field must be provided.",
@@ -9659,8 +10072,10 @@
           },
           "timestamp": {
             "description": "UNIX timestamp to start reading from the Kinesis stream. Required if iteratorType is AT_TIMESTAMP.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "example": 1615766400
           },
           "authentication": {
@@ -9673,8 +10088,10 @@
           },
           "iamRole": {
             "description": "IAM role to use for authentication. Required if IAM_ROLE is used.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           }
         }
@@ -9702,8 +10119,10 @@
           },
           "useEnhancedFanOut": {
             "description": "Use enhanced fan-out for the Kinesis stream.",
-            "nullable": true,
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "iteratorType": {
             "description": "Type of iterator to use when reading from the Kinesis stream. If AT_TIMESTAMP is used, the timestamp field must be provided.",
@@ -9716,8 +10135,10 @@
           },
           "timestamp": {
             "description": "UNIX timestamp to start reading from the Kinesis stream. Required if iteratorType is AT_TIMESTAMP.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "example": 1615766400
           },
           "authentication": {
@@ -9730,17 +10151,21 @@
           },
           "iamRole": {
             "description": "IAM role to use for authentication. Required if IAM_ROLE is used.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "accessKey": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/MskIamUser"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -9748,8 +10173,10 @@
         "properties": {
           "authentication": {
             "description": "Authentication method to use with the Kinesis stream.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "IAM_ROLE",
               "IAM_USER"
@@ -9757,17 +10184,21 @@
           },
           "iamRole": {
             "description": "IAM role to use for authentication. Required if IAM_ROLE is used.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "accessKey": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/MskIamUser"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -9806,14 +10237,18 @@
           },
           "delimiter": {
             "description": "Delimiter used in the files.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": ","
           },
           "compression": {
             "description": "Compression algorithm used for the files.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "none",
               "gzip",
@@ -9829,19 +10264,25 @@
           },
           "isContinuous": {
             "description": "If set to true, the pipe will continuously read new files from the source. If set to false, the pipe will read the files only once. New files have to be uploaded lexically order.",
-            "nullable": true,
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "queueUrl": {
             "description": "Queue URL for event-based continuous ingestion. For S3, provide an SQS queue URL. For GCS, provide a Pub/Sub subscription (e.g. projects/{project}/subscriptions/{name}). When provided, files are ingested based on event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
             "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
@@ -9851,26 +10292,34 @@
           },
           "iamRole": {
             "description": "IAM role to be used with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#authentication",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "connectionString": {
             "description": "Connection string for Azure Blob Storage authentication. Required when authentication is CONNECTION_STRING.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;EndpointSuffix=core.windows.net"
           },
           "path": {
             "description": "Path to the file(s) within the Azure container. Used for Azure Blob Storage sources. You can specify multiple files using bash-like wildcards. For more information, see the documentation on using wildcards in path: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#limitations",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "data/logs/*.json"
           },
           "azureContainerName": {
             "description": "Container name for Azure Blob Storage. Required when type is azureblobstorage.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mycontainer"
           }
         }
@@ -9910,14 +10359,18 @@
           },
           "delimiter": {
             "description": "Delimiter used in the files.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": ","
           },
           "compression": {
             "description": "Compression algorithm used for the files.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "none",
               "gzip",
@@ -9933,19 +10386,25 @@
           },
           "isContinuous": {
             "description": "If set to true, the pipe will continuously read new files from the source. If set to false, the pipe will read the files only once. New files have to be uploaded lexically order.",
-            "nullable": true,
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "queueUrl": {
             "description": "Queue URL for event-based continuous ingestion. For S3, provide an SQS queue URL. For GCS, provide a Pub/Sub subscription (e.g. projects/{project}/subscriptions/{name}). When provided, files are ingested based on event notifications rather than lexicographical order. Only applicable when isContinuous is true and authentication is not public.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue"
           },
           "authentication": {
             "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
@@ -9955,40 +10414,52 @@
           },
           "iamRole": {
             "description": "IAM role to be used with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#authentication",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "connectionString": {
             "description": "Connection string for Azure Blob Storage authentication. Required when authentication is CONNECTION_STRING.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;EndpointSuffix=core.windows.net"
           },
           "path": {
             "description": "Path to the file(s) within the Azure container. Used for Azure Blob Storage sources. You can specify multiple files using bash-like wildcards. For more information, see the documentation on using wildcards in path: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#limitations",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "data/logs/*.json"
           },
           "azureContainerName": {
             "description": "Container name for Azure Blob Storage. Required when type is azureblobstorage.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mycontainer"
           },
           "accessKey": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/MskIamUser"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "serviceAccountKey": {
             "description": "Base64-encoded GCP service account JSON key. Required when authentication is SERVICE_ACCOUNT.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
@@ -9996,8 +10467,10 @@
         "properties": {
           "authentication": {
             "description": "Authentication method. IAM_USER is for S3, GCS, and DigitalOcean Spaces. IAM_ROLE is for S3 only. SERVICE_ACCOUNT is for GCS only. CONNECTION_STRING is for Azure Blob Storage. PUBLIC uses no authentication.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "IAM_ROLE",
               "IAM_USER",
@@ -10007,40 +10480,52 @@
           },
           "iamRole": {
             "description": "IAM role to be used with IAM role authentication. Read more in ClickPipes documentation: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#authentication",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyRole"
           },
           "connectionString": {
             "description": "Connection string for Azure Blob Storage authentication. Required when authentication is CONNECTION_STRING.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;EndpointSuffix=core.windows.net"
           },
           "path": {
             "description": "Path to the file(s) within the Azure container. Used for Azure Blob Storage sources. You can specify multiple files using bash-like wildcards. For more information, see the documentation on using wildcards in path: https://clickhouse.com/docs/en/integrations/clickpipes/object-storage#limitations",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "data/logs/*.json"
           },
           "azureContainerName": {
             "description": "Container name for Azure Blob Storage. Required when type is azureblobstorage.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mycontainer"
           },
           "accessKey": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/MskIamUser"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "serviceAccountKey": {
             "description": "Base64-encoded GCP service account JSON key. Required when authentication is SERVICE_ACCOUNT.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
@@ -10117,15 +10602,19 @@
         "properties": {
           "syncIntervalSeconds": {
             "description": "Interval in seconds to sync data from Postgres during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 60
           },
           "pullBatchSize": {
             "description": "Number of rows to pull in each batch during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 1000
           }
@@ -10188,26 +10677,34 @@
         "properties": {
           "sourceSchemaName": {
             "description": "PostgreSQL source schema name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "public"
           },
           "sourceTable": {
             "description": "PostgreSQL source table name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "users"
           },
           "targetTable": {
             "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_schema_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "public_users"
           },
           "tableEngine": {
             "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "MergeTree",
               "ReplacingMergeTree",
@@ -10217,8 +10714,10 @@
           },
           "partitionKey": {
             "description": "Custom partitioning column used for parallel snapshotting. Only beneficial for PostgreSQL 13 (no benefit for PG14+, which supports indexed ctid scans). Must be an indexed column of type: `smallint`, `integer`, `bigint`, `timestamp without time zone`, or `timestamp with time zone`. Unrelated to ClickHouse partitioning.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "id"
           }
         }
@@ -10227,8 +10726,10 @@
         "properties": {
           "type": {
             "description": "Type of the Postgres source. Defaults to \"postgres\" if not specified.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "postgres",
               "supabase",
@@ -10301,8 +10802,10 @@
         "properties": {
           "type": {
             "description": "Type of the Postgres source. Defaults to \"postgres\" if not specified.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "postgres",
               "supabase",
@@ -10381,35 +10884,45 @@
           },
           "host": {
             "description": "PostgreSQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "hostname",
             "example": "my-postgres-server.example.com"
           },
           "port": {
             "description": "PostgreSQL server port.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 65535,
             "example": 5432
           },
           "database": {
             "description": "PostgreSQL database name to replicate from.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "production_db"
           },
           "tlsHost": {
             "description": "TLS/SSL host for secure connections.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my-postgres-server.example.com"
           },
           "caCertificate": {
             "description": "PEM encoded CA certificate to validate the Postgres server certificate.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
           "settings": {
@@ -10456,14 +10969,13 @@
             "example": "cdc"
           },
           "replicationMechanism": {
-            "description": "MySQL replication mechanism: \"AUTO\" (automatically detect), \"GTID\" (Global Transaction Identifier), or \"FILE_POS\" (binary log file and position). Defaults to AUTO if not specified.",
+            "description": "MySQL replication mechanism: \"GTID\" (Global Transaction Identifier) or \"FILE_POS\" (binary log file and position). Defaults to GTID if not specified.",
             "type": "string",
             "enum": [
-              "AUTO",
               "GTID",
               "FILE_POS"
             ],
-            "example": "AUTO"
+            "example": "GTID"
           },
           "useCompression": {
             "description": "Enable compression for the MySQL connection.",
@@ -10507,22 +11019,28 @@
         "properties": {
           "syncIntervalSeconds": {
             "description": "Interval in seconds to sync data from MySQL during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 60
           },
           "pullBatchSize": {
             "description": "Number of rows to pull in each batch during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 1000
           },
           "useCompression": {
             "description": "Enable compression for the MySQL connection.",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           }
         }
@@ -10589,26 +11107,34 @@
         "properties": {
           "sourceSchemaName": {
             "description": "MySQL source database name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my_database"
           },
           "sourceTable": {
             "description": "MySQL source table name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "users"
           },
           "targetTable": {
             "description": "ClickHouse target table name, optionally prefixed with schema name (e.g., \"my_database_my_table\"). The table will be created automatically if it does not exist. For snapshot mode, the target table must be empty.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my_database_users"
           },
           "tableEngine": {
             "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "MergeTree",
               "ReplacingMergeTree",
@@ -10618,8 +11144,10 @@
           },
           "partitionKey": {
             "description": "Custom partitioning column used for parallel snapshotting. Must be an indexed column of an integer, date, datetime or timestamp type. Unrelated to ClickHouse partitioning.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "id"
           }
         },
@@ -10633,13 +11161,14 @@
         "properties": {
           "type": {
             "description": "Type of the MySQL source. Defaults to \"mysql\" if not specified.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "mysql",
               "rdsmysql",
               "auroramysql",
-              "planetscalevitess",
               "mariadb",
               "rdsmariadb"
             ]
@@ -10713,13 +11242,14 @@
         "properties": {
           "type": {
             "description": "Type of the MySQL source. Defaults to \"mysql\" if not specified.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "mysql",
               "rdsmysql",
               "auroramysql",
-              "planetscalevitess",
               "mariadb",
               "rdsmariadb"
             ]
@@ -10799,23 +11329,29 @@
           },
           "host": {
             "description": "MySQL server hostname or IP address. To use a reverse private endpoint, pass the endpoint hostname here.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "hostname",
             "example": "my-mysql-server.example.com"
           },
           "port": {
             "description": "MySQL server port.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 65535,
             "example": 3306
           },
           "authentication": {
             "description": "Authentication method for MySQL connection.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "basic",
               "IAM_ROLE"
@@ -10824,32 +11360,42 @@
           },
           "iamRole": {
             "description": "IAM role ARN for IAM authentication (required for IAM_ROLE authentication).",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:iam::123456789012:role/MyApplicationRole"
           },
           "tlsHost": {
             "description": "TLS/SSL host for secure connections.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "my-mysql-server.example.com"
           },
           "caCertificate": {
             "description": "PEM encoded CA certificate to validate the MySQL server certificate.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
           "disableTls": {
             "description": "Disable TLS for the MySQL connection. Use with caution in production environments.",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           },
           "skipCertVerification": {
             "description": "Skip TLS certificate verification for the MySQL connection. Use with caution in production environments.",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           },
           "settings": {
@@ -11039,15 +11585,19 @@
         "properties": {
           "syncIntervalSeconds": {
             "description": "Interval in seconds to sync data from MongoDB during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 60
           },
           "pullBatchSize": {
             "description": "Number of rows to pull in each batch during CDC replication.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "example": 100000
           }
@@ -11091,26 +11641,34 @@
         "properties": {
           "sourceDatabaseName": {
             "description": "MongoDB source database name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mydb"
           },
           "sourceCollection": {
             "description": "MongoDB source collection name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "users"
           },
           "targetTable": {
             "description": "ClickHouse target table name. The table will be created automatically if it does not exist.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mydb_users"
           },
           "tableEngine": {
             "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "MergeTree",
               "ReplacingMergeTree",
@@ -11237,14 +11795,18 @@
           },
           "uri": {
             "description": "MongoDB connection URI. Supports both standard URIs (mongodb://...) and SRV URIs (mongodb+srv://...).",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "mongodb+srv://cluster0.example.mongodb.net/mydb"
           },
           "readPreference": {
             "description": "MongoDB read preference for replica set reads.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "primary",
               "primaryPreferred",
@@ -11256,20 +11818,26 @@
           },
           "tlsHost": {
             "description": "TLS/SSL host for secure connections.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "cluster0.example.mongodb.net"
           },
           "disableTls": {
             "description": "Disable TLS for the MongoDB connection. Defaults to false (TLS enabled).",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           },
           "caCertificate": {
             "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
           "settings": {
@@ -11328,57 +11896,71 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKafkaSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "objectStorage": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeObjectStorageSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "kinesis": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKinesisSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "postgres": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePostgresSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "mysql": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMySQLSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "bigquery": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeBigQuerySource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "mongodb": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMongoDBSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -11408,8 +11990,10 @@
           },
           "versionColumnId": {
             "description": "Column name to use as version for ReplacingMergeTree engine.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "columnIds": {
             "type": "array",
@@ -11484,94 +12068,118 @@
         "properties": {
           "streaming_max_insert_wait_ms": {
             "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 500,
             "maximum": 60000,
             "example": 5000
           },
           "object_storage_concurrency": {
             "description": "Object storage concurrency. Number of concurrent file processing threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 35,
             "example": 1
           },
           "object_storage_polling_interval_ms": {
             "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 100,
             "maximum": 3600000,
             "example": 30000
           },
           "object_storage_max_insert_bytes": {
             "description": "Max insert bytes. Number of bytes to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 10485760,
             "maximum": 53687091200,
             "example": 10737418240
           },
           "object_storage_max_file_count": {
             "description": "Max file count. Maximum number of files to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 10000,
             "example": 100
           },
           "clickhouse_max_threads": {
             "description": "Max threads. Maximum number of concurrent threads for file processing",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 64,
             "example": 8
           },
           "clickhouse_max_insert_threads": {
             "description": "Max insert threads. Maximum number of concurrent insert threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 16,
             "example": 1
           },
           "clickhouse_min_insert_block_size_bytes": {
             "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 10737418240,
             "example": 1073741824
           },
           "clickhouse_max_download_threads": {
             "description": "Max download threads. Maximum number of concurrent download threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 32,
             "example": 4
           },
           "clickhouse_parallel_distributed_insert_select": {
             "description": "Parallel distributed insert select. Parallel distributed insert select setting",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 2,
             "example": 2
           },
           "object_storage_use_cluster_function": {
             "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": true
           },
           "clickhouse_parallel_view_processing": {
             "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           }
         }
@@ -11653,25 +12261,31 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePostKafkaSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "objectStorage": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePostObjectStorageSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "kinesis": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePostKinesisSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "postgres": {
             "$ref": "#/components/schemas/ClickPipeMutatePostgresSource"
@@ -11680,25 +12294,31 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMutateMySQLSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "bigquery": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMutateBigQuerySource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "mongodb": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeMutateMongoDBSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "validateSamples": {
             "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres or MySQL pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
@@ -11712,25 +12332,31 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchKafkaSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "objectStorage": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchObjectStorageSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "kinesis": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchKinesisSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "postgres": {
             "$ref": "#/components/schemas/ClickPipePatchPostgresSource"
@@ -11739,17 +12365,21 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchMySQLSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "mongodb": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchMongoDBSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "validateSamples": {
             "description": "Validate data samples received from data source. It will validate the connection and data availability and correctness. If not enabled, only connection will be validated. This has no effect on Postgres or MySQL pipes, they always only validate the connection and table definitions. This is experimental and can be removed in the future.",
@@ -11825,109 +12455,143 @@
         "properties": {
           "streaming_max_insert_wait_ms": {
             "description": "Streaming max insert wait time. Configures the max wait period before inserting data into the ClickHouse.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 500,
             "maximum": 60000,
             "example": 5000
           },
           "object_storage_concurrency": {
             "description": "Object storage concurrency. Number of concurrent file processing threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 35,
             "example": 1
           },
           "object_storage_polling_interval_ms": {
             "description": "Object storage polling interval. Configures the refresh interval for querying continuous ingest for new object storage data",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 100,
             "maximum": 3600000,
             "example": 30000
           },
           "object_storage_max_insert_bytes": {
             "description": "Max insert bytes. Number of bytes to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 10485760,
             "maximum": 53687091200,
             "example": 10737418240
           },
           "object_storage_max_file_count": {
             "description": "Max file count. Maximum number of files to process in a single insert batch",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 10000,
             "example": 100
           },
           "clickhouse_max_threads": {
             "description": "Max threads. Maximum number of concurrent threads for file processing",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 64,
             "example": 8
           },
           "clickhouse_max_insert_threads": {
             "description": "Max insert threads. Maximum number of concurrent insert threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 16,
             "example": 1
           },
           "clickhouse_min_insert_block_size_bytes": {
             "description": "Min insert block size bytes. Minimum size of data block for insert (in bytes)",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 10737418240,
             "example": 1073741824
           },
           "clickhouse_max_download_threads": {
             "description": "Max download threads. Maximum number of concurrent download threads",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 32,
             "example": 4
           },
           "clickhouse_parallel_distributed_insert_select": {
             "description": "Parallel distributed insert select. Parallel distributed insert select setting",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 2,
             "example": 2
           },
           "object_storage_use_cluster_function": {
             "description": "use cluster function. Whether to use ClickHouse cluster function for distributed processing",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": true
           },
           "clickhouse_parallel_view_processing": {
             "description": "parallel view processing. Whether to enable pushing to attached views concurrently instead of sequentially",
-            "nullable": true,
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "example": false
           }
         }
       },
       "ResourceTagsV1": {
+        "type": "object",
         "properties": {
           "key": {
-            "description": "Tag key. Must be alphanumeric with dashes, underscores and dots.",
-            "type": "string"
+            "type": "string",
+            "description": "Tag key. Must be alphanumeric with dashes, underscores and dots."
           },
           "value": {
-            "description": "Tag value. Must be alphanumeric with dashes, underscores and dots.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Tag value. Must be alphanumeric with dashes, underscores and dots."
           }
+        },
+        "required": [
+          "key"
+        ],
+        "example": {
+          "key": "Environment",
+          "value": "staging"
         }
       },
       "ServiceEndpoint": {
@@ -11952,8 +12616,10 @@
           },
           "username": {
             "description": "Optional username for the endpoint",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
@@ -12437,8 +13103,10 @@
           },
           "serviceId": {
             "description": "ID of the service this entity belongs to (or is). Set to null for dataWarehouse entities.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid"
           },
           "date": {
@@ -12484,7 +13152,11 @@
             "type": "number"
           },
           "costs": {
-            "$ref": "#/components/schemas/UsageCostRecord"
+            "type": "array",
+            "description": "List of daily, per-entity usage cost records.",
+            "items": {
+              "$ref": "#/components/schemas/UsageCostRecord"
+            }
           }
         }
       },
@@ -13281,8 +13953,10 @@
           },
           "iamRoleSessionName": {
             "description": "AWS IAM Role session name",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
@@ -13442,32 +14116,42 @@
           },
           "vpcEndpointServiceName": {
             "description": "VPC endpoint service name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
           },
           "vpcResourceConfigurationId": {
             "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "rcfg-12345678901234567"
           },
           "vpcResourceShareArn": {
             "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
           },
           "mskClusterArn": {
             "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
           },
           "mskAuthentication": {
             "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "SASL_IAM",
               "SASL_SCRAM"
@@ -13495,32 +14179,42 @@
           },
           "vpcEndpointServiceName": {
             "description": "VPC endpoint service name.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
           },
           "vpcResourceConfigurationId": {
             "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "rcfg-12345678901234567"
           },
           "vpcResourceShareArn": {
             "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
           },
           "mskClusterArn": {
             "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
           },
           "mskAuthentication": {
             "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "SASL_IAM",
               "SASL_SCRAM"
@@ -13579,18 +14273,23 @@
         "properties": {
           "by": {
             "description": "User ID who silenced the alert.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a234567"
           },
           "at": {
             "description": "Silence start timestamp.",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2026-03-19T08:00:00.000Z"
           },
           "until": {
             "description": "Silence end timestamp.",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2026-03-20T08:00:00.000Z"
           }
         }
       },
@@ -13629,22 +14328,31 @@
           },
           "webhookId": {
             "description": "Webhook destination ID.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a789012"
           },
           "webhookService": {
             "description": "Webhook service type (e.g., slack_api).",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "slack_api"
           },
           "slackChannelId": {
             "description": "Slack channel ID for Slack webhooks.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "C01ABCDEF23"
           },
           "severity": {
             "description": "Severity label used by PagerDuty API webhooks.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "critical",
               "error",
@@ -13672,27 +14380,40 @@
         "properties": {
           "dashboardId": {
             "description": "Dashboard ID for tile-based alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
             "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a901234"
           },
           "savedSearchId": {
             "description": "Saved search ID for saved_search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a345678"
           },
           "groupBy": {
             "description": "Group-by key for saved search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ServiceName"
           },
           "threshold": {
             "description": "Threshold value for triggering the alert.",
-            "type": "number"
+            "type": "number",
+            "example": 100
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -13706,18 +14427,25 @@
               "6h",
               "12h",
               "1d"
-            ]
+            ],
+            "example": "1h"
           },
           "scheduleOffsetMinutes": {
             "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
-            "nullable": true,
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ],
+            "example": 2
           },
           "scheduleStartAt": {
             "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2026-02-08T10:00:00.000Z"
           },
           "source": {
             "description": "Alert source type (tile-based or saved search).",
@@ -13725,7 +14453,8 @@
             "enum": [
               "saved_search",
               "tile"
-            ]
+            ],
+            "example": "tile"
           },
           "thresholdType": {
             "description": "Threshold comparison direction.",
@@ -13733,24 +14462,32 @@
             "enum": [
               "above",
               "below"
-            ]
+            ],
+            "example": "above"
           },
           "channel": {
             "$ref": "#/components/schemas/ClickStackAlertChannel"
           },
           "name": {
             "description": "Human-friendly alert name.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert"
           },
           "message": {
             "description": "Alert message template.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert Message"
           },
           "id": {
             "description": "Unique alert identifier.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a123456"
           },
           "state": {
             "description": "Current alert state.",
@@ -13760,31 +14497,41 @@
               "OK",
               "INSUFFICIENT_DATA",
               "DISABLED"
-            ]
+            ],
+            "example": "ALERT"
           },
           "teamId": {
             "description": "Team identifier.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a345678"
           },
           "silenced": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickStackAlertSilenced"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "createdAt": {
             "description": "Creation timestamp.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2023-01-01T00:00:00.000Z"
           },
           "updatedAt": {
             "description": "Last update timestamp.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2023-01-01T00:00:00.000Z"
           }
         }
       },
@@ -13792,27 +14539,40 @@
         "properties": {
           "dashboardId": {
             "description": "Dashboard ID for tile-based alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
             "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a901234"
           },
           "savedSearchId": {
             "description": "Saved search ID for saved_search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a345678"
           },
           "groupBy": {
             "description": "Group-by key for saved search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ServiceName"
           },
           "threshold": {
             "description": "Threshold value for triggering the alert.",
-            "type": "number"
+            "type": "number",
+            "example": 100
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -13826,18 +14586,25 @@
               "6h",
               "12h",
               "1d"
-            ]
+            ],
+            "example": "1h"
           },
           "scheduleOffsetMinutes": {
             "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
-            "nullable": true,
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ],
+            "example": 2
           },
           "scheduleStartAt": {
             "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2026-02-08T10:00:00.000Z"
           },
           "source": {
             "description": "Alert source type (tile-based or saved search).",
@@ -13845,7 +14612,8 @@
             "enum": [
               "saved_search",
               "tile"
-            ]
+            ],
+            "example": "tile"
           },
           "thresholdType": {
             "description": "Threshold comparison direction.",
@@ -13853,20 +14621,27 @@
             "enum": [
               "above",
               "below"
-            ]
+            ],
+            "example": "above"
           },
           "channel": {
             "$ref": "#/components/schemas/ClickStackAlertChannel"
           },
           "name": {
             "description": "Human-friendly alert name.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert"
           },
           "message": {
             "description": "Alert message template.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert Message"
           }
         }
       },
@@ -13874,27 +14649,40 @@
         "properties": {
           "dashboardId": {
             "description": "Dashboard ID for tile-based alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
             "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a901234"
           },
           "savedSearchId": {
             "description": "Saved search ID for saved_search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "65f5e4a3b9e77c001a345678"
           },
           "groupBy": {
             "description": "Group-by key for saved search alerts.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ServiceName"
           },
           "threshold": {
             "description": "Threshold value for triggering the alert.",
-            "type": "number"
+            "type": "number",
+            "example": 100
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -13908,18 +14696,25 @@
               "6h",
               "12h",
               "1d"
-            ]
+            ],
+            "example": "1h"
           },
           "scheduleOffsetMinutes": {
             "description": "Offset from the interval boundary in minutes. For example, 2 with a 5m interval evaluates windows at :02, :07, :12, etc. (UTC).",
-            "nullable": true,
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ],
+            "example": 2
           },
           "scheduleStartAt": {
             "description": "Absolute UTC start time anchor. Alert windows start from this timestamp and repeat every interval.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2026-02-08T10:00:00.000Z"
           },
           "source": {
             "description": "Alert source type (tile-based or saved search).",
@@ -13927,7 +14722,8 @@
             "enum": [
               "saved_search",
               "tile"
-            ]
+            ],
+            "example": "tile"
           },
           "thresholdType": {
             "description": "Threshold comparison direction.",
@@ -13935,20 +14731,27 @@
             "enum": [
               "above",
               "below"
-            ]
+            ],
+            "example": "above"
           },
           "channel": {
             "$ref": "#/components/schemas/ClickStackAlertChannel"
           },
           "name": {
             "description": "Human-friendly alert name.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert"
           },
           "message": {
             "description": "Alert message template.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Test Alert Message"
           }
         }
       },
@@ -13959,11 +14762,13 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "condition": {
             "description": "SQL filter condition. For example use expressions in the form \"column IN ('value')\".",
-            "type": "string"
+            "type": "string",
+            "example": "ServiceName IN ('hdx-oss-dev-api')"
           }
         },
         "required": [
@@ -13981,35 +14786,43 @@
               "byte",
               "time",
               "number"
-            ]
+            ],
+            "example": "number"
           },
           "mantissa": {
             "description": "Number of decimal places.",
-            "type": "integer"
+            "type": "integer",
+            "example": 2
           },
           "thousandSeparated": {
             "description": "Whether to use thousand separators.",
-            "type": "boolean"
+            "type": "boolean",
+            "example": true
           },
           "average": {
             "description": "Whether to show as average.",
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "decimalBytes": {
             "description": "Use decimal bytes (1000) vs binary bytes (1024).",
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "factor": {
             "description": "Multiplication factor.",
-            "type": "number"
+            "type": "number",
+            "example": 1
           },
           "currencySymbol": {
             "description": "Currency symbol for currency format.",
-            "type": "string"
+            "type": "string",
+            "example": "$"
           },
           "unit": {
             "description": "Custom unit label.",
-            "type": "string"
+            "type": "string",
+            "example": "ms"
           }
         }
       },
@@ -14020,11 +14833,13 @@
             "type": "string",
             "enum": [
               "time"
-            ]
+            ],
+            "example": "time"
           },
           "sourceId": {
             "description": "ID of the data source to query",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "aggFn": {
             "description": "Aggregation function to apply to the field or metric value",
@@ -14040,23 +14855,28 @@
               "sum",
               "any",
               "none"
-            ]
+            ],
+            "example": "count"
           },
           "level": {
             "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
-            "type": "number"
+            "type": "number",
+            "example": 0.95
           },
           "field": {
             "description": "Column or expression to aggregate (required for most aggregation functions except count)",
-            "type": "string"
+            "type": "string",
+            "example": "duration"
           },
           "alias": {
             "description": "Display name for the series in the chart",
-            "type": "string"
+            "type": "string",
+            "example": "Request Duration"
           },
           "where": {
             "description": "Filter query for the data (syntax depends on whereLanguage)",
-            "type": "string"
+            "type": "string",
+            "example": "service:api"
           },
           "whereLanguage": {
             "description": "Query language for the where clause",
@@ -14064,7 +14884,8 @@
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "lucene"
           },
           "groupBy": {
             "type": "array",
@@ -14085,11 +14906,13 @@
               "histogram",
               "summary",
               "exponential histogram"
-            ]
+            ],
+            "example": "sum"
           },
           "metricName": {
             "description": "Metric name for metrics data sources",
-            "type": "string"
+            "type": "string",
+            "example": "http.server.duration"
           },
           "displayType": {
             "description": "Visual representation type for the time series",
@@ -14097,7 +14920,8 @@
             "enum": [
               "stacked_bar",
               "line"
-            ]
+            ],
+            "example": "line"
           }
         },
         "required": [
@@ -14116,11 +14940,13 @@
             "type": "string",
             "enum": [
               "table"
-            ]
+            ],
+            "example": "table"
           },
           "sourceId": {
             "description": "ID of the data source to query",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "aggFn": {
             "description": "Aggregation function to apply to the field or metric value",
@@ -14136,23 +14962,28 @@
               "sum",
               "any",
               "none"
-            ]
+            ],
+            "example": "count"
           },
           "level": {
             "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
-            "type": "number"
+            "type": "number",
+            "example": 0.95
           },
           "field": {
             "description": "Column or expression to aggregate (required for most aggregation functions except count)",
-            "type": "string"
+            "type": "string",
+            "example": "duration"
           },
           "alias": {
             "description": "Display name for the series",
-            "type": "string"
+            "type": "string",
+            "example": "Total Count"
           },
           "where": {
             "description": "Filter query for the data (syntax depends on whereLanguage)",
-            "type": "string"
+            "type": "string",
+            "example": "level:error"
           },
           "whereLanguage": {
             "description": "Query language for the where clause",
@@ -14160,7 +14991,8 @@
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "lucene"
           },
           "groupBy": {
             "type": "array",
@@ -14175,7 +15007,8 @@
             "enum": [
               "desc",
               "asc"
-            ]
+            ],
+            "example": "desc"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14189,11 +15022,13 @@
               "histogram",
               "summary",
               "exponential histogram"
-            ]
+            ],
+            "example": "sum"
           },
           "metricName": {
             "description": "Metric name for metrics data sources",
-            "type": "string"
+            "type": "string",
+            "example": "http.server.duration"
           }
         },
         "required": [
@@ -14212,11 +15047,13 @@
             "type": "string",
             "enum": [
               "number"
-            ]
+            ],
+            "example": "number"
           },
           "sourceId": {
             "description": "ID of the data source to query",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "aggFn": {
             "description": "Aggregation function to apply to the field or metric value",
@@ -14232,23 +15069,28 @@
               "sum",
               "any",
               "none"
-            ]
+            ],
+            "example": "count"
           },
           "level": {
             "description": "Percentile level for quantile aggregations (e.g., 0.95 for p95)",
-            "type": "number"
+            "type": "number",
+            "example": 0.95
           },
           "field": {
             "description": "Column or expression to aggregate (required for most aggregation functions except count)",
-            "type": "string"
+            "type": "string",
+            "example": "duration"
           },
           "alias": {
             "description": "Display name for the series in the chart",
-            "type": "string"
+            "type": "string",
+            "example": "Total Requests"
           },
           "where": {
             "description": "Filter query for the data (syntax depends on whereLanguage)",
-            "type": "string"
+            "type": "string",
+            "example": "service:api"
           },
           "whereLanguage": {
             "description": "Query language for the where clause",
@@ -14256,7 +15098,8 @@
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "lucene"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14270,11 +15113,13 @@
               "histogram",
               "summary",
               "exponential histogram"
-            ]
+            ],
+            "example": "sum"
           },
           "metricName": {
             "description": "Metric name for metrics data sources.",
-            "type": "string"
+            "type": "string",
+            "example": "http.server.duration"
           }
         },
         "required": [
@@ -14292,11 +15137,13 @@
             "type": "string",
             "enum": [
               "search"
-            ]
+            ],
+            "example": "search"
           },
           "sourceId": {
             "description": "ID of the data source to query",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "fields": {
             "type": "array",
@@ -14307,7 +15154,8 @@
           },
           "where": {
             "description": "Filter query for the data (syntax depends on whereLanguage)",
-            "type": "string"
+            "type": "string",
+            "example": "level:error"
           },
           "whereLanguage": {
             "description": "Query language for the where clause",
@@ -14315,7 +15163,8 @@
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "lucene"
           }
         },
         "required": [
@@ -14333,11 +15182,13 @@
             "type": "string",
             "enum": [
               "markdown"
-            ]
+            ],
+            "example": "markdown"
           },
           "content": {
             "description": "Markdown content to render inside the widget.",
-            "type": "string"
+            "type": "string",
+            "example": "# Dashboard Title\n\nThis is a markdown widget."
           }
         },
         "required": [
@@ -14380,15 +15231,18 @@
               "sum",
               "any",
               "none"
-            ]
+            ],
+            "example": "count"
           },
           "valueExpression": {
             "description": "Expression for the column or value to aggregate. Must be omitted when aggFn is \"count\"; required for all other aggFn values.",
-            "type": "string"
+            "type": "string",
+            "example": "Duration"
           },
           "alias": {
             "description": "Display alias for this select item in chart legends.",
-            "type": "string"
+            "type": "string",
+            "example": "Request Duration"
           },
           "level": {
             "description": "Percentile level; only valid when aggFn is \"quantile\".",
@@ -14402,7 +15256,8 @@
           },
           "where": {
             "description": "SQL or Lucene filter condition applied before aggregation.",
-            "type": "string"
+            "type": "string",
+            "example": "service:api"
           },
           "whereLanguage": {
             "description": "Query language for the where clause.",
@@ -14414,7 +15269,8 @@
           },
           "metricName": {
             "description": "Name of the metric to aggregate; only applicable when the source is a metrics source.",
-            "type": "string"
+            "type": "string",
+            "example": "http.server.duration"
           },
           "metricType": {
             "description": "Metric type; only applicable when the source is a metrics source.",
@@ -14432,7 +15288,8 @@
             "type": "string",
             "enum": [
               "delta"
-            ]
+            ],
+            "example": "delta"
           }
         },
         "required": [
@@ -14446,11 +15303,13 @@
             "type": "string",
             "enum": [
               "line"
-            ]
+            ],
+            "example": "line"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "type": "array",
@@ -14461,7 +15320,8 @@
           },
           "groupBy": {
             "description": "Field expression to group results by (creates separate lines per group value).",
-            "type": "string"
+            "type": "string",
+            "example": "host"
           },
           "asRatio": {
             "description": "Plot select[0] / select[1] as a ratio. Requires exactly two select items.",
@@ -14496,11 +15356,13 @@
             "type": "string",
             "enum": [
               "stacked_bar"
-            ]
+            ],
+            "example": "stacked_bar"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "type": "array",
@@ -14511,7 +15373,8 @@
           },
           "groupBy": {
             "description": "Field expression to group results by (creates separate bars segments per group value).",
-            "type": "string"
+            "type": "string",
+            "example": "service"
           },
           "asRatio": {
             "description": "Plot select[0] / select[1] as a ratio. Requires exactly two select items.",
@@ -14542,11 +15405,13 @@
             "type": "string",
             "enum": [
               "table"
-            ]
+            ],
+            "example": "table"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "type": "array",
@@ -14557,19 +15422,23 @@
           },
           "groupBy": {
             "description": "Field expression to group results by (one row per group value).",
-            "type": "string"
+            "type": "string",
+            "example": "service"
           },
           "having": {
             "description": "Post-aggregation SQL HAVING condition.",
-            "type": "string"
+            "type": "string",
+            "example": "count > 100"
           },
           "orderBy": {
             "description": "SQL ORDER BY expression for sorting table rows.",
-            "type": "string"
+            "type": "string",
+            "example": "count DESC"
           },
           "asRatio": {
             "description": "Display select[0] / select[1] as a ratio. Requires exactly two select items.",
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14588,11 +15457,13 @@
             "type": "string",
             "enum": [
               "number"
-            ]
+            ],
+            "example": "number"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "type": "array",
@@ -14618,11 +15489,13 @@
             "type": "string",
             "enum": [
               "pie"
-            ]
+            ],
+            "example": "pie"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "type": "array",
@@ -14633,7 +15506,8 @@
           },
           "groupBy": {
             "description": "Field expression to group results by (one slice per group value).",
-            "type": "string"
+            "type": "string",
+            "example": "service"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14652,19 +15526,23 @@
             "type": "string",
             "enum": [
               "search"
-            ]
+            ],
+            "example": "search"
           },
           "sourceId": {
             "description": "ID of the data source to query.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "select": {
             "description": "Comma-separated list of expressions to display.",
-            "type": "string"
+            "type": "string",
+            "example": "timestamp, level, message"
           },
           "where": {
             "description": "Filter condition for the search (syntax depends on whereLanguage).",
-            "type": "string"
+            "type": "string",
+            "example": "level:error"
           },
           "whereLanguage": {
             "description": "Query language for the where clause.",
@@ -14689,11 +15567,13 @@
             "type": "string",
             "enum": [
               "markdown"
-            ]
+            ],
+            "example": "markdown"
           },
           "markdown": {
             "description": "Markdown content to render inside the tile.",
-            "type": "string"
+            "type": "string",
+            "example": "# Dashboard Title\n\nThis is a markdown widget."
           }
         },
         "required": [
@@ -14707,15 +15587,23 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "connectionId": {
             "description": "ID of the ClickHouse connection to execute the query against.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "sqlTemplate": {
             "description": "SQL query template to execute. Supports HyperDX template variables.",
-            "type": "string"
+            "type": "string",
+            "example": "SELECT count() FROM otel_logs WHERE timestamp > now() - INTERVAL 1 HOUR"
+          },
+          "sourceId": {
+            "description": "Optional ID of the data source associated with this Raw SQL chart. Used for applying dashboard filters.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14725,7 +15613,8 @@
             "type": "string",
             "enum": [
               "line"
-            ]
+            ],
+            "example": "line"
           },
           "compareToPreviousPeriod": {
             "description": "Overlay the equivalent previous time period for comparison.",
@@ -14754,15 +15643,23 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "connectionId": {
             "description": "ID of the ClickHouse connection to execute the query against.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "sqlTemplate": {
             "description": "SQL query template to execute. Supports HyperDX template variables.",
-            "type": "string"
+            "type": "string",
+            "example": "SELECT count() FROM otel_logs WHERE timestamp > now() - INTERVAL 1 HOUR"
+          },
+          "sourceId": {
+            "description": "Optional ID of the data source associated with this Raw SQL chart. Used for applying dashboard filters.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14772,7 +15669,8 @@
             "type": "string",
             "enum": [
               "stacked_bar"
-            ]
+            ],
+            "example": "stacked_bar"
           },
           "fillNulls": {
             "description": "Fill missing time buckets with zero instead of leaving gaps.",
@@ -14797,15 +15695,23 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "connectionId": {
             "description": "ID of the ClickHouse connection to execute the query against.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "sqlTemplate": {
             "description": "SQL query template to execute. Supports HyperDX template variables.",
-            "type": "string"
+            "type": "string",
+            "example": "SELECT count() FROM otel_logs WHERE timestamp > now() - INTERVAL 1 HOUR"
+          },
+          "sourceId": {
+            "description": "Optional ID of the data source associated with this Raw SQL chart. Used for applying dashboard filters.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14815,7 +15721,8 @@
             "type": "string",
             "enum": [
               "table"
-            ]
+            ],
+            "example": "table"
           }
         },
         "required": [
@@ -14832,15 +15739,23 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "connectionId": {
             "description": "ID of the ClickHouse connection to execute the query against.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "sqlTemplate": {
             "description": "SQL query template to execute. Supports HyperDX template variables.",
-            "type": "string"
+            "type": "string",
+            "example": "SELECT count() FROM otel_logs WHERE timestamp > now() - INTERVAL 1 HOUR"
+          },
+          "sourceId": {
+            "description": "Optional ID of the data source associated with this Raw SQL chart. Used for applying dashboard filters.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14850,7 +15765,8 @@
             "type": "string",
             "enum": [
               "number"
-            ]
+            ],
+            "example": "number"
           }
         },
         "required": [
@@ -14867,15 +15783,23 @@
             "type": "string",
             "enum": [
               "sql"
-            ]
+            ],
+            "example": "sql"
           },
           "connectionId": {
             "description": "ID of the ClickHouse connection to execute the query against.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "sqlTemplate": {
             "description": "SQL query template to execute. Supports HyperDX template variables.",
-            "type": "string"
+            "type": "string",
+            "example": "SELECT count() FROM otel_logs WHERE timestamp > now() - INTERVAL 1 HOUR"
+          },
+          "sourceId": {
+            "description": "Optional ID of the data source associated with this Raw SQL chart. Used for applying dashboard filters.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14885,7 +15809,8 @@
             "type": "string",
             "enum": [
               "pie"
-            ]
+            ],
+            "example": "pie"
           }
         },
         "required": [
@@ -14974,30 +15899,36 @@
         "properties": {
           "name": {
             "description": "Display name for the tile",
-            "type": "string"
+            "type": "string",
+            "example": "Error Rate"
           },
           "x": {
             "description": "Horizontal position in the grid (0-based)",
-            "type": "integer"
+            "type": "integer",
+            "example": 0
           },
           "y": {
             "description": "Vertical position in the grid (0-based)",
-            "type": "integer"
+            "type": "integer",
+            "example": 0
           },
           "w": {
             "description": "Width in grid units",
-            "type": "integer"
+            "type": "integer",
+            "example": 6
           },
           "h": {
             "description": "Height in grid units",
-            "type": "integer"
+            "type": "integer",
+            "example": 3
           },
           "config": {
             "$ref": "#/components/schemas/ClickStackTileConfig"
           },
           "id": {
             "description": "Unique tile ID assigned by the server.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a901234"
           }
         },
         "required": [
@@ -15013,34 +15944,41 @@
         "properties": {
           "name": {
             "description": "Display name for the tile",
-            "type": "string"
+            "type": "string",
+            "example": "Error Rate"
           },
           "x": {
             "description": "Horizontal position in the grid (0-based)",
-            "type": "integer"
+            "type": "integer",
+            "example": 0
           },
           "y": {
             "description": "Vertical position in the grid (0-based)",
-            "type": "integer"
+            "type": "integer",
+            "example": 0
           },
           "w": {
             "description": "Width in grid units",
-            "type": "integer"
+            "type": "integer",
+            "example": 6
           },
           "h": {
             "description": "Height in grid units",
-            "type": "integer"
+            "type": "integer",
+            "example": 3
           },
           "config": {
             "$ref": "#/components/schemas/ClickStackTileConfig"
           },
           "id": {
             "description": "Optional tile ID. Omit to generate a new ID.",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a901234"
           },
           "asRatio": {
             "description": "Display two series as a ratio (series[0] / series[1]). Only applicable when providing \"series\". Deprecated in favor of \"config.asRatio\".",
             "type": "boolean",
+            "example": false,
             "deprecated": true
           },
           "series": {
@@ -15067,19 +16005,23 @@
             "type": "string",
             "enum": [
               "QUERY_EXPRESSION"
-            ]
+            ],
+            "example": "QUERY_EXPRESSION"
           },
           "name": {
             "description": "Display name for the dashboard filter key",
-            "type": "string"
+            "type": "string",
+            "example": "Environment"
           },
           "expression": {
             "description": "Key expression used when applying this dashboard filter key",
-            "type": "string"
+            "type": "string",
+            "example": "environment"
           },
           "sourceId": {
             "description": "Source ID this dashboard filter key applies to",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "sourceMetricType": {
             "description": "Metric type when source is metrics",
@@ -15090,7 +16032,8 @@
               "histogram",
               "summary",
               "exponential histogram"
-            ]
+            ],
+            "example": "gauge"
           }
         },
         "required": [
@@ -15107,19 +16050,23 @@
             "type": "string",
             "enum": [
               "QUERY_EXPRESSION"
-            ]
+            ],
+            "example": "QUERY_EXPRESSION"
           },
           "name": {
             "description": "Display name for the dashboard filter key",
-            "type": "string"
+            "type": "string",
+            "example": "Environment"
           },
           "expression": {
             "description": "Key expression used when applying this dashboard filter key",
-            "type": "string"
+            "type": "string",
+            "example": "environment"
           },
           "sourceId": {
             "description": "Source ID this dashboard filter key applies to",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
           },
           "sourceMetricType": {
             "description": "Metric type when source is metrics",
@@ -15130,7 +16077,8 @@
               "histogram",
               "summary",
               "exponential histogram"
-            ]
+            ],
+            "example": "gauge"
           },
           "id": {
             "description": "Unique dashboard filter key ID",
@@ -15149,7 +16097,8 @@
         "properties": {
           "name": {
             "description": "Dashboard name.",
-            "type": "string"
+            "type": "string",
+            "example": "New Dashboard"
           },
           "tiles": {
             "type": "array",
@@ -15174,17 +16123,23 @@
           },
           "savedQuery": {
             "description": "Optional default dashboard query to persist on the dashboard.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "service.name = 'api'"
           },
           "savedQueryLanguage": {
             "description": "Query language used by savedQuery.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "sql"
           },
           "savedFilterValues": {
             "type": "array",
@@ -15203,7 +16158,8 @@
         "properties": {
           "name": {
             "description": "Dashboard name.",
-            "type": "string"
+            "type": "string",
+            "example": "Updated Dashboard Name"
           },
           "tiles": {
             "type": "array",
@@ -15228,17 +16184,23 @@
           },
           "savedQuery": {
             "description": "Optional default dashboard query to persist on the dashboard.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "service.name = 'api'"
           },
           "savedQueryLanguage": {
             "description": "Query language used by savedQuery.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "sql"
           },
           "savedFilterValues": {
             "type": "array",
@@ -15257,11 +16219,13 @@
         "properties": {
           "id": {
             "description": "Dashboard ID",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
           },
           "name": {
             "description": "Dashboard name",
-            "type": "string"
+            "type": "string",
+            "example": "Service Overview"
           },
           "tiles": {
             "type": "array",
@@ -15286,17 +16250,23 @@
           },
           "savedQuery": {
             "description": "Optional default dashboard query restored when loading the dashboard.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "service.name = 'api'"
           },
           "savedQueryLanguage": {
             "description": "Query language used by savedQuery.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "enum": [
               "sql",
               "lucene"
-            ]
+            ],
+            "example": "sql"
           },
           "savedFilterValues": {
             "type": "array",
@@ -15311,11 +16281,13 @@
         "properties": {
           "setting": {
             "description": "ClickHouse setting name",
-            "type": "string"
+            "type": "string",
+            "example": "max_threads"
           },
           "value": {
             "description": "Setting value",
-            "type": "string"
+            "type": "string",
+            "example": "4"
           }
         },
         "required": [
@@ -15323,15 +16295,61 @@
           "value"
         ]
       },
+      "ClickStackFilterSettingsColumn": {
+        "properties": {
+          "name": {
+            "description": "Column name used to load filters for prepending to every query for the source.",
+            "type": "string",
+            "example": "ServiceName"
+          },
+          "label": {
+            "description": "Display label for the column",
+            "type": "string",
+            "example": "Service Name"
+          }
+        },
+        "required": [
+          "name",
+          "label"
+        ]
+      },
+      "ClickStackSourceFilterSettings": {
+        "properties": {
+          "databaseName": {
+            "description": "ClickHouse database name",
+            "type": "string",
+            "example": "default"
+          },
+          "tableName": {
+            "description": "ClickHouse table name",
+            "type": "string",
+            "example": "otel_logs"
+          },
+          "columns": {
+            "type": "array",
+            "description": "Columns to expose as filters (max 10)",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackFilterSettingsColumn"
+            }
+          }
+        },
+        "required": [
+          "databaseName",
+          "tableName",
+          "columns"
+        ]
+      },
       "ClickStackSourceFrom": {
         "properties": {
           "databaseName": {
             "description": "ClickHouse database name",
-            "type": "string"
+            "type": "string",
+            "example": "otel"
           },
           "tableName": {
             "description": "ClickHouse table name",
-            "type": "string"
+            "type": "string",
+            "example": "otel_logs"
           }
         },
         "required": [
@@ -15343,12 +16361,16 @@
         "properties": {
           "databaseName": {
             "description": "ClickHouse database name",
-            "type": "string"
+            "type": "string",
+            "example": "otel"
           },
           "tableName": {
             "description": "ClickHouse table name",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "otel_metrics_gauge"
           }
         },
         "required": [
@@ -15359,23 +16381,28 @@
         "properties": {
           "gauge": {
             "description": "Table containing gauge metrics data",
-            "type": "string"
+            "type": "string",
+            "example": "otel_metrics_gauge"
           },
           "histogram": {
             "description": "Table containing histogram metrics data",
-            "type": "string"
+            "type": "string",
+            "example": "otel_metrics_histogram"
           },
           "sum": {
             "description": "Table containing sum metrics data",
-            "type": "string"
+            "type": "string",
+            "example": "otel_metrics_sum"
           },
           "summary": {
             "description": "Table containing summary metrics data. Note - not yet fully supported by HyperDX",
-            "type": "string"
+            "type": "string",
+            "example": "otel_metrics_summary"
           },
           "exponential histogram": {
             "description": "Table containing exponential histogram metrics data. Note - not yet fully supported by HyperDX",
-            "type": "string"
+            "type": "string",
+            "example": "otel_metrics_exponential_histogram"
           }
         }
       },
@@ -15383,17 +16410,24 @@
         "properties": {
           "sqlExpression": {
             "description": "SQL expression for the attribute",
-            "type": "string"
+            "type": "string",
+            "example": "SpanAttributes['http.status_code']"
           },
           "luceneExpression": {
             "description": "An optional, Lucene version of the sqlExpression expression. If provided, it is used when searching for this attribute value.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "http.status_code"
           },
           "alias": {
             "description": "Optional alias for the attribute",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "HTTP Status Code"
           }
         },
         "required": [
@@ -15404,16 +16438,21 @@
         "properties": {
           "sourceColumn": {
             "description": "Source column name",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Duration"
           },
           "aggFn": {
             "description": "Aggregation function (e.g., count, sum, avg)",
-            "type": "string"
+            "type": "string",
+            "example": "sum"
           },
           "mvColumn": {
             "description": "Materialized view column name",
-            "type": "string"
+            "type": "string",
+            "example": "sum__Duration"
           }
         },
         "required": [
@@ -15425,15 +16464,18 @@
         "properties": {
           "databaseName": {
             "description": "Database name for the materialized view",
-            "type": "string"
+            "type": "string",
+            "example": "otel"
           },
           "tableName": {
             "description": "Table name for the materialized view",
-            "type": "string"
+            "type": "string",
+            "example": "otel_logs_mv_5m"
           },
           "dimensionColumns": {
             "description": "Columns which are not pre-aggregated in the materialized view and can be used for filtering and grouping.",
-            "type": "string"
+            "type": "string",
+            "example": "ServiceName, SeverityText"
           },
           "minGranularity": {
             "description": "The granularity of the timestamp column",
@@ -15454,17 +16496,22 @@
               "2d",
               "7d",
               "30d"
-            ]
+            ],
+            "example": "5m"
           },
           "minDate": {
             "description": "(Optional) The earliest date and time for which the materialized view contains data. If not provided, then HyperDX will assume that the materialized view contains data for all dates for which the source table contains data.",
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00Z"
           },
           "timestampColumn": {
             "description": "Timestamp column name",
-            "type": "string"
+            "type": "string",
+            "example": "Timestamp"
           },
           "aggregatedColumns": {
             "type": "array",
@@ -15487,22 +16534,26 @@
         "properties": {
           "id": {
             "description": "Unique source ID.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
           },
           "name": {
             "description": "Display name for the source.",
-            "type": "string"
+            "type": "string",
+            "example": "Logs"
           },
           "kind": {
             "description": "Source kind discriminator. Must be \"log\" for log sources.",
             "type": "string",
             "enum": [
               "log"
-            ]
+            ],
+            "example": "log"
           },
           "connection": {
             "description": "ID of the ClickHouse connection used by this source.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439012"
           },
           "from": {
             "$ref": "#/components/schemas/ClickStackSourceFrom"
@@ -15514,68 +16565,113 @@
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
           },
+          "filterSettings": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickStackSourceFilterSettings"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "defaultTableSelectExpression": {
             "description": "Default columns selected in search results (this can be customized per search later)",
-            "type": "string"
+            "type": "string",
+            "example": "Timestamp, ServiceName, SeverityText, Body"
           },
           "timestampValueExpression": {
             "description": "DateTime column or expression that is part of your table's primary key.",
-            "type": "string"
+            "type": "string",
+            "example": "Timestamp"
           },
           "serviceNameExpression": {
             "description": "Expression to extract the service name from log rows.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ServiceName"
           },
           "severityTextExpression": {
             "description": "Expression to extract the severity/log level text.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "SeverityText"
           },
           "bodyExpression": {
             "description": "Expression to extract the log message body.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Body"
           },
           "eventAttributesExpression": {
             "description": "Expression to extract event-level attributes.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "LogAttributes"
           },
           "resourceAttributesExpression": {
             "description": "Expression to extract resource-level attributes.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ResourceAttributes"
           },
           "displayedTimestampValueExpression": {
             "description": "This DateTime column is used to display and order search results.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "TimestampTime"
           },
           "metricSourceId": {
             "description": "HyperDX Source for metrics associated with logs. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439013"
           },
           "traceSourceId": {
             "description": "HyperDX Source for traces associated with logs. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439014"
           },
           "traceIdExpression": {
             "description": "Expression to extract the trace ID for correlating logs with traces.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "TraceId"
           },
           "spanIdExpression": {
             "description": "Expression to extract the span ID for correlating logs with traces.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "SpanId"
           },
           "implicitColumnExpression": {
             "description": "Column used for full text search if no property is specified in a Lucene-based search. Typically the message body of a log.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Body"
           },
           "highlightedTraceAttributeExpressions": {
             "type": "array",
@@ -15613,22 +16709,26 @@
         "properties": {
           "id": {
             "description": "Unique source ID.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439021"
           },
           "name": {
             "description": "Display name for the source.",
-            "type": "string"
+            "type": "string",
+            "example": "Traces"
           },
           "kind": {
             "description": "Source kind discriminator. Must be \"trace\" for trace sources.",
             "type": "string",
             "enum": [
               "trace"
-            ]
+            ],
+            "example": "trace"
           },
           "connection": {
             "description": "ID of the ClickHouse connection used by this source.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439012"
           },
           "from": {
             "$ref": "#/components/schemas/ClickStackSourceFrom"
@@ -15640,18 +16740,33 @@
               "$ref": "#/components/schemas/ClickStackQuerySetting"
             }
           },
+          "filterSettings": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickStackSourceFilterSettings"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "defaultTableSelectExpression": {
             "description": "Default columns selected in search results (this can be customized per search later)",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Timestamp, SpanName, ServiceName, Duration"
           },
           "timestampValueExpression": {
             "description": "DateTime column or expression defines the start of the span",
-            "type": "string"
+            "type": "string",
+            "example": "Timestamp"
           },
           "durationExpression": {
             "description": "Expression to extract span duration.",
-            "type": "string"
+            "type": "string",
+            "example": "Duration"
           },
           "durationPrecision": {
             "description": "Number of decimal digits in the duration value (e.g., 3 for milliseconds, 6 for microseconds, 9 for nanoseconds).",
@@ -15659,73 +16774,108 @@
           },
           "traceIdExpression": {
             "description": "Expression to extract the trace ID.",
-            "type": "string"
+            "type": "string",
+            "example": "TraceId"
           },
           "spanIdExpression": {
             "description": "Expression to extract the span ID.",
-            "type": "string"
+            "type": "string",
+            "example": "SpanId"
           },
           "parentSpanIdExpression": {
             "description": "Expression to extract the parent span ID.",
-            "type": "string"
+            "type": "string",
+            "example": "ParentSpanId"
           },
           "spanNameExpression": {
             "description": "Expression to extract the span name.",
-            "type": "string"
+            "type": "string",
+            "example": "SpanName"
           },
           "spanKindExpression": {
             "description": "Expression to extract the span kind (e.g., client, server, internal).",
-            "type": "string"
+            "type": "string",
+            "example": "SpanKind"
           },
           "logSourceId": {
             "description": "HyperDX Source for logs associated with traces. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439011"
           },
           "sessionSourceId": {
             "description": "HyperDX Source for sessions associated with traces. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439031"
           },
           "metricSourceId": {
             "description": "HyperDX Source for metrics associated with traces. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439041"
           },
           "statusCodeExpression": {
             "description": "Expression to extract the span status code.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "StatusCode"
           },
           "statusMessageExpression": {
             "description": "Expression to extract the span status message.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "StatusMessage"
           },
           "serviceNameExpression": {
             "description": "Expression to extract the service name from trace rows.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ServiceName"
           },
           "resourceAttributesExpression": {
             "description": "Expression to extract resource-level attributes.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "ResourceAttributes"
           },
           "eventAttributesExpression": {
             "description": "Expression to extract event-level attributes.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "SpanAttributes"
           },
           "spanEventsValueExpression": {
             "description": "Expression to extract span events. Used to capture events associated with spans. Expected to be Nested ( Timestamp DateTime64(9), Name LowCardinality(String), Attributes Map(LowCardinality(String), String)",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Events"
           },
           "implicitColumnExpression": {
             "description": "Column used for full text search if no property is specified in a Lucene-based search. Typically the message body of a log.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "SpanName"
           },
           "highlightedTraceAttributeExpressions": {
             "type": "array",
@@ -15769,22 +16919,26 @@
         "properties": {
           "id": {
             "description": "Unique source ID.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439041"
           },
           "name": {
             "description": "Display name for the source.",
-            "type": "string"
+            "type": "string",
+            "example": "Metrics"
           },
           "kind": {
             "description": "Source kind discriminator. Must be \"metric\" for metric sources.",
             "type": "string",
             "enum": [
               "metric"
-            ]
+            ],
+            "example": "metric"
           },
           "connection": {
             "description": "ID of the ClickHouse connection used by this source.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439012"
           },
           "from": {
             "$ref": "#/components/schemas/ClickStackMetricSourceFrom"
@@ -15801,16 +16955,21 @@
           },
           "timestampValueExpression": {
             "description": "DateTime column or expression that is part of your table's primary key.",
-            "type": "string"
+            "type": "string",
+            "example": "TimeUnix"
           },
           "resourceAttributesExpression": {
             "description": "Column containing resource attributes for metrics",
-            "type": "string"
+            "type": "string",
+            "example": "ResourceAttributes"
           },
           "logSourceId": {
             "description": "HyperDX Source for logs associated with metrics. Optional",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "507f1f77bcf86cd799439011"
           }
         },
         "required": [
@@ -15828,22 +16987,26 @@
         "properties": {
           "id": {
             "description": "Unique source ID.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439031"
           },
           "name": {
             "description": "Display name for the source.",
-            "type": "string"
+            "type": "string",
+            "example": "Sessions"
           },
           "kind": {
             "description": "Source kind discriminator. Must be \"session\" for session sources.",
             "type": "string",
             "enum": [
               "session"
-            ]
+            ],
+            "example": "session"
           },
           "connection": {
             "description": "ID of the ClickHouse connection used by this source.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439012"
           },
           "from": {
             "$ref": "#/components/schemas/ClickStackSourceFrom"
@@ -15857,12 +17020,16 @@
           },
           "timestampValueExpression": {
             "description": "DateTime column or expression that is part of your table's primary key.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "TimestampTime"
           },
           "traceSourceId": {
             "description": "HyperDX Source for traces associated with sessions.",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439021"
           }
         },
         "required": [
@@ -15894,36 +17061,43 @@
         "properties": {
           "id": {
             "description": "Webhook ID",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
           },
           "name": {
             "description": "Webhook name",
-            "type": "string"
+            "type": "string",
+            "example": "Production Alerts"
           },
           "service": {
             "description": "Webhook service type",
             "type": "string",
             "enum": [
               "slack"
-            ]
+            ],
+            "example": "slack"
           },
           "url": {
             "description": "Slack incoming webhook URL",
-            "type": "string"
+            "type": "string",
+            "example": "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
           },
           "description": {
             "description": "Webhook description, shown in the UI",
-            "type": "string"
+            "type": "string",
+            "example": "Sends critical alerts to the"
           },
           "updatedAt": {
             "description": "Last update timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-06-15T10:30:00.000Z"
           },
           "createdAt": {
             "description": "Creation timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00.000Z"
           }
         },
         "required": [
@@ -15938,36 +17112,43 @@
         "properties": {
           "id": {
             "description": "Webhook ID",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439012"
           },
           "name": {
             "description": "Webhook name",
-            "type": "string"
+            "type": "string",
+            "example": "Incident Response"
           },
           "service": {
             "description": "Webhook service type",
             "type": "string",
             "enum": [
               "incidentio"
-            ]
+            ],
+            "example": "incidentio"
           },
           "url": {
             "description": "incident.io alert event HTTP source URL",
-            "type": "string"
+            "type": "string",
+            "example": "https://api.incident.io/v2/alert_events/http/abc123"
           },
           "description": {
             "description": "Webhook description, shown in the UI",
-            "type": "string"
+            "type": "string",
+            "example": "Routes alerts to incident.io for on-call escalation"
           },
           "updatedAt": {
             "description": "Last update timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-06-15T10:30:00.000Z"
           },
           "createdAt": {
             "description": "Creation timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00.000Z"
           }
         },
         "required": [
@@ -15982,40 +17163,48 @@
         "properties": {
           "id": {
             "description": "Webhook ID",
-            "type": "string"
+            "type": "string",
+            "example": "507f1f77bcf86cd799439013"
           },
           "name": {
             "description": "Webhook name",
-            "type": "string"
+            "type": "string",
+            "example": "PagerDuty Integration"
           },
           "service": {
             "description": "Webhook service type",
             "type": "string",
             "enum": [
               "generic"
-            ]
+            ],
+            "example": "generic"
           },
           "url": {
             "description": "Webhook destination URL",
-            "type": "string"
+            "type": "string",
+            "example": "https://example.com/webhooks/alerts"
           },
           "description": {
             "description": "Webhook description, shown in the UI",
-            "type": "string"
+            "type": "string",
+            "example": "Forwards alert payloads to an external monitoring service"
           },
           "body": {
             "description": "Optional request body template",
-            "type": "string"
+            "type": "string",
+            "example": "{\"alert\": \"{{title}}\", \"severity\": \"{{level}}\"}"
           },
           "updatedAt": {
             "description": "Last update timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-06-15T10:30:00.000Z"
           },
           "createdAt": {
             "description": "Creation timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00.000Z"
           }
         },
         "required": [
@@ -16030,36 +17219,43 @@
         "properties": {
           "id": {
             "description": "Webhook ID",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a789012"
           },
           "name": {
             "description": "Webhook name",
-            "type": "string"
+            "type": "string",
+            "example": "Slack Alerts"
           },
           "service": {
             "description": "Webhook service type",
             "type": "string",
             "enum": [
               "slack_api"
-            ]
+            ],
+            "example": "slack_api"
           },
           "url": {
             "description": "Slack API endpoint URL",
-            "type": "string"
+            "type": "string",
+            "example": "https://hooks.slack.com/services/T00/B00/xxxx"
           },
           "description": {
             "description": "Webhook description, shown in the UI",
-            "type": "string"
+            "type": "string",
+            "example": "Sends alerts to #engineering channel"
           },
           "updatedAt": {
             "description": "Last update timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-15T12:00:00.000Z"
           },
           "createdAt": {
             "description": "Creation timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00.000Z"
           }
         },
         "required": [
@@ -16074,36 +17270,43 @@
         "properties": {
           "id": {
             "description": "Webhook ID",
-            "type": "string"
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a789013"
           },
           "name": {
             "description": "Webhook name",
-            "type": "string"
+            "type": "string",
+            "example": "PagerDuty Alerts"
           },
           "service": {
             "description": "Webhook service type",
             "type": "string",
             "enum": [
               "pagerduty_api"
-            ]
+            ],
+            "example": "pagerduty_api"
           },
           "url": {
             "description": "PagerDuty Events API endpoint URL",
-            "type": "string"
+            "type": "string",
+            "example": "https://events.pagerduty.com/v2/enqueue"
           },
           "description": {
             "description": "Webhook description, shown in the UI",
-            "type": "string"
+            "type": "string",
+            "example": "Sends critical alerts to PagerDuty"
           },
           "updatedAt": {
             "description": "Last update timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-15T12:00:00.000Z"
           },
           "createdAt": {
             "description": "Creation timestamp",
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "example": "2025-01-01T00:00:00.000Z"
           }
         },
         "required": [
@@ -16232,6 +17435,777 @@
           }
         }
       },
+      "ScimUserName": {
+        "properties": {
+          "formatted": {
+            "description": "The full name, including all middle names, titles, and suffixes.",
+            "type": "string"
+          },
+          "familyName": {
+            "description": "The family name of the User.",
+            "type": "string"
+          },
+          "givenName": {
+            "description": "The given name of the User.",
+            "type": "string"
+          },
+          "middleName": {
+            "description": "The middle name(s) of the User.",
+            "type": "string"
+          },
+          "honorificPrefix": {
+            "description": "The honorific prefix(es) of the User, or title in some cultures.",
+            "type": "string"
+          },
+          "honorificSuffix": {
+            "description": "The honorific suffix(es) of the User.",
+            "type": "string"
+          }
+        }
+      },
+      "ScimUserEmail": {
+        "properties": {
+          "value": {
+            "description": "Email address value.",
+            "type": "string",
+            "format": "email"
+          },
+          "type": {
+            "description": "Type of email (e.g., \"work\", \"home\").",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the primary email address.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      },
+      "ScimUserMeta": {
+        "properties": {
+          "resourceType": {
+            "description": "The name of the resource type of the resource.",
+            "type": "string"
+          },
+          "created": {
+            "description": "The DateTime the Resource was added to the Service Provider.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModified": {
+            "description": "The most recent DateTime the details of this Resource were updated.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "description": "The URI of the resource being returned.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceType",
+          "created",
+          "lastModified"
+        ]
+      },
+      "ScimUserGroup": {
+        "properties": {
+          "value": {
+            "description": "The identifier of the group.",
+            "type": "string"
+          },
+          "$ref": {
+            "description": "The URI of the corresponding group resource.",
+            "type": "string"
+          },
+          "display": {
+            "description": "A human-readable name for the group.",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function (e.g., \"direct\" or \"indirect\").",
+            "type": "string"
+          }
+        }
+      },
+      "ScimUserRole": {
+        "properties": {
+          "value": {
+            "description": "The value of a role; a string or label representing a collection of entitlements. No canonical types.",
+            "type": "string"
+          },
+          "display": {
+            "description": "A human-readable name, primarily used for display purposes.",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function.",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the primary or preferred role.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimUserEntitlement": {
+        "properties": {
+          "value": {
+            "description": "The value of an entitlement.",
+            "type": "string"
+          },
+          "display": {
+            "description": "A human-readable name for the entitlement.",
+            "type": "string"
+          },
+          "type": {
+            "description": "A label indicating the attribute's function.",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the primary entitlement.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimUserPhoneNumber": {
+        "properties": {
+          "value": {
+            "description": "Phone number value.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of phone number (e.g., \"work\", \"home\", \"mobile\").",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the preferred phone number.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimUserIm": {
+        "properties": {
+          "value": {
+            "description": "Instant messaging address.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of IM address (e.g., \"aim\", \"gtalk\", \"icq\", \"xmpp\", \"msn\", \"skype\", \"qq\").",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the preferred IM address.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimUserPhoto": {
+        "properties": {
+          "value": {
+            "description": "URL of a photo of the User.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of photo (e.g., \"photo\", \"thumbnail\").",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the preferred photo.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimUserAddress": {
+        "properties": {
+          "formatted": {
+            "description": "The full mailing address, formatted for display or use with a mailing label.",
+            "type": "string"
+          },
+          "streetAddress": {
+            "description": "The full street address component.",
+            "type": "string"
+          },
+          "locality": {
+            "description": "The city or locality component.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The state or region component.",
+            "type": "string"
+          },
+          "postalCode": {
+            "description": "The zip code or postal code component.",
+            "type": "string"
+          },
+          "country": {
+            "description": "The country name component.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of address (e.g., \"work\", \"home\", \"other\").",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the preferred mailing address.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ScimX509Certificate": {
+        "properties": {
+          "value": {
+            "description": "The value of a X.509 certificate.",
+            "type": "string"
+          }
+        }
+      },
+      "ScimUser": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "description": "Unique identifier for the SCIM resource. Returned by the server.",
+            "type": "string",
+            "example": "samlp|b7a3c2d1-4e5f-6a7b-8c9d-0e1f2a3b4c5d|user@example.com"
+          },
+          "externalId": {
+            "description": "A String that is an identifier for the resource as defined by the provisioning client.",
+            "type": "string",
+            "example": "ext-user-001"
+          },
+          "userName": {
+            "description": "Unique identifier for the User, typically used by the user to directly authenticate to the service provider.",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "name": {
+            "$ref": "#/components/schemas/ScimUserName"
+          },
+          "displayName": {
+            "description": "The name of the User, suitable for display to end-users.",
+            "type": "string"
+          },
+          "nickName": {
+            "description": "The casual way to address the user in real life.",
+            "type": "string"
+          },
+          "profileUrl": {
+            "description": "A fully qualified URL pointing to a page representing the User's online profile.",
+            "type": "string"
+          },
+          "title": {
+            "description": "The User's title, such as \"Vice President\".",
+            "type": "string"
+          },
+          "userType": {
+            "description": "Identifies the relationship between the organization and the user.",
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "description": "Indicates the User's preferred written or spoken language (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "locale": {
+            "description": "Used to indicate the User's default location for localizing items such as currency, date time format, or numerical representations (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "The User's time zone in the \"Olson\" time zone database format (e.g., \"America/Los_Angeles\").",
+            "type": "string"
+          },
+          "active": {
+            "description": "A Boolean value indicating the User's administrative status.",
+            "type": "boolean"
+          },
+          "emails": {
+            "type": "array",
+            "description": "Email addresses for the user.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEmail"
+            }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "description": "Phone numbers for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoneNumber"
+            }
+          },
+          "ims": {
+            "type": "array",
+            "description": "Instant messaging addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserIm"
+            }
+          },
+          "photos": {
+            "type": "array",
+            "description": "URLs of photos of the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoto"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "description": "Physical mailing addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserAddress"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "description": "A list of groups to which the user belongs, either through direct membership, through nested groups, or dynamically calculated.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserGroup"
+            }
+          },
+          "entitlements": {
+            "type": "array",
+            "description": "A list of entitlements for the user that represent a thing the user has.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEntitlement"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "A list of roles for the user that collectively represent who the user is, e.g. \"Student\", \"Faculty\". No vocabulary or syntax is specified; role value is a string or label representing a collection of entitlements. RFC 7643.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserRole"
+            }
+          },
+          "x509Certificates": {
+            "type": "array",
+            "description": "A list of certificates issued to the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimX509Certificate"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimUserMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "id",
+          "userName",
+          "name",
+          "active",
+          "emails",
+          "meta"
+        ]
+      },
+      "ScimEnterpriseManager": {
+        "properties": {
+          "value": {
+            "description": "The id of the SCIM resource representing the user's manager.",
+            "type": "string"
+          },
+          "$ref": {
+            "description": "The URI of the SCIM resource representing the user's manager.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "The displayName of the user's manager.",
+            "type": "string"
+          }
+        }
+      },
+      "ScimEnterpriseUser": {
+        "properties": {
+          "employeeNumber": {
+            "description": "Numeric or alphanumeric identifier assigned to a person, typically based on order of hire or association with an organization.",
+            "type": "string"
+          },
+          "costCenter": {
+            "description": "Identifies the name of a cost center.",
+            "type": "string"
+          },
+          "organization": {
+            "description": "Identifies the name of an organization.",
+            "type": "string"
+          },
+          "division": {
+            "description": "Identifies the name of a division.",
+            "type": "string"
+          },
+          "department": {
+            "description": "Identifies the name of a department.",
+            "type": "string"
+          },
+          "manager": {
+            "$ref": "#/components/schemas/ScimEnterpriseManager"
+          }
+        }
+      },
+      "ScimUserPostRequest": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userName": {
+            "description": "Unique identifier for the User, typically used by the user to directly authenticate to the service provider.",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "externalId": {
+            "description": "A String that is an identifier for the resource as defined by the provisioning client.",
+            "type": "string",
+            "example": "ext-user-001"
+          },
+          "name": {
+            "$ref": "#/components/schemas/ScimUserName"
+          },
+          "displayName": {
+            "description": "The name of the User, suitable for display to end-users.",
+            "type": "string"
+          },
+          "nickName": {
+            "description": "The casual way to address the user in real life.",
+            "type": "string"
+          },
+          "profileUrl": {
+            "description": "A fully qualified URL pointing to a page representing the User's online profile.",
+            "type": "string"
+          },
+          "title": {
+            "description": "The User's title, such as \"Vice President\".",
+            "type": "string"
+          },
+          "userType": {
+            "description": "Identifies the relationship between the organization and the user.",
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "description": "Indicates the User's preferred written or spoken language (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "locale": {
+            "description": "Used to indicate the User's default location for localizing items such as currency, date time format, or numerical representations (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "The User's time zone in the \"Olson\" time zone database format (e.g., \"America/Los_Angeles\").",
+            "type": "string"
+          },
+          "active": {
+            "description": "A Boolean value indicating the User's administrative status. Defaults to true if not specified.",
+            "type": "boolean"
+          },
+          "password": {
+            "description": "The User's cleartext password. Write-only; never returned in responses.",
+            "type": "string"
+          },
+          "emails": {
+            "type": "array",
+            "description": "Email addresses for the user.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEmail"
+            }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "description": "Phone numbers for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoneNumber"
+            }
+          },
+          "ims": {
+            "type": "array",
+            "description": "Instant messaging addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserIm"
+            }
+          },
+          "photos": {
+            "type": "array",
+            "description": "URLs of photos of the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoto"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "description": "Physical mailing addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserAddress"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "description": "A list of groups to which the user belongs. Role may be derived from group display or value.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserGroup"
+            }
+          },
+          "entitlements": {
+            "type": "array",
+            "description": "A list of entitlements for the user that represent a thing the user has.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEntitlement"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "A list of roles for the user.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserRole"
+            }
+          },
+          "x509Certificates": {
+            "type": "array",
+            "description": "A list of certificates issued to the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimX509Certificate"
+            }
+          },
+          "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+            "$ref": "#/components/schemas/ScimEnterpriseUser"
+          }
+        },
+        "required": [
+          "schemas",
+          "userName",
+          "emails"
+        ]
+      },
+      "ScimListResponse": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "Must be [\"urn:ietf:params:scim:api:messages:2.0:ListResponse\"].",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalResults": {
+            "description": "Total number of results matching the query.",
+            "type": "integer"
+          },
+          "startIndex": {
+            "description": "1-based index of the first result in the current set.",
+            "type": "integer"
+          },
+          "itemsPerPage": {
+            "description": "Number of resources returned in this response.",
+            "type": "integer"
+          },
+          "Resources": {
+            "type": "array",
+            "description": "Array of SCIM User resources.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUser"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "totalResults",
+          "startIndex",
+          "itemsPerPage",
+          "Resources"
+        ]
+      },
+      "ScimPatchOperation": {
+        "properties": {
+          "op": {
+            "description": "The operation to perform.",
+            "type": "string",
+            "enum": [
+              "add",
+              "replace",
+              "remove"
+            ],
+            "example": "replace"
+          },
+          "path": {
+            "description": "Target attribute path (e.g. \"active\", \"userName\").",
+            "type": "string"
+          },
+          "value": {
+            "description": "New value for the attribute.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "op"
+        ]
+      },
+      "ScimPatchOp": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "Must include \"urn:ietf:params:scim:api:messages:2.0:PatchOp\".",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Operations": {
+            "type": "array",
+            "description": "List of PATCH operations to apply.",
+            "items": {
+              "$ref": "#/components/schemas/ScimPatchOperation"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "Operations"
+        ]
+      },
+      "ScimUserPutRequest": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userName": {
+            "description": "Unique identifier for the User, typically used by the user to directly authenticate to the service provider.",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "externalId": {
+            "description": "A String that is an identifier for the resource as defined by the provisioning client.",
+            "type": "string",
+            "example": "ext-user-001"
+          },
+          "name": {
+            "$ref": "#/components/schemas/ScimUserName"
+          },
+          "displayName": {
+            "description": "The name of the User, suitable for display to end-users.",
+            "type": "string"
+          },
+          "nickName": {
+            "description": "The casual way to address the user in real life.",
+            "type": "string"
+          },
+          "profileUrl": {
+            "description": "A fully qualified URL pointing to a page representing the User's online profile.",
+            "type": "string"
+          },
+          "title": {
+            "description": "The User's title, such as \"Vice President\".",
+            "type": "string"
+          },
+          "userType": {
+            "description": "Identifies the relationship between the organization and the user.",
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "description": "Indicates the User's preferred written or spoken language (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "locale": {
+            "description": "Used to indicate the User's default location for localizing items such as currency, date time format, or numerical representations (e.g., \"en-US\").",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "The User's time zone in the \"Olson\" time zone database format (e.g., \"America/Los_Angeles\").",
+            "type": "string"
+          },
+          "active": {
+            "description": "A Boolean value indicating the User's administrative status. Defaults to true if not specified.",
+            "type": "boolean"
+          },
+          "password": {
+            "description": "The User's cleartext password. Write-only; never returned in responses.",
+            "type": "string"
+          },
+          "emails": {
+            "type": "array",
+            "description": "Email addresses for the user.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEmail"
+            }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "description": "Phone numbers for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoneNumber"
+            }
+          },
+          "ims": {
+            "type": "array",
+            "description": "Instant messaging addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserIm"
+            }
+          },
+          "photos": {
+            "type": "array",
+            "description": "URLs of photos of the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserPhoto"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "description": "Physical mailing addresses for the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserAddress"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "description": "A list of groups to which the user belongs. Role may be derived from group display or value.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserGroup"
+            }
+          },
+          "entitlements": {
+            "type": "array",
+            "description": "A list of entitlements for the user that represent a thing the user has.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserEntitlement"
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "A list of roles for the user.",
+            "items": {
+              "$ref": "#/components/schemas/ScimUserRole"
+            }
+          },
+          "x509Certificates": {
+            "type": "array",
+            "description": "A list of certificates issued to the User.",
+            "items": {
+              "$ref": "#/components/schemas/ScimX509Certificate"
+            }
+          },
+          "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+            "$ref": "#/components/schemas/ScimEnterpriseUser"
+          },
+          "id": {
+            "description": "Server-assigned resource ID echoed back by the IdP. Ignored on write.",
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimUserMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "userName",
+          "emails"
+        ]
+      },
       "ApiKey": {
         "properties": {
           "id": {
@@ -16282,8 +18256,10 @@
           },
           "expireAt": {
             "description": "Timestamp the key expires. If not present, `null` or is empty the key never expires. ISO-8601.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "date-time"
           },
           "usedAt": {
@@ -16320,20 +18296,258 @@
         "type": "object",
         "title": "Postgres Configuration",
         "description": "Postgres [runtime configuration](https://www.postgresql.org/docs/current/runtime-config.html) configuration.",
-        "additionalProperties": {
-          "type": "string",
-          "description": "Any Postgres configuration parameter."
+        "properties": {
+          "max_connections": {
+            "type": "integer",
+            "description": "Sets the maximum number of concurrent connections to the database server.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_connections/"
+            },
+            "example": 500,
+            "minimum": 1
+          },
+          "default_transaction_isolation": {
+            "type": "string",
+            "description": "Sets the default transaction isolation level for new transactions.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/default_transaction_isolation/"
+            },
+            "example": "read committed",
+            "enum": [
+              "read committed",
+              "repeatable read",
+              "serializable"
+            ]
+          },
+          "maintenance_work_mem": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Sets the maximum memory to be used for maintenance operations.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/maintenance_work_mem/"
+            },
+            "example": "64MB",
+            "minimum": 64
+          },
+          "work_mem": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Sets the amount of memory Postgres will use for internal operations like sorting and hashing as part of executing a query.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/work_mem/"
+            },
+            "example": "4MB",
+            "minimum": 64
+          },
+          "effective_cache_size": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Sets the planner's assumption about the total size of data caches.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/effective_cache_size/"
+            },
+            "example": "4GB",
+            "minimum": 8
+          },
+          "random_page_cost": {
+            "type": "number",
+            "description": "Sets the planner's estimate of the cost of a non-sequentially-fetched disk page. Lower values (1.1-1.5) are better for SSDs.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/random_page_cost/"
+            },
+            "example": 1.1,
+            "minimum": 0
+          },
+          "effective_io_concurrency": {
+            "type": "integer",
+            "description": "Number of concurrent disk I/O operations the planner expects. Higher values (100-200) benefit SSDs.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/effective_io_concurrency/"
+            },
+            "example": 200,
+            "minimum": 0
+          },
+          "max_worker_processes": {
+            "type": "integer",
+            "description": "Maximum number of background processes the system can support. Includes parallel query workers, logical replication, and more.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_worker_processes/"
+            },
+            "example": 8,
+            "minimum": 0
+          },
+          "max_parallel_workers": {
+            "type": "integer",
+            "description": "Maximum number of workers that can be used for parallel operations. Cannot exceed max_worker_processes.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_parallel_workers/"
+            },
+            "example": 4,
+            "minimum": 0
+          },
+          "max_parallel_workers_per_gather": {
+            "type": "integer",
+            "description": "Maximum number of parallel workers per executor node for parallel queries. Use 0 to disable parallel queries.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_parallel_workers_per_gather/"
+            },
+            "example": 2,
+            "minimum": 0
+          },
+          "max_parallel_maintenance_workers": {
+            "type": "integer",
+            "description": "Maximum number of parallel workers for maintenance operations like CREATE INDEX and VACUUM.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_parallel_maintenance_workers/"
+            },
+            "example": 2,
+            "minimum": 0
+          },
+          "statement_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Abort any statement that runs longer than the specified time. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/statement_timeout/"
+            },
+            "example": "60s",
+            "minimum": 0
+          },
+          "lock_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Abort any statement that waits longer than the specified time while attempting to acquire a lock. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/lock_timeout/"
+            },
+            "example": "10s",
+            "minimum": 0
+          },
+          "idle_session_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Terminate any session that has been idle for longer than the specified time. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/idle_session_timeout/"
+            },
+            "example": "2m",
+            "minimum": 0
+          },
+          "idle_in_transaction_session_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Terminate any session that has been idle within an open transaction for longer than the specified time. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/idle_in_transaction_session_timeout/"
+            },
+            "example": "2h",
+            "minimum": 0
+          },
+          "transaction_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Terminate any statement that takes more than the specified time, even while active. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/transaction_timeout/"
+            },
+            "example": "120s",
+            "minimum": 0
+          },
+          "wal_sender_timeout": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Terminate replication connections that are inactive for longer than this time. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/wal_sender_timeout/"
+            },
+            "example": "120m",
+            "minimum": 0
+          },
+          "wal_keep_size": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Minimum size of past WAL files kept in pg_wal for standby servers. Use 0 to disable.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/wal_keep_size/"
+            },
+            "example": "1GB",
+            "minimum": 0
+          },
+          "min_wal_size": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Minimum size to shrink the WAL to. WAL files are recycled rather than removed when below this size.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/min_wal_size/"
+            },
+            "example": "80MB",
+            "minimum": 32768
+          },
+          "max_wal_size": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Maximum size WAL can grow between checkpoints. Larger values improve write performance but increase crash recovery time.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_wal_size/"
+            },
+            "example": "5GB",
+            "minimum": 32768
+          },
+          "max_slot_wal_keep_size": {
+            "type": [
+              "string",
+              "integer"
+            ],
+            "description": "Specifies the maximum size of WAL files that replication slots are allowed to retain. Use -1 for unlimited.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/max_slot_wal_keep_size/"
+            },
+            "example": "-1",
+            "minimum": 0
+          },
+          "wal_compression": {
+            "type": "string",
+            "description": "Compress full-page writes in WAL. Reduces I/O at the cost of CPU. Options vary by PostgreSQL version.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/wal_compression/"
+            },
+            "example": "off",
+            "enum": [
+              "off",
+              "on",
+              "lz4",
+              "zstd"
+            ]
+          }
         },
+        "additionalProperties": false,
         "minProperties": 1,
-        "maxProperties": 64,
-        "maxLength": 4096,
         "example": {
-          "max_client_conn": "100"
-        },
-        "default": {
-          "wal_level": "logical",
-          "hot_standby_feedback": "on",
-          "sync_replication_slots": "on"
+          "max_connections": "100"
         }
       },
       "pgBouncerConfig": {
@@ -16346,7 +18560,6 @@
         },
         "minProperties": 1,
         "maxProperties": 64,
-        "maxLength": 4096,
         "example": {
           "default_pool_size": "16"
         }
@@ -16545,16 +18758,7 @@
       "pgTags": {
         "type": "array",
         "items": {
-          "$name": "ResourceTagsV1",
-          "key": {
-            "type": "string",
-            "text": "Tag key. Must be alphanumeric with dashes, underscores and dots."
-          },
-          "value": {
-            "type": "string",
-            "text": "Tag value. Must be alphanumeric with dashes, underscores and dots.",
-            "nullable": true
-          }
+          "$ref": "#/components/schemas/ResourceTagsV1"
         },
         "title": "Postgres Tags",
         "description": "Tags associated with the Postgres service."
@@ -16563,10 +18767,42 @@
         "type": "string",
         "title": "Postgres Service Name",
         "description": "Name of the Postgres service. Alphanumerical string with whitespaces up to 50 characters.",
-        "minimum": 1,
-        "maximum": 50
+        "minLength": 1,
+        "maxLength": 50
       },
-      "Base Postgres Service": {
+      "pgIdProperty": {
+        "type": "string",
+        "title": "Unique Postgres service ID",
+        "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$",
+        "example": "pgywezf3pxnp0hqxaqfp786w2w"
+      },
+      "pgStateProperty": {
+        "type": "string",
+        "title": "Postgres Service State",
+        "description": "Current state of the service",
+        "enum": [
+          "creating",
+          "running",
+          "replaying_wal",
+          "restoring_backup",
+          "finalizing_restore",
+          "unavailable",
+          "deleting"
+        ]
+      },
+      "pgIsPrimaryProperty": {
+        "type": "boolean",
+        "title": "Postgres Service is Primary",
+        "description": "True if this service is the primary service in the data warehouse",
+        "default": false
+      },
+      "pgCreatedAtProperty": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Postgres Service creation timestamp",
+        "example": "2026-03-26T20:51:16.384Z"
+      },
+      "BasePostgresService": {
         "properties": {
           "name": {
             "$ref": "#/components/schemas/pgNameProperty"
@@ -16594,7 +18830,7 @@
           }
         }
       },
-      "Postgres Service": {
+      "PostgresService": {
         "properties": {
           "name": {
             "$ref": "#/components/schemas/pgNameProperty"
@@ -16621,26 +18857,16 @@
             "$ref": "#/components/schemas/pgTags"
           },
           "id": {
-            "description": "Unique service ID.",
-            "type": "string",
-            "example": "pgywezf3pxnp0hqxaqfp786w2w"
+            "$ref": "#/components/schemas/pgIdProperty"
           },
           "state": {
-            "description": "Current state of the service.",
-            "type": "string",
-            "enum": [
-              "creating",
-              "running",
-              "replaying_wal",
-              "restoring_backup",
-              "finalizing_restore",
-              "unavailable",
-              "deleting"
-            ]
+            "$ref": "#/components/schemas/pgStateProperty"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/pgCreatedAtProperty"
           },
           "isPrimary": {
-            "description": "True if this service is the primary service in the data warehouse",
-            "type": "boolean"
+            "$ref": "#/components/schemas/pgIsPrimaryProperty"
           },
           "connectionString": {
             "description": "Connection string to the Postgres service",
@@ -16692,7 +18918,14 @@
           "pgBouncerConfig": {
             "$ref": "#/components/schemas/pgBouncerConfig"
           }
-        }
+        },
+        "required": [
+          "name",
+          "provider",
+          "region",
+          "size",
+          "storageSize"
+        ]
       },
       "PostgresServicePatchRequest": {
         "properties": {
@@ -16719,6 +18952,92 @@
           },
           "tags": {
             "$ref": "#/components/schemas/pgTags"
+          }
+        }
+      },
+      "pgPitrRestoreTargetProperty": {
+        "type": "string",
+        "title": "PITR Restore Target",
+        "description": "The point in time at which to recover, as either date/time, named restore point, or a specific transaction ID."
+      },
+      "PostgresServiceRestoreRequest": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "restoreTarget": {
+            "$ref": "#/components/schemas/pgPitrRestoreTargetProperty"
+          },
+          "pgConfig": {
+            "$ref": "#/components/schemas/pgConfig"
+          },
+          "pgBouncerConfig": {
+            "$ref": "#/components/schemas/pgBouncerConfig"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          }
+        },
+        "required": [
+          "name",
+          "restoreTarget"
+        ]
+      },
+      "PostgresServiceSetPassword": {
+        "properties": {
+          "password": {
+            "description": "Optional password. If not provided a new password is generated and provided in the response.",
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 8
+          }
+        }
+      },
+      "PostgresServicePasswordResource": {
+        "properties": {
+          "password": {
+            "description": "New Postgres superuser password. Provided only if there was no 'password' in the request.",
+            "type": "string"
+          }
+        }
+      },
+      "PostgresServiceListItem": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/pgProvider"
+          },
+          "region": {
+            "$ref": "#/components/schemas/pgRegion"
+          },
+          "postgresVersion": {
+            "$ref": "#/components/schemas/pgVersion"
+          },
+          "size": {
+            "$ref": "#/components/schemas/pgSize"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
+          },
+          "haType": {
+            "$ref": "#/components/schemas/pgHaType"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          },
+          "id": {
+            "$ref": "#/components/schemas/pgIdProperty"
+          },
+          "state": {
+            "$ref": "#/components/schemas/pgStateProperty"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/pgCreatedAtProperty"
+          },
+          "isPrimary": {
+            "$ref": "#/components/schemas/pgIsPrimaryProperty"
           }
         }
       },
@@ -17014,11 +19333,7 @@
             "type": "string"
           },
           "tags": {
-            "type": "array",
-            "description": "Tags associated with the service.",
-            "items": {
-              "$ref": "#/components/schemas/InstanceTagsPatch"
-            }
+            "$ref": "#/components/schemas/InstanceTagsPatch"
           },
           "enableCoreDumps": {
             "description": "If true, the underlying infra is enabled for collecting core dumps.",
@@ -17436,8 +19751,10 @@
           },
           "expireAt": {
             "description": "Timestamp the key expires. If not present, `null` or is empty the key never expires. ISO-8601.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "date-time"
           },
           "state": {
@@ -17510,8 +19827,10 @@
           },
           "expireAt": {
             "description": "Timestamp the key expires. If `null` or is empty the key never expires. ISO-8601.",
-            "nullable": true,
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "date-time"
           },
           "state": {
@@ -17607,24 +19926,30 @@
         "properties": {
           "name": {
             "description": "Name of the ClickPipe.",
-            "nullable": true,
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "source": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchSource"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "destination": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipePatchDestination"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           },
           "fieldMappings": {
             "type": "array",
@@ -17637,9 +19962,11 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeSettings"
+              },
+              {
+                "type": "null"
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -17647,30 +19974,38 @@
         "properties": {
           "replicas": {
             "description": "Number of replicas to scale to. Use to scale Kafka pipes.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 1,
             "maximum": 40
           },
           "concurrency": {
             "description": "Number of concurrency to scale to. Use to scale S3 pipes.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "maximum": 34,
             "deprecated": true
           },
           "replicaCpuMillicores": {
             "description": "CPU in millicores for each replica. Use to scale streaming pipes.",
-            "nullable": true,
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 125,
             "maximum": 2000
           },
           "replicaMemoryGb": {
             "description": "Memory in GB for each replica. Use to scale streaming pipes.",
-            "nullable": true,
-            "type": "number",
+            "type": [
+              "number",
+              "null"
+            ],
             "minimum": 0.5,
             "maximum": 8
           }

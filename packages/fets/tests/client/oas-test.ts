@@ -98,7 +98,7 @@ type PackageParams = Parameters<(typeof client)['/package']['get']>[0];
 type AssertQueryRequired = PackageParams extends { query: { PackageDetailId: number | bigint } }
   ? true
   : false;
- 
+
 const _assertQueryRequired: AssertQueryRequired = true;
 void _assertQueryRequired;
 // query must NOT be callable without passing the required query param

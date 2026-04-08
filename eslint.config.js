@@ -7,7 +7,14 @@ const prettierConfig = require('eslint-config-prettier');
 /** @type {import('eslint').Linter.Config[]} */
 module.exports = [
   {
-    ignores: ['**/dist/**', '**/node_modules/**', '**/scripts/**', '**/e2e/**', '**/benchmark/**', 'next-env.d.ts'],
+    ignores: [
+      '**/dist/**',
+      '**/node_modules/**',
+      '**/scripts/**',
+      '**/e2e/**',
+      '**/benchmark/**',
+      'next-env.d.ts',
+    ],
   },
   js.configs.recommended,
   ...tsPlugin.configs['flat/recommended'],
