@@ -1,4 +1,4 @@
-/* eslint-disable */ export default {
+  export default {
   "openapi": "3.0.0",
   "info": {
     "title": "Fireblocks API",

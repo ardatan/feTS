@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 export default {
   openapi: '3.1.0',
   info: {

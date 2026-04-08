@@ -11,11 +11,11 @@
   "packageManager": "npm@11.12.1",
   "scripts": {
     "build": "bob build",
-    "ci:lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext .ts . --output-file eslint_report.json --format json",
+    "ci:lint": "eslint . --output-file eslint_report.json --format json",
     "esm:check": "bob check",
     "generate-landing-page": "node ./packages/fets/scripts/generate-landing-page.cjs",
     "generate-swagger-ui": "node ./packages/fets/scripts/generate-swagger-ui.cjs",
-    "lint": "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --ext ts,tsx .",
+    "lint": "eslint .",
     "postinstall": "patch-package",
     "prebuild": "npm run generate-swagger-ui && npm run generate-landing-page",
     "precommit": "npx lint-staged",
@@ -38,6 +38,7 @@
     "@babel/preset-typescript": "7.28.5",
     "@changesets/changelog-github": "0.6.0",
     "@changesets/cli": "2.30.0",
+    "@eslint/js": "^10.0.1",
     "@theguild/prettier-config": "^3.0.1",
     "@types/jest": "30.0.0",
     "@types/js-yaml": "4.0.9",
@@ -87,7 +88,7 @@
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
-      "cross-env \"ESLINT_USE_FLAT_CONFIG=false\" eslint --fix"
+      "eslint --fix"
     ],
     "**/*.{ts,tsx,graphql,yml,md,mdx,js,json,html}": [
       "prettier --write"

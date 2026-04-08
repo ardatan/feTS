@@ -1,4 +1,4 @@
-/* eslint-disable */ export default {
+  export default {
   "openapi": "3.0.1",
   "info": {
     "title": "OpenAPI spec for ClickHouse Cloud",

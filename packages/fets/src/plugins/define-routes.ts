@@ -1,4 +1,4 @@
-/* eslint-disable no-inner-declarations */
+ 
 import { HTTPMethod } from '../typed-fetch';
 import { RouterComponentsBase, RouterPlugin } from '../types';
 

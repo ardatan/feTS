@@ -24,7 +24,7 @@ const t = initTRPC
     },
   });
 
-// eslint-disable-next-line @typescript-eslint/require-await
+ 
 export const createContext = async ({ req, res }: CreateNextContextOptions): Promise<Context> => {
   const requestId = crypto.randomUUID();
   res.setHeader('x-request-id', requestId);

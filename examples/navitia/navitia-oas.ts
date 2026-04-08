@@ -1,4 +1,4 @@
-/* eslint-disable */ export default {
+  export default {
   "basePath": "/v1",
   "swagger": "2.0",
   "host": "api.navitia.io",

@@ -98,7 +98,7 @@ type PackageParams = Parameters<(typeof client)['/package']['get']>[0];
 type AssertQueryRequired = PackageParams extends { query: { PackageDetailId: number | bigint } }
   ? true
   : false;
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 const _assertQueryRequired: AssertQueryRequired = true;
 void _assertQueryRequired;
 // query must NOT be callable without passing the required query param
