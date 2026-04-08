@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-// eslint-disable-next-line camelcase
+ 
 import { IBM_Plex_Sans } from 'next/font/google';
 import { clsx } from 'clsx';
 import { Anchor } from '@theguild/components';

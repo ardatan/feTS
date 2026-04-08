@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { globalAgent } from 'http';
 import { us_socket_local_port } from 'uWebSockets.js';
 import { fetch } from '@whatwg-node/fetch';

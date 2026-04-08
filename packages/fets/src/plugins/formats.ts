@@ -74,7 +74,7 @@ function float(str: string): boolean {
 export const fullFormat: Record<FormatName, (s: string) => boolean> = {
   date,
   time: time.bind(undefined, false),
-  // eslint-disable-next-line camelcase
+
   'date-time': date_time,
   duration: DURATION,
   uri,
@@ -82,7 +82,6 @@ export const fullFormat: Record<FormatName, (s: string) => boolean> = {
   'uri-template': bind(URITEMPLATE),
   url: v => {
     try {
-      // eslint-disable-next-line no-new
       new URL(v);
       return true;
     } catch (e) {
@@ -143,7 +142,6 @@ function date(str: string) {
     month >= 1 &&
     month <= 12 &&
     day >= 1 &&
-    // eslint-disable-next-line eqeqeq
     day <= (month == 2 && isLeapYear(year) ? 29 : DAYS[month])
   );
 }
@@ -158,18 +156,17 @@ function time(full: boolean, str: string) {
   const timeZone = !!matches[5];
   return (
     ((hour <= 23 && minute <= 59 && second <= 59) ||
-      // eslint-disable-next-line eqeqeq
       (hour == 23 && minute == 59 && second == 60)) &&
     (!full || timeZone)
   );
 }
 
 const DATE_TIME_SEPARATOR = /t|\s/i;
-// eslint-disable-next-line camelcase
+
 function date_time(str: string) {
   // http://tools.ietf.org/html/rfc3339#section-5.6
   const dateTime = str.split(DATE_TIME_SEPARATOR);
-  // eslint-disable-next-line eqeqeq
+
   return dateTime.length == 2 && date(dateTime[0]) && time(true, dateTime[1]);
 }
 
@@ -186,7 +183,6 @@ const Z_ANCHOR = /[^\\]\\Z/;
 function regex(str: string) {
   if (Z_ANCHOR.test(str)) return false;
   try {
-    // eslint-disable-next-line no-new
     new RegExp(str);
     return true;
   } catch (e) {

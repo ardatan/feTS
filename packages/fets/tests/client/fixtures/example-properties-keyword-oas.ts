@@ -1,4 +1,3 @@
-/* eslint-disable */
 // Test fixture for schemas that have a property named "properties"
 // See: https://github.com/ardatan/feTS/issues/XXX
 export default {
