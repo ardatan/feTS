@@ -11,7 +11,7 @@
     "aws-lambda": "1.0.7"
   },
   "devDependencies": {
-    "@pulumi/aws": "7.24.0",
+    "@pulumi/aws": "7.25.0",
     "@pulumi/awsx": "0.40.1",
     "@pulumi/pulumi": "3.230.0",
     "@types/aws-lambda": "8.10.161",
