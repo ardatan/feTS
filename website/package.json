@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "npm run build-website && next-sitemap --config ./next-sitemap.config.js",
-    "build-website": "next build || next build --webpack",
+    "build-website": "next build",
     "dev": "next dev",
     "start": "next start"
   },
