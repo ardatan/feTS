@@ -12,9 +12,8 @@ export async function handler(
   event: APIGatewayProxyEventV2,
   lambdaContext: Context,
 ): Promise<APIGatewayProxyResult> {
-  const rawPath = event.rawPath ?? '/';
   const url = new URL(
-    rawPath + (event.rawQueryString ? `?${event.rawQueryString}` : ''),
+    event.rawPath + (event.rawQueryString ? `?${event.rawQueryString}` : ''),
     'http://localhost',
   );
 
