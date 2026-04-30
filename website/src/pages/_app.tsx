@@ -1,4 +1,3 @@
-// @ts-expect-error - we know it exists
 import '@theguild/components/style.css';
 import { AppProps } from 'next/app';
 

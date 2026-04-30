@@ -88,7 +88,8 @@ export function createAwsLambdaDeployment(): DeploymentConfiguration<{
     },
     test: async ({ functionUrl }) => {
       console.log(`ℹ️ AWS Lambda Function deployed to URL: ${functionUrl.value}`);
-      await assertDeployedEndpoint(functionUrl.value);
+      // Lambda Function URLs always end with '/', strip it to avoid double-slash paths
+      await assertDeployedEndpoint(functionUrl.value.replace(/\/$/, ''));
     },
   };
 }
