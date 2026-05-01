@@ -7,7 +7,6 @@ import {
 } from '@e2e/shared-scripts';
 import * as aws from '@pulumi/aws';
 import { version } from '@pulumi/aws/package.json';
-import * as awsx from '@pulumi/awsx';
 import * as pulumi from '@pulumi/pulumi';
 import { Stack } from '@pulumi/pulumi/automation';
 
@@ -78,33 +77,19 @@ export function createAwsLambdaDeployment(): DeploymentConfiguration<{
         { dependsOn: lambdaRolePolicy },
       );
 
-      const lambdaGw = new awsx.apigateway.API('api', {
-        routes: [
-          {
-            path: '/',
-            method: 'GET',
-            eventHandler: func,
-          },
-          {
-            path: '/greetings/{name}',
-            method: 'GET',
-            eventHandler: func,
-          },
-          {
-            path: '/bye',
-            method: 'POST',
-            eventHandler: func,
-          },
-        ],
+      const lambdaUrl = new aws.lambda.FunctionUrl('func-url', {
+        functionName: func.name,
+        authorizationType: 'NONE',
       });
 
       return {
-        functionUrl: lambdaGw.url,
+        functionUrl: lambdaUrl.functionUrl,
       };
     },
     test: async ({ functionUrl }) => {
       console.log(`ℹ️ AWS Lambda Function deployed to URL: ${functionUrl.value}`);
-      await assertDeployedEndpoint(functionUrl.value);
+      // Lambda Function URLs always end with '/', strip it to avoid double-slash paths
+      await assertDeployedEndpoint(functionUrl.value.replace(/\/$/, ''));
     },
   };
 }

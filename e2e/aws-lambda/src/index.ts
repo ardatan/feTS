@@ -1,26 +1,21 @@
-import { APIGatewayEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+import { APIGatewayProxyEventV2, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { createTestServerAdapter } from '@e2e/shared-server';
 
 const app = createTestServerAdapter<ServerContext>();
 
 interface ServerContext {
-  event: APIGatewayEvent;
+  event: APIGatewayProxyEventV2;
   lambdaContext: Context;
 }
 
 export async function handler(
-  event: APIGatewayEvent,
+  event: APIGatewayProxyEventV2,
   lambdaContext: Context,
 ): Promise<APIGatewayProxyResult> {
-  const url = new URL(event.path, 'http://localhost');
-  if (event.queryStringParameters != null) {
-    for (const name in event.queryStringParameters) {
-      const value = event.queryStringParameters[name];
-      if (value != null) {
-        url.searchParams.set(name, value);
-      }
-    }
-  }
+  const url = new URL(
+    event.rawPath + (event.rawQueryString ? `?${event.rawQueryString}` : ''),
+    'http://localhost',
+  );
 
   const serverContext: ServerContext = {
     event,
@@ -30,7 +25,7 @@ export async function handler(
   const response = await app.fetch(
     url,
     {
-      method: event.httpMethod,
+      method: event.requestContext.http.method,
       headers: event.headers as HeadersInit,
       body: event.body
         ? Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8')
