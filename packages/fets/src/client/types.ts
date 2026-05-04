@@ -245,7 +245,7 @@ export type OASModel<
 // Later suggest using json-machete
 export type FixJSONSchema<T> = RemoveExclusiveMinimumAndMaximum<
   FixAdditionalPropertiesForAllOf<
-    FixAnyOfOneOfRequiredFields<
+    FixSchemaWithId<
       FixMissingAdditionalProperties<FixMissingTypeObject<FixExtraRequiredFields<T>>>
     >
   >
@@ -257,19 +257,14 @@ type FixAdditionalPropertiesForAllOf<T> = T extends { allOf: any[] }
     }
   : T;
 
-// Strips 'required' from schemas that appear as items inside anyOf/oneOf.
-// This prevents TypeScript error TS2615 ("Type of property X circularly references itself
-// in mapped type") which occurs when json-schema-to-ts processes circular schemas with
-// required fields through anyOf/oneOf. The outer schema's required array is preserved.
-type FixAnyOfOneOfRequiredFields<T> = T extends { anyOf: any[] }
-  ? Omit<T, 'anyOf'> & {
-      anyOf: Call<Tuples.Map<Objects.Omit<'required'>>, T['anyOf']>;
-    }
-  : T extends { oneOf: any[] }
-    ? Omit<T, 'oneOf'> & {
-        oneOf: Call<Tuples.Map<Objects.Omit<'required'>>, T['oneOf']>;
-      }
-    : T;
+// Strips 'required' from schemas that carry the $id marker added by ResolveRef (i.e. schemas
+// that were expanded from a $ref).  This makes Mutable<RefSchema> a true self-referential type
+// alias without a required array, which lets TypeScript lazily defer circular evaluation and
+// prevents TS2615 ("Type of property X circularly references itself in mapped type") when
+// json-schema-to-ts's _$Object processes schemas that contain anyOf/oneOf circular references.
+// Outer schemas accessed directly via NormalizeOAS (no $id at the top level) keep their
+// required fields so that OASModel / OASOutput return the correct required-field types.
+type FixSchemaWithId<T> = T extends { $id: string } ? Omit<T, 'required'> : T;
 
 // Detects if a value looks like a JSON Schema object (rather than a properties mapping).
 // Used to avoid treating the "properties" mapping object itself as a JSON Schema when
