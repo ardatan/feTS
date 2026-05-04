@@ -187,42 +187,162 @@ export type ArrayItemValue<TJSONSchema extends JSONSchema> = TJSONSchema extends
   ? TItems
   : never;
 
+// ---------------------------------------------------------------------------
+// Circular anyOf/oneOf detection
+// ---------------------------------------------------------------------------
+
+// Detects whether any property of a schema contains anyOf/oneOf array items
+// that carry the $id marker injected by ResolveRef (i.e. they are $ref-expanded
+// schemas).  Such schemas cannot be processed by json-schema-to-ts's
+// ParseObjectSchema without triggering TS2615 ("Type of property X circularly
+// references itself in mapped type"), because MergeSubSchema produces anonymous
+// types that share the same `properties` object as the original schema.
+// When this helper returns `true`, FromSchema uses DirectType instead.
+type HasCircularAnyOfRef<T extends JSONSchema> = T extends {
+  properties: Record<string, JSONSchema>;
+}
+  ? {
+      [K in keyof T['properties']]: ContainsAnyOfWithId<T['properties'][K]>;
+    }[keyof T['properties']] extends false
+    ? false
+    : true
+  : false;
+
+// Checks whether a schema (or its `items` descendant) has an anyOf/oneOf
+// whose items include at least one schema with an $id marker.
+type ContainsAnyOfWithId<T> = T extends {
+  anyOf: infer Items extends readonly JSONSchema[];
+}
+  ? AnyHasId<Items>
+  : T extends { oneOf: infer Items extends readonly JSONSchema[] }
+    ? AnyHasId<Items>
+    : T extends { items: infer I extends JSONSchema }
+      ? ContainsAnyOfWithId<I>
+      : false;
+
+// Returns `true` if any element of the tuple has an $id property.
+type AnyHasId<Items extends readonly JSONSchema[]> = Items extends readonly [
+  infer Head extends JSONSchema,
+  ...infer Tail extends readonly JSONSchema[],
+]
+  ? Head extends { $id: string }
+    ? true
+    : AnyHasId<Tail>
+  : false;
+
+// ---------------------------------------------------------------------------
+// DirectType – cycle-safe schema-to-TypeScript type computation
+// ---------------------------------------------------------------------------
+
+// Computes the TypeScript type for a JSON Schema without going through
+// json-schema-to-ts's ParseObjectSchema / MergeSubSchema pipeline.
+//
+// Key insight: because DirectType<T> is a *named* recursive generic type alias,
+// TypeScript treats any occurrence of DirectType<T> inside its own expansion as
+// a lazily-deferred reference (the same way it handles
+//   `type Tree<T> = { value: T; children: Tree<T>[] }`).
+// This means that when the recursion leads back to DirectType<MutableResolvedFG>
+// the compiler defers rather than expanding—preventing the TS2615 error that
+// fires when anonymous mapped types circularly reference themselves.
+//
+// json-schema-to-ts trips over the anyOf case because MergeSubSchema<{}, T>
+// always produces a *different* (anonymous) type from T even when T is a named
+// type alias, so the compiler can no longer detect the cycle and raises TS2615.
+// DirectType avoids this entirely by keeping every recursive reference as the
+// same named type alias instantiation.
+export type DirectType<T extends JSONSchema> = T extends { static: infer U }
+  ? U
+  : T extends { anyOf: infer Items extends readonly JSONSchema[] }
+    ? DirectUnionType<Items>
+    : T extends { oneOf: infer Items extends readonly JSONSchema[] }
+      ? DirectUnionType<Items>
+      : T extends { allOf: infer Items extends readonly JSONSchema[] }
+        ? DirectIntersectionType<Items>
+        : T extends { type: 'array'; items: infer Items extends JSONSchema }
+          ? DirectType<Items>[]
+          : T extends { type: 'string'; enum: infer Vals extends readonly string[] }
+            ? Vals[number]
+            : T extends { type: 'string' }
+              ? string
+              : T extends { type: 'integer' | 'number' }
+                ? number | bigint
+                : T extends { type: 'boolean' }
+                  ? boolean
+                  : T extends { type: 'null' }
+                    ? null
+                    : T extends {
+                          type: 'object';
+                          properties: infer Props extends Record<string, JSONSchema>;
+                          required: infer Req extends string[];
+                        }
+                      ? {
+                          [K in Extract<keyof Props, Req[number]>]: DirectType<Props[K]>;
+                        } & {
+                          [K in Exclude<keyof Props, Req[number]>]?: DirectType<Props[K]>;
+                        }
+                      : T extends {
+                            type: 'object';
+                            properties: infer Props extends Record<string, JSONSchema>;
+                          }
+                        ? { [K in keyof Props]?: DirectType<Props[K]> }
+                        : T extends { type: 'object' }
+                          ? Record<string, unknown>
+                          : unknown;
+
+type DirectUnionType<Items extends readonly JSONSchema[]> = Items extends readonly [
+  infer Head extends JSONSchema,
+  ...infer Tail extends readonly JSONSchema[],
+]
+  ? DirectType<Head> | DirectUnionType<Tail>
+  : never;
+
+type DirectIntersectionType<Items extends readonly JSONSchema[]> = Items extends readonly [
+  infer Head extends JSONSchema,
+  ...infer Tail extends readonly JSONSchema[],
+]
+  ? DirectType<Head> & DirectIntersectionType<Tail>
+  : unknown;
+
+// ---------------------------------------------------------------------------
+
 export type FromSchema<T> =
   /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends {
     static: infer U;
   }
     ? U
     : T extends JSONSchema
-      ? FromSchemaOriginal<
-          T,
-          {
-            deserialize: Circular<T> extends false
-              ? [
-                  {
-                    pattern: {
-                      type: 'string';
-                      format: 'binary';
-                    };
-                    output: File;
-                  },
-                  {
-                    pattern: {
-                      type: 'number';
-                      format: 'int64';
-                    };
-                    output: bigint | number;
-                  },
-                  {
-                    pattern: {
-                      type: 'integer';
-                      format: 'int64';
-                    };
-                    output: bigint | number;
-                  },
-                ]
-              : false;
-          }
-        >
+      ? HasCircularAnyOfRef<T> extends true
+        ? DirectType<T>
+        : FromSchemaOriginal<
+            T,
+            {
+              deserialize: Circular<T> extends false
+                ? [
+                    {
+                      pattern: {
+                        type: 'string';
+                        format: 'binary';
+                      };
+                      output: File;
+                    },
+                    {
+                      pattern: {
+                        type: 'number';
+                        format: 'int64';
+                      };
+                      output: bigint | number;
+                    },
+                    {
+                      pattern: {
+                        type: 'integer';
+                        format: 'int64';
+                      };
+                      output: bigint | number;
+                    },
+                  ]
+                : false;
+            }
+          >
       : never;
 
 export type FromRouterComponentSchema<TRouter extends Router<any, any, any>, TName extends string> =
