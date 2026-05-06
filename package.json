@@ -8,7 +8,7 @@
     "examples/*",
     "benchmark"
   ],
-  "packageManager": "npm@11.13.0",
+  "packageManager": "npm@11.14.0",
   "scripts": {
     "build": "bob build",
     "ci:lint": "eslint . --output-file eslint_report.json --format json",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/plugin-proposal-class-properties": "7.18.6",
-    "@babel/preset-env": "7.29.3",
+    "@babel/preset-env": "7.29.5",
     "@babel/preset-typescript": "7.28.5",
     "@changesets/changelog-github": "0.6.0",
     "@changesets/cli": "2.31.0",
@@ -81,8 +81,8 @@
     "micromatch": "4.0.8",
     "next": "16.2.4",
     "prismjs": "1.30.0",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "tmp": "0.2.5",
     "webpack": "5.106.2"
   },
