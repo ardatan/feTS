@@ -45,7 +45,7 @@ export function createCfDeployment(
       const stackName = pulumi.getStack();
       const workerUrl = `e2e.graphql.yoga/${stackName}`;
 
-      // Deploy CF script as Worker
+      // Deploy CF script as WorkerScript
       const workerScript = new cf.WorkerScript('worker', {
         content: await fsPromises.readFile(
           join(__dirname, '..', '..', projectName, 'dist', 'index.js'),
