@@ -70,7 +70,7 @@
     "webpack": "5.106.2"
   },
   "overrides": {
-    "@pulumi/pulumi": "3.239.0",
+    "@pulumi/pulumi": "3.242.0",
     "braces": "3.0.3",
     "cookie": "1.1.1",
     "diff": "9.0.0",
