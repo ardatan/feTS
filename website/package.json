@@ -25,10 +25,10 @@
     "@img/sharp-libvips-linux-x64": "1.2.3",
     "@svgr/webpack": "^8.0.1",
     "@theguild/tailwind-config": "0.6.4",
-    "@types/node": "25.8.0",
+    "@types/node": "25.9.0",
     "@types/react": "19.2.14",
     "@typescript/sandbox": "^0.1.14",
-    "dompurify": "3.4.4",
+    "dompurify": "3.4.5",
     "estree-util-value-to-estree": "3.5.0",
     "monaco-editor": "0.55.1",
     "postcss-import": "16.1.1",
@@ -39,7 +39,7 @@
     "webpack": "5.106.2"
   },
   "overrides": {
-    "dompurify": "3.4.4",
+    "dompurify": "3.4.5",
     "webpack": "5.106.2"
   }
 }
