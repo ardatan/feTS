@@ -12,6 +12,6 @@
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typescript": "^6.0.2",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.67.0"
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.68.0"
   }
 }
