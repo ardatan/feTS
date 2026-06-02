@@ -1,5 +1,16 @@
 # fets
 
+## 0.8.7
+
+### Patch Changes
+
+- [#3886](https://github.com/ardatan/feTS/pull/3886)
+  [`be4b354`](https://github.com/ardatan/feTS/commit/be4b3543bd44c8e718b794eb5b1b2033f0c9a972)
+  Thanks [@enisdenjo](https://github.com/enisdenjo)! - dependencies updates:
+  - Updated dependency
+    [`@whatwg-node/server@^0.11.0` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.11.0)
+    (from `^0.10.18`, in `dependencies`)
+
 ## 0.8.6
 
 ### Patch Changes
