@@ -9,13 +9,13 @@
     "start": "next start"
   },
   "dependencies": {
-    "@trpc/server": "^11.17.0",
+    "@trpc/server": "^11.18.0",
     "fets": "^0.8.0",
     "jsonwebtoken": "^9.0.3",
     "next": "^16.1.6",
     "nextjs-cors": "^2.1.2",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "swagger-ui-react": "^5.32.6",
     "trpc-openapi": "^1.1.2",
     "zod": "^4.1.12"
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^25.6.0",
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.0.0",
     "@types/swagger-ui-react": "^5.18.0",
     "typescript": "^6.0.2"
