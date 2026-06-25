@@ -5,7 +5,7 @@
     "version": "1.0",
     "contact": {
       "name": "ClickHouse Support",
-      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-683176",
+      "url": "https://clickhouse.com/docs/en/cloud/manage/openapi?referrer=openapi-887333",
       "email": "support@clickhouse.com"
     }
   },
@@ -412,6 +412,553 @@
         ]
       }
     },
+    "/v1/organizations/{organizationId}/roles": {
+      "get": {
+        "summary": "List all available roles for an organization",
+        "description": "Returns all available roles (system + custom) for an organization.",
+        "operationId": "organizationRolesGetList",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/RBACRole"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role Management"
+        ]
+      },
+      "post": {
+        "summary": "Create a new role",
+        "description": "Creates a new custom role for an organization with specified policies and actors.",
+        "operationId": "organizationRolePost",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/RBACRole"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role Management"
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/roles/{roleId}": {
+      "get": {
+        "summary": "Get role details",
+        "description": "Returns details for a specific role.",
+        "operationId": "organizationRoleGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "roleId",
+            "description": "ID of the requested role.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/RBACRole"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role Management"
+        ]
+      },
+      "patch": {
+        "summary": "Update a role",
+        "description": "Updates an existing custom role. System roles cannot be updated. All fields are optional - only provided fields will be updated.",
+        "operationId": "organizationRolePatch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "roleId",
+            "description": "ID of the requested role.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/RBACRole"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role Management"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a role",
+        "description": "Deletes an existing custom role. System roles cannot be deleted. This operation will remove the role and all its associated policies.",
+        "operationId": "organizationRoleDelete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "roleId",
+            "description": "ID of the requested role.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Role Management"
+        ]
+      }
+    },
     "/v1/organizations/{organizationId}/services": {
       "get": {
         "summary": "List of organization services",
@@ -438,7 +985,11 @@
                 "type": "string"
               }
             },
-            "example": "tag:Environment=Production&filter=tag:Department=Engineering&filter=tag:isActive"
+            "example": [
+              "tag:Environment=Production",
+              "tag:Department=Engineering",
+              "tag:isActive"
+            ]
           }
         ],
         "responses": {
@@ -1661,7 +2212,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/replicaScaling": {
       "patch": {
         "summary": "Update service auto scaling settings",
-        "description": "Updates minimum and maximum memory limits per replica and idle mode scaling behavior for the service. The memory settings are available only for \"production\" services and must be a multiple of 4 starting from 8GB. Please contact support to enable adjustment of numReplicas.",
+        "description": "Updates minimum and maximum memory limits per replica and idle mode scaling behavior for the service. Supports both vertical autoscaling (fixed replica count, variable memory) and horizontal autoscaling (variable replica count, fixed memory). The memory settings are available only for \"production\" services and must be a multiple of 4 starting from 8GB. For vertical autoscaling, please contact support to enable adjustment of numReplicas. For horizontal autoscaling (minReplicas/maxReplicas/replicaMemoryGb), contact support to enable the feature for your organization.",
         "operationId": "instanceReplicaScalingUpdate",
         "parameters": [
           {
@@ -2120,6 +2671,1299 @@
         },
         "tags": [
           "Prometheus"
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/scalingSchedule": {
+      "get": {
+        "summary": "Get service autoscaling schedule",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns the autoscaling schedule for a service. Returns 404 if no schedule has been configured or if the schedule was cleared. Requires the scheduled autoscaling feature to be enabled for the organization.",
+        "operationId": "scalingScheduleGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ScalingSchedule"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create or replace service autoscaling schedule",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Creates or fully replaces the autoscaling schedule for a service. Pass an empty `entries` array to clear the schedule — a subsequent GET will return 404, and the response will contain an empty `baseConfig` (all fields absent). The base scaling config (applied when no entry is active) is managed separately via the `replicaScaling` endpoint. Requires the scheduled autoscaling feature to be enabled for the organization.",
+        "operationId": "scalingScheduleUpsert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScalingSchedulePostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ScalingSchedule"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete service scheduled scaling",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Deletes the autoscaling schedule for a service. If a schedule entry is currently active, the base scaling config is restored to the instance before the schedule is removed. Returns 404 if no schedule exists. Requires the scheduled autoscaling feature to be enabled for the organization.",
+        "operationId": "scalingScheduleDelete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/upgradeWindow": {
+      "get": {
+        "summary": "Get service upgrade window",
+        "description": "Returns the configured upgrade window for a service.\n\nErrors:\n- 401: missing, invalid, or disabled API key.\n- 403: caller lacks `control-plane:service:view` on the service.\n- 404: service does not exist, is not visible to the caller, or no upgrade window has been configured.",
+        "operationId": "upgradeWindowGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/UpgradeWindow"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ]
+      },
+      "put": {
+        "summary": "Set service upgrade window",
+        "description": "Creates or fully replaces the upgrade window for a service. The upgrade window currently lasts 6 hours from `startHourUtc`. The upgrade window can only be set on primary services; secondary services inherit the primary service window.\n\nErrors:\n- 400: invalid field values (`weekday` not in 0–6, `startHourUtc` not in {0, 6, 12, 18}), or the service is a secondary service.\n- 401: missing, invalid, or disabled API key.\n- 403: caller lacks `control-plane:service:manage` on the service, or the organization does not have the scheduled upgrades feature enabled.\n- 404: service does not exist or is not visible to the caller.",
+        "operationId": "upgradeWindowUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpgradeWindowPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/UpgradeWindow"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ]
+      },
+      "delete": {
+        "summary": "Delete service upgrade window",
+        "description": "Deletes the upgrade window for a service, restoring the default scheduling behaviour. The upgrade window can only be deleted on primary services. Deletion succeeds even if the organization has lost the scheduled upgrades entitlement, so a window can be cleared after entitlement loss.\n\nErrors:\n- 400: the service is a secondary service.\n- 401: missing, invalid, or disabled API key.\n- 403: caller lacks `control-plane:service:manage` on the service.\n- 404: service does not exist, is not visible to the caller, or no upgrade window is configured.",
+        "operationId": "upgradeWindowDelete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickhouseSettings": {
+      "get": {
+        "summary": "List ClickHouse settings",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns the configured ClickHouse settings for the service. Only settings that have been explicitly set are included.",
+        "operationId": "serviceClickhouseSettingsListGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ServiceClickhouseSettingsList"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update ClickHouse settings",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Updates one or more ClickHouse settings for the service. To reset a setting to its platform default, use the [DELETE single setting](#tag/Service/operation/serviceClickhouseSettingDelete) endpoint. Use the [schema endpoint](#tag/Service/operation/serviceClickhouseSettingsSchemaGet) to discover which settings are configurable.",
+        "operationId": "serviceClickhouseSettingsUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServiceClickhouseSettingsPatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ServiceClickhouseSettingsPatchResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickhouseSettings/schema": {
+      "get": {
+        "summary": "Get ClickHouse settings schema",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns the schema of all configurable ClickHouse settings, including types, valid values, descriptions, and warnings.",
+        "operationId": "serviceClickhouseSettingsSchemaGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ServiceClickhouseSettingsSchema"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/services/{serviceId}/clickhouseSettings/{settingName}": {
+      "get": {
+        "summary": "Get ClickHouse setting",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns the current value of a ClickHouse setting for the service. Use the [schema endpoint](#tag/Service/operation/serviceClickhouseSettingsSchemaGet) to discover which settings are configurable.",
+        "operationId": "serviceClickhouseSettingGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "settingName",
+            "description": "Name of the setting to retrieve.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ServiceClickhouseSetting"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Reset ClickHouse setting to default",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Removes a previously-configured ClickHouse setting, reverting its effective value to the platform default. Settings under `spec.extraConfig.server.*` (e.g. `keep_alive_timeout`, `shared_merge_tree_disable_merges_and_mutations_assignment`) trigger a ClickHouse server rollout restart; other settings propagate to all replicas after a short delay. Deleting a setting that was never configured is a no-op (200 OK).",
+        "operationId": "serviceClickhouseSettingDelete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "settingName",
+            "description": "Name of the setting to reset.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Service"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
         ]
       }
     },
@@ -4757,7 +6601,11 @@
                 "type": "string"
               }
             },
-            "example": "filter=tag:Environment=Production&filter=tag:Department=Engineering&filter=tag:isActive"
+            "example": [
+              "tag:Environment=Production",
+              "tag:Department=Engineering",
+              "tag:isActive"
+            ]
           }
         ],
         "responses": {
@@ -4847,7 +6695,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes": {
       "get": {
         "summary": "List ClickPipes",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a list of ClickPipes.",
+        "description": "Returns a list of ClickPipes.",
         "operationId": "clickPipeGetList",
         "parameters": [
           {
@@ -4955,17 +6803,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "post": {
         "summary": "Create ClickPipe",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create a new ClickPipe.",
+        "description": "Create a new ClickPipe.",
         "operationId": "clickPipeCreate",
         "parameters": [
           {
@@ -5079,19 +6921,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}": {
       "get": {
         "summary": "Get ClickPipe",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the specified ClickPipe.",
+        "description": "Returns the specified ClickPipe.",
         "operationId": "clickPipeGet",
         "parameters": [
           {
@@ -5206,17 +7042,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "patch": {
         "summary": "Update ClickPipe",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the specified ClickPipe.",
+        "description": "Update the specified ClickPipe.",
         "operationId": "clickPipeUpdate",
         "parameters": [
           {
@@ -5340,17 +7170,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "delete": {
         "summary": "Delete ClickPipe",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete the specified ClickPipe.",
+        "description": "Delete the specified ClickPipe.",
         "operationId": "clickPipeDelete",
         "parameters": [
           {
@@ -5462,19 +7286,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/settings": {
       "get": {
         "summary": "Get ClickPipe settings",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the advanced settings for the specified ClickPipe.",
+        "description": "Returns the advanced settings for the specified ClickPipe.",
         "operationId": "clickPipeSettingsGet",
         "parameters": [
           {
@@ -5589,17 +7407,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "put": {
         "summary": "Update ClickPipe settings",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the advanced settings for the specified ClickPipe. Send key-value pairs where values can be strings, numbers, or booleans.",
+        "description": "Update the advanced settings for the specified ClickPipe. Send key-value pairs where values can be strings, numbers, or booleans.",
         "operationId": "clickPipeSettingsUpdate",
         "parameters": [
           {
@@ -5723,19 +7535,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/scaling": {
       "patch": {
         "summary": "Update ClickPipe scaling",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Change scaling settings for the specified ClickPipe. This endpoint supports Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob).\n\n**Note:** For database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery), use the [Update CDC ClickPipes scaling](#tag/ClickPipes/operation/clickPipeCdcScalingUpdate) endpoint instead.",
+        "description": "Change scaling settings for the specified ClickPipe. This endpoint supports Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob).\n\n**Note:** For database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery), use the [Update CDC ClickPipes scaling](#tag/ClickPipes/operation/clickPipeCdcScalingUpdate) endpoint instead.",
         "operationId": "clickPipeScalingUpdate",
         "parameters": [
           {
@@ -5859,19 +7665,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipes/{clickPipeId}/state": {
       "patch": {
         "summary": "Update ClickPipe state",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Start, stop or resync ClickPipe. Stopping a ClickPipe will stop the ingestion process from any state. Starting is allowed for ClickPipes in the \"Stopped\" state or with a \"Failed\" state. Resyncing is only for Postgres and MySQL pipes and can be done from any state.",
+        "description": "Start, stop or resync ClickPipe. Stopping a ClickPipe will stop the ingestion process from any state. Starting is allowed for ClickPipes in the \"Stopped\" state or with a \"Failed\" state. Resyncing is only for Postgres and MySQL pipes and can be done from any state.",
         "operationId": "clickPipeStateUpdate",
         "parameters": [
           {
@@ -5995,19 +7795,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipesCdcScaling": {
       "get": {
         "summary": "Get CDC ClickPipes scaling",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Get scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. For billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
+        "description": "Get scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. For billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
         "operationId": "clickPipeCdcScalingGet",
         "parameters": [
           {
@@ -6112,17 +7906,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "patch": {
         "summary": "Update CDC ClickPipes scaling",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. Scaling settings may take a few minutes to fully propagate.\n\nFor billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit. If your organization tier changes, database ClickPipes will be [rescaled](https://clickhouse.com/docs/cloud/manage/billing/overview#compute) appropriately.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
+        "description": "Update scaling settings for database ClickPipes (PostgreSQL, MySQL, MongoDB, BigQuery).\n\nThe infrastructure is shared between all database ClickPipes in the service, both for initial load and CDC. Scaling settings may take a few minutes to fully propagate.\n\nFor billing purposes, 2 CPU cores and 8 GB of RAM [correspond](https://clickhouse.com/docs/cloud/manage/billing/overview#clickpipes-for-postgres-cdc) to one compute unit. If your organization tier changes, database ClickPipes will be [rescaled](https://clickhouse.com/docs/cloud/manage/billing/overview#compute) appropriately.\n\n**Note:** For Kafka, Kinesis, and object storage pipes (S3, GCS, Azure Blob), see [Get ClickPipe](#tag/ClickPipes/operation/clickPipeGet).\n\n**This endpoint becomes available once at least one database ClickPipe was provisioned.**",
         "operationId": "clickPipeCdcScalingUpdate",
         "parameters": [
           {
@@ -6236,12 +8024,6 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
@@ -6616,7 +8398,7 @@
       },
       "put": {
         "summary": "ClickStack: Update Dashboard",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Updates an existing dashboard",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> ClickStack: Updates an existing dashboard.  **Concurrency:** This endpoint does not support optimistic concurrency control. Concurrent PUT requests for the same dashboard may silently overwrite each other, which can leave orphan tile-to-container references on layout-shape edits. Clients should serialize edits to a given dashboard.",
         "operationId": "clickStackUpdateDashboard",
         "parameters": [
           {
@@ -7957,6 +9739,98 @@
         ]
       }
     },
+    "/v1/organizations/{organizationId}/postgres/prometheus": {
+      "get": {
+        "summary": "Get organization PostgreSQL metrics",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns Prometheus metrics for all PostgreSQL services in an organization. Maximum 100 services supported.",
+        "operationId": "postgresOrgPrometheusGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the requested organization.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/plain; charset=UTF-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Prometheus"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
     "/v1/organizations/{organizationId}/postgres/{postgresId}": {
       "get": {
         "summary": "Get PostgreSQL service details",
@@ -7980,7 +9854,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8095,7 +9969,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8187,7 +10061,7 @@
       },
       "patch": {
         "summary": "Update a PostgreSQL service",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update a Postgres service that belongs to the organization",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update a Postgres service that belongs to the organization. **WARNING:** Changing the name also updates the host name and certificates for the service.",
         "operationId": "postgresServicePatch",
         "parameters": [
           {
@@ -8207,7 +10081,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8333,7 +10207,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8443,7 +10317,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8569,7 +10443,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$"
+              "format": "uuid"
             }
           }
         ],
@@ -8602,6 +10476,1271 @@
                     },
                     "result": {
                       "$ref": "#/components/schemas/PostgresServicePasswordResource"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/state": {
+      "patch": {
+        "summary": "Update Postgres service state",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Initiate a process for a Postgres service:\n* restart: Initiates a service restart\n* promote: Promotes a read replica to primary\n* switchover: Switch a primary over to a standby\n",
+        "operationId": "postgresServicePatchState",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServiceSetState"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresService"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/readReplica": {
+      "post": {
+        "summary": "Create a read replica for a Postgres service",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Initiate the process to create a new read replica for a Postgres service.",
+        "operationId": "postgresInstanceCreateReadReplica",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostgresServiceReadReplicaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresService"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/config": {
+      "get": {
+        "summary": "Get PostgreSQL service configuration",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the configuration data for a Postgres service and its PgBouncer service.",
+        "operationId": "postgresInstanceConfigGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/postgresInstanceConfig"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Replace Postgres service configuration",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Replace the existing Postgres service and pgBouncer configuration.",
+        "operationId": "postgresInstanceConfigPost",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postgresInstanceConfig"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/postgresInstanceUpdateConfigResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Postgres service configuration",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Update the existing Postgres service and pgBouncer configuration.",
+        "operationId": "postgresInstanceConfigPatch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postgresInstanceConfig"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/postgresInstanceUpdateConfigResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/prometheus": {
+      "get": {
+        "summary": "Get PostgreSQL service metrics",
+        "description": "**Disclaimer:** This beta endpoint is evolving; the API contract may change. <br /><br /> Returns Prometheus metrics for a PostgreSQL service.",
+        "operationId": "postgresInstancePrometheusGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/plain; charset=UTF-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Prometheus"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/metrics": {
+      "get": {
+        "summary": "Get Postgres time-series metrics",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns bucketed time-series metrics for a PostgreSQL service over the requested window (CPU, memory, disk, network, connections, cache hit ratio, throughput, transactions, and more). Use this to chart or analyze how a service behaved over time.",
+        "operationId": "postgresInstanceMetricsGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from_date",
+            "description": "Inclusive start of the time window (RFC 3339 date-time).",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to_date",
+            "description": "Exclusive end of the time window (RFC 3339 date-time).",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "bucket_size_seconds",
+            "description": "Time-series bucket size in seconds. When omitted, a bucket size is derived from the requested window. Requests are capped at 250 data points.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresMetrics"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/slowQueryPatterns": {
+      "get": {
+        "summary": "List Postgres slow query patterns",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns aggregate metrics for the slowest query patterns observed on a Postgres service during the given time window. Use this to discover which queries dominate total execution time, CPU, I/O, or WAL generation.",
+        "operationId": "slowQueryPatternsGetList",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from_date",
+            "description": "Inclusive start of the time window (RFC 3339 date-time).",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "to_date",
+            "description": "Exclusive end of the time window (RFC 3339 date-time).",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "db_name",
+            "description": "Database name filter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "db_user",
+            "description": "Database user filter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "db_operation",
+            "description": "Database operation filter (for example, SELECT, INSERT, UPDATE, DELETE, UTILITY).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "app",
+            "description": "Application name filter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort_by",
+            "description": "Field to sort results by.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "total_duration",
+                "avg_duration",
+                "call_count",
+                "total_blks_read",
+                "total_cpu_time",
+                "error_count",
+                "max_duration",
+                "p50_duration",
+                "p95_duration",
+                "p99_duration",
+                "total_rows",
+                "total_shared_blks_hit",
+                "total_wal_bytes"
+              ],
+              "default": "total_duration"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort_order",
+            "description": "Sort order. One of `asc` or `desc`.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Maximum number of results to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500,
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Number of results to skip before returning.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PostgresSlowQueryPattern"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postgres"
+        ],
+        "x-badges": [
+          {
+            "name": "Beta",
+            "position": "after"
+          }
+        ]
+      }
+    },
+    "/v1/organizations/{organizationId}/postgres/{postgresId}/slowQueryPatterns/{queryId}": {
+      "get": {
+        "summary": "Get a Postgres slow query pattern with recent executions",
+        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns aggregate metrics for a single slow query pattern together with its most recent individual executions.",
+        "operationId": "slowQueryPatternGet",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "postgresId",
+            "description": "ID of the requested Postgres service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "queryId",
+            "description": "Stable identifier for the query pattern.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "db_name",
+            "description": "Database name filter.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "db_user",
+            "description": "Database user filter.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "db_operation",
+            "description": "Database operation filter (for example, SELECT, INSERT, UPDATE, DELETE, UTILITY).",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "app",
+            "description": "Application name filter.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "timestamp",
+            "description": "Timestamp of a specific execution (RFC 3339).",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/PostgresSlowQueryPatternDetail"
                     }
                   }
                 }
@@ -9131,7 +12270,7 @@
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipesReversePrivateEndpoints": {
       "get": {
         "summary": "List reverse private endpoints",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns a list of reverse private endpoints for the specified service.",
+        "description": "Returns a list of reverse private endpoints for the specified service.",
         "operationId": "clickPipeReversePrivateEndpointGetList",
         "parameters": [
           {
@@ -9239,17 +12378,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "post": {
         "summary": "Create reverse private endpoint",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Create a new reverse private endpoint.",
+        "description": "Create a new reverse private endpoint.",
         "operationId": "clickPipeReversePrivateEndpointCreate",
         "parameters": [
           {
@@ -9363,19 +12496,13 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       }
     },
     "/v1/organizations/{organizationId}/services/{serviceId}/clickpipesReversePrivateEndpoints/{reversePrivateEndpointId}": {
       "get": {
         "summary": "Get reverse private endpoint",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Returns the reverse private endpoint with the specified ID.",
+        "description": "Returns the reverse private endpoint with the specified ID.",
         "operationId": "clickPipeReversePrivateEndpointGet",
         "parameters": [
           {
@@ -9490,17 +12617,11 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
-          {
-            "name": "Beta",
-            "position": "after"
-          }
         ]
       },
       "delete": {
         "summary": "Delete reverse private endpoint",
-        "description": "**This endpoint is in beta.** API contract is stable, and no breaking changes are expected in the future. <br /><br /> Delete the reverse private endpoint with the specified ID.",
+        "description": "Delete the reverse private endpoint with the specified ID.",
         "operationId": "clickPipeReversePrivateEndpointDelete",
         "parameters": [
           {
@@ -9612,12 +12733,134 @@
         },
         "tags": [
           "ClickPipes"
-        ],
-        "x-badges": [
+        ]
+      },
+      "patch": {
+        "summary": "Update reverse private endpoint",
+        "description": "Update mutable fields for an existing reverse private endpoint. customPrivateDnsMappings is a full replacement list. Use an empty array to clear mappings.",
+        "operationId": "clickPipeReversePrivateEndpointUpdate",
+        "parameters": [
           {
-            "name": "Beta",
-            "position": "after"
+            "in": "path",
+            "name": "organizationId",
+            "description": "ID of the organization that owns the service.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "serviceId",
+            "description": "ID of the service that owns the Reverse Private Endpoint.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "path",
+            "name": "reversePrivateEndpointId",
+            "description": "ID of the reverse private endpoint to update.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReversePrivateEndpoint"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 200
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/ReversePrivateEndpoint"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request cannot be processed due to a client error. Please verify your request parameters and try again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "description": "HTTP status code.",
+                      "example": 400
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal server error has occurred. If this issue persists, please contact ClickHouse Cloud support for assistance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code.",
+                      "example": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Detailed error description."
+                    },
+                    "requestId": {
+                      "type": "string",
+                      "description": "Unique id assigned to every request. UUIDv4",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ClickPipes"
         ]
       }
     }
@@ -9805,7 +13048,7 @@
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: PLAIN, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "type": "string",
             "enum": [
               "PLAIN",
@@ -9857,6 +13100,13 @@
             "items": {
               "type": "string"
             }
+          },
+          "exactlyOnce": {
+            "description": "Enable exactly-once delivery. Guarantees every Kafka record is inserted exactly once across restarts and rebalances. Can only be set at pipe creation.",
+            "type": [
+              "boolean",
+              "null"
+            ]
           }
         }
       },
@@ -9903,7 +13153,7 @@
             "example": "my-clickpipe-consumer-group"
           },
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: PLAIN, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "type": "string",
             "enum": [
               "PLAIN",
@@ -9956,6 +13206,13 @@
               "type": "string"
             }
           },
+          "exactlyOnce": {
+            "description": "Enable exactly-once delivery. Guarantees every Kafka record is inserted exactly once across restarts and rebalances. Can only be set at pipe creation.",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
           "credentials": {
             "description": "Credentials for Kafka source. Choose one that is supported by the authentication method.",
             "oneOf": [
@@ -9978,7 +13235,7 @@
       "ClickPipePatchKafkaSource": {
         "properties": {
           "authentication": {
-            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: SCRAM-SHA-256, SCRAM-SHA-512, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
+            "description": "Authentication method of the Kafka source. Supported authentication methods: kafka: PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, msk: SCRAM-SHA-512, IAM_ROLE, IAM_USER, MUTUAL_TLS, gcmk: PLAIN, MUTUAL_TLS, confluent: PLAIN, MUTUAL_TLS, warpstream: PLAIN, azureeventhub: PLAIN, redpanda: SCRAM-SHA-256, SCRAM-SHA-512, MUTUAL_TLS, dokafka: SCRAM-SHA-256, MUTUAL_TLS",
             "type": [
               "string",
               "null"
@@ -10642,7 +13899,12 @@
             "description": "List of column names to exclude from replication. Column names must be unique within this list.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "internal_id",
+              "temp_data"
+            ],
+            "uniqueItems": true
           },
           "useCustomSortingKey": {
             "description": "Whether to use a custom sorting key. If true, sortingKeys must be provided. If false or omitted, the default sorting key is the PostgreSQL primary key.",
@@ -10654,7 +13916,12 @@
             "description": "Ordered list of column names to use as the sorting (ORDER BY) key in ClickHouse. Only used when useCustomSortingKey is true. Column names must be unique within this list.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "created_at_date",
+              "event_id"
+            ],
+            "uniqueItems": true
           },
           "tableEngine": {
             "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
@@ -10786,6 +14053,16 @@
             "type": "string",
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
+          "disableTls": {
+            "description": "Disable TLS for the Postgres connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the Postgres connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
           "settings": {
             "$ref": "#/components/schemas/ClickPipePostgresPipeSettings"
           },
@@ -10868,6 +14145,16 @@
             "type": "string",
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
+          "disableTls": {
+            "description": "Disable TLS for the Postgres connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the Postgres connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
           "tableMappings": {
             "type": "array",
             "description": "List of table mappings defining which PostgreSQL tables to replicate and how they map to ClickHouse tables.",
@@ -10925,6 +14212,22 @@
             ],
             "example": "-----BEGIN CERTIFICATE-----\n..."
           },
+          "disableTls": {
+            "description": "Disable TLS for the Postgres connection. Use with caution in production environments.",
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the Postgres connection. Use with caution in production environments.",
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "example": false
+          },
           "settings": {
             "$ref": "#/components/schemas/ClickPipePatchPostgresPipeSettings"
           },
@@ -10933,14 +14236,16 @@
             "description": "Table mappings to add to the pipe. Can be an empty array if no tables are being added.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePostgresPipeTableMapping"
-            }
+            },
+            "minItems": 0
           },
           "tableMappingsToRemove": {
             "type": "array",
             "description": "Table mappings to remove from the pipe. Only sourceSchemaName, sourceTable, and targetTable are required for removal.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePatchPostgresPipeRemoveTableMapping"
-            }
+            },
+            "minItems": 0
           }
         }
       },
@@ -11067,7 +14372,12 @@
             "description": "List of column names to exclude from replication. Column names must be unique within this list.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "internal_id",
+              "temp_data"
+            ],
+            "uniqueItems": true
           },
           "useCustomSortingKey": {
             "description": "Whether to use a custom sorting key. If true, sortingKeys must be provided. If false or omitted, the default sorting key is the MySQL primary key.",
@@ -11079,7 +14389,12 @@
             "description": "Ordered list of column names to use as the sorting (ORDER BY) key in ClickHouse. Only used when useCustomSortingKey is true. Column names must be unique within this list.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "created_at_date",
+              "event_id"
+            ],
+            "uniqueItems": true
           },
           "tableEngine": {
             "description": "ClickHouse table engine: \"ReplacingMergeTree\" (handles updates/deletes), \"MergeTree\" (append-only), or \"Null\" (forward data to materialized views without storing it).",
@@ -11406,14 +14721,16 @@
             "description": "Table mappings to add to the pipe. Can be an empty array if no tables are being added.",
             "items": {
               "$ref": "#/components/schemas/ClickPipeMySQLPipeTableMapping"
-            }
+            },
+            "minItems": 0
           },
           "tableMappingsToRemove": {
             "type": "array",
             "description": "Table mappings to remove from the pipe. Only sourceSchemaName, sourceTable, and targetTable are required for removal.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePatchMySQLPipeRemoveTableMapping"
-            }
+            },
+            "minItems": 0
           }
         },
         "required": [
@@ -11712,6 +15029,11 @@
             "type": "boolean",
             "example": false
           },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MongoDB connection. Use with caution in production environments.",
+            "type": "boolean",
+            "example": false
+          },
           "caCertificate": {
             "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
             "type": "string",
@@ -11762,6 +15084,11 @@
           },
           "disableTls": {
             "description": "Disable TLS for the MongoDB connection. Defaults to false (TLS enabled).",
+            "type": "boolean",
+            "example": false
+          },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MongoDB connection. Use with caution in production environments.",
             "type": "boolean",
             "example": false
           },
@@ -11832,6 +15159,14 @@
             ],
             "example": false
           },
+          "skipCertVerification": {
+            "description": "Skip TLS certificate verification for the MongoDB connection. Use with caution in production environments.",
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "example": false
+          },
           "caCertificate": {
             "description": "PEM encoded CA certificate to validate the MongoDB server certificate.",
             "type": [
@@ -11848,19 +15183,227 @@
             "description": "Collection mappings to add to the pipe. Can be an empty array if no collections are being added.",
             "items": {
               "$ref": "#/components/schemas/ClickPipeMongoDBPipeTableMapping"
-            }
+            },
+            "minItems": 0
           },
           "tableMappingsToRemove": {
             "type": "array",
             "description": "Collection mappings to remove from the pipe. Only sourceDatabaseName, sourceCollection, and targetTable are required for removal.",
             "items": {
               "$ref": "#/components/schemas/ClickPipePatchMongoDBPipeRemoveTableMapping"
-            }
+            },
+            "minItems": 0
           }
         },
         "required": [
           "uri",
           "readPreference"
+        ]
+      },
+      "ClickPipePubSubSource": {
+        "properties": {
+          "format": {
+            "description": "Format of messages in the Pub/Sub topic. GCP Pub/Sub ClickPipes are in limited preview — contact support to enable this feature for your organization.",
+            "type": "string",
+            "enum": [
+              "JSONEachRow",
+              "Avro",
+              "Protobuf"
+            ],
+            "example": "JSONEachRow"
+          },
+          "projectId": {
+            "description": "GCP project ID that owns the Pub/Sub topic.",
+            "type": "string",
+            "example": "my-gcp-project"
+          },
+          "topic": {
+            "description": "Pub/Sub topic name (not the fully-qualified path).",
+            "type": "string",
+            "example": "my-topic"
+          },
+          "authentication": {
+            "description": "Authentication method to use with GCP Pub/Sub. Currently only SERVICE_ACCOUNT is supported.",
+            "type": "string",
+            "enum": [
+              "SERVICE_ACCOUNT"
+            ],
+            "example": "SERVICE_ACCOUNT"
+          },
+          "seekType": {
+            "description": "Starting position strategy for consuming the subscription. The seekTimestamp companion is required only when seekType is \"timestamp\"; setting it for a mismatched seek type is rejected.",
+            "type": "string",
+            "enum": [
+              "latest",
+              "earliest",
+              "timestamp"
+            ],
+            "example": "earliest"
+          },
+          "seekTimestamp": {
+            "description": "RFC 3339 / ISO 8601 timestamp to seek to. Required when seekType is \"timestamp\"; must be omitted otherwise.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2026-04-10T12:00:00Z"
+          },
+          "filter": {
+            "description": "Optional Pub/Sub subscription filter expression (CEL). Maximum 256 characters.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 256
+          },
+          "enableOrdering": {
+            "description": "Whether to enable ordered delivery of messages (requires messages to be published with ordering keys).",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "ackDeadline": {
+            "description": "Acknowledgement deadline for messages, in seconds. Must be between 10 and 600.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 10,
+            "maximum": 600
+          }
+        },
+        "required": [
+          "format",
+          "projectId",
+          "topic",
+          "authentication",
+          "seekType"
+        ]
+      },
+      "ClickPipePostPubSubSource": {
+        "properties": {
+          "format": {
+            "description": "Format of messages in the Pub/Sub topic. GCP Pub/Sub ClickPipes are in limited preview — contact support to enable this feature for your organization.",
+            "type": "string",
+            "enum": [
+              "JSONEachRow",
+              "Avro",
+              "Protobuf"
+            ],
+            "example": "JSONEachRow"
+          },
+          "projectId": {
+            "description": "GCP project ID that owns the Pub/Sub topic.",
+            "type": "string",
+            "example": "my-gcp-project"
+          },
+          "topic": {
+            "description": "Pub/Sub topic name (not the fully-qualified path).",
+            "type": "string",
+            "example": "my-topic"
+          },
+          "authentication": {
+            "description": "Authentication method to use with GCP Pub/Sub. Currently only SERVICE_ACCOUNT is supported.",
+            "type": "string",
+            "enum": [
+              "SERVICE_ACCOUNT"
+            ],
+            "example": "SERVICE_ACCOUNT"
+          },
+          "seekType": {
+            "description": "Starting position strategy for consuming the subscription. The seekTimestamp companion is required only when seekType is \"timestamp\"; setting it for a mismatched seek type is rejected.",
+            "type": "string",
+            "enum": [
+              "latest",
+              "earliest",
+              "timestamp"
+            ],
+            "example": "earliest"
+          },
+          "seekTimestamp": {
+            "description": "RFC 3339 / ISO 8601 timestamp to seek to. Required when seekType is \"timestamp\"; must be omitted otherwise.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2026-04-10T12:00:00Z"
+          },
+          "filter": {
+            "description": "Optional Pub/Sub subscription filter expression (CEL). Maximum 256 characters.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 256
+          },
+          "enableOrdering": {
+            "description": "Whether to enable ordered delivery of messages (requires messages to be published with ordering keys).",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "ackDeadline": {
+            "description": "Acknowledgement deadline for messages, in seconds. Must be between 10 and 600.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 10,
+            "maximum": 600
+          },
+          "serviceAccountKey": {
+            "$ref": "#/components/schemas/ServiceAccount"
+          }
+        },
+        "required": [
+          "format",
+          "projectId",
+          "topic",
+          "authentication",
+          "seekType",
+          "serviceAccountKey"
+        ]
+      },
+      "ClickPipePatchPubSubSource": {
+        "properties": {
+          "authentication": {
+            "description": "Authentication method to use with GCP Pub/Sub. Currently only SERVICE_ACCOUNT is supported.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "SERVICE_ACCOUNT"
+            ],
+            "example": "SERVICE_ACCOUNT"
+          },
+          "ackDeadline": {
+            "description": "Acknowledgement deadline for messages, in seconds. Must be between 10 and 600.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 10,
+            "maximum": 600
+          },
+          "serviceAccountKey": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ServiceAccount"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "authentication",
+          "serviceAccountKey"
         ]
       },
       "ClickPipeScaling": {
@@ -11916,6 +15459,16 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClickPipeKinesisSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pubsub": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipePubSubSource"
               },
               {
                 "type": "null"
@@ -12287,6 +15840,16 @@
               }
             ]
           },
+          "pubsub": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipePostPubSubSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "postgres": {
             "$ref": "#/components/schemas/ClickPipeMutatePostgresSource"
           },
@@ -12358,6 +15921,16 @@
               }
             ]
           },
+          "pubsub": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickPipePatchPubSubSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "postgres": {
             "$ref": "#/components/schemas/ClickPipePatchPostgresSource"
           },
@@ -12413,7 +15986,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "ClickPipe will create a ClickHouse user with these roles. Add your custom roles here if required.",
+            "description": "Optional. Roles to grant to the ClickHouse user that ClickPipe creates. If omitted, the user is granted the default role (`default_role`). Add your custom roles here if required.",
             "items": {
               "type": "string"
             }
@@ -12437,7 +16010,7 @@
             "description": "CPU in millicores for DB ClickPipes.",
             "type": "integer",
             "minimum": 1000,
-            "maximum": 24000,
+            "maximum": 32000,
             "multipleOf": 1000,
             "example": 2000
           },
@@ -12445,7 +16018,7 @@
             "description": "Memory in GiB for DB ClickPipes. Must be 4× the CPU core count.",
             "type": "number",
             "minimum": 4,
-            "maximum": 96,
+            "maximum": 128,
             "multipleOf": 4,
             "example": 8
           }
@@ -12576,14 +16149,16 @@
         "properties": {
           "key": {
             "type": "string",
-            "description": "Tag key. Must be alphanumeric with dashes, underscores and dots."
+            "description": "Tag key. Must be alphanumeric with dashes, underscores and dots.",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[a-zA-Z0-9._-]+$"
           },
           "value": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Tag value. Must be alphanumeric with dashes, underscores and dots."
+            "type": "string",
+            "description": "Tag value. Must be alphanumeric with dashes, underscores and dots.",
+            "maxLength": 256,
+            "pattern": "^[a-zA-Z0-9._-]+$"
           }
         },
         "required": [
@@ -12592,6 +16167,249 @@
         "example": {
           "key": "Environment",
           "value": "staging"
+        }
+      },
+      "ScalingScheduleEntry": {
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this schedule entry.",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "description": "Human-readable label for this schedule entry.",
+            "type": "string"
+          },
+          "weekdays": {
+            "type": "array",
+            "description": "Days of the week this entry applies to. 0 = Sunday, 1 = Monday, …, 6 = Saturday.",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 1
+          },
+          "startHourUtc": {
+            "description": "UTC hour (0–23) when this entry becomes active (inclusive).",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 23
+          },
+          "endHourUtc": {
+            "description": "UTC hour (1–24) when this entry deactivates (exclusive). Must differ from startHourUtc. Set to 24 to end at midnight. Values less than startHourUtc create an overnight window spanning midnight.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 24
+          },
+          "minReplicaMemoryGb": {
+            "description": "Minimum memory per replica (Gb) during this window.",
+            "type": "number"
+          },
+          "maxReplicaMemoryGb": {
+            "description": "Maximum memory per replica (Gb) during this window.",
+            "type": "number"
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas during this window. Must equal maxReplicas — schedule entries specify a fixed replica count per window.",
+            "type": "integer"
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas during this window. Must equal minReplicas — schedule entries specify a fixed replica count per window.",
+            "type": "integer"
+          },
+          "idleScaling": {
+            "description": "Whether idle scaling is enabled during this window.",
+            "type": "boolean"
+          },
+          "idleTimeoutMinutes": {
+            "description": "Idle timeout in minutes during this window.",
+            "type": "integer"
+          },
+          "isActiveNow": {
+            "description": "Whether this entry is currently active. Scheduled times are indicative — actions are applied on a best-effort basis and may be delayed by a few minutes.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "weekdays",
+          "startHourUtc",
+          "endHourUtc",
+          "isActiveNow"
+        ]
+      },
+      "ScalingScheduleBaseConfig": {
+        "properties": {
+          "minReplicaMemoryGb": {
+            "description": "Minimum memory per replica (Gb) when no schedule entry is active.",
+            "type": "number"
+          },
+          "maxReplicaMemoryGb": {
+            "description": "Maximum memory per replica (Gb) when no schedule entry is active.",
+            "type": "number"
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas when no schedule entry is active.",
+            "type": "integer"
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas when no schedule entry is active.",
+            "type": "integer"
+          },
+          "idleScaling": {
+            "description": "Whether idle scaling is enabled when no schedule entry is active.",
+            "type": "boolean"
+          },
+          "idleTimeoutMinutes": {
+            "description": "Idle timeout in minutes when no schedule entry is active.",
+            "type": "integer"
+          }
+        }
+      },
+      "ScalingSchedule": {
+        "properties": {
+          "entries": {
+            "type": "array",
+            "description": "List of schedule entries.",
+            "items": {
+              "$ref": "#/components/schemas/ScalingScheduleEntry"
+            }
+          },
+          "baseConfig": {
+            "$ref": "#/components/schemas/ScalingScheduleBaseConfig"
+          },
+          "activeEntryId": {
+            "description": "ID of the currently-active schedule entry. Absent when no entry is active and the base config is in effect.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "entries",
+          "baseConfig"
+        ]
+      },
+      "ScalingScheduleEntryRequest": {
+        "properties": {
+          "name": {
+            "description": "Human-readable label for this schedule entry.",
+            "type": "string",
+            "example": "Business hours"
+          },
+          "weekdays": {
+            "type": "array",
+            "description": "Days of the week this entry applies to. 0 = Sunday, 1 = Monday, …, 6 = Saturday.",
+            "items": {
+              "type": "integer"
+            },
+            "example": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "minItems": 1
+          },
+          "startHourUtc": {
+            "description": "UTC hour (0–23) when this entry becomes active (inclusive).",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 23,
+            "example": 9
+          },
+          "endHourUtc": {
+            "description": "UTC hour (1–24) when this entry deactivates (exclusive). Must differ from startHourUtc. Set to 24 to end at midnight. Values less than startHourUtc create an overnight window spanning midnight.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 24,
+            "example": 17
+          },
+          "minReplicaMemoryGb": {
+            "description": "Minimum memory per replica (Gb) during this window.",
+            "type": "number"
+          },
+          "maxReplicaMemoryGb": {
+            "description": "Maximum memory per replica (Gb) during this window.",
+            "type": "number"
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas during this window.",
+            "type": "integer"
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas during this window.",
+            "type": "integer"
+          },
+          "idleScaling": {
+            "description": "Whether idle scaling is enabled during this window.",
+            "type": "boolean"
+          },
+          "idleTimeoutMinutes": {
+            "description": "Idle timeout in minutes during this window.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "weekdays",
+          "startHourUtc",
+          "endHourUtc"
+        ]
+      },
+      "ScalingSchedulePostRequest": {
+        "properties": {
+          "entries": {
+            "type": "array",
+            "description": "List of schedule entries. Pass an empty array to clear the schedule.",
+            "items": {
+              "$ref": "#/components/schemas/ScalingScheduleEntryRequest"
+            }
+          }
+        },
+        "required": [
+          "entries"
+        ]
+      },
+      "CurrentScaling": {
+        "properties": {
+          "effectiveAutoscalingMode": {
+            "description": "Autoscaling mode currently in effect on the running service. May diverge from the configured baseline mode while a schedule entry is active.",
+            "type": "string",
+            "enum": [
+              "vertical",
+              "horizontal"
+            ]
+          },
+          "effectiveMinReplicaMemoryGb": {
+            "description": "Minimum memory per replica (Gb) currently applied to the running service. May diverge from the top-level `minReplicaMemoryGb` baseline while a schedule entry is active.",
+            "type": "number"
+          },
+          "effectiveMaxReplicaMemoryGb": {
+            "description": "Maximum memory per replica (Gb) currently applied to the running service. May diverge from the top-level `maxReplicaMemoryGb` baseline while a schedule entry is active. In horizontal autoscaling mode equals `effectiveMinReplicaMemoryGb`.",
+            "type": "number"
+          },
+          "effectiveMinReplicas": {
+            "description": "Minimum number of replicas currently applied to the running service. May diverge from the baseline while a schedule entry is active. In vertical autoscaling mode equals `effectiveMaxReplicas` (vertical mode runs a fixed replica count).",
+            "type": "integer"
+          },
+          "effectiveMaxReplicas": {
+            "description": "Maximum number of replicas currently applied to the running service. May diverge from the baseline while a schedule entry is active.",
+            "type": "integer"
+          },
+          "effectiveIdleScaling": {
+            "description": "Whether idle scaling is currently in effect on the service. May diverge from the top-level `idleScaling` baseline while a schedule entry is active.",
+            "type": "boolean"
+          },
+          "effectiveIdleTimeoutMinutes": {
+            "description": "Idle timeout in minutes currently in effect on the service. May diverge from the top-level `idleTimeoutMinutes` baseline while a schedule entry is active.",
+            "type": "integer"
+          },
+          "activeEntryId": {
+            "description": "ID of the schedule entry whose values are currently applied to the service. Absent when no entry is active.",
+            "type": "string",
+            "format": "uuid"
+          }
         }
       },
       "ServiceEndpoint": {
@@ -12644,7 +16462,9 @@
           },
           "name": {
             "description": "Name of the service. Alphanumerical string with whitespaces up to 50 characters.",
-            "type": "string"
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 1
           },
           "provider": {
             "description": "Cloud provider",
@@ -12673,6 +16493,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -12733,7 +16554,7 @@
             "deprecated": true
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -12742,7 +16563,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -12767,11 +16588,33 @@
             "example": 120
           },
           "numReplicas": {
-            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers.",
+            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers. Present only when the service uses vertical autoscaling. For horizontal autoscaling, use minReplicas and maxReplicas instead.",
             "type": "number",
             "minimum": 1,
             "maximum": 20,
             "example": 3
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas for horizontal autoscaling. Present only when the service uses horizontal autoscaling.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 1
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas for horizontal autoscaling. Present only when the service uses horizontal autoscaling.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 5
+          },
+          "replicaMemoryGb": {
+            "description": "Fixed memory per replica in Gb for horizontal autoscaling. Present only when the service uses horizontal autoscaling. Must be a multiple of 4, at least 8 Gb, and at most 120 Gb for non paid services or 356 Gb for paid services.",
+            "type": "number",
+            "minimum": 8,
+            "maximum": 356,
+            "multipleOf": 4,
+            "example": 32
           },
           "idleScaling": {
             "description": "When set to true the service is allowed to scale down to zero when idle. True by default.",
@@ -12881,13 +16724,23 @@
             "description": "Tags associated with the service.",
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
-            }
+            },
+            "maxItems": 50
           },
           "enableCoreDumps": {
             "description": "True if the service's underline infra is enabled for collecting core dumps. This is an experimental feature",
             "type": "boolean"
+          },
+          "scalingSchedule": {
+            "$ref": "#/components/schemas/ScalingSchedule"
+          },
+          "currentScaling": {
+            "$ref": "#/components/schemas/CurrentScaling"
           }
-        }
+        },
+        "required": [
+          "currentScaling"
+        ]
       },
       "PrivateEndpointConfig": {
         "properties": {
@@ -12972,14 +16825,16 @@
             "description": "Elements to add. Executed after \"remove\" part is processed.",
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
-            }
+            },
+            "maxItems": 50
           },
           "remove": {
             "type": "array",
             "description": "Elements to remove. Executed before \"add\" part is processed.",
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
-            }
+            },
+            "maxItems": 50
           }
         }
       },
@@ -13038,6 +16893,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -13197,6 +17053,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -13246,6 +17103,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -13352,6 +17210,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -13575,6 +17434,260 @@
             "items": {
               "$ref": "#/components/schemas/RBACPolicyCreateRequest"
             }
+          }
+        }
+      },
+      "CustomPrivateDnsMapping": {
+        "properties": {
+          "privateDnsName": {
+            "description": "Optional private DNS names for Reverse Private Endpoint. Can be used as data source destination address. Must be unique across the ClickHouse service.\nCurrently, available in Private Preview for Google Private Service Connect (PSC) forwarding rules.\nSupports exact names and leading wildcard names such as *.example.com",
+            "type": "string",
+            "example": "*.my-service.example.com"
+          }
+        }
+      },
+      "CreateReversePrivateEndpoint": {
+        "properties": {
+          "description": {
+            "description": "Reverse private endpoint description. Maximum length is 255 characters.",
+            "type": "string",
+            "example": "My reverse private endpoint"
+          },
+          "type": {
+            "description": "Reverse private endpoint type.",
+            "type": "string",
+            "enum": [
+              "VPC_ENDPOINT_SERVICE",
+              "VPC_RESOURCE",
+              "MSK_MULTI_VPC",
+              "GCP_PSC_SERVICE_ATTACHMENT"
+            ],
+            "example": "VPC_ENDPOINT_SERVICE"
+          },
+          "vpcEndpointServiceName": {
+            "description": "VPC endpoint service name.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
+          },
+          "vpcResourceConfigurationId": {
+            "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "rcfg-12345678901234567"
+          },
+          "vpcResourceShareArn": {
+            "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
+          },
+          "mskClusterArn": {
+            "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
+          },
+          "mskAuthentication": {
+            "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "SASL_IAM",
+              "SASL_SCRAM"
+            ],
+            "example": "SASL_IAM"
+          },
+          "gcpServiceAttachment": {
+            "description": "Private Preview. GCP PSC service attachment URI. Required for GCP_PSC_SERVICE_ATTACHMENT type. Format: projects/{project}/regions/{region}/serviceAttachments/{name}.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "projects/my-project/regions/us-central1/serviceAttachments/my-service"
+          },
+          "customPrivateDnsMappings": {
+            "type": "array",
+            "description": "Optional private DNS names for Reverse Private Endpoint. Can be used as data source destination address. Must be unique across the ClickHouse service.\nCurrently, available in Private Preview for Google Private Service Connect (PSC) forwarding rules.\nSupports exact names and leading wildcard names such as *.example.com",
+            "items": {
+              "$ref": "#/components/schemas/CustomPrivateDnsMapping"
+            },
+            "example": [
+              {
+                "privateDnsName": "my-service.example.com"
+              },
+              {
+                "privateDnsName": "*.example.com"
+              }
+            ]
+          }
+        }
+      },
+      "UpdateReversePrivateEndpoint": {
+        "properties": {
+          "customPrivateDnsMappings": {
+            "type": "array",
+            "description": "Optional private DNS names for Reverse Private Endpoint. Can be used as data source destination address. Must be unique across the ClickHouse service.\nCurrently, available in Private Preview for Google Private Service Connect (PSC) forwarding rules.\nSupports exact names and leading wildcard names such as *.example.com",
+            "items": {
+              "$ref": "#/components/schemas/CustomPrivateDnsMapping"
+            },
+            "example": [
+              {
+                "privateDnsName": "my-service.example.com"
+              },
+              {
+                "privateDnsName": "*.example.com"
+              }
+            ]
+          }
+        }
+      },
+      "ReversePrivateEndpoint": {
+        "properties": {
+          "description": {
+            "description": "Reverse private endpoint description. Maximum length is 255 characters.",
+            "type": "string",
+            "example": "My reverse private endpoint"
+          },
+          "type": {
+            "description": "Reverse private endpoint type.",
+            "type": "string",
+            "enum": [
+              "VPC_ENDPOINT_SERVICE",
+              "VPC_RESOURCE",
+              "MSK_MULTI_VPC",
+              "GCP_PSC_SERVICE_ATTACHMENT"
+            ],
+            "example": "VPC_ENDPOINT_SERVICE"
+          },
+          "vpcEndpointServiceName": {
+            "description": "VPC endpoint service name.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
+          },
+          "vpcResourceConfigurationId": {
+            "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "rcfg-12345678901234567"
+          },
+          "vpcResourceShareArn": {
+            "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
+          },
+          "mskClusterArn": {
+            "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
+          },
+          "mskAuthentication": {
+            "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "SASL_IAM",
+              "SASL_SCRAM"
+            ],
+            "example": "SASL_IAM"
+          },
+          "gcpServiceAttachment": {
+            "description": "Private Preview. GCP PSC service attachment URI. Required for GCP_PSC_SERVICE_ATTACHMENT type. Format: projects/{project}/regions/{region}/serviceAttachments/{name}.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "projects/my-project/regions/us-central1/serviceAttachments/my-service"
+          },
+          "customPrivateDnsMappings": {
+            "type": "array",
+            "description": "Optional private DNS names for Reverse Private Endpoint. Can be used as data source destination address. Must be unique across the ClickHouse service.\nCurrently, available in Private Preview for Google Private Service Connect (PSC) forwarding rules.\nSupports exact names and leading wildcard names such as *.example.com",
+            "items": {
+              "$ref": "#/components/schemas/CustomPrivateDnsMapping"
+            },
+            "example": [
+              {
+                "privateDnsName": "my-service.example.com"
+              },
+              {
+                "privateDnsName": "*.example.com"
+              }
+            ]
+          },
+          "id": {
+            "description": "Reverse private endpoint ID.",
+            "type": "string",
+            "format": "uuid",
+            "example": "12345678-1234-1234-1234-123456789012"
+          },
+          "serviceId": {
+            "description": "ClickHouse service ID reverse private endpoint is associated with.",
+            "type": "string",
+            "format": "uuid",
+            "example": "12345678-1234-1234-1234-123456789012"
+          },
+          "endpointId": {
+            "description": "Reverse private endpoint endpoint ID.",
+            "type": "string",
+            "example": "vpce-12345678901234567"
+          },
+          "dnsNames": {
+            "type": "array",
+            "description": "Reverse private endpoint internal DNS names.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "vpce-12345678901234567-abcdefg.execute-api.us-east-1.vpce.amazonaws.com"
+            ]
+          },
+          "privateDnsNames": {
+            "type": "array",
+            "description": "Reverse private endpoint private DNS names.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "vpce-12345678901234567-abcdefg.execute-api.us-east-1.vpce.amazonaws.com"
+            ]
+          },
+          "status": {
+            "description": "Reverse private endpoint status.",
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Provisioning",
+              "Deleting",
+              "Ready",
+              "Failed",
+              "PendingAcceptance",
+              "Rejected",
+              "Expired"
+            ],
+            "example": "Ready"
           }
         }
       },
@@ -14022,7 +18135,7 @@
             "type": "number"
           },
           "backupRetentionPeriodInHours": {
-            "description": "The minimum duration in hours for which the backups are available.",
+            "description": "The minimum duration in hours for which the backups are available. Must be a whole number of days between 24 (1 day) and 1080 (45 days) — i.e. a multiple of 24.",
             "type": "number"
           },
           "backupStartTime": {
@@ -14097,177 +18210,36 @@
           }
         }
       },
-      "CreateReversePrivateEndpoint": {
+      "ClickStackAlertExecutionError": {
         "properties": {
-          "description": {
-            "description": "Reverse private endpoint description. Maximum length is 255 characters.",
+          "timestamp": {
+            "description": "When the error occurred.",
             "type": "string",
-            "example": "My reverse private endpoint"
+            "format": "date-time",
+            "example": "2026-04-17T12:00:00.000Z"
           },
           "type": {
-            "description": "Reverse private endpoint type.",
+            "description": "Category of the error.",
             "type": "string",
             "enum": [
-              "VPC_ENDPOINT_SERVICE",
-              "VPC_RESOURCE",
-              "MSK_MULTI_VPC"
+              "QUERY_ERROR",
+              "WEBHOOK_ERROR",
+              "INVALID_ALERT",
+              "UNKNOWN"
             ],
-            "example": "VPC_ENDPOINT_SERVICE"
+            "example": "QUERY_ERROR"
           },
-          "vpcEndpointServiceName": {
-            "description": "VPC endpoint service name.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
-          },
-          "vpcResourceConfigurationId": {
-            "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "rcfg-12345678901234567"
-          },
-          "vpcResourceShareArn": {
-            "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
-          },
-          "mskClusterArn": {
-            "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
-          },
-          "mskAuthentication": {
-            "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "SASL_IAM",
-              "SASL_SCRAM"
-            ],
-            "example": "SASL_IAM"
+          "message": {
+            "description": "Human-readable error message.",
+            "type": "string",
+            "example": "Query timed out after 30s"
           }
-        }
-      },
-      "ReversePrivateEndpoint": {
-        "properties": {
-          "description": {
-            "description": "Reverse private endpoint description. Maximum length is 255 characters.",
-            "type": "string",
-            "example": "My reverse private endpoint"
-          },
-          "type": {
-            "description": "Reverse private endpoint type.",
-            "type": "string",
-            "enum": [
-              "VPC_ENDPOINT_SERVICE",
-              "VPC_RESOURCE",
-              "MSK_MULTI_VPC"
-            ],
-            "example": "VPC_ENDPOINT_SERVICE"
-          },
-          "vpcEndpointServiceName": {
-            "description": "VPC endpoint service name.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "com.amazonaws.vpce.us-east-1.vpce-svc-12345678901234567"
-          },
-          "vpcResourceConfigurationId": {
-            "description": "VPC resource configuration ID. Required for VPC_RESOURCE type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "rcfg-12345678901234567"
-          },
-          "vpcResourceShareArn": {
-            "description": "VPC resource share ARN. Required for VPC_RESOURCE type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "arn:aws:ram:us-east-1:123456789012:resource-share/share-12345678901234567"
-          },
-          "mskClusterArn": {
-            "description": "MSK cluster ARN. Required for MSK_MULTI_VPC type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "arn:aws:kafka:us-east-1:123456789012:cluster/my-cluster"
-          },
-          "mskAuthentication": {
-            "description": "MSK cluster authentication type. Required for MSK_MULTI_VPC type.",
-            "type": [
-              "string",
-              "null"
-            ],
-            "enum": [
-              "SASL_IAM",
-              "SASL_SCRAM"
-            ],
-            "example": "SASL_IAM"
-          },
-          "id": {
-            "description": "Reverse private endpoint ID.",
-            "type": "string",
-            "format": "uuid",
-            "example": "12345678-1234-1234-1234-123456789012"
-          },
-          "serviceId": {
-            "description": "ClickHouse service ID reverse private endpoint is associated with.",
-            "type": "string",
-            "format": "uuid",
-            "example": "12345678-1234-1234-1234-123456789012"
-          },
-          "endpointId": {
-            "description": "Reverse private endpoint endpoint ID.",
-            "type": "string",
-            "example": "vpce-12345678901234567"
-          },
-          "dnsNames": {
-            "type": "array",
-            "description": "Reverse private endpoint internal DNS names.",
-            "items": {
-              "type": "string"
-            }
-          },
-          "privateDnsNames": {
-            "type": "array",
-            "description": "Reverse private endpoint private DNS names.",
-            "items": {
-              "type": "string"
-            }
-          },
-          "status": {
-            "description": "Reverse private endpoint status.",
-            "type": "string",
-            "enum": [
-              "Unknown",
-              "Provisioning",
-              "Deleting",
-              "Ready",
-              "Failed",
-              "PendingAcceptance",
-              "Rejected",
-              "Expired"
-            ],
-            "example": "Ready"
-          }
-        }
+        },
+        "required": [
+          "timestamp",
+          "type",
+          "message"
+        ]
       },
       "ClickStackAlertSilenced": {
         "properties": {
@@ -14387,7 +18359,7 @@
             "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
+            "description": "Tile ID for tile-based alerts. Must be a line, stacked bar, or number type tile.",
             "type": [
               "string",
               "null"
@@ -14411,9 +18383,17 @@
             "example": "ServiceName"
           },
           "threshold": {
-            "description": "Threshold value for triggering the alert.",
+            "description": "Threshold value for triggering the alert. For between and not_between threshold types, this is the lower bound.",
             "type": "number",
             "example": 100
+          },
+          "thresholdMax": {
+            "description": "Upper bound for between and not_between threshold types. Required when thresholdType is between or not_between, must be >= threshold.",
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 500
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -14461,7 +18441,13 @@
             "type": "string",
             "enum": [
               "above",
-              "below"
+              "below",
+              "above_exclusive",
+              "below_or_equal",
+              "equal",
+              "not_equal",
+              "between",
+              "not_between"
             ],
             "example": "above"
           },
@@ -14483,6 +18469,14 @@
               "null"
             ],
             "example": "Test Alert Message"
+          },
+          "note": {
+            "description": "Freeform note for the alert. Supports markdown formatting.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Threshold raised from 50 to 100 on 2026-01-15. See [runbook](https://wiki.example.com/runbook)."
           },
           "id": {
             "description": "Unique alert identifier.",
@@ -14515,6 +18509,13 @@
               }
             ]
           },
+          "executionErrors": {
+            "type": "array",
+            "description": "Errors recorded during the most recent alert execution, if any.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackAlertExecutionError"
+            }
+          },
           "createdAt": {
             "description": "Creation timestamp.",
             "type": [
@@ -14546,7 +18547,7 @@
             "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
+            "description": "Tile ID for tile-based alerts. Must be a line, stacked bar, or number type tile.",
             "type": [
               "string",
               "null"
@@ -14570,9 +18571,17 @@
             "example": "ServiceName"
           },
           "threshold": {
-            "description": "Threshold value for triggering the alert.",
+            "description": "Threshold value for triggering the alert. For between and not_between threshold types, this is the lower bound.",
             "type": "number",
             "example": 100
+          },
+          "thresholdMax": {
+            "description": "Upper bound for between and not_between threshold types. Required when thresholdType is between or not_between, must be >= threshold.",
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 500
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -14620,7 +18629,13 @@
             "type": "string",
             "enum": [
               "above",
-              "below"
+              "below",
+              "above_exclusive",
+              "below_or_equal",
+              "equal",
+              "not_equal",
+              "between",
+              "not_between"
             ],
             "example": "above"
           },
@@ -14642,6 +18657,14 @@
               "null"
             ],
             "example": "Test Alert Message"
+          },
+          "note": {
+            "description": "Freeform note for the alert. Supports markdown formatting.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Threshold raised from 50 to 100 on 2026-01-15. See [runbook](https://wiki.example.com/runbook)."
           }
         }
       },
@@ -14656,7 +18679,7 @@
             "example": "65f5e4a3b9e77c001a567890"
           },
           "tileId": {
-            "description": "Tile ID for tile-based alerts. May not be a Raw-SQL-based tile.",
+            "description": "Tile ID for tile-based alerts. Must be a line, stacked bar, or number type tile.",
             "type": [
               "string",
               "null"
@@ -14680,9 +18703,17 @@
             "example": "ServiceName"
           },
           "threshold": {
-            "description": "Threshold value for triggering the alert.",
+            "description": "Threshold value for triggering the alert. For between and not_between threshold types, this is the lower bound.",
             "type": "number",
             "example": 100
+          },
+          "thresholdMax": {
+            "description": "Upper bound for between and not_between threshold types. Required when thresholdType is between or not_between, must be >= threshold.",
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 500
           },
           "interval": {
             "description": "Evaluation interval for the alert.",
@@ -14730,7 +18761,13 @@
             "type": "string",
             "enum": [
               "above",
-              "below"
+              "below",
+              "above_exclusive",
+              "below_or_equal",
+              "equal",
+              "not_equal",
+              "between",
+              "not_between"
             ],
             "example": "above"
           },
@@ -14752,6 +18789,14 @@
               "null"
             ],
             "example": "Test Alert Message"
+          },
+          "note": {
+            "description": "Freeform note for the alert. Supports markdown formatting.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "Threshold raised from 50 to 100 on 2026-01-15. See [runbook](https://wiki.example.com/runbook)."
           }
         }
       },
@@ -14785,7 +18830,10 @@
               "percent",
               "byte",
               "time",
-              "number"
+              "number",
+              "data_rate",
+              "throughput",
+              "duration"
             ],
             "example": "number"
           },
@@ -14818,6 +18866,62 @@
             "description": "Currency symbol for currency format.",
             "type": "string",
             "example": "$"
+          },
+          "numericUnit": {
+            "description": "Numeric unit for data, data rate, or throughput formats.",
+            "type": "string",
+            "enum": [
+              "bytes_iec",
+              "bytes_si",
+              "bits_iec",
+              "bits_si",
+              "kibibytes",
+              "kilobytes",
+              "mebibytes",
+              "megabytes",
+              "gibibytes",
+              "gigabytes",
+              "tebibytes",
+              "terabytes",
+              "pebibytes",
+              "petabytes",
+              "packets_sec",
+              "bytes_sec_iec",
+              "bytes_sec_si",
+              "bits_sec_iec",
+              "bits_sec_si",
+              "kibibytes_sec",
+              "kibibits_sec",
+              "kilobytes_sec",
+              "kilobits_sec",
+              "mebibytes_sec",
+              "mebibits_sec",
+              "megabytes_sec",
+              "megabits_sec",
+              "gibibytes_sec",
+              "gibibits_sec",
+              "gigabytes_sec",
+              "gigabits_sec",
+              "tebibytes_sec",
+              "tebibits_sec",
+              "terabytes_sec",
+              "terabits_sec",
+              "pebibytes_sec",
+              "pebibits_sec",
+              "petabytes_sec",
+              "petabits_sec",
+              "cps",
+              "ops",
+              "rps",
+              "reads_sec",
+              "wps",
+              "iops",
+              "cpm",
+              "opm",
+              "rpm_reads",
+              "wpm"
+            ],
+            "example": "bytes_iec"
           },
           "unit": {
             "description": "Custom unit label.",
@@ -14892,7 +18996,10 @@
             "description": "Fields to group results by (creates separate series for each group)",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "host"
+            ]
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -14999,7 +19106,10 @@
             "description": "Fields to group results by (creates separate rows for each group)",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "errorType"
+            ]
           },
           "sortOrder": {
             "description": "Sort order for table rows",
@@ -15150,7 +19260,12 @@
             "description": "List of field names to display in the search results table",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "timestamp",
+              "level",
+              "message"
+            ]
           },
           "where": {
             "description": "Filter query for the data (syntax depends on whereLanguage)",
@@ -15290,6 +19405,9 @@
               "delta"
             ],
             "example": "delta"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
           }
         },
         "required": [
@@ -15398,6 +19516,173 @@
           "select"
         ]
       },
+      "ClickStackOnClickTargetIdVariant": {
+        "properties": {
+          "mode": {
+            "description": "Target is a single dashboard or log/trace source",
+            "type": "string",
+            "enum": [
+              "id"
+            ],
+            "example": "id"
+          },
+          "id": {
+            "description": "ID of the target source (for search) or dashboard (for dashboard).",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a567890"
+          }
+        },
+        "required": [
+          "mode",
+          "id"
+        ]
+      },
+      "ClickStackOnClickTargetTemplateVariant": {
+        "properties": {
+          "mode": {
+            "description": "Target is matched by name against the template.",
+            "type": "string",
+            "enum": [
+              "template"
+            ],
+            "example": "template"
+          },
+          "template": {
+            "description": "Name template rendered against the clicked row; supports `{{column}}` variables.",
+            "type": "string",
+            "example": "{{ServiceName}}"
+          }
+        },
+        "required": [
+          "mode",
+          "template"
+        ]
+      },
+      "ClickStackOnClickTarget": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackOnClickTargetIdVariant"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackOnClickTargetTemplateVariant"
+          }
+        ]
+      },
+      "ClickStackOnClickFilterTemplate": {
+        "properties": {
+          "kind": {
+            "description": "Filter template kind. Currently only \"expressionTemplate\" is supported.",
+            "type": "string",
+            "enum": [
+              "expressionTemplate"
+            ],
+            "example": "expressionTemplate"
+          },
+          "expression": {
+            "description": "The column/expression to filter the destination by (e.g. \"ServiceName\").",
+            "type": "string",
+            "example": "ServiceName"
+          },
+          "template": {
+            "description": "Value template rendered against the clicked row; supports row column variables in `{{column}}` form (e.g. `{{ServiceName}}`).",
+            "type": "string",
+            "example": "{{ServiceName}}"
+          }
+        },
+        "required": [
+          "kind",
+          "expression",
+          "template"
+        ]
+      },
+      "ClickStackOnClickSearch": {
+        "properties": {
+          "type": {
+            "description": "OnClick variant discriminator. Must be \"search\" for search link-outs.",
+            "type": "string",
+            "enum": [
+              "search"
+            ],
+            "example": "search"
+          },
+          "target": {
+            "$ref": "#/components/schemas/ClickStackOnClickTarget"
+          },
+          "whereTemplate": {
+            "description": "Optional WHERE clause template applied to the destination search.",
+            "type": "string",
+            "example": "ServiceName = '{{ServiceName}}'"
+          },
+          "whereLanguage": {
+            "description": "Language of the rendered whereTemplate.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "filters": {
+            "type": "array",
+            "description": "Optional dashboard filter templates rendered against the clicked row.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackOnClickFilterTemplate"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "target"
+        ]
+      },
+      "ClickStackOnClickDashboard": {
+        "properties": {
+          "type": {
+            "description": "OnClick variant discriminator. Must be \"dashboard\" for dashboard link-outs.",
+            "type": "string",
+            "enum": [
+              "dashboard"
+            ],
+            "example": "dashboard"
+          },
+          "target": {
+            "$ref": "#/components/schemas/ClickStackOnClickTarget"
+          },
+          "whereTemplate": {
+            "description": "Optional WHERE clause template applied to the destination dashboard.",
+            "type": "string",
+            "example": "ServiceName = '{{ServiceName}}'"
+          },
+          "whereLanguage": {
+            "description": "Language of the rendered whereTemplate.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
+          },
+          "filters": {
+            "type": "array",
+            "description": "Optional dashboard filter templates rendered against the clicked row.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackOnClickFilterTemplate"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "target"
+        ]
+      },
+      "ClickStackOnClick": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ClickStackOnClickSearch"
+          },
+          {
+            "$ref": "#/components/schemas/ClickStackOnClickDashboard"
+          }
+        ]
+      },
       "ClickStackTableBuilderChartConfig": {
         "properties": {
           "displayType": {
@@ -15442,6 +19727,14 @@
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
+          },
+          "groupByColumnsOnLeft": {
+            "description": "When true, render Group By columns to the left of series columns in the table. Defaults to false (Group By columns on the right).",
+            "type": "boolean",
+            "example": false
+          },
+          "onClick": {
+            "$ref": "#/components/schemas/ClickStackOnClick"
           }
         },
         "required": [
@@ -15508,6 +19801,77 @@
             "description": "Field expression to group results by (one slice per group value).",
             "type": "string",
             "example": "service"
+          },
+          "numberFormat": {
+            "$ref": "#/components/schemas/ClickStackNumberFormat"
+          }
+        },
+        "required": [
+          "displayType",
+          "sourceId",
+          "select"
+        ]
+      },
+      "ClickStackHeatmapSelectItem": {
+        "properties": {
+          "valueExpression": {
+            "description": "SQL expression for the value being bucketed on the y-axis. Must be non-empty.",
+            "type": "string",
+            "example": "Duration"
+          },
+          "countExpression": {
+            "description": "SQL expression for the count contributing to each bucket. Defaults to \"count()\" in the editor when omitted.",
+            "type": "string",
+            "example": "count()"
+          },
+          "heatmapScaleType": {
+            "description": "Scale type used to bucket values on the y-axis.",
+            "type": "string",
+            "enum": [
+              "log",
+              "linear"
+            ],
+            "example": "log"
+          }
+        },
+        "required": [
+          "valueExpression"
+        ]
+      },
+      "ClickStackHeatmapChartConfig": {
+        "properties": {
+          "displayType": {
+            "description": "Display type discriminator. Must be \"heatmap\" for heatmap tiles.",
+            "type": "string",
+            "enum": [
+              "heatmap"
+            ],
+            "example": "heatmap"
+          },
+          "sourceId": {
+            "description": "ID of the data source to query.",
+            "type": "string",
+            "example": "65f5e4a3b9e77c001a111111"
+          },
+          "select": {
+            "type": "array",
+            "description": "Exactly one heatmap select item.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackHeatmapSelectItem"
+            }
+          },
+          "where": {
+            "description": "Row-level filter (syntax depends on whereLanguage).",
+            "type": "string",
+            "example": "ServiceName = 'api'"
+          },
+          "whereLanguage": {
+            "description": "Query language for the where clause.",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ]
           },
           "numberFormat": {
             "$ref": "#/components/schemas/ClickStackNumberFormat"
@@ -15723,6 +20087,9 @@
               "table"
             ],
             "example": "table"
+          },
+          "onClick": {
+            "$ref": "#/components/schemas/ClickStackOnClick"
           }
         },
         "required": [
@@ -15888,11 +20255,73 @@
             "$ref": "#/components/schemas/ClickStackPieChartConfig"
           },
           {
+            "$ref": "#/components/schemas/ClickStackHeatmapChartConfig"
+          },
+          {
             "$ref": "#/components/schemas/ClickStackSearchChartConfig"
           },
           {
             "$ref": "#/components/schemas/ClickStackMarkdownChartConfig"
           }
+        ]
+      },
+      "ClickStackDashboardContainerTab": {
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the tab within its container.",
+            "type": "string",
+            "example": "errors"
+          },
+          "title": {
+            "description": "Display title for the tab.",
+            "type": "string",
+            "example": "Errors"
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ]
+      },
+      "ClickStackDashboardContainer": {
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the container within the dashboard.",
+            "type": "string",
+            "example": "service-health"
+          },
+          "title": {
+            "description": "Display title for the container.",
+            "type": "string",
+            "example": "Service Health"
+          },
+          "collapsed": {
+            "description": "Persisted default collapse state. Per-viewer state lives in the URL.",
+            "type": "boolean",
+            "example": false
+          },
+          "collapsible": {
+            "description": "Whether the user can collapse the group.",
+            "type": "boolean",
+            "example": true
+          },
+          "bordered": {
+            "description": "Whether to show a visual border around the group.",
+            "type": "boolean",
+            "example": true
+          },
+          "tabs": {
+            "type": "array",
+            "description": "Optional tabs. 2+ entries renders a tab bar; 0-1 entries renders a plain group header. Tiles join a tab via tabId.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackDashboardContainerTab"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "collapsed"
         ]
       },
       "ClickStackTileOutput": {
@@ -15924,6 +20353,16 @@
           },
           "config": {
             "$ref": "#/components/schemas/ClickStackTileConfig"
+          },
+          "containerId": {
+            "description": "References a DashboardContainer by id. Tiles without containerId render in the default ungrouped area.",
+            "type": "string",
+            "example": "service-health"
+          },
+          "tabId": {
+            "description": "References a tab inside the tile's container by id. Requires containerId to be set, and the container to declare a matching tab.",
+            "type": "string",
+            "example": "errors"
           },
           "id": {
             "description": "Unique tile ID assigned by the server.",
@@ -15969,6 +20408,16 @@
           },
           "config": {
             "$ref": "#/components/schemas/ClickStackTileConfig"
+          },
+          "containerId": {
+            "description": "References a DashboardContainer by id. Tiles without containerId render in the default ungrouped area.",
+            "type": "string",
+            "example": "service-health"
+          },
+          "tabId": {
+            "description": "References a tab inside the tile's container by id. Requires containerId to be set, and the container to declare a matching tab.",
+            "type": "string",
+            "example": "errors"
           },
           "id": {
             "description": "Optional tile ID. Omit to generate a new ID.",
@@ -16034,6 +20483,20 @@
               "exponential histogram"
             ],
             "example": "gauge"
+          },
+          "where": {
+            "description": "Optional WHERE condition to scope which rows this filter key reads values from",
+            "type": "string",
+            "example": "ServiceName:api"
+          },
+          "whereLanguage": {
+            "description": "Language of the where condition",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ],
+            "example": "lucene"
           }
         },
         "required": [
@@ -16080,6 +20543,20 @@
             ],
             "example": "gauge"
           },
+          "where": {
+            "description": "Optional WHERE condition to scope which rows this filter key reads values from",
+            "type": "string",
+            "example": "ServiceName:api"
+          },
+          "whereLanguage": {
+            "description": "Language of the where condition",
+            "type": "string",
+            "enum": [
+              "sql",
+              "lucene"
+            ],
+            "example": "lucene"
+          },
           "id": {
             "description": "Unique dashboard filter key ID",
             "type": "string"
@@ -16112,7 +20589,10 @@
             "description": "Tags for organizing and filtering dashboards.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "development"
+            ]
           },
           "filters": {
             "type": "array",
@@ -16147,6 +20627,13 @@
             "items": {
               "$ref": "#/components/schemas/ClickStackSavedFilterValue"
             }
+          },
+          "containers": {
+            "type": "array",
+            "description": "Optional grouping containers. Each tile may join a container via tile.containerId, and a tab inside it via tile.tabId.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackDashboardContainer"
+            }
           }
         },
         "required": [
@@ -16173,7 +20660,11 @@
             "description": "Tags for organizing and filtering dashboards.",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "production",
+              "updated"
+            ]
           },
           "filters": {
             "type": "array",
@@ -16208,6 +20699,13 @@
             "items": {
               "$ref": "#/components/schemas/ClickStackSavedFilterValue"
             }
+          },
+          "containers": {
+            "type": "array",
+            "description": "Optional grouping containers. Each tile may join a container via tile.containerId, and a tab inside it via tile.tabId.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackDashboardContainer"
+            }
           }
         },
         "required": [
@@ -16239,7 +20737,11 @@
             "description": "Tags for organizing and filtering dashboards",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "production",
+              "monitoring"
+            ]
           },
           "filters": {
             "type": "array",
@@ -16273,6 +20775,13 @@
             "description": "Optional default dashboard filter values restored when loading the dashboard.",
             "items": {
               "$ref": "#/components/schemas/ClickStackSavedFilterValue"
+            }
+          },
+          "containers": {
+            "type": "array",
+            "description": "Optional grouping containers. Each tile may join a container via tile.containerId, and a tab inside it via tile.tabId.",
+            "items": {
+              "$ref": "#/components/schemas/ClickStackDashboardContainer"
             }
           }
         }
@@ -16530,6 +21039,25 @@
           "aggregatedColumns"
         ]
       },
+      "ClickStackLogSourceMetadataMaterializedViews": {
+        "properties": {
+          "keyRollupTable": {
+            "description": "ClickHouse table name for the key rollup (field discovery).",
+            "type": "string",
+            "example": "otel_logs_key_rollup_15m"
+          },
+          "kvRollupTable": {
+            "description": "ClickHouse table name for the key-value rollup (value autocomplete).",
+            "type": "string",
+            "example": "otel_logs_kv_rollup_15m"
+          },
+          "granularity": {
+            "description": "The time granularity of the rollup tables.",
+            "type": "string",
+            "example": "15m"
+          }
+        }
+      },
       "ClickStackLogSource": {
         "properties": {
           "id": {
@@ -16693,6 +21221,16 @@
             "items": {
               "$ref": "#/components/schemas/ClickStackMaterializedView"
             }
+          },
+          "metadataMaterializedViews": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickStackLogSourceMetadataMaterializedViews"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -16704,6 +21242,25 @@
           "defaultTableSelectExpression",
           "timestampValueExpression"
         ]
+      },
+      "ClickStackTraceSourceMetadataMaterializedViews": {
+        "properties": {
+          "keyRollupTable": {
+            "description": "ClickHouse table name for the key rollup (field discovery).",
+            "type": "string",
+            "example": "otel_traces_key_rollup_15m"
+          },
+          "kvRollupTable": {
+            "description": "ClickHouse table name for the key-value rollup (value autocomplete).",
+            "type": "string",
+            "example": "otel_traces_kv_rollup_15m"
+          },
+          "granularity": {
+            "description": "The time granularity of the rollup tables.",
+            "type": "string",
+            "example": "15m"
+          }
+        }
       },
       "ClickStackTraceSource": {
         "properties": {
@@ -16897,6 +21454,16 @@
             "items": {
               "$ref": "#/components/schemas/ClickStackMaterializedView"
             }
+          },
+          "metadataMaterializedViews": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClickStackTraceSourceMetadataMaterializedViews"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "required": [
@@ -17435,6 +22002,32 @@
           }
         }
       },
+      "License": {
+        "properties": {
+          "id": {
+            "description": "Unique license ID.",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "description": "User-provided name for the license.",
+            "type": "string"
+          },
+          "expiration": {
+            "description": "Expiration timestamp. ISO-8601.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "memory": {
+            "description": "Memory reserved for license.",
+            "type": "string"
+          },
+          "environmentFingerprint": {
+            "description": "Environment fingerprint generated by private infrastructure.",
+            "type": "string"
+          }
+        }
+      },
       "ScimUserName": {
         "properties": {
           "formatted": {
@@ -17514,10 +22107,6 @@
         "properties": {
           "value": {
             "description": "The identifier of the group.",
-            "type": "string"
-          },
-          "$ref": {
-            "description": "The URI of the corresponding group resource.",
             "type": "string"
           },
           "display": {
@@ -17669,7 +22258,10 @@
             "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ]
           },
           "id": {
             "description": "Unique identifier for the SCIM resource. Returned by the server.",
@@ -17808,10 +22400,6 @@
             "description": "The id of the SCIM resource representing the user's manager.",
             "type": "string"
           },
-          "$ref": {
-            "description": "The URI of the SCIM resource representing the user's manager.",
-            "type": "string"
-          },
           "displayName": {
             "description": "The displayName of the user's manager.",
             "type": "string"
@@ -17852,7 +22440,10 @@
             "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ]
           },
           "userName": {
             "description": "Unique identifier for the User, typically used by the user to directly authenticate to the service provider.",
@@ -18071,7 +22662,10 @@
             "description": "SCIM schemas URIs. Should include \"urn:ietf:params:scim:schemas:core:2.0:User\".",
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:User"
+            ]
           },
           "userName": {
             "description": "Unique identifier for the User, typically used by the user to directly authenticate to the service provider.",
@@ -18206,6 +22800,647 @@
           "emails"
         ]
       },
+      "ScimGroupMember": {
+        "properties": {
+          "value": {
+            "description": "The identifier of the member (user ID).",
+            "type": "string"
+          },
+          "display": {
+            "description": "A human-readable name for the member.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Indicates the type of resource, typically \"User\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      },
+      "ScimGroupMeta": {
+        "properties": {
+          "resourceType": {
+            "description": "Always \"Group\".",
+            "type": "string"
+          },
+          "created": {
+            "description": "DateTime the Group was created.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModified": {
+            "description": "DateTime the Group was last modified.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "description": "The URI of this Group resource.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceType",
+          "created",
+          "lastModified"
+        ]
+      },
+      "ScimGroup": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs. Must include \"urn:ietf:params:scim:schemas:core:2.0:Group\".",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:Group"
+            ]
+          },
+          "id": {
+            "description": "Unique identifier for this Group (corresponds to Role ID).",
+            "type": "string",
+            "format": "uuid"
+          },
+          "externalId": {
+            "description": "Identifier for the resource as defined by the provisioning client.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Human-readable name for the Group. Maps to Role name.",
+            "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "description": "Members of the Group.",
+            "items": {
+              "$ref": "#/components/schemas/ScimGroupMember"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimGroupMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "id",
+          "displayName",
+          "meta"
+        ]
+      },
+      "ScimGroupPostRequest": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs. Must include \"urn:ietf:params:scim:schemas:core:2.0:Group\".",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:Group"
+            ]
+          },
+          "externalId": {
+            "description": "Identifier for the resource as defined by the provisioning client.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Human-readable name for the Group. Maps to Role name.",
+            "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "description": "Members of the Group.",
+            "items": {
+              "$ref": "#/components/schemas/ScimGroupMember"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "displayName"
+        ]
+      },
+      "ScimGroupPutRequest": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs. Must include \"urn:ietf:params:scim:schemas:core:2.0:Group\".",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "urn:ietf:params:scim:schemas:core:2.0:Group"
+            ]
+          },
+          "externalId": {
+            "description": "Identifier for the resource as defined by the provisioning client.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Human-readable name for the Group. Maps to Role name.",
+            "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "description": "Members of the Group.",
+            "items": {
+              "$ref": "#/components/schemas/ScimGroupMember"
+            }
+          },
+          "id": {
+            "description": "Server-assigned resource ID echoed back by the IdP. Ignored on write.",
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimGroupMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "displayName"
+        ]
+      },
+      "ScimGroupListResponse": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "Must be [\"urn:ietf:params:scim:api:messages:2.0:ListResponse\"].",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalResults": {
+            "description": "Total number of Groups matching the query.",
+            "type": "integer"
+          },
+          "startIndex": {
+            "description": "1-based index of the first result in the current set.",
+            "type": "integer"
+          },
+          "itemsPerPage": {
+            "description": "Number of resources returned in this response.",
+            "type": "integer"
+          },
+          "Resources": {
+            "type": "array",
+            "description": "Array of SCIM Group resources.",
+            "items": {
+              "$ref": "#/components/schemas/ScimGroup"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "totalResults",
+          "startIndex",
+          "itemsPerPage",
+          "Resources"
+        ]
+      },
+      "ScimBooleanFeature": {
+        "properties": {
+          "supported": {
+            "description": "Whether the feature is supported.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "supported"
+        ]
+      },
+      "ScimServiceProviderConfigPatch": {
+        "properties": {
+          "supported": {
+            "description": "Whether PATCH is supported.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "supported"
+        ]
+      },
+      "ScimServiceProviderConfigBulk": {
+        "properties": {
+          "supported": {
+            "description": "Whether bulk operations are supported.",
+            "type": "boolean"
+          },
+          "maxOperations": {
+            "description": "Maximum number of bulk operations per request.",
+            "type": "integer"
+          },
+          "maxPayloadSize": {
+            "description": "Maximum payload size for bulk requests in bytes.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "supported",
+          "maxOperations",
+          "maxPayloadSize"
+        ]
+      },
+      "ScimServiceProviderConfigFilter": {
+        "properties": {
+          "supported": {
+            "description": "Whether filter is supported.",
+            "type": "boolean"
+          },
+          "maxResults": {
+            "description": "Maximum number of results per filter query.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "supported",
+          "maxResults"
+        ]
+      },
+      "ScimAuthenticationScheme": {
+        "properties": {
+          "type": {
+            "description": "The authentication scheme type (e.g., \"httpbasic\", \"oauthbearertoken\").",
+            "type": "string"
+          },
+          "name": {
+            "description": "The common authentication scheme name.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the authentication scheme.",
+            "type": "string"
+          },
+          "specUri": {
+            "description": "An HTTP-addressable URL pointing to the scheme specification.",
+            "type": "string"
+          },
+          "primary": {
+            "description": "A Boolean value indicating the primary authentication scheme.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "description"
+        ]
+      },
+      "ScimServiceProviderConfigMeta": {
+        "properties": {
+          "resourceType": {
+            "description": "The resource type of this resource.",
+            "type": "string"
+          },
+          "location": {
+            "description": "The URI of this resource.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceType",
+          "location"
+        ]
+      },
+      "ScimServiceProviderConfig": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "documentationUri": {
+            "description": "URI of the service documentation.",
+            "type": "string"
+          },
+          "patch": {
+            "$ref": "#/components/schemas/ScimServiceProviderConfigPatch"
+          },
+          "bulk": {
+            "$ref": "#/components/schemas/ScimServiceProviderConfigBulk"
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ScimServiceProviderConfigFilter"
+          },
+          "changePassword": {
+            "$ref": "#/components/schemas/ScimBooleanFeature"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/ScimBooleanFeature"
+          },
+          "etag": {
+            "$ref": "#/components/schemas/ScimBooleanFeature"
+          },
+          "authenticationSchemes": {
+            "type": "array",
+            "description": "Supported authentication schemes.",
+            "items": {
+              "$ref": "#/components/schemas/ScimAuthenticationScheme"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimServiceProviderConfigMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "patch",
+          "bulk",
+          "filter",
+          "changePassword",
+          "sort",
+          "etag",
+          "authenticationSchemes",
+          "meta"
+        ]
+      },
+      "ScimSchemaExtension": {
+        "properties": {
+          "schema": {
+            "description": "The URI of a schema extension.",
+            "type": "string"
+          },
+          "required": {
+            "description": "Whether the schema extension is required.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "schema",
+          "required"
+        ]
+      },
+      "ScimResourceTypeMeta": {
+        "properties": {
+          "resourceType": {
+            "description": "The resource type.",
+            "type": "string"
+          },
+          "location": {
+            "description": "The URI of this resource.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceType",
+          "location"
+        ]
+      },
+      "ScimResourceType": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "description": "The resource type ID.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The resource type name.",
+            "type": "string"
+          },
+          "endpoint": {
+            "description": "The endpoint path for this resource type.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the resource type.",
+            "type": "string"
+          },
+          "schema": {
+            "description": "The primary schema URI for this resource type.",
+            "type": "string"
+          },
+          "schemaExtensions": {
+            "type": "array",
+            "description": "Optional schema extensions for this resource type.",
+            "items": {
+              "$ref": "#/components/schemas/ScimSchemaExtension"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimResourceTypeMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "id",
+          "name",
+          "endpoint",
+          "description",
+          "schema",
+          "schemaExtensions",
+          "meta"
+        ]
+      },
+      "ScimResourceTypeListResponse": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalResults": {
+            "description": "Total number of resource types.",
+            "type": "integer"
+          },
+          "itemsPerPage": {
+            "description": "Number of resources per page.",
+            "type": "integer"
+          },
+          "startIndex": {
+            "description": "1-based start index.",
+            "type": "integer"
+          },
+          "Resources": {
+            "type": "array",
+            "description": "Array of resource type definitions.",
+            "items": {
+              "$ref": "#/components/schemas/ScimResourceType"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "totalResults",
+          "itemsPerPage",
+          "startIndex",
+          "Resources"
+        ]
+      },
+      "ScimSchemaMeta": {
+        "properties": {
+          "resourceType": {
+            "description": "The resource type.",
+            "type": "string"
+          },
+          "location": {
+            "description": "The URI of this schema.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "resourceType",
+          "location"
+        ]
+      },
+      "ScimSchemaAttribute": {
+        "properties": {
+          "name": {
+            "description": "The attribute name.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The attribute type (e.g., \"string\", \"boolean\", \"complex\").",
+            "type": "string"
+          },
+          "subAttributes": {
+            "type": "array",
+            "description": "Sub-attributes for complex attributes.",
+            "items": {
+              "$ref": "#/components/schemas/ScimSchemaAttribute"
+            }
+          },
+          "multiValued": {
+            "description": "Whether the attribute can have multiple values.",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "A human-readable description of the attribute.",
+            "type": "string"
+          },
+          "required": {
+            "description": "Whether the attribute is required.",
+            "type": "boolean"
+          },
+          "caseExact": {
+            "description": "Whether the string attribute is case sensitive.",
+            "type": "boolean"
+          },
+          "mutability": {
+            "description": "The circumstances under which the value of the attribute can be (re)defined.",
+            "type": "string"
+          },
+          "returned": {
+            "description": "The circumstances under which an attribute and associated values are returned.",
+            "type": "string"
+          },
+          "uniqueness": {
+            "description": "How the service provider enforces uniqueness of attribute values.",
+            "type": "string"
+          },
+          "referenceTypes": {
+            "type": "array",
+            "description": "A multi-valued array of JSON strings.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "canonicalValues": {
+            "type": "array",
+            "description": "A collection of suggested canonical values that MAY be used.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "multiValued",
+          "description",
+          "required",
+          "mutability",
+          "returned"
+        ]
+      },
+      "ScimSchema": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "description": "The unique URI of the schema.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The schema name.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the schema.",
+            "type": "string"
+          },
+          "attributes": {
+            "type": "array",
+            "description": "Service provider attributes comprising the schema.",
+            "items": {
+              "$ref": "#/components/schemas/ScimSchemaAttribute"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ScimSchemaMeta"
+          }
+        },
+        "required": [
+          "schemas",
+          "id",
+          "name",
+          "description",
+          "attributes",
+          "meta"
+        ]
+      },
+      "ScimSchemaListResponse": {
+        "properties": {
+          "schemas": {
+            "type": "array",
+            "description": "SCIM schema URIs.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalResults": {
+            "description": "Total number of schemas.",
+            "type": "integer"
+          },
+          "itemsPerPage": {
+            "description": "Number of schemas per page.",
+            "type": "integer"
+          },
+          "startIndex": {
+            "description": "1-based start index.",
+            "type": "integer"
+          },
+          "Resources": {
+            "type": "array",
+            "description": "Array of schema definitions.",
+            "items": {
+              "$ref": "#/components/schemas/ScimSchema"
+            }
+          }
+        },
+        "required": [
+          "schemas",
+          "totalResults",
+          "itemsPerPage",
+          "startIndex",
+          "Resources"
+        ]
+      },
       "ApiKey": {
         "properties": {
           "id": {
@@ -18292,13 +23527,127 @@
           }
         }
       },
+      "ServiceClickhouseSetting": {
+        "properties": {
+          "name": {
+            "description": "Name of the setting.",
+            "type": "string",
+            "example": "compatibility"
+          },
+          "value": {
+            "description": "Current value of the setting. Returned as a string for all setting types.",
+            "type": "string",
+            "example": "24.8"
+          }
+        }
+      },
+      "ServiceClickhouseSettingsList": {
+        "properties": {
+          "settings": {
+            "type": "array",
+            "description": "List of ClickHouse settings with their current values.",
+            "items": {
+              "$ref": "#/components/schemas/ServiceClickhouseSetting"
+            }
+          }
+        }
+      },
+      "ServiceClickhouseSettingWarning": {
+        "properties": {
+          "name": {
+            "description": "Name of the setting the warning applies to.",
+            "type": "string",
+            "example": "compatibility"
+          },
+          "message": {
+            "description": "Warning message.",
+            "type": "string",
+            "example": "Changing the compatibility version without comprehensive testing can cause query failures or instability."
+          }
+        }
+      },
+      "ServiceClickhouseSettingsPatchResponse": {
+        "properties": {
+          "settings": {
+            "description": "JSON object of setting names to their applied values. Example: {\"compatibility\": \"24.8\"}",
+            "type": "string",
+            "example": "{\"compatibility\": \"24.8\"}"
+          },
+          "warnings": {
+            "type": "array",
+            "description": "Warnings for settings that may have disruptive effects.",
+            "items": {
+              "$ref": "#/components/schemas/ServiceClickhouseSettingWarning"
+            }
+          }
+        }
+      },
+      "ServiceClickhouseSettingSchemaEntry": {
+        "properties": {
+          "name": {
+            "description": "Name of the setting.",
+            "type": "string",
+            "example": "compatibility"
+          },
+          "type": {
+            "description": "Data type of the setting value.",
+            "type": "string",
+            "example": "string"
+          },
+          "description": {
+            "description": "Description of the setting.",
+            "type": "string",
+            "example": "ClickHouse version compatibility setting."
+          },
+          "enum": {
+            "type": "array",
+            "description": "List of allowed values, if the setting is an enum.",
+            "items": {
+              "type": "integer"
+            },
+            "example": [
+              0,
+              1
+            ]
+          },
+          "warning": {
+            "description": "Warning message about potential disruptive effects of changing this setting.",
+            "type": "string",
+            "example": "Changing this setting without comprehensive testing can cause instability."
+          },
+          "deprecationNotice": {
+            "description": "Deprecation notice, if applicable.",
+            "type": "string",
+            "example": "This setting may become obsolete with Cloud v2 stateless workers."
+          },
+          "example": {
+            "description": "Example value for the setting.",
+            "type": "string",
+            "example": "24.8"
+          }
+        }
+      },
+      "ServiceClickhouseSettingsSchema": {
+        "properties": {
+          "settings": {
+            "type": "array",
+            "description": "List of all configurable ClickHouse settings with their types, descriptions, and constraints.",
+            "items": {
+              "$ref": "#/components/schemas/ServiceClickhouseSettingSchemaEntry"
+            }
+          }
+        }
+      },
       "pgConfig": {
         "type": "object",
         "title": "Postgres Configuration",
         "description": "Postgres [runtime configuration](https://www.postgresql.org/docs/current/runtime-config.html) configuration.",
         "properties": {
           "max_connections": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Sets the maximum number of concurrent connections to the database server.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/max_connections/"
@@ -18317,6 +23666,20 @@
               "read committed",
               "repeatable read",
               "serializable"
+            ]
+          },
+          "ssl_min_protocol_version": {
+            "type": "string",
+            "description": "Sets the minimum SSL/TLS protocol version allowed for client connections.",
+            "externalDocs": {
+              "url": "https://postgresqlco.nf/doc/en/param/ssl_min_protocol_version/"
+            },
+            "example": "TLSv1.3",
+            "enum": [
+              "TLSv1",
+              "TLSv1.1",
+              "TLSv1.2",
+              "TLSv1.3"
             ]
           },
           "maintenance_work_mem": {
@@ -18356,7 +23719,10 @@
             "minimum": 8
           },
           "random_page_cost": {
-            "type": "number",
+            "type": [
+              "string",
+              "number"
+            ],
             "description": "Sets the planner's estimate of the cost of a non-sequentially-fetched disk page. Lower values (1.1-1.5) are better for SSDs.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/random_page_cost/"
@@ -18365,7 +23731,10 @@
             "minimum": 0
           },
           "effective_io_concurrency": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Number of concurrent disk I/O operations the planner expects. Higher values (100-200) benefit SSDs.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/effective_io_concurrency/"
@@ -18374,7 +23743,10 @@
             "minimum": 0
           },
           "max_worker_processes": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Maximum number of background processes the system can support. Includes parallel query workers, logical replication, and more.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/max_worker_processes/"
@@ -18383,7 +23755,10 @@
             "minimum": 0
           },
           "max_parallel_workers": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Maximum number of workers that can be used for parallel operations. Cannot exceed max_worker_processes.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/max_parallel_workers/"
@@ -18392,7 +23767,10 @@
             "minimum": 0
           },
           "max_parallel_workers_per_gather": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Maximum number of parallel workers per executor node for parallel queries. Use 0 to disable parallel queries.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/max_parallel_workers_per_gather/"
@@ -18401,7 +23779,10 @@
             "minimum": 0
           },
           "max_parallel_maintenance_workers": {
-            "type": "integer",
+            "type": [
+              "string",
+              "integer"
+            ],
             "description": "Maximum number of parallel workers for maintenance operations like CREATE INDEX and VACUUM.",
             "externalDocs": {
               "url": "https://postgresqlco.nf/doc/en/param/max_parallel_maintenance_workers/"
@@ -18547,7 +23928,7 @@
         "additionalProperties": false,
         "minProperties": 1,
         "example": {
-          "max_connections": "100"
+          "max_connections": 100
         }
       },
       "pgBouncerConfig": {
@@ -18574,15 +23955,12 @@
         "title": "VM size",
         "description": "The VM size for a Postgres service.",
         "enum": [
-          "c6gd.medium",
           "c6gd.large",
           "c6gd.xlarge",
           "c6gd.2xlarge",
           "c6gd.4xlarge",
           "c6gd.8xlarge",
-          "c6gd.12xlarge",
           "c6gd.16xlarge",
-          "c6gd.metal",
           "i7i.large",
           "i7i.xlarge",
           "i7i.2xlarge",
@@ -18591,9 +23969,6 @@
           "i7i.12xlarge",
           "i7i.16xlarge",
           "i7i.24xlarge",
-          "i7i.metal-24xl",
-          "i7i.48xlarge",
-          "i7i.metal-48xl",
           "i7ie.large",
           "i7ie.xlarge",
           "i7ie.2xlarge",
@@ -18602,19 +23977,13 @@
           "i7ie.12xlarge",
           "i7ie.18xlarge",
           "i7ie.24xlarge",
-          "i7ie.metal-24xl",
-          "i7ie.48xlarge",
-          "i7ie.metal-48xl",
           "i8g.large",
           "i8g.xlarge",
           "i8g.2xlarge",
           "i8g.4xlarge",
           "i8g.8xlarge",
-          "i8g.12xlarge",
           "i8g.16xlarge",
           "i8g.24xlarge",
-          "i8g.metal-24xl",
-          "i8g.48xlarge",
           "i8ge.large",
           "i8ge.xlarge",
           "i8ge.2xlarge",
@@ -18623,74 +23992,24 @@
           "i8ge.12xlarge",
           "i8ge.18xlarge",
           "i8ge.24xlarge",
-          "i8ge.metal-24xl",
-          "i8ge.48xlarge",
-          "i8ge.metal-48xl",
-          "m6a.large",
-          "m6a.xlarge",
-          "m6a.2xlarge",
-          "m6a.4xlarge",
-          "m6a.8xlarge",
-          "m6a.12xlarge",
-          "m6a.16xlarge",
-          "m6a.24xlarge",
-          "m6a.32xlarge",
-          "m6a.48xlarge",
-          "m6a.metal",
-          "m6gd.medium",
           "m6gd.large",
           "m6gd.xlarge",
           "m6gd.2xlarge",
           "m6gd.4xlarge",
           "m6gd.8xlarge",
-          "m6gd.12xlarge",
           "m6gd.16xlarge",
-          "m6gd.metal",
           "m6id.large",
           "m6id.xlarge",
           "m6id.2xlarge",
           "m6id.4xlarge",
           "m6id.8xlarge",
-          "m6id.12xlarge",
           "m6id.16xlarge",
-          "m6id.24xlarge",
-          "m6id.32xlarge",
-          "m6id.metal",
-          "m7a.medium",
-          "m7a.large",
-          "m7a.xlarge",
-          "m7a.2xlarge",
-          "m7a.4xlarge",
-          "m7a.8xlarge",
-          "m7a.12xlarge",
-          "m7a.16xlarge",
-          "m7a.24xlarge",
-          "m7a.32xlarge",
-          "m7a.48xlarge",
-          "m7a.metal-48xl",
-          "m7i.large",
-          "m7i.xlarge",
-          "m7i.2xlarge",
-          "m7i.4xlarge",
-          "m7i.8xlarge",
-          "m7i.12xlarge",
-          "m7i.16xlarge",
-          "m7i.24xlarge",
-          "m7i.metal-24xl",
-          "m7i.48xlarge",
-          "m7i.metal-48xl",
-          "m8gd.medium",
           "m8gd.large",
           "m8gd.xlarge",
           "m8gd.2xlarge",
           "m8gd.4xlarge",
           "m8gd.8xlarge",
-          "m8gd.12xlarge",
           "m8gd.16xlarge",
-          "m8gd.24xlarge",
-          "m8gd.metal-24xl",
-          "m8gd.48xlarge",
-          "m8gd.metal-48xl",
           "r6gd.medium",
           "r6gd.large",
           "r6gd.xlarge",
@@ -18699,7 +24018,6 @@
           "r6gd.8xlarge",
           "r6gd.12xlarge",
           "r6gd.16xlarge",
-          "r6gd.metal",
           "r6id.large",
           "r6id.xlarge",
           "r6id.2xlarge",
@@ -18709,7 +24027,6 @@
           "r6id.16xlarge",
           "r6id.24xlarge",
           "r6id.32xlarge",
-          "r6id.metal",
           "r8gd.medium",
           "r8gd.large",
           "r8gd.xlarge",
@@ -18719,9 +24036,7 @@
           "r8gd.12xlarge",
           "r8gd.16xlarge",
           "r8gd.24xlarge",
-          "r8gd.metal-24xl",
-          "r8gd.48xlarge",
-          "r8gd.metal-48xl"
+          "r8gd.48xlarge"
         ]
       },
       "pgHaType": {
@@ -18751,8 +24066,7 @@
         "title": "Postgres major version",
         "enum": [
           "18",
-          "17",
-          "16"
+          "17"
         ]
       },
       "pgTags": {
@@ -18760,8 +24074,9 @@
         "items": {
           "$ref": "#/components/schemas/ResourceTagsV1"
         },
+        "maxItems": 50,
         "title": "Postgres Tags",
-        "description": "Tags associated with the Postgres service."
+        "description": "Tags associated with the Postgres service. Tag keys starting with “chc_” are reserved for internal use."
       },
       "pgNameProperty": {
         "type": "string",
@@ -18773,8 +24088,8 @@
       "pgIdProperty": {
         "type": "string",
         "title": "Unique Postgres service ID",
-        "pattern": "^pg[0-9a-hj-km-np-tv-z]{24}$",
-        "example": "pgywezf3pxnp0hqxaqfp786w2w"
+        "format": "uuid",
+        "example": "f71df78e-ddad-82d0-8dfa-abbec741b82e"
       },
       "pgStateProperty": {
         "type": "string",
@@ -18782,6 +24097,7 @@
         "description": "Current state of the service",
         "enum": [
           "creating",
+          "restarting",
           "running",
           "replaying_wal",
           "restoring_backup",
@@ -18819,9 +24135,6 @@
           "size": {
             "$ref": "#/components/schemas/pgSize"
           },
-          "storageSize": {
-            "$ref": "#/components/schemas/pgStorageSize"
-          },
           "haType": {
             "$ref": "#/components/schemas/pgHaType"
           },
@@ -18847,9 +24160,6 @@
           "size": {
             "$ref": "#/components/schemas/pgSize"
           },
-          "storageSize": {
-            "$ref": "#/components/schemas/pgStorageSize"
-          },
           "haType": {
             "$ref": "#/components/schemas/pgHaType"
           },
@@ -18858,6 +24168,9 @@
           },
           "id": {
             "$ref": "#/components/schemas/pgIdProperty"
+          },
+          "storageSize": {
+            "$ref": "#/components/schemas/pgStorageSize"
           },
           "state": {
             "$ref": "#/components/schemas/pgStateProperty"
@@ -18903,9 +24216,6 @@
           "size": {
             "$ref": "#/components/schemas/pgSize"
           },
-          "storageSize": {
-            "$ref": "#/components/schemas/pgStorageSize"
-          },
           "haType": {
             "$ref": "#/components/schemas/pgHaType"
           },
@@ -18923,8 +24233,7 @@
           "name",
           "provider",
           "region",
-          "size",
-          "storageSize"
+          "size"
         ]
       },
       "PostgresServicePatchRequest": {
@@ -18932,20 +24241,8 @@
           "name": {
             "$ref": "#/components/schemas/pgNameProperty"
           },
-          "provider": {
-            "$ref": "#/components/schemas/pgProvider"
-          },
-          "region": {
-            "$ref": "#/components/schemas/pgRegion"
-          },
-          "postgresVersion": {
-            "$ref": "#/components/schemas/pgVersion"
-          },
           "size": {
             "$ref": "#/components/schemas/pgSize"
-          },
-          "storageSize": {
-            "$ref": "#/components/schemas/pgStorageSize"
           },
           "haType": {
             "$ref": "#/components/schemas/pgHaType"
@@ -18957,8 +24254,28 @@
       },
       "pgPitrRestoreTargetProperty": {
         "type": "string",
-        "title": "PITR Restore Target",
+        "format": "date-time",
+        "title": "PITR Restore Target as an RFC 3339-formatted timestamp in UTC time.",
+        "example": "2026-03-31T18:17:37Z",
         "description": "The point in time at which to recover, as either date/time, named restore point, or a specific transaction ID."
+      },
+      "pgPassword": {
+        "title": "Password",
+        "type": "string",
+        "description": "Optional password. If not provided a new password is generated and provided in the response. Must contain:\n\n* At least one lowercase letter\n* At least one uppercase letter\n* At least one digit\n",
+        "minLength": 12,
+        "maxLength": 1024,
+        "allOf": [
+          {
+            "pattern": "[a-z]"
+          },
+          {
+            "pattern": "[A-Z]"
+          },
+          {
+            "pattern": "[0-9]"
+          }
+        ]
       },
       "PostgresServiceRestoreRequest": {
         "properties": {
@@ -18986,10 +24303,7 @@
       "PostgresServiceSetPassword": {
         "properties": {
           "password": {
-            "description": "Optional password. If not provided a new password is generated and provided in the response.",
-            "type": "string",
-            "maxLength": 1024,
-            "minLength": 8
+            "$ref": "#/components/schemas/pgPassword"
           }
         }
       },
@@ -19018,9 +24332,6 @@
           "size": {
             "$ref": "#/components/schemas/pgSize"
           },
-          "storageSize": {
-            "$ref": "#/components/schemas/pgStorageSize"
-          },
           "haType": {
             "$ref": "#/components/schemas/pgHaType"
           },
@@ -19040,6 +24351,549 @@
             "$ref": "#/components/schemas/pgIsPrimaryProperty"
           }
         }
+      },
+      "PostgresServiceSetState": {
+        "properties": {
+          "command": {
+            "description": "Postgres status, which initiates a process.",
+            "type": "string",
+            "enum": [
+              "restart",
+              "promote",
+              "switchover"
+            ]
+          }
+        }
+      },
+      "PostgresServiceReadReplicaRequest": {
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/pgNameProperty"
+          },
+          "pgConfig": {
+            "$ref": "#/components/schemas/pgConfig"
+          },
+          "pgBouncerConfig": {
+            "$ref": "#/components/schemas/pgBouncerConfig"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/pgTags"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "postgresInstanceConfig": {
+        "properties": {
+          "pgConfig": {
+            "$ref": "#/components/schemas/pgConfig"
+          },
+          "pgBouncerConfig": {
+            "$ref": "#/components/schemas/pgBouncerConfig"
+          }
+        },
+        "required": [
+          "pgConfig",
+          "pgBouncerConfig"
+        ]
+      },
+      "postgresInstanceUpdateConfigResponse": {
+        "properties": {
+          "pgConfig": {
+            "$ref": "#/components/schemas/pgConfig"
+          },
+          "pgBouncerConfig": {
+            "$ref": "#/components/schemas/pgBouncerConfig"
+          },
+          "message": {
+            "description": "Informational message about the configuration update, such as restart requirements.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "pgConfig",
+          "pgBouncerConfig"
+        ]
+      },
+      "PostgresMetricDataPoint": {
+        "properties": {
+          "timestamp": {
+            "description": "Bucket start time as a Unix timestamp in seconds.",
+            "type": "integer"
+          },
+          "value": {
+            "description": "Metric value for the bucket.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "timestamp",
+          "value"
+        ]
+      },
+      "PostgresMetricSeries": {
+        "properties": {
+          "label": {
+            "description": "Distinguishing label for this series within the metric (for example a CPU mode, a database name, or \"Reads\").",
+            "type": "string"
+          },
+          "dataPoints": {
+            "type": "array",
+            "description": "Time-ordered data points, one per bucket.",
+            "items": {
+              "$ref": "#/components/schemas/PostgresMetricDataPoint"
+            }
+          }
+        },
+        "required": [
+          "label",
+          "dataPoints"
+        ]
+      },
+      "PostgresMetric": {
+        "properties": {
+          "key": {
+            "description": "Stable metric identifier (for example cpu_usage, connection_count, cache_hit_ratio).",
+            "type": "string"
+          },
+          "name": {
+            "description": "Human-readable metric name.",
+            "type": "string"
+          },
+          "unit": {
+            "description": "Unit of the metric values (for example %, IOPS, bytes/s, count).",
+            "type": "string"
+          },
+          "description": {
+            "description": "Human-readable description of what the metric measures.",
+            "type": "string"
+          },
+          "series": {
+            "type": "array",
+            "description": "One series per label dimension of the metric.",
+            "items": {
+              "$ref": "#/components/schemas/PostgresMetricSeries"
+            }
+          }
+        },
+        "required": [
+          "key",
+          "name",
+          "unit",
+          "description",
+          "series"
+        ]
+      },
+      "PostgresMetrics": {
+        "properties": {
+          "metrics": {
+            "type": "array",
+            "description": "Available metrics, each with its bucketed time series.",
+            "items": {
+              "$ref": "#/components/schemas/PostgresMetric"
+            }
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "PostgresSlowQueryPattern": {
+        "properties": {
+          "queryId": {
+            "description": "Stable identifier for the query pattern (normalized SQL).",
+            "type": "string"
+          },
+          "queryText": {
+            "description": "Normalized query text with literals replaced by placeholders.",
+            "type": "string"
+          },
+          "dbName": {
+            "description": "Database the query ran in.",
+            "type": "string"
+          },
+          "dbUser": {
+            "description": "Database user that executed the query.",
+            "type": "string"
+          },
+          "dbOperation": {
+            "description": "Top-level SQL operation type (for example, SELECT, INSERT, UPDATE, DELETE, UTILITY).",
+            "type": "string"
+          },
+          "app": {
+            "description": "Value of the Postgres `application_name` for executions matching this pattern.",
+            "type": "string"
+          },
+          "callCount": {
+            "description": "Number of times the pattern executed in the window.",
+            "type": "integer"
+          },
+          "errorCount": {
+            "description": "Number of executions of the pattern that raised an error.",
+            "type": "integer"
+          },
+          "totalDurationUs": {
+            "description": "Total execution time across all calls, in microseconds.",
+            "type": "integer"
+          },
+          "avgDurationUs": {
+            "description": "Average execution time per call, in microseconds.",
+            "type": "integer"
+          },
+          "maxDurationUs": {
+            "description": "Maximum execution time of any call, in microseconds.",
+            "type": "integer"
+          },
+          "p50DurationUs": {
+            "description": "50th percentile execution time, in microseconds.",
+            "type": "integer"
+          },
+          "p95DurationUs": {
+            "description": "95th percentile execution time, in microseconds.",
+            "type": "integer"
+          },
+          "p99DurationUs": {
+            "description": "99th percentile execution time, in microseconds.",
+            "type": "integer"
+          },
+          "totalRows": {
+            "description": "Total number of rows returned or affected across all calls.",
+            "type": "integer"
+          },
+          "totalSharedBlksRead": {
+            "description": "Total shared buffer blocks read from disk (cache misses) across all calls.",
+            "type": "integer"
+          },
+          "totalSharedBlksHit": {
+            "description": "Total shared buffer blocks hit (cache hits) across all calls.",
+            "type": "integer"
+          },
+          "totalCpuTimeUs": {
+            "description": "Total CPU time across all calls, in microseconds.",
+            "type": "integer"
+          },
+          "totalWalBytes": {
+            "description": "Total WAL (write-ahead log) bytes generated across all calls.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "queryId",
+          "queryText",
+          "dbName",
+          "dbUser",
+          "dbOperation",
+          "app",
+          "callCount",
+          "errorCount",
+          "totalDurationUs",
+          "avgDurationUs",
+          "maxDurationUs",
+          "p50DurationUs",
+          "p95DurationUs",
+          "p99DurationUs",
+          "totalRows",
+          "totalSharedBlksRead",
+          "totalSharedBlksHit",
+          "totalCpuTimeUs",
+          "totalWalBytes"
+        ]
+      },
+      "PostgresQueryExecution": {
+        "properties": {
+          "timestamp": {
+            "description": "Execution timestamp (RFC 3339).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "queryId": {
+            "description": "Stable identifier for the query pattern.",
+            "type": "string"
+          },
+          "dbName": {
+            "description": "Database the query ran in.",
+            "type": "string"
+          },
+          "dbUser": {
+            "description": "Database user that executed the query.",
+            "type": "string"
+          },
+          "dbOperation": {
+            "description": "Top-level SQL operation type.",
+            "type": "string"
+          },
+          "app": {
+            "description": "Value of the Postgres `application_name` for this execution.",
+            "type": "string"
+          },
+          "queryText": {
+            "description": "Normalized query text for this execution.",
+            "type": "string"
+          },
+          "pid": {
+            "description": "Postgres backend process ID that executed the query.",
+            "type": "string"
+          },
+          "durationUs": {
+            "description": "Execution duration in microseconds.",
+            "type": "integer"
+          },
+          "rows": {
+            "description": "Rows returned or affected.",
+            "type": "integer"
+          },
+          "sharedBlksHit": {
+            "description": "Shared buffer blocks hit.",
+            "type": "integer"
+          },
+          "sharedBlksRead": {
+            "description": "Shared buffer blocks read from disk.",
+            "type": "integer"
+          },
+          "sharedBlksWritten": {
+            "description": "Shared buffer blocks written.",
+            "type": "integer"
+          },
+          "sharedBlksDirtied": {
+            "description": "Shared buffer blocks dirtied.",
+            "type": "integer"
+          },
+          "sharedBlkReadTimeUs": {
+            "description": "Time spent reading shared blocks, in microseconds.",
+            "type": "integer"
+          },
+          "sharedBlkWriteTimeUs": {
+            "description": "Time spent writing shared blocks, in microseconds.",
+            "type": "integer"
+          },
+          "localBlksHit": {
+            "description": "Local buffer blocks hit (temp tables).",
+            "type": "integer"
+          },
+          "localBlksRead": {
+            "description": "Local buffer blocks read (temp tables).",
+            "type": "integer"
+          },
+          "localBlksWritten": {
+            "description": "Local buffer blocks written (temp tables).",
+            "type": "integer"
+          },
+          "localBlksDirtied": {
+            "description": "Local buffer blocks dirtied (temp tables).",
+            "type": "integer"
+          },
+          "tempBlksRead": {
+            "description": "Temp blocks read (spills to disk).",
+            "type": "integer"
+          },
+          "tempBlksWritten": {
+            "description": "Temp blocks written (spills to disk).",
+            "type": "integer"
+          },
+          "tempBlkReadTimeUs": {
+            "description": "Time spent reading temp blocks, in microseconds.",
+            "type": "integer"
+          },
+          "tempBlkWriteTimeUs": {
+            "description": "Time spent writing temp blocks, in microseconds.",
+            "type": "integer"
+          },
+          "walRecords": {
+            "description": "Number of WAL records produced.",
+            "type": "integer"
+          },
+          "walBytes": {
+            "description": "Number of WAL bytes produced.",
+            "type": "integer"
+          },
+          "walFpi": {
+            "description": "Number of WAL full-page images produced.",
+            "type": "integer"
+          },
+          "cpuUserTimeUs": {
+            "description": "CPU time spent in user mode, in microseconds.",
+            "type": "integer"
+          },
+          "cpuSysTimeUs": {
+            "description": "CPU time spent in kernel mode, in microseconds.",
+            "type": "integer"
+          },
+          "jitFunctions": {
+            "description": "Number of JIT-compiled functions.",
+            "type": "integer"
+          },
+          "jitGenerationTimeUs": {
+            "description": "JIT generation time, in microseconds.",
+            "type": "integer"
+          },
+          "jitInliningTimeUs": {
+            "description": "JIT inlining time, in microseconds.",
+            "type": "integer"
+          },
+          "jitOptimizationTimeUs": {
+            "description": "JIT optimization time, in microseconds.",
+            "type": "integer"
+          },
+          "jitEmissionTimeUs": {
+            "description": "JIT emission time, in microseconds.",
+            "type": "integer"
+          },
+          "jitDeformTimeUs": {
+            "description": "JIT deform time, in microseconds.",
+            "type": "integer"
+          },
+          "parallelWorkersPlanned": {
+            "description": "Parallel workers planned for this execution.",
+            "type": "integer"
+          },
+          "parallelWorkersLaunched": {
+            "description": "Parallel workers actually launched for this execution.",
+            "type": "integer"
+          },
+          "errMessage": {
+            "description": "Error message if the execution raised an error.",
+            "type": "string"
+          },
+          "errSqlstate": {
+            "description": "Postgres SQLSTATE code if the execution raised an error.",
+            "type": "string"
+          },
+          "errElevel": {
+            "description": "Postgres error severity level if the execution raised an error.",
+            "type": "integer"
+          },
+          "serverRole": {
+            "description": "Role of the server that executed the query (for example, primary or standby).",
+            "type": "string"
+          },
+          "traceId": {
+            "description": "OpenTelemetry trace ID associated with the execution.",
+            "type": "string"
+          },
+          "spanId": {
+            "description": "OpenTelemetry span ID associated with the execution.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timestamp",
+          "queryId",
+          "dbName",
+          "dbUser",
+          "dbOperation",
+          "app",
+          "queryText",
+          "pid",
+          "durationUs",
+          "rows",
+          "sharedBlksHit",
+          "sharedBlksRead",
+          "sharedBlksWritten",
+          "sharedBlksDirtied",
+          "sharedBlkReadTimeUs",
+          "sharedBlkWriteTimeUs",
+          "localBlksHit",
+          "localBlksRead",
+          "localBlksWritten",
+          "localBlksDirtied",
+          "tempBlksRead",
+          "tempBlksWritten",
+          "tempBlkReadTimeUs",
+          "tempBlkWriteTimeUs",
+          "walRecords",
+          "walBytes",
+          "walFpi",
+          "cpuUserTimeUs",
+          "cpuSysTimeUs",
+          "jitFunctions",
+          "jitGenerationTimeUs",
+          "jitInliningTimeUs",
+          "jitOptimizationTimeUs",
+          "jitEmissionTimeUs",
+          "jitDeformTimeUs",
+          "parallelWorkersPlanned",
+          "parallelWorkersLaunched",
+          "serverRole"
+        ]
+      },
+      "PostgresSlowQueryPatternDetail": {
+        "properties": {
+          "aggregate": {
+            "$ref": "#/components/schemas/PostgresSlowQueryPattern"
+          },
+          "recentExecutions": {
+            "type": "array",
+            "description": "Recent individual executions matching the pattern.",
+            "items": {
+              "$ref": "#/components/schemas/PostgresQueryExecution"
+            }
+          }
+        },
+        "required": [
+          "recentExecutions"
+        ]
+      },
+      "UpgradeWindow": {
+        "properties": {
+          "weekday": {
+            "description": "Day of the week the upgrade window starts. 0 = Sunday, 1 = Monday, …, 6 = Saturday.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6,
+            "example": 3
+          },
+          "startHourUtc": {
+            "description": "UTC hour when the upgrade window starts. Must be one of 0, 6, 12, or 18.",
+            "type": "integer",
+            "enum": [
+              0,
+              6,
+              12,
+              18
+            ],
+            "example": 12
+          },
+          "duration": {
+            "description": "Length of the upgrade window in hours. Currently only a 6-hour window is supported.",
+            "type": "integer",
+            "enum": [
+              6
+            ],
+            "example": 6
+          }
+        },
+        "required": [
+          "weekday",
+          "startHourUtc",
+          "duration"
+        ]
+      },
+      "UpgradeWindowPutRequest": {
+        "properties": {
+          "weekday": {
+            "description": "Day of the week the upgrade window starts. 0 = Sunday, 1 = Monday, …, 6 = Saturday.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6,
+            "example": 3
+          },
+          "startHourUtc": {
+            "description": "UTC hour when the upgrade window starts. Must be one of 0, 6, 12, or 18. The upgrade window currently lasts 6 hours from this start time.",
+            "type": "integer",
+            "enum": [
+              0,
+              6,
+              12,
+              18
+            ],
+            "example": 12
+          }
+        },
+        "required": [
+          "weekday",
+          "startHourUtc"
+        ]
       },
       "OrganizationPatchRequest": {
         "properties": {
@@ -19097,7 +24951,9 @@
         "properties": {
           "name": {
             "description": "Name of the service. Alphanumerical string with whitespaces up to 50 characters.",
-            "type": "string"
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 1
           },
           "provider": {
             "description": "Cloud provider",
@@ -19126,6 +24982,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -19162,7 +25019,7 @@
             }
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19171,7 +25028,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19196,7 +25053,7 @@
             "example": 120
           },
           "numReplicas": {
-            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers.",
+            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers. Present only when the service uses vertical autoscaling. For horizontal autoscaling, use minReplicas and maxReplicas instead.",
             "type": "number",
             "minimum": 1,
             "maximum": 20,
@@ -19292,7 +25149,8 @@
             "description": "Tags associated with the service.",
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
-            }
+            },
+            "maxItems": 50
           },
           "enableCoreDumps": {
             "description": "Enables the underlying infra for collecting core dumps. Default is enabled.",
@@ -19304,7 +25162,9 @@
         "properties": {
           "name": {
             "description": "Name of the service. Alphanumerical string with whitespaces up to 50 characters.",
-            "type": "string"
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 1
           },
           "ipAccessList": {
             "$ref": "#/components/schemas/IpAccessListPatch"
@@ -19357,7 +25217,7 @@
       "ServiceScalingPatchRequest": {
         "properties": {
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19366,7 +25226,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19400,7 +25260,9 @@
           },
           "name": {
             "description": "Name of the service. Alphanumerical string with whitespaces up to 50 characters.",
-            "type": "string"
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 1
           },
           "provider": {
             "description": "Cloud provider",
@@ -19429,6 +25291,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
@@ -19489,7 +25352,7 @@
             "deprecated": true
           },
           "minTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `minReplicaMemoryGb` instead. Minimum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and greater than or equal to 24. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19498,7 +25361,7 @@
             "deprecated": true
           },
           "maxTotalMemoryGb": {
-            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services.",
+            "description": "DEPRECATED - inaccurate for services with non-default numbers of replicas. Use `maxReplicaMemoryGb` instead. Maximum memory of three workers during auto-scaling in Gb. Available only for 'production' services. Must be a multiple of 12 and lower than or equal to 360 for non paid services or 1068 for paid services. Always absent for horizontal-autoscaling services (replica count is variable).",
             "type": "number",
             "minimum": 24,
             "maximum": 1068,
@@ -19507,7 +25370,7 @@
             "deprecated": true
           },
           "minReplicaMemoryGb": {
-            "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
+            "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8. Present only when the service uses vertical autoscaling.",
             "type": "number",
             "minimum": 8,
             "maximum": 356,
@@ -19515,7 +25378,7 @@
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services. Present only when the service uses vertical autoscaling.",
             "type": "number",
             "minimum": 8,
             "maximum": 356,
@@ -19523,11 +25386,33 @@
             "example": 120
           },
           "numReplicas": {
-            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers.",
+            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers. Present only when the service uses vertical autoscaling. For horizontal autoscaling, use minReplicas and maxReplicas instead.",
             "type": "number",
             "minimum": 1,
             "maximum": 20,
             "example": 3
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas for horizontal autoscaling. Present only when the service uses horizontal autoscaling.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 1
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas for horizontal autoscaling. Present only when the service uses horizontal autoscaling.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 5
+          },
+          "replicaMemoryGb": {
+            "description": "Fixed memory per replica in Gb for horizontal autoscaling. Present only when the service uses horizontal autoscaling. Must be a multiple of 4, at least 8 Gb, and at most 120 Gb for non paid services or 356 Gb for paid services.",
+            "type": "number",
+            "minimum": 8,
+            "maximum": 356,
+            "multipleOf": 4,
+            "example": 32
           },
           "idleScaling": {
             "description": "When set to true the service is allowed to scale down to zero when idle. True by default.",
@@ -19637,18 +25522,28 @@
             "description": "Tags associated with the service.",
             "items": {
               "$ref": "#/components/schemas/ResourceTagsV1"
-            }
+            },
+            "maxItems": 50
           },
           "enableCoreDumps": {
             "description": "True if the service's underline infra is enabled for collecting core dumps. This is an experimental feature",
             "type": "boolean"
+          },
+          "scalingSchedule": {
+            "$ref": "#/components/schemas/ScalingSchedule"
+          },
+          "currentScaling": {
+            "$ref": "#/components/schemas/CurrentScaling"
           }
-        }
+        },
+        "required": [
+          "currentScaling"
+        ]
       },
       "ServiceReplicaScalingPatchRequest": {
         "properties": {
           "minReplicaMemoryGb": {
-            "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8.",
+            "description": "Minimum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and greater than or equal to 8. Used for vertical autoscaling. Mutually exclusive with replicaMemoryGb.",
             "type": "number",
             "minimum": 8,
             "maximum": 356,
@@ -19656,7 +25551,7 @@
             "example": 16
           },
           "maxReplicaMemoryGb": {
-            "description": "Maximum auto-scaling memory in Gb for a single replica . Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services.",
+            "description": "Maximum auto-scaling memory in Gb for a single replica. Available only for 'production' services. Must be a multiple of 4 and lower than or equal to 120 for non paid services or 356 for paid services. Used for vertical autoscaling. Mutually exclusive with replicaMemoryGb.",
             "type": "number",
             "minimum": 8,
             "maximum": 356,
@@ -19664,11 +25559,33 @@
             "example": 120
           },
           "numReplicas": {
-            "description": "Number of replicas for the service. The number of replicas must be between 2 and 20 for the first service in a warehouse. Services that are created in an existing warehouse can have a number of replicas as low as 1. Further restrictions may apply based on your organization's tier. It defaults to 1 for the BASIC tier and 3 for the SCALE and ENTERPRISE tiers.",
+            "description": "Fixed replica count for vertical autoscaling. Mutually exclusive with minReplicas/maxReplicas. Please contact support to enable adjustment of numReplicas. When switching from horizontal autoscaling mode the existing replica memory is preserved as the new vertical min/max range; include minReplicaMemoryGb/maxReplicaMemoryGb in the same request to set an explicit range.",
             "type": "number",
             "minimum": 1,
             "maximum": 20,
             "example": 3
+          },
+          "minReplicas": {
+            "description": "Minimum number of replicas for horizontal autoscaling. Must be provided together with maxReplicas. Mutually exclusive with numReplicas. Requires horizontal autoscaling to be enabled for the service.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 1
+          },
+          "maxReplicas": {
+            "description": "Maximum number of replicas for horizontal autoscaling. Must be provided together with minReplicas. Mutually exclusive with numReplicas. Requires horizontal autoscaling to be enabled for the service.",
+            "type": "number",
+            "minimum": 1,
+            "maximum": 20,
+            "example": 5
+          },
+          "replicaMemoryGb": {
+            "description": "Fixed memory per replica in Gb for horizontal autoscaling. Must be a multiple of 4, at least 8 Gb, and at most 120 Gb for non paid services or 356 Gb for paid services. Mutually exclusive with minReplicaMemoryGb/maxReplicaMemoryGb. Requires horizontal autoscaling to be enabled for the service.",
+            "type": "number",
+            "minimum": 8,
+            "maximum": 356,
+            "multipleOf": 4,
+            "example": 32
           },
           "idleScaling": {
             "description": "When set to true the service is allowed to scale down to zero when idle. True by default.",
@@ -19712,6 +25629,18 @@
           }
         }
       },
+      "ServiceClickhouseSettingsPatchRequest": {
+        "properties": {
+          "settings": {
+            "description": "JSON object of setting names to values. Example: {\"compatibility\": \"24.8\"}",
+            "type": "string",
+            "example": "{\"compatibility\": \"24.8\"}"
+          }
+        },
+        "required": [
+          "settings"
+        ]
+      },
       "BackupConfigurationPatchRequest": {
         "properties": {
           "backupPeriodInHours": {
@@ -19719,7 +25648,7 @@
             "type": "number"
           },
           "backupRetentionPeriodInHours": {
-            "description": "The minimum duration in hours for which the backups are available.",
+            "description": "The minimum duration in hours for which the backups are available. Must be a whole number of days between 24 (1 day) and 1080 (45 days) — i.e. a multiple of 24.",
             "type": "number"
           },
           "backupStartTime": {
@@ -20030,7 +25959,7 @@
             "description": "CPU in millicores for DB ClickPipes.",
             "type": "integer",
             "minimum": 1000,
-            "maximum": 24000,
+            "maximum": 32000,
             "multipleOf": 1000,
             "example": 2000
           },
@@ -20038,7 +25967,7 @@
             "description": "Memory in GiB for DB ClickPipes. Must be 4× the CPU core count.",
             "type": "number",
             "minimum": 4,
-            "maximum": 96,
+            "maximum": 128,
             "multipleOf": 4,
             "example": 8
           }
@@ -20064,6 +25993,7 @@
               "us-west-2",
               "us-east1",
               "us-central1",
+              "europe-west2",
               "europe-west4",
               "asia-southeast1",
               "asia-northeast1",
