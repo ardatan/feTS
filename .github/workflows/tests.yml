@@ -129,7 +129,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: github.event.pull_request.head.repo.fork != true
+    # Skip for forks and dependabot PRs
+    if: github.event.pull_request.head.repo.fork != true && github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6

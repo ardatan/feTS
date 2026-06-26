@@ -22,9 +22,11 @@ jobs:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   alpha:
+    # Skip for forks, dependabot PRs and the release PR
     if:
-      ${{ github.event.pull_request.head.repo.fork != true && github.event.pull_request.title !=
-      'Upcoming Release Changes' }}
+      github.event.pull_request.head.repo.fork != true && github.event.pull_request.title !=
+      'Upcoming Release Changes' && github.actor != 'dependabot[bot]'
+
     permissions:
       contents: read
       id-token: write
