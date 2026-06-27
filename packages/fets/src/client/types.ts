@@ -159,14 +159,14 @@ interface OASParamToRequestParam<
     ? // If there is any required parameter for this parameter type, make that parameter type required
       Extract<TParameters[number], { in: TParamType; required: true }> extends never
       ? {
-          [TKey in TParamType extends keyof OASParamPropMap
-            ? OASParamPropMap[TParamType]
-            : never]?: OASParamObj<this['arg0']>;
+          [
+            TKey in TParamType extends keyof OASParamPropMap ? OASParamPropMap[TParamType] : never
+          ]?: OASParamObj<this['arg0']>;
         }
       : {
-          [TKey in TParamType extends keyof OASParamPropMap
-            ? OASParamPropMap[TParamType]
-            : never]: OASParamObj<this['arg0']>;
+          [
+            TKey in TParamType extends keyof OASParamPropMap ? OASParamPropMap[TParamType] : never
+          ]: OASParamObj<this['arg0']>;
         }
     : {};
 }
@@ -215,7 +215,7 @@ export type OASClient<TOAS extends OpenAPIDocument, TAuthParamsRequired extends 
 
 export type OASModel<
   TOAS extends OpenAPIDocument,
-  TName extends TOAS extends {
+  TName extends (TOAS extends {
     components: {
       schemas: Record<string, JSONSchema>;
     };
@@ -225,7 +225,7 @@ export type OASModel<
           definitions: Record<string, JSONSchema>;
         }
       ? keyof TOAS['definitions']
-      : never,
+      : never),
 > = TOAS extends {
   components: {
     schemas: {
@@ -693,17 +693,21 @@ export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj ex
       | {
           components: {
             securitySchemes: {
-              [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
-                ? SecuritySchemeName<TSecurityObj>
-                : never]: infer TSecurityScheme;
+              [
+                TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
+                  ? SecuritySchemeName<TSecurityObj>
+                  : never
+              ]: infer TSecurityScheme;
             };
           };
         }
       | {
           securityDefinitions: {
-            [TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
-              ? SecuritySchemeName<TSecurityObj>
-              : never]: infer TSecurityScheme;
+            [
+              TSecuritySchemeNameKey in SecuritySchemeName<TSecurityObj> extends string
+                ? SecuritySchemeName<TSecurityObj>
+                : never
+            ]: infer TSecurityScheme;
           };
         }
     ? OASSecurityParams<TSecurityScheme>

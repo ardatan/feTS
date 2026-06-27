@@ -69,8 +69,7 @@ export type OASOAuthPath<TOAS> = TOAS extends {
          */
         post(
           requestParams:
-            | OASOAuthPathRequestParamsWithHeader
-            | OASOAuthPathRequestParamsWithoutHeader,
+            OASOAuthPathRequestParamsWithHeader | OASOAuthPathRequestParamsWithoutHeader,
           requestInit?: RequestInit,
         ): Promise<
           TypedResponseWithJSONStatusMap<{
