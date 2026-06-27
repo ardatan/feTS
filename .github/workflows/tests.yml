@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Setup env
         uses: the-guild-org/shared-config/setup@v1
         with:
@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout Master
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Setup env
         uses: the-guild-org/shared-config/setup@v1
         with:
@@ -66,7 +66,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout Master
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Setup env
         uses: the-guild-org/shared-config/setup@v1
         with:
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Master
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
       - name: Setup env
         uses: the-guild-org/shared-config/setup@v1
         with:
@@ -133,7 +133,7 @@ jobs:
     if: github.event.pull_request.head.repo.fork != true && github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
       - uses: denoland/setup-deno@v2
         with:
