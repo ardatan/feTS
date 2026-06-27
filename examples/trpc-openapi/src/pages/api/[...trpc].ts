@@ -8,10 +8,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
 
   // Handle incoming OpenAPI requests
+  // @ts-expect-error - somehow the types are not matching, but it works fine
   return createOpenApiNextHandler({
-    // @ts-expect-error - somehow the types are not matching, but it works fine
     router: appRouter,
-    // @ts-expect-error - somehow the types are not matching, but it works fine
     createContext,
   })(req, res);
 };
