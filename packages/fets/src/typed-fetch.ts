@@ -38,10 +38,7 @@ type ClientErrorStatusCode =
 type ServerErrorStatusCode = 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 510 | 511;
 
 export type StatusCode =
-  | OkStatusCode
-  | RedirectStatusCode
-  | ClientErrorStatusCode
-  | ServerErrorStatusCode;
+  OkStatusCode | RedirectStatusCode | ClientErrorStatusCode | ServerErrorStatusCode;
 
 export type NotOkStatusCode = Exclude<StatusCode, OkStatusCode>;
 
@@ -74,11 +71,7 @@ export type TypedBody<
 };
 
 type DefaultHTTPHeaders =
-  | 'accept'
-  | 'accept-language'
-  | 'content-language'
-  | 'content-type'
-  | 'content-length';
+  'accept' | 'accept-language' | 'content-language' | 'content-type' | 'content-length';
 
 type Maybe = undefined | null;
 
@@ -310,15 +303,7 @@ export type TypedResponseWithJSONStatusMap<TResponseJSONStatusMap extends Status
 }[keyof TResponseJSONStatusMap];
 
 export type HTTPMethod =
-  | 'GET'
-  | 'POST'
-  | 'PUT'
-  | 'PATCH'
-  | 'DELETE'
-  | 'HEAD'
-  | 'OPTIONS'
-  | 'CONNECT'
-  | 'TRACE';
+  'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
 
 export type TypedRequestInit<
   THeaders extends Record<string, string | undefined>,

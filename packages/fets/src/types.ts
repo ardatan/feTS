@@ -140,9 +140,7 @@ export type ApiKeySecurityScheme = {
 };
 
 export type SecurityScheme =
-  | BasicAuthSecurityScheme
-  | BearerAuthSecurityScheme
-  | ApiKeySecurityScheme;
+  BasicAuthSecurityScheme | BearerAuthSecurityScheme | ApiKeySecurityScheme;
 
 /*
 Maybe later;
@@ -304,9 +302,9 @@ export interface RouterBaseObject<
     TServerContext,
     TComponents,
     TRouterSDK & {
-      [TKey in keyof TSubRouterSDK as TKey extends string
-        ? `${TPrefix}${TKey}`
-        : TKey]: TSubRouterSDK[TKey];
+      [
+        TKey in keyof TSubRouterSDK as TKey extends string ? `${TPrefix}${TKey}` : TKey
+      ]: TSubRouterSDK[TKey];
     }
   >;
   __client: TRouterSDK;
@@ -555,7 +553,9 @@ export type TypedResponseFromRouteSchemas<
   TRouteSchemas extends RouteSchemas,
 > = TRouteSchemas extends { responses: StatusCodeMap<JSONSchema> }
   ? TypedResponseWithJSONStatusMap<{
-      [TStatusCode in keyof TRouteSchemas['responses']]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
+      [
+        TStatusCode in keyof TRouteSchemas['responses']
+      ]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['responses'][TStatusCode]>
         : never;
     }>
