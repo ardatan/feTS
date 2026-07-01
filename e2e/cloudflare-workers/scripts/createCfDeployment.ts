@@ -40,7 +40,7 @@ export function createCfDeployment(
     },
     program: async () => {
       const stackName = pulumi.getStack();
-      const workerUrl = `e2e.fets.dev/${stackName}`;
+      const workerUrl = `${stackName}.ardatan.workers.dev`;
 
       // Deploy CF script as WorkersScript (accountId is a per-resource arg in v6)
       const workerScript = new cf.WorkersScript('worker', {
@@ -61,11 +61,11 @@ export function createCfDeployment(
         scriptName: stackName,
       });
 
-      // Create a nice route for easy testing
-      new cf.WorkersRoute('worker-route', {
-        script: workerScript.scriptName,
-        pattern: workerUrl + '*',
-        zoneId: env('CLOUDFLARE_ZONE_ID'),
+      new cf.WorkersScriptSubdomain('worker-subdomain', {
+        accountId: env('CLOUDFLARE_ACCOUNT_ID'),
+        scriptName: workerScript.scriptName,
+        enabled: true,
+        previewsEnabled: true,
       });
 
       return {
