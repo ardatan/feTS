@@ -40,7 +40,7 @@ export function createCfDeployment(
     },
     program: async () => {
       const stackName = pulumi.getStack();
-      const workerUrl = `e2e.graphql.yoga/${stackName}`;
+      const workerUrl = `${stackName}.ardatan.workers.dev`;
 
       // Deploy CF script as WorkersScript (accountId is a per-resource arg in v6)
       const workerScript = new cf.WorkersScript('worker', {
@@ -54,18 +54,18 @@ export function createCfDeployment(
           {
             name: 'WORKER_PATH',
             type: 'plain_text',
-            text: `/${stackName}`,
+            text: `/`,
           },
         ],
         mainModule: isModule ? 'index.js' : undefined,
         scriptName: stackName,
       });
 
-      // Create a nice route for easy testing
-      new cf.WorkersRoute('worker-route', {
-        script: workerScript.scriptName,
-        pattern: workerUrl + '*',
-        zoneId: env('CLOUDFLARE_ZONE_ID'),
+      new cf.WorkersScriptSubdomain('worker-subdomain', {
+        accountId: env('CLOUDFLARE_ACCOUNT_ID'),
+        scriptName: workerScript.scriptName,
+        enabled: true,
+        previewsEnabled: true,
       });
 
       return {
