@@ -1,5 +1,13 @@
 # example-auth
 
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies
+  [[`0fc6e01`](https://github.com/ardatan/feTS/commit/0fc6e019d4f35fd3c6ba0beb79dfdca3d104af3c)]:
+  - fets@0.8.8
+
 ## 0.0.19
 
 ### Patch Changes
