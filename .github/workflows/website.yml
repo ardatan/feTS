@@ -23,7 +23,7 @@ jobs:
       'dependabot[bot]'
     steps:
       - name: checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           fetch-depth: 0
 
@@ -39,8 +39,8 @@ jobs:
           SITE_URL:
             ${{ github.ref == 'refs/heads/master' && 'https://the-guild.dev/openapi/fets' || '' }}
         with:
-          cloudflareApiToken: ${{ secrets.WEBSITE_CF_API_TOKEN }}
-          cloudflareAccountId: ${{ secrets.WEBSITE_CF_ACCOUNT_ID }}
+          cloudflareApiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflareAccountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: fets
           prId: ${{ github.event.pull_request.number }}
