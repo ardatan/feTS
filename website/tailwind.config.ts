@@ -21,4 +21,4 @@ export default {
       },
     },
   },
-} satisfies Config;
+} as Config;
