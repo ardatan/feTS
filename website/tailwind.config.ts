@@ -21,4 +21,4 @@ export default {
       },
     },
   },
-} as Config;
+} as unknown as Config;
