@@ -1,5 +1,15 @@
 # fets
 
+## 0.8.8
+
+### Patch Changes
+
+- [#3922](https://github.com/ardatan/feTS/pull/3922)
+  [`0fc6e01`](https://github.com/ardatan/feTS/commit/0fc6e019d4f35fd3c6ba0beb79dfdca3d104af3c)
+  Thanks [@dependabot](https://github.com/apps/dependabot)! - dependencies updates:
+  - Updated dependency [`qs@^6.15.3` ↗︎](https://www.npmjs.com/package/qs/v/6.15.3) (from `^6.14.2`,
+    in `dependencies`)
+
 ## 0.8.7
 
 ### Patch Changes
