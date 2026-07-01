@@ -1,0 +1,16 @@
+diff --git a/node_modules/@theguild/components/style.css b/node_modules/@theguild/components/style.css
+index 0000000..0000001 100644
+--- a/node_modules/@theguild/components/style.css
++++ b/node_modules/@theguild/components/style.css
+@@ -1,8 +1,7 @@
+ @layer l-base, l-nextra, l-components;
+ 
+-@import 'tailwindcss/base' layer(l-base);
+-@import 'nextra-theme-docs/dist/style.css' layer(l-nextra);
+-@import 'tailwindcss/components' layer(l-components);
+-@import 'tailwindcss/utilities';
++@import 'tailwindcss';
++@config '../../../website/tailwind.config.ts';
++@import 'nextra-theme-docs/dist/style.css' layer(l-nextra);
+ 
+ .nextra-banner-container._bg-neutral-900._flex {

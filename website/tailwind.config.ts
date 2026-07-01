@@ -1,4 +1,5 @@
-import tailwindConfig, { Config } from '@theguild/tailwind-config';
+import tailwindConfig from '@theguild/tailwind-config';
+import type { Config } from 'tailwindcss';
 
 export default {
   ...tailwindConfig,
