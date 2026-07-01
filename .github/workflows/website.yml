@@ -35,7 +35,7 @@ jobs:
       - uses: the-guild-org/shared-config/website-cf@v1
         name: build and deploy website
         env:
-          NEXT_BASE_PATH: ${{ github.ref == 'refs/heads/master' && '/' || '/' }}
+          NEXT_BASE_PATH: ''
           SITE_URL: ${{ github.ref == 'refs/heads/master' && 'https://fets.dev' || '' }}
         with:
           cloudflareApiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
