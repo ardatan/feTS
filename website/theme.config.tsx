@@ -1,12 +1,13 @@
 /* eslint sort-keys: error */
 import { useRouter } from 'next/router';
-import { defineConfig, Giscus, PRODUCTS, useTheme } from '@theguild/components';
+import type { ReactNode } from 'react';
+import { Giscus, PRODUCTS, useTheme } from '@theguild/components';
 
-export default defineConfig({
+export default {
   description: PRODUCTS.FETS.title,
   docsRepositoryBase: 'https://github.com/ardatan/fets/tree/master/website',
   logo: PRODUCTS.FETS.logo,
-  main({ children }) {
+  main({ children }: { children: ReactNode }) {
     const { resolvedTheme } = useTheme();
     const { route } = useRouter();
 
@@ -30,4 +31,4 @@ export default defineConfig({
     );
   },
   websiteName: 'FETS',
-});
+};
