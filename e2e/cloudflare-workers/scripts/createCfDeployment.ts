@@ -40,7 +40,7 @@ export function createCfDeployment(
     },
     program: async () => {
       const stackName = pulumi.getStack();
-      const workerUrl = `e2e.graphql.yoga/${stackName}`;
+      const workerUrl = `e2e.fets.dev/${stackName}`;
 
       // Deploy CF script as WorkersScript (accountId is a per-resource arg in v6)
       const workerScript = new cf.WorkersScript('worker', {
