@@ -54,7 +54,7 @@ export function createCfDeployment(
           {
             name: 'WORKER_PATH',
             type: 'plain_text',
-            text: `/${stackName}`,
+            text: `/`,
           },
         ],
         mainModule: isModule ? 'index.js' : undefined,
