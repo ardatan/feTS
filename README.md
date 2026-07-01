@@ -13,9 +13,9 @@
 
 </div>
 
-## [Documentation](https://www.the-guild.dev/fets)
+## [Documentation](https://fets.dev)
 
-Our [documentation website](https://www.the-guild.dev/fets) will help you get started.
+Our [documentation website](https://fets.dev) will help you get started.
 
 ## [Examples](https://github.com/ardatan/fets/tree/master/examples)
 
