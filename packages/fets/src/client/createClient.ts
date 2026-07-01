@@ -62,7 +62,7 @@ function useValidationErrors(): ClientPlugin {
  *
  * We recommend using the `NormalizeOAS` type to normalize the OpenAPI document
  *
- * @see https://fets.dev/client/quick-start#usage-with-existing-rest-api
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-existing-rest-api
  *
  * @example
  * ```ts
@@ -89,7 +89,7 @@ export function createClient<
  *
  * We recommend using the `NormalizeOAS` type to normalize the OpenAPI document
  *
- * @see https://fets.dev/client/quick-start#usage-with-existing-rest-api
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-existing-rest-api
  *
  * @example
  * ```ts
@@ -105,7 +105,7 @@ export function createClient<const TOAS extends OpenAPIDocument>(
 /**
  * Create a client from a typed `Router`
  *
- * @see https://fets.dev/client/quick-start#usage-with-fets-server
+ * @see https://the-guild.dev/openapi/fets/client/quick-start#usage-with-fets-server
  */
 export function createClient<const TRouter extends Router<any, any, any>>(
   options: ClientOptions,

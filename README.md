@@ -2,7 +2,7 @@
   <h3>feTS</h3>
   <h5>Fetch API ❤️ TypeScript</h5>
   <h6>Fully-featured HTTP framework to build REST APIs with focus on easy setup, performance & great developer experience</h6>
-  <a href="https://fets.dev"><b>Go to documenation</b></a>
+  <a href="https://the-guild.dev/openapi/fets"><b>Go to documentation</b></a>
 </div>
 
 <br />
@@ -13,9 +13,9 @@
 
 </div>
 
-## [Documentation](https://fets.dev)
+## [Documentation](https://the-guild.dev/openapi/fets)
 
-Our [documentation website](https://fets.dev) will help you get started.
+Our [documentation website](https://the-guild.dev/openapi/fets) will help you get started.
 
 ## [Examples](https://github.com/ardatan/fets/tree/master/examples)
 
