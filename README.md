@@ -2,7 +2,7 @@
   <h3>feTS</h3>
   <h5>Fetch API ❤️ TypeScript</h5>
   <h6>Fully-featured HTTP framework to build REST APIs with focus on easy setup, performance & great developer experience</h6>
-  <a href="https://fets.dev"><b>Go to documenation</b></a>
+  <a href="https://fets.dev"><b>Go to documentation</b></a>
 </div>
 
 <br />
