@@ -477,13 +477,13 @@ export interface ClientOptions {
   /**
    * WHATWG compatible fetch implementation
    *
-   * @see https://the-guild.dev/openapi/fets/client/client-configuration#customizing-the-fetch-function
+   * @see https://fets.dev/client/client-configuration#customizing-the-fetch-function
    */
   fetchFn?: ClientFetchFn;
   /**
    * Plugins to extend the client functionality
    *
-   * @see https://the-guild.dev/openapi/fets/client/plugins
+   * @see https://fets.dev/client/plugins
    */
   plugins?: ClientPlugin[];
   /**
