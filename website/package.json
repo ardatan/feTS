@@ -24,6 +24,7 @@
   "devDependencies": {
     "@img/sharp-libvips-linux-x64": "1.2.3",
     "@svgr/webpack": "^8.0.1",
+    "@tailwindcss/postcss": "^4.3.2",
     "@theguild/tailwind-config": "0.6.4",
     "@types/node": "25.9.4",
     "@types/react": "19.2.17",
