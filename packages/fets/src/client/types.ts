@@ -681,12 +681,23 @@ export type SecuritySchemeName<T extends { security: { [key: string]: any }[] }>
   T['security']
 >[number];
 
+type HasAnonymousSecurityAlternative<T extends { security: { [key: string]: any }[] }> =
+  true extends (T['security'][number] extends infer TRequirement
+    ? TRequirement extends unknown
+      ? keyof TRequirement extends never
+        ? true
+        : false
+      : false
+    : false)
+  ? true
+  : false;
+
 export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme> &
   BearerAuthParams<TSecurityScheme> &
   ApiKeyAuthParams<TSecurityScheme> &
   OAuth2AuthParams<TSecurityScheme>;
 
-export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj extends {
+type OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj> = TSecurityObj extends {
   security: { [key: string]: any }[];
 }
   ? TOAS extends
@@ -727,5 +738,13 @@ export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj ex
           ? OAuth2AuthParams<{
               type: 'oauth2';
             }>
-          : {}
+        : {}
+  : {};
+
+export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj extends {
+  security: { [key: string]: any }[];
+}
+  ? HasAnonymousSecurityAlternative<TSecurityObj> extends true
+    ? DeepPartial<OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj>>
+    : OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj>
   : {};

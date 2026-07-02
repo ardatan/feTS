@@ -38,6 +38,7 @@ export default {
       get: {
         operationId: 'getMe',
         security: [
+          {},
           {
             apiKey: [],
           },
