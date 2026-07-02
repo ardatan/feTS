@@ -15,6 +15,7 @@ const nextraClientPath = path.join(
 /** @type {import('next').NextConfig} */
 export default withGuildDocs({
   output: 'export',
+  pageExtensions: ['tsx', 'mdx'],
   webpack(config) {
     config.resolve.alias['nextra/components'] = path.join(nextraClientPath, 'components', 'index.js');
     config.resolve.alias['nextra/setup-page'] = path.join(nextraClientPath, 'setup-page.js');
