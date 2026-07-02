@@ -682,15 +682,17 @@ export type SecuritySchemeName<T extends { security: { [key: string]: any }[] }>
 >[number];
 
 type HasAnonymousSecurityAlternative<T extends { security: { [key: string]: any }[] }> =
-  true extends (T['security'][number] extends infer TRequirement
-    ? TRequirement extends unknown
-      ? keyof TRequirement extends never
-        ? true
+  true extends (
+    T['security'][number] extends infer TRequirement
+      ? TRequirement extends unknown
+        ? keyof TRequirement extends never
+          ? true
+          : false
         : false
       : false
-    : false)
-  ? true
-  : false;
+  )
+    ? true
+    : false;
 
 export type OASSecurityParams<TSecurityScheme> = BasicAuthParams<TSecurityScheme> &
   BearerAuthParams<TSecurityScheme> &
@@ -738,7 +740,7 @@ type OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj> = TSecurityObj exten
           ? OAuth2AuthParams<{
               type: 'oauth2';
             }>
-        : {}
+          : {}
   : {};
 
 export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj extends {
