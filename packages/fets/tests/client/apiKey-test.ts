@@ -17,6 +17,8 @@ if (!res.ok) {
 const data = await res.json();
 console.info(`User ${data.id}: ${data.name}`);
 
+await client['/me'].get();
+
 const clientWithPredefined = createClient<NormalizedOAS>({
   globalParams: {
     headers: {
