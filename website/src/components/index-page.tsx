@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
- 
-import { IBM_Plex_Sans } from 'next/font/google';
+
 import { clsx } from 'clsx';
 import { Anchor } from '@theguild/components';
 import { Editor } from './editor';
@@ -19,13 +18,8 @@ import OpenAPI from '../../public/assets/openapi.svg';
 import TypeScript from '../../public/assets/typescript.svg';
 import WebSockets from '../../public/assets/websockets.svg';
 
-const IBMPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-});
-
 const classes = {
-  font: IBMPlexSans.className,
+  font: 'font-sans',
   btn: clsx(
     'transition-colors max-lg:px-4 py-3 px-6 bg-secondary-500 dark:bg-secondary-100 text-white dark:text-secondary-600 rounded-md font-bold hover:!bg-secondary-300 hover:!text-white',
   ),
