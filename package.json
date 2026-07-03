@@ -55,7 +55,7 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-n": "18.2.1",
-    "eslint-plugin-tailwindcss": "3.18.3",
+    "eslint-plugin-tailwindcss": "4.0.6",
     "husky": "9.1.7",
     "jest": "30.4.2",
     "js-yaml": "4.3.0",
