@@ -9,7 +9,7 @@
       @import 'https://cdn.jsdelivr.net/gh/Itz-fork/Fastapi-Swagger-UI-Dark/assets/swagger_ui_dark.min.css'
         (prefers-color-scheme: dark);
 
-      @import 'https://unpkg.com/swagger-ui-dist/swagger-ui.css' (prefers-color-scheme: light);
+      @import 'https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css' (prefers-color-scheme: light);
 
       @media (prefers-color-scheme: dark) {
         .swagger-ui textarea {
@@ -42,7 +42,7 @@
 
   <body>
     <div id="swagger-ui"></div>
-    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" crossorigin></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin integrity="sha384-7u9nq7L2L5R2LqS3Q3L9L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5L5"></script>
     <script>
       window.onload = () => {
         window.ui = SwaggerUIBundle(__SWAGGER_UI_OPTIONS__);
