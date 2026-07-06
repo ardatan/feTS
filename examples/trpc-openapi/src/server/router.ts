@@ -24,6 +24,8 @@ const t = initTRPC
     },
   });
 
+// Use explicit types instead of `CreateNextContextOptions` from @trpc/server/adapters/next because
+// @trpc/server v11 added a required `info` property to that type that trpc-openapi doesn't provide.
 export const createContext = async ({
   req,
   res,
