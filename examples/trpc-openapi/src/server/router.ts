@@ -1,8 +1,8 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 import { OpenApiMeta } from 'trpc-openapi';
 import { z } from 'zod';
 import { initTRPC, TRPCError } from '@trpc/server';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { database, Post, User } from './database';
 
 const jwtSecret = crypto.randomUUID();
