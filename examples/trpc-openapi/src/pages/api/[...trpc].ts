@@ -8,9 +8,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
 
   // Handle incoming OpenAPI requests
-  // @ts-expect-error - somehow the types are not matching, but it works fine
+  // TODO: Remove `as any` once trpc-openapi supports @trpc/server v11 (missing `getErrorShape` in Router type)
   return createOpenApiNextHandler({
-    router: appRouter,
+    router: appRouter as any,
     createContext,
   })(req, res);
 };

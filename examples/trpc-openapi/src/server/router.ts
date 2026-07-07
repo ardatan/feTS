@@ -1,8 +1,8 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 import { OpenApiMeta } from 'trpc-openapi';
 import { z } from 'zod';
 import { initTRPC, TRPCError } from '@trpc/server';
-import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 import { database, Post, User } from './database';
 
 const jwtSecret = crypto.randomUUID();
@@ -24,7 +24,15 @@ const t = initTRPC
     },
   });
 
-export const createContext = async ({ req, res }: CreateNextContextOptions): Promise<Context> => {
+// Use explicit types instead of `CreateNextContextOptions` from @trpc/server/adapters/next because
+// @trpc/server v11 added a required `info` property to that type that trpc-openapi doesn't provide.
+export const createContext = async ({
+  req,
+  res,
+}: {
+  req: NextApiRequest;
+  res: NextApiResponse;
+}): Promise<Context> => {
   const requestId = crypto.randomUUID();
   res.setHeader('x-request-id', requestId);
 
