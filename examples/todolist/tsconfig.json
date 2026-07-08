@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "module": "commonjs",
     "sourceMap": true,
     "lib": ["esnext", "DOM", "DOM.Iterable"],
