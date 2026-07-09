@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "wrangler deploy --dry-run --outdir=dist",
-    "e2e": "ts-node -r tsconfig-paths/register scripts/e2e.ts",
+    "e2e": "tsx scripts/e2e.ts",
     "start": "wrangler dev"
   },
   "dependencies": {
@@ -13,8 +13,7 @@
   "devDependencies": {
     "@pulumi/cloudflare": "6.17.0",
     "@pulumi/pulumi": "3.251.0",
-    "ts-node": "10.9.2",
-    "tsconfig-paths": "4.2.0",
+    "tsx": "4.23.0",
     "typescript": "7.0.2",
     "wrangler": "4.108.0"
   }
