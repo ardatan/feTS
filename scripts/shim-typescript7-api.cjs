@@ -61,3 +61,24 @@ packageJson.exports = {
 };
 
 fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 4)}\n`);
+
+// @typescript/typescript6 depends on `@typescript/old` (typescript@^6), which also
+// publishes a `tsc` bin. npm may link node_modules/.bin/tsc to that package and
+// silently run the TS6 compiler. Force the workspace tsc shim back to typescript@7.
+const binDir = path.join(path.dirname(typescriptDir), '.bin');
+const tscBinPath = path.join(typescriptDir, 'bin', 'tsc');
+for (const name of ['tsc', 'tsc.cmd', 'tsc.ps1']) {
+  const linkPath = path.join(binDir, name);
+  try {
+    if (fs.existsSync(linkPath) || fs.lstatSync(linkPath).isSymbolicLink()) {
+      fs.rmSync(linkPath, { force: true });
+    }
+  } catch {
+    // ignore missing/broken link
+  }
+}
+try {
+  fs.symlinkSync(path.relative(binDir, tscBinPath), path.join(binDir, 'tsc'));
+} catch {
+  // Best-effort on platforms where symlink creation is restricted.
+}
