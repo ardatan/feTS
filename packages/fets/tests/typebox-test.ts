@@ -136,10 +136,10 @@ if (res.ok) {
 // only accept TypeObject with string keys and values for request header schema
 
 {
-  // @ts-expect-error this should only accept objects
   createRouter().route({
     path: '/foo',
     method: 'POST',
+    // @ts-expect-error this should only accept objects
     schemas: {
       request: {
         headers: Type.String(),
@@ -154,10 +154,10 @@ if (res.ok) {
 // only accept TypeObject with string keys and values for request header schema
 
 {
-  // @ts-expect-error this should only accept objects with string values
   createRouter().route({
     path: '/foo',
     method: 'POST',
+    // @ts-expect-error this should only accept objects with string values
     schemas: {
       request: {
         headers: Type.Object({
@@ -174,10 +174,10 @@ if (res.ok) {
 // only accept TypeObject with string keys and values for request params schema
 
 {
-  // @ts-expect-error this should only accept objects
   createRouter().route({
     path: '/foo',
     method: 'POST',
+    // @ts-expect-error this should only accept objects
     schemas: {
       request: {
         params: Type.String(),
@@ -192,10 +192,10 @@ if (res.ok) {
 // only accept TypeObject with string keys and values for request params schema
 
 {
-  // @ts-expect-error this should only accept objects with string values
   createRouter().route({
     path: '/foo',
     method: 'POST',
+    // @ts-expect-error this should only accept objects with string values
     schemas: {
       request: {
         params: Type.Object({
@@ -212,10 +212,10 @@ if (res.ok) {
 // only accept TypeObject with string keys and values for request query schema
 
 {
-  // @ts-expect-error this should only accept objects
   createRouter().route({
     path: '/foo',
     method: 'POST',
+    // @ts-expect-error this should only accept objects
     schemas: {
       request: {
         query: Type.String(),

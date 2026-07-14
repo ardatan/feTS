@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   return createOpenApiNextHandler({
     router: appRouter as any,
     createContext,
-  })(req, res);
+  } as any)(req, res);
 };
 
 export default handler;

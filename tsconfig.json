@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".",
 
     "target": "es2021",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["esnext", "es2021"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -13,7 +12,6 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "incremental": true,
     "disableSizeLimit": true,
 
@@ -27,10 +25,9 @@
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@e2e/*": ["e2e/*/src/index.ts"],
-      "fets": ["packages/fets/src/index.ts"]
+      "@e2e/*": ["./e2e/*/src/index.ts"],
+      "fets": ["./packages/fets/src/index.ts"]
     },
-    "ignoreDeprecations": "6.0",
     "types": ["node", "jest"],
     "rootDir": "."
   },

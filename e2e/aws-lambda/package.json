@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/bundle.js",
-    "e2e": "ts-node -r tsconfig-paths/register scripts/e2e.ts"
+    "e2e": "tsx scripts/e2e.ts"
   },
   "dependencies": {
     "@e2e/shared-scripts": "0.0.0",
@@ -15,8 +15,7 @@
     "@pulumi/pulumi": "3.253.0",
     "@types/aws-lambda": "8.10.162",
     "esbuild": "0.28.1",
-    "ts-node": "10.9.2",
-    "tsconfig-paths": "4.2.0",
-    "typescript": "6.0.3"
+    "tsx": "4.23.0",
+    "typescript": "7.0.2"
   }
 }
