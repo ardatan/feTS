@@ -4,7 +4,8 @@
     "outDir": "dist",
     "module": "node16",
     "moduleResolution": "node16",
-    "rootDir": "."
+    "rootDir": ".",
+    "paths": {}
   },
   "include": ["./start-server.ts"],
   "exclude": []

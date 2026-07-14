@@ -28,7 +28,7 @@
     "@types/node": "26.1.1",
     "@types/react": "19.2.17",
     "@typescript/sandbox": "^0.1.14",
-    "dompurify": "3.4.11",
+    "dompurify": "3.4.12",
     "estree-util-value-to-estree": "3.5.0",
     "monaco-editor": "0.55.1",
     "postcss-import": "16.1.1",
@@ -39,7 +39,7 @@
     "webpack": "5.108.4"
   },
   "overrides": {
-    "dompurify": "3.4.11",
+    "dompurify": "3.4.12",
     "webpack": "5.108.4"
   }
 }
