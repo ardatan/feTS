@@ -11,7 +11,7 @@
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
-    "@pulumi/cloudflare": "6.17.0",
+    "@pulumi/cloudflare": "6.18.0",
     "@pulumi/pulumi": "3.253.0",
     "tsx": "4.23.1",
     "typescript": "7.0.2",
