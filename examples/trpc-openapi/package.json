@@ -14,9 +14,9 @@
     "jsonwebtoken": "^9.0.3",
     "next": "^16.1.6",
     "nextjs-cors": "^2.1.2",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "swagger-ui-react": "^5.32.9",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "swagger-ui-react": "^5.32.10",
     "trpc-openapi": "^1.1.2",
     "zod": "^4.1.12"
   },

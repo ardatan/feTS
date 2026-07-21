@@ -14,8 +14,8 @@
     "@types/react-dom": "19.2.3",
     "fets": "0.8.7",
     "next": "16.2.10",
-    "react": "^19.2.7",
-    "react-dom": "19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "19.2.8",
     "typescript": "7.0.2"
   }
 }
