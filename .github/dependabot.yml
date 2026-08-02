@@ -43,3 +43,10 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+      actions-deps-pulumi:
+        patterns:
+          - '@pulumi/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
