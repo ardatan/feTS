@@ -13,8 +13,8 @@
   "devDependencies": {
     "@pulumi/cloudflare": "6.18.0",
     "@pulumi/pulumi": "^3.255.0",
-    "tsx": "4.23.1",
+    "tsx": "4.23.4",
     "typescript": "7.0.2",
-    "wrangler": "4.115.0"
+    "wrangler": "4.118.0"
   }
 }
