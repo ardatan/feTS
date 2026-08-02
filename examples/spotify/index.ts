@@ -90,7 +90,7 @@ async function main() {
   const data = await res.json();
   console.table(
     data.tracks?.items?.map(item => ({
-      artist: item.artists?.map(artist => artist.name).join(', '),
+      artist: item.artists?.map((artist: { name: string }) => artist.name).join(', '),
       album: item.album?.name,
       name: item.name,
     })),
