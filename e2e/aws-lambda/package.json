@@ -15,7 +15,7 @@
     "@pulumi/pulumi": "3.255.0",
     "@types/aws-lambda": "8.10.162",
     "esbuild": "0.28.1",
-    "tsx": "4.23.4",
+    "tsx": "4.23.5",
     "typescript": "7.0.2"
   }
 }
