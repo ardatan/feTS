@@ -12,14 +12,24 @@ Instead of using JSON Schemas, you have the option to define your schemas using
 ```typescript
 import { createRouter, Response, Type } from 'fets'
 
-const router = createRouter().route({ path: '/user/:id', method: 'POST', schemas: { request: {
-headers: Type.Object({ authorization: Type.String().regex(/Bearer .+/) }), params: Type.Object({ id:
-Type.String({ format: 'uuid' }) }) } }, // Response type will be automatically inferred from the
-handler's return type handler: request => { if (request.params.id !== EXPECTED_UUID) { return
-Response.json( { message: 'User not found' }, { status: 404 } ) } return Response.json({ id:
-request.params.id, name: 'John Doe' }) } })
-
-````
+const router = createRouter().route({
+  path: '/user/:id',
+  method: 'POST',
+  schemas: {
+    request: {
+      headers: Type.Object({ authorization: Type.String() }),
+      params: Type.Object({ id: Type.String({ format: 'uuid' }) })
+    }
+  },
+  // Response type will be automatically inferred from the handler's return type
+  handler: request => {
+    if (request.params.id !== EXPECTED_UUID) {
+      return Response.json({ message: 'User not found' }, { status: 404 })
+    }
+    return Response.json({ id: request.params.id, name: 'John Doe' })
+  }
+})
+```
 </Tabs.Tab>
 <Tabs.Tab>
 ```typescript
@@ -66,7 +76,7 @@ const router = createRouter().route({
     })
   }
 })
-````
+```
 
 </Tabs.Tab>
 </Tabs>
