@@ -747,6 +747,6 @@ export type OASSecurityParamsBySecurityRef<TOAS, TSecurityObj> = TSecurityObj ex
   security: { [key: string]: any }[];
 }
   ? HasAnonymousSecurityAlternative<TSecurityObj> extends true
-    ? DeepPartial<OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj>>
+    ? Partial<OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj>>
     : OASSecurityParamsBySecurityRefBase<TOAS, TSecurityObj>
   : {};
