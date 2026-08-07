@@ -1,3 +1,17 @@
+diff --git a/node_modules/js-yaml/dist/js-yaml.cjs.js b/node_modules/js-yaml/dist/js-yaml.cjs.js
+index 8f08abb..7c2e907 100644
+--- a/node_modules/js-yaml/dist/js-yaml.cjs.js
++++ b/node_modules/js-yaml/dist/js-yaml.cjs.js
+@@ -3262,4 +3262,7 @@ exports.strTag = strTag;
+ exports.timestampTag = timestampTag;
+ exports.visit = visit;
+ 
+-//# sourceMappingURL=js-yaml.cjs.js.map
+\ No newline at end of file
++//# sourceMappingURL=js-yaml.cjs.js.map
++exports.safeLoad = exports.load;
++exports.safeLoadAll = exports.loadAll;
++exports.safeDump = exports.dump;
 diff --git a/node_modules/js-yaml/dist/js-yaml.mjs b/node_modules/js-yaml/dist/js-yaml.mjs
 index 5bfb9ff..7794c25 100644
 --- a/node_modules/js-yaml/dist/js-yaml.mjs
