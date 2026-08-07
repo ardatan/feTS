@@ -290,4 +290,48 @@ describe('TypeBox', () => {
       message: 'Hello world!',
     });
   });
+  it('coerces numeric and boolean query parameters', async () => {
+    const router = createRouter().route({
+      path: '/items',
+      method: 'GET',
+      schemas: {
+        request: {
+          query: Type.Object({
+            limit: Type.Number(),
+            offset: Type.Integer(),
+            active: Type.Boolean(),
+          }),
+        },
+      },
+      handler(request) {
+        const { limit, offset, active } = request.query;
+        return Response.json({
+          limit,
+          offset,
+          active,
+          types: {
+            limit: typeof limit,
+            offset: typeof offset,
+            active: typeof active,
+          },
+        });
+      },
+    });
+
+    const response = await router.fetch(
+      'http://localhost:3000/items?limit=10&offset=5&active=true',
+    );
+
+    expect(response.status).toEqual(200);
+    await expect(response.json()).resolves.toEqual({
+      limit: 10,
+      offset: 5,
+      active: true,
+      types: {
+        limit: 'number',
+        offset: 'number',
+        active: 'boolean',
+      },
+    });
+  });
 });

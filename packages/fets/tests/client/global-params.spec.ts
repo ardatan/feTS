@@ -31,4 +31,52 @@ describe('Client Global Params', () => {
     expect(data.headers['x-api-key']).toBe('123');
     expect(data.query['foo']).toBe('bar');
   });
+
+  it('should apply RequestInit fields from globalParams', async () => {
+    let seenCredentials: RequestCredentials | undefined;
+    const router = createRouter().route({
+      path: '/test',
+      method: 'GET',
+      handler: () => new Response(null, { status: 204 }),
+    });
+    const client = createClient<typeof router>({
+      endpoint: 'http://localhost:3000',
+      fetchFn: async (_input, init) => {
+        seenCredentials = init?.credentials;
+        return new Response(null, { status: 204 });
+      },
+      globalParams: {
+        credentials: 'include',
+      },
+    });
+
+    await client['/test'].get();
+
+    expect(seenCredentials).toBe('include');
+  });
+
+  it('should let per-request RequestInit override globalParams', async () => {
+    let seenCredentials: RequestCredentials | undefined;
+    const router = createRouter().route({
+      path: '/test',
+      method: 'GET',
+      handler: () => new Response(null, { status: 204 }),
+    });
+    const client = createClient<typeof router>({
+      endpoint: 'http://localhost:3000',
+      fetchFn: async (_input, init) => {
+        seenCredentials = init?.credentials;
+        return new Response(null, { status: 204 });
+      },
+      globalParams: {
+        credentials: 'include',
+      },
+    });
+
+    await client['/test'].get({
+      credentials: 'omit',
+    });
+
+    expect(seenCredentials).toBe('omit');
+  });
 });

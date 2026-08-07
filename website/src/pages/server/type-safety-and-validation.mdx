@@ -11,13 +11,20 @@ It allows us to have:
   response body is ensured. You can use a tool like
   [feTS Client](/client/quick-start#infer-types-from-fets-server) that is capable of inferring these
   types from the router instance.
-- **Request Validation:** feTS validates the request parameters and if the request is invalid, it
-  returns a `400 Bad Request`.
+- **Request Validation:** When schemas are built with TypeBox (`Type.*`), feTS validates the request
+  and returns `400 Bad Request` if it is invalid. Plain JSON Schema objects provide typing and
+  OpenAPI metadata only — they are **not** validated at runtime.
 - **Safe and Fast Serialization:** feTS uses the response schema to serialize the response body.
   Rather than JSON.stringify, it uses
   [fast-json-stringify](https://github.com/fastify/fast-json-stringify)which is twice as fast
   according to the benchmarks found
   [here](https://github.com/fastify/fast-json-stringify#how-it-works).
+
+<Callout type="warning">
+  **Runtime validation requires TypeBox.** Use `Type.Object(...)`, `Type.String()`, etc. from
+  `fets` / `@sinclair/typebox`. Hand-written JSON Schema (`{ type: 'object', ... }`) still gives you
+  TypeScript types and OpenAPI docs, but will not reject invalid requests at runtime.
+</Callout>
 
 <Callout>
 If you want to use [JSON Schema formats](https://json-schema.org/understanding-json-schema/reference/string#format) like `uuid`, you need to register formats using `registerFormats`.
@@ -169,7 +176,11 @@ const router = createRouter().route({
 ### Query Parameters
 
 Similar, for query parameters like `/todos?limit=10&offset=0`, we can use `schemas.request.query` to
-define the schema:
+define the schema.
+
+With TypeBox schemas, feTS coerces query string values to the declared types before validation
+(for example `"10"` → `10` for `Type.Number()`, and `"true"` → `true` for `Type.Boolean()`), so
+handlers receive correctly typed values:
 
 <Tabs items={['JSON Schema', 'TypeBox']}>
 <Tabs.Tab>

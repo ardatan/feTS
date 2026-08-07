@@ -28,9 +28,10 @@ const a: Test = {
 };
 
 if (a.child?.child?.child) {
-  // @ts-expect-error number is a number
+  // @ts-expect-error number is number | bigint
   a.child.child.child.number = 'a';
   a.child.child.child.number = 1;
+  a.child.child.child.number = 1n;
 }
 
 type Test2 = FromSchema<OASJSONResponseSchema<NormalizedOAS, '/tree', 'get', '200'>>;
@@ -65,10 +66,11 @@ const response = await client['/tree'].get(); // <--- HERE THERE IS AN ERROR TS2
 if (response.ok) {
   const body = await response.json();
   if (body.child?.child?.child) {
-    // @ts-expect-error number is a number
+    // @ts-expect-error number is number | bigint
     body.child.child.child.number = 'a';
 
     body.child.child.child.number = 1;
+    body.child.child.child.number = 1n;
   }
 } else {
   console.log(response.status);
@@ -80,7 +82,8 @@ const numberA = nodeA.child?.child?.child?.child?.number;
 type NumberA = typeof numberA;
 let numberAVar: NumberA;
 numberAVar = 2;
-// @ts-expect-error - numberAVar is a number
+numberAVar = 2n;
+// @ts-expect-error - numberAVar is number | bigint
 numberAVar = 'a';
 
 console.log(numberAVar);

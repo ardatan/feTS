@@ -6,6 +6,34 @@ As your API grows, it becomes important to split routes across multiple files an
 together. feTS supports this through the `.use()` method on the router, allowing you to merge
 sub-routers into a parent router.
 
+## Server Context
+
+Handlers receive a second `context` argument typed from `createRouter<TServerContext>()`. Use it to
+pass platform-specific values (for example the underlying Node/`uWebSockets` request) or
+request-scoped data from plugins.
+
+```ts
+import { createRouter, Response } from 'fets'
+
+interface AppContext {
+  userId?: string
+}
+
+const router = createRouter<AppContext>().route({
+  method: 'GET',
+  path: '/me',
+  handler(_request, context) {
+    return Response.json({ userId: context.userId ?? null })
+  }
+})
+
+// When calling the router, pass context as the second argument to `fetch` / `handle`
+await router.fetch('http://localhost/me', {}, { userId: '42' })
+```
+
+Platform integrations often type `ServerContext` with the native request/response objects — see
+[uWebSockets](/server/integrations/uwebsockets) for an example.
+
 ## Basic Usage
 
 You can merge a sub-router into a parent router by calling `.use()` with the sub-router as the

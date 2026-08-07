@@ -137,40 +137,59 @@ export function createClient({
         get(_target, method: HTTPMethod): ClientMethod {
           async function clientMethod(requestParams: ClientRequestParams = {}) {
             // Merge globalParams with the current requestParams
-            if (globalParams?.headers) {
-              requestParams.headers = {
-                ...globalParams.headers,
-                ...requestParams.headers,
-              };
-            }
-            if (globalParams?.query) {
-              requestParams.query = {
-                ...globalParams.query,
-                ...requestParams.query,
-              };
-            }
-            if (globalParams?.params) {
-              requestParams.params = {
-                ...globalParams.params,
-                ...requestParams.params,
-              };
-            }
-            if (globalParams?.json) {
-              requestParams.json = {
-                ...globalParams.json,
-                ...requestParams.json,
-              };
-            }
-            if (globalParams?.formData) {
-              requestParams.formData = {
-                ...globalParams.formData,
-                ...requestParams.formData,
-              };
-            }
-            if (globalParams?.formUrlEncoded) {
-              requestParams.formUrlEncoded = {
-                ...globalParams.formUrlEncoded,
-                ...requestParams.formUrlEncoded,
+            if (globalParams) {
+              const {
+                headers: globalHeaders,
+                query: globalQuery,
+                params: globalPathParams,
+                json: globalJson,
+                formData: globalFormData,
+                formUrlEncoded: globalFormUrlEncoded,
+                ...globalRequestInit
+              } = globalParams;
+
+              if (globalHeaders) {
+                requestParams.headers = {
+                  ...globalHeaders,
+                  ...requestParams.headers,
+                };
+              }
+              if (globalQuery) {
+                requestParams.query = {
+                  ...globalQuery,
+                  ...requestParams.query,
+                };
+              }
+              if (globalPathParams) {
+                requestParams.params = {
+                  ...globalPathParams,
+                  ...requestParams.params,
+                };
+              }
+              if (globalJson) {
+                requestParams.json = {
+                  ...globalJson,
+                  ...requestParams.json,
+                };
+              }
+              if (globalFormData) {
+                requestParams.formData = {
+                  ...globalFormData,
+                  ...requestParams.formData,
+                };
+              }
+              if (globalFormUrlEncoded) {
+                requestParams.formUrlEncoded = {
+                  ...globalFormUrlEncoded,
+                  ...requestParams.formUrlEncoded,
+                };
+              }
+
+              // Apply remaining RequestInit fields (credentials, mode, etc.)
+              // Per-request values win over global ones.
+              requestParams = {
+                ...globalRequestInit,
+                ...requestParams,
               };
             }
 
