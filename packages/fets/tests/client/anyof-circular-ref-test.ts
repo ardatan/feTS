@@ -1,8 +1,9 @@
 import { createClient, OASModel, type NormalizeOAS } from 'fets';
-import type anyOfCircularRefOAS from './fixtures/example-anyof-circular-ref-oas';
 
 // This resolves anyOf circular reference correctly
-type NormalizedOAS = NormalizeOAS<typeof anyOfCircularRefOAS>;
+type NormalizedOAS = NormalizeOAS<
+  (typeof import('./fixtures/example-anyof-circular-ref-oas'))['default']
+>;
 
 // OASModel should work for the schemas
 type FilterGroupModel = OASModel<NormalizedOAS, 'FilterGroup'>;
