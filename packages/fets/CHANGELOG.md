@@ -1,5 +1,29 @@
 # fets
 
+## 0.8.8
+
+### Patch Changes
+
+- [#3922](https://github.com/ardatan/feTS/pull/3922)
+  [`0fc6e01`](https://github.com/ardatan/feTS/commit/0fc6e019d4f35fd3c6ba0beb79dfdca3d104af3c)
+  Thanks [@dependabot](https://github.com/apps/dependabot)! - dependencies updates:
+  - Updated dependency [`qs@^6.15.3` ↗︎](https://www.npmjs.com/package/qs/v/6.15.3) (from `^6.14.2`,
+    in `dependencies`)
+
+- [#3983](https://github.com/ardatan/feTS/pull/3983)
+  [`c87a2d0`](https://github.com/ardatan/feTS/commit/c87a2d037d0ba98a9edc738c7d7d73786d8e6214)
+  Thanks [@dependabot](https://github.com/apps/dependabot)! - dependencies updates:
+  - Updated dependency
+    [`@sinclair/typebox@^0.34.50` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.34.50)
+    (from `^0.34.48`, in `dependencies`)
+
+- [#3987](https://github.com/ardatan/feTS/pull/3987)
+  [`7081e7b`](https://github.com/ardatan/feTS/commit/7081e7b7730083907825c255f0c193acaa81493b)
+  Thanks [@dependabot](https://github.com/apps/dependabot)! - dependencies updates:
+  - Updated dependency
+    [`@sinclair/typebox@^0.34.52` ↗︎](https://www.npmjs.com/package/@sinclair/typebox/v/0.34.52)
+    (from `^0.34.50`, in `dependencies`)
+
 ## 0.8.7
 
 ### Patch Changes
