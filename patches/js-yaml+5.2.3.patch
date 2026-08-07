@@ -1,0 +1,12 @@
+diff --git a/node_modules/js-yaml/dist/js-yaml.mjs b/node_modules/js-yaml/dist/js-yaml.mjs
+index 5bfb9ff..7794c25 100644
+--- a/node_modules/js-yaml/dist/js-yaml.mjs
++++ b/node_modules/js-yaml/dist/js-yaml.mjs
+@@ -3156,4 +3156,5 @@ function eventsToAst(events, options) {
+ //#endregion
+ export { CHOMPING_CLIP, CHOMPING_KEEP, CHOMPING_STRIP, COLLECTION_STYLE_BLOCK, COLLECTION_STYLE_FLOW, CORE_SCHEMA, EVENT_ALIAS, EVENT_DOCUMENT, EVENT_MAPPING, EVENT_POP, EVENT_SCALAR, EVENT_SEQUENCE, FAILSAFE_SCHEMA, JSON_SCHEMA, MERGE_KEY, NOT_RESOLVED, SCALAR_STYLE_DOUBLE_QUOTED, SCALAR_STYLE_FOLDED_BLOCK, SCALAR_STYLE_LITERAL_BLOCK, SCALAR_STYLE_PLAIN, SCALAR_STYLE_SINGLE_QUOTED, Schema, Style, VISIT_BREAK, VISIT_SKIP, YAML11_SCHEMA, YAMLException, binaryTag, boolCoreTag, boolJsonTag, boolYaml11Tag, constructFromEvents, defineMappingTag, defineScalarTag, defineSequenceTag, dump, eventsToAst, floatCoreTag, floatJsonTag, floatYaml11Tag, getScalarValue, intCoreTag, intJsonTag, intYaml11Tag, jsToAst, legacyMapTag, load, loadAll, mapTag, mergeTag, nullCoreTag, nullJsonTag, nullYaml11Tag, omapTag, pairsTag, parseEvents, present, realMapTag, seqTag, setTag, strTag, timestampTag, visit };
+ 
+-//# sourceMappingURL=js-yaml.mjs.map
+\ No newline at end of file
++//# sourceMappingURL=js-yaml.mjs.map
++export default { load, loadAll, dump };
