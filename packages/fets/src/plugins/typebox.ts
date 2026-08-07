@@ -81,8 +81,15 @@ export function useTypeBox<TServerContext, TComponents extends RouterComponentsB
         }
       }
       if (schemas?.request?.query && TypeGuard.IsSchema(schemas.request.query)) {
+        // Query string values are always strings; coerce to schema types
+        // (number/integer/boolean/etc.) before validation and handler access.
+        const convertedQuery = Value.Convert(schemas.request.query, request.query);
+        Object.defineProperty(request, 'query', {
+          value: convertedQuery,
+          configurable: true,
+        });
         const validateFn = getValidateFn(schemas.request.query);
-        const errors = [...validateFn(request.query)].map(error => sanitizeError(error, 'query'));
+        const errors = [...validateFn(convertedQuery)].map(error => sanitizeError(error, 'query'));
         if (errors.length) {
           throw new HTTPError(
             400,

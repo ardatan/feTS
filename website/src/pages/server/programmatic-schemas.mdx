@@ -1,4 +1,4 @@
-import { Tabs } from '@theguild/components'
+import { Callout, Tabs } from '@theguild/components'
 
 # Building Schemas Programmatically with TypeBox
 
@@ -21,8 +21,10 @@ const router = createRouter().route({
       headers: Type.Object({ authorization: Type.String() }),
       params: Type.Object({ id: Type.String({ format: 'uuid' }) })
     }
+    // Add schemas.responses if you need them in the generated OpenAPI document
   },
-  // Response type will be automatically inferred from the handler's return type
+  // TypeScript infers the handler return type for the router client,
+  // but that does not populate OpenAPI `responses` at runtime.
   handler: request => {
     if (request.params.id !== EXPECTED_UUID) {
       return Response.json({ message: 'User not found' }, { status: 404 })
@@ -60,8 +62,10 @@ const router = createRouter().route({
         required: ['id']
       }
     }
+    // Add schemas.responses if you need them in the generated OpenAPI document
   },
-  // Response type will be automatically inferred from the handler's return type
+  // TypeScript infers the handler return type for the router client,
+  // but that does not populate OpenAPI `responses` at runtime.
   handler: request => {
     if (request.params.id !== EXPECTED_UUID) {
       return Response.json({ message: 'User not found' }, { status: 404 })
@@ -74,13 +78,25 @@ const router = createRouter().route({
 </Tabs.Tab>
 </Tabs>
 
+<Callout type="warning">
+  TypeScript can infer response types from the handler return value for the typed router client, but
+  feTS cannot reflect those types into the generated OpenAPI document. Define `schemas.responses`
+  explicitly if you need OpenAPI response schemas.
+</Callout>
+
 ## Why not Zod?
 
-feTS uses JSON Schemas, and libraries like Zod have their own API and logic to handle validations
-and modeling. With feTS, you can use any tool that generates JSON Schemas programmatically but we
-recommend using TypeBox which keeps the types of output JSON Schemas so feTS can infer types from
-them. And without any conversion process, those generated schemas can be directly added into the
-OpenAPI document.
+feTS is built around **JSON Schema**. Any library that produces JSON Schema can be used for
+**typing** and OpenAPI documentation.
+
+**Runtime request validation**, however, currently requires
+[TypeBox](https://github.com/sinclairzx81/typebox) schemas (`Type.*`). Plain JSON Schema objects are
+used for types and OpenAPI generation only — they are not validated at runtime. We intentionally
+avoid embedding a heavier general-purpose validator (such as AJV) to keep the bundle small.
+
+Libraries like Zod can still be used if you convert their schemas to JSON Schema for typing/OpenAPI,
+but feTS does not ship a multi-validator adapter layer. Prefer TypeBox when you need both types and
+runtime validation.
 
 In addition, you can see how fast TypeBox is;
 [Type Benchmarks](https://moltar.github.io/typescript-runtime-type-benchmarks/)

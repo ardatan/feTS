@@ -25,7 +25,10 @@ const client = createClient<typeof oas>({
 ## Global Parameters
 
 You can also pass global parameters to the `createClient` function. These parameters will be passed
-to every request made by the client.
+to every request made by the client. This includes feTS request fields (`headers`, `query`,
+`params`, `json`, …) as well as standard `RequestInit` options such as `credentials`.
+
+Per-request values override global ones.
 
 ```ts
 import { oas } from './oas'
@@ -34,7 +37,8 @@ const client = createClient<typeof oas>({
   globalParams: {
     headers: {
       Authorization: 'Bearer 123'
-    }
+    },
+    credentials: 'include'
   }
 })
 ```

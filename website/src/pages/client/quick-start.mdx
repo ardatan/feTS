@@ -52,6 +52,18 @@ console.log(pets)
   `disableSizeLimit: true` to `compilerOptions` in your `tsconfig.json` file.
 </Callout>
 
+## React Native / Expo
+
+feTS Client is Fetch-based and does not depend on Node-only APIs. Reported React Native / Expo
+crashes have usually come from Metro failing to resolve `@sinclair/typebox` (or a TypeBox subpath
+such as `@sinclair/typebox/compiler`) to a build Hermes can load—not from feTS itself.
+
+If you hit that, configure Metro’s custom `resolveRequest` (or equivalent) so TypeBox resolves to
+the package entry that works in your Expo/RN version. `extraNodeModules` alone only remaps package
+roots; it does not override `package.json` `exports` selection.
+
+feTS does not ship first-class React Native shims.
+
 ## Usage with feTS Server
 
 If you're using feTS Server, and you're sharing the types of your router instance, you can infer
