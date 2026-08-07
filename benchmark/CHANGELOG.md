@@ -1,5 +1,19 @@
 # @fets/benchmark
 
+## 0.0.49
+
+### Patch Changes
+
+- Updated dependencies
+  [[`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561),
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561),
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561),
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561),
+  [`efa4e40`](https://github.com/ardatan/feTS/commit/efa4e402b5ab92093ea8daff314216368658fdc7),
+  [`d7dc0ce`](https://github.com/ardatan/feTS/commit/d7dc0ce9978cd7c1294a2d78072cafbfd3edcc40),
+  [`0ba3386`](https://github.com/ardatan/feTS/commit/0ba3386f90f612d4d571b493f30eaf329ca2e3b0)]:
+  - fets@0.8.9
+
 ## 0.0.48
 
 ### Patch Changes

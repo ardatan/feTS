@@ -1,5 +1,135 @@
 # fets
 
+## 0.8.9
+
+### Patch Changes
+
+- [#4078](https://github.com/ardatan/feTS/pull/4078)
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix TS2615 circular reference errors for OpenAPI
+  schemas that use `anyOf` / `oneOf` with recursive `$ref`s
+
+  Schemas that model recursive unions (for example a `FilterGroup` whose `filters` items are
+  `anyOf: [FilterGroup, SoloFilter]`) previously failed type-checking with TypeScript error
+  **TS2615** ("Type of property X circularly references itself in mapped type") when used with
+  `NormalizeOAS`, `OASModel`, `OASOutput`, or `createClient`.
+
+  `json-schema-to-ts` expands `anyOf`/`oneOf` through `MergeSubSchema`, which produces anonymous
+  mapped types that break TypeScript's cycle detection. feTS now detects these circular
+  `anyOf`/`oneOf` graphs (via the `$id` markers injected by `$ref` resolution) and routes them
+  through a named recursive `DirectType` alias that TypeScript can evaluate lazily—the same pattern
+  as `type Tree<T> = { value: T; children: Tree<T>[] }`.
+
+  ```ts
+  // FilterGroup → filters → anyOf → FilterGroup no longer throws TS2615
+  type Normalized = NormalizeOAS<typeof spec>
+  type FilterGroup = OASModel<Normalized, 'FilterGroup'>
+  const client = createClient<Normalized>({ endpoint: 'https://api.example.com' })
+  const body = { filters: [{ field: 'targetIp' }] }
+  await client['/test'].post({ json: body })
+  ```
+
+- [#4078](https://github.com/ardatan/feTS/pull/4078)
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561)
+  Thanks [@ardatan](https://github.com/ardatan)! - Fix `globalParams` so standard `RequestInit`
+  fields (e.g. `credentials`, `mode`) are applied to every request
+
+  `createClient({ globalParams })` previously only merged feTS-specific fields (`headers`, `query`,
+  `params`, `json`, `formData`, `formUrlEncoded`). Values like `credentials: 'include'` were
+  silently ignored, even though they are part of `ClientRequestParams` / `RequestInit`.
+
+  The client now spreads the remaining `RequestInit` options from `globalParams` into each request.
+  Per-request options still win over global ones.
+
+  ```ts
+  const client = createClient<NormalizeOAS<typeof spec>>({
+    endpoint: 'https://api.example.com',
+    globalParams: {
+      credentials: 'include',
+      headers: { Authorization: 'Bearer …' }
+    }
+  })
+  ```
+
+- [#4078](https://github.com/ardatan/feTS/pull/4078)
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561)
+  Thanks [@ardatan](https://github.com/ardatan)! - Preserve `number | bigint` for `format: int64`
+  fields on recursive / self-referential schemas
+
+  When a schema recursively referenced itself (for example `Node.child → Node`), feTS disabled
+  `json-schema-to-ts` deserialize mappings to avoid TS2615. That also dropped the int64 widening, so
+  `integer` + `format: int64` incorrectly inferred as `number` instead of `number | bigint`.
+
+  Recursive schemas now go through `DirectType`, which maps `format: int64` (and `format: binary`)
+  the same way non-circular schemas do via deserialize.
+
+  ```ts
+  type Node = OASModel<NormalizeOAS<typeof treeOAS>, 'Node'>
+  // node.number is number | bigint | undefined (was number | undefined)
+  const n: Node = { number: 1n, child: { number: 2 } }
+  ```
+
+- [#4078](https://github.com/ardatan/feTS/pull/4078)
+  [`e3be332`](https://github.com/ardatan/feTS/commit/e3be332c75b545cc417904dd7a3f4409e4453561)
+  Thanks [@ardatan](https://github.com/ardatan)! - Coerce TypeBox query parameter values from
+  strings before validation
+
+  Query strings always arrive as strings (`?limit=10` → `{ limit: '10' }`). TypeBox schemas such as
+  `Type.Number()` / `Type.Integer()` / `Type.Boolean()` then failed validation with
+  `400 Bad Request`, even for valid URL input.
+
+  The TypeBox plugin now runs `Value.Convert` on `request.query` before validating, so handlers
+  receive correctly typed values and numeric/boolean query params validate successfully.
+
+  ```ts
+  createRouter().route({
+    path: '/items',
+    method: 'GET',
+    schemas: {
+      request: {
+        query: Type.Object({
+          limit: Type.Number(),
+          active: Type.Boolean()
+        })
+      }
+    },
+    handler(request) {
+      // GET /items?limit=10&active=true
+      // request.query.limit === 10 (number)
+      // request.query.active === true (boolean)
+      return Response.json(request.query)
+    }
+  })
+  ```
+
+- [#4081](https://github.com/ardatan/feTS/pull/4081)
+  [`efa4e40`](https://github.com/ardatan/feTS/commit/efa4e402b5ab92093ea8daff314216368658fdc7)
+  Thanks [@ardatan](https://github.com/ardatan)! - Make client auth params optional when an
+  operation's `security` array includes an anonymous alternative (`{}`)
+
+  OpenAPI allows listing an empty security requirement beside authenticated schemes so callers may
+  omit credentials. The client types previously still required auth params whenever any scheme was
+  present. Empty `{}` entries are now detected and the corresponding auth params become optional.
+
+- [#4083](https://github.com/ardatan/feTS/pull/4083)
+  [`d7dc0ce`](https://github.com/ardatan/feTS/commit/d7dc0ce9978cd7c1294a2d78072cafbfd3edcc40)
+  Thanks [@ardatan](https://github.com/ardatan)! - Pin the Swagger UI dark-theme CSS to an immutable
+  jsDelivr GitHub commit
+
+  The dark stylesheet is loaded from
+  `cdn.jsdelivr.net/gh/Itz-fork/Fastapi-Swagger-UI-Dark@868ea5da…` with SRI, so upstream
+  default-branch changes cannot invalidate the integrity hash or swap the file silently.
+
+- [#4082](https://github.com/ardatan/feTS/pull/4082)
+  [`0ba3386`](https://github.com/ardatan/feTS/commit/0ba3386f90f612d4d571b493f30eaf329ca2e3b0)
+  Thanks [@ardatan](https://github.com/ardatan)! - Pin Swagger UI CDN assets and load them with
+  Subresource Integrity (SRI)
+
+  Swagger UI previously pulled unversioned `unpkg.com/swagger-ui-dist` scripts/styles without
+  integrity checks. Assets are now pinned to `swagger-ui-dist@5.11.0` and loaded via
+  `<link>`/`<script>` tags with `integrity` + `crossorigin`, so a compromised CDN cannot silently
+  swap the payload.
+
 ## 0.8.8
 
 ### Patch Changes
