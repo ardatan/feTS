@@ -14,7 +14,7 @@
     "@pulumi/azure-native": "3.25.0",
     "@pulumi/pulumi": "^3.255.0",
     "esbuild": "0.28.1",
-    "tsx": "4.23.7",
+    "tsx": "4.23.10",
     "typescript": "7.0.2"
   }
 }
