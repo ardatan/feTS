@@ -20,7 +20,7 @@ const router = createRouter().route({
     request: {
       headers: Type.Object({ authorization: Type.String() }),
       params: Type.Object({ id: Type.String({ format: 'uuid' }) })
-    },
+    }
     // Add schemas.responses if you need them in the generated OpenAPI document
   },
   // TypeScript infers the handler return type for the router client,
@@ -61,7 +61,7 @@ const router = createRouter().route({
         additionalProperties: false,
         required: ['id']
       }
-    },
+    }
     // Add schemas.responses if you need them in the generated OpenAPI document
   },
   // TypeScript infers the handler return type for the router client,
