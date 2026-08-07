@@ -37,7 +37,9 @@ export default {
     '/me': {
       get: {
         operationId: 'getMe',
+        // Empty object = anonymous alternative; auth is optional
         security: [
+          {},
           {
             apiKey: [],
           },
