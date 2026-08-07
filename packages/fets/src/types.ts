@@ -275,7 +275,7 @@ export type DirectType<T extends JSONSchema> = T extends { static: infer U }
                         : T extends {
                               type: 'object';
                               properties: infer Props extends Record<string, JSONSchema>;
-                              required: infer Req extends string[];
+                              required: infer Req extends readonly string[];
                             }
                           ? {
                               [K in Extract<keyof Props, Req[number]>]: DirectType<Props[K]>;

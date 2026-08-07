@@ -101,13 +101,14 @@ documentation from your routes.
 [tRPC](https://trpc.io/) is a great choice when both client and server are TypeScript and you want
 RPC-style procedures without an HTTP contract. feTS takes a different approach:
 
-|                | feTS                               | tRPC                                |
-| -------------- | ---------------------------------- | ----------------------------------- |
-| Contract       | OpenAPI / JSON Schema (HTTP-first) | TypeScript procedures (RPC-first)   |
-| Non-TS clients | Any OpenAPI client works           | Needs a custom client or adapter    |
-| Validation     | TypeBox / JSON Schema              | Zod (typical)                       |
-| Bundle focus   | Thin Fetch-based client            | Heavier client runtime for features |
+|                  | feTS                                         | tRPC                                                              |
+| ---------------- | -------------------------------------------- | ----------------------------------------------------------------- |
+| Contract         | OpenAPI / JSON Schema (HTTP-first)           | TypeScript procedures (RPC-first)                                 |
+| OpenAPI document | Generated from routes out of the box         | Optional via adapters such as `trpc-openapi`                      |
+| Non-TS clients   | Any OpenAPI-compatible client                | Needs a custom client, or an OpenAPI/HTTP adapter                 |
+| Validation       | TypeBox / JSON Schema                        | Zod (typical)                                                     |
+| Client shape     | Thin Fetch-based client                      | Small core client; feature packages add React Query and similar   |
 
 Choose **feTS** when you want a portable OpenAPI surface, Swagger UI, and a typed Fetch client.
 Choose **tRPC** when you prefer end-to-end RPC ergonomics inside a TypeScript monorepo and do not
-need a public OpenAPI document.
+need a first-class OpenAPI document.

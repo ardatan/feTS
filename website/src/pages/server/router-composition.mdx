@@ -27,7 +27,8 @@ const router = createRouter<AppContext>().route({
   }
 })
 
-// When calling the router, pass context as the second argument to `fetch` / `handle`
+// `fetch(url, init?, ...ctx)` — context comes after the optional RequestInit
+// `handle(request, context)` — context is the second argument
 await router.fetch('http://localhost/me', {}, { userId: '42' })
 ```
 

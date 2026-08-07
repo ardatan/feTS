@@ -11,8 +11,13 @@ type RequestBodyModel = OASModel<NormalizedOAS, 'RequestBody'>;
 
 const filterGroup = {} as FilterGroupModel;
 
-// Should be able to navigate the anyOf circular structure
-const nestedOperator = filterGroup.filters?.[0];
+// `operator` and `filters` are required on FilterGroup
+// @ts-expect-error - empty object is missing required fields
+const _incompleteFilterGroup: FilterGroupModel = {};
+void _incompleteFilterGroup;
+
+// Should be able to navigate the anyOf circular structure (filters is required)
+const nestedOperator = filterGroup.filters[0];
 type NestedFilterType = typeof nestedOperator;
 let nestedFilterVar: NestedFilterType;
 nestedFilterVar = { field: 'targetIp' };
