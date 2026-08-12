@@ -30,50 +30,66 @@ export type JSONSerializer = (obj: any) => string;
 
 export type JSONSchema = Exclude<JSONSchemaOrBoolean, boolean>;
 
+/**
+ * Schema accepted by route definitions.
+ * Plain JSON Schema objects and TypeBox schemas are both allowed.
+ * Neither is reliably assignable to `json-schema-to-ts`'s `JSONSchema` under
+ * `exactOptionalPropertyTypes` (optional props often include `| undefined`), so routes
+ * use this structural type while `FromSchema` still resolves the concrete schema.
+ */
+export type RouteSchema = {
+  [key: string]: unknown;
+  static?: unknown;
+};
+
 export interface OpenAPIInfo {
-  title?: string;
-  description?: string;
-  version?: string;
-  license?: {
-    name?: string;
-    url?: string;
-  };
-  termsOfService?: string;
-  contact?: {
-    name?: string;
-    url?: string;
-    email?: string;
-  };
+  title?: string | undefined;
+  description?: string | undefined;
+  version?: string | undefined;
+  license?:
+    | {
+        name?: string | undefined;
+        url?: string | undefined;
+      }
+    | undefined;
+  termsOfService?: string | undefined;
+  contact?:
+    | {
+        name?: string | undefined;
+        url?: string | undefined;
+        email?: string | undefined;
+      }
+    | undefined;
 }
 
 export type OpenAPIPathObject = Record<string, OpenAPIOperationObject> & {
-  parameters?: OpenAPIParameterObject[];
+  parameters?: OpenAPIParameterObject[] | undefined;
 };
 
 export interface OpenAPIParameterObject {
   name: string;
   in: 'path' | 'query' | 'header' | 'cookie';
-  required?: boolean;
+  required?: boolean | undefined;
   schema?: any;
 }
 
 export interface OpenAPIRequestBodyObject {
-  content?: Record<string, OpenAPIMediaTypeObject>;
+  content?: Record<string, OpenAPIMediaTypeObject> | undefined;
 }
 
 export interface OpenAPIOperationObject {
-  operationId?: string;
-  description?: string;
-  tags?: string[];
-  parameters?: OpenAPIParameterObject[];
-  requestBody?: OpenAPIRequestBodyObject;
-  responses?: Record<string | number, OpenAPIResponseObject>;
-  security?: any[];
+  operationId?: string | undefined;
+  description?: string | undefined;
+  tags?: string[] | undefined;
+  parameters?: OpenAPIParameterObject[] | undefined;
+  requestBody?: OpenAPIRequestBodyObject | undefined;
+  responses?: Record<string | number, OpenAPIResponseObject> | undefined;
+  security?: any[] | undefined;
 }
 
 export interface OpenAPIResponseObject {
-  description?: string;
-  content?: Record<string, OpenAPIMediaTypeObject>;
+  description?: string | undefined;
+  content?: Record<string, OpenAPIMediaTypeObject> | undefined;
 }
 
 export interface OpenAPIMediaTypeObject {
@@ -81,46 +97,48 @@ export interface OpenAPIMediaTypeObject {
 }
 
 export type OpenAPIDocument = {
-  openapi?: string;
-  info?: OpenAPIInfo;
+  openapi?: string | undefined;
+  info?: OpenAPIInfo | undefined;
   servers?:
     | {
         url: string;
       }[]
-    | string[];
-  paths?: Record<string, OpenAPIPathObject>;
+    | string[]
+    | undefined;
+  paths?: Record<string, OpenAPIPathObject> | undefined;
   components?: unknown;
 };
 
 export interface RouterOpenAPIOptions<
   TComponents extends RouterComponentsBase,
 > extends OpenAPIDocument {
-  endpoint?: string | false;
-  components?: TComponents;
-  includeValidationErrors?: boolean;
+  endpoint?: string | false | undefined;
+  components?: TComponents | undefined;
+  includeValidationErrors?: boolean | undefined;
 }
 
 export interface RouterSwaggerUIOptions extends SwaggerUIOpts {
-  endpoint?: string | false;
+  endpoint?: string | false | undefined;
 }
 
 export interface RouterOptions<
   TServerContext,
   TComponents extends RouterComponentsBase,
 > extends ServerAdapterOptions<TServerContext> {
-  base?: string;
+  base?: string | undefined;
+  /** Must stay optional-without-`undefined` to match `ServerAdapterOptions` under EOPT. */
   plugins?: RouterPlugin<TServerContext, TComponents>[];
 
-  openAPI?: RouterOpenAPIOptions<TComponents>;
-  swaggerUI?: RouterSwaggerUIOptions;
-  landingPage?: boolean;
+  openAPI?: RouterOpenAPIOptions<TComponents> | undefined;
+  swaggerUI?: RouterSwaggerUIOptions | undefined;
+  landingPage?: boolean | undefined;
 
-  onError?: ErrorHandler<TServerContext>;
+  onError?: ErrorHandler<TServerContext> | undefined;
 }
 
 export type RouterComponentsBase = {
-  schemas?: Record<string, JSONSchema>;
-  securitySchemes?: Record<string, SecurityScheme>;
+  schemas?: Record<string, JSONSchema> | undefined;
+  securitySchemes?: Record<string, SecurityScheme> | undefined;
 };
 
 export type BasicAuthSecurityScheme = {
@@ -280,13 +298,18 @@ export type DirectType<T extends JSONSchema> = T extends { static: infer U }
                           ? {
                               [K in Extract<keyof Props, Req[number]>]: DirectType<Props[K]>;
                             } & {
-                              [K in Exclude<keyof Props, Req[number]>]?: DirectType<Props[K]>;
+                              // `| undefined` keeps optionals usable under exactOptionalPropertyTypes
+                              [K in Exclude<keyof Props, Req[number]>]?:
+                                | DirectType<Props[K]>
+                                | undefined;
                             }
                           : T extends {
                                 type: 'object';
                                 properties: infer Props extends Record<string, JSONSchema>;
                               }
-                            ? { [K in keyof Props]?: DirectType<Props[K]> }
+                            ? {
+                                [K in keyof Props]?: DirectType<Props[K]> | undefined;
+                              }
                             : T extends { type: 'object' }
                               ? Record<string, unknown>
                               : unknown;
@@ -310,7 +333,23 @@ type DirectIntersectionType<Items extends readonly JSONSchema[]> = Items extends
 type UseDirectType<T extends JSONSchema> =
   HasCircularAnyOfRef<T> extends true ? true : Circular<T> extends true ? true : false;
 
-export type FromSchema<T> =
+/**
+ * Under `exactOptionalPropertyTypes`, optional props (`prop?: T`) do not accept
+ * explicit `undefined`. Schema-inferred objects often produce values like
+ * `string | undefined` from `.get()` / missing JSON fields — widen optionals so
+ * those remain assignable.
+ */
+type AddUndefToOptionals<T> = T extends any
+  ? T extends object
+    ? T extends readonly any[]
+      ? T
+      : {
+          [K in keyof T]: {} extends Pick<T, K> ? T[K] | undefined : T[K];
+        }
+    : T
+  : never;
+
+type FromSchemaResult<T> =
   /* T extends { type: 'integer'; minimum: number; maximum: number } ? RangedJSONSchema<T> : */ T extends {
     static: infer U;
   }
@@ -348,9 +387,11 @@ export type FromSchema<T> =
           >
       : never;
 
+export type FromSchema<T> = AddUndefToOptionals<FromSchemaResult<T>>;
+
 export type FromRouterComponentSchema<TRouter extends Router<any, any, any>, TName extends string> =
   TRouter extends Router<any, infer TComponents, any>
-    ? TComponents extends Required<RouterComponentsBase>
+    ? TComponents extends { schemas: Record<string, JSONSchema> }
       ? FromSchema<TComponents['schemas'][TName]>
       : never
     : never;
@@ -394,8 +435,8 @@ export interface RouterBaseObject<
     TPath extends string,
     TTypedRequest extends TypedRequest<
       any,
-      Record<string, FormDataEntryValue | undefined>,
-      Record<string, string | undefined>,
+      any,
+      any,
       TMethod,
       any,
       Record<ExtractPathParamsWithPattern<TPath>, string>
@@ -544,18 +585,29 @@ export type RouterPlugin<
   onRouteHandle?: OnRouteHandleHook<TServerContext, TComponents>;
 };
 
-type ObjectSchemaWithPrimitiveProperties = JSONSchema & {
+/**
+ * Structural object schema accepted by routes (plain JSON Schema or TypeBox).
+ * Intentionally not tied to `json-schema-to-ts`'s `JSONSchema`, which TypeBox
+ * cannot satisfy under `exactOptionalPropertyTypes`.
+ */
+type ObjectSchema = {
+  type: 'object';
+  properties?: Record<string, unknown>;
+  required?: readonly string[];
+  [key: string]: unknown;
+};
+
+type ObjectSchemaWithPrimitiveProperties = {
   type: 'object';
   properties: Record<
     string,
     {
       type: 'string' | 'number' | 'integer' | 'boolean' | 'null';
+      [key: string]: unknown;
     }
   >;
-};
-
-type ObjectSchema = JSONSchema & {
-  type: 'object';
+  required?: readonly string[];
+  [key: string]: unknown;
 };
 
 export type RouteSchemas = {
@@ -563,10 +615,10 @@ export type RouteSchemas = {
     headers?: ObjectSchemaWithPrimitiveProperties;
     params?: ObjectSchemaWithPrimitiveProperties;
     query?: ObjectSchema;
-    json?: JSONSchema;
+    json?: RouteSchema;
     formData?: ObjectSchema;
   };
-  responses?: StatusCodeMap<JSONSchema>;
+  responses?: StatusCodeMap<RouteSchema>;
 };
 
 export type RouterSDKOpts<
@@ -614,7 +666,7 @@ export type RouterSDK<
 
 export type FromSchemaWithComponents<
   TComponents,
-  TSchema extends JSONSchema,
+  TSchema,
 > = TComponents extends {
   schemas: Record<string, JSONSchema>;
 }
@@ -625,6 +677,8 @@ export type FromSchemaWithComponents<
     >
   : FromSchema<TSchema>;
 
+type EnsureObject<T> = T extends object ? T : {};
+
 export type TypedRequestFromRouteSchemas<
   TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
@@ -632,36 +686,31 @@ export type TypedRequestFromRouteSchemas<
   TPath extends string,
 > = TRouteSchemas extends { request: Required<RouteSchemas>['request'] }
   ? TypedRequest<
-      TRouteSchemas['request'] extends { json: JSONSchema }
+      TRouteSchemas['request'] extends { json: RouteSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['json']>
         : {},
-      TRouteSchemas['request'] extends { formData: JSONSchema }
-        ? FromSchemaWithComponents<
-            TComponents,
-            TRouteSchemas['request']['formData']
-          > extends Record<string, FormDataEntryValue | undefined>
-          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
-          : never
-        : {},
-      TRouteSchemas['request'] extends { headers: JSONSchema }
-        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']> extends Record<
-            string,
-            string
+      TRouteSchemas['request'] extends { formData: ObjectSchema }
+        ? EnsureObject<
+            FromSchemaWithComponents<TComponents, TRouteSchemas['request']['formData']>
           >
-          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']>
-          : never
+        : {},
+      TRouteSchemas['request'] extends { headers: ObjectSchemaWithPrimitiveProperties }
+        ? EnsureObject<
+            FromSchemaWithComponents<TComponents, TRouteSchemas['request']['headers']>
+          >
         : {},
       TMethod,
-      TRouteSchemas['request'] extends { query: JSONSchema }
+      TRouteSchemas['request'] extends { query: ObjectSchema }
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['query']>
         : {},
-      TRouteSchemas['request'] extends { params: JSONSchema }
-        ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']> extends Record<
-            string,
-            any
-          >
-          ? FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
-          : never
+      TRouteSchemas['request'] extends { params: ObjectSchemaWithPrimitiveProperties }
+        ? EnsureObject<
+            FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
+          > extends Record<string, any>
+          ? EnsureObject<
+              FromSchemaWithComponents<TComponents, TRouteSchemas['request']['params']>
+            >
+          : Record<ExtractPathParamsWithPattern<TPath>, string>
         : Record<ExtractPathParamsWithPattern<TPath>, string>
     >
   : TypedRequest<
@@ -676,11 +725,11 @@ export type TypedRequestFromRouteSchemas<
 export type TypedResponseFromRouteSchemas<
   TComponents extends RouterComponentsBase,
   TRouteSchemas extends RouteSchemas,
-> = TRouteSchemas extends { responses: StatusCodeMap<JSONSchema> }
+> = TRouteSchemas extends { responses: StatusCodeMap<RouteSchema> }
   ? TypedResponseWithJSONStatusMap<{
       [
         TStatusCode in keyof TRouteSchemas['responses']
-      ]: TRouteSchemas['responses'][TStatusCode] extends JSONSchema
+      ]: TRouteSchemas['responses'][TStatusCode] extends RouteSchema
         ? FromSchemaWithComponents<TComponents, TRouteSchemas['responses'][TStatusCode]>
         : never;
     }>
@@ -696,7 +745,7 @@ export type RouteWithSchemasOpts<
   TTypedResponse extends TypedResponseFromRouteSchemas<TComponents, TRouteSchemas>,
 > = {
   schemas: TRouteSchemas;
-  security?: SecuritySchemeRefsFromComponents<TComponents>[];
+  security?: SecuritySchemeRefsFromComponents<TComponents>[] | undefined;
 } & RouteWithTypesOpts<TServerContext, TMethod, TPath, TTypedRequest, TTypedResponse>;
 
 export type SecuritySchemeRefsFromComponents<TComponents extends RouterComponentsBase> =
@@ -712,19 +761,19 @@ export type RouteWithTypesOpts<
   TPath extends string,
   TTypedRequest extends TypedRequest<
     any,
-    Record<string, FormDataEntryValue | undefined>,
-    Record<string, string | undefined>,
+    any,
+    any,
     TMethod,
     any,
     Record<ExtractPathParamsWithPattern<TPath>, string>
   >,
   TTypedResponse extends TypedResponse,
 > = {
-  operationId?: string;
-  description?: string;
-  method?: TMethod;
-  tags?: string[];
-  internal?: boolean;
+  operationId?: string | undefined;
+  description?: string | undefined;
+  method?: TMethod | undefined;
+  tags?: string[] | undefined;
+  internal?: boolean | undefined;
   path: TPath;
   handler: RouteHandler<TServerContext, TTypedRequest, TTypedResponse>;
 };

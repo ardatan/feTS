@@ -16,37 +16,37 @@ function isOptionalSchema(schema: any): boolean {
 }
 
 export interface SwaggerUIOpts {
-  spec?: OpenAPIDocument;
-  dom_id?: string;
-  displayOperationId?: boolean;
-  tryItOutEnabled?: boolean;
-  requestSnippetsEnabled?: boolean;
-  displayRequestDuration?: boolean;
-  defaultModelRendering?: 'model' | 'example' | 'schema';
-  defaultModelExpandDepth?: number;
-  defaultModelsExpandDepth?: number;
-  docExpansion?: 'none' | 'list' | 'full';
-  filter?: boolean;
-  maxDisplayedTags?: number;
-  showExtensions?: boolean;
-  showCommonExtensions?: boolean;
-  tagsSorter?: 'alpha';
-  operationsSorter?: 'alpha';
-  showTags?: boolean;
-  showMutatedRequest?: boolean;
-  oauth2RedirectUrl?: string;
-  validatorUrl?: string;
-  deepLinking?: boolean;
-  presets?: any[];
-  plugins?: any[];
-  layout?: string;
+  spec?: OpenAPIDocument | undefined;
+  dom_id?: string | undefined;
+  displayOperationId?: boolean | undefined;
+  tryItOutEnabled?: boolean | undefined;
+  requestSnippetsEnabled?: boolean | undefined;
+  displayRequestDuration?: boolean | undefined;
+  defaultModelRendering?: 'model' | 'example' | 'schema' | undefined;
+  defaultModelExpandDepth?: number | undefined;
+  defaultModelsExpandDepth?: number | undefined;
+  docExpansion?: 'none' | 'list' | 'full' | undefined;
+  filter?: boolean | undefined;
+  maxDisplayedTags?: number | undefined;
+  showExtensions?: boolean | undefined;
+  showCommonExtensions?: boolean | undefined;
+  tagsSorter?: 'alpha' | undefined;
+  operationsSorter?: 'alpha' | undefined;
+  showTags?: boolean | undefined;
+  showMutatedRequest?: boolean | undefined;
+  oauth2RedirectUrl?: string | undefined;
+  validatorUrl?: string | undefined;
+  deepLinking?: boolean | undefined;
+  presets?: any[] | undefined;
+  plugins?: any[] | undefined;
+  layout?: string | undefined;
 }
 
 export type OpenAPIPluginOptions = {
   oasEndpoint: string | false;
   swaggerUIEndpoint: string | false;
   swaggerUIOpts: SwaggerUIOpts;
-  includeValidationErrors?: boolean;
+  includeValidationErrors?: boolean | undefined;
 };
 
 const requestValidationErrorSchema = {
