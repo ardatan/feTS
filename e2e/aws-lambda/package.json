@@ -7,8 +7,7 @@
     "e2e": "tsx scripts/e2e.ts"
   },
   "dependencies": {
-    "@e2e/shared-scripts": "0.0.0",
-    "aws-lambda": "1.0.7"
+    "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
     "@pulumi/aws": "7.42.0",

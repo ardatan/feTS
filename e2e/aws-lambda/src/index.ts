@@ -1,4 +1,4 @@
-import { APIGatewayProxyEventV2, APIGatewayProxyResult, Context } from 'aws-lambda';
+import type { APIGatewayProxyEventV2, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { createTestServerAdapter } from '@e2e/shared-server';
 
 const app = createTestServerAdapter<ServerContext>();
