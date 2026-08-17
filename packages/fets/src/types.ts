@@ -189,43 +189,81 @@ export type ArrayItemValue<TJSONSchema extends JSONSchema> = TJSONSchema extends
 // Circular anyOf/oneOf detection
 // ---------------------------------------------------------------------------
 
-// Detects whether any property of a schema contains anyOf/oneOf array items
-// that carry the $id marker injected by ResolveRef (i.e. they are $ref-expanded
-// schemas).  Such schemas cannot be processed by json-schema-to-ts's
-// ParseObjectSchema without triggering TS2615 ("Type of property X circularly
-// references itself in mapped type"), because MergeSubSchema produces anonymous
-// types that share the same `properties` object as the original schema.
-// When this helper returns `true`, FromSchema uses DirectType instead.
+// Detects a *real* cycle through anyOf/oneOf $ref members (after NormalizeOAS
+// stamps `$id` onto every resolved `$ref`).
+//
+// json-schema-to-ts's ParseObjectSchema / MergeSubSchema cannot process a
+// schema that anyOf/oneOf's back to itself (TS2615). The OpenAPI 3.0 nullable
+// `$ref` idiom `{ nullable: true, oneOf: [{ $ref }] }` also produces `$id`
+// markers, but is not circular — those must keep using json-schema-to-ts so
+// `nullable` and `additionalProperties` stay precise.
+//
+// A member is treated as circular only when:
+//   1. the expanded `$ref` is the enclosing schema (self-reference), or
+//   2. the expanded `$ref` itself anyOf/oneOf's back to *that* schema
+//      (e.g. RequestBody → FilterGroup → FilterGroup).
 type HasCircularAnyOfRef<T extends JSONSchema> = T extends {
   properties: Record<string, JSONSchema>;
 }
-  ? {
-      [K in keyof T['properties']]: ContainsAnyOfWithId<T['properties'][K]>;
-    }[keyof T['properties']] extends false
-    ? false
-    : true
+  ? true extends {
+      [K in keyof T['properties']]: PropIntroducesCycle<T['properties'][K], T>;
+    }[keyof T['properties']]
+    ? true
+    : false
   : false;
 
-// Checks whether a schema (or its `items` descendant) has an anyOf/oneOf
-// whose items include at least one schema with an $id marker.
-type ContainsAnyOfWithId<T> = T extends {
+type PropIntroducesCycle<S, Root> = S extends {
   anyOf: infer Items extends readonly JSONSchema[];
 }
-  ? AnyHasId<Items>
-  : T extends { oneOf: infer Items extends readonly JSONSchema[] }
-    ? AnyHasId<Items>
-    : T extends { items: infer I extends JSONSchema }
-      ? ContainsAnyOfWithId<I>
+  ? TupleIntroducesCycle<Items, Root>
+  : S extends { oneOf: infer Items extends readonly JSONSchema[] }
+    ? TupleIntroducesCycle<Items, Root>
+    : S extends { items: infer I extends JSONSchema }
+      ? PropIntroducesCycle<I, Root>
       : false;
 
-// Returns `true` if any element of the tuple has an $id property.
-type AnyHasId<Items extends readonly JSONSchema[]> = Items extends readonly [
+type TupleIntroducesCycle<Items extends readonly JSONSchema[], Root> = Items extends readonly [
   infer Head extends JSONSchema,
   ...infer Tail extends readonly JSONSchema[],
 ]
-  ? Head extends { $id: string }
+  ? MemberIntroducesCycle<Head, Root> extends true
     ? true
-    : AnyHasId<Tail>
+    : TupleIntroducesCycle<Tail, Root>
+  : false;
+
+// `$id` is extra on resolved refs, so `{ $id } & Root` still extends Root.
+type MemberIntroducesCycle<Item, Root> = Item extends { $id: string }
+  ? [Item] extends [Root]
+    ? true
+    : HasSelfCircularAnyOf<Item>
+  : false;
+
+// One extra level: does this schema anyOf/oneOf back to itself?
+type HasSelfCircularAnyOf<T> = T extends { properties: Record<string, JSONSchema> }
+  ? true extends {
+      [K in keyof T['properties']]: DirectSelfAnyOf<T['properties'][K], T>;
+    }[keyof T['properties']]
+    ? true
+    : false
+  : false;
+
+type DirectSelfAnyOf<S, Root> = S extends {
+  anyOf: infer Items extends readonly JSONSchema[];
+}
+  ? TupleHasSelf<Items, Root>
+  : S extends { oneOf: infer Items extends readonly JSONSchema[] }
+    ? TupleHasSelf<Items, Root>
+    : S extends { items: infer I extends JSONSchema }
+      ? DirectSelfAnyOf<I, Root>
+      : false;
+
+type TupleHasSelf<Items extends readonly JSONSchema[], Root> = Items extends readonly [
+  infer Head extends JSONSchema,
+  ...infer Tail extends readonly JSONSchema[],
+]
+  ? [Head] extends [Root]
+    ? true
+    : TupleHasSelf<Tail, Root>
   : false;
 
 // ---------------------------------------------------------------------------
@@ -248,7 +286,11 @@ type AnyHasId<Items extends readonly JSONSchema[]> = Items extends readonly [
 // type alias, so the compiler can no longer detect the cycle and raises TS2615.
 // DirectType avoids this entirely by keeping every recursive reference as the
 // same named type alias instantiation.
-export type DirectType<T extends JSONSchema> = T extends { static: infer U }
+export type DirectType<T extends JSONSchema> = T extends { nullable: true }
+  ? DirectTypeValue<T> | null
+  : DirectTypeValue<T>;
+
+type DirectTypeValue<T extends JSONSchema> = T extends { static: infer U }
   ? U
   : T extends { anyOf: infer Items extends readonly JSONSchema[] }
     ? DirectUnionType<Items>
@@ -287,9 +329,20 @@ export type DirectType<T extends JSONSchema> = T extends { static: infer U }
                                 properties: infer Props extends Record<string, JSONSchema>;
                               }
                             ? { [K in keyof Props]?: DirectType<Props[K]> }
-                            : T extends { type: 'object' }
-                              ? Record<string, unknown>
-                              : unknown;
+                            : T extends {
+                                  type: 'object';
+                                  additionalProperties: infer AP;
+                                }
+                              ? AP extends false
+                                ? Record<string, never>
+                                : AP extends true
+                                  ? Record<string, unknown>
+                                  : AP extends JSONSchema
+                                    ? Record<string, DirectType<AP>>
+                                    : Record<string, unknown>
+                              : T extends { type: 'object' }
+                                ? Record<string, unknown>
+                                : unknown;
 
 type DirectUnionType<Items extends readonly JSONSchema[]> = Items extends readonly [
   infer Head extends JSONSchema,
