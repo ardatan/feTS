@@ -220,7 +220,24 @@ type PropIntroducesCycle<S, Root> = S extends {
     ? TupleIntroducesCycle<Items, Root>
     : S extends { items: infer I extends JSONSchema }
       ? PropIntroducesCycle<I, Root>
-      : false;
+      : // Resolved $refs carry `$id` plus the target schema body. Walking that
+        // body re-enters the same properties map and trips TS2615. Inline
+        // wrappers (no `$id`) still need to be traversed.
+        S extends { $id: string }
+        ? false
+        : S extends { properties: infer P extends Record<string, JSONSchema> }
+          ? true extends {
+              [K in keyof P]: PropIntroducesCycle<P[K], Root>;
+            }[keyof P]
+            ? true
+            : AdditionalPropertiesCycle<S, Root>
+          : AdditionalPropertiesCycle<S, Root>;
+
+type AdditionalPropertiesCycle<S, Root> = S extends {
+  additionalProperties: infer AP extends JSONSchema;
+}
+  ? PropIntroducesCycle<AP, Root>
+  : false;
 
 type TupleIntroducesCycle<Items extends readonly JSONSchema[], Root> = Items extends readonly [
   infer Head extends JSONSchema,
@@ -255,7 +272,21 @@ type DirectSelfAnyOf<S, Root> = S extends {
     ? TupleHasSelf<Items, Root>
     : S extends { items: infer I extends JSONSchema }
       ? DirectSelfAnyOf<I, Root>
-      : false;
+      : S extends { $id: string }
+        ? false
+        : S extends { properties: infer P extends Record<string, JSONSchema> }
+          ? true extends {
+              [K in keyof P]: DirectSelfAnyOf<P[K], Root>;
+            }[keyof P]
+            ? true
+            : AdditionalPropertiesSelf<S, Root>
+          : AdditionalPropertiesSelf<S, Root>;
+
+type AdditionalPropertiesSelf<S, Root> = S extends {
+  additionalProperties: infer AP extends JSONSchema;
+}
+  ? DirectSelfAnyOf<AP, Root>
+  : false;
 
 type TupleHasSelf<Items extends readonly JSONSchema[], Root> = Items extends readonly [
   infer Head extends JSONSchema,
@@ -318,31 +349,55 @@ type DirectTypeValue<T extends JSONSchema> = T extends { static: infer U }
                               type: 'object';
                               properties: infer Props extends Record<string, JSONSchema>;
                               required: infer Req extends readonly string[];
+                              additionalProperties: infer AP;
                             }
-                          ? {
-                              [K in Extract<keyof Props, Req[number]>]: DirectType<Props[K]>;
-                            } & {
-                              [K in Exclude<keyof Props, Req[number]>]?: DirectType<Props[K]>;
-                            }
+                          ? DirectNamedProps<Props, Req> & DirectIndexSignature<AP>
                           : T extends {
                                 type: 'object';
                                 properties: infer Props extends Record<string, JSONSchema>;
+                                additionalProperties: infer AP;
                               }
-                            ? { [K in keyof Props]?: DirectType<Props[K]> }
+                            ? DirectNamedProps<Props> & DirectIndexSignature<AP>
                             : T extends {
                                   type: 'object';
-                                  additionalProperties: infer AP;
+                                  properties: infer Props extends Record<string, JSONSchema>;
+                                  required: infer Req extends readonly string[];
                                 }
-                              ? AP extends false
-                                ? Record<string, never>
-                                : AP extends true
-                                  ? Record<string, unknown>
-                                  : AP extends JSONSchema
-                                    ? Record<string, DirectType<AP>>
-                                    : Record<string, unknown>
-                              : T extends { type: 'object' }
-                                ? Record<string, unknown>
-                                : unknown;
+                              ? DirectNamedProps<Props, Req>
+                              : T extends {
+                                    type: 'object';
+                                    properties: infer Props extends Record<string, JSONSchema>;
+                                  }
+                                ? DirectNamedProps<Props>
+                                : T extends {
+                                      type: 'object';
+                                      additionalProperties: infer AP;
+                                    }
+                                  ? AP extends false
+                                    ? Record<string, never>
+                                    : DirectIndexSignature<AP>
+                                  : T extends { type: 'object' }
+                                    ? Record<string, unknown>
+                                    : unknown;
+
+type DirectNamedProps<
+  Props extends Record<string, JSONSchema>,
+  Req extends readonly string[] | undefined = undefined,
+> = [Req] extends [readonly string[]]
+  ? {
+      [K in Extract<keyof Props, Req[number]>]: DirectType<Props[K]>;
+    } & {
+      [K in Exclude<keyof Props, Req[number]>]?: DirectType<Props[K]>;
+    }
+  : { [K in keyof Props]?: DirectType<Props[K]> };
+
+type DirectIndexSignature<AP> = AP extends false
+  ? unknown
+  : AP extends true
+    ? Record<string, unknown>
+    : AP extends JSONSchema
+      ? Record<string, DirectType<AP>>
+      : Record<string, unknown>;
 
 type DirectUnionType<Items extends readonly JSONSchema[]> = Items extends readonly [
   infer Head extends JSONSchema,
