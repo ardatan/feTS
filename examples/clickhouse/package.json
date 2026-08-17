@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "26.2.0",
-    "fets": "0.8.9",
+    "fets": "0.8.10",
     "tsx": "^4.0.0",
     "typescript": "^7.0.0"
   }

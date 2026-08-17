@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@trpc/server": "^11.18.0",
-    "fets": "^0.8.0",
+    "fets": "^0.8.10",
     "jsonwebtoken": "^9.0.3",
     "next": "^16.1.6",
     "nextjs-cors": "^2.1.2",

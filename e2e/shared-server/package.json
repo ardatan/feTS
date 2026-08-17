@@ -3,6 +3,6 @@
   "version": "0.0.97",
   "private": true,
   "dependencies": {
-    "fets": "0.8.9"
+    "fets": "0.8.10"
   }
 }

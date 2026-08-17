@@ -1,5 +1,15 @@
 # fets
 
+## 0.8.10
+
+### Patch Changes
+
+- [#4105](https://github.com/ardatan/feTS/pull/4105) [`4c77f89`](https://github.com/ardatan/feTS/commit/4c77f8901a5b225c0323efca053238bf42848c83) Thanks [@ardatan](https://github.com/ardatan)! - Stop treating OpenAPI 3.0 nullable `$ref`s (`nullable: true, oneOf: [{ $ref }]`) as circular schemas
+  
+  `HasCircularAnyOfRef` used any `$id` on an `anyOf`/`oneOf` member as a cycle signal, but `NormalizeOAS` stamps `$id` onto every resolved `$ref`. Non-recursive schemas then fell through to `DirectType`, which dropped `| null` and `additionalProperties`.
+  
+  Cycle detection now requires the expanded `$ref` to actually be the enclosing schema (or a nested self-reference like `RequestBody → FilterGroup → FilterGroup`). `DirectType` also maps `nullable` and `additionalProperties` for schemas that are genuinely recursive.
+
 ## 0.8.9
 
 ### Patch Changes
