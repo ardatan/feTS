@@ -22,6 +22,16 @@ Our [documentation website](https://fets.dev) will help you get started.
 We've made sure developers can quickly start with feTS by providing a comprehensive set of examples.
 [See all of them in the `examples/` folder.](https://github.com/ardatan/fets/tree/master/examples)
 
+## Support feTS
+
+feTS is built and maintained in the open for everyone who wants to create reliable, type-safe APIs
+with TypeScript. If feTS helps you or your team ship with more confidence, consider
+[sponsoring the project](https://github.com/sponsors/ardatan).
+
+Your support helps fund ongoing maintenance, better documentation, performance improvements, and new
+features for the community. Every contribution, large or small, helps keep feTS healthy and moving
+forward.
+
 ## Contributing
 
 If this is your first time contributing to this project, please do read our

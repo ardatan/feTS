@@ -1,0 +1,2 @@
+/openapi/fets https://fets.dev 301!
+/openapi/fets/* https://fets.dev/:splat 301!

@@ -16,7 +16,7 @@
     "fets": "0.8.10"
   },
   "devDependencies": {
-    "@types/k6": "2.0.1",
+    "@types/k6": "2.2.0",
     "start-server-and-test": "3.0.12"
   }
 }

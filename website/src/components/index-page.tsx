@@ -53,7 +53,7 @@ export function IndexPage(): ReactElement {
               Build and consume <b>REST APIs</b> with ease. No more compromises on type safety in
               client-server communication. All thanks to <b>TypeScript</b> and <b>OpenAPI</b>.
             </h3>
-            <div className="flex gap-x-5">
+            <div className="flex flex-wrap gap-5">
               <Anchor href="/client/quick-start" className={clsx(classes.btn)}>
                 Client
               </Anchor>
@@ -66,6 +66,9 @@ export function IndexPage(): ReactElement {
               >
                 <GitHubLogo />
                 GitHub
+              </Anchor>
+              <Anchor href="https://github.com/sponsors/ardatan" className={clsx(classes.btn)}>
+                Sponsor feTS
               </Anchor>
             </div>
           </div>
