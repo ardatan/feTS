@@ -1,0 +1,12 @@
+diff --git a/node_modules/bob-the-bundler/dist/utils/get-workspaces.js b/node_modules/bob-the-bundler/dist/utils/get-workspaces.js
+index 1234567..abcdefg 100644
+--- a/node_modules/bob-the-bundler/dist/utils/get-workspaces.js
++++ b/node_modules/bob-the-bundler/dist/utils/get-workspaces.js
+@@ -1,6 +1,6 @@
+ import path from 'node:path';
+ import fse from 'fs-extra';
+-import jsYaml from 'js-yaml';
++import * as jsYaml from 'js-yaml';
+ import zod from 'zod';
+ const WorkspaceModel = zod.optional(zod.union([
+     zod.array(zod.string()),

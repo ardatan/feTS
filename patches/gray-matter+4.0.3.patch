@@ -1,0 +1,17 @@
+diff --git a/node_modules/gray-matter/lib/engines.js b/node_modules/gray-matter/lib/engines.js
+index 38f993d..0065c85 100644
+--- a/node_modules/gray-matter/lib/engines.js
++++ b/node_modules/gray-matter/lib/engines.js
+@@ -12,9 +12,10 @@ const engines = exports = module.exports;
+  * YAML
+  */
+ 
++const yamlApi = yaml && yaml.safeLoad ? yaml : yaml && yaml.default ? yaml.default : yaml;
+ engines.yaml = {
+-  parse: yaml.safeLoad.bind(yaml),
+-  stringify: yaml.safeDump.bind(yaml)
++  parse: (yamlApi.safeLoad || yamlApi.load).bind(yamlApi),
++  stringify: (yamlApi.safeDump || yamlApi.dump).bind(yamlApi)
+ };
+ 
+ /**
