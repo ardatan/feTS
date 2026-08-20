@@ -71,7 +71,7 @@
     "webpack": "5.109.2"
   },
   "overrides": {
-    "@pulumi/pulumi": "3.258.0",
+    "@pulumi/pulumi": "3.259.0",
     "braces": "3.0.3",
     "cookie": "2.0.1",
     "diff": "9.0.0",
