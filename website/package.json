@@ -36,10 +36,10 @@
     "sharp": "0.35.3",
     "tailwindcss": "3.4.19",
     "typescript": "7.0.2",
-    "webpack": "5.110.0"
+    "webpack": "5.110.1"
   },
   "overrides": {
     "dompurify": "3.4.14",
-    "webpack": "5.110.0"
+    "webpack": "5.110.1"
   }
 }
