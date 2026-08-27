@@ -42,7 +42,7 @@
     "@theguild/prettier-config": "^3.0.1",
     "@types/jest": "30.0.0",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "26.3.0",
+    "@types/node": "26.4.0",
     "@types/react-dom": "19.2.5",
     "@typescript-eslint/eslint-plugin": "8.68.0",
     "@typescript-eslint/parser": "8.68.0",
@@ -59,8 +59,8 @@
     "eslint-plugin-tailwindcss": "3.18.3",
     "husky": "9.1.7",
     "jest": "30.4.2",
-    "js-yaml": "5.4.0",
-    "lint-staged": "17.3.0",
+    "js-yaml": "5.4.1",
+    "lint-staged": "17.4.1",
     "patch-package": "8.0.1",
     "prettier": "3.9.6",
     "prettier-plugin-tailwindcss": "0.8.1",
@@ -68,7 +68,7 @@
     "ts-jest": "29.4.12",
     "tslib": "2.8.1",
     "typescript": "7.0.2",
-    "webpack": "5.109.2"
+    "webpack": "5.110.0"
   },
   "overrides": {
     "@pulumi/pulumi": "3.259.0",
@@ -78,14 +78,14 @@
     "dompurify": "3.4.14",
     "esbuild": "0.28.2",
     "estree-util-value-to-estree": "3.5.0",
-    "js-yaml": "5.4.0",
+    "js-yaml": "5.4.1",
     "micromatch": "4.0.8",
     "next": "16.3.3",
     "prismjs": "1.30.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tmp": "0.2.7",
-    "webpack": "5.109.2"
+    "webpack": "5.110.0"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
