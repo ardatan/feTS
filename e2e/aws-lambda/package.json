@@ -10,8 +10,8 @@
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
-    "@pulumi/aws": "7.43.0",
-    "@pulumi/pulumi": "3.259.0",
+    "@pulumi/aws": "7.44.0",
+    "@pulumi/pulumi": "3.260.0",
     "@types/aws-lambda": "8.10.162",
     "esbuild": "0.28.2",
     "tsx": "4.23.12",
