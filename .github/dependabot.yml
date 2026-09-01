@@ -40,12 +40,32 @@ updates:
           - '@pulumi/*'
           - '@img/sharp-libvips-linux-x64'
           - 'sharp'
+          - '@jest/*'
+          - 'jest'
+          - 'babel-jest'
         update-types:
           - 'minor'
           - 'patch'
       actions-deps-pulumi:
         patterns:
           - '@pulumi/*'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+      actions-deps-jest:
+        patterns:
+          - '@jest/*'
+          - 'jest'
+          - 'babel-jest'
+        update-types:
+          - 'major'
+          - 'minor'
+          - 'patch'
+      actions-deps-sharp:
+        patterns:
+          - '@img/sharp-libvips-linux-x64'
+          - 'sharp'
         update-types:
           - 'major'
           - 'minor'
