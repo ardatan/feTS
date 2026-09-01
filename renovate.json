@@ -25,13 +25,27 @@
         "!/husky/",
         "!/@img/sharp-libvips-linux-x64/",
         "!/@pulumi/*/",
-        "!/sharp/"
+        "!/sharp/",
+        "!/^@jest//",
+        "!/jest/",
+        "!/babel-jest/",
+        "!/ts-jest/"
       ]
     },
     {
       "groupName": "all pulumi dependencies",
       "groupSlug": "all-pulumi",
       "matchPackageNames": ["/@pulumi/*/"]
+    },
+    {
+      "groupName": "all jest dependencies",
+      "groupSlug": "all-jest",
+      "matchPackageNames": [
+        "/^@jest//",
+        "/jest/",
+        "/babel-jest/",
+        "/ts-jest/"
+      ]
     }
   ]
 }
