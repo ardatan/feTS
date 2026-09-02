@@ -40,20 +40,12 @@
     {
       "groupName": "all jest dependencies",
       "groupSlug": "all-jest",
-      "matchPackageNames": [
-        "/^@jest//",
-        "/jest/",
-        "/babel-jest/",
-        "/ts-jest/"
-      ]
+      "matchPackageNames": ["/^@jest//", "/jest/", "/babel-jest/", "/ts-jest/"]
     },
     {
       "groupName": "all sharp dependencies",
       "groupSlug": "all-sharp",
-      "matchPackageNames": [
-        "/@img/sharp-libvips-linux-x64/",
-        "/sharp/"
-      ]
+      "matchPackageNames": ["/@img/sharp-libvips-linux-x64/", "/sharp/"]
     }
   ]
 }
