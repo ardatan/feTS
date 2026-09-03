@@ -1,6 +1,6 @@
 {
   "name": "fets",
-  "version": "0.8.10",
+  "version": "0.8.11",
   "type": "module",
   "description": "TypeScript HTTP Framework focusing on e2e type-safety, easy setup, performance & great developer experience",
   "repository": {
@@ -40,7 +40,7 @@
     "@whatwg-node/server": "^0.11.0",
     "hotscript": "^1.0.11",
     "json-schema-to-ts": "^3.0.0",
-    "qs": "^6.15.3",
+    "qs": "^6.16.0",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.3.1"
   },
