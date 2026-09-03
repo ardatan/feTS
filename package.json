@@ -72,6 +72,7 @@
   },
   "overrides": {
     "@pulumi/pulumi": "3.260.0",
+    "@xmldom/xmldom": "0.9.12",
     "braces": "3.0.3",
     "cookie": "2.0.1",
     "diff": "9.0.0",
