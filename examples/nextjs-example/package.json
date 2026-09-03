@@ -12,7 +12,7 @@
     "@types/node": "26.4.1",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.6",
-    "fets": "0.8.10",
+    "fets": "0.8.11",
     "next": "16.3.4",
     "react": "^19.2.7",
     "react-dom": "19.2.8",
