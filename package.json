@@ -76,7 +76,7 @@
     "braces": "3.0.3",
     "cookie": "2.0.1",
     "diff": "9.0.0",
-    "dompurify": "3.4.14",
+    "dompurify": "3.4.15",
     "esbuild": "0.28.2",
     "estree-util-value-to-estree": "3.5.0",
     "js-yaml": "5.4.1",
