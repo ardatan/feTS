@@ -13,7 +13,8 @@
     "test": "start-server-and-test start http://127.0.0.1:4000/ping loadtest"
   },
   "dependencies": {
-    "fets": "0.8.11"
+    "fets": "0.8.11",
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.70.0"
   },
   "devDependencies": {
     "@types/k6": "2.2.0",
