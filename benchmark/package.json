@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "fets": "0.8.11",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.70.0"
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#b1092c70692ddbcc87464a77da44848614f6342a"
   },
   "devDependencies": {
     "@types/k6": "2.2.0",
