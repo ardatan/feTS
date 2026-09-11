@@ -13,11 +13,7 @@ describe('Client Abort', () => {
       await client['/get'].get({ signal: AbortSignal.timeout(1) });
       throw new Error('The request should have been aborted');
     } catch (e: any) {
-      if (e instanceof Error) {
-        expect(e.name).toBe('TimeoutError');
-      } else {
-        expect(e.name).toBe('AbortError');
-      }
+      expect(e.name).toBe('TimeoutError');
     }
   });
 });
