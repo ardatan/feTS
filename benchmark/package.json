@@ -17,7 +17,7 @@
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#b1092c70692ddbcc87464a77da44848614f6342a"
   },
   "devDependencies": {
-    "@types/k6": "2.2.0",
+    "@types/k6": "2.2.1",
     "start-server-and-test": "3.0.12"
   }
 }
