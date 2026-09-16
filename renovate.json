@@ -29,7 +29,8 @@
         "!/^@jest//",
         "!/jest/",
         "!/babel-jest/",
-        "!/ts-jest/"
+        "!/ts-jest/",
+        "!/@babel/*/"
       ]
     },
     {
@@ -46,6 +47,11 @@
       "groupName": "all sharp dependencies",
       "groupSlug": "all-sharp",
       "matchPackageNames": ["/@img/sharp-libvips-linux-x64/", "/sharp/"]
+    },
+    {
+      "groupName": "all babel dependencies",
+      "groupSlug": "all-babel",
+      "matchPackageNames": ["/@babel/*/"]
     }
   ]
 }
