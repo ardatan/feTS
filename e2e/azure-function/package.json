@@ -7,7 +7,7 @@
     "e2e": "tsx scripts/e2e.ts"
   },
   "dependencies": {
-    "@azure/functions": "4.16.4",
+    "@azure/functions": "4.16.5",
     "@e2e/shared-scripts": "0.0.0"
   },
   "devDependencies": {
