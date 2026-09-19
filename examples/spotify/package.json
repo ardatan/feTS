@@ -8,8 +8,8 @@
     "start": "tsx watch index.ts"
   },
   "dependencies": {
-    "@types/node": "26.6.1",
-    "dotenv": "18.0.0",
+    "@types/node": "26.6.2",
+    "dotenv": "18.0.1",
     "fets": "0.8.11",
     "tsx": "^4.0.0",
     "typescript": "^7.0.0"

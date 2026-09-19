@@ -42,7 +42,7 @@
     "@theguild/prettier-config": "^3.0.1",
     "@types/jest": "30.0.0",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "26.6.1",
+    "@types/node": "26.6.2",
     "@types/react-dom": "19.3.0",
     "@typescript-eslint/eslint-plugin": "8.70.0",
     "@typescript-eslint/parser": "8.70.0",
@@ -52,7 +52,7 @@
     "bob-the-bundler": "7.0.1",
     "cookie": "2.0.1",
     "cross-env": "10.1.0",
-    "eslint": "10.10.0",
+    "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-n": "18.3.0",
@@ -68,7 +68,7 @@
     "ts-jest": "29.4.12",
     "tslib": "2.8.1",
     "typescript": "7.0.2",
-    "webpack": "5.111.0"
+    "webpack": "5.111.1"
   },
   "overrides": {
     "@pulumi/pulumi": "3.263.0",
@@ -86,7 +86,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tmp": "0.2.7",
-    "webpack": "5.111.0"
+    "webpack": "5.111.1"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
