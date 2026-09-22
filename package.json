@@ -31,6 +31,9 @@
     "ts:check": "tsc --noEmit",
     "version": "changeset version"
   },
+  "dependencies": {
+    "uWebSockets.js": "https://github.com/uNetworking/uWebSockets.js.git#v20.71.0"
+  },
   "devDependencies": {
     "@babel/core": "7.29.7",
     "@babel/plugin-proposal-class-properties": "7.18.6",

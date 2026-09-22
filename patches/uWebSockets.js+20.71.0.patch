@@ -1,0 +1,11 @@
+diff --git a/node_modules/uWebSockets.js/ESM_wrapper.mjs b/node_modules/uWebSockets.js/ESM_wrapper.mjs
+index 339ab37..6aae075 100644
+--- a/node_modules/uWebSockets.js/ESM_wrapper.mjs
++++ b/node_modules/uWebSockets.js/ESM_wrapper.mjs
+@@ -1,5 +1,5 @@
+ // Auto-generated ESM wrapper — DO NOT EDIT MANUALLY
+-import uws from './index.js';
++import uws from './uws.js';
+ 
+ export default uws;
+ 
