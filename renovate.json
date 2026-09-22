@@ -52,6 +52,11 @@
       "groupName": "all babel dependencies",
       "groupSlug": "all-babel",
       "matchPackageNames": ["/@babel/*/"]
+    },
+    {
+      "description": "Pin uWebSockets.js by release tag, not git digest",
+      "matchPackageNames": ["uWebSockets.js"],
+      "digest": { "enabled": false }
     }
   ]
 }
