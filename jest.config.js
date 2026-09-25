@@ -23,7 +23,7 @@ module.exports = {
   transformIgnorePatterns: [`node_modules/(?!(${ESM_PACKAGES.join('|')})/)`],
   transform: {
     '^.+\\.mjs?$': 'babel-jest',
-    '^.+\\.ts?$': 'babel-jest',
+    '^.+\\.ts?$': ['ts-jest', { tsconfig: TSCONFIG }],
     '^.+\\.js$': 'babel-jest',
   },
   collectCoverage: false,
