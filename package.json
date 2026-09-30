@@ -8,7 +8,7 @@
     "examples/*",
     "benchmark"
   ],
-  "packageManager": "npm@12.1.0",
+  "packageManager": "npm@12.2.0",
   "scripts": {
     "build": "bob build",
     "ci:lint": "eslint . --output-file eslint_report.json --format json",
