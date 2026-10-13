@@ -83,7 +83,7 @@
     "esbuild": "0.28.2",
     "estree-util-value-to-estree": "3.5.0",
     "js-yaml": "5.4.3",
-    "katex": "0.18.2",
+    "katex": "0.19.0",
     "micromatch": "4.0.8",
     "next": "16.4.0",
     "postcss-selector-parser": "7.1.6",
