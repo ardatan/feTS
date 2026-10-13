@@ -31,7 +31,7 @@
     "dompurify": "3.4.17",
     "estree-util-value-to-estree": "3.5.0",
     "monaco-editor": "0.57.0",
-    "postcss-import": "17.0.0",
+    "postcss-import": "17.0.1",
     "postcss-lightningcss": "1.1.1",
     "sharp": "0.35.5",
     "tailwindcss": "3.4.19",
