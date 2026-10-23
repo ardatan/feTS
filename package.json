@@ -71,7 +71,7 @@
     "ts-jest": "29.4.15",
     "tslib": "2.8.1",
     "typescript": "7.0.2",
-    "webpack": "5.112.0"
+    "webpack": "5.112.1"
   },
   "overrides": {
     "@pulumi/pulumi": "3.272.0",
@@ -91,7 +91,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tmp": "0.2.7",
-    "webpack": "5.112.0"
+    "webpack": "5.112.1"
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
