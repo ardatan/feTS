@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@pulumi/aws": "7.53.0",
-    "@pulumi/pulumi": "3.273.0",
+    "@pulumi/pulumi": "3.274.0",
     "@types/aws-lambda": "8.10.164",
     "esbuild": "0.28.2",
     "tsx": "4.23.15",
