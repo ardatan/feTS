@@ -54,15 +54,6 @@ updates:
           - 'major'
           - 'minor'
           - 'patch'
-      actions-deps-jest:
-        patterns:
-          - '@jest/*'
-          - 'jest'
-          - 'babel-jest'
-        update-types:
-          - 'major'
-          - 'minor'
-          - 'patch'
       actions-deps-sharp:
         patterns:
           - '@img/sharp-libvips-linux-x64'
@@ -71,8 +62,11 @@ updates:
           - 'major'
           - 'minor'
           - 'patch'
-      actions-deps-babel:
+      actions-deps-jest-babel:
         patterns:
+          - '@jest/*'
+          - 'jest'
+          - 'babel-jest'
           - '@babel/*'
         update-types:
           - 'major'
