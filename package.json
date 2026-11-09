@@ -85,7 +85,7 @@
     "js-yaml": "5.5.0",
     "katex": "0.19.1",
     "micromatch": "4.0.8",
-    "next": "16.4.5",
+    "next": "16.4.6",
     "postcss-selector-parser": "7.2.0",
     "prismjs": "1.30.0",
     "react": "19.3.1",
