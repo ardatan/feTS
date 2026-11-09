@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "26.6.6",
-    "dotenv": "18.0.9",
+    "dotenv": "18.0.10",
     "fets": "0.8.13",
     "tsx": "^4.0.0",
     "typescript": "^7.0.0"
