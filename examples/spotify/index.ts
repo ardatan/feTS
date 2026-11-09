@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import { createClient, type NormalizeOAS } from 'fets';
-import spotifyOas from './spotify-oas';
+import type spotifyOas from './spotify-oas';
 
-const client = createClient<NormalizeOAS<typeof spotifyOas>>({
+type SpotifyOAS = NormalizeOAS<typeof spotifyOas>;
+
+const client = createClient<SpotifyOAS>({
   endpoint: 'https://api.spotify.com/v1',
 });
 
