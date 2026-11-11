@@ -65,7 +65,7 @@
     "js-yaml": "5.5.0",
     "lint-staged": "17.6.0",
     "patch-package": "8.0.1",
-    "prettier": "3.9.10",
+    "prettier": "3.10.0",
     "prettier-plugin-tailwindcss": "0.8.1",
     "rimraf": "6.1.4",
     "ts-jest": "29.4.15",
