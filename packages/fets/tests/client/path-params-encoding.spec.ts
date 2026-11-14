@@ -4,6 +4,63 @@ import type exampleOAS from './fixtures/example-oas';
 
 type NormalizedOAS = NormalizeOAS<typeof exampleOAS>;
 
+const pathParamsOas = {
+  openapi: '3.0.3',
+  info: { title: 'Path params', version: '1.0.0' },
+  paths: {
+    '/users/{id}': {
+      get: {
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'integer' } }],
+        responses: { '200': { description: 'ok' } },
+      },
+    },
+    '/flags/{enabled}': {
+      get: {
+        parameters: [{ name: 'enabled', in: 'path', required: true, schema: { type: 'boolean' } }],
+        responses: { '200': { description: 'ok' } },
+      },
+    },
+    '/empty/{value}': {
+      get: {
+        parameters: [{ name: 'value', in: 'path', required: true, schema: { type: 'string' } }],
+        responses: { '200': { description: 'ok' } },
+      },
+    },
+    '/orgs/{id}/members/{id}': {
+      get: {
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'integer' } }],
+        responses: { '200': { description: 'ok' } },
+      },
+    },
+  },
+} as const;
+
+type PathParamsOAS = NormalizeOAS<typeof pathParamsOas>;
+
+// Colon-style paths that URLPattern cannot register (duplicate / hyphenated names)
+// are typed manually so `params` still type-checks.
+type ColonBoundaryClient = {
+  '/items/:idx/:id': {
+    get(requestParams: { params: { id: number; idx: number } }): Promise<Response>;
+  };
+  '/items/:user-id/:user': {
+    get(requestParams: { params: { user: string; 'user-id': string } }): Promise<Response>;
+  };
+  '/orgs/:id/members/:id': {
+    get(requestParams: { params: { id: number } }): Promise<Response>;
+  };
+};
+
+function createUrlCapturingClient(urls: string[]) {
+  return {
+    endpoint: 'https://example.com',
+    fetchFn: async (url: RequestInfo | URL) => {
+      urls.push(String(url));
+      return Response.json({});
+    },
+  };
+}
+
 describe('Client path parameter encoding', () => {
   const client = createClient<NormalizedOAS>({
     endpoint: 'https://example.com',
@@ -69,13 +126,7 @@ describe('Client path parameter encoding', () => {
 
   it('should substitute falsy path params such as 0 and false', async () => {
     const urls: string[] = [];
-    const falsyClient = createClient<any>({
-      endpoint: 'https://example.com',
-      fetchFn: async url => {
-        urls.push(String(url));
-        return Response.json({});
-      },
-    });
+    const falsyClient = createClient<PathParamsOAS>(createUrlCapturingClient(urls));
 
     await falsyClient['/users/{id}'].get({ params: { id: 0 } });
     await falsyClient['/flags/{enabled}'].get({ params: { enabled: false } });
@@ -90,31 +141,23 @@ describe('Client path parameter encoding', () => {
 
   it('should not let a shorter colon param match a longer one as a prefix', async () => {
     const urls: string[] = [];
-    const colonClient = createClient<any>({
-      endpoint: 'https://example.com',
-      fetchFn: async url => {
-        urls.push(String(url));
-        return Response.json({});
-      },
-    });
+    const colonClient = createClient(createUrlCapturingClient(urls)) as ColonBoundaryClient;
 
     await colonClient['/items/:idx/:id'].get({ params: { id: 5, idx: 9 } });
+    await colonClient['/items/:user-id/:user'].get({
+      params: { user: 'alice', 'user-id': '42' },
+    });
 
-    expect(urls).toEqual(['https://example.com/items/9/5']);
+    expect(urls).toEqual(['https://example.com/items/9/5', 'https://example.com/items/42/alice']);
   });
 
   it('should replace every occurrence of the same path param', async () => {
     const urls: string[] = [];
-    const multiClient = createClient<any>({
-      endpoint: 'https://example.com',
-      fetchFn: async url => {
-        urls.push(String(url));
-        return Response.json({});
-      },
-    });
+    const braceClient = createClient<PathParamsOAS>(createUrlCapturingClient(urls));
+    const colonClient = createClient(createUrlCapturingClient(urls)) as ColonBoundaryClient;
 
-    await multiClient['/orgs/{id}/members/{id}'].get({ params: { id: 1 } });
-    await multiClient['/orgs/:id/members/:id'].get({ params: { id: 2 } });
+    await braceClient['/orgs/{id}/members/{id}'].get({ params: { id: 1 } });
+    await colonClient['/orgs/:id/members/:id'].get({ params: { id: 2 } });
 
     expect(urls).toEqual([
       'https://example.com/orgs/1/members/1',

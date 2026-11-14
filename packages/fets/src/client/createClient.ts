@@ -215,9 +215,10 @@ export function createClient({
                   const encodedValue = encodeURIComponent(value);
                   // Replace every `{name}` occurrence (string replaceAll)
                   path = path.replaceAll(`{${pathParamKey}}`, encodedValue);
-                  // Replace `:name` only as a whole token so `:id` does not match inside `:idx`
+                  // Replace `:name` only as a whole token so `:id` / `:user` do not match
+                  // inside `:idx` / `:user-id` (hyphen is part of the parameter name)
                   path = path.replace(
-                    new RegExp(`:${escapeRegExp(pathParamKey)}(?![\\w])`, 'g'),
+                    new RegExp(`:${escapeRegExp(pathParamKey)}(?![\\w-])`, 'g'),
                     encodedValue,
                   );
                 }
