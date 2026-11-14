@@ -27,6 +27,10 @@ const qsOptions: IStringifyOptions = {
   arrayFormat: 'repeat',
 };
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 export class ClientValidationError extends Error implements AggregateError {
   constructor(
     public readonly path: string,
@@ -206,11 +210,17 @@ export function createClient({
             if (paramsBody) {
               for (const pathParamKey in paramsBody) {
                 const value = paramsBody[pathParamKey];
-                if (value) {
+                // Use != null so falsy values like 0, false, and "" are still substituted
+                if (value != null) {
                   const encodedValue = encodeURIComponent(value);
-                  path = path
-                    .replace(`{${pathParamKey}}`, encodedValue)
-                    .replace(`:${pathParamKey}`, encodedValue);
+                  // Replace every `{name}` occurrence (string replaceAll)
+                  path = path.replaceAll(`{${pathParamKey}}`, encodedValue);
+                  // Replace `:name` only as a whole token so `:id` / `:user` do not match
+                  // inside `:idx` / `:user-id` (hyphen is part of the parameter name)
+                  path = path.replace(
+                    new RegExp(`:${escapeRegExp(pathParamKey)}(?![\\w-])`, 'g'),
+                    encodedValue,
+                  );
                 }
               }
             }
