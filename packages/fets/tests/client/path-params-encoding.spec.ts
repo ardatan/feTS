@@ -66,4 +66,59 @@ describe('Client path parameter encoding', () => {
     const resJson = (await response.json()) as { url: string };
     expect(resJson.url).toBe('https://example.com/todo/%E6%97%A5%E6%9C%AC%E8%AA%9E');
   });
+
+  it('should substitute falsy path params such as 0 and false', async () => {
+    const urls: string[] = [];
+    const falsyClient = createClient<any>({
+      endpoint: 'https://example.com',
+      fetchFn: async url => {
+        urls.push(String(url));
+        return Response.json({});
+      },
+    });
+
+    await falsyClient['/users/{id}'].get({ params: { id: 0 } });
+    await falsyClient['/flags/{enabled}'].get({ params: { enabled: false } });
+    await falsyClient['/empty/{value}'].get({ params: { value: '' } });
+
+    expect(urls).toEqual([
+      'https://example.com/users/0',
+      'https://example.com/flags/false',
+      'https://example.com/empty/',
+    ]);
+  });
+
+  it('should not let a shorter colon param match a longer one as a prefix', async () => {
+    const urls: string[] = [];
+    const colonClient = createClient<any>({
+      endpoint: 'https://example.com',
+      fetchFn: async url => {
+        urls.push(String(url));
+        return Response.json({});
+      },
+    });
+
+    await colonClient['/items/:idx/:id'].get({ params: { id: 5, idx: 9 } });
+
+    expect(urls).toEqual(['https://example.com/items/9/5']);
+  });
+
+  it('should replace every occurrence of the same path param', async () => {
+    const urls: string[] = [];
+    const multiClient = createClient<any>({
+      endpoint: 'https://example.com',
+      fetchFn: async url => {
+        urls.push(String(url));
+        return Response.json({});
+      },
+    });
+
+    await multiClient['/orgs/{id}/members/{id}'].get({ params: { id: 1 } });
+    await multiClient['/orgs/:id/members/:id'].get({ params: { id: 2 } });
+
+    expect(urls).toEqual([
+      'https://example.com/orgs/1/members/1',
+      'https://example.com/orgs/2/members/2',
+    ]);
+  });
 });
