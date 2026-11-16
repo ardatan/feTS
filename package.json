@@ -63,7 +63,7 @@
     "husky": "9.1.7",
     "jest": "30.4.2",
     "js-yaml": "5.5.0",
-    "lint-staged": "17.6.0",
+    "lint-staged": "17.6.1",
     "patch-package": "8.0.1",
     "prettier": "3.10.1",
     "prettier-plugin-tailwindcss": "0.8.1",
