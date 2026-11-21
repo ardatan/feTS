@@ -1,0 +1,85 @@
+name: cleanup-actions-storage
+
+on:
+  schedule:
+    # Weekly on Monday at 05:00 UTC
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  cleanup-caches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete non-default-branch Actions caches
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const { data: repository } = await github.rest.repos.get({ owner, repo });
+            const defaultBranchRef = `refs/heads/${repository.default_branch}`;
+            core.info(`Keeping caches for default branch ref: ${defaultBranchRef}`);
+
+            const cachesToDelete = [];
+            let keptCount = 0;
+            let page = 1;
+            const perPage = 100;
+
+            while (true) {
+              const { data } = await github.rest.actions.getActionsCacheList({
+                owner,
+                repo,
+                per_page: perPage,
+                page,
+              });
+
+              const caches = data.actions_caches || [];
+              if (caches.length === 0) {
+                break;
+              }
+
+              for (const cache of caches) {
+                if (cache.ref === defaultBranchRef) {
+                  keptCount += 1;
+                  core.info(
+                    `Keeping cache id=${cache.id} key=${cache.key} ref=${cache.ref}`
+                  );
+                  continue;
+                }
+
+                cachesToDelete.push(cache);
+              }
+
+              if (caches.length < perPage) {
+                break;
+              }
+
+              page += 1;
+            }
+
+            let deletedCount = 0;
+            for (const cache of cachesToDelete) {
+              try {
+                await github.rest.actions.deleteActionsCacheById({
+                  owner,
+                  repo,
+                  cache_id: cache.id,
+                });
+                deletedCount += 1;
+                core.info(
+                  `Deleted cache id=${cache.id} key=${cache.key} ref=${cache.ref}`
+                );
+              } catch (error) {
+                core.warning(
+                  `Failed to delete cache id=${cache.id} key=${cache.key} ref=${cache.ref}: ${error.message}`
+                );
+              }
+            }
+
+            core.info(
+              `Deleted ${deletedCount} cache(s); kept ${keptCount} default-branch cache(s).`
+            );
