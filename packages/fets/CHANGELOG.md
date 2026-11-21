@@ -1,5 +1,12 @@
 # fets
 
+## 0.8.15
+
+### Patch Changes
+
+- [#4330](https://github.com/ardatan/feTS/pull/4330) [`2c4efeb`](https://github.com/ardatan/feTS/commit/2c4efebfa36a7a39abd31989261b00f530ae307c) Thanks [@dependabot](https://github.com/apps/dependabot)! - dependencies updates:
+    - Updated dependency [`@whatwg-node/server@^0.13.3` ↗︎](https://www.npmjs.com/package/@whatwg-node/server/v/0.13.3) (from `^0.13.0`, in `dependencies`)
+
 ## 0.8.14
 
 ### Patch Changes
