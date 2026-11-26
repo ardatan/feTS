@@ -9,14 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@trpc/server": "^11.18.0",
+    "@trpc/server": "^11.29.11",
     "fets": "^0.8.14",
     "jsonwebtoken": "^9.0.3",
     "next": "^16.1.6",
     "nextjs-cors": "^2.1.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "swagger-ui-react": "^5.35.0",
+    "swagger-ui-react": "^5.36.0",
     "trpc-openapi": "^1.1.2",
     "zod": "^4.1.12"
   },
