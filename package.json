@@ -32,7 +32,7 @@
     "version": "changeset version"
   },
   "dependencies": {
-    "uWebSockets.js": "https://github.com/uNetworking/uWebSockets.js.git#v20.71.0"
+    "uWebSockets.js": "https://github.com/uNetworking/uWebSockets.js.git#v20.72.0"
   },
   "devDependencies": {
     "@babel/core": "7.29.16",
@@ -45,7 +45,7 @@
     "@theguild/prettier-config": "^3.0.1",
     "@types/jest": "30.0.0",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "26.6.6",
+    "@types/node": "26.6.11",
     "@types/react-dom": "19.3.0",
     "@typescript-eslint/eslint-plugin": "8.74.0",
     "@typescript-eslint/parser": "8.74.0",
@@ -55,15 +55,15 @@
     "bob-the-bundler": "7.0.1",
     "cookie": "2.0.2",
     "cross-env": "10.1.0",
-    "eslint": "10.15.0",
-    "eslint-config-prettier": "10.1.8",
+    "eslint": "10.16.0",
+    "eslint-config-prettier": "10.1.9",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-n": "18.5.0",
+    "eslint-plugin-n": "18.6.0",
     "eslint-plugin-tailwindcss": "3.18.3",
     "husky": "9.1.7",
     "jest": "30.4.2",
     "js-yaml": "5.5.0",
-    "lint-staged": "17.6.2",
+    "lint-staged": "17.6.3",
     "patch-package": "8.0.1",
     "prettier": "3.10.1",
     "prettier-plugin-tailwindcss": "0.8.1",

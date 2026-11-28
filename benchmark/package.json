@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "fets": "0.8.14",
-    "uWebSockets.js": "https://github.com/uNetworking/uWebSockets.js.git#v20.71.0"
+    "uWebSockets.js": "https://github.com/uNetworking/uWebSockets.js.git#v20.72.0"
   },
   "devDependencies": {
-    "@types/k6": "2.3.1",
+    "@types/k6": "2.4.1",
     "start-server-and-test": "3.0.13"
   }
 }
